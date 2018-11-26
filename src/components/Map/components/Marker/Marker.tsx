@@ -1,12 +1,23 @@
 import * as React from 'react';
-import MapBox from '../../components/MapBox';
+import MapBox from '../MapBox';
 
-interface MarkerProps {}
+interface MarkerProps {
+  type: string;
+  lat: number;
+  lng: number;
+  active: boolean;
+  handleMarkerClick: Function;
+  handleClose: Function;
+  index: number;
+}
 
-const Marker: React.SFC<MarkerProps> = () => {
+const Marker: React.SFC<MarkerProps> = props => {
+  const { type, active, handleMarkerClick, index } = props;
   return (
     <div className={'markerHolder'}>
-      <MapBox />
+      <div className={`marker ${type}`} onClick={e => handleMarkerClick(e, index)} />
+
+      {active && <MapBox />}
     </div>
   );
 };

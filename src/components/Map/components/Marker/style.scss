@@ -1,8 +1,6 @@
 .marker {
-  width: 30px;
-  height: 30px;
   border-radius: 50% 50% 50% 50%;
-  background: #41b9af;
+  @include topBottomgradient(#01a6ce, #2083c1);
   position: absolute;
   transform: rotate(0deg);
   margin: -20px 0 0 0;
@@ -12,6 +10,27 @@
 
   &.red {
     background: #c92731;
+  }
+
+  &.big {
+    width: 64px;
+    height: 64px;
+
+    &:after {
+      width: 25px;
+      height: 25px;
+      margin: 19px 0 0 19px;
+    }
+
+    &:before {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &.small {
+    height: 27px;
+    width: 27px;
   }
 
   &:after {
@@ -30,7 +49,7 @@
     content: '';
     width: 30px;
     height: 30px;
-    background: #41b9af;
+    @include topBottomgradient(#01a6ce, #2083c1);
     position: absolute;
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg) translate3d(0, 0, 0);

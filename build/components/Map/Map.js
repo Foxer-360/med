@@ -14,14 +14,41 @@ var __extends = (this && this.__extends) || (function () {
 import * as React from 'react';
 import GoogleMapReact from 'google-map-react';
 export var GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
-import MapBox from './components/MapBox';
+import Marker from './components/Marker';
+// !DEV ONLY
+var markers = [
+    {
+        lat: 50,
+        lng: 14,
+    },
+];
 var Map = /** @class */ (function (_super) {
     __extends(Map, _super);
-    function Map() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Map(props) {
+        var _this = _super.call(this, props) || this;
+        _this.handleMarkerClick = function (e, key, lat, lng) {
+            _this.setState({
+                activeMarker: key,
+                activeMarkerCenter: { lat: lat, lng: lng },
+            });
+            e.stopPropagation();
+        };
+        _this.handleMarkerClose = function () {
+            _this.setState({
+                activeMarker: null,
+                activeMarkerCenter: null,
+            });
+        };
+        _this.state = {
+            activeMarker: null,
+            activeMarkerCenter: null,
+        };
+        _this.handleMarkerClose = _this.handleMarkerClose.bind(_this);
+        return _this;
     }
     Map.prototype.render = function () {
-        var defaultCenter = { lat: 49.743825, lng: 15.13865 };
+        var _this = this;
+        var defaultCenter = { lat: 50.08804, lng: 14.42076 };
         var center = defaultCenter;
         var defaultZoom = 7;
         var zoom = 7;
@@ -29,10 +56,9 @@ var Map = /** @class */ (function (_super) {
             React.createElement("section", { className: 'map' },
                 React.createElement("div", { className: 'map__container' },
                     React.createElement("button", null, "Zobrazit v\u0161echny polikliniky")),
-                React.createElement(MapBox, null),
                 React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, defaultZoom: defaultZoom, center: center, zoom: zoom, options: {
                         scrollwheel: false,
-                    } }))));
+                    } }, markers.map(function (marker, index) { return (React.createElement(Marker, { type: 'small', lat: marker.lat, lng: marker.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, marker.lat, marker.lng); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index })); })))));
     };
     return Map;
 }(React.Component));

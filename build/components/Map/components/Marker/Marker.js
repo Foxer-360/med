@@ -1,8 +1,10 @@
 import * as React from 'react';
-import MapBox from '../../components/MapBox';
-var Marker = function () {
+import MapBox from '../MapBox';
+var Marker = function (props) {
+    var type = props.type, active = props.active, handleMarkerClick = props.handleMarkerClick, index = props.index;
     return (React.createElement("div", { className: 'markerHolder' },
-        React.createElement(MapBox, null)));
+        React.createElement("div", { className: "marker " + type, onClick: function (e) { return handleMarkerClick(e, index); } }),
+        active && React.createElement(MapBox, null)));
 };
 export default Marker;
 //# sourceMappingURL=Marker.js.map
