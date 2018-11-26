@@ -24,12 +24,23 @@
       border-width: 0 2px 2px 0;
       transform: rotate(-45deg);
       -webkit-transform: rotate(-45deg);
-      margin-bottom: 3px;
+      margin-bottom: 1px;
+      left: 10px;
+
+      &--down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+
+      &--up {
+        transform: rotate(225deg);
+        -webkit-transform: rotate(225deg);
+      }
     }
   
     &:hover {
       .arrow {
-        left: 10px;
+        left: 15px;
       }
     }
   
