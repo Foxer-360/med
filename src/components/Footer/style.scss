@@ -1,23 +1,15 @@
 .footer {
   width: 100%;
-  height: 275px;
   background-color: #48c5e0;
   line-height: 28px;
-
-  .grid-container {
-    grid-template-rows: 1fr;
-    padding: 45px 0;
-    color: white;
-  }
-
-  .footer-menu {
-    max-height: 180px;
-  }
+  padding-top: 50px;
 
   ul {
-    // background-image: url('/assets/medicon/images/vertical-footer.png');
-    background-repeat: no-repeat;
-    background-position: 0px 55px;
+    border-left: 1px solid white;
+
+    &:nth-of-type(3) {
+      align-self: flex-start;
+    }
 
     li {
       margin-left: 15px;
@@ -31,16 +23,39 @@
     color: white;
     transition: ease 0.3s;
     &:hover {
-      font-weight: 600;
+      color: $blue;
     }
   }
+
   .social {
-    align-self: end;
+    align-self: flex-end;
+    color: white;
     p {
       text-align: right;
     }
     img {
       float: right;
+    }
+  }
+
+  @include max-md {
+    
+    ul {
+      text-align: center;
+      @include flexChild(3, 10px);
+      border: none;
+      &:not(:first-of-type) { border-top: 1px solid white; }
+    }
+
+    .social {
+      width: 100%;
+      height: 100%;
+      flex-flow: row-reverse wrap;
+      justify-content: space-between;
+      p {
+        text-align: left;
+        float: left;
+      }
     }
   }
 }
@@ -66,6 +81,7 @@
 .bottom {
   width: 100%;
   padding: 12px 0;
+  margin-top: 50px;
   background-color: #fff;
 
   .copyrights {
@@ -78,6 +94,24 @@
         grid-column: 1/2;
         display: block;
         font-weight: 600;
+      }
+    }
+  }
+
+  @include max-sm {
+
+    .copyrights {
+      grid-template-columns: 1fr;
+      grid-template-rows: 2fr;
+      text-align: center;
+
+      a { 
+        grid-column: 1/1;
+        grid-row: 1/2;
+      }
+      p {
+        grid-column: 1/1;
+        grid-row: 2/3;
       }
     }
   }

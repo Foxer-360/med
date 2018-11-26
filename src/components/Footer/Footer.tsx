@@ -1,12 +1,13 @@
 import * as React from 'react';
+import Social from './components/Social';
 
 class Footer extends React.Component<any, any> {
   public render() {
     return (
       <footer className={'footer'}>
         <div className="container">
-          <div className="grid-container">
-            <ul className="footer-menu">
+          <div className="flexRow flexAlign--space-between">
+            <ul>
               <li>
                 <a href="#">O společnosti</a>
               </li>
@@ -23,7 +24,7 @@ class Footer extends React.Component<any, any> {
                 <a href="#">Kontakty</a>
               </li>
             </ul>
-            <ul className="footer-menu">
+            <ul>
               <li>
                 <a href="#">Polikliniky</a>
               </li>
@@ -40,7 +41,7 @@ class Footer extends React.Component<any, any> {
                 <a href="#">Lékárny</a>
               </li>
             </ul>
-            <ul className="footer-menu">
+            <ul>
               <li>
                 <a href="#">Nejčastější dotazy</a>
               </li>
@@ -51,18 +52,7 @@ class Footer extends React.Component<any, any> {
                 <a href="#">Ochrana osobních údajů</a>
               </li>
             </ul>
-            <div className="social">
-              <a href="#">
-                <img src="/assets/medicon/images/facebook.png" alt="facebook" />
-              </a>
-              <br />
-              <p>
-                <strong>MEDICON a.s.</strong>
-                <br />
-                Antala Staška 1670/80 <br />
-                140 00 Praha 4 <br />
-              </p>
-            </div>
+            <Social />
           </div>
         </div>
 
