@@ -49,6 +49,27 @@ body {
   flex-flow: column wrap;
 }
 
+.flexAlign {
+  &--start {
+    justify-content: start;
+  }
+  &--end {
+    justify-content: end;
+  }
+  &--space-between {
+    justify-content: space-between;
+  }
+  &--space-around {
+    justify-content: space-around;
+  }
+  &--center {
+    justify-content: center;
+  }
+}
+
+
+
+
 .d-flex {
   display: flex;
   justify-content: space-around;

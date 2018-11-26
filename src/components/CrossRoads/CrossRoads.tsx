@@ -11,7 +11,7 @@ const CrossRoads = (props: CrossRoadsProps) => {
             <div className={'crossRoads__card__img'}>
               <img src="./assets/medicon/images/polikliniky.png" />
             </div>
-            <p>Hledám polikliniku</p>
+            <p>Hledám polikliniku </p>
           </a>
 
           <a className={'crossRoads__card'} href="">

@@ -6,7 +6,7 @@ var CrossRoads = function (props) {
                 React.createElement("a", { className: 'crossRoads__card', href: "" },
                     React.createElement("div", { className: 'crossRoads__card__img' },
                         React.createElement("img", { src: "./assets/medicon/images/polikliniky.png" })),
-                    React.createElement("p", null, "Hled\u00E1m polikliniku")),
+                    React.createElement("p", null, "Hled\u00E1m polikliniku ")),
                 React.createElement("a", { className: 'crossRoads__card', href: "" },
                     React.createElement("div", { className: 'crossRoads__card__img' },
                         React.createElement("img", { src: "./assets/medicon/images/lekari.png" })),
