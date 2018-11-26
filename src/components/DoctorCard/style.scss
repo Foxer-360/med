@@ -1,0 +1,38 @@
+.doctorCard {
+  @include md {
+    padding: 55px 0;
+  }
+
+  &__main {
+    text-align: center;
+
+    img {
+      margin-bottom: 24px;
+    }
+
+    &__spe {
+      color: $darkGray;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 25.23px;
+      margin-bottom: 30px;
+    }
+
+    &__ {
+      width: 266px;
+      height: 17px;
+      color: #3c3c3b;
+      font-family: 'Montserrat - Semi Bold';
+      font-size: 2.2rem;
+      font-weight: 400;
+      line-height: 4.66px;
+      font-weight: 400;
+      letter-spacing: 0.98px;
+    }
+  }
+
+  &__btnHolder {
+    display: flex;
+    justify-content: center;
+  }
+}

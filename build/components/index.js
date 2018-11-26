@@ -17,5 +17,6 @@ import InfoRectangles from './InfoRectangles';
 import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
 import PolyclinicBoxes from './PolyclinicBoxes';
-export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, Blog, };
+import DoctorCard from './DoctorCard';
+export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, };
 //# sourceMappingURL=index.js.map

@@ -17,6 +17,7 @@ import * as inforectangles from './inforectangles.json';
 import * as polyclinicinfo from './polyclinicinfo.json';
 import * as blog from './blog.json';
 import * as polyclinicboxes from './polyclinicboxes.json'; 
+import * as doctorcard from './doctorcard.json'; 
 
 export {
   def as default,
@@ -38,4 +39,5 @@ export {
   polyclinicinfo,
   blog,
   polyclinicboxes,
+  doctorcard,
 };
