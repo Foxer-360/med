@@ -17,6 +17,8 @@ import InfoRectangles from './InfoRectangles';
 import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
 import Button from './Button';
+import PolyclinicBoxes from './PolyclinicBoxes';
+import DoctorCard from './DoctorCard';
 
 export {
   AlertNotFound,
@@ -36,6 +38,8 @@ export {
   ExpertiseList,
   InfoRectangles,
   PolyclinicInfo,
+  PolyclinicBoxes,
+  DoctorCard,
   Blog,
   Button,
 };

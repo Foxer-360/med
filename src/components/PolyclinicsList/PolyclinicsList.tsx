@@ -15,7 +15,7 @@ const PolyclinicsList = () => (
           <div className="container">
             <div className="pcitem__wrapper">
               <div className={'pcitem__img'}>
-                <img src="assets/medicon/images/policlinic1.png" alt="" />
+                <img src="/assets/medicon/images/policlinic1.png" alt="" />
               </div>
 
               <div className={'pcitem__info'}>
@@ -24,7 +24,7 @@ const PolyclinicsList = () => (
                 <div className="pcitem__info__details">
                   <div
                     className="pcitem__info__details__item"
-                    style={{ backgroundImage: 'url(assets/medicon/images/geo.png)' }}
+                    style={{ backgroundImage: 'url(/assets/medicon/images/geo.png)' }}
                   >
                     <p>
                       Antala Staška 1670/80 <br />
@@ -33,13 +33,13 @@ const PolyclinicsList = () => (
                   </div>
                   <div
                     className="pcitem__info__details__item"
-                    style={{ backgroundImage: 'url(assets/medicon/images/phone.png)' }}
+                    style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
                   >
                     <p>+420 261 006 111</p>
                   </div>
                   <div
                     className="pcitem__info__details__item"
-                    style={{ backgroundImage: 'url(assets/medicon/images/metro.png)' }}
+                    style={{ backgroundImage: 'url(/assets/medicon/images/metro.png)' }}
                   >
                     <p>
                       Metro C <br />

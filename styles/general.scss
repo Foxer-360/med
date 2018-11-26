@@ -32,8 +32,6 @@ body {
   margin: 0 auto;
 }
 
-
-
 .flexRow {
   display: flex;
   flex-flow: row wrap;
@@ -112,4 +110,33 @@ ul {
 cite {
   line-height: 44px;
   font-weight: 600;
+}
+
+.dividerCircles {
+  @extend .flexRow;
+  justify-content: center;
+
+  & > div {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+    position: relative;
+
+    &:before,
+    &:after {
+      @include pseudo;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #d8d8d8;
+    }
+
+    &:before {
+      left: -16px;
+    }
+    &:after {
+      right: -16px;
+    }
+  }
 }

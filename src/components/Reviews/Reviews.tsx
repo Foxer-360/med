@@ -8,43 +8,43 @@ class Reviews extends React.Component<any, any> {
         <div className="container-center">
           <div className="grid-container">
             <div className="review-el">
-              <img className="review-img" src="assets/medicon/images/photo-1.jpg" alt="photo" />
+              <img className="review-img" src="/assets/medicon/images/photo-1.jpg" alt="photo" />
               <div className="el">
                 <cite>„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“</cite>
                 <div className="stars">
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
                 </div>
               </div>
             </div>
             {/* end */}
             <div className="review-el">
-              <img className="review-img" src="assets/medicon/images/photo-2.jpg" alt="photo" />
+              <img className="review-img" src="/assets/medicon/images/photo-2.jpg" alt="photo" />
               <div className="el">
                 <cite>„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“</cite>
                 <div className="stars">
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
                 </div>
               </div>
             </div>
             {/* end */}
             <div className="review-el">
-              <img className="review-img" src="assets/medicon/images/photo-3.jpg" alt="photo" />
+              <img className="review-img" src="/assets/medicon/images/photo-3.jpg" alt="photo" />
               <div className="el">
                 <cite>„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“</cite>
                 <div className="stars">
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
-                  <img src="assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
+                  <img src="/assets/medicon/images/star.png" alt="star" />
                 </div>
               </div>
             </div>

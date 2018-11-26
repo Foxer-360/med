@@ -47,6 +47,7 @@
   background-color: none;
   margin-bottom: 30px;
   overflow: hidden;
+  height: 200px;
 
   @include md {
     height: 400px;
@@ -97,6 +98,7 @@
     position: absolute;
     left: 0;
     top: 0;
+    object-fit: cover;
   }
 
   &--special {
