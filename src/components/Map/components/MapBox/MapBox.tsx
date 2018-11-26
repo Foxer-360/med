@@ -5,7 +5,7 @@ interface MapBoxProps {}
 const MapBox: React.SFC<MapBoxProps> = props => {
   return (
     <div className={'mapBox'}>
-      <img src={'assets/medicon/images/mapbox.png'} />
+      <img src={'/assets/medicon/images/mapbox.png'} />
 
       <div className={'pcTitle'}>
         <img src="assets/medicon/images/logo.png" alt="" />
@@ -28,7 +28,7 @@ const MapBox: React.SFC<MapBoxProps> = props => {
 
       <div className={'mapBox__contacts'}>
         <div className={'mapBox__contacts__item'}>
-          <img src={'assets/medicon/images/geo.png'} />
+          <img src={'/assets/medicon/images/geo.png'} />
           <div>
             <p>Sokolovská </p>
             <p>304 190 00 Praha 9</p>
@@ -36,7 +36,7 @@ const MapBox: React.SFC<MapBoxProps> = props => {
         </div>
 
         <div className={'mapBox__contacts__item'}>
-          <img src={'assets/medicon/images/phone.png'} />
+          <img src={'/assets/medicon/images/phone.png'} />
           <div>
             <p>+420 266 006 211</p>
           </div>

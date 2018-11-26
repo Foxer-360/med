@@ -1,3 +1,5 @@
+@import 'components/DoctorSchedule/style.scss';
+
 .doctorCard {
   @include md {
     padding: 55px 0;
@@ -10,6 +12,10 @@
       margin-bottom: 24px;
     }
 
+    h3 {
+      padding-bottom: 6px;
+    }
+
     &__spe {
       color: $darkGray;
       font-size: 1.8rem;
@@ -18,21 +24,50 @@
       margin-bottom: 30px;
     }
 
-    &__ {
-      width: 266px;
-      height: 17px;
-      color: #3c3c3b;
-      font-family: 'Montserrat - Semi Bold';
+    &__sis {
+      color: $darkGray;
       font-size: 2.2rem;
-      font-weight: 400;
-      line-height: 4.66px;
-      font-weight: 400;
       letter-spacing: 0.98px;
+    }
+  }
+
+  &__info {
+    box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+    background-color: #ffffff;
+
+    &__wrapper {
+      @extend .flexRow;
+      justify-content: space-between;
+      padding: 25px 0;
+    }
+
+    &__item {
+      @include flexChild(3, 10px);
+      padding-left: 65px;
+      background-position: left;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__timePlace {
+    @extend .flexRow;
+    justify-content: space-between;
+    padding: 40px 0;
+
+    & > div {
+      @include flexChild(2, 10px);
+      @extend .flexRow;
+      justify-content: center;
     }
   }
 
   &__btnHolder {
     display: flex;
     justify-content: center;
+  }
+
+  &__divider {
+    text-align: center;
+    padding: 40px 0;
   }
 }

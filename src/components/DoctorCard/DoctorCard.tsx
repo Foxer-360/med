@@ -1,11 +1,13 @@
 import * as React from 'react';
+import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
+import TextBlock from '../TextBlock';
 
 export interface DoctorCardProps {}
 
 const DoctorCard = (props: DoctorCardProps) => {
   return (
-    <div className="container">
-      <section className={'doctorCard'}>
+    <section className={'doctorCard'}>
+      <div className="container">
         <div className={'doctorCard__main'}>
           <img src="/assets/medicon/images/lekari.png" />
 
@@ -13,16 +15,66 @@ const DoctorCard = (props: DoctorCardProps) => {
 
           <p className={'doctorCard__main__spe'}>Alergologie a imunologie</p>
 
-          <p className>
+          <p className={'doctorCard__main__sis'}>
             Sestra: <strong>Jiřina Slezáková</strong>
           </p>
+        </div>
+      </div>
+
+      <div className={'fullwidthContainer'}>
+        <div className="doctorCard__info">
+          <div className={'container'}>
+            <div className="doctorCard__info__wrapper">
+              <div
+                className={'doctorCard__info__item'}
+                style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
+              >
+                Alergologie Imunologie
+              </div>
+              <div
+                className={'doctorCard__info__item'}
+                style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
+              >
+                +420 261 003 404
+              </div>
+              <div
+                className={'doctorCard__info__item'}
+                style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
+              >
+                <p>Poliklinika Budějovická</p>
+                <p>Antala Staška 1670/80, 140 00 Praha 4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={'container'}>
+        <div className={'doctorCard__timePlace'}>
+          <div>
+            <DoctorSchedule />
+          </div>
+
+          <div>
+            <img src="/assets/medicon/images/floorMap.png" alt="" />
+          </div>
         </div>
 
         <div className={'doctorCard__btnHolder'}>
           <button className={'btn  btnFirst'}>objednat</button>
         </div>
-      </section>
-    </div>
+
+        <div className={'doctorCard__divider'}>
+          <div className="dividerCircles">
+            <div />
+          </div>
+        </div>
+      </div>
+
+      <TextBlock />
+
+      <TextBlock />
+    </section>
   );
 };
 
