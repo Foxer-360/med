@@ -20,7 +20,7 @@ var Hero = /** @class */ (function (_super) {
     }
     Hero.prototype.render = function () {
         return (React.createElement("div", { className: "fullWidthContainer" },
-            React.createElement("section", { className: 'hero', style: { backgroundImage: 'url(assets/medicon/images/hero.png)' } },
+            React.createElement("section", { className: 'hero', style: { backgroundImage: 'url(/assets/medicon/images/hero.png)' } },
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },
                         React.createElement("h1", null, "jsme nejlep\u0161\u00ED odborn\u00EDci"),

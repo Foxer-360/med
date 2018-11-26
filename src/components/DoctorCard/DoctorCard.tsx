@@ -27,7 +27,7 @@ const DoctorCard = (props: DoctorCardProps) => {
             <div className="doctorCard__info__wrapper">
               <div
                 className={'doctorCard__info__item'}
-                style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
+                style={{ backgroundImage: 'url(/assets/medicon/images/stethoscope.png)' }}
               >
                 Alergologie Imunologie
               </div>
@@ -39,7 +39,7 @@ const DoctorCard = (props: DoctorCardProps) => {
               </div>
               <div
                 className={'doctorCard__info__item'}
-                style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
+                style={{ backgroundImage: 'url(/assets/medicon/images/geo.png)' }}
               >
                 <p>Poliklinika Budějovická</p>
                 <p>Antala Staška 1670/80, 140 00 Praha 4</p>
