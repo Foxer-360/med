@@ -53,7 +53,7 @@ class Footer extends React.Component<any, any> {
             </ul>
             <div className="social">
               <a href="#">
-                <img src="assets/medicon/images/facebook.png" alt="facebook" />
+                <img src="/assets/medicon/images/facebook.png" alt="facebook" />
               </a>
               <br />
               <p>

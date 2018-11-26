@@ -3,7 +3,7 @@ var MapBox = function (props) {
     return (React.createElement("div", { className: 'mapBox' },
         React.createElement("img", { src: '/assets/medicon/images/mapbox.png' }),
         React.createElement("div", { className: 'pcTitle' },
-            React.createElement("img", { src: "assets/medicon/images/logo.png", alt: "" }),
+            React.createElement("img", { src: "/assets/medicon/images/logo.png", alt: "" }),
             React.createElement("div", { className: 'pcTitle__title' },
                 React.createElement("h3", null, "Poliklinika"),
                 React.createElement("div", { className: 'pcTitle__title__subtitle' },

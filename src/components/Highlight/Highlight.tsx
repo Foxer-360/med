@@ -8,7 +8,7 @@ const Highlight = (props: HighlightProps) => {
       <section className={'highlight'}>
         <div className="container">
           <div className="d-flex">
-            <img src="assets/medicon/images/info.png" alt="info" />
+            <img src="/assets/medicon/images/info.png" alt="info" />
             <p>Poliklinika Zelený pruh je od 16.9. do 19.9. zavřená</p>
             <button className="btn btnSecond">vice info</button>
           </div>

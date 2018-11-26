@@ -8,7 +8,7 @@ const MapBox: React.SFC<MapBoxProps> = props => {
       <img src={'/assets/medicon/images/mapbox.png'} />
 
       <div className={'pcTitle'}>
-        <img src="assets/medicon/images/logo.png" alt="" />
+        <img src="/assets/medicon/images/logo.png" alt="" />
 
         <div className={'pcTitle__title'}>
           <h3>Poliklinika</h3>

@@ -52,7 +52,7 @@ var Footer = /** @class */ (function (_super) {
                             React.createElement("a", { href: "#" }, "Ochrana osobn\u00EDch \u00FAdaj\u016F"))),
                     React.createElement("div", { className: "social" },
                         React.createElement("a", { href: "#" },
-                            React.createElement("img", { src: "assets/medicon/images/facebook.png", alt: "facebook" })),
+                            React.createElement("img", { src: "/assets/medicon/images/facebook.png", alt: "facebook" })),
                         React.createElement("br", null),
                         React.createElement("p", null,
                             React.createElement("strong", null, "MEDICON a.s."),
