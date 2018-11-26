@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from '../../../Button';
 var MapBox = function (props) {
     return (React.createElement("div", { className: 'mapBox' },
         React.createElement("img", { src: 'assets/medicon/images/mapbox.png' }),
@@ -26,8 +27,8 @@ var MapBox = function (props) {
                 React.createElement("div", null,
                     React.createElement("p", null, "+420 266 006 211")))),
         React.createElement("div", { className: 'mapBox__buttons' },
-            React.createElement("button", { className: 'btn btn--small btnFirst' }, "ambulance"),
-            React.createElement("button", { className: 'btn btn--small btnFirst' }, "kuddy k nam"))));
+            React.createElement(Button, { classes: "btn--small btn--blueBkg" }, "ambulance"),
+            React.createElement(Button, { classes: "btn--small btn--blueBkg" }, "kuddy k nam"))));
 };
 export default MapBox;
 //# sourceMappingURL=MapBox.js.map

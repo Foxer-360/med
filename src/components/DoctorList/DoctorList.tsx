@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import Button from '../Button';
 export interface DoctorListProps {}
 
 // ! MOCK DATA ONLY
@@ -59,8 +59,8 @@ const DoctorList = (props: DoctorListProps) => {
                     <a className={'doctorList__item__info__link'} href="">
                       {item.clinic}
                     </a>
-
-                    <button className={'btn btnFirst btn--small'}>vice info</button>
+                    
+                    <Button classes="btn--blueBorder btn--small">vice info</Button>
                   </div>
                 </div>
               );
@@ -68,7 +68,7 @@ const DoctorList = (props: DoctorListProps) => {
         </div>
 
         <div className="doctorList__btnHolder">
-          <button className={'btn btnFirst'}>zobrazit vice</button>
+          <Button classes="btn--blueBkg">zobrazit vice</Button>
         </div>
       </div>
     </section>

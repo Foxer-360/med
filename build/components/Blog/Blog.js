@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import { BlogCard } from './components/blogCard';
+import Button from '../Button';
 var data = {
     items: [
         {
@@ -65,7 +66,7 @@ var Blog = /** @class */ (function (_super) {
                 React.createElement("div", { className: 'blog__blur' },
                     React.createElement("div", null)),
                 React.createElement("div", { className: "blog__btnHolder" },
-                    React.createElement("button", { className: 'btn btnFirst' }, "Na\u010D\u00EDst dal\u0161\u00ED")))));
+                    React.createElement(Button, { classes: "btn--blueBkg" }, "Na\u010D\u00EDst dal\u0161\u00ED")))));
     };
     return Blog;
 }(React.Component));

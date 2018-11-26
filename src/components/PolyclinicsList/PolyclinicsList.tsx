@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PcTitle from './components/title';
 import PolyclinicInfo from '../PolyclinicInfo';
+import Button from '../Button';
 
 const data = {
   items: [{ name: 'asd' }, { name: 'asd' }, { name: 'asd' }],
@@ -71,7 +72,7 @@ const PolyclinicsList = () => (
                   </div>
 
                   <div>
-                    <button className={'btn btn--small btnFirst'}>vice info</button>
+                    <Button classes="btn--small btn--blueBorder">vice info</Button>
                   </div>
                 </div>
               </div>

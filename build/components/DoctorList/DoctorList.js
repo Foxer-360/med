@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from '../Button';
 // ! MOCK DATA ONLY
 var data = {
     title: 'text',
@@ -43,10 +44,10 @@ var DoctorList = function (props) {
                             React.createElement("h3", null, item.name),
                             React.createElement("p", null, item.field),
                             React.createElement("a", { className: 'doctorList__item__info__link', href: "" }, item.clinic),
-                            React.createElement("button", { className: 'btn btnFirst btn--small' }, "vice info"))));
+                            React.createElement(Button, { classes: "btn--blueBorder btn--small" }, "vice info"))));
                 })),
             React.createElement("div", { className: "doctorList__btnHolder" },
-                React.createElement("button", { className: 'btn btnFirst' }, "zobrazit vice")))));
+                React.createElement(Button, { classes: "btn--blueBkg" }, "zobrazit vice")))));
 };
 export default DoctorList;
 //# sourceMappingURL=DoctorList.js.map

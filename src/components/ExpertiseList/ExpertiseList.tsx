@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import Button from '../Button';
 export interface ExpertiseListProps {}
 
 const ExpertiseList = (props: ExpertiseListProps) => {
@@ -41,7 +41,7 @@ const ExpertiseList = (props: ExpertiseListProps) => {
           <p>gyneorlkologie</p>
         </div>
       </div>
-      <button className="btn btnFirst">Vice info</button>
+      <Button classes="btn--blueBkg">vice info</Button>
     </section>
   );
 };
