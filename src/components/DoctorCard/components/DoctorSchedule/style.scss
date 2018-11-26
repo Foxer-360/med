@@ -38,6 +38,10 @@
         &:first-of-type {
           margin-bottom: 10px;
         }
+
+        &:nth-of-type(2) {
+          font-size: 1.6rem;
+        }
       }
     }
   }

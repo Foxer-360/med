@@ -34,6 +34,7 @@
   &__info {
     box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
     background-color: #ffffff;
+    margin-top: 40px;
 
     &__wrapper {
       @extend .flexRow;
@@ -42,11 +43,34 @@
     }
 
     &__item {
-      @include flexChild(3, 10px);
-      padding-left: 65px;
-      background-position: left;
+      @extend .flexRow;
+      padding: 0 0 0 105px;
+      background-position: 20px center;
       background-repeat: no-repeat;
-      background-size: 60px;
+      background-size: 55px auto;
+      min-height: 60px;
+      color: $darkGray;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 27.03px;
+      align-items: center;
+
+      &:first-of-type,
+      &:nth-of-type(2) {
+        flex-basis: calc(100% / 2) / 2;
+      }
+
+      &:nth-of-type(3) {
+        flex-basis: 50%;
+      }
+
+      &:not(:first-of-type) {
+        border-left: 1px solid #d0d0d0;
+      }
+
+      p {
+        width: 100%;
+      }
     }
   }
 

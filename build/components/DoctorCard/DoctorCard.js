@@ -15,10 +15,15 @@ var DoctorCard = function (props) {
             React.createElement("div", { className: "doctorCard__info" },
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: "doctorCard__info__wrapper" },
-                        React.createElement("div", { className: 'doctorCard__info__item', style: { backgroundImage: 'url(/assets/medicon/images/stethoscope.png)' } }, "Alergologie Imunologie"),
+                        React.createElement("div", { className: 'doctorCard__info__item', style: { backgroundImage: 'url(/assets/medicon/images/stethoscope.png)' } },
+                            "Alergologie",
+                            React.createElement("br", null),
+                            "Imunologie"),
                         React.createElement("div", { className: 'doctorCard__info__item', style: { backgroundImage: 'url(/assets/medicon/images/phone.png)' } }, "+420 261 003 404"),
                         React.createElement("div", { className: 'doctorCard__info__item', style: { backgroundImage: 'url(/assets/medicon/images/geo.png)' } },
-                            React.createElement("p", null, "Poliklinika Bud\u011Bjovick\u00E1"),
+                            React.createElement("p", null,
+                                React.createElement("strong", null, "Poliklinika Bud\u011Bjovick\u00E1 "),
+                                "\u010Cerven\u00E1 budova 9. patro"),
                             React.createElement("p", null, "Antala Sta\u0161ka 1670/80, 140 00 Praha 4")))))),
         React.createElement("div", { className: 'container' },
             React.createElement("div", { className: 'doctorCard__timePlace' },
@@ -31,8 +36,8 @@ var DoctorCard = function (props) {
             React.createElement("div", { className: 'doctorCard__divider' },
                 React.createElement("div", { className: "dividerCircles" },
                     React.createElement("div", null)))),
-        React.createElement(TextBlock, null),
-        React.createElement(TextBlock, null)));
+        React.createElement(TextBlock, { data: { title: 'Poskytovaná péče' } }),
+        React.createElement(TextBlock, { data: { title: 'typy provadenych vysetreni' } })));
 };
 export default DoctorCard;
 //# sourceMappingURL=DoctorCard.js.map

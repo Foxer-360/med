@@ -1,8 +1,10 @@
 import * as React from 'react';
 var TextBlock = function (props) {
+    var title = props.data.title;
     return (React.createElement("section", { className: 'textBlock' },
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: 'textBlock__container' },
+                title && React.createElement("h2", null, title),
                 React.createElement("div", { className: "textBlock__container__text" },
                     "Skupina ",
                     React.createElement("strong", null, "MEDICON"),
