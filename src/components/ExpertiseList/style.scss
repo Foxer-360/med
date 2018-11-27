@@ -1,11 +1,12 @@
 .expertiseList {
-  
-  @include md {
-    padding: 50px 0;
+
+  h3 {
+    padding: 0;
+    margin: 50px 0;
   }
 
   button {
-    margin: 0 auto;
+    margin: 30px auto;
   }
 
   &__element {
@@ -15,9 +16,6 @@
     background-color: #f4f5f7;
     align-items: center;
 
-    &:last-child {
-      margin-bottom: 35px;
-    }
     img {
       padding-left: 35px;
     }
@@ -26,6 +24,28 @@
       font-size: 1.8rem;
       font-weight: 600;
       margin: 0 auto;
+    }
+  }
+
+  @include max-lg {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      padding: 0 30px;
+    }
+  }
+
+  @include max-md {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .grid-container {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
     }
   }
 }
