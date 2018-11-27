@@ -17,15 +17,16 @@
   }
 
   .info {
-    margin-right: 35px;
-    img {
-      margin-right: 35px;
-    }
+    padding: 25px;
+    img { padding-right: 25px; }
   }
 
-  @include max-lg {
+  @media (max-width: 795px) {
     .info {
-      margin: 20px 0;
+      img { 
+        padding-right: 0px;
+        padding-bottom: 25px;
+      }
     }
   }
 
@@ -35,26 +36,12 @@
       p {
         text-align: center;
       }
-      img {
-        margin-right: 15px;
-      }
     }
   }
 
   @media (max-width: 760px) {
     .info {
       justify-content: center;
-      img {
-        margin-right: 0;
-      }
-    }
-  }
-
-  @media (max-width: 703px) {
-    .info {
-      img {
-        margin-bottom: 15px;
-      }
     }
   }
 }
