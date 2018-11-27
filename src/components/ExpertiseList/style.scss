@@ -1,5 +1,4 @@
 .expertiseList {
-  
   @include md {
     padding: 50px 0;
   }
@@ -14,10 +13,13 @@
     height: 130px;
     background-color: #f4f5f7;
     align-items: center;
+    cursor: pointer;
+    transition: 300ms ease;
 
     &:last-child {
       margin-bottom: 35px;
     }
+
     img {
       padding-left: 35px;
     }
@@ -26,6 +28,24 @@
       font-size: 1.8rem;
       font-weight: 600;
       margin: 0 auto;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+
+      &:after {
+        width: 100%;
+      }
+    }
+
+    &:after {
+      @include pseudo;
+      height: 6px;
+      width: 0;
+      transition: 300ms ease;
+      @include leftRightGradient(#2472b8, #00aadd);
+      left: 0;
+      bottom: 0;
     }
   }
 }

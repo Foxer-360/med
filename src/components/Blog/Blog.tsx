@@ -58,7 +58,7 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
           <h1>aktuality a informace</h1>
 
           <Masonry
-            breakpointCols={{ default: 3, 4000: 3, 800: 2, 400: 1 }}
+            breakpointCols={{ default: 3, 4000: 3, 800: 2, 500: 1 }}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >

@@ -8,6 +8,7 @@
   &__wrapper {
     @extend .flexRow;
     justify-content: space-between;
+    align-items: stretch;
   }
 
   &__card {
@@ -20,6 +21,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
 
     @include sm {
       padding: 16px 24% 16px 12%;
@@ -31,6 +33,25 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: space-between;
+      transition: 300ms ease;
+
+      &:hover {
+        transform: translateY(-3px);
+
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+
+    &:after {
+      @include pseudo;
+      height: 6px;
+      width: 0;
+      transition: 300ms ease;
+      @include leftRightGradient(#2472b8, #00aadd);
+      left: 0;
+      bottom: 0;
     }
 
     &__img {
@@ -61,6 +82,7 @@
 
       @include md {
         font-size: 2rem;
+        width: 100%;
       }
     }
   }
