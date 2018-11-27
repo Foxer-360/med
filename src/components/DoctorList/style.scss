@@ -1,7 +1,19 @@
 .doctorList {
+  padding: 34px 0;
+  box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+  margin-bottom: 30px;
+
+  @include md {
+    margin-bottom: 50px;
+  }
+
   &__wrapper {
     @extend .flexRow;
-    justify-content: space-between;
+    justify-content: center;
+
+    @include md {
+      justify-content: space-between;
+    }
   }
 
   &__item {
@@ -10,16 +22,30 @@
     justify-content: flex-start;
     align-items: center;
     padding-bottom: 24px;
+    flex-wrap: wrap;
 
     &__img {
-      width: 40%;
+      width: 130px;
       height: 100%;
       background-color: #f4f5f7;
       max-width: 190px;
+      margin: 0 auto;
+
+      .avatar {
+        display: block;
+        margin: 0 auto;
+        padding: 25px;
+      }
 
       img {
         object-fit: cover;
         width: 100%;
+        margin: 0 auto;
+      }
+
+      @include lg {
+        margin: 0;
+        width: 191px;
       }
     }
 
@@ -27,35 +53,73 @@
       @extend .flexColumn;
       padding: 17px;
       box-sizing: border-box;
-      width: 60%;
+      width: 100%;
       align-items: flex-start;
 
       h3 {
         color: $darkGray;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 600;
-        text-align: left;
         padding: 0;
+        text-align: center;
+        width: 100%;
+
+        @include lg {
+          text-align: left;
+          font-size: 2rem;
+        }
       }
 
       p {
         color: $darkGray;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 400;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        width: 100%;
+
+        @include lg {
+          text-align: left;
+          font-size: 1.8rem;
+          margin-bottom: 1.2rem;
+        }
       }
       &__link {
         color: $lightBlue;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 400;
         margin-bottom: 2.8rem;
+        text-align: center;
+        width: 100%;
+
+        @include lg {
+          font-size: 1.8rem;
+          text-align: left;
+        }
+      }
+
+      @include lg {
+        width: calc(100% - 190px);
+      }
+
+      button {
+        margin: 0 auto;
+        width: 100%;
+
+        @include sm {
+          width: auto;
+        }
+
+        @include lg {
+          margin: 0;
+        }
       }
     }
   }
 
   &__btnHolder {
     @extend .flexRow;
-    padding: 25px 0 36px;
+    padding: 0 0 36px;
     justify-content: center;
   }
 }

@@ -11,7 +11,6 @@ const data = {
       name: 'MUDr. Jana Pavluchová',
       field: 'Alergologie a Imunologie',
       clinic: 'Poliklinika Budějovická',
-      img: '/assets/medicon/images/doctorlist1.png',
     },
     {
       name: 'MUDr. Michala Jakubíková, Ph.D.',
@@ -48,7 +47,9 @@ const DoctorList = (props: DoctorListProps) => {
               return (
                 <div className={'doctorList__item'} key={index}>
                   <div className={'doctorList__item__img'}>
-                    <img src={item.img} alt="" />
+                    {(item.img && <img src={item.img} alt="" />) || (
+                      <img className="avatar" src={'/assets/medicon/images/lekari.png'} alt="Medicon Lekari Avatart" />
+                    )}
                   </div>
 
                   <div className={'doctorList__item__info'}>

@@ -7,7 +7,6 @@ var data = {
             name: 'MUDr. Jana Pavluchová',
             field: 'Alergologie a Imunologie',
             clinic: 'Poliklinika Budějovická',
-            img: '/assets/medicon/images/doctorlist1.png',
         },
         {
             name: 'MUDr. Michala Jakubíková, Ph.D.',
@@ -37,8 +36,7 @@ var DoctorList = function (props) {
             React.createElement("div", { className: "doctorList__wrapper" }, items &&
                 items.map(function (item, index) {
                     return (React.createElement("div", { className: 'doctorList__item', key: index },
-                        React.createElement("div", { className: 'doctorList__item__img' },
-                            React.createElement("img", { src: item.img, alt: "" })),
+                        React.createElement("div", { className: 'doctorList__item__img' }, (item.img && React.createElement("img", { src: item.img, alt: "" })) || (React.createElement("img", { className: "avatar", src: '/assets/medicon/images/lekari.png', alt: "Medicon Lekari Avatart" }))),
                         React.createElement("div", { className: 'doctorList__item__info' },
                             React.createElement("h3", null, item.name),
                             React.createElement("p", null, item.field),
