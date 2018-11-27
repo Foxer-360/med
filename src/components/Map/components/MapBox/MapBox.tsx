@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from '../../../Button';
 
 interface MapBoxProps {}
 
@@ -44,8 +45,8 @@ const MapBox: React.SFC<MapBoxProps> = props => {
       </div>
 
       <div className={'mapBox__buttons'}>
-        <button className={'btn btn--small btnFirst'}>ambulance</button>
-        <button className={'btn btn--small btnFirst'}>kuddy k nam</button>
+        <Button classes="btn--small btn--blueBkg">ambulance</Button>
+        <Button classes="btn--small btn--blueBkg">kuddy k nam</Button>
       </div>
     </div>
   );

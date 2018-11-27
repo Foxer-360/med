@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from '../Button';
 var ExpertiseList = function (props) {
     return (React.createElement("section", { className: "expertiseList" },
         React.createElement("h3", null, "Odbornosti"),
@@ -27,7 +28,7 @@ var ExpertiseList = function (props) {
             React.createElement("div", { className: "expertiseList__element" },
                 React.createElement("img", { src: "/assets/medicon/images/od-el-8.png", alt: "image" }),
                 React.createElement("p", null, "gyneorlkologie"))),
-        React.createElement("button", { className: "btn btnFirst" }, "Vice info")));
+        React.createElement(Button, { classes: "btn--blueBkg" }, "vice info")));
 };
 export default ExpertiseList;
 //# sourceMappingURL=ExpertiseList.js.map

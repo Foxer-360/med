@@ -11,9 +11,12 @@
   ul {
     display: flex;
     align-items: center;
+    justify-content: center;
     
     li {
-      min-height: 60px;
+      display: flex;
+      align-items: center;
+      min-height: 65px;
       padding: 0 30px;
       background-repeat: no-repeat;
       background-position: left center;
@@ -38,6 +41,27 @@
       &:before {
         content: none;
         padding-right: 12px;
+      }
+    }
+  }
+
+  @include max-lg  {
+    .benefity {
+      height: 100%;
+      padding: 35px 0;
+
+      ul {
+        flex-flow: wrap;
+        justify-content: flex-start;
+
+        li {
+          border: none;
+          margin-bottom: 20px;
+
+          &:not(:nth-of-type(1)) {
+            background-position: left;
+          }
+        }
       }
     }
   }

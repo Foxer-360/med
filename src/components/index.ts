@@ -16,6 +16,7 @@ import ExpertiseList from './ExpertiseList';
 import InfoRectangles from './InfoRectangles';
 import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
+import Button from './Button';
 import PolyclinicBoxes from './PolyclinicBoxes';
 import DoctorCard from './DoctorCard';
 
@@ -40,4 +41,5 @@ export {
   PolyclinicBoxes,
   DoctorCard,
   Blog,
+  Button,
 };

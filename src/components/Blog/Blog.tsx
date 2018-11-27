@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import { BlogCard } from './components/blogCard';
+import Button from '../Button';
 
 export interface BlogProps {}
 
@@ -79,7 +80,7 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
           </div>
 
           <div className="blog__btnHolder">
-            <button className={'btn btnFirst'}>Načíst další</button>
+            <Button classes="btn--blueBkg">Načíst další</Button>
           </div>
         </div>
       </section>

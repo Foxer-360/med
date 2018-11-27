@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
+import Social from './components/Social';
 var Footer = /** @class */ (function (_super) {
     __extends(Footer, _super);
     function Footer() {
@@ -20,8 +21,8 @@ var Footer = /** @class */ (function (_super) {
     Footer.prototype.render = function () {
         return (React.createElement("footer", { className: 'footer' },
             React.createElement("div", { className: "container" },
-                React.createElement("div", { className: "grid-container" },
-                    React.createElement("ul", { className: "footer-menu" },
+                React.createElement("div", { className: "flexRow flexAlign--space-between" },
+                    React.createElement("ul", null,
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "O spole\u010Dnosti")),
                         React.createElement("li", null,
@@ -32,7 +33,7 @@ var Footer = /** @class */ (function (_super) {
                             React.createElement("a", { href: "#" }, "Aktuality")),
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Kontakty"))),
-                    React.createElement("ul", { className: "footer-menu" },
+                    React.createElement("ul", null,
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Polikliniky")),
                         React.createElement("li", null,
@@ -43,24 +44,14 @@ var Footer = /** @class */ (function (_super) {
                             React.createElement("a", { href: "#" }, "N\u00E1sledn\u00E1 p\u00E9\u010De ")),
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "L\u00E9k\u00E1rny"))),
-                    React.createElement("ul", { className: "footer-menu" },
+                    React.createElement("ul", null,
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Nej\u010Dast\u011Bj\u0161\u00ED dotazy")),
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Nab\u00EDdka zam\u011Bstn\u00E1n\u00ED")),
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Ochrana osobn\u00EDch \u00FAdaj\u016F"))),
-                    React.createElement("div", { className: "social" },
-                        React.createElement("a", { href: "#" },
-                            React.createElement("img", { src: "/assets/medicon/images/facebook.png", alt: "facebook" })),
-                        React.createElement("br", null),
-                        React.createElement("p", null,
-                            React.createElement("strong", null, "MEDICON a.s."),
-                            React.createElement("br", null),
-                            "Antala Sta\u0161ka 1670/80 ",
-                            React.createElement("br", null),
-                            "140 00 Praha 4 ",
-                            React.createElement("br", null))))),
+                    React.createElement(Social, null))),
             React.createElement("div", { className: "bottom" },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "copyrights grid" },

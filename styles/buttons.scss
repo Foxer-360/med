@@ -1,77 +1,109 @@
 .btn {
-  border: none;
-  outline: none;
-  display: block;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 15px 35px;
-  transition: ease 0.2s;
-  letter-spacing: 2.5px;
-  box-sizing: border-box;
-  font-family: 'Montserrat';
-  text-transform: uppercase;
-  font-size: 1.6rem;
+    height: 55px;
+    min-width: 190px;
+    border: none;
+    outline: none;
+    display: block;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 15px 35px;
+    transition: ease 0.2s;
+    letter-spacing: 2.5px;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    
+    .arrow {
+      content: "";
+      padding: 3px;
+      border: solid white;
+      display: inline-block;
+      position: relative;
+      vertical-align: middle;
+      border-width: 0 2px 2px 0;
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      margin-bottom: 1px;
+      left: 10px;
 
-  @include md {
+      &--down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+
+      &--up {
+        transform: rotate(225deg);
+        -webkit-transform: rotate(225deg);
+      }
+    }
+  
     &:hover {
-      background-position: 95%;
+      .arrow {
+        left: 15px;
+      }
+    }
+  
+    @include md {
+      &:hover {
+        background-position: 95%;
+      }
+    }
+  
+    &--small {
+      font-size: 1.4rem;
+      padding: 11px 38px;
+    }
+  
+    &--blueBkg {
+      color: white;
+      background-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+      background-repeat: no-repeat;
+      background-position: center;
+  
+      &:hover {
+        background-image: linear-gradient(to right, $blue 0%, $blue 100%);
+        background-color: $blue;
+        
+        .arrow {
+          border-color: white;
+        }
+      }
+    }
+  
+    &--whiteBorder {
+      color: white;
+      border: 3px solid white;
+      background-color: transparent;
+  
+      &:hover {
+        color: $blue;
+        background-color: white;
+        .arrow {
+          border-color: $blue;
+        }
+      }
+    }
+  
+    &--blueBorder {
+      color: $lightBlue;
+      background-color: transparent;
+      border: 3px solid transparent;
+      border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+      border-image-slice: 1;
+  
+      .arrow {
+        border-color: $lightBlue;
+      }
+  
+      &:hover {
+        color: white;
+        background-color: $lightBlue;
+        border-image: none;
+        
+        .arrow {
+          border-color: white;
+        }
+      }
     }
   }
-
-  &--small {
-    font-size: 1.4rem;
-    padding: 11px 38px;
-  }
-
-  &--blueBorder {
-  }
-
-  &--whiteBorder {
-  }
-
-  &--blueBkg {
-  }
-}
-
-.btnFirst {
-  color: white;
-  background-image: url('/assets/medicon/images/btnArrowWhite.png'),
-    linear-gradient(to right, $blue 0%, $lightBlue 100%);
-  background-repeat: no-repeat, no-repeat;
-  background-position: 90% center, center;
-
-  &:hover {
-    background-image: url('/assets/medicon/images/btnArrowWhite.png'), linear-gradient(to right, $blue 0%, $blue 100%);
-    background-color: $blue;
-  }
-}
-
-.btnSecond {
-  color: white;
-  border: 3px solid white;
-  background-color: transparent;
-  background-image: url('/assets/medicon/images/btnArrowWhite.png');
-  background-repeat: no-repeat;
-  background-position: 90% center;
-
-  &:hover {
-    color: $blue;
-    background-color: white;
-    background-image: url('/assets/medicon/images/btnArrowBlue.png');
-  }
-}
-
-.btnThird {
-  color: $lightBlue;
-  background-color: transparent;
-  border: 3px solid $lightBlue;
-  background-image: url('/assets/medicon/images/btnArrowBlue.png');
-  background-repeat: no-repeat;
-  background-position: 90% center;
-
-  &:hover {
-    color: white;
-    background-color: $lightBlue;
-    background-image: url('/assets/medicon/images/btnArrowWhite.png');
-  }
-}
