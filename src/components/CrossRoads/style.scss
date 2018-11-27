@@ -40,6 +40,8 @@
 
         &:after {
           width: 100%;
+          right: auto;
+          left: 0;
         }
       }
     }
@@ -50,7 +52,7 @@
       width: 0;
       transition: 300ms ease;
       @include leftRightGradient(#2472b8, #00aadd);
-      left: 0;
+      right: 0;
       bottom: 0;
     }
 

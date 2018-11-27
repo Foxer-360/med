@@ -75,7 +75,7 @@
 
   h3 {
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     line-height: 28.83px;
     text-transform: uppercase;
@@ -85,15 +85,23 @@
     width: 100%;
     padding-bottom: 17px;
     z-index: 100;
+
+    @include md {
+      font-size: 2rem;
+    }
   }
 
   p {
     color: #ffffff;
     font-size: 1.6rem;
     font-weight: 400;
-    line-height: 23.43px;
     letter-spacing: 0.71px;
     z-index: 100;
+    line-height: 22px;
+
+    @include md {
+      line-height: 23.43px;
+    }
   }
 
   img {
@@ -123,9 +131,19 @@
     }
 
     ul {
+      @include reset-list;
+
       li {
+        padding-left: 10px;
         color: #fff;
         padding: 0 5px;
+
+        span {
+          .arrowIcon {
+            transform: rotate(-180deg);
+            margin-right: 8px;
+          }
+        }
       }
     }
   }

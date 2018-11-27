@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ArrowIcon from '@source/components/Svg/ArrowIcon/ArrowIcon';
 
 export interface BlogCardProps {
   title: string;
@@ -17,9 +18,24 @@ export function BlogCard(props: BlogCardProps) {
         {title && <h3>{title}</h3>}
 
         <ul>
-          <li>Lékaře ORL</li>
-          <li>Lékař pracovně - lékařské služby</li>
-          <li>Dentální hygienista/ka</li>
+          <li>
+            <span>
+              <ArrowIcon name={'white'} />
+            </span>
+            Lékaře ORL
+          </li>
+          <li>
+            <span>
+              <ArrowIcon name={'white'} />
+            </span>
+            Lékař pracovně - lékařské služby
+          </li>
+          <li>
+            <span>
+              <ArrowIcon name={'white'} />
+            </span>
+            Dentální hygienista/ka
+          </li>
         </ul>
       </a>
     );
