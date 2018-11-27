@@ -4,19 +4,18 @@
   line-height: 28px;
   padding-top: 50px;
 
-  ul {
+  .flexRow {
+    align-items: stretch;
+  }
 
+  ul {
     &::before {
       background: white;
       width: 1px;
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       min-height: 190px;
-    }
-
-    &:nth-of-type(3) {
-      align-self: flex-start;
     }
 
     li {
@@ -30,24 +29,35 @@
   a {
     color: white;
     transition: ease 0.3s;
-    &:hover {
-      color: $blue;
+
+    @include md {
+      &:hover {
+        color: $blue;
+      }
     }
   }
 
   .social {
-    align-self: flex-end;
     color: white;
+    text-align: right;
+    justify-content: space-between;
+
     p {
       text-align: right;
+      line-height: 22px;
     }
-    img {
-      float: right;
+
+    .fbIcon {
+      width: 36px;
+      height: 36px;
+
+      &:hover {
+        fill: $blue;
+      }
     }
   }
 
   @include max-md {
-    
     ul {
       text-align: center;
 
@@ -60,11 +70,11 @@
       &::after {
         background: white;
         width: 130px;
-        content: "";
+        content: '';
         margin: auto;
-        top: 0; 
-        left: 0; 
-        bottom: 0; 
+        top: 0;
+        left: 0;
+        bottom: 0;
         right: 0;
         display: block;
         position: relative;
@@ -124,13 +134,12 @@
   }
 
   @include max-sm {
-
     .copyrights {
       grid-template-columns: 1fr;
       grid-template-rows: 2fr;
       text-align: center;
 
-      a { 
+      a {
         grid-column: 1/1;
         grid-row: 1/2;
       }

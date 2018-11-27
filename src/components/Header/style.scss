@@ -1,8 +1,10 @@
+@import './components/Hamburger/style.scss';
+
 .header {
   background-color: #fff;
   width: 100%;
   position: fixed;
-  z-index: 200;
+  z-index: 300;
 
   &__iso {
     position: absolute;
@@ -40,6 +42,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
+    position: relative;
+    background-color: #fff;
 
     @include md {
       padding: 20px 0;
@@ -61,6 +65,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
+    position: relative;
 
     ul {
       @include reset-list;
@@ -88,61 +93,95 @@
           text-transform: uppercase;
           letter-spacing: 0.64px;
           cursor: pointer;
+          position: relative;
+
+          &:after {
+            @include pseudo;
+            height: 2px;
+            width: 0%;
+            bottom: -3px;
+            right: 0;
+            background: $blue;
+            transition: 0.3s ease;
+          }
+        }
+
+        &:hover {
+          a {
+            &:after {
+              opacity: 1;
+              width: 100%;
+              right: auto;
+              left: 0;
+            }
+          }
         }
       }
     }
+  }
+}
 
-    .hamburgerHolder {
-      padding-left: 50px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+.menuActive {
+  svg {
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.12));
+  }
+}
 
-      .hamburger {
-        width: 25px;
-        height: 25px;
+.hiddenMenu {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.8s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  background-color: white;
+  height: 100vh;
+  transform: translate3d(calc(100% + 100px), 0, 0);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
+  z-index: -1;
+  width: 100%;
 
-        & > div {
-          background-color: $lightBlue;
-          height: 2px;
-          width: 100%s;
-          display: block;
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
+  // &:after {
+  //   @include pseudo;
+  //   left: -100px;
+  //   background-color: #fff;
+  //   height: 100%;
+  //   width: 100px;
+  //   top: 0;
+  //   z-index: 100;
+  //   transform: skew(4deg, 10deg) translateX(56px);
+  //   box-shadow: -4px 0 5px 0px rgba(0, 52, 97, 0.18);
+  // }
 
-          &:after,
-          &:before {
-            @include pseudo();
-            background-color: $lightBlue;
-            height: 2px;
-            width: 100%;
-            display: block;
-          }
+  @include md {
+    width: 100%;
+  }
 
-          &:after {
-            top: -8px;
-          }
+  &--active {
+    transform: translate3d(0, 0, 0);
+  }
 
-          &:before {
-            bottom: -8px;
-          }
-        }
-      }
+  &__wrapper {
+    padding: 200px 50px 50px 50px;
 
-      & > span {
-        display: none;
+    ul {
+      @include reset-list;
 
-        @include md {
-          margin-left: 17px;
+      li {
+        text-align: center;
+        color: $lightBlue;
+        padding-bottom: 15px;
+
+        a {
           color: $lightBlue;
           font-family: $mons;
-          font-size: 1.4rem;
+          font-size: 1.8rem;
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.64px;
-          display: block;
+          cursor: pointer;
         }
       }
     }

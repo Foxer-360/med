@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { get } from 'https';
+import Hamburger from './components/Hamburger';
 
 export interface HeaderProps {}
 
 export interface HeaderState {
   vX: number;
+  menuActive: boolean;
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
@@ -12,7 +13,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   constructor(props: HeaderProps) {
     super(props);
     this.headerWrapper = React.createRef();
-    this.state = { vX: 15 };
+    this.state = { vX: 15, menuActive: false };
   }
 
   getVertex = () => {
@@ -25,13 +26,25 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     });
   }
 
+  closeMenu = () => {
+    this.setState({
+      menuActive: false,
+    });
+  }
+
+  toggleMenu = () => {
+    this.setState({
+      menuActive: !this.state.menuActive,
+    });
+  }
+
   componentDidMount() {
     this.getVertex();
   }
 
   public render() {
     return (
-      <header className={'header'}>
+      <header className={`header ${this.state.menuActive ? 'menuActive' : ''}`}>
         <div className="container">
           <div className={'header__wrapper'} ref={this.headerWrapper}>
             <div className={'header__logo'}>
@@ -53,12 +66,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 </li>
               </ul>
 
-              <div className={'hamburgerHolder'}>
-                <div className={'hamburger'}>
-                  <div />
-                </div>
-                <span>menu</span>
-              </div>
+              <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
             </nav>
           </div>
         </div>
@@ -67,6 +75,25 @@ class Header extends React.Component<HeaderProps, HeaderState> {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
             <polygon fill="white" points={`0,0 0,50 ${this.state.vX},100 100,0`} />
           </svg>
+        </div>
+
+        <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
+          <div className={'hiddenMenu__wrapper'}>
+            <ul>
+              <li>
+                <a href="">Link</a>
+              </li>
+              <li>
+                <a href="">Link</a>
+              </li>
+              <li>
+                <a href="">Link</a>
+              </li>
+              <li>
+                <a href="">Link</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
     );
