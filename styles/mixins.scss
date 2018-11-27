@@ -102,7 +102,7 @@
   background-image: -moz-linear-gradient($from, $to);
 
   /* Safari 4+, Chrome 1+ */
-  background-image: -webkit-gradient(linear, top, bottom, from($from), to($to));
+  background-image: -webkit-gradient(linear, left, right, from($from), to($to));
 
   /* Safari 5.1+, Chrome 10+ */
   background-image: -webkit-linear-gradient($from, $to);

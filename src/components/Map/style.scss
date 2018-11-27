@@ -2,7 +2,7 @@
 @import './components/Marker/style.scss';
 
 .map {
-  height: 250px;
+  height: 300px;
   width: 100%;
   display: block;
   position: relative;
@@ -20,9 +20,13 @@
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
+    text-align: center;
+
+    @include md {
+      text-align: left;
+    }
 
     button {
-      margin-top: 21px;
       color: $lightBlue;
       font-size: 1.4rem;
       font-weight: 600;
@@ -31,6 +35,12 @@
       background-color: white;
       padding: 11px 24px;
       box-shadow: 0 0 30px rgba(27, 97, 160, 0.3);
+
+      margin: 21px auto 0 auto;
+
+      @include md {
+        margin-top: 21px;
+      }
     }
   }
 }

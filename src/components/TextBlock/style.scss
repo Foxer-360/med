@@ -1,5 +1,9 @@
 .textBlock {
-  padding: 52px 0;
+  padding: 40px 0 25px;
+
+  @include md {
+      padding: 52px 0;
+  }
 
   &__container {
     &__text {

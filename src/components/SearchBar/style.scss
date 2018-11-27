@@ -7,9 +7,13 @@
     display: block;
     position: relative;
     background-color: #fff;
-    padding: 19px;
+    padding: 10.5px 19px;
     width: 100%;
     box-sizing: border-box;
+
+    @include md {
+      padding: 19px;
+    }
 
     input {
       width: 100%;
@@ -19,10 +23,16 @@
       font-family: $mons;
       font-size: 1.6rem;
       font-weight: 400;
-      letter-spacing: 0.88px;
+      line-height: 12px;
+      letter-spacing: 1.12px;
 
       @include md {
         font-size: 2rem;
+        letter-spacing: 0.88px;
+      }
+
+      &::placeholder {
+        color: $darkGray;
       }
     }
 
@@ -38,11 +48,15 @@
 
   &__bar {
     display: block;
-    height: 5px;
+    height: 4px;
     width: 100%;
 
     &--lightBlue {
-      background-color: $lightBlue;
+      @include leftRightGradient(#2472b8, #00aadd);
+    }
+
+    @include md {
+      height: 8px;
     }
   }
 }
