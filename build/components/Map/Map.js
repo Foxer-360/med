@@ -20,6 +20,17 @@ var markers = [
     {
         lat: 50,
         lng: 14,
+        type: 'big',
+    },
+    {
+        lat: 50,
+        lng: 13,
+        type: 'small',
+    },
+    {
+        lat: 50,
+        lng: 15,
+        type: 'small',
     },
 ];
 var Map = /** @class */ (function (_super) {
@@ -52,6 +63,9 @@ var Map = /** @class */ (function (_super) {
         var center = defaultCenter;
         var defaultZoom = 7;
         var zoom = 7;
+        if (this.state.activeMarker) {
+            center = this.state.activeMarkerCenter;
+        }
         return (React.createElement("div", { className: "fullWidthContainer" },
             React.createElement("section", { className: 'map' },
                 React.createElement("div", { className: 'map__container' },

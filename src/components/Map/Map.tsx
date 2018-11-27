@@ -18,6 +18,17 @@ const markers = [
   {
     lat: 50,
     lng: 14,
+    type: 'big',
+  },
+  {
+    lat: 50,
+    lng: 13,
+    type: 'small',
+  },
+  {
+    lat: 50,
+    lng: 15,
+    type: 'small',
   },
 ];
 
@@ -53,6 +64,11 @@ class Map extends React.Component<any, MapState> {
     let center = defaultCenter;
     const defaultZoom = 7;
     const zoom = 7;
+
+    if (this.state.activeMarker) {
+      center = this.state.activeMarkerCenter;
+    }
+
     return (
       <div className="fullWidthContainer">
         <section className={'map'}>
