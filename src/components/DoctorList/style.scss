@@ -7,6 +7,12 @@
     margin-bottom: 50px;
   }
 
+  .container {
+    & > h3 {
+      @include webkitGradientText;
+    }
+  }
+
   &__wrapper {
     @extend .flexRow;
     justify-content: center;
@@ -90,7 +96,6 @@
         font-weight: 400;
         margin-bottom: 2.8rem;
         text-align: center;
-        width: 100%;
 
         @include lg {
           font-size: 1.8rem;
@@ -119,7 +124,6 @@
 
   &__btnHolder {
     @extend .flexRow;
-    padding: 0 0 36px;
     justify-content: center;
   }
 }

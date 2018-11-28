@@ -8,7 +8,7 @@ export interface ButtonProps {
 const Button = (props: ButtonProps) => (
   <button className={`btn ${props.classes}`}>
     {props.children}
-    <span className="arrow"></span>
+    <span className="arrow" />
   </button>
 );
 

@@ -3,7 +3,7 @@
     linear-gradient(to right, #2472b8 0%, #00aadd 100%);
   background-repeat: no-repeat;
   background-position: 0 0, 0 100%;
-  padding: 26px 0;
+  padding: 4px 0;
 
   p,
   button,
@@ -18,12 +18,14 @@
 
   .info {
     padding: 25px;
-    img { padding-right: 25px; }
+    img {
+      padding-right: 25px;
+    }
   }
 
   @media (max-width: 795px) {
     .info {
-      img { 
+      img {
         padding-right: 0px;
         padding-bottom: 25px;
       }
@@ -45,4 +47,3 @@
     }
   }
 }
-  
