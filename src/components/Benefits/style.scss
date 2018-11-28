@@ -46,21 +46,18 @@
   }
 
   @include max-lg  {
-    .benefity {
-      height: 100%;
-      padding: 35px 0;
+    height: 100%;
+    padding: 35px 0;
 
-      ul {
-        flex-flow: wrap;
-        justify-content: flex-start;
+    ul {
+      flex-flow: wrap;
 
-        li {
-          border: none;
-          margin-bottom: 20px;
+      li {
+        border: none;
+        margin-bottom: 20px;
 
-          &:not(:nth-of-type(1)) {
-            background-position: left;
-          }
+        &:not(:nth-of-type(1)) {
+          background-position: left;
         }
       }
     }

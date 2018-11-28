@@ -1,12 +1,25 @@
 .polyclinicBoxes {
-  .grid-container {
-    grid-template-rows: 1fr;
+ 
+  ul {
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    li {
+
+      &:before {
+        content: none;
+      }
+    }
   }
+
   h3 {
-    padding-bottom: 55px;
+    padding-bottom: 50px;
     margin-bottom: 0;
   }
-  button {
-    margin: 0 auto;
+
+
+  @include max-lg {
+    
   }
 }

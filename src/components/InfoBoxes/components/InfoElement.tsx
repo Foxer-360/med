@@ -2,8 +2,8 @@ import * as React from 'react';
 import Button from '../../Button';
 
 export interface InfoElementProps {
-  title: string;
-  color: string;
+  	title: string;
+  	color: string;
 	img: string;
 	btn: string;
 	titleColor: string;
