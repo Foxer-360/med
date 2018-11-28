@@ -65,16 +65,12 @@ body {
   }
 }
 
-
-
-
-.d-flex {
-  display: flex;
-  justify-content: space-around;
-}
-
 .grid {
   display: grid;
+
+  &--vCenterBlock {
+    align-items: center;
+  }
 }
 
 .grid-container {
@@ -85,10 +81,6 @@ body {
   box-sizing: border-box;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-}
-
-.inline-gird {
-  display: inline-grid;
 }
 
 //LIST STYLES
@@ -112,31 +104,8 @@ cite {
   font-weight: 600;
 }
 
-.dividerCircles {
-  @extend .flexRow;
-  justify-content: center;
-
-  & > div {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background-color: #d8d8d8;
-    position: relative;
-
-    &:before,
-    &:after {
-      @include pseudo;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background-color: #d8d8d8;
-    }
-
-    &:before {
-      left: -16px;
-    }
-    &:after {
-      right: -16px;
-    }
-  }
+.horizontal-line {
+  width: 75px;
+  height: 5px;
+  background-image: linear-gradient(to right, #2472b8 0%, #00aadd 100%);
 }
