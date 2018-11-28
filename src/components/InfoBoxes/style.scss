@@ -36,7 +36,7 @@
       line-height: 1.35;
     }
 
-    &:#{__colorGradient} {
+    &:__colorGradient {
       height: 100%;
       position: absolute;
     }
