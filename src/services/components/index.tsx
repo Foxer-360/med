@@ -28,7 +28,7 @@ import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
   google: {
-    families: ['Monserrat:400,600,700', 'sans-serif'],
+    families: ['Monserrat', 'sans-serif', 'droid-serif'],
   },
 });
 

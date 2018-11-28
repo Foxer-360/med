@@ -1,5 +1,8 @@
 .reviews {
   margin-bottom: 40px;
+  h3 {
+    @include webkitGradientText;
+  }
 
   .grid-container {
     justify-items: center;

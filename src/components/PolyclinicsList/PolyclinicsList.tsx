@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PcTitle from './components/title';
-import PolyclinicInfo from '../PolyclinicInfo';
 import Button from '../Button';
 
+// ! DEV ONLY
 const data = {
   items: [{ name: 'asd' }, { name: 'asd' }, { name: 'asd' }],
 };
@@ -22,25 +22,19 @@ const PolyclinicsList = () => (
                 <PcTitle />
 
                 <div className="pcitem__info__details">
-                  <div
-                    className="pcitem__info__details__item"
-                    style={{ backgroundImage: 'url(/assets/medicon/images/geo.png)' }}
-                  >
+                  <div className="pcitem__info__details__item">
+                    <img src="/assets/medicon/images/geo2.png" alt="" />
                     <p>
                       Antala Staška 1670/80 <br />
                       140 00 Praha 4
                     </p>
                   </div>
-                  <div
-                    className="pcitem__info__details__item"
-                    style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
-                  >
+                  <div className="pcitem__info__details__item">
+                    <img src="/assets/medicon/images/phone2.png" alt="" />
                     <p>+420 261 006 111</p>
                   </div>
-                  <div
-                    className="pcitem__info__details__item"
-                    style={{ backgroundImage: 'url(/assets/medicon/images/metro.png)' }}
-                  >
+                  <div className="pcitem__info__details__item">
+                    <img src="/assets/medicon/images/metro2.png" alt="" />
                     <p>
                       Metro C <br />
                       stanice Budějovická
@@ -61,7 +55,9 @@ const PolyclinicsList = () => (
                     <li>Mammacentrum</li>
                   </ul>
 
-                  <div>Další odbornosti</div>
+                  <div>
+                    Další odbornosti <span className="arrow" />
+                  </div>
                 </div>
 
                 <div className={'pcitem__info__desc'}>
@@ -72,7 +68,7 @@ const PolyclinicsList = () => (
                   </div>
 
                   <div>
-                    <Button classes="btn--small btn--blueBorder">vice info</Button>
+                    <Button classes="btn btn--blueBorder">vice info</Button>
                   </div>
                 </div>
               </div>

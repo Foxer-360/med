@@ -22,6 +22,7 @@
 
   h1 {
     padding-bottom: 36px;
+    @include webkitGradientText;
   }
 
   &__text {

@@ -2,10 +2,14 @@
   padding: 40px 0 25px;
 
   @include md {
-      padding: 52px 0;
+    padding: 52px 0;
   }
 
   &__container {
+    h2 {
+      @include webkitGradientText;
+    }
+
     &__text {
       color: #3c3c3b;
       font-size: 1.6rem;

@@ -91,3 +91,9 @@
   background-image: -webkit-linear-gradient(left, $from, $to);
   background-image: -o-linear-gradient(left, $from, $to);
 }
+
+@mixin webkitGradientText() {
+  background: -webkit-linear-gradient(left, $blue, $lightBlue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

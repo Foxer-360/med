@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface HamburgerProps {
   active: boolean;
   onClick: Function;
-}
+} 
 
 const Hamburger = (props: HamburgerProps) => {
   return (
@@ -15,9 +15,9 @@ const Hamburger = (props: HamburgerProps) => {
       <div className={`hamburgerActive`}>
         <div />
       </div>
-      <span>menu</span> 
+      <span>menu</span>
     </div>
-  );  
+  );
 };
 
 export default Hamburger;

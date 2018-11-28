@@ -16,6 +16,7 @@
   h3 {
     padding-bottom: 50px;
     margin-bottom: 0;
+    @include webkitGradientText;
   }
 
 

@@ -17,6 +17,10 @@
     padding: 70px 0;
   }
 
+  h1 {
+    @include webkitGradientText;
+  }
+
   &__btnHolder {
     display: flex;
     justify-content: center;
