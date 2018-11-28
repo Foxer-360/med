@@ -1,7 +1,11 @@
 .reviews {
+  margin-bottom: 40px;
+
   .grid-container {
+    justify-items: center;
+    justify-content: center;
+    grid-template-rows: auto;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(1, 1fr);
   }
   .review-el {
     height: 140px;
@@ -22,6 +26,18 @@
     }
     .stars {
       padding-top: 10px;
+    }
+  }
+
+  @include max-lg {
+    .review-el {
+      width: 100%;
+    }
+    cite {
+      font-size: 14px;
+    }
+    .grid-container {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

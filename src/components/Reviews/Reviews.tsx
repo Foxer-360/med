@@ -5,7 +5,7 @@ class Reviews extends React.Component<any, any> {
     return (
       <section className="reviews">
         <h3>řekli o nás</h3>
-        <div className="container-center">
+        <div className="container">
           <div className="grid-container">
             <div className="review-el">
               <img className="review-img" src="/assets/medicon/images/photo-1.jpg" alt="photo" />
