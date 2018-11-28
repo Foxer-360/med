@@ -1,3 +1,12 @@
+body {
+  color: $darkGray;
+  line-height: 24px;
+  font-family: $mons;
+  font-size: 1.6rem;
+  line-height: 24px;
+  padding: 0;
+}
+
 .container {
   display: block;
   margin: 0 auto;
@@ -7,7 +16,7 @@
     max-width: $layoutMinWidth;
   }
 
-  @include lg {
+  @include xl {
     width: 100%;
   }
 }
@@ -23,20 +32,6 @@
   margin: 0 auto;
 }
 
-//TEXT ALIGNMENT
-
-.textAlign {
-  &--center {
-    text-align: center;
-  }
-  &--left {
-    text-align: left;
-  }
-  &--right {
-    text-align: right;
-  }
-}
-
 .flexRow {
   display: flex;
   flex-flow: row wrap;
@@ -47,7 +42,101 @@
   }
 }
 
-.flexColum {
+.flexColumn {
   display: flex;
   flex-flow: column wrap;
+}
+
+.flexAlign {
+  &--start {
+    justify-content: start;
+  }
+  &--end {
+    justify-content: end;
+  }
+  &--space-between {
+    justify-content: space-between;
+  }
+  &--space-around {
+    justify-content: space-around;
+  }
+  &--center {
+    justify-content: center;
+  }
+}
+
+
+
+
+.d-flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 20px;
+  box-sizing: border-box;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.inline-gird {
+  display: inline-grid;
+}
+
+//LIST STYLES
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    padding: 5px;
+    &:before {
+      content: url('/assets/medicon/images/listPoint.png');
+      padding-right: 12px;
+    }
+  }
+}
+
+cite {
+  line-height: 44px;
+  font-weight: 600;
+}
+
+.dividerCircles {
+  @extend .flexRow;
+  justify-content: center;
+
+  & > div {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+    position: relative;
+
+    &:before,
+    &:after {
+      @include pseudo;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #d8d8d8;
+    }
+
+    &:before {
+      left: -16px;
+    }
+    &:after {
+      right: -16px;
+    }
+  }
 }

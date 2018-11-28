@@ -1,5 +1,8 @@
 import * as React from 'react';
 export interface HeroProps {
+    data: {
+        title: string;
+    };
 }
 export interface HeroState {
 }

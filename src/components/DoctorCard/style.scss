@@ -1,0 +1,98 @@
+@import 'components/DoctorSchedule/style.scss';
+
+.doctorCard {
+  @include md {
+    padding: 55px 0;
+  }
+
+  &__main {
+    text-align: center;
+
+    img {
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      padding-bottom: 6px;
+    }
+
+    &__spe {
+      color: $darkGray;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 25.23px;
+      margin-bottom: 30px;
+    }
+
+    &__sis {
+      color: $darkGray;
+      font-size: 2.2rem;
+      letter-spacing: 0.98px;
+    }
+  }
+
+  &__info {
+    box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+    background-color: #ffffff;
+    margin-top: 40px;
+
+    &__wrapper {
+      @extend .flexRow;
+      justify-content: space-between;
+      padding: 25px 0;
+    }
+
+    &__item {
+      @extend .flexRow;
+      padding: 0 0 0 105px;
+      background-position: 20px center;
+      background-repeat: no-repeat;
+      background-size: 55px auto;
+      min-height: 60px;
+      color: $darkGray;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 27.03px;
+      align-items: center;
+
+      &:first-of-type,
+      &:nth-of-type(2) {
+        flex-basis: calc(100% / 2) / 2;
+      }
+
+      &:nth-of-type(3) {
+        flex-basis: 50%;
+      }
+
+      &:not(:first-of-type) {
+        border-left: 1px solid #d0d0d0;
+      }
+
+      p {
+        width: 100%;
+      }
+    }
+  }
+
+  &__timePlace {
+    @extend .flexRow;
+    justify-content: space-between;
+    padding: 40px 0;
+
+    & > div {
+      @include flexChild(2, 10px);
+      @extend .flexRow;
+      justify-content: center;
+    }
+  }
+
+  &__btnHolder {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__divider {
+    text-align: center;
+    padding: 40px 0;
+  }
+}

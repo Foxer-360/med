@@ -1,0 +1,73 @@
+.mapBox {
+  background-color: #fff;
+  width: 400px;
+  display: block;
+  position: absolute;
+  box-shadow: 0 0 30px rgba(27, 97, 160, 0.3);
+  z-index: 199;
+  right: 100px;
+
+  //
+
+  @include vertical-center;
+
+  .pcTitle {
+    border: none;
+    padding: 20px;
+
+    img {
+      width: 50px;
+    }
+
+    h3 {
+      font-size: 2.6rem;
+      text-align: left;
+      line-height: 0.6;
+    }
+
+    .pcTitle__title__subtitle {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__contacts {
+    padding: 0 20px 20px;
+    @extend .flexRow;
+    justify-content: space-between;
+
+    &__item {
+      @extend .flexRow;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+
+      img {
+        width: 23px;
+        height: auto;
+      }
+
+      & > div {
+        box-sizing: border-box;
+        padding: 0 0 0 10px;
+
+        p {
+          color: $darkGray;
+          font-size: 1.4rem;
+          font-weight: 400;
+          letter-spacing: 0.71px;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+  &__buttons {
+    padding: 0 20px 20px;
+    @extend .flexRow;
+    justify-content: space-between;
+
+    button {
+      margin-top: 0;
+      padding: 11px 30px;
+      font-size: 1.2rem;
+    }
+  }
+}

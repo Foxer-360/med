@@ -1,0 +1,15 @@
+{
+  "name": "TextBlock",
+  "form": {
+    "schema": {
+      "type": "object",
+
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+.my-masonry-grid {
+  display: -webkit-box; // Not needed if autoprefixing
+  display: -ms-flexbox; // Not needed if autoprefixing
+  display: flex;
+  margin-left: -30px; // gutter size offset
+}
+
+.my-masonry-grid_column {
+  border-left: 30px solid transparent; // gutter size
+  background-clip: padding-box;
+}
+
+.blog {
+  padding: 39px 0;
+
+  @include md {
+    padding: 70px 0;
+  }
+
+  &__btnHolder {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__blur {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 50px;
+    z-index: 200;
+
+    div {
+      background: linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, white 100%);
+      height: 100px;
+      z-index: 200;
+      transform: translateY(-130%);
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+.blogCard {
+  box-sizing: border-box;
+  padding: 35px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: none;
+  margin-bottom: 30px;
+  overflow: hidden;
+  height: 300px;
+
+  @include md {
+    height: 400px;
+
+    &:hover {
+      .blogCard__colorGradient {
+        height: 200%;
+      }
+    }
+  }
+
+  &__colorGradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    transition: 300ms ease;
+  }
+
+  h3 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 28.83px;
+    text-transform: uppercase;
+    letter-spacing: 0.89px;
+    text-align: left;
+    padding: 0;
+    width: 100%;
+    padding-bottom: 17px;
+    z-index: 100;
+
+    @include md {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.71px;
+    z-index: 100;
+    line-height: 22px;
+
+    @include md {
+      line-height: 23.43px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+  }
+
+  &--special {
+    height: auto;
+    background-color: #00aad0;
+    transition: 300ms ease;
+
+    @include md {
+      height: auto;
+
+      &:hover {
+        background-color: #2473ba;
+      }
+    }
+
+    h3 {
+      padding-bottom: 5px;
+    }
+
+    ul {
+      @include reset-list;
+
+      li {
+        padding-left: 10px;
+        color: #fff;
+        padding: 0 5px;
+
+        span {
+          .arrowIcon {
+            transform: rotate(-180deg);
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+}

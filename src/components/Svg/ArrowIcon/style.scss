@@ -1,0 +1,17 @@
+.arrowIcon {
+  width: 15px;
+  height: 15px;
+  transition: 300ms $customEase;
+  cursor: pointer;
+
+  &--gray {
+    fill: #cccccc;
+  }
+
+  &--lightBlue {
+    fill: $lightBlue;
+  }
+  &--white {
+    fill: $white;
+  }
+}

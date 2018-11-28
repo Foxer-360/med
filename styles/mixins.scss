@@ -76,3 +76,18 @@
     margin-bottom: 0;
   }
 }
+
+@mixin topBottomgradient($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, top, bottom, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
+@mixin leftRightGradient($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient(left, $from, $to);
+  background-image: -webkit-linear-gradient(left, $from, $to);
+  background-image: -o-linear-gradient(left, $from, $to);
+}

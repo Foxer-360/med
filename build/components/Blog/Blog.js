@@ -12,6 +12,45 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
+import Masonry from 'react-masonry-css';
+import { BlogCard } from './components/blogCard';
+import Button from '../Button';
+var data = {
+    items: [
+        {
+            title: 'Těhotenství',
+            text: 'Epilepsie při vhodné léčbě těhotenství nebrání',
+            img: '/assets/medicon/images/blog.png',
+            color: '#386fa2',
+        },
+        {
+            title: 'Hledáme',
+            text: 'Pro věrné zákazníky našich lékáren máme věrnostní program',
+            img: '/assets/medicon/images/blog.png',
+            color: '#d09d56',
+            special: true,
+        },
+        {
+            title: 'Věrnostní karta',
+            text: 'Pro věrné zákazníky našich lékáren máme věrnostní program',
+            img: '/assets/medicon/images/blog.png',
+            color: '#d09d56',
+        },
+        {
+            title: 'MAMMACENTRA',
+            text: 'V našich čtyřech MAMMACENTRECH zdravotnický personál každý rok vyšetří na 50 000 žen.',
+            img: '/assets/medicon/images/blog.png',
+            color: '#4c959f',
+        },
+        { title: 'Home care', text: 'Pomáháme při domácí pěči', img: '/assets/medicon/images/blog.png', color: '#d3969f' },
+        {
+            title: 'in care',
+            text: 'Nadstandartní zdravotní péče pro firmy i jednotlivce',
+            img: '/assets/medicon/images/blog.png',
+            color: '#386fa2',
+        },
+    ],
+};
 var Blog = /** @class */ (function (_super) {
     __extends(Blog, _super);
     function Blog(props) {
@@ -20,7 +59,14 @@ var Blog = /** @class */ (function (_super) {
         return _this;
     }
     Blog.prototype.render = function () {
-        return React.createElement("div", null, "blog");
+        return (React.createElement("section", { className: 'blog' },
+            React.createElement("div", { className: "container" },
+                React.createElement("h1", null, "aktuality a informace"),
+                React.createElement(Masonry, { breakpointCols: { default: 3, 4000: 3, 800: 2, 500: 1 }, className: "my-masonry-grid", columnClassName: "my-masonry-grid_column" }, data.items.map(function (item, index) { return (React.createElement(BlogCard, { title: item.title, text: item.text, key: index, color: item.color, img: item.img, special: item.special })); })),
+                React.createElement("div", { className: 'blog__blur' },
+                    React.createElement("div", null)),
+                React.createElement("div", { className: "blog__btnHolder" },
+                    React.createElement(Button, { classes: "btn--blueBkg" }, "Na\u010D\u00EDst dal\u0161\u00ED")))));
     };
     return Blog;
 }(React.Component));

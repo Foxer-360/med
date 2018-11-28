@@ -1,0 +1,159 @@
+.polyclinicsList {
+  background-color: #f4f4f4;
+  padding: 25px 0;
+}
+
+.pcitem {
+  background-color: white;
+
+  padding: 25px 0;
+  margin-bottom: 25px;
+
+  &__wrapper {
+    box-sizing: border-box;
+    @extend .flexRow;
+    justify-content: space-between;
+    position: relative;
+    align-items: stretch;
+  }
+
+  &__img {
+    width: 30%;
+    display: block;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    width: 70%;
+    box-sizing: border-box;
+    padding-left: 32px;
+
+    @extend .flexColumn;
+
+    &__details {
+      @extend .flexRow;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      padding: 25px 0;
+      border-bottom: 1px solid $darkGray;
+      flex-wrap: wrap;
+
+      @media (min-width: '1050px') {
+        justify-content: space-between;
+        align-content: space-between;
+        align-items: center;
+      }
+
+      &__item {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center left;
+        background-size: 40px;
+        display: table;
+        height: 40px;
+        width: 100%;
+
+        @media (min-width: '1050px') {
+          width: calc(95% / 3);
+        }
+
+        p {
+          display: table-cell;
+          vertical-align: middle;
+          margin: 0;
+          padding: 0;
+          padding-left: 45px;
+          font-size: 1.7rem;
+          line-height: 1.1;
+
+          &:last-of-type {
+            padding-left: 55px;
+          }
+        }
+      }
+    }
+
+    &__list {
+      padding: 25px 0;
+      border-bottom: 1px solid $darkGray;
+      @extend .flexRow;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      ul {
+        column-count: 3;
+        column-gap: 10px;
+        li {
+          display: block;
+        }
+      }
+
+      div {
+        color: $lightBlue;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+    }
+
+    &__desc {
+      padding: 25px 0 0;
+      @extend .flexRow;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      &__txt {
+        width: 70%;
+      }
+    }
+  }
+}
+
+.pcTitle {
+  @extend .flexRow;
+  justify-content: flex-start;
+  border-bottom: 1px solid $darkGray;
+  box-sizing: border-box;
+  padding-bottom: 25px;
+
+  img {
+    width: 80px;
+  }
+
+  &__title {
+    @extend .flexColumn;
+    margin-left: 14px;
+
+    h3 {
+      padding: 0;
+      text-transform: capitalize;
+      color: $darkGray;
+    }
+
+    &__subtitle {
+      @extend .flexRow;
+
+      &__circles {
+        @extend .flexRow;
+        justify-content: space-between;
+        margin-left: 6px;
+
+        div {
+          display: block;
+          position: relative;
+          width: 6px;
+          height: 6px;
+          margin: 0 2px;
+          border-radius: 50%;
+          background-color: $blue;
+        }
+      }
+    }
+  }
+}

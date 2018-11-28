@@ -1,0 +1,27 @@
+.reviews {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+  .review-el {
+    height: 140px;
+    width: 400px;
+    background-color: #f4f5f7;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+  }
+  .el {
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    padding-top: 25px;
+    padding-left: 25px;
+    cite {
+      max-width: 250px;
+      line-height: 24px;
+    }
+    .stars {
+      padding-top: 10px;
+    }
+  }
+}

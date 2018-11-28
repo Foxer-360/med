@@ -1,0 +1,34 @@
+.info-rectangles {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  h5 {
+    text-align: left;
+    color: $lightBlue;
+  }
+
+  .info-element {
+    height: 270px;
+    width: 600px;
+    background-clip: border-box;
+    display: table;
+    box-shadow: 0 0 10px rgba(15, 52, 86, 0.2);
+
+    div {
+      display: table-cell;
+      vertical-align: bottom;
+      padding-bottom: 35px;
+    }
+
+    h5,
+    button {
+      margin-left: 35px;
+    }
+
+    h5 {
+      padding-bottom: 35px;
+    }
+  }
+}

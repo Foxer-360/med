@@ -1,0 +1,58 @@
+.marker {
+  border-radius: 50% 50% 50% 50%;
+  @include topBottomgradient(#01a6ce, #2083c1);
+  position: absolute;
+  transform: rotate(0deg);
+  margin: -20px 0 0 0;
+  z-index: 7;
+  left: -9px;
+  top: -16px;
+
+  &.red {
+    background: #c92731;
+  }
+
+  &.big {
+    width: 64px;
+    height: 64px;
+
+    &:after {
+      width: 25px;
+      height: 25px;
+      margin: 19px 0 0 19px;
+    }
+
+    &:before {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &.small {
+    height: 27px;
+    width: 27px;
+  }
+
+  &:after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    margin: 8px 0 0 8px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    z-index: 20;
+  }
+
+  &:before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    @include topBottomgradient(#01a6ce, #2083c1);
+    position: absolute;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg) translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+}

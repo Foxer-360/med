@@ -2,12 +2,9 @@ html {
   font-size: 62.5% !important;
   margin: 0;
   padding: 0;
-  height: 100%;
-
   font-variant-numeric: lining-nums;
   font-feature-settings: 'lnum' 1;
   text-rendering: optimizeLegibility;
-
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -123,4 +120,12 @@ button {
   background: none;
   cursor: pointer;
   -webkit-font-smoothing: inherit;
+}
+
+input,
+textarea {
+  border: none;
+  &:focus {
+    outline: none;
+  }
 }

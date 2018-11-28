@@ -1,53 +1,68 @@
 // BENEFITY - TEXT
 .benefity {
-	height: 155px;
-	width: 100%;
-	background: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
-	ul {
-		display: flex;
-		align-items: center;
-		li {
-			min-height: 60px;
-			padding: 0 30px;
-			background-repeat: no-repeat;
-			background-position: left center;
-			border-right: 2px solid #dadada;
-			&:last-child {
-				border: none;
-			}
+  height: 155px;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
 
-			&:not(:nth-of-type(1)) {
-				background-position: 20px center;
-			}
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    li {
+      display: flex;
+      align-items: center;
+      min-height: 65px;
+      padding: 0 30px;
+      background-repeat: no-repeat;
+      background-position: left center;
+      border-right: 2px solid #dadada;
 
-			&:nth-of-type(1) {
-				background-image: url("img/benefity1.png");
-			}
-			&:nth-of-type(2) {
-				background-image: url("img/benefity2.png");
-			}
-			&:nth-of-type(3) {
-				background-image: url("img/benefity3.png");
-			}
-			&:nth-of-type(4) {
-				background-image: url("img/benefity4.png");
-			}
-			p {
-				&:nth-of-type(even) {
-					padding-left: 40px;
-				}
-				&:nth-of-type(odd) {
-					padding-left: 80px;
-				}
-			}
-			&:before {
-				content: none;
-				padding-right: 12px;
-			}
-		}
-	}
+      &:last-child {
+        border: none;
+      }
+
+      &:not(:nth-of-type(1)) {
+        background-position: 20px center; 
+      }
+
+      p {
+        &:nth-of-type(even) {
+          padding-left: 40px;
+        }
+        &:nth-of-type(odd) {
+          padding-left: 80px;
+        }
+      }
+      &:before {
+        content: none;
+        padding-right: 12px;
+      }
+    }
+  }
+
+  @include max-lg  {
+    .benefity {
+      height: 100%;
+      padding: 35px 0;
+
+      ul {
+        flex-flow: wrap;
+        justify-content: flex-start;
+
+        li {
+          border: none;
+          margin-bottom: 20px;
+
+          &:not(:nth-of-type(1)) {
+            background-position: left;
+          }
+        }
+      }
+    }
+  }
 }

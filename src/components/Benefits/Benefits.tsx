@@ -4,19 +4,25 @@ interface IProperties {
   data: number[];
 }
 
-// const listItems = this.props.data.map((item) => 
-//   <li><p>{item}</p></li>
-// );
-
 const Benefits: React.SFC<IProperties> = props => (
-  <div className={'benefity'}>
-    <ul>
-      <li><p>Přívětivý personál</p></li>
-      <li><p>Přívětivý personál</p></li>
-      <li><p>Přívětivý personál</p></li>
-      <li><p>Přívětivý personál</p></li>
-    </ul>
-  </div>
+  <section className={'benefity'}>
+    <div className="container">
+      <ul>
+        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity1.png)' }}>
+          <p>Přívětivý personál</p>
+        </li>
+        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity2.png)' }}>
+          <p>Přívětivý personál</p>
+        </li>
+        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity3.png)' }}>
+          <p>Přívětivý personál</p>
+        </li>
+        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity4.png)' }}>
+          <p>Přívětivý personál</p>
+        </li>
+      </ul>
+    </div>
+  </section>
 );
 
 export default Benefits;

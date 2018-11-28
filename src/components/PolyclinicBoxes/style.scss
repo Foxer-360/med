@@ -1,0 +1,12 @@
+.polyclinicBoxes {
+  .grid-container {
+    grid-template-rows: 1fr;
+  }
+  h3 {
+    padding-bottom: 55px;
+    margin-bottom: 0;
+  }
+  button {
+    margin: 0 auto;
+  }
+}
