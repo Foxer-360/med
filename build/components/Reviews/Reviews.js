@@ -12,6 +12,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
+import ReviewElement from './components/ReviewElement';
+var data = {
+    items: [
+        {
+            img: '/assets/medicon/images/photo-1.jpg',
+            cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
+            starCount: 5
+        },
+        {
+            img: '/assets/medicon/images/photo-2.jpg',
+            cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
+            starCount: 5
+        },
+        {
+            img: '/assets/medicon/images/photo-3.jpg',
+            cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
+            starCount: 5
+        }
+    ]
+};
 var Reviews = /** @class */ (function (_super) {
     __extends(Reviews, _super);
     function Reviews() {
@@ -21,37 +41,7 @@ var Reviews = /** @class */ (function (_super) {
         return (React.createElement("section", { className: "reviews" },
             React.createElement("h3", null, "\u0159ekli o n\u00E1s"),
             React.createElement("div", { className: "container" },
-                React.createElement("div", { className: "grid-container" },
-                    React.createElement("div", { className: "review-el" },
-                        React.createElement("img", { className: "review-img", src: "/assets/medicon/images/photo-1.jpg", alt: "photo" }),
-                        React.createElement("div", { className: "el" },
-                            React.createElement("cite", null, "\u201EJedna z nejlep\u0161\u00EDch poliklinik v Praze, od recep\u010Dn\u00EDch po l\u00E9ka\u0159e.\u201C"),
-                            React.createElement("div", { className: "stars" },
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" })))),
-                    React.createElement("div", { className: "review-el" },
-                        React.createElement("img", { className: "review-img", src: "/assets/medicon/images/photo-2.jpg", alt: "photo" }),
-                        React.createElement("div", { className: "el" },
-                            React.createElement("cite", null, "\u201EJedna z nejlep\u0161\u00EDch poliklinik v Praze, od recep\u010Dn\u00EDch po l\u00E9ka\u0159e.\u201C"),
-                            React.createElement("div", { className: "stars" },
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" })))),
-                    React.createElement("div", { className: "review-el" },
-                        React.createElement("img", { className: "review-img", src: "/assets/medicon/images/photo-3.jpg", alt: "photo" }),
-                        React.createElement("div", { className: "el" },
-                            React.createElement("cite", null, "\u201EJedna z nejlep\u0161\u00EDch poliklinik v Praze, od recep\u010Dn\u00EDch po l\u00E9ka\u0159e.\u201C"),
-                            React.createElement("div", { className: "stars" },
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }),
-                                React.createElement("img", { src: "/assets/medicon/images/star.png", alt: "star" }))))))));
+                React.createElement("div", { className: "grid-container" }, data.items.map(function (item, index) { return (React.createElement(ReviewElement, { key: index, img: item.img, cite: item.cite, starCount: item.starCount })); })))));
     };
     return Reviews;
 }(React.Component));
