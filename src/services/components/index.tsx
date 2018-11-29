@@ -22,13 +22,14 @@ import {
   Blog,
   PolyclinicBoxes,
   DoctorCard,
+  MyProblem,
 } from '../../components';
 import * as resources from './resources';
 
 // WEB FONTS
 WebFont.load({
   google: {
-    families: ['Montserrat:400,500,600,700,:latin'],
+    families: ['Montserrat:400,500,600,700:latin-ext'],
   },
 });
 
@@ -56,6 +57,7 @@ class ComponentsService {
     BLOG: 'Blog',
     POLYCLINICBOXES: 'PolyclinicBoxes',
     DOCTORCARD: 'DoctorCard',
+    MYPROBLEM: 'MyProblem',
   };
 
   /***/
@@ -108,6 +110,8 @@ class ComponentsService {
         return PolyclinicBoxes;
       case this.Types.DOCTORCARD:
         return DoctorCard;
+      case this.Types.MYPROBLEM:
+        return MyProblem;
 
       default:
         return () => <AlertNotFound type="component" />;
