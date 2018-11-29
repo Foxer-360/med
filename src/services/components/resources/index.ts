@@ -20,6 +20,7 @@ import * as odbornost from './odbornost.json';
 import * as polyclinicboxes from './polyclinicboxes.json';
 import * as doctorcard from './doctorcard.json';
 import * as myproblem from './myproblem.json';
+import * as offers from './offers.json';
 
 export {
   def as default,
@@ -43,5 +44,6 @@ export {
   polyclinicboxes,
   doctorcard,
   odbornost,
-  myproblem
+  myproblem,
+  offers,
 };
