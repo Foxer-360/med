@@ -23,6 +23,7 @@ import {
   PolyclinicBoxes,
   DoctorCard,
   Odbornost,
+  MyProblem,
 } from '../../components';
 import * as resources from './resources';
 
@@ -58,6 +59,7 @@ class ComponentsService {
     POLYCLINICBOXES: 'PolyclinicBoxes',
     DOCTORCARD: 'DoctorCard',
     ODBORNOST: 'Odbornost',
+    MYPROBLEM: 'MyProblem',
   };
 
   /***/
@@ -112,6 +114,8 @@ class ComponentsService {
         return DoctorCard;
       case this.Types.ODBORNOST:
         return Odbornost;
+      case this.Types.MYPROBLEM:
+        return MyProblem;
 
       default:
         return () => <AlertNotFound type="component" />;

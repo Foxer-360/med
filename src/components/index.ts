@@ -20,6 +20,7 @@ import Button from './Button';
 import PolyclinicBoxes from './PolyclinicBoxes';
 import DoctorCard from './DoctorCard';
 import Odbornost from './Odbornost';
+import MyProblem from './MyProblem';
 
 export {
   AlertNotFound,
@@ -44,4 +45,5 @@ export {
   Blog,
   Button,
   Odbornost,
+  MyProblem,
 };

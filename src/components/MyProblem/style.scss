@@ -1,0 +1,112 @@
+@import 'components/Avatar/style.scss';
+
+.myProblem {
+  padding: 50px 0;
+
+  h3 {
+    @include webkitGradientText;
+    padding-bottom: 34px;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 20px;
+
+    @include md {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__holder {
+    justify-content: center;
+    position: relative;
+  }
+
+  .infoBox {
+    box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+    box-sizing: border-box;
+    position: absolute;
+    width: 90%;
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 280px;
+
+    @include md {
+      min-width: 25%;
+      position: relative;
+      margin-left: 50px;
+      top: auto;
+      left: auto;
+      transform: translateX(0);
+      width: auto;
+    }
+
+    &__item{
+      padding: 0 44px;
+      transition: 300ms ease;
+
+      a {
+        padding: 17px;
+        border-bottom: 1px solid #f5f5f5;
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 400;
+
+        @include md {
+          padding: 30px;
+          font-size: 2rem;
+        }
+      }
+
+      &:last-of-type {
+        a {
+          border-bottom: none;
+        }
+      }
+
+      &:hover {
+        background-color: transparentize($color: #f5f5f5, $amount: 0.4);
+      }
+    }
+
+    &__close {
+      position: absolute;
+      right: 8px;
+      top: 0;
+      box-sizing: border-box;
+
+      .closeIcon {
+        width: 10px;
+        height: 10px;
+      }
+
+      @include md {
+        display: none;
+      }
+    }
+  }
+}
+
+$upList: rEye lEye mouth lEar rEar mouth nose lHand rHand;
+$downList: lKnee rKnee lFeet rFeet;
+
+@each $area in $upList {
+  .infoBox--#{$area} {
+    bottom: 0;
+    @include md {
+      bottom: auto;
+    }
+  }
+}
+
+@each $area in $downList {
+  .infoBox--#{$area} {
+    top: 0;
+    @include md {
+      top: auto;
+    }
+  }
+}

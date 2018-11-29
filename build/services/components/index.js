@@ -46,6 +46,7 @@ var ComponentsService = /** @class */ (function () {
             POLYCLINICBOXES: 'PolyclinicBoxes',
             DOCTORCARD: 'DoctorCard',
             ODBORNOST: 'Odbornost',
+            MYPROBLEM: 'MyProblem',
         };
     }
     /***/
@@ -99,6 +100,8 @@ var ComponentsService = /** @class */ (function () {
                 return DoctorCard;
             case this.Types.ODBORNOST:
                 return Odbornost;
+            case this.Types.MYPROBLEM:
+                return MyProblem;
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }

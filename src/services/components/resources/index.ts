@@ -19,6 +19,9 @@ import * as blog from './blog.json';
 import * as polyclinicboxes from './polyclinicboxes.json'; 
 import * as doctorcard from './doctorcard.json'; 
 import * as odbornost from './odbornost.json';
+import * as polyclinicboxes from './polyclinicboxes.json';
+import * as doctorcard from './doctorcard.json';
+import * as myproblem from './myproblem.json';
 
 export {
   def as default,
@@ -33,7 +36,7 @@ export {
   infoboxes,
   map,
   polyclinicslist,
-  reviews,  
+  reviews,
   textblock,
   expertiselist,
   inforectangles,
@@ -42,4 +45,5 @@ export {
   polyclinicboxes,
   doctorcard,
   odbornost,
+  myproblem
 };
