@@ -25,13 +25,12 @@
   .infoBox {
     box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
     box-sizing: border-box;
-
     position: absolute;
     width: 90%;
     background-color: #fff;
-
     left: 50%;
     transform: translateX(-50%);
+    max-width: 280px;
 
     @include md {
       min-width: 25%;
