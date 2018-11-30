@@ -109,3 +109,53 @@ cite {
   height: 5px;
   background-image: linear-gradient(to right, #2472b8 0%, #00aadd 100%);
 }
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #cecece;
+    transition: 300ms ease;
+    background-color: #f4f5f7;
+  }
+
+  &:hover + label:before {
+    box-shadow: 0 0 0 2px rgba($blue, 0.5);
+  }
+
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+
+  &:checked + label:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    height: 7px;
+    width: 14px;
+    border-left: 2px solid $blue;
+    border-bottom: 2px solid $blue;
+    transform: rotate(-55deg);
+  }
+}
