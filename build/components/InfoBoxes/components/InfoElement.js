@@ -6,8 +6,6 @@ export default function InfoElement(props) {
         React.createElement("div", null,
             React.createElement("h5", { style: { color: "" + titleColor } }, title),
             React.createElement(Button, { classes: btn }, "vice info")),
-        React.createElement("div", { className: 'info-element__colorGradient', style: {
-                background: "linear-gradient(\n\t\t\t\t\t\t\t\t\tto bottom, \n\t\t\t\t\t\t\t\t\trgba(125, 185, 232, 0) 0%, \n\t\t\t\t\t\t\t\t\t" + color + " 100%)",
-            } })));
+        React.createElement("div", { className: 'info-element__colorGradient', style: { background: "linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, " + color + " 100%)", } })));
 }
 //# sourceMappingURL=InfoElement.js.map

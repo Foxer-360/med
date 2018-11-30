@@ -4,7 +4,6 @@
 @import 'mediaQueries';
 @import 'mixins';
 @import 'variables';
-@import 'buttons';
 @import 'text';
 
 //COMPONENTS STYLES
@@ -36,3 +35,5 @@
 @import '../src/components/DividerCircles/style.scss';
 @import '../src/components/Svg/CloseIcon/style.scss';
 @import '../src/components/MyProblem/style.scss';
+@import '../src/components/Positions/style.scss';
+@import '../src/components/Button/style.scss';

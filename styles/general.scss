@@ -67,6 +67,7 @@ body {
 
 .grid {
   display: grid;
+  grid-gap: 20px;
 
   &--vCenterBlock {
     align-items: center;

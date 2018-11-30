@@ -1,0 +1,58 @@
+h3 {
+  @include webkitGradientText;
+  padding-bottom: 35px;
+}
+
+.actual-positions {
+  margin-bottom: 35px;
+}
+
+.positions {
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0;
+  grid-template-rows: 295px;
+  grid-template-columns: repeat(3, 1fr);
+  
+  @include max-lg {
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  p {
+    color: white;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-bottom: 20px;
+  }
+
+  &__colorGradient {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+  
+
+  &__element-content {
+    display: table-cell;
+    vertical-align: bottom;
+    padding-bottom: 35px;
+    padding-left: 35px;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__element {
+    width: 100%;
+    height: 295px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: table;
+    position: relative;
+  }
+}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ButtonProps {
-  classes: string;
+  classes?: string;
   children: string;
 }
 
