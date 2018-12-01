@@ -1,9 +1,5 @@
 .crossRoads {
-  padding: 40px 0 40px;
-
-  @include md {
-    padding: 40px 0 63px;
-  }
+  padding-bottom: 40px;
 
   &__wrapper {
     @extend .flexRow;

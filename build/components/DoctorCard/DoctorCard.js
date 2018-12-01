@@ -1,6 +1,7 @@
 import * as React from 'react';
 import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
+import Button from '../Button';
 var DoctorCard = function (props) {
     return (React.createElement("section", { className: 'doctorCard' },
         React.createElement("div", { className: "container" },
@@ -32,7 +33,7 @@ var DoctorCard = function (props) {
                 React.createElement("div", null,
                     React.createElement("img", { src: "/assets/medicon/images/floorMap.png", alt: "" }))),
             React.createElement("div", { className: 'doctorCard__btnHolder' },
-                React.createElement("button", { className: 'btn  btnFirst' }, "objednat")),
+                React.createElement(Button, { classes: 'btn--blueBkg' }, "objednat")),
             React.createElement("div", { className: 'doctorCard__divider' },
                 React.createElement("div", { className: "dividerCircles" },
                     React.createElement("div", null)))),

@@ -1,0 +1,129 @@
+.care {
+  margin-bottom: 50px;
+
+  div {
+    width: 80%;
+    box-sizing: border-box;
+    padding-left: 70px;
+    border-left: 7px solid;
+    border-image: linear-gradient(to bottom, $lightBlue 0%, $blue 100%);
+    border-image-slice: 1;
+  }
+  p {
+    margin-bottom: 25px;
+
+    &:last-of-type() {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.investigation {
+
+  &__blocks {
+    width: 80%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 135px;
+    box-sizing: border-box;
+
+    @include max-sm {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
+    }
+  }
+
+  &__block {
+    width: 100%;
+    height: 100%;
+    min-height: 135px;
+    padding: 35px;
+    background-color: #f4f5f7;
+    box-sizing: border-box;
+    display: table;
+    position: relative;
+    
+    @include blockAnimation;
+
+    &:last-of-type() {
+      grid-column-start: span 2;
+    }
+
+    p {
+      color: #3c3c3b;
+      font-size: 2rem;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    @include max-xl {
+      padding: 20px;
+      
+      p { font-size: 1.8rem; }
+    }
+
+    @include max-sm {
+      &:last-of-type() {
+        grid-column-start: 1;
+      }
+    }
+  }
+}
+
+.info {
+  margin-bottom: 50px;
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  h5 {
+    text-align: left;
+    color: white;
+  }
+
+  &__element {
+    height: 270px;
+    width: 100%;
+    display: table;
+    box-shadow: 0 0 10px rgba(15, 52, 86, 0.2);
+    position: relative;
+    background-size: cover;
+
+    &--cell {
+      z-index: 3;
+      display: table-cell;
+      vertical-align: bottom;
+      margin-bottom: 30px;
+      padding-bottom: 35px;
+      position: relative;
+    }
+
+    &--colorGradient {
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, transparent 0%, $blue 100%);
+      opacity: 0.6;
+    }
+    
+    h5,
+    button {
+      margin-left: 35px;
+    }
+
+    h5 {
+      padding-bottom: 35px;
+    }
+  }
+
+  @include max-md {
+    .grid-container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

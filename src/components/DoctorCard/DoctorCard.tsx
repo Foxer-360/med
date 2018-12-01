@@ -1,6 +1,7 @@
 import * as React from 'react';
 import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
+import Button from '../Button';
 
 export interface DoctorCardProps {}
 
@@ -66,7 +67,7 @@ const DoctorCard = (props: DoctorCardProps) => {
         </div>
 
         <div className={'doctorCard__btnHolder'}>
-          <button className={'btn  btnFirst'}>objednat</button>
+          <Button classes={'btn--blueBkg'}>objednat</Button>
         </div>
 
         <div className={'doctorCard__divider'}>

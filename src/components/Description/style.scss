@@ -1,0 +1,8 @@
+@import './components/style';
+
+h3 {
+  font-size: 2.8rem;
+  padding-bottom: 40px;
+
+  @include webkitGradientText;
+}

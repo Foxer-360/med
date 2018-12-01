@@ -1,12 +1,11 @@
 .textBlock {
-  padding: 40px 0 25px;
-
   &__container {
     h2 {
       @include webkitGradientText;
     }
 
     &__text {
+      padding-bottom: 40px;
       color: #3c3c3b;
       font-size: 1.6rem;
       font-weight: 400;
