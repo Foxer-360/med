@@ -23,4 +23,5 @@ import Odbornost from './Odbornost';
 import MyProblem from './MyProblem';
 import CareerForm from './CareerForm';
 import ExpertiseDescription from './ExpertiseDescription';
-export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, Button, Odbornost, MyProblem, CareerForm, ExpertiseDescription, };
+import MedicalGroup from './MedicalGroup';
+export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, Button, Odbornost, MyProblem, CareerForm, MedicalGroup, ExpertiseDescription, };

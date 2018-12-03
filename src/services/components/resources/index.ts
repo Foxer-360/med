@@ -22,6 +22,7 @@ import * as doctorcard from './doctorcard.json';
 import * as myproblem from './myproblem.json';
 import * as careerform from './careerform.json';
 import * as expertisedescription from './expertisedescription.json';
+import * as medicalgroup from './medicalgroup.json';
 
 export {
   def as default,
@@ -48,4 +49,5 @@ export {
   myproblem,
   careerform,
   expertisedescription,
+  medicalgroup,
 };

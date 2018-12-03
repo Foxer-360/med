@@ -23,6 +23,7 @@ import Odbornost from './Odbornost';
 import MyProblem from './MyProblem';
 import CareerForm from './CareerForm';
 import ExpertiseDescription from './ExpertiseDescription';
+import MedicalGroup from './MedicalGroup';
 
 export {
   AlertNotFound,
@@ -50,4 +51,5 @@ export {
   MyProblem,
   CareerForm,
   ExpertiseDescription,
+  MedicalGroup,
 };
