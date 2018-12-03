@@ -22,7 +22,7 @@ import DoctorCard from './DoctorCard';
 import Odbornost from './Odbornost';
 import MyProblem from './MyProblem';
 import CareerForm from './CareerForm';
-import Description from './Description';
+import ExpertiseDescription from './ExpertiseDescription';
 
 export {
   AlertNotFound,
@@ -49,5 +49,5 @@ export {
   Odbornost,
   MyProblem,
   CareerForm,
-  Description,
+  ExpertiseDescription,
 };

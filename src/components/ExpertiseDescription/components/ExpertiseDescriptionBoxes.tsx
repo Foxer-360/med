@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Button from '../../Button';
 
-export interface BoxesProps {}
+export interface ExpertiseDescriptionBoxesProps {}
 
-const Boxes = (props: BoxesProps) => {
+const ExpertiseDescriptionBoxes = (props: ExpertiseDescriptionBoxesProps) => {
   
   return (
     <section className="info">
@@ -38,4 +38,4 @@ const Boxes = (props: BoxesProps) => {
   );
 };
 
-export default Boxes;
+export default ExpertiseDescriptionBoxes;

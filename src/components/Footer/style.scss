@@ -30,8 +30,10 @@
     color: white;
     transition: ease 0.3s;
 
-    &:hover {
-      color: $blue;
+    @include md {
+      &:hover {
+        color: $blue;
+      }
     }
   }
 

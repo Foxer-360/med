@@ -1,8 +1,8 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
-import Care from './components/Care';
-import Investigation from './components/Investigation';
-import Boxes from './components/Boxes';
+import ExpertiseDescriptionCare from './components/ExpertiseDescriptionCare';
+import ExpertiseDescriptionInvestigation from './components/ExpertiseDescriptionInvestigation';
+import ExpertiseDescriptionBoxes from './components/ExpertiseDescriptionBoxes';
 
 export interface DescriptionProps {}
 
@@ -39,16 +39,16 @@ const Description = (props: DescriptionProps) => {
   return (
     <div className={'container'}>
 
-      <Care 
+      <ExpertiseDescriptionCare 
         title={data.care.title}
         items={data.care.items}
       />
-      <Investigation 
+      <ExpertiseDescriptionInvestigation 
         title={data.investigationinves.title}
         items={data.investigationinves.items}
       />
       <DividerCircles />
-      <Boxes />
+      <ExpertiseDescriptionBoxes />
       
     </div>
   );

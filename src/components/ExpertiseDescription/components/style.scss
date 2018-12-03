@@ -42,7 +42,7 @@
     display: table;
     position: relative;
     
-    @include blockAnimation;
+    @include md { @include blockAnimation; }
 
     &:last-of-type() {
       grid-column-start: span 2;

@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface InvestigationProps {
+export interface ExpertiseDescriptionInvestigationProps {
   title: string;
   items: Array<string>;
 }
 
-const Investigation = (props: InvestigationProps) => {
+const ExpertiseDescriptionInvestigation = (props: ExpertiseDescriptionInvestigationProps) => {
   const {title, items} = props;
   
   return (
@@ -26,4 +26,4 @@ const Investigation = (props: InvestigationProps) => {
   );
 };
 
-export default Investigation;
+export default ExpertiseDescriptionInvestigation;
