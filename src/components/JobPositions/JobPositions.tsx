@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '../Button';
 
-export interface PositionsProps {}
+export interface JobPositionsProps {}
 
 const data = {
   title: 'Výpis aktuálních pozic',
@@ -22,7 +22,7 @@ const data = {
   ]
 };
 
-const Positions = (props: PositionsProps) => {
+const JobPositions = (props: JobPositionsProps) => {
   
   return (
     <div className={'container actual-positions'}>
@@ -53,4 +53,4 @@ const Positions = (props: PositionsProps) => {
   );
 };
 
-export default Positions;
+export default JobPositions;

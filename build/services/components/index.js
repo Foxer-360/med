@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 import WebFont from 'webfontloader';
-import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, Positions, } from '../../components';
+import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
@@ -47,7 +47,7 @@ var ComponentsService = /** @class */ (function () {
             DOCTORCARD: 'DoctorCard',
             ODBORNOST: 'Odbornost',
             MYPROBLEM: 'MyProblem',
-            POSITIONS: 'Positions',
+            JOBPOSITIONS: 'JobPositions',
         };
     }
     /***/
@@ -103,8 +103,8 @@ var ComponentsService = /** @class */ (function () {
                 return Odbornost;
             case this.Types.MYPROBLEM:
                 return MyProblem;
-            case this.Types.POSITIONS:
-                return Positions;
+            case this.Types.JOBPOSITIONS:
+                return JobPositions;
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }
