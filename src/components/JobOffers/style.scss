@@ -39,18 +39,16 @@ h3 {
       bottom: 0;
     }
 
-    &:hover {
-      transform: translateY(-3px);
-
-      &:after {
-        width: 100%;
-        right: auto;
-        left: 0;
-      }
-    }
-
     @include md {
-      
+      &:hover {
+        transform: translateY(-3px);
+  
+        &:after {
+          width: 100%;
+          right: auto;
+          left: 0;
+        }
+      }
     }
   }
 

@@ -10,4 +10,4 @@ var jobOffers = function (props) {
                 React.createElement("p", { className: 'hCenterBlock' }, "Ostatn\u00ED pozice")))));
 };
 export default jobOffers;
-//# sourceMappingURL=Offers.js.map
+//# sourceMappingURL=JobOffers.js.map

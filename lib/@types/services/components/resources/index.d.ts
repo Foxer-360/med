@@ -20,5 +20,5 @@ import * as odbornost from './odbornost.json';
 import * as polyclinicboxes from './polyclinicboxes.json';
 import * as doctorcard from './doctorcard.json';
 import * as myproblem from './myproblem.json';
-import * as offers from './offers.json';
-export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, offers, };
+import * as joboffers from './joboffers.json';
+export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, joboffers, };

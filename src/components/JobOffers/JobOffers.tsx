@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-export interface OffersProps {};
+export interface JobOffersProps {};
 
-const Offers = (props: OffersProps) => {
+const jobOffers = (props: JobOffersProps) => {
    
 
   return (
@@ -25,4 +25,4 @@ const Offers = (props: OffersProps) => {
   );
 };
 
-export default Offers;
+export default jobOffers;
