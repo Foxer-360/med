@@ -1,0 +1,61 @@
+$avatar: 'avatar';
+$avatarRed: #ea6545;
+
+.avatar {
+  width: 100%;
+  transition: 300ms ease;
+  max-width: 290px;
+
+  @include sm {
+    height: 400px;
+    width: AUTO;
+    max-width: none;
+  }
+
+  svg {
+    width: 100%;
+    fill: transparent;
+    stroke: $lightBlue;
+    stroke-width: 4px;
+
+    @include sm {
+      height: 100%;
+      width: AUTO;
+    }
+
+    * {
+      z-index: 1;
+    }
+
+    .#{$avatar}__area {
+      cursor: pointer;
+      z-index: 100;
+      stroke: none;
+      transition: 300ms ease;
+
+      &:hover {
+        fill: transparentize($avatarRed, 0.6);
+      }
+    }
+    .#{avatar}__eye {
+      fill: $lightBlue;
+    }
+
+    .#{avatar}__eyebrow,
+    .#{avatar}__mouth,
+    .#{avatar}__ear,
+    .#{avatar}__nose {
+      stroke: $lightBlue;
+    }
+  }
+
+  $areaList: rEye lEye mouth lEar rEar lKnee rKnee lHand rHand lFeet rFeet mouth nose;
+
+  @each $area in $areaList {
+    &.active--#{$area} {
+      .avatar__#{$area} {
+        fill: transparentize($avatarRed, 0.6);
+      }
+    }
+  }
+}

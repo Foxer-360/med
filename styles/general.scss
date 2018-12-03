@@ -65,16 +65,12 @@ body {
   }
 }
 
-
-
-
-.d-flex {
-  display: flex;
-  justify-content: space-around;
-}
-
 .grid {
   display: grid;
+
+  &--vCenterBlock {
+    align-items: center;
+  }
 }
 
 .grid-container {
@@ -85,10 +81,6 @@ body {
   box-sizing: border-box;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-}
-
-.inline-gird {
-  display: inline-grid;
 }
 
 //LIST STYLES
@@ -112,31 +104,58 @@ cite {
   font-weight: 600;
 }
 
-.dividerCircles {
-  @extend .flexRow;
-  justify-content: center;
+.horizontal-line {
+  width: 75px;
+  height: 5px;
+  background-image: linear-gradient(to right, #2472b8 0%, #00aadd 100%);
+}
 
-  & > div {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background-color: #d8d8d8;
+.checkbox {
+  position: absolute;
+  opacity: 0;
+
+  & + label {
     position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
 
-    &:before,
-    &:after {
-      @include pseudo;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background-color: #d8d8d8;
-    }
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #cecece;
+    transition: 300ms ease;
+    background-color: #f4f5f7;
+  }
 
-    &:before {
-      left: -16px;
-    }
-    &:after {
-      right: -16px;
-    }
+  &:hover + label:before {
+    box-shadow: 0 0 0 2px rgba($blue, 0.5);
+  }
+
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+
+  &:checked + label:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    height: 7px;
+    width: 14px;
+    border-left: 2px solid $blue;
+    border-bottom: 2px solid $blue;
+    transform: rotate(-55deg);
   }
 }

@@ -1,6 +1,4 @@
 .btn {
-  height: 55px;
-  min-width: 190px;
   border: none;
   outline: none;
   display: block;
@@ -26,6 +24,8 @@
     -webkit-transform: rotate(-45deg);
     margin-bottom: 1px;
     left: 10px;
+    transition: 230ms ease;
+    will-change: left;
 
     &--down {
       transform: rotate(45deg);
@@ -52,7 +52,7 @@
 
   &--small {
     font-size: 1.4rem;
-    padding: 11px 38px;
+    padding: 10px 40px;
   }
 
   &--blueBkg {

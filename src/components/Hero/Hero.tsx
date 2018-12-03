@@ -10,7 +10,7 @@ export interface HeroProps {
 export interface HeroState {}
 
 class Hero extends React.Component<HeroProps, HeroState> {
-  public render() {
+  public render() {  
     const { title } = this.props.data;
 
     return (

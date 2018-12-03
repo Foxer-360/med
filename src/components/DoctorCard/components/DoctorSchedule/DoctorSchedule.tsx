@@ -1,5 +1,6 @@
 import * as React from 'react';
-
+import DividerCircles from '../../../DividerCircles';
+ 
 export interface DoctorScheduleProps {}
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
@@ -13,9 +14,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             <p>Pro objednané</p>
           </td>
           <td>  
-            <div className="dividerCircles">
-              <div />
-            </div>
+            <DividerCircles />
           </td>
           <td>
             <p>13.00 - 18.00</p>
@@ -30,9 +29,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             <p>Pro objednané</p>
           </td>
           <td>
-            <div className="dividerCircles">
-              <div />
-            </div>
+            <DividerCircles />
           </td>
           <td>
             <p>13.00 - 18.00</p>
@@ -47,9 +44,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             <p>Pro objednané</p>
           </td>
           <td>
-            <div className="dividerCircles">
-              <div />
-            </div>
+            <DividerCircles />
           </td>
           <td>
             <p>13.00 - 18.00</p>
@@ -64,9 +59,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             <p>Pro objednané</p>
           </td>
           <td>
-            <div className="dividerCircles">
-              <div />
-            </div>
+            <DividerCircles />
           </td>
           <td>
             <p>13.00 - 18.00</p>
@@ -81,9 +74,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             <p>Pro objednané</p>
           </td>
           <td>
-            <div className="dividerCircles">
-              <div />
-            </div>
+            <DividerCircles />
           </td>
           <td>
             <p>13.00 - 18.00</p>

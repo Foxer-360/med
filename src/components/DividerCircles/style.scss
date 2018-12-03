@@ -1,0 +1,29 @@
+.dividerCircles {
+    @extend .flexRow;
+    justify-content: center;
+    margin-bottom: 35px;
+  
+    & > div {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #d8d8d8;
+      position: relative;
+  
+      &:before,
+      &:after {
+        @include pseudo;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background-color: #d8d8d8;
+      }
+  
+      &:before {
+        left: -16px;
+      }
+      &:after {
+        right: -16px;
+      }
+    }
+}  

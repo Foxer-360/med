@@ -12,12 +12,12 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 import WebFont from 'webfontloader';
-import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, } from '../../components';
+import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, CareerForm, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
     google: {
-        families: ['Montserrat:400,500,600,700,:latin', 'sans-serif'],
+        families: ['Montserrat:400,500,600,700:latin-ext'],
     },
 });
 /**
@@ -45,6 +45,9 @@ var ComponentsService = /** @class */ (function () {
             BLOG: 'Blog',
             POLYCLINICBOXES: 'PolyclinicBoxes',
             DOCTORCARD: 'DoctorCard',
+            ODBORNOST: 'Odbornost',
+            MYPROBLEM: 'MyProblem',
+            CAREERFORM: 'CareerForm',
         };
     }
     /***/
@@ -96,6 +99,12 @@ var ComponentsService = /** @class */ (function () {
                 return PolyclinicBoxes;
             case this.Types.DOCTORCARD:
                 return DoctorCard;
+            case this.Types.ODBORNOST:
+                return Odbornost;
+            case this.Types.MYPROBLEM:
+                return MyProblem;
+            case this.Types.CAREERFORM:
+                return CareerForm;
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }
