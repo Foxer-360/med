@@ -24,6 +24,18 @@
     -webkit-transform: rotate(-45deg);
     margin-bottom: 1px;
     left: 10px;
+    transition: 230ms ease;
+    will-change: left;
+
+    &--down {
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+
+    &--up {
+      transform: rotate(225deg);
+      -webkit-transform: rotate(225deg);
+    }
   }
 
   &:hover {

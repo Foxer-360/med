@@ -1,0 +1,104 @@
+.medicalGroup {
+  &__list {
+    padding: 0 77px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 50px;
+    width: 100%;
+    margin: 0 auto;
+
+    &:after {
+      @include pseudo;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 8px;
+      @include topBottomgradient($lightBlue, $blue);
+    }
+
+    @include md {
+      width: 65%;
+    }
+
+    ul {
+      @include reset-list;
+      .medicalGroup__list__item {
+        .medicalGroup__list__item__title {
+          position: relative;
+          width: auto;
+          display: inline-block;
+          cursor: pointer;
+
+          span {
+            font-size: 1.6rem;
+            font-weight: 600;
+
+            &:first-of-type {
+              color: $lightBlue;
+            }
+            &:last-of-type {
+            }
+          }
+
+          &:after {
+            @include pseudo;
+            width: 7px;
+            height: 7px;
+            right: -12px;
+            border-right: 2px solid $darkGray;
+            border-bottom: 2px solid $darkGray;
+            transform: rotate(45deg);
+            top: 12px;
+          }
+        }
+
+        .medicalGroup__list__item__text {
+          line-height: 21.62px;
+          font-size: 1.4rem;
+          letter-spacing: 0.64px;
+          max-height: 0;
+          opacity: 0;
+          transition: 300ms ease;
+          overflow: hidden;
+
+          p {
+            margin: 13px 0;
+            padding: 0 0 0 38px;
+            position: relative;
+
+            &:after {
+              width: 4px;
+              height: 0%;
+              top: 50%;
+              transform: translate3d(0, -50%, 0);
+              left: 0;
+              background-color: #cecece;
+              @include pseudo;
+              transition: 300ms;
+              transition-delay: 200ms;
+            }
+          }
+        }
+
+        &.active {
+          .medicalGroup__list__item__text {
+            max-height: 100px;
+            opacity: 1;
+
+            p {
+              &:after {
+                height: 100%;
+              }
+            }
+          }
+
+          .medicalGroup__list__item__title {
+            &:after {
+              transform: rotate(-137deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}
