@@ -54,7 +54,7 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
 
   public render() {
     return (
-      <section className={'blog'}>
+      <section className={'blog'}>  
         <div className="container">
           <h1>aktuality a informace</h1>
 

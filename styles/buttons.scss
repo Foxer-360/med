@@ -24,6 +24,8 @@
     -webkit-transform: rotate(-45deg);
     margin-bottom: 1px;
     left: 10px;
+    transition: 230ms ease;
+    will-change: left;
 
     &--down {
       transform: rotate(45deg);
