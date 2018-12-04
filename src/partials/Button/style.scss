@@ -50,6 +50,20 @@
     }
   }
 
+  &--down {
+    .arrow{  
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+  
+    &:hover {
+      .arrow {
+        left: 10px;
+        top: 5px;
+      }
+    }
+  }
+
   &--small {
     font-size: 1.4rem;
     padding: 10px 40px;
@@ -104,6 +118,15 @@
       .arrow {
         border-color: white;
       }
+    }
+  }
+
+  &--greyBkg {
+    background-color: #f4f5f7;
+    text-transform: none;
+
+    .arrow {
+      border-color: $lightBlue;
     }
   }
 }

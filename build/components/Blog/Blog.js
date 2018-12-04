@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import { BlogCard } from './components/blogCard';
-import Button from '../Button';
+import Button from '../../partials/Button';
 var data = {
     items: [
         {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../Button';
+import Button from '../../partials/Button';
 var InfoRectangles = function (props) {
     return (React.createElement("section", { className: "info-rectangles" },
         React.createElement("div", { className: "container" },

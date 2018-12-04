@@ -26,7 +26,7 @@ const data = {
       titleColor: '#ffffff',
     },
   ]
-}
+};
 
 const InfoBoxes = (props: InfoBoxesProps) => {
   return (

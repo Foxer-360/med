@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PcTitle from './components/title';
-import Button from '../Button';
+import Button from '../../partials/Button';
 
 // ! DEV ONLY
 const data = {

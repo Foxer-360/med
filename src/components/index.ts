@@ -16,11 +16,12 @@ import ExpertiseList from './ExpertiseList';
 import InfoRectangles from './InfoRectangles';
 import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
-import Button from './Button';
 import PolyclinicBoxes from './PolyclinicBoxes';
 import DoctorCard from './DoctorCard';
 import Odbornost from './Odbornost';
 import MyProblem from './MyProblem';
+import JobPositions from './JobPositions';
+import JobOffers from './JobOffers';
 import CareerForm from './CareerForm';
 import ExpertiseDescription from './ExpertiseDescription';
 import MedicalGroup from './MedicalGroup';
@@ -46,9 +47,10 @@ export {
   PolyclinicBoxes,
   DoctorCard,
   Blog,
-  Button,
+  JobOffers,
   Odbornost,
   MyProblem,
+  JobPositions,
   CareerForm,
   ExpertiseDescription,
   MedicalGroup,

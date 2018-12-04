@@ -1,0 +1,79 @@
+h3 {
+  @include webkitGradientText;
+}
+
+.offers {
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: 145px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin-bottom: 50px;
+
+  &__element {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #f4f5f7;
+    background-repeat: no-repeat;
+    background-position: 50px center;    
+    box-sizing: border-box;
+    transition: 300ms ease;
+
+    p {
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding-left: 60px;
+    }
+
+    
+    &:after {
+      @include pseudo;
+      height: 6px;
+      width: 0;
+      transition: 300ms ease;
+      @include leftRightGradient(#2472b8, #00aadd);
+      right: 0;
+      bottom: 0;
+    }
+
+    @include md {
+      &:hover {
+        transform: translateY(-3px);
+  
+        &:after {
+          width: 100%;
+          right: auto;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  @include max-xl {
+    p { font-size: 2.2rem; }
+  }
+
+  @include max-lg {
+    grid-template-rows: repeat(2, 145px);
+    grid-template-columns: 1fr;
+  }
+
+  @include max-sm {
+    p {
+      padding-left: 100px;
+    }
+  }
+
+  @include max-xs {
+    &__element {
+      background-size: 50px auto;
+    }
+    p {
+      font-size: 2rem;
+      padding-left: 130px;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../../Button';
+import Button from '../../../partials/Button';
 
 export interface InfoElementProps {
   title: string;
@@ -20,15 +20,10 @@ export default function InfoElement(props: InfoElementProps) {
         <Button classes={btn}>vice info</Button>
       </div>
 
-      <div 	className={'info-element__colorGradient'}
-            style={{
-              background: 
-                `linear-gradient(
-                  to bottom, 
-                  rgba(125, 185, 232, 0) 0%, 
-                  ${color} 100%)`,
-            }}>	
-      </div>
+      <div 
+        className={'info-element__colorGradient'}
+        style={{ background: `linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, ${color} 100%)`, }}
+      />
     </a>
   );
 }

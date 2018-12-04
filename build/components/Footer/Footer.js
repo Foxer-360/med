@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import Social from './components/Social';
+import HelpPopup from './components/HelpPopup';
 var Footer = /** @class */ (function (_super) {
     __extends(Footer, _super);
     function Footer() {
@@ -20,9 +21,10 @@ var Footer = /** @class */ (function (_super) {
     }
     Footer.prototype.render = function () {
         return (React.createElement("footer", { className: 'footer' },
+            React.createElement(HelpPopup, null),
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: "flexRow flexAlign--space-between" },
-                    React.createElement("ul", null,
+                    React.createElement("ul", { className: 'footer__list' },
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "O spole\u010Dnosti")),
                         React.createElement("li", null,
@@ -33,7 +35,7 @@ var Footer = /** @class */ (function (_super) {
                             React.createElement("a", { href: "#" }, "Aktuality")),
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Kontakty"))),
-                    React.createElement("ul", null,
+                    React.createElement("ul", { className: 'footer__list' },
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Polikliniky")),
                         React.createElement("li", null,
@@ -44,7 +46,7 @@ var Footer = /** @class */ (function (_super) {
                             React.createElement("a", { href: "#" }, "N\u00E1sledn\u00E1 p\u00E9\u010De ")),
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "L\u00E9k\u00E1rny"))),
-                    React.createElement("ul", null,
+                    React.createElement("ul", { className: 'footer__list' },
                         React.createElement("li", null,
                             React.createElement("a", { href: "#" }, "Nej\u010Dast\u011Bj\u0161\u00ED dotazy")),
                         React.createElement("li", null,

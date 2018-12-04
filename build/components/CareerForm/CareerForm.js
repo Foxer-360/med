@@ -23,7 +23,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from 'react';
-import Button from '../Button';
+import Button from '../../partials/Button';
 var CareerForm = /** @class */ (function (_super) {
     __extends(CareerForm, _super);
     function CareerForm(props) {

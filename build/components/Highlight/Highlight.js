@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../Button';
+import Button from '../../partials/Button';
 var Highlight = function (props) {
     return (React.createElement("div", { className: "fullWidthContainer" },
         React.createElement("section", { className: 'highlight' },

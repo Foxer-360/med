@@ -21,7 +21,7 @@ const data = {
       starCount: 5
     }
   ]
-}
+};
 
 class Reviews extends React.Component<any, any> {
   public render() {
@@ -35,7 +35,8 @@ class Reviews extends React.Component<any, any> {
                 key={index}
                 img={item.img} 
                 cite={item.cite} 
-                starCount={item.starCount} />  
+                starCount={item.starCount} 
+              />  
             ))}
           </div>
         </div>
