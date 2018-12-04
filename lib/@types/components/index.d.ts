@@ -16,11 +16,14 @@ import ExpertiseList from './ExpertiseList';
 import InfoRectangles from './InfoRectangles';
 import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
-import Button from './Button';
 import PolyclinicBoxes from './PolyclinicBoxes';
 import DoctorCard from './DoctorCard';
 import Odbornost from './Odbornost';
 import MyProblem from './MyProblem';
+import JobPositions from './JobPositions';
+import JobOffers from './JobOffers';
 import CareerForm from './CareerForm';
+import ExpertiseDescription from './ExpertiseDescription';
 import MedicalGroup from './MedicalGroup';
-export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, Button, Odbornost, MyProblem, CareerForm, MedicalGroup, };
+
+export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, JobOffers, Odbornost, MyProblem, JobPositions, CareerForm, MedicalGroup, ExpertiseDescription, };

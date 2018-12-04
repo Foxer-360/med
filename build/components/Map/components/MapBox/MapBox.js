@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../../../Button';
+import Button from '../../../../partials/Button';
 var MapBox = function (props) {
     return (React.createElement("div", { className: 'mapBox' },
         React.createElement("img", { src: '/assets/medicon/images/mapbox.png' }),

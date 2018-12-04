@@ -5,7 +5,7 @@ var data = {
     title: 'Alergologie a Imunologie',
     img: '/assets/medicon/images/odbornost-lekar.jpg',
     doctor: 'MUDr. Hana Kocherová',
-    cite: 'Na našem oddělení Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio.'
+    cite: 'Na našem oddělení Lorem ipsum dolor sit amet, consectetur adipiscingelit. Vivamus eu bibendum nulla, ac efficitur odio.'
 };
 var Odbornost = function (props) {
     return (React.createElement("div", { className: 'odbornost' },

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import { BlogCard } from './components/blogCard';
-import Button from '../Button';
+import Button from '../../partials/Button';
 
 export interface BlogProps {}
 

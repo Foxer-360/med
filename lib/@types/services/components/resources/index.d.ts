@@ -20,6 +20,10 @@ import * as odbornost from './odbornost.json';
 import * as polyclinicboxes from './polyclinicboxes.json';
 import * as doctorcard from './doctorcard.json';
 import * as myproblem from './myproblem.json';
+import * as jobpositions from './jobpositions.json';
+import * as joboffers from './joboffers.json';
 import * as careerform from './careerform.json';
+import * as expertisedescription from './expertisedescription.json';
 import * as medicalgroup from './medicalgroup.json';
-export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, careerform, medicalgroup, };
+
+export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, jobpositions, joboffers, careerform, medicalgroup, expertisedescription, };

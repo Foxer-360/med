@@ -83,6 +83,7 @@
         margin-bottom: 1rem;
         text-align: center;
         width: 100%;
+        line-height: initial;
 
         @include lg {
           text-align: left;
@@ -95,11 +96,16 @@
         font-size: 1.4rem;
         font-weight: 400;
         margin-bottom: 2.8rem;
-        text-align: center;
 
         @include lg {
           font-size: 1.8rem;
           text-align: left;
+        }
+
+        @include max-lg {
+          margin: auto;
+          margin-bottom: 2.8rem;
+          text-align: center;
         }
       }
 

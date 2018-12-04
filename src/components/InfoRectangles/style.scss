@@ -1,4 +1,6 @@
 .info-rectangles {
+  margin-bottom: 50px;
+  
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, 1fr);
@@ -11,10 +13,11 @@
 
   .info-element {
     height: 270px;
-    width: 600px;
+    width: 100%;
     background-clip: border-box;
     display: table;
     box-shadow: 0 0 10px rgba(15, 52, 86, 0.2);
+    background-size: cover;
 
     div {
       display: table-cell;
@@ -29,6 +32,12 @@
 
     h5 {
       padding-bottom: 35px;
+    }
+  }
+
+  @include max-md {
+    .grid-container {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

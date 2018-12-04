@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../Button';
+import Button from '../../partials/Button';
 export interface DoctorListProps {}
 
 // ! MOCK DATA ONLY
@@ -11,6 +11,7 @@ const data = {
       name: 'MUDr. Jana Pavluchová',
       field: 'Alergologie a Imunologie',
       clinic: 'Poliklinika Budějovická',
+      img: '/assets/medicon/images/doctorlist1.png'
     },
     {
       name: 'MUDr. Michala Jakubíková, Ph.D.',
