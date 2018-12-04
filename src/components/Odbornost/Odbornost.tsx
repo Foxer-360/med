@@ -8,7 +8,7 @@ const data = {
 	title: 'Alergologie a Imunologie',
 	img: '/assets/medicon/images/odbornost-lekar.jpg',
 	doctor: 'MUDr. Hana Kocherová',
-	cite: 'Na našem oddělení Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio.'
+	cite: 'Na našem oddělení Lorem ipsum dolor sit amet, consectetur adipiscingelit. Vivamus eu bibendum nulla, ac efficitur odio.'
 }
 
 const Odbornost = (props: OdbornostProps) => {
@@ -16,7 +16,7 @@ const Odbornost = (props: OdbornostProps) => {
 		<div className={'odbornost'}>
 			<TextBlock data={data} />
 			<DividerCircles />
-			
+
 			<div className={'container'}>
 				<div className={'odbornost__doctor'}>
 					<img src={data.img} alt="photo"/>
@@ -28,8 +28,8 @@ const Odbornost = (props: OdbornostProps) => {
 								<cite>{data.cite}</cite>
 							</div>
 						</div>
-					</div>					
-					
+					</div>
+
 			</div>
 		</div>
 	);

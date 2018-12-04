@@ -22,6 +22,7 @@ import DoctorCard from './DoctorCard';
 import Odbornost from './Odbornost';
 import MyProblem from './MyProblem';
 import JobPositions from './JobPositions';
+import JobOffers from './JobOffers';
 import CareerForm from './CareerForm';
 import MedicalGroup from './MedicalGroup';
 

@@ -1,13 +1,16 @@
 import * as React from 'react';
 import Social from './components/Social';
+import HelpPopup from './components/HelpPopup';
 
 class Footer extends React.Component<any, any> {
   public render() {
     return (
       <footer className={'footer'}>
+        <HelpPopup />
+
         <div className="container">
           <div className="flexRow flexAlign--space-between">
-            <ul>
+            <ul className={'footer__list'}>
               <li>
                 <a href="#">O společnosti</a>
               </li>
@@ -24,7 +27,7 @@ class Footer extends React.Component<any, any> {
                 <a href="#">Kontakty</a>
               </li>
             </ul>
-            <ul>
+            <ul className={'footer__list'}>
               <li>
                 <a href="#">Polikliniky</a>
               </li>
@@ -41,7 +44,7 @@ class Footer extends React.Component<any, any> {
                 <a href="#">Lékárny</a>
               </li>
             </ul>
-            <ul>
+            <ul className={'footer__list'}>
               <li>
                 <a href="#">Nejčastější dotazy</a>
               </li>
