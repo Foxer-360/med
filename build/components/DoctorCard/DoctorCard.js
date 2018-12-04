@@ -1,7 +1,7 @@
 import * as React from 'react';
 import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
-import Button from '../Button';
+import Button from '../../partials/Button';
 var DoctorCard = function (props) {
     return (React.createElement("section", { className: 'doctorCard' },
         React.createElement("div", { className: "container" },
