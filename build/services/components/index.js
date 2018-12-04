@@ -120,6 +120,7 @@ var ComponentsService = /** @class */ (function () {
                 return MedicalGroup;
             case this.Types.VIEWSABOUTUS:
                 return ViewsAboutUs;
+            
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }

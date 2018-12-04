@@ -35,17 +35,17 @@ export default class HelpPopup extends React.Component<HelpPopupProps, HelpPopup
         <ul className={'helpPopup__list'}>
           <li style={{ backgroundImage: 'url(/assets/medicon/images/phone2.png)' }}>
             <p>Polikinika Budejovicka</p>
-            <a href="">+420 261 006 111</a>
+            <a href="tel:+420261006111">+420 261 006 111</a>
           </li>
 
           <li style={{ backgroundImage: 'url(/assets/medicon/images/phone2.png)' }}>
             <p>Polikinika Budejovicka</p>
-            <a href="">+420 261 006 111</a>
+            <a href="tel:+420261006111">+420 261 006 111</a>
           </li>
 
           <li style={{ backgroundImage: 'url(/assets/medicon/images/phone2.png)' }}>
             <p>Polikinika Budejovicka</p>
-            <a href="">+420 261 006 111</a>
+            <a href="tel:+420261006111">+420 261 006 111</a>
           </li>
         </ul>
       </div>

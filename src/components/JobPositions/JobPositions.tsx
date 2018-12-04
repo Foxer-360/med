@@ -9,7 +9,7 @@ const data = {
   items: [
     {
       position: 'Dermatolog',
-      img: '/assets/medicon/images/positions-1.jpg'
+      img: '/assets/medicon/images/positions-1.jpg',
     },
     {
       position: 'Gynekolog',
@@ -19,30 +19,27 @@ const data = {
       position: 'Ortoped',
       img: '/assets/medicon/images/positions-3.jpg',
     },
-  ]
+  ],
 };
 
 const JobPositions = (props: JobPositionsProps) => {
-  
   return (
     <div className={'container actual-positions'}>
-      
       <h3>{data.title}</h3>
+
       <Button classes="hCenterBlock btn--greyBkg btn--down">Všechny polikliniky</Button>
 
       <div className={'grid positions'}>
-
         {data.items.map((item, index) => (
-          <div className={'positions__element'} style={{ backgroundImage: `url(${item.img})` }}>
-
+          <div className={'positions__element'} style={{ backgroundImage: `url(${item.img})` }} key={index}>
             <div className={'positions__element-content'}>
               <p>{item.position}</p>
               <Button classes={'btn--whiteBorder'}>Vice info</Button>
             </div>
 
-            <div 
+            <div
               className={'positions__colorGradient'}
-              style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)`, }}
+              style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
             />
           </div>
         ))}

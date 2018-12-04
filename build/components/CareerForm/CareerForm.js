@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -102,7 +102,7 @@ var CareerForm = /** @class */ (function (_super) {
                                 React.createElement("a", { href: '' }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                 " \u00FAdaj\u016F.")),
                         React.createElement("div", { className: 'flexRow flexAlign--center' },
-                            React.createElement(Button, { classes: "btn--blueBkg" }, "Na\u010D\u00EDst dal\u0161\u00ED")))))));
+                            React.createElement(Button, { classes: "btn--blueBkg" }, "Odeslat")))))));
     };
     return CareerForm;
 }(React.Component));

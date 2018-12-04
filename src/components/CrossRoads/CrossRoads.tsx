@@ -13,7 +13,7 @@ const CrossRoads = (props: CrossRoadsProps) => {
             </div>
             <p>Hledám polikliniku </p>
           </a>
-
+  
           <a className={'crossRoads__card'} href="">
             <div className={'crossRoads__card__img'}>
               <img src="./assets/medicon/images/lekari.png" />

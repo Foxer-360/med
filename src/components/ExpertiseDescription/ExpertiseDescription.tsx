@@ -16,16 +16,16 @@ const data = {
 
       // tslint:disable-next-line:max-line-length
       '<strong>Diagnostika a léčba poruch imunity</strong> (recidivující infekce dýchacích cest, močových cest, opakované herpetické infekce).',
-      
+
       'Diagnostika <strong>autoimunních onemocnění.</strong>',
-      
+
       'Vyšetření provádíme u <strong>dětských i dospělých pacientů.</strong>',
     ],
   },
 
   investigationinves: {
     title: 'Typy vyšetření',
-  
+
     items: [
       'Kožní prick testy',
       'Krevní odběry k laboratornímu vyšetření',
@@ -35,21 +35,14 @@ const data = {
 };
 
 const Description = (props: DescriptionProps) => {
-  
   return (
     <div className={'container'}>
-
-      <ExpertiseDescriptionCare 
-        title={data.care.title}
-        items={data.care.items}
-      />
-      <ExpertiseDescriptionInvestigation 
-        title={data.investigationinves.title}
-        items={data.investigationinves.items}
-      />
+    <section className={'expertiseDescription'}>
+      <ExpertiseDescriptionCare title={data.care.title} items={data.care.items} />
+      <ExpertiseDescriptionInvestigation title={data.investigationinves.title} items={data.investigationinves.items} />
       <DividerCircles />
       <ExpertiseDescriptionBoxes />
-      
+      </section>
     </div>
   );
 };
