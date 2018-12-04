@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
-import SearchIcon from '../Svg/SearchIcon';
+import SearchIcon from '../../partials/Svg/SearchIcon';
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FbIcon from '@source/components/Svg/FbIcon/FbIcon';
+import FbIcon from '@source/partials/Svg/FbIcon/FbIcon';
 var Social = function (props) { return (React.createElement("div", { className: "social flexColumn" },
     React.createElement("a", { href: "#" },
         React.createElement(FbIcon, { name: 'white' })),

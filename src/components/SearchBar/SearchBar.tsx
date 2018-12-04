@@ -1,5 +1,5 @@
 import * as React from 'react';
-import SearchIcon from '../Svg/SearchIcon';
+import SearchIcon from '../../partials/Svg/SearchIcon';
 
 export interface SearchBarProps {
   placeholder: string;
