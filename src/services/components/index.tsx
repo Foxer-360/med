@@ -29,6 +29,7 @@ import {
   CareerForm,
   ExpertiseDescription,
   MedicalGroup,
+  Timeline,
   ViewsAboutUs,
   ContactInfo,
 } from '../../components';
@@ -72,6 +73,7 @@ class ComponentsService {
     CAREERFORM: 'CareerForm',
     EXPERTISEDESCRIPTION: 'ExpertiseDescription',
     MEDICALGROUP: 'MedicalGroup',
+    TIMELINE: 'Timeline',
     VIEWSABOUTUS: 'ViewsAboutUs',
     CONTACTINFO: 'ContactInfo',
   };
@@ -140,6 +142,8 @@ class ComponentsService {
         return ExpertiseDescription;
       case this.Types.MEDICALGROUP:
         return MedicalGroup;
+      case this.Types.TIMELINE:
+        return Timeline;
       case this.Types.VIEWSABOUTUS:
         return ViewsAboutUs;
       case this.Types.CONTACTINFO:

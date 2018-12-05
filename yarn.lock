@@ -1880,6 +1880,11 @@ detect-newline@^2.1.0:
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
   integrity sha1-9B8cEL5LAOh7XxPaaAdZ8sW/0+I=
 
+detect-passive-events@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.4.tgz#6ed477e6e5bceb79079735dcd357789d37f9a91a"
+  integrity sha1-btR35uW863kHlzXc01d4nTf5qRo=
+
 diff@^3.2.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
@@ -4576,6 +4581,14 @@ react-scrollchor@^6.0.0:
   integrity sha512-Ryc3SoxG/urLrqQ4rFIsj1nWfW9pPGZK30CSlJ670zJWpPFQtVfYOmiZmQUwY96P8L+LcCVmV4q1ZdBlZsuW/Q==
   dependencies:
     requestanimationframe-timer "1.x.x"
+
+react-swipeable@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-4.3.0.tgz#818c0818ac565f5b169348f442153f343abff8bc"
+  integrity sha512-L21VMbcDvG+AOVF4ZIbQ8sICGIgiKB/plGKWBMw6dkxt5neS7x74ZlTbJ39U8slz798MZBv/uIoE9Vzgp3PODQ==
+  dependencies:
+    detect-passive-events "^1.0.4"
+    prop-types "^15.5.8"
 
 react@^16.3.2:
   version "16.6.3"

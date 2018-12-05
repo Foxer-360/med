@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 import WebFont from 'webfontloader';
-import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, ViewsAboutUs, } from '../../components';
+import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, ViewsAboutUs, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
@@ -52,6 +52,7 @@ var ComponentsService = /** @class */ (function () {
             CAREERFORM: 'CareerForm',
             EXPERTISEDESCRIPTION: 'ExpertiseDescription',
             MEDICALGROUP: 'MedicalGroup',
+            TIMELINE: 'Timeline',
             VIEWSABOUTUS: 'ViewsAboutUs',
         };
     }
@@ -118,9 +119,10 @@ var ComponentsService = /** @class */ (function () {
                 return ExpertiseDescription;
             case this.Types.MEDICALGROUP:
                 return MedicalGroup;
+            case this.Types.TIMELINE:
+                return Timeline;
             case this.Types.VIEWSABOUTUS:
                 return ViewsAboutUs;
-            
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }

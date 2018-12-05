@@ -14,12 +14,15 @@ export default function ReviewElement(props: ReviewElementProps) {
   }
 
   return (
-    <div className="review-el">
-      <img className="review-img" src={props.img} alt="photo" />
-      <div className="el">
+    <div className="reviews__list__element">
+
+      <img src={props.img} alt="photo" />
+
+      <div className="reviews__list__element__content">
         <cite>{props.cite}</cite>
         <div className="stars">{rows}</div>
       </div>
+
     </div>
   );
 }

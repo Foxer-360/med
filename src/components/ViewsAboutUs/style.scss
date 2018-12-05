@@ -17,6 +17,7 @@
       grid-template-columns: repeat(3, 1fr);
       align-items: center;
 
+      &--cell { padding: 15px 0; }
 
       img { 
         grid-column: 1/2;
@@ -24,10 +25,7 @@
         margin: 10px;
       }
       div { grid-column: 2/4; }
-      cite { 
-        line-height: initial;
-        padding-right: 25px;
-      }
+      cite { line-height: initial; }
       a { 
         color: $lightBlue ;
         display: block;
