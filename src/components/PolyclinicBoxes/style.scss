@@ -1,21 +1,22 @@
 .polyclinicBoxes {
  
-  ul {
-    list-style: none;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 40px;
-    li {
-
-      &:before {
-        content: none;
-      }
-    }
-  }
-
   h3 {
     padding-bottom: 50px;
     margin-bottom: 0;
+    
     @include webkitGradientText;
+  }
+
+  ul {
+    @include reset-list;
+
+    grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+    grid-template-rows: 295px;
+    justify-items: center;
+    margin-bottom: 50px;
+
+    li {
+      padding: 0;
+    }
   }
 }
