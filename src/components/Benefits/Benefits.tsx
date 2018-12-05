@@ -1,26 +1,32 @@
 import * as React from 'react';
 
-interface IProperties {
+interface IProperties { 
   data: number[];
 }
 
 const Benefits: React.SFC<IProperties> = props => (
-  <section className={'benefity'}>
-    <div className="container">
-      <ul>
-        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity1.png)' }}>
+  <section className={'benefits'}>
+    <div className={'container'}>
+
+      <div className={'grid benefits__list'}>
+        <div className={'grid benefits__list__element'}>
+          <img src="/assets/medicon/images/benefity1.png" alt="out benefit"/>
           <p>Přívětivý personál</p>
-        </li>
-        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity2.png)' }}>
+        </div>
+        <div className={'grid benefits__list__element'}>
+          <img src="/assets/medicon/images/benefity2.png" alt="out benefit"/>
           <p>Přívětivý personál</p>
-        </li>
-        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity3.png)' }}>
+        </div>
+        <div className={'grid benefits__list__element'}>
+          <img src="/assets/medicon/images/benefity3.png" alt="out benefit"/>
           <p>Přívětivý personál</p>
-        </li>
-        <li style={{ backgroundImage: 'url(/assets/medicon/images/benefity4.png)' }}>
+        </div>
+        <div className={'grid benefits__list__element'}>
+          <img src="/assets/medicon/images/benefity4.png" alt="out benefit"/>
           <p>Přívětivý personál</p>
-        </li>
-      </ul>
+        </div>
+      </div>
+
     </div>
   </section>
 );
