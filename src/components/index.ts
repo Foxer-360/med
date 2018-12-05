@@ -24,6 +24,7 @@ import JobPositions from './JobPositions';
 import JobOffers from './JobOffers';
 import CareerForm from './CareerForm';
 import ExpertiseDescription from './ExpertiseDescription';
+import Timeline from './Timeline';
 import MedicalGroup from './MedicalGroup';
 
 export {
@@ -54,4 +55,5 @@ export {
   CareerForm,
   ExpertiseDescription,
   MedicalGroup,
+  Timeline,
 };
