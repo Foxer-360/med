@@ -57,4 +57,5 @@ export {
   expertisedescription,
   medicalgroup,
   viewsaboutus,
+  timeline
 };
