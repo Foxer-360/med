@@ -26,5 +26,6 @@ import CareerForm from './CareerForm';
 import ExpertiseDescription from './ExpertiseDescription';
 import Timeline from './Timeline';
 import MedicalGroup from './MedicalGroup';
-export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, JobOffers, Odbornost, MyProblem, JobPositions, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, };
+import ViewsAboutUs from './ViewsAboutUs';
+export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, JobOffers, Odbornost, MyProblem, JobPositions, CareerForm, ExpertiseDescription, MedicalGroup, ViewsAboutUs, Timeline };
 //# sourceMappingURL=index.js.map

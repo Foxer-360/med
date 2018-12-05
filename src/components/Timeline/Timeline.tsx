@@ -31,6 +31,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
         limitRight: false,
       },
       () => {
+        
         let width = this.timeline.current && this.timeline.current.getBoundingClientRect().width;
 
         if (this.state.x >= 0) {

@@ -30,6 +30,7 @@ import {
   ExpertiseDescription,
   MedicalGroup,
   Timeline,
+  ViewsAboutUs,
 } from '../../components';
 import * as resources from './resources';
 
@@ -72,6 +73,7 @@ class ComponentsService {
     EXPERTISEDESCRIPTION: 'ExpertiseDescription',
     MEDICALGROUP: 'MedicalGroup',
     TIMELINE: 'Timeline',
+    VIEWSABOUTUS: 'ViewsAboutUs',
   };
 
   /***/
@@ -140,6 +142,8 @@ class ComponentsService {
         return MedicalGroup;
       case this.Types.TIMELINE:
         return Timeline;
+      case this.Types.VIEWSABOUTUS:
+        return ViewsAboutUs;
 
       default:
         return () => <AlertNotFound type="component" />;
