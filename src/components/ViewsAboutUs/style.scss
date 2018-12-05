@@ -1,0 +1,50 @@
+.viewsAboutUs {
+  margin-bottom: 50px;
+
+  h3 {
+    @include webkitGradientText;
+  }
+
+  &__grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto; 
+
+    &__element {
+      height: 100%;
+      width: 100%;
+      background-color: #f4f5f7;
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+
+
+      img { 
+        grid-column: 1/2;
+        justify-self: start;        
+        margin: 10px;
+      }
+      div { grid-column: 2/4; }
+      cite { 
+        line-height: initial;
+        padding-right: 25px;
+      }
+      a { 
+        color: $lightBlue ;
+        display: block;
+      }
+
+      @include max-xl { font-size: 1.4rem; }
+      @include max-lg { 
+        font-size: 1.6rem;
+        grid-template-columns: none;
+      }
+      @include max-xs {
+        font-size: 1.4rem;
+      }
+    }
+
+    @include max-lg {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

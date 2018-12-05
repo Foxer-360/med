@@ -29,6 +29,7 @@ import {
   CareerForm,
   ExpertiseDescription,
   MedicalGroup,
+  ViewsAboutUs,
 } from '../../components';
 import * as resources from './resources';
 
@@ -70,6 +71,7 @@ class ComponentsService {
     CAREERFORM: 'CareerForm',
     EXPERTISEDESCRIPTION: 'ExpertiseDescription',
     MEDICALGROUP: 'MedicalGroup',
+    VIEWSABOUTUS: 'ViewsAboutUs',
   };
 
   /***/
@@ -136,6 +138,8 @@ class ComponentsService {
         return ExpertiseDescription;
       case this.Types.MEDICALGROUP:
         return MedicalGroup;
+      case this.Types.VIEWSABOUTUS:
+        return ViewsAboutUs;
 
       default:
         return () => <AlertNotFound type="component" />;
