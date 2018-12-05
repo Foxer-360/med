@@ -26,6 +26,7 @@ import * as careerform from './careerform.json';
 import * as expertisedescription from './expertisedescription.json';
 import * as medicalgroup from './medicalgroup.json';
 import * as viewsaboutus from './viewsaboutus.json';
+import * as contactinfo from './contactinfo.json';
 
 export {
   def as default,
@@ -56,4 +57,5 @@ export {
   expertisedescription,
   medicalgroup,
   viewsaboutus,
+  contactinfo,
 };
