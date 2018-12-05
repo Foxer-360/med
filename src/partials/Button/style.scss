@@ -21,20 +21,16 @@
     vertical-align: middle;
     border-width: 0 2px 2px 0;
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
     margin-bottom: 1px;
     left: 10px;
     transition: 230ms ease;
-    will-change: left;
 
     &--down {
       transform: rotate(45deg);
-      -webkit-transform: rotate(45deg);
     }
 
     &--up {
       transform: rotate(225deg);
-      -webkit-transform: rotate(225deg);
     }
   }
 
@@ -51,11 +47,10 @@
   }
 
   &--down {
-    .arrow{  
+    .arrow {
       transform: rotate(45deg);
-      -webkit-transform: rotate(45deg);
     }
-  
+
     &:hover {
       .arrow {
         left: 10px;

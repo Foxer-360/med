@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../../Button';
+import Button from '../../../partials/Button';
 var ExpertiseDescriptionBoxes = function (props) {
     return (React.createElement("section", { className: "info" },
         React.createElement("div", { className: "grid-container" },

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ArrowIcon from '@source/components/Svg/ArrowIcon/ArrowIcon';
+import ArrowIcon from '@source/partials/Svg/ArrowIcon/ArrowIcon';
 
 export interface BlogCardProps {
   title: string;
@@ -15,6 +15,7 @@ export function BlogCard(props: BlogCardProps) {
   if (special) {
     return (
       <a href="" className={'blogCard blogCard--special'}>
+      
         {title && <h3>{title}</h3>}
 
         <ul>

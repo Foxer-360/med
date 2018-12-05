@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -34,13 +34,13 @@ var HelpPopup = /** @class */ (function (_super) {
             React.createElement("ul", { className: 'helpPopup__list' },
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phone2.png)' } },
                     React.createElement("p", null, "Polikinika Budejovicka"),
-                    React.createElement("a", { href: "" }, "+420 261 006 111")),
+                    React.createElement("a", { href: "tel:+420261006111" }, "+420 261 006 111")),
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phone2.png)' } },
                     React.createElement("p", null, "Polikinika Budejovicka"),
-                    React.createElement("a", { href: "" }, "+420 261 006 111")),
+                    React.createElement("a", { href: "tel:+420261006111" }, "+420 261 006 111")),
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phone2.png)' } },
                     React.createElement("p", null, "Polikinika Budejovicka"),
-                    React.createElement("a", { href: "" }, "+420 261 006 111")))));
+                    React.createElement("a", { href: "tel:+420261006111" }, "+420 261 006 111")))));
     };
     return HelpPopup;
 }(React.Component));

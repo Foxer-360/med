@@ -1,5 +1,7 @@
-h3 {
-  @include webkitGradientText;
+.jobOffers {
+  h3 {
+    @include webkitGradientText;
+  }
 }
 
 .offers {
@@ -16,7 +18,7 @@ h3 {
     position: relative;
     background-color: #f4f5f7;
     background-repeat: no-repeat;
-    background-position: 50px center;    
+    background-position: 50px center;
     box-sizing: border-box;
     transition: 300ms ease;
 
@@ -28,7 +30,6 @@ h3 {
       padding-left: 60px;
     }
 
-    
     &:after {
       @include pseudo;
       height: 6px;
@@ -42,7 +43,7 @@ h3 {
     @include md {
       &:hover {
         transform: translateY(-3px);
-  
+
         &:after {
           width: 100%;
           right: auto;
@@ -53,7 +54,9 @@ h3 {
   }
 
   @include max-xl {
-    p { font-size: 2.2rem; }
+    p {
+      font-size: 2.2rem;
+    }
   }
 
   @include max-lg {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ArrowIcon from '@source/components/Svg/ArrowIcon/ArrowIcon';
+import ArrowIcon from '@source/partials/Svg/ArrowIcon/ArrowIcon';
 export function BlogCard(props) {
     var title = props.title, text = props.text, color = props.color, img = props.img, special = props.special;
     if (special) {

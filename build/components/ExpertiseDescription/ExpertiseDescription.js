@@ -26,10 +26,11 @@ var data = {
 };
 var Description = function (props) {
     return (React.createElement("div", { className: 'container' },
-        React.createElement(ExpertiseDescriptionCare, { title: data.care.title, items: data.care.items }),
-        React.createElement(ExpertiseDescriptionInvestigation, { title: data.investigationinves.title, items: data.investigationinves.items }),
-        React.createElement(DividerCircles, null),
-        React.createElement(ExpertiseDescriptionBoxes, null)));
+        React.createElement("section", { className: 'expertiseDescription' },
+            React.createElement(ExpertiseDescriptionCare, { title: data.care.title, items: data.care.items }),
+            React.createElement(ExpertiseDescriptionInvestigation, { title: data.investigationinves.title, items: data.investigationinves.items }),
+            React.createElement(DividerCircles, null),
+            React.createElement(ExpertiseDescriptionBoxes, null))));
 };
 export default Description;
 //# sourceMappingURL=ExpertiseDescription.js.map

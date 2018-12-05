@@ -1,7 +1,7 @@
 import * as React from 'react';
 import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
-import Button from '../Button';
+import Button from '../../partials/Button';
 
 export interface DoctorCardProps {}
 
