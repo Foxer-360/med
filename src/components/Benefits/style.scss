@@ -1,64 +1,63 @@
-// BENEFITY - TEXT
-.benefity {
-  height: 155px;
+.benefits {
   width: 100%;
+  min-height: 140px;
+  font-size: 2rem;
   background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
   margin-bottom: 40px;
+  box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
 
-  ul {
-    display: flex;
-    align-items: center;
+  &__list {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
     justify-content: center;
-    
-    li {
-      display: flex;
+    align-items: center;
+    padding: 40px 0;
+
+    &__element {
+      height: 100%;
+      grid-template-columns: 65px 1fr;
+      grid-template-rows: 1fr;
       align-items: center;
-      min-height: 65px;
-      padding: 0 30px;
-      background-repeat: no-repeat;
-      background-position: left center;
-      border-right: 2px solid #dadada;
-
-      &:last-child {
-        border: none;
-      }
-
-      &:not(:nth-of-type(1)) {
-        background-position: 20px center; 
-      }
-
-      p {
-        &:nth-of-type(even) {
-          padding-left: 40px;
-        }
-        &:nth-of-type(odd) {
-          padding-left: 80px;
-        }
-      }
-      &:before {
-        content: none;
-        padding-right: 12px;
+      
+      &:not(:last-of-type) {
+        border-right: 1px solid #dbdbda;
       }
     }
   }
 
-  @include max-lg  {
-    height: 100%;
-    padding: 35px 0;
+  @include max-lg {
+    font-size: 1.6rem;
 
-    ul {
-      flex-flow: wrap;
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0;
+      
+      &__element {
+        grid-template-columns: none;
+        justify-content: center;
+        padding: 25px;
 
-      li {
-        border: none;
-        margin-bottom: 20px;
+        img { margin: 0 auto; }
+        p { 
+          text-align: center;
+          line-height: initial;
+        }
 
-        &:not(:nth-of-type(1)) {
-          background-position: left;
+        &:not(:last-of-type) {
+          border-right: none;
+        }
+
+        &:nth-of-type(1) { 
+          border-right: 1px solid #dbdbda;
+          border-bottom: 1px solid #dbdbda; 
+        }
+
+        &:nth-of-type(2) {
+          border-bottom: 1px solid #dbdbda;
+        }
+
+        &:nth-of-type(3) {
+          border-right: 1px solid #dbdbda;
         }
       }
     }

@@ -29,7 +29,7 @@ class Reviews extends React.Component<any, any> {
       <section className="reviews">
         <h3>řekli o nás</h3>
         <div className="container">
-          <div className="grid-container">
+          <div className="grid reviews__list">
             {data.items.map((item, index) => (
               <ReviewElement 
                 key={index}
