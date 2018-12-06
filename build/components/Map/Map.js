@@ -16,20 +16,20 @@ import GoogleMapReact from 'google-map-react';
 export var GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
 import Marker from './components/Marker';
 // !DEV ONLY
-var markers = [
+var clinics = [
     {
-        lat: 50,
-        lng: 14,
+        lat: 50.042601,
+        lng: 14.450139,
         type: 'big',
     },
     {
-        lat: 50,
-        lng: 13,
+        lat: 50.107963,
+        lng: 14.494764,
         type: 'small',
     },
     {
-        lat: 50,
-        lng: 15,
+        lat: 50.041031,
+        lng: 14.429104,
         type: 'small',
     },
 ];
@@ -57,12 +57,25 @@ var Map = /** @class */ (function (_super) {
         _this.handleMarkerClose = _this.handleMarkerClose.bind(_this);
         return _this;
     }
+    //   componentWillReceiveProps(nextProps: MapProps & GeolocatedProps) {
+    //   if (nextProps && nextProps.coords && nextProps.coords.latitude && nextProps.coords.longitude) {
+    //     this.props.onSetPosition(nextProps.coords.latitude, nextProps.coords.longitude);
+    //   }
+    // }
     Map.prototype.render = function () {
         var _this = this;
+        var markers = [];
+        if (clinics) {
+            clinics.forEach(function (clinic, index) {
+                if (clinic.lat && clinic.lng) {
+                    markers.push(React.createElement(Marker, { type: 'small', lat: clinic.lat, lng: clinic.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic.lat, clinic.lng); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index }));
+                }
+            });
+        }
         var defaultCenter = { lat: 50.08804, lng: 14.42076 };
         var center = defaultCenter;
         var defaultZoom = 7;
-        var zoom = 7;
+        var zoom = 10;
         if (this.state.activeMarker) {
             center = this.state.activeMarkerCenter;
         }
@@ -72,7 +85,7 @@ var Map = /** @class */ (function (_super) {
                     React.createElement("button", null, "Zobrazit v\u0161echny polikliniky")),
                 React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, defaultZoom: defaultZoom, center: center, zoom: zoom, options: {
                         scrollwheel: false,
-                    } }, markers.map(function (marker, index) { return (React.createElement(Marker, { type: 'small', lat: marker.lat, lng: marker.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, marker.lat, marker.lng); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index })); })))));
+                    } }, markers))));
     };
     return Map;
 }(React.Component));
