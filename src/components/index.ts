@@ -27,6 +27,7 @@ import ExpertiseDescription from './ExpertiseDescription';
 import Timeline from './Timeline';
 import MedicalGroup from './MedicalGroup';
 import ViewsAboutUs from './ViewsAboutUs';
+import ContactForm from './ContactForm';
 
 export {
   AlertNotFound,
@@ -57,5 +58,6 @@ export {
   ExpertiseDescription,
   MedicalGroup,
   ViewsAboutUs,
-  Timeline
+  Timeline,
+  ContactForm
 };

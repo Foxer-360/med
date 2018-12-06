@@ -41,7 +41,7 @@ var Reviews = /** @class */ (function (_super) {
         return (React.createElement("section", { className: "reviews" },
             React.createElement("h3", null, "\u0159ekli o n\u00E1s"),
             React.createElement("div", { className: "container" },
-                React.createElement("div", { className: "grid-container" }, data.items.map(function (item, index) { return (React.createElement(ReviewElement, { key: index, img: item.img, cite: item.cite, starCount: item.starCount })); })))));
+                React.createElement("div", { className: "grid reviews__list" }, data.items.map(function (item, index) { return (React.createElement(ReviewElement, { key: index, img: item.img, cite: item.cite, starCount: item.starCount })); })))));
     };
     return Reviews;
 }(React.Component));

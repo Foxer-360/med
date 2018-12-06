@@ -27,6 +27,7 @@ import * as expertisedescription from './expertisedescription.json';
 import * as medicalgroup from './medicalgroup.json';
 import * as timeline from './timeline.json';
 import * as viewsaboutus from './viewsaboutus.json';
+import * as contactform from './contactform.json';
 
 export {
   def as default,
@@ -57,5 +58,6 @@ export {
   expertisedescription,
   medicalgroup,
   viewsaboutus,
-  timeline
+  timeline,
+  contactform,
 };
