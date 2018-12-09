@@ -17,14 +17,14 @@ const ContactInfo = (props: ContactInfoProps) => {
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-2.png" alt="phone number"/>
             <div>
-              <p>tel.: +420 261 006 111</p>
-              <p>fax: +420 261 006 210</p>
+              <a href={'tel:+420 261 006 111'}>tel.: +420 261 006 111</a><br/>
+              <a href={'tel:+420 261 006 210'}>fax: +420 261 006 210</a>
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-3.png" alt="e-mail"/>
             <div>
-              <p>info@mediconas.cz</p>
+              <a href={'mailto:info@mediconas.cz'}>info@mediconas.cz</a>
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>

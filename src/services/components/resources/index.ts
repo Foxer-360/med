@@ -61,6 +61,5 @@ export {
   viewsaboutus,
   contactinfo,
   timeline,
-  timeline,
   contactform,
 };
