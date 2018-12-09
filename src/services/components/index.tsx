@@ -32,6 +32,7 @@ import {
   Timeline,
   ViewsAboutUs,
   ContactForm,
+  Downloads,
 } from '../../components';
 import * as resources from './resources';
 
@@ -76,6 +77,7 @@ class ComponentsService {
     TIMELINE: 'Timeline',
     VIEWSABOUTUS: 'ViewsAboutUs',
     CONTACTFORM: 'ContactForm',
+    DOWNLOADS: 'Downloads',
   };
 
   /***/
@@ -148,6 +150,8 @@ class ComponentsService {
         return ViewsAboutUs;
       case this.Types.CONTACTFORM:
         return ContactForm;
+      case this.Types.DOWNLOADS:
+        return Downloads;
 
       default:
         return () => <AlertNotFound type="component" />;
