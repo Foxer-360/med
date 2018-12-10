@@ -62,4 +62,12 @@
       }
     }
   }
+
+  @include max-sm {
+    img {
+      width: 35px;
+      height: auto;
+    }
+    p { font-size: 14px; }
+  }
 }
