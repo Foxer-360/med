@@ -1,5 +1,6 @@
 html {
   font-display: auto;
+  overflow-x: hidden;
 }
 
 body {
@@ -148,7 +149,9 @@ cite {
   }
 
   &:hover + label:before {
-    box-shadow: 0 0 0 2px rgba($blue, 0.5);
+    @include md {
+      box-shadow: 0 0 0 2px rgba($blue, 0.5);
+    }
   }
 
   &:disabled + label {

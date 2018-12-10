@@ -5,9 +5,26 @@
 
 .pcitem {
   background-color: white;
+  padding: 20px;
+  margin: 0 auto 25px;
+  width: 90%;
 
-  padding: 25px 0;
-  margin-bottom: 25px;
+  @include md {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .container {
+    width: 100%;
+
+    @include md {
+      max-width: $layoutMinWidth;
+    }
+
+    @include xl {
+      width: 100%;
+    }
+  }
 
   &__wrapper {
     box-sizing: border-box;
@@ -18,9 +35,13 @@
   }
 
   &__img {
-    width: 30%;
+    width: 100%;
     display: block;
     position: relative;
+
+    @include md {
+      width: 30%;
+    }
 
     img {
       width: 100%;
@@ -30,9 +51,13 @@
   }
 
   &__info {
-    width: 70%;
+    width: 100%;
     box-sizing: border-box;
-    padding-left: 32px;
+
+    @include md {
+      width: 70%;
+      padding-left: 32px;
+    }
 
     @extend .flexColumn;
 
@@ -41,9 +66,13 @@
       justify-content: center;
       align-content: center;
       align-items: center;
-      padding: 25px 0;
+      padding: 25px 0 0;
       border-bottom: 1px solid #e7e7e7;
       flex-wrap: wrap;
+
+      @include md {
+        padding: 25px 0;
+      }
 
       @media (min-width: '1050px') {
         justify-content: space-between;
@@ -56,35 +85,54 @@
         width: 100%;
         display: flex;
         align-items: center;
+        margin-bottom: 24px;
 
         @media (min-width: '1050px') {
           width: calc(95% / 3);
+          margin-bottom: 0;
         }
 
-        img{
-          height: 40px;
+        img {
+          height: 35px;
+
+          @include md {
+            height: 40px;
+          }
         }
 
         p {
           margin: 0;
           padding: 0;
-          font-size: 1.7rem;
-          line-height: 25px;
+          font-size: 1.6rem;
+          line-height: 20px;
           margin-left: 15px;
+
+          @include md {
+            font-size: 1.7rem;
+            line-height: 25px;
+          }
         }
       }
     }
 
     &__list {
-      padding: 25px 0;
-      border-bottom: 1px solid #e7e7e7;
+      padding: 25px 0 0;
       @extend .flexRow;
       justify-content: space-between;
       align-items: flex-end;
 
+      @include md {
+        border-bottom: 1px solid #e7e7e7;
+        padding: 25px 0;
+      }
+
       ul {
-        column-count: 3;
+        column-count: 1;
         column-gap: 10px;
+
+        @include md {
+          column-count: 3;
+        }
         li {
           display: block;
         }
@@ -98,6 +146,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        padding: 15px 0;
+        text-align: center;
+        border-top: 1px solid #cecece;
+        border-bottom: 1px solid #cecece;
+        width: 100%;
+        margin: 16px 0 0 0;
+
+        @include md {
+          margin-bottom: 1.8rem;
+          padding: 0;
+          margin: 0;
+          text-align: left;
+          border-top: 0px #cecece;
+          border-bottom: 0px #cecece;
+          width: auto;
+        }
 
         .arrow {
           content: '';
@@ -123,35 +188,72 @@
       align-items: flex-end;
 
       &__txt {
-        width: 70%;
+        width: 100%;
+        font-size: 1.4rem;
+        margin-bottom: 14px;
+
+        @include md {
+          width: 70%;
+          font-size: 1.6rem;
+          margin-bottom: 0;
+        }
       }
     }
   }
 }
 
 .pcTitle {
-  @extend .flexRow;
-  justify-content: flex-start;
   border-bottom: 1px solid #e7e7e7;
-  box-sizing: border-box;
-  padding-bottom: 25px;
+  padding: 17px 0;
+  display: block;
+
+  @include md {
+    padding: 0px 0 25px 0;
+  }
 
   img {
-    width: 80px;
+    height: 33px;
+    width: auto;
+    display: inline-block;
+
+    @include md {
+      height: 50px;
+    }
   }
 
   &__title {
-    @extend .flexColumn;
     margin-left: 14px;
+    justify-content: space-between;
+    display: inline-flex;
+    flex-flow: column wrap;
 
     h3 {
       padding: 0;
       text-transform: capitalize;
       color: $darkGray;
+      text-align: left;
+      font-size: 2.4rem;
+      letter-spacing: -1px;
+      line-height: 1;
+
+      @include sm {
+        font-size: 3.2rem;
+      }
     }
 
     &__subtitle {
       @extend .flexRow;
+
+      span {
+        font-size: 1.2rem;
+        line-height: 1;
+        letter-spacing: -1px;
+        font-weight: 300;
+
+        @include sm {
+          font-size: 1.6rem;
+        }
+      }
 
       &__circles {
         @extend .flexRow;

@@ -27,7 +27,10 @@ import ExpertiseDescription from './ExpertiseDescription';
 import Timeline from './Timeline';
 import MedicalGroup from './MedicalGroup';
 import ViewsAboutUs from './ViewsAboutUs';
+import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
+import Downloads from './Downloads';
+import ContactsBlock from './ContactsBlock';
 
 export {
   AlertNotFound,
@@ -58,6 +61,9 @@ export {
   ExpertiseDescription,
   MedicalGroup,
   ViewsAboutUs,
+  ContactInfo,
   Timeline,
-  ContactForm
+  ContactForm,
+  Downloads,
+  ContactsBlock,
 };
