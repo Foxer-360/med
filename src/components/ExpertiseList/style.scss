@@ -12,7 +12,7 @@
   &__element {
     display: flex;
     width: 100%;
-    padding: 25px 0;
+    padding: 20px 0;
     background-color: #f4f5f7;
     align-items: center;
     cursor: pointer;
@@ -80,6 +80,10 @@
   @include max-sm {
     img {
       margin-left: 15px;
+      height: auto; 
+      width: auto; 
+      max-width: 35px;
+      max-height: 35px;
     }
   }
 }
