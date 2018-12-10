@@ -7,7 +7,7 @@ const PolyclinicInfo = (props: PolyclinicInfoProps) => {
     <div className="policlinicInfo">
       <div className="policlinicInfo__item" style={{ backgroundImage: 'url(/assets/medicon/images/geo.png)' }}>
         <p>
-          Antala Staška 1670/80 <br />
+          Antala Staška 1670/80<br />
           140 00 Praha 4
         </p>
       </div>
