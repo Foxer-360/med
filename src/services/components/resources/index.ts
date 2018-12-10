@@ -28,6 +28,7 @@ import * as medicalgroup from './medicalgroup.json';
 import * as timeline from './timeline.json';
 import * as viewsaboutus from './viewsaboutus.json';
 import * as contactform from './contactform.json';
+import * as contactsblock from './contactsblock.json';
 
 export {
   def as default,
@@ -60,4 +61,5 @@ export {
   viewsaboutus,
   timeline,
   contactform,
+  contactsblock,
 };

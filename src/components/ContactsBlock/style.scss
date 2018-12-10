@@ -1,0 +1,51 @@
+.contacts-block {
+  text-align: center;
+
+  h3 { padding-bottom: 5px; }
+  h4 { padding-bottom: 50px; }
+  h3, h4 { @include webkitGradientText; }
+
+  a {
+    transition: $customEase;
+     &:hover {
+      color: $lightBlue;
+    }
+  }
+
+  &__email {
+    color: $lightBlue;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__main {
+    grid-template-columns: repeat(2, 285px);
+    grid-template-rows: auto;
+    justify-content: center;
+  }
+
+  &__list {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    justify-content: center;
+    grid-gap: 35px;
+  }
+
+  @include max-lg {
+    &__list {
+      grid-template-columns: repeat(2, 285px);
+    }
+  }
+
+  @include max-md {
+    &__list, &__main {
+      grid-template-columns: repeat(1, 285px);
+    }
+  }
+}
