@@ -6,34 +6,31 @@
     grid-template-rows: repeat(1, 1fr);
   }
 
-  h3 {
-    @include webkitGradientText;
-  }
+  h3 { @include webkitGradientText; }
 
   h5 {
     text-align: left;
     color: white;
   }
 
-  .info-element {
+  &__element {
     height: 400px;
     width: 100%;
     display: table;
+    box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
 
-    div {
+    &__content {
       display: table-cell;
       vertical-align: bottom;
       padding-bottom: 35px;
-    }
+      padding-left: 35px;
+    
+      h5 {
+        padding-bottom: 25px;
+        line-height: 1.35;
+      }
 
-    h5,
-    button {
-      margin-left: 35px;
-    }
-
-    h5 {
-      padding-bottom: 25px;
-      line-height: 1.35;
+      button { width: 90%; }
     }
   }
 
@@ -44,8 +41,15 @@
       padding: 30px 30px 30px 30px;
     }
 
-    .info-element {
+    &__element {
+      height: 100%;
+      min-height: 280px;
       background-size: cover;
+      
+      h5 { 
+        font-size: 1.8rem;
+        padding-bottom: 20px;
+      }
     }
   }
 }
