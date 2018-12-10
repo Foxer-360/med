@@ -1,5 +1,4 @@
 import * as React from 'react';
-import MapBox from '../MapBox';
 
 interface MarkerProps {
   type: string;
@@ -17,7 +16,6 @@ const Marker: React.SFC<MarkerProps> = props => {
     <div className={'markerHolder'}>
       <div className={`marker ${type}`} onClick={e => handleMarkerClick(e, index)} />
 
-      {active && <MapBox />}
     </div>
   );
 };

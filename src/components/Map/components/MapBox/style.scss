@@ -16,13 +16,13 @@
     padding: 20px;
 
     img {
-      width: 50px;
+      width: 65px;
     }
 
     h3 {
       font-size: 2.6rem;
       text-align: left;
-      line-height: 0.6;
+      line-height: 1.2;
     }
 
     .pcTitle__title__subtitle {
@@ -51,7 +51,7 @@
 
         p {
           color: $darkGray;
-          font-size: 1.4rem;
+          font-size: 1.6rem;
           font-weight: 400;
           letter-spacing: 0.71px;
           line-height: 1.2;
@@ -66,8 +66,12 @@
 
     button {
       margin-top: 0;
-      padding: 11px 30px;
+      padding: 13px 22px;
       font-size: 1.2rem;
+
+      @include md {
+        min-width: 170px;
+      }
     }
   }
 }

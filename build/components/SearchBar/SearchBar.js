@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
-import SearchIcon from '../../partials/Svg/SearchIcon';
+import SvgIcon from '@source/partials/SvgIcon';
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {
@@ -25,7 +25,7 @@ var SearchBar = /** @class */ (function (_super) {
         return (React.createElement("div", { className: 'searchBar' },
             React.createElement("div", { className: 'searchBar__input' },
                 React.createElement("input", { type: "text", placeholder: placeholder }),
-                React.createElement(SearchIcon, { name: 'lightBlue' })),
+                React.createElement(SvgIcon, { name: 'search', type: 'lightBlue' })),
             React.createElement("div", { className: "searchBar__bar searchBar__bar--" + barColor })));
     };
     return SearchBar;

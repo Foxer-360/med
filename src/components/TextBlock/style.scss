@@ -1,12 +1,9 @@
 .textBlock {
-  &__container {
-    h2 {
-      @include webkitGradientText;
-    }
+  padding-bottom: 5rem;
 
+  &__container {
     &__text {
-      padding-bottom: 40px;
-      color: #3c3c3b;
+      color: $darkGray;
       font-size: 1.6rem;
       font-weight: 400;
       line-height: 30.75px;

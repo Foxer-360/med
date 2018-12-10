@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import Avatar from './components/Avatar';
-import CloseIcon from '../../partials/Svg/CloseIcon';
+import SvgIcon from '@source/partials/SvgIcon';
 var MyProblem = /** @class */ (function (_super) {
     __extends(MyProblem, _super);
     function MyProblem(props) {
@@ -43,7 +43,7 @@ var MyProblem = /** @class */ (function (_super) {
                     React.createElement(Avatar, { onClick: this.clickArea, activeArea: this.state.area ? 'active--' + this.state.area : '' }),
                     this.state.area && (React.createElement("div", { className: "infoBox " + (this.state.area ? 'infoBox--' + this.state.area : '') },
                         React.createElement("div", { className: 'infoBox__close', onClick: function () { return _this.closeInfoBox(); } },
-                            React.createElement(CloseIcon, { name: "gray" })),
+                            React.createElement(SvgIcon, { name: "close", type: "gray" })),
                         React.createElement("div", { className: 'infoBox__item' },
                             React.createElement("a", { href: "" }, this.state.area)),
                         React.createElement("div", { className: 'infoBox__item' },

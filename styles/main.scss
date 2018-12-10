@@ -5,6 +5,7 @@
 @import 'mixins';
 @import 'variables';
 @import 'text';
+@import 'forms';
 
 //COMPONENTS STYLES
 @import 'general';
@@ -37,11 +38,10 @@
 @import '../src/components/CareerForm/style.scss';
 @import '../src/components/ExpertiseDescription/style.scss';
 @import '../src/components/MedicalGroup/style.scss';
+@import '../src/components/Timeline/style.scss';
+@import '../src/components/ContactForm/style.scss';
 
 // PARTIALS
 
 @import '../src/partials/Button/style.scss';
-@import '../src/partials/Svg/SearchIcon/style.scss';
-@import '../src/partials/Svg/ArrowIcon/style.scss';
-@import '../src/partials/Svg/FbIcon/style.scss';
-@import '../src/partials/Svg/CloseIcon/style.scss';
+@import '../src/partials/SvgIcon/style.scss';

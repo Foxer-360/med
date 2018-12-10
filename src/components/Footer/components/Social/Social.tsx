@@ -1,12 +1,12 @@
 import * as React from 'react';
-import FbIcon from '@source/partials/Svg/FbIcon/FbIcon';
+import SvgIcon from '@source/partials/SvgIcon';
 
 export interface SocialProps {}
 
 const Social = (props: SocialProps) => (
   <div className="social flexColumn">
     <a href="#">
-      <FbIcon name={'white'} />
+      <SvgIcon type={'white'} name="fb" />
     </a>
     <p>
       <strong>MEDICON a.s.</strong>

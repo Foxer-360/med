@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ArrowIcon from '@source/partials/Svg/ArrowIcon/ArrowIcon';
+import SvgIcon from '@source/partials/SvgIcon';
 
 export interface BlogCardProps {
   title: string;
@@ -15,25 +15,24 @@ export function BlogCard(props: BlogCardProps) {
   if (special) {
     return (
       <a href="" className={'blogCard blogCard--special'}>
-      
         {title && <h3>{title}</h3>}
 
         <ul>
           <li>
             <span>
-              <ArrowIcon name={'white'} />
+              <SvgIcon name={'arrow'} type={'white'} />
             </span>
             Lékaře ORL
           </li>
           <li>
             <span>
-              <ArrowIcon name={'white'} />
+              <SvgIcon name={'arrow'} type={'white'} />
             </span>
             Lékař pracovně - lékařské služby
           </li>
           <li>
             <span>
-              <ArrowIcon name={'white'} />
+              <SvgIcon name={'arrow'} type={'white'} />
             </span>
             Dentální hygienista/ka
           </li>

@@ -10,9 +10,9 @@ const DoctorCard = (props: DoctorCardProps) => {
     <section className={'doctorCard'}>
       <div className="container">
         <div className={'doctorCard__main'}>
-          <img src="/assets/medicon/images/lekari.png" />
+          <img src="/assets/medicon/images/doctorIcon.svg" />
 
-          <h3>mudr. jana pavluchová</h3>
+          <h3 className={'gradientHeading'}>mudr. jana pavluchová</h3>
 
           <p className={'doctorCard__main__spe'}>Alergologie a imunologie</p>
 
@@ -26,29 +26,30 @@ const DoctorCard = (props: DoctorCardProps) => {
         <div className="doctorCard__info">
           <div className={'container'}>
             <div className="doctorCard__info__wrapper">
-              <div
-                className={'doctorCard__info__item'}
-                style={{ backgroundImage: 'url(/assets/medicon/images/stethoscope.png)' }}
-              >
-                Alergologie
-                <br />
-                Imunologie
-              </div>
-              <div
-                className={'doctorCard__info__item'}
-                style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}
-              >
-                +420 261 003 404
-              </div>
-              <div
-                className={'doctorCard__info__item'}
-                style={{ backgroundImage: 'url(/assets/medicon/images/geo.png)' }}
-              >
+              <div className={'doctorCard__info__item'}>
+                <img src="/assets/medicon/images/stethoscopeIcon.svg" />
                 <p>
-                  <strong>Poliklinika Budějovická </strong>
-                  Červená budova 9. patro
+                  Alergologie
+                  <br />
+                  Imunologie
                 </p>
-                <p>Antala Staška 1670/80, 140 00 Praha 4</p>
+              </div>
+
+              <div className={'doctorCard__info__item'}>
+                <img src="/assets/medicon/images/phoneIcon.svg" />
+                <p>+420 261 003 404</p>
+              </div>
+              
+              <div className={'doctorCard__info__item'}>
+                <img src="/assets/medicon/images/geoIcon.svg" />
+
+                <div>
+                  <p>
+                    <strong>Poliklinika Budějovická </strong>
+                    Červená budova 9. patro
+                  </p>
+                  <p>Antala Staška 1670/80, 140 00 Praha 4</p>
+                </div>
               </div>
             </div>
           </div>
@@ -67,7 +68,9 @@ const DoctorCard = (props: DoctorCardProps) => {
         </div>
 
         <div className={'doctorCard__btnHolder'}>
-          <Button classes={'btn--blueBkg'}>objednat</Button>
+          <Button classes={'btn--blueBkg'} noArrow={true}>
+            objednat
+          </Button>
         </div>
 
         <div className={'doctorCard__divider'}>
@@ -77,10 +80,10 @@ const DoctorCard = (props: DoctorCardProps) => {
         </div>
       </div>
 
-      <TextBlock data={{title: 'Poskytovaná péče'}} />
+      <TextBlock data={{ title: 'Poskytovaná péče' }} />
 
-      <TextBlock data={{title: 'typy provadenych vysetreni'}} />
-    </section>   
+      <TextBlock data={{ title: 'typy provadenych vysetreni' }} />
+    </section>
   );
 };
 

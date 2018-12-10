@@ -1,3 +1,7 @@
+html {
+  font-display: auto;
+}
+
 body {
   color: $darkGray;
   line-height: 24px;
@@ -162,7 +166,7 @@ cite {
     display: inline-block;
     position: absolute;
     left: 6px;
-    top: 10px;
+    top: 8px;
     height: 7px;
     width: 14px;
     border-left: 2px solid $blue;

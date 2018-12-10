@@ -24,8 +24,10 @@ import JobPositions from './JobPositions';
 import JobOffers from './JobOffers';
 import CareerForm from './CareerForm';
 import ExpertiseDescription from './ExpertiseDescription';
+import Timeline from './Timeline';
 import MedicalGroup from './MedicalGroup';
 import ViewsAboutUs from './ViewsAboutUs';
+import ContactForm from './ContactForm';
 
 export {
   AlertNotFound,
@@ -36,7 +38,7 @@ export {
   Header,
   Hero,
   Highlight,
-  InfoBoxes,
+  InfoBoxes,  
   Map,
   Reviews,
   TextBlock,
@@ -56,4 +58,6 @@ export {
   ExpertiseDescription,
   MedicalGroup,
   ViewsAboutUs,
+  Timeline,
+  ContactForm
 };

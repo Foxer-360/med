@@ -1,46 +1,101 @@
 .doctorSchedule {
+  width: 100%;
+
+  .mobileHeading {
+    border-bottom: 0;
+
+    & > td {
+      display: table-cell !important;
+      padding: 10px 0 10px;
+      text-align: center;
+      color: $lightBlue;
+      font-weight: 600;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    @include lg {
+      display: none;
+    }
+  }
+
   table {
-    tr {
+    width: 100%;
+
+    & > p {
+      width: 100%;
+      text-align: center;
+
+      @include lg {
+        display: none;
+      }
+    }
+    .normalRow {
       &:not(:last-of-type) {
         border-bottom: 1px solid #cecece;
       }
-    }
 
-    td {
-      padding: 15px 25px;
-      vertical-align: top;
+      td {
+        padding: 0px 25px 15px;
+        vertical-align: top;
 
-      &:last-of-type {
-        padding: 15px 15px 15px 25px;
-      }
-
-      &:first-of-type {
-        padding: 15px 50px 15px 0;
-      }
-
-      &:nth-of-type(3) {
-        vertical-align: middle;
-      }
-
-      &:first-of-type {
-        color: $lightBlue;
-        text-transform: uppercase;
-        font-size: 2rem;
-        font-weight: 600;
-      }
-
-      p {
-        color: $darkGray;
-        font-size: 2rem;
-        font-weight: 400;
-        line-height: 1;
-
-        &:first-of-type {
-          margin-bottom: 10px;
+        @include lg {
+          padding: 15px 25px;
         }
 
-        &:nth-of-type(2) {
+        &:last-of-type {
+          padding: 0 15px 15px 25px;
+
+          @include lg {
+            padding: 15px 15px 15px 25px;
+          }
+        }
+
+        &:first-of-type {
+          padding: 0 50px 15px 0;
+
+          @include lg {
+            padding: 15px 50px 15px 0;
+          }
+        }
+
+        &:nth-of-type(3) {
+          vertical-align: middle;
+        }
+
+        &:first-of-type {
+          color: $lightBlue;
+          text-transform: uppercase;
+          font-size: 2rem;
+          font-weight: 600;
+          display: none;
+
+          @include lg {
+            display: table-cell;
+          }
+        }
+
+        p {
+          color: $darkGray;
           font-size: 1.6rem;
+          font-weight: 400;
+          line-height: 1;
+
+          @include lg {
+            font-size: 2rem;
+          }
+
+          &:first-of-type {
+            margin-bottom: 10px;
+          }
+
+          &:nth-of-type(2) {
+            font-size: 1.6rem;
+          }
+        }
+
+        .dividerCircles {
+          margin: 0;
         }
       }
     }

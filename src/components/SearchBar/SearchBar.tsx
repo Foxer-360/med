@@ -1,5 +1,5 @@
 import * as React from 'react';
-import SearchIcon from '../../partials/Svg/SearchIcon';
+import SvgIcon from '@source/partials/SvgIcon';
 
 export interface SearchBarProps {
   placeholder: string;
@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
       <div className={'searchBar'}>
         <div className={'searchBar__input'}>
           <input type="text" placeholder={placeholder} />
-          <SearchIcon name={'lightBlue'} />
+          <SvgIcon name={'search'} type={'lightBlue'} />
         </div>
 
         <div className={`searchBar__bar searchBar__bar--${barColor}`} />

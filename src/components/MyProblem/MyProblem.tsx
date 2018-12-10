@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Avatar from './components/Avatar';
-import CloseIcon from '../../partials/Svg/CloseIcon';
+import SvgIcon from '@source/partials/SvgIcon';
 
 export interface MyProblemProps {}
 
@@ -43,7 +43,7 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
             {this.state.area && (
               <div className={`infoBox ${this.state.area ? 'infoBox--' + this.state.area : ''}`}>
                 <div className={'infoBox__close'} onClick={() => this.closeInfoBox()}>
-                  <CloseIcon name="gray" />
+                  <SvgIcon name="close" type="gray" />
                 </div>
 
                 <div className={'infoBox__item'}>

@@ -32,87 +32,87 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
     this.setState({
       formValues: { ...this.state.formValues, [e.target.name]: e.target.value },
     });
-  };
+  }
 
   public render() {
     return (
       <div className={'fullWidthContainer'}>
-        <section className={'careerForm'}>
+        <section className={'careerForm form'}>
           <div className={'container'}>
-            <h3>Nenašli jste pozici, ,kterou hledáte</h3>
+            <h3 className={'gradientHeading'}>Nenašli jste pozici, kterou hledáte</h3>
 
             <p>
               Máte-li zájem o práci u nás, <strong>vyplňte formulář</strong> a my vás zařadíme do databáze zájemců.
             </p>
 
             <form>
-              <div className={'careerForm__row careerForm__row--first'}>
+              <div className={'form__row form__row--first'}>
                 <div>
-                  <div className={'careerForm__input active'}>
+                  <div className={'form__input active'}>
                     <input
                       type="text"
                       name="firstName"
                       className={this.state.formValues.firstName ? 'active' : ''}
                       onChange={e => this.changeInputValue(e)}
                     />
-                    <span className={'careerForm__input__label'}>Jméno</span>
-                    <div className={'careerForm__input__bar'} />
+                    <span className={'form__input__label'}>Jméno</span>
+                    <div className={'form__input__bar'} />
                   </div>
                 </div>
 
                 <div>
-                  <div className={'careerForm__input'}>
+                  <div className={'form__input'}>
                     <input
                       type="text"
                       name="lastName"
                       className={this.state.formValues.lastName ? 'active' : ''}
                       onChange={e => this.changeInputValue(e)}
                     />
-                    <span className={'careerForm__input__label'}>Příjmení</span>
-                    <div className={'careerForm__input__bar'} />
+                    <span className={'form__input__label'}>Příjmení</span>
+                    <div className={'form__input__bar'} />
                   </div>
                 </div>
 
                 <div>
-                  <div className={'careerForm__input'}>
+                  <div className={'form__input'}>
                     <input
                       type="tel"
                       name="telephone"
                       className={this.state.formValues.telephone ? 'active' : ''}
                       onChange={e => this.changeInputValue(e)}
                     />
-                    <span className={'careerForm__input__label'}>Telefon</span>
-                    <div className={'careerForm__input__bar'} />
+                    <span className={'form__input__label'}>Telefon</span>
+                    <div className={'form__input__bar'} />
                   </div>
                 </div>
 
                 <div>
-                  <div className={'careerForm__input'}>
+                  <div className={'form__input'}>
                     <input
                       type="email"
                       name="email"
                       className={this.state.formValues.email ? 'active' : ''}
                       onChange={e => this.changeInputValue(e)}
                     />
-                    <span className={'careerForm__input__label'}>E-mail</span>
-                    <div className={'careerForm__input__bar'} />
+                    <span className={'form__input__label'}>E-mail</span>
+                    <div className={'form__input__bar'} />
                   </div>
                 </div>
               </div>
 
-              <div className={'careerForm__row careerForm__row--second'}>
-                <div className={'careerForm__selectInput'}>
+              <div className={'form__row form__row--second'}>
+                <div className={'form__selectInput'}>
                   <select>
                     <option>Lokalita kde chcete pracovat</option>
                   </select>
 
-                  <div className={'careerForm__input__bar'} />
+                  <div className={'form__input__bar'} />
                 </div>
 
-                <div className={'careerForm__inputBtn'}>
-                  <button>
+                <div className={'form__inputBtn'}>
+                  <button>  
                     Nahrát životopis
-                    <span>
+                    <span>  
                       <svg
                         enableBackground="new 0 0 353.7 386.4"
                         viewBox="0 0 353.7 386.4"
@@ -125,16 +125,16 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                     </span>
                   </button>
 
-                  <div className={'careerForm__input__bar'} />
+                  <div className={'form__input__bar'} />
                 </div>
               </div>
 
-              <div className={'careerForm__textarea'}>
+              <div className={'form__textarea'}>
                 <label>Průvodní dopis</label>
                 <textarea name="message" onChange={e => this.changeInputValue(e)} />
               </div>
 
-              <div className={'careerForm__terms'}>
+              <div className={'form__terms'}>
                 <div>
                   <input className={'checkbox'} id="styled-checkbox-1" type="checkbox" />
                   <label htmlFor="styled-checkbox-1" />

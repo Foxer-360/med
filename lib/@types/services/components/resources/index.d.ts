@@ -25,6 +25,7 @@ import * as joboffers from './joboffers.json';
 import * as careerform from './careerform.json';
 import * as expertisedescription from './expertisedescription.json';
 import * as medicalgroup from './medicalgroup.json';
+import * as timeline from './timeline.json';
 import * as viewsaboutus from './viewsaboutus.json';
-
-export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, jobpositions, joboffers, careerform, expertisedescription, medicalgroup, viewsaboutus, };
+import * as contactform from './contactform.json';
+export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, jobpositions, joboffers, careerform, expertisedescription, medicalgroup, viewsaboutus, timeline, contactform, };

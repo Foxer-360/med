@@ -1,8 +1,10 @@
 @import 'components/DoctorSchedule/style.scss';
 
 .doctorCard {
+  padding: 40px 0;
+
   @include md {
-    padding: 55px 0;
+    padding: 67px 0 57px;
   }
 
   &__main {
@@ -10,24 +12,44 @@
 
     img {
       margin-bottom: 24px;
+      width: 100px;
+
+      @include md {
+        width: 91px;
+      }
     }
 
     h3 {
-      padding-bottom: 6px;
+      padding: 0 0 19px 0;
+      font-size: 2rem;
+
+      @include md {
+        font-size: 3.2rem;
+      }
     }
 
     &__spe {
       color: $darkGray;
-      font-size: 1.8rem;
       font-weight: 400;
-      line-height: 25.23px;
       margin-bottom: 30px;
+      font-size: 1.6rem;
+      line-height: 28px;
+
+      @include md {
+        font-size: 1.8rem;
+        line-height: 25.23px;
+      }
     }
 
     &__sis {
       color: $darkGray;
-      font-size: 2.2rem;
-      letter-spacing: 0.98px;
+      font-size: 1.8rem;
+      letter-spacing: 0.72px;
+
+      @include md {
+        font-size: 2.2rem;
+        letter-spacing: 0.98px;
+      }
     }
   }
 
@@ -44,32 +66,68 @@
 
     &__item {
       @extend .flexRow;
-      padding: 0 0 0 105px;
-      background-position: 20px center;
-      background-repeat: no-repeat;
-      background-size: 55px auto;
-      min-height: 60px;
       color: $darkGray;
       font-size: 2rem;
       font-weight: 400;
       line-height: 27.03px;
       align-items: center;
+      padding: 22px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @include lg {
+        flex-wrap: nowrap;
+      }
+
+      img {
+        height: auto;
+        width: 55px;
+        display: inline-block;
+        padding: 0 0 22px 0;
+
+        @include lg {
+          padding: 0 0 0 4%;
+          height: 64px;
+          width: auto;
+        }
+      }
+
+      p,
+      & > div {
+        padding-left: 10px;
+        width: 100%;
+        text-align: center;
+
+        @include lg {
+          width: auto;
+          text-align: left;
+        }
+      }
 
       &:first-of-type,
       &:nth-of-type(2) {
-        flex-basis: calc(100% / 2) / 2;
+        flex-basis: 100%;
+        border-bottom: 1px solid #d0d0d0;
+
+        @include lg {
+          flex-basis: calc((100% / 2) / 2);
+          border-bottom: 0px;
+        }
       }
 
       &:nth-of-type(3) {
-        flex-basis: 50%;
+        flex-basis: 100%;
+
+        @include lg {
+          flex-basis: 50%;
+        }
       }
 
       &:not(:first-of-type) {
-        border-left: 1px solid #d0d0d0;
-      }
-
-      p {
-        width: 100%;
+        @include lg {
+          border-left: 1px solid #d0d0d0;
+          border-bottom: 0px;
+        }
       }
     }
   }
@@ -94,5 +152,9 @@
   &__divider {
     text-align: center;
     padding: 40px 0;
+
+    .dividerCircles {
+      margin: 0;
+    }
   }
 }

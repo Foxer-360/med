@@ -9,7 +9,7 @@ const MapBox: React.SFC<MapBoxProps> = props => {
       <img src={'/assets/medicon/images/mapbox.png'} />
 
       <div className={'pcTitle'}>
-        <img src="/assets/medicon/images/logo.png" alt="" />
+        <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
 
         <div className={'pcTitle__title'}>
           <h3>Poliklinika</h3>
@@ -30,10 +30,11 @@ const MapBox: React.SFC<MapBoxProps> = props => {
 
       <div className={'mapBox__contacts'}>
         <div className={'mapBox__contacts__item'}>
-          <img src={'/assets/medicon/images/geo.png'} />
+          <img src={'/assets/medicon/images/geoIcon.svg'} />
+
           <div>
-            <p>Sokolovská </p>
-            <p>304 190 00 Praha 9</p>
+            <p>Sokolovská 304 </p>
+            <p> 190 00 Praha 9</p>
           </div>
         </div>
 
@@ -46,8 +47,10 @@ const MapBox: React.SFC<MapBoxProps> = props => {
       </div>
 
       <div className={'mapBox__buttons'}>
-        <Button classes="btn--small btn--blueBkg">ambulance</Button>
-        <Button classes="btn--small btn--blueBkg">kuddy k nam</Button>
+        <Button classes="btn--small btn--blueBkg" noArrow={true}>
+          ambulance
+        </Button>
+        <Button classes="btn--small btn--blueBorder">kuddy k nam</Button>
       </div>
     </div>
   );
