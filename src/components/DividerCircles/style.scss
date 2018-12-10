@@ -1,29 +1,39 @@
 .dividerCircles {
-    @extend .flexRow;
-    justify-content: center;
-    margin: 40px 0;
-  
-    & > div {
+  @extend .flexRow;
+  justify-content: center;
+  margin: 40px 0;
+
+  & > div {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+    position: relative;
+
+    @include md {
       width: 9px;
       height: 9px;
+    }
+
+    &:before,
+    &:after {
+      @include pseudo;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background-color: #d8d8d8;
-      position: relative;
-  
-      &:before,
-      &:after {
-        @include pseudo;
+
+      @include md {
         width: 9px;
         height: 9px;
-        border-radius: 50%;
-        background-color: #d8d8d8;
-      }
-  
-      &:before {
-        left: -16px;
-      }
-      &:after {
-        right: -16px;
       }
     }
-}  
+
+    &:before {
+      left: -16px;
+    }
+    &:after {
+      right: -16px;
+    }
+  }
+}

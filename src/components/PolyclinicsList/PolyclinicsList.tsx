@@ -48,7 +48,7 @@ const PolyclinicsList = () => (
                     <li>Neurologie</li>
                     <li>Mammacentrum</li>
                     <li>Psychologie</li>
-                    <li>Neurologie</li>
+                    <li>Neurologie</li>  
                     <li>Mammacentrum</li>
                     <li>Psychologie</li>
                     <li>Neurologie</li>

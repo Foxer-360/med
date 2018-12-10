@@ -35,8 +35,10 @@
   }
 
   &:hover {
-    .arrow {
-      left: 15px;
+    @include md {
+      .arrow {
+        left: 15px;
+      }
     }
   }
 
@@ -52,9 +54,11 @@
     }
 
     &:hover {
-      .arrow {
-        left: 10px;
-        top: 5px;
+      @include md {
+        .arrow {
+          left: 10px;
+          top: 5px;
+        }
       }
     }
   }
@@ -71,8 +75,10 @@
     background-position: center;
 
     &:hover {
-      background-image: linear-gradient(to right, $blue 0%, $blue 100%);
-      background-color: $blue;
+      @include md {
+        background-image: linear-gradient(to right, $blue 0%, $blue 100%);
+        background-color: $blue;
+      }
 
       .arrow {
         border-color: white;
@@ -86,10 +92,12 @@
     background-color: transparent;
 
     &:hover {
-      color: $blue;
-      background-color: white;
-      .arrow {
-        border-color: $blue;
+      @include md {
+        color: $blue;
+        background-color: white;
+        .arrow {
+          border-color: $blue;
+        }
       }
     }
   }
