@@ -101,7 +101,7 @@
             width: 0%;
             bottom: -3px;
             right: 0;
-            background: $blue;
+            @include leftRightGradient(#2472b8, #00aadd);
             transition: 0.3s ease;
           }
         }

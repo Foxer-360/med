@@ -27,6 +27,7 @@ import ExpertiseDescription from './ExpertiseDescription';
 import Timeline from './Timeline';
 import MedicalGroup from './MedicalGroup';
 import ViewsAboutUs from './ViewsAboutUs';
+import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 import ContactsBlock from './ContactsBlock';
 
@@ -59,6 +60,7 @@ export {
   ExpertiseDescription,
   MedicalGroup,
   ViewsAboutUs,
+  ContactInfo,
   Timeline,
   ContactForm,
   ContactsBlock,

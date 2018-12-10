@@ -4,13 +4,13 @@ import SvgIcon from '@source/partials/SvgIcon';
 export interface ReviewElementProps {
   img: string;
   cite: string;
-  starCount: number;
+  starCount: number;  
 }
 
 export default function ReviewElement(props: ReviewElementProps) {
   var rows = [];
   for (var i = 0; i < props.starCount; i++) {
-    rows.push(<SvgIcon name="star" />);
+    rows.push(<SvgIcon name="star" key={i} />);
   }
 
   return (

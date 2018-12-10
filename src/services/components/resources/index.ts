@@ -27,6 +27,7 @@ import * as expertisedescription from './expertisedescription.json';
 import * as medicalgroup from './medicalgroup.json';
 import * as timeline from './timeline.json';
 import * as viewsaboutus from './viewsaboutus.json';
+import * as contactinfo from './contactinfo.json';
 import * as contactform from './contactform.json';
 import * as contactsblock from './contactsblock.json';
 
@@ -59,6 +60,7 @@ export {
   expertisedescription,
   medicalgroup,
   viewsaboutus,
+  contactinfo,
   timeline,
   contactform,
   contactsblock,

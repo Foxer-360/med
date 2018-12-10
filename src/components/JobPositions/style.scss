@@ -1,9 +1,12 @@
+@import './components/style.scss';
+
 .actual-positions {
   margin-bottom: 35px;
 
   h3 {
     @include webkitGradientText;
     padding-bottom: 35px;
+    padding-top: 0;
   }
 }
 

@@ -99,25 +99,27 @@
 }
 
 @mixin blockAnimation() {
+  transition: 300ms ease;
+
   &:after {
     @include pseudo;
     height: 6px;
     width: 0;
-    transition: 300ms ease;
+    transition: 300ms ease;  
     @include leftRightGradient(#2472b8, #00aadd);
     right: 0;
     bottom: 0;
   }
 
-  transition: 300ms ease;
-
   &:hover {
-    transform: translateY(-3px);
+    @include md {
+      transform: translateY(-3px);
 
-    &:after {
-      width: 100%;
-      right: auto;
-      left: 0;
+      &:after {
+        width: 100%;
+        right: auto;
+        left: 0;
+      }
     }
   }
 }
