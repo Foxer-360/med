@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 import WebFont from 'webfontloader';
-import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, ViewsAboutUs, ContactForm, } from '../../components';
+import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, ViewsAboutUs, ContactInfo, ContactForm, Downloads, ContactsBlock, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
@@ -54,7 +54,10 @@ var ComponentsService = /** @class */ (function () {
             MEDICALGROUP: 'MedicalGroup',
             TIMELINE: 'Timeline',
             VIEWSABOUTUS: 'ViewsAboutUs',
+            CONTACTINFO: 'ContactInfo',
             CONTACTFORM: 'ContactForm',
+            DOWNLOADS: 'Downloads',
+            CONTACTSBLOCK: 'ContactsBlock',
         };
     }
     /***/
@@ -124,8 +127,14 @@ var ComponentsService = /** @class */ (function () {
                 return Timeline;
             case this.Types.VIEWSABOUTUS:
                 return ViewsAboutUs;
+            case this.Types.CONTACTINFO:
+                return ContactInfo;
             case this.Types.CONTACTFORM:
                 return ContactForm;
+            case this.Types.DOWNLOADS:
+                return Downloads;
+            case this.Types.CONTACTSBLOCK:
+                return ContactsBlock;
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }

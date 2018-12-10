@@ -162,6 +162,7 @@ class ComponentsService {
         return ContactsBlock;
       default:
         return () => <AlertNotFound type="component" />;
+    }
   }
 
   /***/

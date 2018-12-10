@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
+import SelectButton from './components/index';
 var data = {
     title: 'Výpis aktuálních pozic',
     items: [
@@ -20,7 +21,7 @@ var data = {
 var JobPositions = function (props) {
     return (React.createElement("div", { className: 'container actual-positions' },
         React.createElement("h3", null, data.title),
-        React.createElement(Button, { classes: "hCenterBlock btn--greyBkg btn--down" }, "V\u0161echny polikliniky"),
+        React.createElement(SelectButton, null),
         React.createElement("div", { className: 'grid positions' }, data.items.map(function (item, index) { return (React.createElement("div", { className: 'positions__element', style: { backgroundImage: "url(" + item.img + ")" }, key: index },
             React.createElement("div", { className: 'positions__element-content' },
                 React.createElement("p", null, item.position),

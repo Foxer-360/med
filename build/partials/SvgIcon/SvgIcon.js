@@ -32,6 +32,14 @@ var SvgIcon = function (props) {
             return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 126.7 120.4", className: "svgIcon starIcon " + ('svgIcon--' + props.type) },
                 React.createElement("path", { d: "M121.2 41l-34.9-3.3c-2.2-.2-4.1-1.6-5-3.7L68.8 3.8c-2-5-9.1-5-11.1 0L45.3 34c-.8 2.1-2.8 3.5-5 3.7L5.4 41c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.4c-1.2 5.1 4.3 9.3 8.9 6.6l29.1-17.1c1.9-1.1 4.2-1.1 6.1 0l29.1 17.1c4.6 2.7 10.1-1.4 8.9-6.6l-7.8-32.4c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5" })));
         }
+        case 'download': {
+            return (React.createElement("svg", { version: "1.1", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 489.701 489.701", className: "svgIcon downloadIcon " + ('svgIcon--' + props.type) },
+                React.createElement("g", null,
+                    React.createElement("g", null,
+                        React.createElement("g", null,
+                            React.createElement("path", { d: "M244.9,0c-9.5,0-17.1,7.7-17.1,17.2v312.3l-77.6-77.6c-6.7-6.7-17.6-6.7-24.3,0c-6.7,6.7-6.7,17.6,0,24.3l106.9,106.9\r\n                  c3.2,3.2,7.6,5,12.1,5c4.6,0,8.9-1.8,12.1-5l106.9-107c6.7-6.7,6.7-17.6,0-24.3s-17.6-6.7-24.3,0L262,329.4V17.2\r\n                  C262.1,7.7,254.4,0,244.9,0z" }),
+                            React.createElement("path", { d: "M455.8,472.6c0-9.5-7.7-17.2-17.2-17.2H51.1c-9.5,0-17.2,7.7-17.2,17.2s7.7,17.1,17.2,17.1h387.6\r\n                  C448.201,489.8,455.8,482.1,455.8,472.6z" }))))));
+        }
         case 'geo': {
             return (React.createElement("svg", { viewBox: "0 0 32.2 42.6", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", className: 'svgIcon geoIcon' },
                 React.createElement("defs", null,
