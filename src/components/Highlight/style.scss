@@ -35,4 +35,32 @@
       }
     }
   }
+  
+  @include max-sm {
+    p { font-size: 1.6rem; }
+
+    button {
+      width: 90%;
+      
+      .arrow {
+        left: 35%;
+      }
+    }
+  }
+  
+  @include max-xs {
+    button {
+      .arrow {
+        left: 25%;
+      }
+    }
+  }
+
+  @media (max-width: 336px) {
+    button {
+      .arrow {
+        left: 15%;
+      }
+    }
+  }
 }
