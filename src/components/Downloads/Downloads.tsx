@@ -8,7 +8,9 @@ const Downloads = (props: DownloadsProps) => {
   return (
     <div className={'container'}>
       <div className={'downloads'}>
+      
         <h3>Dokumenty ke stažení</h3>
+
         <p>Zde si můžete stáhnout potřebné dokumenty</p>
 
         <div className="grid downloads__list">

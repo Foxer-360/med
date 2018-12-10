@@ -15,7 +15,10 @@ import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import { BlogCard } from './components/blogCard';
 import Button from '../../partials/Button';
+import SearchBar from '../SearchBar/SearchBar';
 var data = {
+    title: 'aktuality a informace',
+    displaySearch: false,
     items: [
         {
             title: 'Těhotenství',
@@ -61,7 +64,8 @@ var Blog = /** @class */ (function (_super) {
     Blog.prototype.render = function () {
         return (React.createElement("section", { className: 'blog' },
             React.createElement("div", { className: "container" },
-                React.createElement("h1", null, "aktuality a\u00A0informace"),
+                data.title && React.createElement("h1", null, data.title),
+                data.displaySearch && React.createElement(SearchBar, { placeholder: 'Vyhledat téma', barColor: 'gray' }),
                 React.createElement(Masonry, { breakpointCols: { default: 3, 4000: 3, 800: 2, 500: 1 }, className: "my-masonry-grid", columnClassName: "my-masonry-grid_column" }, data.items.map(function (item, index) { return (React.createElement(BlogCard, { title: item.title, text: item.text, key: index, color: item.color, img: item.img, special: item.special })); })),
                 React.createElement("div", { className: 'blog__blur' },
                     React.createElement("div", null)),
