@@ -31,8 +31,10 @@ import {
   MedicalGroup,
   Timeline,
   ViewsAboutUs,
+  ContactInfo,
   ContactForm,
   Downloads,
+  ContactsBlock,
 } from '../../components';
 import * as resources from './resources';
 
@@ -76,8 +78,10 @@ class ComponentsService {
     MEDICALGROUP: 'MedicalGroup',
     TIMELINE: 'Timeline',
     VIEWSABOUTUS: 'ViewsAboutUs',
+    CONTACTINFO: 'ContactInfo',
     CONTACTFORM: 'ContactForm',
     DOWNLOADS: 'Downloads',
+    CONTACTSBLOCK: 'ContactsBlock',
   };
 
   /***/
@@ -148,14 +152,16 @@ class ComponentsService {
         return Timeline;
       case this.Types.VIEWSABOUTUS:
         return ViewsAboutUs;
+      case this.Types.CONTACTINFO:
+        return ContactInfo;
       case this.Types.CONTACTFORM:
         return ContactForm;
       case this.Types.DOWNLOADS:
         return Downloads;
-
+      case this.Types.CONTACTSBLOCK:
+        return ContactsBlock;
       default:
         return () => <AlertNotFound type="component" />;
-    }
   }
 
   /***/

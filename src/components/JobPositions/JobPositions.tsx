@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
+import SelectButton from './components/index';
 
 export interface JobPositionsProps {}
 
@@ -27,7 +28,7 @@ const JobPositions = (props: JobPositionsProps) => {
     <div className={'container actual-positions'}>
       <h3>{data.title}</h3>
 
-      <Button classes="hCenterBlock btn--greyBkg btn--down">Všechny polikliniky</Button>
+      <SelectButton />
 
       <div className={'grid positions'}>
         {data.items.map((item, index) => (
