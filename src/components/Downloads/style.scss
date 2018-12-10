@@ -2,7 +2,9 @@
   text-align: center;
   padding-bottom: 25px;
 
-  h3 { @include webkitGradientText; }
+  h3 {
+    @include webkitGradientText;
+  }
   p {
     font-size: 1.8rem;
     color: #3c3c3b;
@@ -17,14 +19,16 @@
       overflow-wrap: break-word;
 
       p {
-        display: block; 
+        display: block;
         font-size: 2.2rem;
         font-weight: 500;
         padding: 50px 0 30px 0;
       }
 
       a {
-        color:$lightBlue !important;
+        color: $lightBlue !important;
+        max-width: 228px;
+        margin: 0 auto;
 
         &:hover {
           color: white !important;
@@ -38,11 +42,13 @@
           position: relative;
           left: 20px;
           transition: $customEase;
+          width: 14px;
+          height: 20px;
         }
       }
     }
   }
-  
+
   @include max-lg {
     &__list {
       grid-template-columns: repeat(1, 230px);

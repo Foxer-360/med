@@ -5,7 +5,7 @@ export interface TextBlockProps {
     title?: string;
   };
 }
-
+   
 const TextBlock = (props: TextBlockProps) => {
   const { title } = props.data;   
 
@@ -13,7 +13,7 @@ const TextBlock = (props: TextBlockProps) => {
     <section className={'textBlock'}>  
       <div className="container">
         <div className={'textBlock__container'}>
-          {title && <h2 className={'gradientHeading'}>{title}</h2>}
+          {title && <h3 className={'gradientHeading'}>{title}</h3>}
 
           <div className="textBlock__container__text">
             Skupina <strong>MEDICON</strong> patří mezi největší provozovatele ambulantních zařízení v Praze.

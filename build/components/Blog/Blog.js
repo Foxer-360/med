@@ -61,7 +61,7 @@ var Blog = /** @class */ (function (_super) {
     Blog.prototype.render = function () {
         return (React.createElement("section", { className: 'blog' },
             React.createElement("div", { className: "container" },
-                React.createElement("h1", null, "aktuality a informace"),
+                React.createElement("h1", null, "aktuality a\u00A0informace"),
                 React.createElement(Masonry, { breakpointCols: { default: 3, 4000: 3, 800: 2, 500: 1 }, className: "my-masonry-grid", columnClassName: "my-masonry-grid_column" }, data.items.map(function (item, index) { return (React.createElement(BlogCard, { title: item.title, text: item.text, key: index, color: item.color, img: item.img, special: item.special })); })),
                 React.createElement("div", { className: 'blog__blur' },
                     React.createElement("div", null)),

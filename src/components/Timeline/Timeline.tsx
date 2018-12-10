@@ -31,7 +31,6 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
         limitRight: false,
       },
       () => {
-        
         let width = this.timeline.current && this.timeline.current.getBoundingClientRect().width;
 
         if (this.state.x >= 0) {
@@ -87,7 +86,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
         descriptionA: 'Otevřena',
         descriptionB: 'Poliklinika',
         top: false,
-        icon: '/assets/medicon/images/hospitalIcon.png',
+        icon: '/assets/medicon/images/hospitalIcon.svg',
       },
       {
         name: 'Vysočanská',
@@ -142,7 +141,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     return (
       <div className={'container'}>
         <section className={'timelineSection'}>
-          <h3>Casova Osa</h3>
+          <h2>časová Osa</h2>  
 
           <div className={'timeline'}>
             {!this.state.limitLeft && (

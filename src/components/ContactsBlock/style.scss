@@ -1,13 +1,22 @@
 .contacts-block {
   text-align: center;
+  padding-bottom: 50px;
 
-  h3 { padding-bottom: 5px; }
-  h4 { padding-bottom: 50px; }
-  h3, h4 { @include webkitGradientText; }
+  h3 {
+    padding-top: 0;
+    padding-bottom: 5px;  
+  }
+  h4 {
+    padding-bottom: 50px;
+  }
+  h3,
+  h4 {
+    @include webkitGradientText;
+  }
 
   a {
     transition: $customEase;
-     &:hover {
+    &:hover {
       color: $lightBlue;
     }
   }
@@ -44,7 +53,8 @@
   }
 
   @include max-md {
-    &__list, &__main {
+    &__list,
+    &__main {
       grid-template-columns: repeat(1, 285px);
     }
   }

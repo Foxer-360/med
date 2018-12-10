@@ -56,7 +56,7 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
     return (
       <section className={'blog'}>  
         <div className="container">
-          <h1>aktuality a informace</h1>
+          <h1>aktuality a&nbsp;informace</h1>
 
           <Masonry
             breakpointCols={{ default: 3, 4000: 3, 800: 2, 500: 1 }}
