@@ -123,7 +123,7 @@ var Timeline = /** @class */ (function (_super) {
         var _this = this;
         return (React.createElement("div", { className: 'container' },
             React.createElement("section", { className: 'timelineSection' },
-                React.createElement("h2", null, "\u010Dasov\u00E1 Osa"),
+                React.createElement("h2", { className: 'gradientHeading' }, "\u010Dasov\u00E1 Osa"),
                 React.createElement("div", { className: 'timeline' },
                     !this.state.limitLeft && (React.createElement("div", { className: 'timeline__arrow  timeline__arrow--left', onClick: function (e) { return _this.arrowClick(e, 'left'); } })),
                     React.createElement("div", { className: 'timeline__blur  timeline__blur--left' }),
