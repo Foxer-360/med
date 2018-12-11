@@ -13,7 +13,6 @@ interface Clinic {
 
 interface MapComponentState {
   activeMarker: number | null;
-  center: any;
   activeMarkerCenter: {
     lat: number | null;
     lng: number | null;
@@ -48,7 +47,6 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     this.state = {
       activeMarker: null,
       activeMarkerCenter: null,
-      center: null,
     };
 
     this.handleMarkerClose = this.handleMarkerClose.bind(this);
@@ -69,39 +67,19 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     });
   }
 
-  componentWillReceiveProps(nextProps: MapComponentProps & GeolocatedProps) {
-    if (nextProps && nextProps.coords && nextProps.coords.latitude && nextProps.coords.longitude) {
-      this.setState({
-        center: {
-          lat: nextProps.coords.latitude,
-          lng: nextProps.coords.longitude,
-        },
-      });
-    }
-  }
-
   getMapBounds = (map, maps, locations) => {
     const bounds = new maps.LatLngBounds();
 
     locations.forEach(location => {
-      bounds.extend(new maps.LatLng(location.lat, location.lng));
+      bounds.extend(new maps.LatLng(location.props.lat, location.props.lng));
     });
     return bounds;
-  }
-
-  bindResizeListener = (map, maps, bounds) => {
-    maps.event.addDomListenerOnce(map, 'idle', () => {
-      maps.event.addDomListener(window, 'resize', () => {
-        map.fitBounds(bounds);
-      });
-    });
   }
 
   apiIsLoaded = (map, maps, locations) => {
     if (map) {
       const bounds = this.getMapBounds(map, maps, locations);
       map.fitBounds(bounds);
-      this.bindResizeListener(map, maps, bounds);
     }
   }
 
@@ -161,9 +139,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
           );
         }
       });
-    }
 
-    if (this.props.coords) {
       markers.push(
         <Marker
           type={'geoLocation'}

@@ -55,22 +55,14 @@ var MapComponent = /** @class */ (function (_super) {
         _this.getMapBounds = function (map, maps, locations) {
             var bounds = new maps.LatLngBounds();
             locations.forEach(function (location) {
-                bounds.extend(new maps.LatLng(location.lat, location.lng));
+                bounds.extend(new maps.LatLng(location.props.lat, location.props.lng));
             });
             return bounds;
-        };
-        _this.bindResizeListener = function (map, maps, bounds) {
-            maps.event.addDomListenerOnce(map, 'idle', function () {
-                maps.event.addDomListener(window, 'resize', function () {
-                    map.fitBounds(bounds);
-                });
-            });
         };
         _this.apiIsLoaded = function (map, maps, locations) {
             if (map) {
                 var bounds = _this.getMapBounds(map, maps, locations);
                 map.fitBounds(bounds);
-                _this.bindResizeListener(map, maps, bounds);
             }
         };
         _this.deg2Rad = function (deg) {
@@ -102,21 +94,10 @@ var MapComponent = /** @class */ (function (_super) {
         _this.state = {
             activeMarker: null,
             activeMarkerCenter: null,
-            center: null,
         };
         _this.handleMarkerClose = _this.handleMarkerClose.bind(_this);
         return _this;
     }
-    MapComponent.prototype.componentWillReceiveProps = function (nextProps) {
-        if (nextProps && nextProps.coords && nextProps.coords.latitude && nextProps.coords.longitude) {
-            this.setState({
-                center: {
-                    lat: nextProps.coords.latitude,
-                    lng: nextProps.coords.longitude,
-                },
-            });
-        }
-    };
     MapComponent.prototype.render = function () {
         var _this = this;
         var markers = [];
@@ -128,8 +109,6 @@ var MapComponent = /** @class */ (function (_super) {
                             : 'small', lat: clinic.lat, lng: clinic.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic.lat, clinic.lng); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index }));
                 }
             });
-        }
-        if (this.props.coords) {
             markers.push(React.createElement(Marker, { type: 'geoLocation', lat: this.props.coords.latitude, lng: this.props.coords.longitude, key: markers.length + 1, index: markers.length + 1 }));
         }
         var defaultCenter = { lat: 50.08804, lng: 14.42076 };
