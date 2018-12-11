@@ -146,7 +146,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
               </div>
 
               <div className={'flexRow flexAlign--center'}>
-                <Button classes="btn--blueBkg">Odeslat</Button>
+                <Button classes="btn--blueBkg btn--fullWidth">Odeslat</Button>
               </div>
             </form>
           </div>

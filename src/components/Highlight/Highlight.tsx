@@ -14,7 +14,7 @@ const Highlight = (props: HighlightProps) => {
               <p>Poliklinika Zelený pruh je od 16.9. do 19.9. zavřená</p>  
             </div>
             
-            <Button classes="btn--whiteBorder">vice info</Button>
+            <Button classes="btn--whiteBorder btn--fullWidth">vice info</Button>
           </div>
         </div>
       </section>

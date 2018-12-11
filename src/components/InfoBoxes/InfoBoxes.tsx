@@ -30,22 +30,22 @@ const data = {
 
 const InfoBoxes = (props: InfoBoxesProps) => {
   return (
-    <section className="infoBoxes">
+    <section className={'info-boxes'}>
       <h3>Z našich lékáren</h3>
 
-      <div className="grid-container">
-
-        {data.items.map((item, index) => (
-          <InfoElement
-            color={item.color}  
-            title={item.title}
-            img={item.img}
-            btn={item.btn}
-            titleColor={item.titleColor}
-            key={index}
-          />
-        ))}
-
+      <div className={'container'}>
+        <div className={'grid info-boxes__list'}>
+          {data.items.map((item, index) => (
+            <InfoElement
+              color={item.color}  
+              title={item.title}
+              img={item.img}
+              btn={item.btn}
+              titleColor={item.titleColor}
+              key={index}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

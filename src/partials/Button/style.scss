@@ -6,7 +6,7 @@
   font-weight: 600;
   padding: 12px 35px;
   transition: ease 0.2s;
-  letter-spacing: 2.5px;
+  letter-spacing: 2.4px;
   box-sizing: border-box;
   font-family: 'Montserrat';
   text-transform: uppercase;
@@ -25,33 +25,20 @@
     left: 10px;
     transition: 230ms ease;
 
-    &--down {
-      transform: rotate(45deg);
-    }
-
-    &--up {
-      transform: rotate(225deg);
-    }
+    &--down { transform: rotate(45deg); }
+    &--up { transform: rotate(225deg); }
   }
 
   &:hover {
-    @include md {
-      .arrow {
-        left: 15px;
-      }
-    }
+    @include md { .arrow { left: 15px; } }
   }
 
   @include md {
-    &:hover {
-      background-position: 95%;
-    }
+    &:hover { background-position: 95%; }
   }
 
   &--down {
-    .arrow {
-      transform: rotate(45deg);
-    }
+    .arrow { transform: rotate(45deg); }
 
     &:hover {
       @include md {
@@ -73,6 +60,7 @@
     background-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     background-repeat: no-repeat;
     background-position: center;
+    padding: 14px 36px;
 
     &:hover {
       @include md {
@@ -80,9 +68,7 @@
         background-color: $blue;
       }
 
-      .arrow {
-        border-color: white;
-      }
+      .arrow { border-color: white; }
     }
   }
 
@@ -95,9 +81,8 @@
       @include md {
         color: $blue;
         background-color: white;
-        .arrow {
-          border-color: $blue;
-        }
+
+        .arrow { border-color: $blue; }
       }
     }
   }
@@ -109,18 +94,14 @@
     border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     border-image-slice: 1;
 
-    .arrow {
-      border-color: $lightBlue;
-    }
+    .arrow { border-color: $lightBlue; }
 
     &:hover {
       color: white;
       background-color: $lightBlue;
       border-image: none;
 
-      .arrow {
-        border-color: white;
-      }
+      .arrow { border-color: white; }
     }
   }
 
@@ -128,8 +109,18 @@
     background-color: #f4f5f7;
     text-transform: none;
 
-    .arrow {
-      border-color: $lightBlue;
+    .arrow { border-color: $lightBlue; }
+  }
+
+  &--fullWidth {
+    @include max-sm {
+      width: 100%;
+      
+      p { font-size: 1.6rem; }
+      .arrow { left: 30%; }
     }
+    
+    @include max-xs { .arrow { left: 20%; } }
+    @media (max-width: 336px) { .arrow { left: 10%; } }
   }
 }

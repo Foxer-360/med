@@ -35,7 +35,7 @@ const JobPositions = (props: JobPositionsProps) => {
           <div className={'positions__element'} style={{ backgroundImage: `url(${item.img})` }} key={index}>
             <div className={'positions__element-content'}>
               <p>{item.position}</p>
-              <Button classes={'btn--whiteBorder'}>Vice info</Button>
+              <Button classes={'btn--whiteBorder btn--fullWidth'}>Vice info</Button>
             </div>
 
             <div
@@ -46,7 +46,7 @@ const JobPositions = (props: JobPositionsProps) => {
         ))}
       </div>
 
-      <Button classes="hCenterBlock btn--blueBkg btn--down">další pozice</Button>
+      <Button classes="hCenterBlock btn--blueBkg btn--down btn--fullWidth">další pozice</Button>
     </div>
   );
 };

@@ -26,41 +26,14 @@
   }
 
   @media (max-width: 820px) {
-    &__info {
-      padding-top: 0;
-      
-      img {
-        margin: 0 auto;
-        margin-bottom: 15px;
-      }
+    img {
+      margin: 0 auto;
+      margin-bottom: 15px;
     }
+
+    &__info { padding-top: 0; }
   }
-  
   @include max-sm {
-    p { font-size: 1.6rem; }
-
-    button {
-      width: 90%;
-      
-      .arrow {
-        left: 35%;
-      }
-    }
-  }
-  
-  @include max-xs {
-    button {
-      .arrow {
-        left: 25%;
-      }
-    }
-  }
-
-  @media (max-width: 336px) {
-    button {
-      .arrow {
-        left: 15%;
-      }
-    }
+    p { font-size: 1.8rem; }
   }
 }

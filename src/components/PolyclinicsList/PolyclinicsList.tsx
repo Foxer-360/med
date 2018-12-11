@@ -67,9 +67,7 @@ const PolyclinicsList = () => (
                     špičkově vybaveného oddělení RDG a zobrazovacích metod. To vše pod jednou střechou.
                   </div>
 
-                  <div>
-                    <Button classes="btn btn--blueBorder">vice info</Button>
-                  </div>
+                  <Button classes="btn btn--blueBorder btn--fullWidth">vice info</Button>
                 </div>
               </div>
             </div>

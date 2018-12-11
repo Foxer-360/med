@@ -12,10 +12,10 @@
   background-color: #f4f5f7;
   position: relative;
 
+  @include max-md { width: 100%; }
+
   &:hover {
-    .arrow {
-      top: 26px;
-    }
+    .arrow { top: 26px; }
   }
 
   select {      
@@ -32,9 +32,7 @@
       -moz-appearance: none;
             appearance: none;
 
-    &:focus {
-      outline: none;
-    }
+    &:focus { outline: none; }
   }
 
   .arrow {

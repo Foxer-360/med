@@ -43,10 +43,22 @@
   &__element-content {
     display: table-cell;
     vertical-align: bottom;
-    padding-bottom: 35px;
-    padding-left: 35px;
+    padding: 35px;
     position: relative;
     z-index: 2;
+
+    @include max-md { 
+      padding: 20px;
+      
+      p { 
+        font-size: 1.8rem;
+        padding-bottom: 15px;
+      }
+      button {
+        font-size: 1.4rem;
+        padding: 7px 35px;
+      }
+    }
   }
 
   &__element {
