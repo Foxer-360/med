@@ -15,7 +15,7 @@ export default function InfoElement(props: InfoElementProps) {
 
   return (
     <a className={'infoBoxes__element'} style={{ backgroundImage: `url(${img})`}}>
-      <div className={'infoBoxes__element__content'}>
+      <div className={'fullWidthContainer infoBoxes__element__content'}>
         <h5 style={{ color: `${titleColor}`}}>{title}</h5>
         <Button classes={btn}>vice info</Button>
       </div>
