@@ -1,6 +1,24 @@
 import * as React from 'react';
+import ViewsAboutUsElement from './components/ViewsAboutUsElement';
 
 export interface ViewsAboutUsPops {}
+
+const data = {
+  items: [
+    {
+      img: '/assets/medicon/images/review-aboutus-1.jpg',
+      cite: '„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“',      
+    },
+    {
+      img: '/assets/medicon/images/review-aboutus-1.jpg',
+      cite: '„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“',      
+    },
+    {
+      img: '/assets/medicon/images/review-aboutus-1.jpg',
+      cite: '„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“',      
+    },
+  ]
+};
 
 const ViewsAboutUs = (props: ViewsAboutUsPops) => {
   return (
@@ -8,34 +26,14 @@ const ViewsAboutUs = (props: ViewsAboutUsPops) => {
       <div className={'container'}>
         <h3>Napsali o nás</h3>
         
-        <div className={'grid viewsAboutUs__grid'}>
-          <div className={'grid viewsAboutUs__grid__element'}>
-            <img src="/assets/medicon/images/review-aboutus-1.jpg" alt="review about us"/>
-            <div className={'viewsAboutUs__grid__element--cell'}>
-              <cite>
-                „Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“
-              </cite>
-              <a href="#">Zdroj: <strong>Haló noviny</strong></a>
-            </div>
-          </div>
-          <div className={'grid viewsAboutUs__grid__element'}>
-            <img src="/assets/medicon/images/review-aboutus-1.jpg" alt="review about us"/>
-            <div className={'viewsAboutUs__grid__element--cell'}>
-              <cite>
-                „Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“
-              </cite>
-              <a href="#">Zdroj: <strong>Právo</strong></a>
-            </div>
-          </div>
-          <div className={'grid viewsAboutUs__grid__element'}>
-            <img src="/assets/medicon/images/review-aboutus-1.jpg" alt="review about us"/>
-            <div className={'viewsAboutUs__grid__element--cell'}>
-              <cite>
-                „Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“
-              </cite>
-              <a href="#">Zdroj: <strong>Haló noviny</strong></a>
-            </div>
-          </div>
+        <div className={'grid viewsAboutUs__list'}>
+          {data.items.map((item, index) => (
+            <ViewsAboutUsElement 
+              key={index}
+              img={item.img} 
+              cite={item.cite} 
+            />  
+          ))}
         </div>
       </div>
     </div>

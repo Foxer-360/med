@@ -2,9 +2,7 @@
   margin-bottom: 40px;
   color: $darkGray;
 
-  h3 {
-    @include webkitGradientText;
-  }
+  h3 { @include webkitGradientText; }
 
   &__list {
     justify-items: center;
@@ -13,7 +11,7 @@
     grid-template-columns: repeat(3, 1fr);
 
     &__element {
-      height: 140px;
+      height: 100%;
       width: 100%;
       background-color: #f4f5f7;
       background-repeat: no-repeat;
@@ -64,9 +62,7 @@
     }
   }
 
-  @include max-xl {
-    font-size: 1.4rem;
-  }
+  @include max-xl { font-size: 1.4rem; }
   @include max-lg {
     font-size: 1.6rem;
 
@@ -83,7 +79,5 @@
       }
     }
   }
-  @include max-xs {
-    font-size: 1.4rem;
-  }
+  @include max-xs { font-size: 1.4rem; }
 }
