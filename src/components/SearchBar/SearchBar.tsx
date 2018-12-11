@@ -27,6 +27,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
   public render() {
     const { placeholder, barColor } = this.props;
+
     return (
       <div
         className={`searchBar ${this.state.focused ? 'searchBar--focused' : ''} searchBar--${barColor}`}

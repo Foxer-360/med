@@ -7,6 +7,11 @@
 
   button {
     margin: 30px auto;
+
+    @include md {
+      min-width: 230px;
+      letter-spacing: 2.49px;
+    }
   }
 
   &__element {
@@ -45,7 +50,7 @@
     &__element {
       &:hover {
         transform: translateY(-3px);
-  
+
         &:after {
           width: 100%;
           left: 0;
@@ -61,7 +66,9 @@
       grid-template-rows: auto;
       padding: 0 30px;
     }
-    p { font-size: 1.6rem; }
+    p {
+      font-size: 1.6rem;
+    }
   }
 
   @include max-md {

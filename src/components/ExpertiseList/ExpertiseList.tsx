@@ -31,7 +31,7 @@ const ExpertiseList = (props: ExpertiseListProps) => {
         <div className="expertiseList__element">
           <img src="/assets/medicon/images/od-el-6.png" alt="image" />
           <p>foniatrie</p>
-        </div>
+        </div>  
         <div className="expertiseList__element">
           <img src="/assets/medicon/images/od-el-7.png" alt="image" />
           <p>neurologie</p>

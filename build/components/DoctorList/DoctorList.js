@@ -7,8 +7,7 @@ var data = {
         {
             name: 'MUDr. Jana Pavluchová',
             field: 'Alergologie a Imunologie',
-            clinic: 'Poliklinika Budějovická',
-            img: '/assets/medicon/images/doctorlist1.png'
+            img: '/assets/medicon/images/doctorlist1.png',
         },
         {
             name: 'MUDr. Michala Jakubíková, Ph.D.',
@@ -46,7 +45,7 @@ var DoctorList = function (props) {
                             React.createElement(Button, { classes: "btn--blueBorder btn--small" }, "vice info"))));
                 })),
             React.createElement("div", { className: "doctorList__btnHolder" },
-                React.createElement(Button, { classes: "btn--blueBkg" }, "zobrazit vice")))));
+                React.createElement(Button, { classes: "btn--blueBkg btn--down" }, "zobrazit vice")))));
 };
 export default DoctorList;
 //# sourceMappingURL=DoctorList.js.map

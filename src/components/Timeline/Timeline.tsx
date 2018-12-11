@@ -50,7 +50,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
         }
       }
     );
-  }
+  };
 
   handleSwipe = (e, direction, deltaX, velocity) => {
     let ammount = deltaX < 0 ? deltaX * -1 : deltaX;
@@ -60,11 +60,11 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     }
 
     this.translateTimeline(ammount);
-  }
+  };
 
   handleDrag = e => {
     e.preventDefault();
-  }
+  };
 
   arrowClick = (e, direction) => {
     let ammount = 300;
@@ -74,7 +74,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     }
 
     this.translateTimeline(ammount);
-  }
+  };
 
   renderPoints = () => {
     const items = [
@@ -135,13 +135,13 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     }
 
     return points;
-  }
+  };
 
   public render() {
     return (
       <div className={'container'}>
         <section className={'timelineSection'}>
-          <h2>časová Osa</h2>  
+          <h2 className={'gradientHeading'}>časová Osa</h2>
 
           <div className={'timeline'}>
             {!this.state.limitLeft && (

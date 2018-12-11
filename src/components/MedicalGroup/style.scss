@@ -1,11 +1,9 @@
 .medicalGroup {
-
   h4 {
-      @include webkitGradientText;
+    @include webkitGradientText;
   }
 
   &__list {
-    padding: 0 77px;
     box-sizing: border-box;
     position: relative;
     margin-bottom: 50px;
@@ -17,12 +15,17 @@
       left: 0;
       top: 0;
       height: 100%;
-      width: 8px;
+      width: 3px;
       @include topBottomgradient($lightBlue, $blue);
+
+      @include md {
+        width: 8px;
+      }
     }
 
     @include md {
       width: 65%;
+      padding: 0 77px;
     }
 
     ul {
