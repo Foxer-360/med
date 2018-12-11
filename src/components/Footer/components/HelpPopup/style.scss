@@ -1,9 +1,9 @@
 .helpPopup {
+  bottom: 0px;
   position: fixed;
-  bottom: 50px;
   box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
   z-index: 200;
-  width: 90%;
+  width: 100%;
   transform: translateX(-50%);
   left: 50%;
 
@@ -11,6 +11,8 @@
     right: 50px;
     left: auto;
     width: auto;
+    bottom: 50px;
+
     transform: translateX(0%);
   }
 

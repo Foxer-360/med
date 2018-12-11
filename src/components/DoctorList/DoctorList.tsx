@@ -13,7 +13,7 @@ const data = {
       clinic: 'Poliklinika Budějovická',
       img: '/assets/medicon/images/doctorlist1.png'
     },
-    {
+    {  
       name: 'MUDr. Michala Jakubíková, Ph.D.',
       field: 'Neurologie',
       clinic: 'Poliklinika Vysočany',
