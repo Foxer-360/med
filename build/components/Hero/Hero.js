@@ -19,14 +19,14 @@ var Hero = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Hero.prototype.render = function () {
-        var title = this.props.data.title;
+        var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch;
         return (React.createElement("div", { className: "fullWidthContainer" },
             React.createElement("section", { className: 'hero', style: { backgroundImage: 'url(/assets/medicon/images/hero.png)' } },
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },
                         title && React.createElement("h1", null, title),
-                        React.createElement("div", { className: 'hero__text' }, "\u0158e\u0161en\u00ED pro ka\u017Ed\u00FD zdravotn\u00ED probl\u00E9m naleznete v na\u0161ich poliklinik\u00E1ch."),
-                        React.createElement(SearchBar, { placeholder: 'Hledám odbornost', barColor: 'lightBlue' }))))));
+                        text && React.createElement("div", { className: 'hero__text' }, text),
+                        displaySearch && React.createElement(SearchBar, { placeholder: 'Hledám odbornost', barColor: 'lightBlue' }))))));
     };
     return Hero;
 }(React.Component));

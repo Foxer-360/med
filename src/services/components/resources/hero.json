@@ -1,6 +1,11 @@
 {
   "name": "Hero",
-  "data": "Title",
+  "data": {
+    "title": "Sample Title",
+    "text": "Sample Text",
+    "displaySearch": false,
+    "image": {}
+  },
   "form": {
     "schema": {
       "type": "object",
@@ -9,6 +14,17 @@
         "title": {
           "type": "text",
           "title": "Title"
+        },
+        "text": {
+          "type": "text",
+          "title": "Text"
+        },
+        "displaySearch": {
+          "type": "boolean",
+          "title": "Display Search Bar?"
+        },
+        "image": {
+          "type": "image"
         }
       }
     }
