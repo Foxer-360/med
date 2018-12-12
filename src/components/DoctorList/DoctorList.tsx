@@ -1,40 +1,23 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
-export interface DoctorListProps {}
+import Media from '@source/partials/Media';
 
-// ! MOCK DATA ONLY
-const data = {
-  title: 'text',  
-
-  items: [
-    {
-      name: 'MUDr. Jana Pavluchová',
-      field: 'Alergologie a Imunologie', 
-      img: '/assets/medicon/images/doctorlist1.png',
-    },
-    {  
-      name: 'MUDr. Michala Jakubíková, Ph.D.',
-      field: 'Neurologie',
-      clinic: 'Poliklinika Vysočany',
-      img: '/assets/medicon/images/doctorlist1.png',
-    },
-    {
-      name: 'MUDr. Michala Pelikánová',
-      field: 'Diabetologie',
-      clinic: ' Poliklinika Budějovická',
-      img: '/assets/medicon/images/doctorlist1.png',
-    },
-    {
-      name: 'MUDr. Petr Novák',
-      field: 'Ortopedie',
-      clinic: 'Poliklinika Zelený pruh',
-      img: '/assets/medicon/images/doctorlist1.png',
-    },
-  ],
-};
+interface Doctors {
+  name: string;
+  clinicName: string;
+  clinicUrl: string;
+  field: string;
+  image: LooseObject;
+}
+export interface DoctorListProps {
+  data: {
+    title: string;
+    doctors: Doctors[];
+  };
+}
 
 const DoctorList = (props: DoctorListProps) => {
-  const { items, title } = data;
+  const { doctors, title } = props.data;
 
   return (
     <section className={'doctorList'}>
@@ -42,23 +25,27 @@ const DoctorList = (props: DoctorListProps) => {
         {title && <h3>{title}</h3>}
 
         <div className="doctorList__wrapper">
-          {items &&
-            items.map((item, index) => {
+          {doctors &&
+            doctors.map((doctor, index) => {
               return (
                 <div className={'doctorList__item'} key={index}>
                   <div className={'doctorList__item__img'}>
-                    {(item.img && <img src={item.img} alt="" />) || (
-                      <img className="avatar" src={'/assets/medicon/images/lekari.png'} alt="Medicon Lekari Avatart" />
+                    {(doctor.image && doctor.image.filename && <Media data={doctor.image} type="image" />) || (
+                      <img
+                        className="avatar"
+                        src={'/assets/medicon/images/doctorIcon.svg'}
+                        alt="Medicon Lekari Avatar"
+                      />
                     )}
                   </div>
 
                   <div className={'doctorList__item__info'}>
-                    <h3>{item.name}</h3>
+                    <h3>{doctor.name}</h3>
 
-                    <p>{item.field}</p>
+                    <p>{doctor.field}</p>
 
                     <a className={'doctorList__item__info__link'} href="">
-                      {item.clinic}
+                      {doctor.clinicName}
                     </a>
 
                     <Button classes="btn--blueBorder btn--small">vice info</Button>

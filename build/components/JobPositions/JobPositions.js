@@ -25,9 +25,9 @@ var JobPositions = function (props) {
         React.createElement("div", { className: 'grid positions' }, data.items.map(function (item, index) { return (React.createElement("div", { className: 'positions__element', style: { backgroundImage: "url(" + item.img + ")" }, key: index },
             React.createElement("div", { className: 'positions__element-content' },
                 React.createElement("p", null, item.position),
-                React.createElement(Button, { classes: 'btn--whiteBorder' }, "Vice info")),
+                React.createElement(Button, { classes: 'btn--whiteBorder btn--fullWidth' }, "Vice info")),
             React.createElement("div", { className: 'positions__colorGradient', style: { background: "linear-gradient(to bottom, transparent 0%, #2473ba 100%)" } }))); })),
-        React.createElement(Button, { classes: "hCenterBlock btn--blueBkg btn--down" }, "dal\u0161\u00ED pozice")));
+        React.createElement(Button, { classes: "hCenterBlock btn--blueBkg btn--down btn--fullWidth" }, "dal\u0161\u00ED pozice")));
 };
 export default JobPositions;
 //# sourceMappingURL=JobPositions.js.map

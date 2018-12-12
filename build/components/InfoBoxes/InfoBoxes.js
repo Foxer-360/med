@@ -26,9 +26,10 @@ var data = {
     ]
 };
 var InfoBoxes = function (props) {
-    return (React.createElement("section", { className: "infoBoxes" },
+    return (React.createElement("section", { className: 'info-boxes' },
         React.createElement("h3", null, "Z na\u0161ich l\u00E9k\u00E1ren"),
-        React.createElement("div", { className: "grid-container" }, data.items.map(function (item, index) { return (React.createElement(InfoElement, { color: item.color, title: item.title, img: item.img, btn: item.btn, titleColor: item.titleColor, key: index })); }))));
+        React.createElement("div", { className: 'container' },
+            React.createElement("div", { className: 'grid info-boxes__list' }, data.items.map(function (item, index) { return (React.createElement(InfoElement, { color: item.color, title: item.title, img: item.img, btn: item.btn, titleColor: item.titleColor, key: index })); })))));
 };
 export default InfoBoxes;
 //# sourceMappingURL=InfoBoxes.js.map

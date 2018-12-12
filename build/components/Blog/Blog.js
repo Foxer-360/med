@@ -70,7 +70,7 @@ var Blog = /** @class */ (function (_super) {
                 React.createElement("div", { className: 'blog__blur' },
                     React.createElement("div", null)),
                 React.createElement("div", { className: "blog__btnHolder" },
-                    React.createElement(Button, { classes: "btn--blueBkg" }, "Na\u010D\u00EDst dal\u0161\u00ED")))));
+                    React.createElement(Button, { classes: "btn--blueBkg btn--fullWidth" }, "Na\u010D\u00EDst dal\u0161\u00ED")))));
     };
     return Blog;
 }(React.Component));
