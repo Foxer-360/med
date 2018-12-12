@@ -8,7 +8,7 @@ var Highlight = function (props) {
                     React.createElement("div", { className: 'highlight__info flexRow' },
                         React.createElement("img", { src: "/assets/medicon/images/info.png", alt: "info" }),
                         React.createElement("p", null, "Poliklinika Zelen\u00FD pruh je od 16.9. do 19.9. zav\u0159en\u00E1")),
-                    React.createElement(Button, { classes: "btn--whiteBorder" }, "vice info"))))));
+                    React.createElement(Button, { classes: "btn--whiteBorder btn--fullWidth" }, "vice info"))))));
 };
 export default Highlight;
 //# sourceMappingURL=Highlight.js.map
