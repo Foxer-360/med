@@ -1,34 +1,39 @@
 import * as React from 'react';
+import Media from '@source/partials/Media';
 
-interface IProperties { 
-  data: number[];
+export interface BenefitsProps { 
+  data: {
+    items: [
+      {
+        text: string;
+        image: object;
+      }
+    ];
+  };
 }
 
-const Benefits: React.SFC<IProperties> = props => (
-  <section className={'benefits'}>
-    <div className={'container'}>
+const Benefits = (props: BenefitsProps) => {
+  const { items } = props.data;
 
-      <div className={'grid benefits__list'}>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity1.png" alt="out benefit"/>
-          <p>Přívětivý personál</p>
-        </div>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity2.png" alt="out benefit"/>
-          <p>Přívětivý personál</p>
-        </div>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity3.png" alt="out benefit"/>
-          <p>Přívětivý personál</p>
-        </div>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity4.png" alt="out benefit"/>
-          <p>Přívětivý personál</p>
+  return (
+    <section className={'benefits'}>
+      <div className={'container'}>
+        <div className={'grid benefits__list'}>
+          
+          {/* /assets/medicon/images/benefity1.png */}
+          {items && items.map((item, index) => {
+            return (
+              <div key={index} className={'grid benefits__list__element'}>
+                <Media type={'image'} data={item.image} />
+                <p>{item.text}</p>
+              </div>
+            );
+          })}
+
         </div>
       </div>
-
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Benefits;
