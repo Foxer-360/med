@@ -6,26 +6,47 @@ export interface SearchBarProps {
   barColor: string;
 }
 
-export interface SearchBarState {}
+export interface SearchBarState {
+  focused: boolean;
+}
 
-export default class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+  public searchBar: any;
   constructor(props: SearchBarProps) {
     super(props);
+    this.searchBar = React.createRef();
 
-    this.state = {};
+    this.state = { focused: false };
+  }
+
+  handleFocus = () => {
+    this.setState({
+      focused: !this.state.focused,
+    });
   }
 
   public render() {
     const { placeholder, barColor } = this.props;
+
     return (
-      <div className={'searchBar'}>
+      <div
+        className={`searchBar ${this.state.focused ? 'searchBar--focused' : ''} searchBar--${barColor}`}
+        ref={this.searchBar}
+      >
         <div className={'searchBar__input'}>
-          <input type="text" placeholder={placeholder} />
-          <SvgIcon name={'search'} type={'lightBlue'} />
+          <input
+            type="text"
+            placeholder={placeholder}
+            onFocus={() => this.handleFocus()}
+            onBlur={() => this.handleFocus()}
+          />
+          <SvgIcon name={'search'} type={barColor} />
         </div>
 
-        <div className={`searchBar__bar searchBar__bar--${barColor}`} />
+        <div className={`searchBar__bar`} />
       </div>
     );
   }
 }
+
+export default SearchBar;

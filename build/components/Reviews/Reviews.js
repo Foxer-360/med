@@ -18,19 +18,19 @@ var data = {
         {
             img: '/assets/medicon/images/photo-1.jpg',
             cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
-            starCount: 5
+            starCount: 5,
         },
         {
             img: '/assets/medicon/images/photo-2.jpg',
             cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
-            starCount: 5
+            starCount: 5,
         },
         {
             img: '/assets/medicon/images/photo-3.jpg',
             cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
-            starCount: 5
-        }
-    ]
+            starCount: 5,
+        },
+    ],
 };
 var Reviews = /** @class */ (function (_super) {
     __extends(Reviews, _super);

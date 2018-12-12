@@ -18,7 +18,7 @@ const PolyclinicInfo = (props: PolyclinicInfoProps) => {
         <p>
           Metro C <br />
           stanice Budějovická
-        </p>
+        </p>  
       </div>
     </div>
   );

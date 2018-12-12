@@ -8,19 +8,19 @@ const data = {
     {
       img: '/assets/medicon/images/photo-1.jpg',
       cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
-      starCount: 5
+      starCount: 5,
     },
     {
       img: '/assets/medicon/images/photo-2.jpg',
       cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
-      starCount: 5
+      starCount: 5,
     },
     {
       img: '/assets/medicon/images/photo-3.jpg',
       cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
-      starCount: 5
-    }
-  ]
+      starCount: 5,
+    },
+  ],
 };
 
 class Reviews extends React.Component<any, any> {
@@ -31,12 +31,7 @@ class Reviews extends React.Component<any, any> {
         <div className="container">
           <div className="grid reviews__list">
             {data.items.map((item, index) => (
-              <ReviewElement 
-                key={index}
-                img={item.img} 
-                cite={item.cite} 
-                starCount={item.starCount} 
-              />  
+              <ReviewElement key={index} img={item.img} cite={item.cite} starCount={item.starCount} />
             ))}
           </div>
         </div>

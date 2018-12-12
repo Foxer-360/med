@@ -17,16 +17,23 @@ var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {
         var _this = _super.call(this, props) || this;
-        _this.state = {};
+        _this.handleFocus = function () {
+            _this.setState({
+                focused: !_this.state.focused,
+            });
+        };
+        _this.searchBar = React.createRef();
+        _this.state = { focused: false };
         return _this;
     }
     SearchBar.prototype.render = function () {
+        var _this = this;
         var _a = this.props, placeholder = _a.placeholder, barColor = _a.barColor;
-        return (React.createElement("div", { className: 'searchBar' },
+        return (React.createElement("div", { className: "searchBar " + (this.state.focused ? 'searchBar--focused' : '') + " searchBar--" + barColor, ref: this.searchBar },
             React.createElement("div", { className: 'searchBar__input' },
-                React.createElement("input", { type: "text", placeholder: placeholder }),
-                React.createElement(SvgIcon, { name: 'search', type: 'lightBlue' })),
-            React.createElement("div", { className: "searchBar__bar searchBar__bar--" + barColor })));
+                React.createElement("input", { type: "text", placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); } }),
+                React.createElement(SvgIcon, { name: 'search', type: barColor })),
+            React.createElement("div", { className: "searchBar__bar" })));
     };
     return SearchBar;
 }(React.Component));

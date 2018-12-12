@@ -12,7 +12,7 @@ import Reviews from './Reviews';
 import TextBlock from './TextBlock';
 import DoctorList from './DoctorList';
 import PolyclinicsList from './PolyclinicsList';
-import ExpertiseList from './ExpertiseList';
+import ExpertiseList from './ExpertiseList';  
 import InfoRectangles from './InfoRectangles';
 import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
@@ -41,7 +41,7 @@ export {
   Header,
   Hero,
   Highlight,
-  InfoBoxes,  
+  InfoBoxes,
   Map,
   Reviews,
   TextBlock,

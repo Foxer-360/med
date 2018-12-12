@@ -4,8 +4,12 @@ export interface SearchBarProps {
     barColor: string;
 }
 export interface SearchBarState {
+    focused: boolean;
 }
-export default class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+declare class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+    searchBar: any;
     constructor(props: SearchBarProps);
+    handleFocus: () => void;
     render(): JSX.Element;
 }
+export default SearchBar;

@@ -4,16 +4,15 @@ export interface DoctorListProps {}
 
 // ! MOCK DATA ONLY
 const data = {
-  title: 'text',
+  title: 'text',  
 
   items: [
     {
       name: 'MUDr. Jana Pavluchová',
-      field: 'Alergologie a Imunologie',
-      clinic: 'Poliklinika Budějovická',
-      img: '/assets/medicon/images/doctorlist1.png'
+      field: 'Alergologie a Imunologie', 
+      img: '/assets/medicon/images/doctorlist1.png',
     },
-    {
+    {  
       name: 'MUDr. Michala Jakubíková, Ph.D.',
       field: 'Neurologie',
       clinic: 'Poliklinika Vysočany',
@@ -61,7 +60,7 @@ const DoctorList = (props: DoctorListProps) => {
                     <a className={'doctorList__item__info__link'} href="">
                       {item.clinic}
                     </a>
-                    
+
                     <Button classes="btn--blueBorder btn--small">vice info</Button>
                   </div>
                 </div>
@@ -70,7 +69,7 @@ const DoctorList = (props: DoctorListProps) => {
         </div>
 
         <div className="doctorList__btnHolder">
-          <Button classes="btn--blueBkg">zobrazit vice</Button>
+          <Button classes="btn--blueBkg btn--down">zobrazit vice</Button>
         </div>
       </div>
     </section>

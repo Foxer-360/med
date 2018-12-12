@@ -57,10 +57,14 @@
 
     &__info {
       @extend .flexColumn;
-      padding: 17px;
+      padding: 17px 0;
       box-sizing: border-box;
       width: 100%;
       align-items: flex-start;
+
+      @include md {
+        padding: 17px;
+      }
 
       h3 {
         color: $darkGray;
@@ -84,6 +88,10 @@
         text-align: center;
         width: 100%;
         line-height: initial;
+
+        &:nth-of-type(1) {
+          margin-top: 5px;
+        }
 
         @include lg {
           text-align: left;

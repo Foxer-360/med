@@ -1,5 +1,5 @@
 .marker {
-  border-radius: 50% 50% 50% 50%;
+  border-radius: 50%;
   @include topBottomgradient(#01a6ce, #2083c1);
   position: absolute;
   transform: rotate(0deg);
@@ -7,10 +7,6 @@
   z-index: 7;
   left: -9px;
   top: -16px;
-
-  &.red {
-    background: #c92731;
-  }
 
   &.big {
     width: 64px;
@@ -54,5 +50,53 @@
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg) translate3d(0, 0, 0);
     backface-visibility: hidden;
+  }
+}
+
+.geoLocationMarker {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  position: relative;
+  @include leftRightGradient($blue, $lightBlue);
+  z-index: 2;
+
+  &:after,
+  &:before {
+    @include pseudo();
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0);
+    background-color: transparentize($lightBlue, 0.65);
+    border: 2px solid ($lightBlue, 0.4);
+  }
+
+  &:after {
+    animation: pulse 1.3s ease-in-out infinite normal forwards;
+  }
+
+  &:before {
+    animation: pulse 1.3s 350ms ease-in-out infinite normal forwards;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(1.5);
   }
 }

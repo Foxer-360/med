@@ -48,7 +48,7 @@ const PolyclinicsList = () => (
                     <li>Neurologie</li>
                     <li>Mammacentrum</li>
                     <li>Psychologie</li>
-                    <li>Neurologie</li>  
+                    <li>Neurologie</li>
                     <li>Mammacentrum</li>
                     <li>Psychologie</li>
                     <li>Neurologie</li>
@@ -67,7 +67,10 @@ const PolyclinicsList = () => (
                     špičkově vybaveného oddělení RDG a zobrazovacích metod. To vše pod jednou střechou.
                   </div>
 
-                  <Button classes="btn btn--blueBorder btn--fullWidth">vice info</Button>
+
+                  <div className={'pcitem__info__btnHolder'}>
+                    <Button classes="btn btn--blueBorder">vice info</Button>
+                  </div>
                 </div>
               </div>
             </div>
