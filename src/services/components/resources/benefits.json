@@ -28,7 +28,7 @@
       "properties": {
         "items": {
           "type": "array",
-          "title": "Items",
+          "title": "Benefits",
           "items": {
             "properties": {
               "text": {
