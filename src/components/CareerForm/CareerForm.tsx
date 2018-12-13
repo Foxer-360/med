@@ -1,7 +1,14 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
+import ReactMarkdown from 'react-markdown';
 
-export interface CareerFormProps {}
+export interface CareerFormProps {
+  data: {
+    title: string;
+    text: string;
+    gdprLink: string;
+  };
+}
 
 export interface CareerFormState {
   formValues: {
@@ -35,15 +42,20 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
   }
 
   public render() {
+    const { gdprLink, title, text } = this.props.data;
+
     return (
       <div className={'fullWidthContainer'}>
         <section className={'careerForm form'}>
           <div className={'container'}>
-            <h3 className={'gradientHeading'}>Nenašli jste pozici, kterou hledáte</h3>
+            <h3 className={'gradientHeading'}>{title}</h3>
 
-            <p>
-              Máte-li zájem o práci u nás, <strong>vyplňte formulář</strong> a my vás zařadíme do databáze zájemců.
-            </p>
+            <ReactMarkdown
+              source={text}
+              renderers={{
+                paragraph: (props: any) => <p>{props.children}</p>,
+              }}
+            />
 
             <form>
               <div className={'form__row form__row--first'}>
@@ -110,9 +122,9 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                 </div>
 
                 <div className={'form__inputBtn'}>
-                  <button>  
+                  <button>
                     Nahrát životopis
-                    <span>  
+                    <span>
                       <svg
                         enableBackground="new 0 0 353.7 386.4"
                         viewBox="0 0 353.7 386.4"
@@ -141,7 +153,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                 </div>
 
                 <div>
-                  Souhlasím se <a href={''}>zpracováním osobních</a> údajů.
+                  Souhlasím se <a href={gdprLink}>zpracováním osobních</a> údajů.
                 </div>
               </div>
 
