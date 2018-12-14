@@ -1,25 +1,62 @@
 import * as React from 'react';
+import Media from '@source/partials/Media';
 
-export interface PolyclinicInfoProps {}
+export interface PolyclinicInfoProps {
+  data: {
+    address: string;
+    addressIcon: LooseObject;
+    phone: string;
+    phoneIcon: LooseObject;
+    transport: string;
+    transportIcon: LooseObject;
+  };
+}
 
 const PolyclinicInfo = (props: PolyclinicInfoProps) => {
+  const { 
+    address, 
+    addressIcon,
+    phone,
+    phoneIcon,
+    transport,
+    transportIcon,  
+  } = props.data;
+
   return (
     <div className="policlinicInfo">
-      <div className="policlinicInfo__item" style={{ backgroundImage: 'url(/assets/medicon/images/geo.png)' }}>
-        <p>
-          Antala Staška 1670/80<br />
-          140 00 Praha 4
-        </p>
-      </div>
-      <div className="policlinicInfo__item" style={{ backgroundImage: 'url(/assets/medicon/images/phone.png)' }}>
-        <p>+420 261 006 111</p>
-      </div>
-      <div className="policlinicInfo__item" style={{ backgroundImage: 'url(/assets/medicon/images/metro.png)' }}>
-        <p>
-          Metro C <br />
-          stanice Budějovická
-        </p>  
-      </div>
+
+      {address &&
+        <Media 
+          type={'background-image'} 
+          classes={'policlinicInfo__item'}
+          data={addressIcon}
+        >
+          <p>{address}</p>
+        </Media>
+      }
+
+      {phone &&
+        <Media 
+          type={'background-image'} 
+          classes={'policlinicInfo__item'}
+          data={phoneIcon}
+        >
+          <p>
+            <a href={`tel:${phone}`}>{phone}</a>
+          </p>
+        </Media>
+      }
+
+      {transport &&
+        <Media 
+          type={'background-image'} 
+          classes={'policlinicInfo__item'}
+          data={transportIcon}
+        >
+          <p>{transport}</p>
+        </Media>
+      }
+      
     </div>
   );
 };
