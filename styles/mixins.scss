@@ -6,51 +6,24 @@
 
 @mixin vertical-center() {
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: translate3d(0, -50%, 0);
 }
 
 @mixin horizontal-center() {
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
 }
 
 @mixin vertical-horizontal-center() {
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-@mixin filter($filter) {
-  -webkit-filter: $filter;
-  filter: $filter;
-  -moz-filter: $filter;
-  -ms-filter: $filter;
+  transform: translate3d(-50%, 0, 0);
 }
 
 @mixin pseudo($display: block, $pos: absolute, $content: '') {
   content: $content;
   display: $display;
   position: $pos;
-}
-
-@mixin transform($transfrom) {
-  -webkit-transform: $transfrom;
-  -moz-transform: $transfrom;
-  -ms-transform: $transfrom;
-  -o-transform: $transfrom;
-  transform: $transfrom;
 }
 
 @mixin reset-list() {
@@ -105,7 +78,7 @@
     @include pseudo;
     height: 6px;
     width: 0;
-    transition: 300ms ease;
+    transition: 300ms ease 50ms;
     @include leftRightGradient(#2472b8, #00aadd);
     right: 0;
     bottom: 0;

@@ -24,6 +24,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import Button from '../../partials/Button';
+import ReactMarkdown from 'react-markdown';
 var CareerForm = /** @class */ (function (_super) {
     __extends(CareerForm, _super);
     function CareerForm(props) {
@@ -47,14 +48,14 @@ var CareerForm = /** @class */ (function (_super) {
     }
     CareerForm.prototype.render = function () {
         var _this = this;
+        var _a = this.props.data, gdprLink = _a.gdprLink, title = _a.title, text = _a.text;
         return (React.createElement("div", { className: 'fullWidthContainer' },
             React.createElement("section", { className: 'careerForm form' },
                 React.createElement("div", { className: 'container' },
-                    React.createElement("h3", { className: 'gradientHeading' }, "Nena\u0161li jste pozici, kterou hled\u00E1te"),
-                    React.createElement("p", null,
-                        "M\u00E1te-li z\u00E1jem o pr\u00E1ci u n\u00E1s, ",
-                        React.createElement("strong", null, "vypl\u0148te formul\u00E1\u0159"),
-                        " a my v\u00E1s za\u0159ad\u00EDme do datab\u00E1ze z\u00E1jemc\u016F."),
+                    React.createElement("h3", { className: 'gradientHeading' }, title),
+                    React.createElement(ReactMarkdown, { source: text, renderers: {
+                            paragraph: function (props) { return React.createElement("p", null, props.children); },
+                        } }),
                     React.createElement("form", null,
                         React.createElement("div", { className: 'form__row form__row--first' },
                             React.createElement("div", null,
@@ -99,7 +100,7 @@ var CareerForm = /** @class */ (function (_super) {
                                 React.createElement("label", { htmlFor: "styled-checkbox-1" })),
                             React.createElement("div", null,
                                 "Souhlas\u00EDm se ",
-                                React.createElement("a", { href: '' }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                React.createElement("a", { href: gdprLink }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                 " \u00FAdaj\u016F.")),
                         React.createElement("div", { className: 'flexRow flexAlign--center' },
                             React.createElement(Button, { classes: "btn--blueBkg btn--fullWidth" }, "Odeslat")))))));

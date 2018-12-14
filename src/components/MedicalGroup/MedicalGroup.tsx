@@ -45,7 +45,7 @@ class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState>
   };
 
   componentDidMount() {
-    let listHeight = this.list.current.getBoundingClientRect().height + 60;
+    let listHeight = this.list.current.getBoundingClientRect().height + 120;
 
     this.setState({
       listHeight: listHeight,

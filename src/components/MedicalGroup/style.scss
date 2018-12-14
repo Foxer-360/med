@@ -1,4 +1,6 @@
 .medicalGroup {
+  height: calc(100% + 50%);
+
   h4 {
     @include webkitGradientText;
   }

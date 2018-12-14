@@ -8,11 +8,10 @@
   left: 50%;
 
   @include md {
-    right: 50px;
+    right: 0;
     left: auto;
     width: auto;
-    bottom: 50px;
-
+    bottom: 0;
     transform: translateX(0%);
   }
 

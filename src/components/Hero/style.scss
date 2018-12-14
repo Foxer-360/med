@@ -2,7 +2,6 @@
   @extend .flexColumn;
   height: 395px;
   width: 100%;
-  background: lightblue;
   justify-content: center;
   align-items: center;
   @include background-image(cover, center);

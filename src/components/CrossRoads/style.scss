@@ -53,7 +53,7 @@
       @include pseudo;
       height: 6px;
       width: 0;
-      transition: 300ms ease;
+      transition: 300ms ease 50ms;
       @include leftRightGradient(#2472b8, #00aadd);
       right: 0;
       bottom: 0;

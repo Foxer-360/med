@@ -3,13 +3,9 @@
   display: -ms-flexbox; // Not needed if autoprefixing
   display: flex;
   margin-left: -30px; // gutter size offset
-  padding-top: 39px;
-
-  @include md {
-  padding-top: 50px;
-
-  }
 }
+
+
 
 .my-masonry-grid_column {
   border-left: 30px solid transparent; // gutter size
@@ -19,12 +15,18 @@
 .blog {
   padding: 39px 0;
 
-  @include md { padding: 70px 0; }
+  @include md {
+    padding: 70px 0;
+  }
 
   h1 {
     @include webkitGradientText;
     line-height: 1.5;
-    padding: 0;
+    padding: 0 0 39px 0;
+
+    @include md {
+      padding: 0 0 50px 0;
+    }
   }
 
   &__btnHolder {
@@ -67,7 +69,9 @@
     height: 400px;
 
     &:hover {
-      .blogCard__colorGradient { height: 200%; }
+      .blogCard__colorGradient {
+        height: 200%;
+      }
     }
   }
 
@@ -94,7 +98,9 @@
     padding-bottom: 17px;
     z-index: 100;
 
-    @include md { font-size: 2rem; }
+    @include md {
+      font-size: 2rem;
+    }
   }
 
   p {
@@ -105,7 +111,9 @@
     z-index: 100;
     line-height: 22px;
 
-    @include md { line-height: 23.43px; }
+    @include md {
+      line-height: 23.43px;
+    }
   }
 
   img {
@@ -125,10 +133,14 @@
     @include md {
       height: auto;
 
-      &:hover { background-color: #2473ba; }
+      &:hover {
+        background-color: #2473ba;
+      }
     }
 
-    h3 { padding-bottom: 5px; }
+    h3 {
+      padding-bottom: 5px;
+    }
 
     ul {
       @include reset-list;

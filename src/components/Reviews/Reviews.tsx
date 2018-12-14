@@ -6,17 +6,17 @@ export interface ReviewsProps {}
 const data = {
   items: [
     {
-      img: '/assets/medicon/images/photo-1.jpg',
+      img: '../../../assets/medicon/images/photo-1.jpg',
+      cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
+      starCount: 5,
+    },
+    {  
+      img: '../../../assets/medicon/images/photo-2.jpg',
       cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
       starCount: 5,
     },
     {
-      img: '/assets/medicon/images/photo-2.jpg',
-      cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
-      starCount: 5,
-    },
-    {
-      img: '/assets/medicon/images/photo-3.jpg',
+      img: '../../../assets/medicon/images/photo-3.jpg',
       cite: '„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“',
       starCount: 5,
     },

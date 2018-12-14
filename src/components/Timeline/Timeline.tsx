@@ -1,10 +1,15 @@
 import * as React from 'react';
 import Swipeable from 'react-swipeable';
 
-export interface TimelineProps {}
+export interface TimelineProps {
+  data: {
+    title: '';
+    items: [{}];
+  };
+}
 
 export interface TimelineState {
-  x: number;
+  x: number; 
   limitLeft: boolean;
   limitRight: boolean;
 }
@@ -138,10 +143,13 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
   };
 
   public render() {
+    const { title } = this.props.data;
+
     return (
       <div className={'container'}>
         <section className={'timelineSection'}>
-          <h2 className={'gradientHeading'}>časová Osa</h2>
+         
+          <h2 className={'gradientHeading'}>{title}</h2>
 
           <div className={'timeline'}>
             {!this.state.limitLeft && (

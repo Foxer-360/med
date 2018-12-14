@@ -1,5 +1,9 @@
 import * as React from 'react';
 export interface TimelineProps {
+    data: {
+        title: '';
+        items: [{}];
+    };
 }
 export interface TimelineState {
     x: number;

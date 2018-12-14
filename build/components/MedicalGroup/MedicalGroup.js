@@ -37,7 +37,7 @@ var MedicalGroup = /** @class */ (function (_super) {
         return _this;
     }
     MedicalGroup.prototype.componentDidMount = function () {
-        var listHeight = this.list.current.getBoundingClientRect().height + 60;
+        var listHeight = this.list.current.getBoundingClientRect().height + 120;
         this.setState({
             listHeight: listHeight,
         });
