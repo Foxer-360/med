@@ -1,7 +1,12 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
 
-export interface HighlightProps {}
+export interface HighlightProps {
+  data: {
+    text: string;
+    url: string;
+  };
+}
 
 const Highlight = (props: HighlightProps) => {
   return (
