@@ -10,16 +10,36 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
 
         <ul className={'grid'}>
           <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
+            <a href="#">
+              <img 
+                src="/assets/medicon/images/poliklinika.png" 
+                alt="poliklinika" 
+              />
+            </a>
           </li>
           <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
+            <a href="#">
+              <img 
+                src="/assets/medicon/images/poliklinika.png" 
+                alt="poliklinika" 
+              />
+            </a>
           </li>
           <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
+            <a href="#">
+              <img 
+                src="/assets/medicon/images/poliklinika.png" 
+                alt="poliklinika" 
+              />
+            </a>
           </li>
           <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
+            <a href="#">
+              <img 
+                src="/assets/medicon/images/poliklinika.png" 
+                alt="poliklinika" 
+              />
+            </a>
           </li>
         </ul>
       </div>
