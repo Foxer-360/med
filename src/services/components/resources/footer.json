@@ -1,3 +1,105 @@
 {
-  "name": "Footer"
+  "name": "Footer",
+  "data": {
+    "links": [
+      {
+        "text": "O společnosti",
+        "url": ""
+      },
+      {
+        "text": "Skupina PRONATAL",
+        "url": ""
+      },
+      {
+        "text": "INCARE",
+        "url": ""
+      },
+      {
+        "text": "Aktuality",
+        "url": ""
+      },
+      {
+        "text": "Kontakty",
+        "url": ""
+      },
+      {
+        "text": "Polikliniky",
+        "url": ""
+      }
+    ],
+    "social": {
+      "icons": [
+        {
+          "name": "fb",
+          "url": ""
+        }
+      ],
+      "information": "MEDICON a.s. Antala Staška 1670/80 140 00 Praha 4"
+    },
+    "company": "© 2018 - MEDICON a.s.",
+    "url": "",
+    "text": "Prohlášení o ochraně osobních údajů"
+  },
+
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "title": "List of Links",
+          "items": {
+            "properties": {
+              "text": {
+                "type": "text",
+                "title": "Text of link"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "Url"
+              }
+            }
+          }
+        },
+        "social": {
+          "type": "object",
+          "title": "Social",
+          "properties": {
+            "icons": {
+              "type": "array",
+              "title": "Icons",
+              "items": {
+                "properties": {
+                  "name": {
+                    "type": "text",
+                    "title": "Icon type"
+                  },
+                  "url": {
+                    "type": "urlAutocomplete",
+                    "title": "Url"
+                  }
+                }
+              }
+            },
+            "information": {
+              "type": "markdown",
+              "title": "Social information"
+            }
+          }
+        },
+        "company": {
+          "type": "text",
+          "title": "Company name"
+        },
+        "url": {
+          "type": "urlAutocomplete",
+          "title": "Policy link"
+        },
+        "text": {
+          "type": "text",
+          "title": "Policy text"
+        }
+      }
+    }
+  }
 }

@@ -44,9 +44,14 @@
     text-align: right;
     justify-content: space-between;
 
-    p {
-      text-align: right;
-      line-height: 22px;
+    &__text {
+      width: 50%;
+      align-self: flex-end;
+      p {
+        
+        text-align: right;
+        line-height: 22px;
+      }
     }
 
     .fbIcon {
@@ -55,6 +60,25 @@
 
       &:hover {
         fill: $blue;
+      }
+    }
+  }
+
+  @include max-xl {
+    .social {
+      width: 100%;
+      height: 100%;
+      flex-flow: row-reverse wrap;
+      justify-content: space-between;
+      padding-top: 20px;
+
+      &__text {
+        width: 70%;
+
+        p {
+          text-align: left;
+          float: left;  
+        }
       }
     }
   }
@@ -84,17 +108,6 @@
         display: block;
         position: relative;
         min-height: 1px;
-      }
-    }
-
-    .social {
-      width: 100%;
-      height: 100%;
-      flex-flow: row-reverse wrap;
-      justify-content: space-between;
-      p {
-        text-align: left;
-        float: left;
       }
     }
   }

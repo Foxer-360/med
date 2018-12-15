@@ -2,70 +2,98 @@ import * as React from 'react';
 import Social from './components/Social';
 import HelpPopup from './components/HelpPopup';
 
-class Footer extends React.Component<any, any> {
+interface Links {
+  text: string;
+  url: string;
+}
+
+interface Icon {
+  name: string;
+  url: string;
+}
+
+export interface Social {
+  icons: Icon[];
+  information: string;
+}
+
+export interface FooterProps {
+  data: {
+    links: Links[];
+    social: Social;
+    company: string;
+    url: string;
+    text: string;
+  };
+}
+
+export interface FooterState { }
+
+class Footer extends React.Component<FooterProps, FooterState> {
+  constructor(props: FooterProps) {
+    super(props);
+  }
+
   public render() {
+    const {
+      links,
+      social,
+      company,
+      url,
+      text
+    } = this.props.data;
+
     return (
       <footer className={'footer'}>
         <HelpPopup />
 
         <div className="container">
           <div className="flexRow flexAlign--space-between">
-            <ul className={'footer__list'}>
-              <li>
-                <a href="#">O společnosti</a>
-              </li>
-              <li>
-                <a href="#">Skupina PRONATAL</a>
-              </li>
-              <li>
-                <a href="#">INCARE</a>
-              </li>
-              <li>
-                <a href="#">Aktuality</a>
-              </li>
-              <li>
-                <a href="#">Kontakty</a>
-              </li>
+          
+            {links && links.length > 0 && 
+              <ul className={'footer__list'}>
+                {links.slice(0, 5).map((link, index) => (
+                  <li key={index}>
+                    <a href={link.url}>{link.text}</a>
+                  </li>
+                ))}
+              </ul>
+            }
+
+            {links && links.length > 5 && 
+              <ul className={'footer__list'}>
+                {links.slice(5, 10).map((link, index) => (
+                  <li key={index}>
+                    <a href={link.url}>{link.text}</a>
+                  </li>
+                ))}
+              </ul>
+            }
+
+            {links && links.length > 10 && 
+              <ul className={'footer__list'}>
+              {links.slice(10, 15).map((link, index) => (
+                <li key={index}>
+                  <a href={link.url}>{link.text}</a>
+                </li>
+              ))}
             </ul>
-            <ul className={'footer__list'}>
-              <li>
-                <a href="#">Polikliniky</a>
-              </li>
-              <li>
-                <a href="#">Mammacentra</a>
-              </li>
-              <li>
-                <a href="#">Onkocentrum</a>
-              </li>
-              <li>
-                <a href="#">Následná péče </a>
-              </li>
-              <li>
-                <a href="#">Lékárny</a>
-              </li>
-            </ul>
-            <ul className={'footer__list'}>
-              <li>
-                <a href="#">Nejčastější dotazy</a>
-              </li>
-              <li>
-                <a href="#">Nabídka zaměstnání</a>
-              </li>
-              <li>
-                <a href="#">Ochrana osobních údajů</a>
-              </li>
-            </ul>
-            <Social />
+            }
+
+            {social && <Social data={social} />}
+
           </div>
         </div>
 
         <div className="bottom">
           <div className="container">
             <div className="copyrights grid">
-              <p>© 2018 - MEDICON a.s.</p>
-              <a href="#">
-                <p>Prohlášení o ochraně osobních údajů</p>
-              </a>
+              
+              {company && <p>{company}</p>}
+              {text && 
+                <a href={url}><p>{text}</p></a>
+              }
+
             </div>
           </div>
         </div>
