@@ -1,61 +1,34 @@
 import * as React from 'react';
 import Media from '@source/partials/Media';
 
-export interface PolyclinicInfoProps {
+interface Contacts {
+  title: string;
+  image: LooseObject;
+}
+
+export interface ContactsProps {
   data: {
-    address: string;
-    addressIcon: LooseObject;
-    phone: string;
-    phoneIcon: LooseObject;
-    transport: string;
-    transportIcon: LooseObject;
+    contacts: Contacts[];
   };
 }
 
-const PolyclinicInfo = (props: PolyclinicInfoProps) => {
-  const { 
-    address, 
-    addressIcon,
-    phone,
-    phoneIcon,
-    transport,
-    transportIcon,  
-  } = props.data;
+const PolyclinicInfo = (props: ContactsProps) => {
+  const { contacts } = props.data;
 
   return (
     <div className="policlinicInfo">
 
-      {address &&
+      {contacts && contacts.map((contact, index) => (
+        // tslint:disable-next-line:no-unused-expression
         <Media 
           type={'background-image'} 
           classes={'policlinicInfo__item'}
-          data={addressIcon}
+          data={contact.image}
+          key={index}
         >
-          <p>{address}</p>
+          <p>{contact.title}</p>
         </Media>
-      }
-
-      {phone &&
-        <Media 
-          type={'background-image'} 
-          classes={'policlinicInfo__item'}
-          data={phoneIcon}
-        >
-          <p>
-            <a href={`tel:${phone}`}>{phone}</a>
-          </p>
-        </Media>
-      }
-
-      {transport &&
-        <Media 
-          type={'background-image'} 
-          classes={'policlinicInfo__item'}
-          data={transportIcon}
-        >
-          <p>{transport}</p>
-        </Media>
-      }
+      ))}
       
     </div>
   );

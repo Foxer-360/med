@@ -27,12 +27,6 @@
       padding-left: 75px;
       font-size: 1.8rem;
     }
-
-    a {
-      &:hover {
-        color: $lightBlue;
-      }
-    }
   }
 
   @include max-sm {

@@ -2,8 +2,8 @@ import * as React from 'react';
 
 export interface MediaProps {
   type: string;
-  classes?: string;
   data: any;
+  classes?: string;
 }
 
 export interface MediaState {}
