@@ -1,3 +1,43 @@
 {
-  "name": "InfoRectangles"
+  "name": "InfoRectangles",
+  "data": {
+    "infoRectangles": [
+      {
+        "image": {},
+        "title": "široký výběr zdravýchpotravin",
+        "url": ""
+      },
+      {
+        "image": {},
+        "title": "široký výběr zdravýchpotravin",
+        "url": ""
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "infoRectangles": {
+          "type": "array",
+          "title": "Advertise",
+          "items": {
+            "properties": {
+              "image": {
+                "type": "image"
+              },
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "Button Url"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
