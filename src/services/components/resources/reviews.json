@@ -1,3 +1,53 @@
 {
-  "name": "Reviews"
+  "name": "Reviews",
+  "data": {
+    "title": "řekli o nás",
+    "reviews": [
+      {
+        "cite": "„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“",
+        "image": {},
+        "starCount": "5"
+      },
+      {
+        "cite": "„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“",
+        "image": {},
+        "starCount": "5"
+      },
+      {
+        "cite": "„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“",
+        "image": {},
+        "starCount": "5"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "reviews": {
+          "type": "array",
+          "title": "Quotes",
+          "items": {
+            "properties": {
+              "cite": {
+                "type": "text",
+                "title": "Quote"
+              },
+              "image": {
+                "type": "image"
+              },
+              "starCount": {
+                "type": "number",
+                "title": "Stars"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
