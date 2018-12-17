@@ -12,6 +12,7 @@
   h3,
   h4 {
     @include webkitGradientText;
+    @include max-md { padding-top: 25px; }
   }
 
   a {

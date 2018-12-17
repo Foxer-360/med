@@ -1,3 +1,201 @@
 {
-  "name": "ContactsBlock"
+  "name": "ContactsBlock",
+  "data": {
+    "title": "Vedení společnosti a další kontakty",
+    "managementTitle": "Vedení společnosti",
+    "nextTitle": "Další kontakty",
+    "managementContacts": [
+      {
+        "name": "Jiří Adámek",
+        "position": "generální ředitel",
+        "email1": "management@mediconas.cz"
+      },
+      {
+        "name": "Ing. Andrea Sklenářová",
+        "position": "finanční ředitelka",
+        "email1": "management@mediconas.cz"
+      }
+    ],
+    "nextContacts": [
+      {
+        "name": "Andrea Nedomová",
+        "position": "sekretariát",
+        "email1": "sekretariat@mediconas.cz",
+        "phone1": "+420 261 006 630"
+      },
+      {
+        "name": "Hana Malíková",
+        "position": "sekretariát",
+        "email1": "sekretariat@mediconas.cz",
+        "phone1": "+420 261 006 524"
+      }
+    ],
+    "otherContacts": [
+      {
+        "name": "MUDr. Regina Šírová",
+        "position": "vedoucí lékařka mamografických center skupiny MEDICON",
+        "email1": "mamografie@mediconas.cz",
+        "phone1": "+420 261 006 630"
+      },
+      {
+        "name": "Ing. Eva Sokolová",
+        "position": "vedoucí odboru agendy zdravotních pojišťoven",
+        "email1": "pojistovny@mediconas.cz",
+        "phone1": "+420 731 682 290"
+      },
+      {
+        "name": "Mgr. Matyáš Bittner",
+        "position": "obchodní a marketingový manažer (kontakt pro média)",
+        "email1": "marketing@mediconas.cz",
+        "phone1": "+420 261 006 427",
+        "phone2": "+420 730 807 487"
+      },
+      {
+        "name": "Marcela Větrovcová",
+        "position": "koordinátorka programů INCARE",
+        "email1": "incare@mediconas.cz",
+        "phone1": "+420 273 162 162"
+      },
+      {
+        "name": "MUDr. Regina Šírová",
+        "position": "vedoucí lékařka mamografických center skupiny MEDICON",
+        "email1": "mamografie@mediconas.cz",
+        "phone1": "+420 261 006 630"
+      },
+      {
+        "name": "Ing. Eva Sokolová",
+        "position": "vedoucí odboru agendy zdravotních pojišťoven",
+        "email1": "pojistovny@mediconas.cz",
+        "phone1": "+420 731 682 290"
+      },
+      {
+        "name": "Mgr. Matyáš Bittner",
+        "position": "obchodní a marketingový manažer (kontakt pro média)",
+        "email1": "marketing@mediconas.cz",
+        "phone1": "+420 261 006 427",
+        "phone2": "+420 730 807 487"
+      },
+      {
+        "name": "Marcela Větrovcová",
+        "position": "koordinátorka programů INCARE",
+        "email1": "incare@mediconas.cz",
+        "phone1": "+420 273 162 162"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Main title"
+        },
+        "managementTitle": {
+          "type": "text",
+          "title": "Managment title"
+        },
+        "nextTitle": {
+          "type": "text",
+          "title": "Next title"
+        },
+        "managementContacts": {
+          "type": "array",
+          "title": "Managment contacts",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Name"
+              },
+              "position": {
+                "type": "text",
+                "title": "Position"
+              },
+              "email1": {
+                "type": "text",
+                "title": "Email 1"
+              },
+              "email2": {
+                "type": "text",
+                "title": "Email 2"
+              },
+              "phone1": {
+                "type": "text",
+                "title": "Phone 1"
+              },
+              "phone2": {
+                "type": "text",
+                "title": "Phone 2"
+              }
+            }
+          }
+        },
+        "nextContacts": {
+          "type": "array",
+          "title": "Next contacts",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Name"
+              },
+              "position": {
+                "type": "text",
+                "title": "Position"
+              },
+              "email1": {
+                "type": "text",
+                "title": "Email 1"
+              },
+              "email2": {
+                "type": "text",
+                "title": "Email 2"
+              },
+              "phone1": {
+                "type": "text",
+                "title": "Phone 1"
+              },
+              "phone2": {
+                "type": "text",
+                "title": "Phone 2"
+              }
+            }
+          }
+        },
+        "otherContacts": {
+          "type": "array",
+          "title": "Other contacts",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Name"
+              },
+              "position": {
+                "type": "text",
+                "title": "Position"
+              },
+              "email1": {
+                "type": "text",
+                "title": "Email 1"
+              },
+              "email2": {
+                "type": "text",
+                "title": "Email 2"
+              },
+              "phone1": {
+                "type": "text",
+                "title": "Phone 1"
+              },
+              "phone2": {
+                "type": "text",
+                "title": "Phone 2"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
