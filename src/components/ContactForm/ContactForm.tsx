@@ -1,12 +1,17 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
 
-export interface ContactFormProps {}
+export interface ContactFormProps {
+  data: {
+    title: string;
+    gdprLink: string;
+  };
+}
 
 export interface ContactFormState {
   formValues: {
     name: string;
-    email: string;  
+    email: string;
     message: string;
   };
 }
@@ -31,11 +36,12 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
   }
 
   public render() {
+    const { gdprLink, title } = this.props.data;
     return (
       <div className={'fullWidthContainer'}>
         <section className={'contactForm form'}>
           <div className={'container'}>
-            <h3 className={'gradientHeading'}>pokud se chcete zeptat, koktaktujte nás</h3>
+            <h3 className={'gradientHeading'}>{title}</h3>
 
             <form>
               <div className={'form__row form__row--first'}>
@@ -78,7 +84,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                 </div>
 
                 <div>
-                  Souhlasím se <a href={''}>zpracováním osobních</a> údajů.
+                  Souhlasím se <a href={gdprLink}>zpracováním osobních</a> údajů.
                 </div>
               </div>
 

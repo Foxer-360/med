@@ -1,5 +1,10 @@
 import * as React from 'react';
 export interface CareerFormProps {
+    data: {
+        title: string;
+        text: string;
+        gdprLink: string;
+    };
 }
 export interface CareerFormState {
     formValues: {

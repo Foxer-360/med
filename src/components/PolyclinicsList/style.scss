@@ -1,6 +1,8 @@
 .polyclinicsList {
   background-color: #f4f4f4;
   padding: 25px 0;
+
+ 
 }
 
 .pcitem {
@@ -11,7 +13,7 @@
 
   @include md {
     width: 100%;
-    padding: 25px;
+    padding: 37px;
   }
 
   .container {
@@ -98,6 +100,7 @@
 
         img {
           height: 35px;
+          width: auto;
 
           @include md {
             height: 40px;
@@ -150,7 +153,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
         padding: 15px 0;
         text-align: center;
         border-top: 1px solid #cecece;

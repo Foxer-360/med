@@ -1,5 +1,9 @@
 import * as React from 'react';
 export interface BlogProps {
+    data: {
+        title: string;
+        displaySearch: boolean;
+    };
 }
 export interface BlogState {
 }

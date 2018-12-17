@@ -1,3 +1,17 @@
 {
-  "name": "Timeline"
+  "name": "Timeline",
+  "data": {
+    "title": "časová Osa"
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        } 
+      }
+    }
+  }
 }

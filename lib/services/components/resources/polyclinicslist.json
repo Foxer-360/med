@@ -1,3 +1,73 @@
 {
-  "name": "PolyclinicsList"
+  "name": "PolyclinicsList",
+  "data": {
+    "clinics": [
+      {
+        "name": "Budějovická",
+        "address": "Antala Staška 1670/80",
+        "distric": "140 00 Praha 4",
+        "phone": "+420 261 006 111",
+        "transport": "Metro C",
+        "transportImage": {},
+        "station": "stanice Budějovická",
+        "description": "Poliklinika Budějovická je největší nestátní ambulantní zařízení v Praze. Klientům poskytuje široké spektrum ambulantních specializací včetně nejmodernějšími přístroji vybavené gastroenterologie a špičkově vybaveného oddělení RDG a zobrazovacích metod...",
+        "services": "* Psychologie * Neurologie * Mammacentrum",
+        "image": {}
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "clinics": {
+          "type": "array",
+          "title": "Clinics",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Clinic Name"
+              },
+              "address": {
+                "type": "text",
+                "title": "Address"
+              },
+              "district": {
+                "type": "text",
+                "title": "District"
+              },
+              "phone": {
+                "type": "text",
+                "title": "Phone"
+              },
+              "transportImage": {
+                "type": "image"
+              },
+              "transport": {
+                "type": "text",
+                "title": "Transport"
+              },
+              "station": {
+                "type": "text",
+                "title": "Station"
+              },
+              "services": {
+                "type": "markdown",
+                "title": "Services"
+              },
+              "description": {
+                "type": "markdown",
+                "title": "Description"
+              },
+
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

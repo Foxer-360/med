@@ -2,6 +2,8 @@ import * as React from 'react';
 export interface HeroProps {
     data: {
         title: string;
+        text: string;
+        displaySearch: boolean;
     };
 }
 export interface HeroState {

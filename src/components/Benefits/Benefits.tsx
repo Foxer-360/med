@@ -1,32 +1,43 @@
 import * as React from 'react';
+import Media from '@source/partials/Media';
 
-export interface BenefitsProps {
-  data: number[];
+interface Benefits {
+  text: string;
+  image: LooseObject;
 }
 
-const Benefits = (props: BenefitsProps) => (
-  <section className={'benefits'}>
-    <div className={'container'}>
-      <div className={'grid benefits__list'}>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity1.png" alt="out benefit" />
-          <p>Přívětivý personál</p>
-        </div>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity2.png" alt="out benefit" />
-          <p>Přívětivý personál</p>
-        </div>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity3.png" alt="out benefit" />
-          <p>Přívětivý personál</p>
-        </div>
-        <div className={'grid benefits__list__element'}>
-          <img src="/assets/medicon/images/benefity4.png" alt="out benefit" />
-          <p>Přívětivý personál</p>
+export interface BenefitsProps { 
+  data: {
+    benefits: Benefits[];
+  };
+}
+
+const Benefits = (props: BenefitsProps) => {
+  const { benefits } = props.data;
+
+  return (
+    <section className={'benefits'}>
+      <div className={'container'}>
+        <div className={'grid benefits__list'}>
+
+          {benefits && benefits.map((benefit, index) => {
+            return (
+              <div key={index} className={'grid benefits__list__element'}>
+                {(benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />) || (
+                  <img 
+                    src={'/assets/medicon/images/benefity1.png'}
+                    alt="Our benefit"
+                  />
+                )}
+                <p>{benefit.text}</p>
+              </div>
+            );
+          })}
+
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Benefits;
