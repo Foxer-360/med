@@ -29,15 +29,12 @@ const Downloads = (props: DownloadsProps) => {
           {downloads && downloads.map((item, i) => (
             <div className={'downloads__list__element'} key={i}>
               {item.title && <p>{item.title}</p>}
-              {(item.url && <a href={item.url} className={'btn btn--blueBorder'}>
-                Stáhnout
-                <SvgIcon name={'download'} type={'lightBlue'} />
-              </a>) || (
-                <a href={'#'} className={'btn btn--blueBorder'}>
+              {item.url && 
+                <a href={item.url} className={'btn btn--blueBorder'}>
                   Stáhnout
                   <SvgIcon name={'download'} type={'lightBlue'} />
                 </a>
-              )}
+              }
             </div>
           ))}
 
