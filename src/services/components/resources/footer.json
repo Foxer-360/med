@@ -27,15 +27,13 @@
         "url": ""
       }
     ],
-    "social": {
-      "icons": [
-        {
-          "name": "fb",
-          "url": ""
-        }
-      ],
-      "information": "MEDICON a.s. Antala Staška 1670/80 140 00 Praha 4"
-    },
+    "social": "MEDICON a.s. Antala Staška 1670/80 140 00 Praha 4",
+    "socialIcons": [
+      {
+        "name": "fb",
+        "url": ""
+      }
+    ],
     "company": "© 2018 - MEDICON a.s.",
     "url": "",
     "text": "Prohlášení o ochraně osobních údajů"
@@ -62,28 +60,22 @@
           }
         },
         "social": {
-          "type": "object",
-          "title": "Social",
-          "properties": {
-            "icons": {
-              "type": "array",
-              "title": "Icons",
-              "items": {
-                "properties": {
-                  "name": {
-                    "type": "text",
-                    "title": "Icon type"
-                  },
-                  "url": {
-                    "type": "urlAutocomplete",
-                    "title": "Url"
-                  }
-                }
+          "type": "text",
+          "title": "Social text"
+        },
+        "socialIcons": {
+          "type": "array",
+          "title": "Social Icons",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "icon name (for example: fb)"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
               }
-            },
-            "information": {
-              "type": "markdown",
-              "title": "Social information"
             }
           }
         },

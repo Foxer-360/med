@@ -2,7 +2,7 @@ import * as React from 'react';
 import Social from './components/Social';
 import HelpPopup from './components/HelpPopup';
 
-interface Links {
+interface Link {
   text: string;
   url: string;
 }
@@ -12,15 +12,11 @@ interface Icon {
   url: string;
 }
 
-export interface Social {
-  icons: Icon[];
-  information: string;
-}
-
 export interface FooterProps {
   data: {
-    links: Links[];
-    social: Social;
+    links: Link[];
+    social: string;
+    socialIcons: Icon[];
     company: string;
     url: string;
     text: string;
@@ -38,6 +34,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
     const {
       links,
       social,
+      socialIcons,
       company,
       url,
       text
@@ -80,7 +77,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
             </ul>
             }
 
-            {social && <Social data={social} />}
+            {social && <Social info={social} icons={socialIcons} />}
 
           </div>
         </div>
