@@ -12,14 +12,22 @@
   margin-bottom: 50px;
 
   &__element {
-    padding: 65px 10px;
+    height: 160px;
+    padding: 0 10px;
     text-align: center;
     position: relative;
     background-color: #f4f5f7;
-    background-repeat: no-repeat;
-    background-position: 50px center;
     box-sizing: border-box;
     transition: 300ms ease;
+
+    div {
+      width: 100%;
+      display: grid;
+      min-height: 100%;
+      background-repeat: no-repeat;
+      background-position: 50px center;
+      background-size: 50px auto;
+    }
 
     p {
       font-size: 2.4rem;
@@ -27,6 +35,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       padding-left: 60px;
+      align-self: center;
     }
 
     &:after {
@@ -61,26 +70,25 @@
   @include max-lg {
     grid-template-columns: 1fr;
     
-    &__element {
-      padding: 45px 10px;
-      background-size: auto;
-    }
+    &__element { height: 120px; }
   }
 
   @include max-sm {
-    p {
+    p { 
       font-size: 1.6rem;
+      letter-spacing: 1px;
     }
 
     &__element {
-      padding: 25px 10px;
-      background-size: 50px auto;
+      height: 75px;
+      
+      div { background-size: 40px auto; }
     }
   }
 
   @include max-xs {
     &__element {
-      background-position-x: 20px;
+      div { background-position-x: 15px; }
     }
   }
 }
