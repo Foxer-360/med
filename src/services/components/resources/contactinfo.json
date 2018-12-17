@@ -1,3 +1,80 @@
 {
-  "name": "ContactInfo"
+  "name": "ContactInfo",
+  "data": {
+    "address": "MEDICON a.s. Antala Staška 1670/80 140 00 Praha 4",
+    "phones": [
+      {
+        "name": "+420 261 006 111",
+        "type": "tel"
+      },
+      {
+        "name": "+420 261 006 210",
+        "type": "fax"
+      }
+    ],
+    "emails": [
+      {
+        "name": "info@mediconas.cz"
+      }
+    ],
+    "additional": [
+      {
+        "name": "IČO: 284 63 293"
+      },
+      {
+        "name": "DIČ: CZ 284 63 293"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "text",
+          "title": "Address"
+        },
+        "phones": {
+          "type": "array",
+          "title": "Phone Numbers",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Phone"
+              },
+              "type": {
+                "type": "text",
+                "title": "Type: tel or fax"
+              }
+            }
+          }
+        },
+        "emails": {
+          "type": "array",
+          "title": "Email Addresses",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Email"
+              }
+            }
+          }
+        },
+        "additional": {
+          "type": "array",
+          "title": "Additional Information",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Information"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

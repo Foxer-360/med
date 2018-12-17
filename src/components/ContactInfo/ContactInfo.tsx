@@ -1,8 +1,30 @@
 import * as React from 'react';
 
-export interface ContactInfoProps {}
+interface Phone {
+  name: string;
+  type: string;
+}
+
+interface Email {
+  name: string;
+}
+
+interface Additional {
+  name: string;
+}
+
+export interface ContactInfoProps {
+  data: {
+    address: string;
+    phones: Phone[];
+    emails: Email[];
+    additional: Additional[];
+  };
+}
 
 const ContactInfo = (props: ContactInfoProps) => {
+  const { address, phones, emails, additional } = props.data;
+
   return (
     <div className={'contact-info'}>
       <div className={'container'}>
@@ -11,27 +33,32 @@ const ContactInfo = (props: ContactInfoProps) => {
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-1.png" alt="address"/>
             <div>
-              <p>MEDICON a.s. Antala Staška 1670/80 140 00 Praha 4</p>
+              {address && <p>{address}</p>}
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-2.png" alt="phone number"/>
             <div>
-              <a href={'tel:+420 261 006 111'}>tel.: +420 261 006 111</a><br/>
-              <a href={'tel:+420 261 006 210'}>fax: +420 261 006 210</a>
+              {phones && phones.map((item, i) => (
+                <a href={`${item.type}:${item.name}`} key={i}>{item.type}: {item.name}</a>
+              ))}
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-3.png" alt="e-mail"/>
             <div>
-              <a href={'mailto:info@mediconas.cz'}>info@mediconas.cz</a>
+              {emails && emails.map((item, i) => (
+                <a href={`mailto:${item.name}}`} key={i}>{item.name}</a>
+              ))}
+              
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-4.png" alt="ICO and DIC"/>
             <div>
-              <p>IČO: 284 63 293</p>
-              <p>DIČ: CZ 284 63 293</p>
+              {additional && additional.map((item, i) => (
+                <p key={i}>{item.name}</p>  
+              ))}
             </div>
           </div>
 
