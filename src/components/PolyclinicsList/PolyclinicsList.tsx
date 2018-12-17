@@ -54,8 +54,6 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
                         <p>{clinic.phone}</p>
                       </div>
 
-                      {console.log('%c Emilio: ', 'background: #222; color: #bada55', clinic.transportImage)}
-
                       <div className="pcitem__info__details__item">
                         {clinic.transportImage && <Media data={clinic.transportImage} type="image" />}
 

@@ -1,8 +1,17 @@
 import * as React from 'react';
+interface Item {
+    name: string;
+    year: string;
+    color: string;
+    descriptionA: string;
+    descriptionB: string;
+    top: false;
+    image: {};
+}
 export interface TimelineProps {
     data: {
-        title: '';
-        items: [{}];
+        title: string;
+        items: Item[];
     };
 }
 export interface TimelineState {
@@ -17,7 +26,7 @@ declare class Timeline extends React.Component<TimelineProps, TimelineState> {
     handleSwipe: (e: any, direction: any, deltaX: any, velocity: any) => void;
     handleDrag: (e: any) => void;
     arrowClick: (e: any, direction: any) => void;
-    renderPoints: () => any[];
+    renderPoints: (items: any) => any[];
     render(): JSX.Element;
 }
 export default Timeline;

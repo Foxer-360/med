@@ -8,7 +8,7 @@
   "repository": "git@bitbucket.org:foxmedia/components.git",
   "author": "Filip Suchy <nevim42@gmail.com>",
   "license": "MIT",
-  "scripts": {
+  "scripts": {  
     "babel": "babel build --out-dir lib",
     "build": "yarn compile && yarn babel && yarn resolveDefs",
     "clean": "rm -rf ./lib",

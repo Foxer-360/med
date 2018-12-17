@@ -24,7 +24,6 @@ var PolyclinicsList = function (props) {
                                 React.createElement("div", { className: "pcitem__info__details__item" },
                                     React.createElement("img", { src: "../../../assets/medicon/images/phoneIcon.svg", alt: "Medicon Phone Icon" }),
                                     React.createElement("p", null, clinic.phone)),
-                                console.log('%c Emilio: ', 'background: #222; color: #bada55', clinic.transportImage),
                                 React.createElement("div", { className: "pcitem__info__details__item" },
                                     clinic.transportImage && React.createElement(Media, { data: clinic.transportImage, type: "image" }),
                                     !clinic.transportImage && React.createElement("img", { src: "../../../assets/medicon/images/metro2.png", alt: "" }),

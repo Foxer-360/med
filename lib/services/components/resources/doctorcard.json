@@ -1,3 +1,118 @@
 {
-  "name": "DoctorCard"
+  "name": "DoctorCard",
+  "data": {
+    "name": "mudr. jana pavluchová",
+    "doctorImage": {},
+    "specialization": "Alergologie a imunologie",
+    "nurse": "Jiřina Slezáková",
+    "phone": "+420 261 003 404",
+    "clinicImage": {},
+    "clinicName": "Poliklinika Budějovická",
+    "clinicExtraInfo": "Červená budova 9. patro",
+    "clinicAddress": "Antala Staška 1670/80, 140 00 Praha 4",
+    "schedule": [
+      {
+        "day": "Pondělí",
+        "eveningHoursdescription": "Pro objednané",
+        "eveningOpeningHours": "13.00 - 18.00",
+        "morningHoursdescription": "",  
+        "morningOpeningHours": ""
+      },
+      {
+        "day": "Úterý",
+        "morningHoursdescription": "Pro nemocné",
+        "morningOpeningHours": "8.00 - 13.00"
+      },
+      {
+        "day": "Středa",
+        "eveningHoursdescription": "Pro nemocné",
+        "eveningOpeningHours": "13.00 - 18.00"
+      },
+      {
+        "day": "Čtvrtek",
+        "eveningHoursdescription": "Pro objednané",
+        "eveningOpeningHours": "Pro nemocné",
+        "morningHoursdescription": "Pro nemocné",
+        "morningOpeningHours": "10.00 - 14.00"
+      },
+      {
+        "day": "Pátek",
+        "eveningHoursdescription": "Pro objednané",
+        "eveningOpeningHours": "12.30 - 15.00",
+        "morningHoursdescription": "Pro nemocn",
+        "morningOpeningHours": "8.00 - 12.00"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "doctorImage": {
+          "type": "image"
+        },
+        "name": {
+          "type": "text",
+          "title": "Name"
+        },
+        "specialization": {
+          "type": "text",
+          "title": "Specialization"
+        },
+        "nurse": {
+          "type": "text",
+          "title": "Nurse"
+        },
+        "phone": {
+          "type": "text",
+          "title": "Phone"
+        },
+
+        "clinicImage": {
+          "type": "image"
+        },
+
+        "clinicName": {
+          "type": "text",
+          "title": "Clinic Name"
+        },
+        "clinicExtraInfo": {
+          "type": "text",
+          "title": "Clinic Extra Information"
+        },
+        "clinicAddress": {
+          "type": "text",
+          "title": "Clinic Address"
+        },
+        "schedule": {
+          "type": "array",
+          "title": "Schedule",
+          "items": {
+            "properties": {
+              "day": {
+                "type": "text",
+                "title": "day"
+              },
+              "morningOpeningHours": {
+                "type": "text",
+                "title": "Morning Opening Hours"
+              },
+              "morningHoursdescription": {
+                "type": "text",
+                "title": "Morning Hours Description"
+              },
+              "eveningOpeningHours": {
+                "type": "text",
+                "title": "Evening Opening Hours"
+              },
+              "eveningHoursdescription": {
+                "type": "text",
+                "title": "Evening Hours Description"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

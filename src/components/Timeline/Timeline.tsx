@@ -1,15 +1,26 @@
 import * as React from 'react';
 import Swipeable from 'react-swipeable';
+import Media from '@source/partials/Media';
+
+interface Item {
+  name: string;
+  year: string;
+  color: string;
+  descriptionA: string;
+  descriptionB: string;
+  top: false;
+  image: {};
+}
 
 export interface TimelineProps {
   data: {
-    title: '';
-    items: [{}];
+    title: string;
+    items: Item[];
   };
 }
 
 export interface TimelineState {
-  x: number; 
+  x: number;
   limitLeft: boolean;
   limitRight: boolean;
 }
@@ -81,40 +92,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     this.translateTimeline(ammount);
   };
 
-  renderPoints = () => {
-    const items = [
-      {
-        name: 'Budějovická',
-        year: '2008',
-        position: 10,
-        color: 'blue',
-        descriptionA: 'Otevřena',
-        descriptionB: 'Poliklinika',
-        top: false,
-        icon: '/assets/medicon/images/hospitalIcon.svg',
-      },
-      {
-        name: 'Vysočanská',
-        year: '2013',
-        position: 50,
-        color: 'red',
-        descriptionA: 'Otevřena',
-        descriptionB: '3. poliklinika',
-        top: true,
-        icon: '/assets/medicon/images/heartIcon.png',
-      },
-      {
-        name: 'Vysočanská',
-        year: '2014',
-        position: 90,
-        color: 'green',
-        descriptionA: 'Otevřeno',
-        descriptionB: 'Mamacentrum',
-        top: false,
-        icon: '/assets/medicon/images/pillsIcon.png',
-      },
-    ];
-
+  renderPoints = items => {
     const point = <div className={'point'} />;
 
     const points = [];
@@ -123,10 +101,15 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
       let positionItem = items.find(item => Math.round((item.position * 60) / 100) === i);
 
       if (positionItem) {
+
         points.push(
           <div className={`point ${'point--' + positionItem.color}`}>
-            <div className={`point__content ${positionItem.top ? 'point__content--top' : 'point__content--bottom'}`}>
-              <img src={positionItem.icon} />
+            <div
+              className={`point__content ${
+                items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom'
+              }`}
+            >
+              {positionItem.icon && <Media data={positionItem.icon} type="image" />}
               <p>{positionItem.descriptionA}</p>
               <p>{positionItem.descriptionB}</p>
               <h5>{positionItem.name}</h5>
@@ -143,13 +126,12 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
   };
 
   public render() {
-    const { title } = this.props.data;
+    const { title, items } = this.props.data;
 
     return (
       <div className={'container'}>
         <section className={'timelineSection'}>
-         
-          <h2 className={'gradientHeading'}>{title}</h2>
+          {title && <h2 className={'gradientHeading'}>{title}</h2>}
 
           <div className={'timeline'}>
             {!this.state.limitLeft && (
@@ -170,7 +152,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
                   ref={this.timeline}
                   style={{ transform: `translate3d(${this.state.x + 'px'},-7px,0)` }}
                 >
-                  {this.renderPoints()}
+                  {this.renderPoints(items)}
                 </div>
               </Swipeable>
             </div>

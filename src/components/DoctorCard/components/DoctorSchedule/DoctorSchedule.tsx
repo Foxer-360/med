@@ -1,107 +1,47 @@
 import * as React from 'react';
 import DividerCircles from '../../../DividerCircles';
 
-export interface DoctorScheduleProps {}
+export interface DoctorScheduleProps {
+  data: [
+    {
+      day: string;
+      eveningHoursdescription: string;
+      eveningOpeningHours: string;
+      morningHoursdescription: string;
+      morningOpeningHours: string;
+    }  
+  ];  
+}
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   return (
     <div className="doctorSchedule">
       <table>
         <tbody>
-          <tr className={'mobileHeading'}>
-            <td colSpan={3}>Pondělí</td>
-          </tr>
+          {props.data.map(item => {
+            return (
+              <>
+                <tr className={'mobileHeading'}>
+                  <td colSpan={3}>{item.day}</td>
+                </tr>
 
-          <tr className={'normalRow'}>
-            <td>Pondělí</td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-            <td>
-              <DividerCircles />
-            </td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-          </tr>
-
-          <tr className={'mobileHeading'}>
-            <td colSpan={3}>Úterý</td>
-          </tr>
-
-          <tr className={'normalRow'}>
-            <td>Úterý</td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-            <td>
-              <DividerCircles />
-            </td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-          </tr>
-
-          <tr className={'mobileHeading'}>
-            <td colSpan={3}>Středa</td>
-          </tr>
-
-          <tr className={'normalRow'}>
-            <td>Středa</td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-            <td>
-              <DividerCircles />
-            </td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-          </tr>
-
-          <tr className={'mobileHeading'}>
-            <td colSpan={3}>Čtvrtek</td>
-          </tr>
-
-          <tr className={'normalRow'}>
-            <td>Čtvrtek</td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-            <td>
-              <DividerCircles />
-            </td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-          </tr>
-
-          <tr className={'mobileHeading'}>
-            <td colSpan={3}>Pátek</td>
-          </tr>
-
-          <tr className={'normalRow'}>
-            <td>Pátek</td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-            <td>
-              <DividerCircles />
-            </td>
-            <td>
-              <p>13.00 - 18.00</p>
-              <p>Pro objednané</p>
-            </td>
-          </tr>
+                <tr className={'normalRow'}>
+                  <td>{item.day}</td>
+                  <td>
+                    <p>{item.morningOpeningHours}</p>
+                    <p>{item.morningHoursdescription}</p>
+                  </td>
+                  <td>
+                    <DividerCircles />
+                  </td>
+                  <td>
+                    <p>{item.eveningOpeningHours}</p>
+                    <p>{item.eveningHoursdescription}</p>
+                  </td>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
       </table>
     </div>
