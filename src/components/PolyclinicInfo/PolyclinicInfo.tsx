@@ -1,34 +1,35 @@
 import * as React from 'react';
 import Media from '@source/partials/Media';
 
-interface Contacts {
-  title: string;
-  image: LooseObject;
-}
-
 export interface ContactsProps {
   data: {
-    contacts: Contacts[];
+    geo: string;
+    phone: string;
+    transport: string;
+    transportImage: LooseObject;
   };
 }
 
 const PolyclinicInfo = (props: ContactsProps) => {
-  const { contacts } = props.data;
-
+  const { geo, phone, transport, transportImage } = props.data;
+  
   return (
     <div className="policlinicInfo">
 
-      {contacts && contacts.map((contact, index) => (
-        // tslint:disable-next-line:no-unused-expression
-        <Media 
-          type={'background-image'} 
-          classes={'policlinicInfo__item'}
-          data={contact.image}
-          key={index}
-        >
-          <p>{contact.title}</p>
-        </Media>
-      ))}
+      <div className={'policlinicInfo__item'}>
+        <img src="/assets/medicon/images/geo.svg" alt="address"/>
+        {geo && <p>{geo}</p>}
+      </div>
+      <div className={'policlinicInfo__item'}>
+        <img src="/assets/medicon/images/phone.svg" alt="phone nubmer"/>
+        {phone && <p>{phone}</p>}
+      </div>
+      <div className={'policlinicInfo__item'}>
+        {(transportImage && <Media type={'image'} data={transportImage} />) || (
+          <img src="/assets/medicon/images/metro.svg" alt="metro"/>
+        )}
+        {transport && <p>{transport}</p>}
+      </div>
       
     </div>
   );
