@@ -12,17 +12,13 @@ export default function ReviewElement(props: ReviewElementProps) {
   const { image, cite, starCount } = props;
 
   var rows = [];
-  if (starCount > 0) {
-    for (let index = 0; index < starCount; index++) {
-      rows.push(<SvgIcon name="star" key={index} />);
-    }
-  } else {
-    for (let index = 0; index < 5; index++) {
-      rows.push(<SvgIcon name="star" key={index} />);
-    }
-  }
+  for (let i = 0; i < starCount; i++) {
+    rows.push(<SvgIcon name="star" key={i} />);
+  } // 5 stars by default
   
-  console.log(`Review :: ` + props);
+  if (starCount < 5) {
+    rows.slice(-(5 - starCount), starCount);
+  }
 
   return (
     <div className="reviews__list__element">
