@@ -18,8 +18,7 @@ const Highlight = (props: HighlightProps) => {
           <div className="flexRow flexAlign--center">
             <div className={'highlight__info flexRow'}>
               <img src="/assets/medicon/images/info.png" alt="info" />
-              {(text && <p>{text}</p>) || 
-                <p>For more info just call us!</p>}  
+              {text && <p>{text}</p>}  
             </div>
             
             <Button classes="btn--whiteBorder btn--fullWidth">vice info</Button>
