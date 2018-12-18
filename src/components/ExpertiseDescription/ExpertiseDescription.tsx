@@ -4,35 +4,26 @@ import ExpertiseDescriptionCare from './components/ExpertiseDescriptionCare';
 import ExpertiseDescriptionInvestigation from './components/ExpertiseDescriptionInvestigation';
 import ExpertiseDescriptionBoxes from './components/ExpertiseDescriptionBoxes';
 
-export interface DescriptionProps {}
+interface Investigation {
+  title: string;
+  url: string;
+}
 
-const data = {
-  care: {
-    title: 'Poskytovaná péče',
+interface Box {
+  title: string;
+  url: string;
+  image: LooseObject;
+}
 
-    items: [
-      // tslint:disable-next-line:max-line-length
-      '<strong>Diagnostika a léčba všech alergických onemocnění</strong> jako např. alergická rýma, alergický zánět spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie, alergie na léky, hmyz nebo kožní alergie.',
-
-      // tslint:disable-next-line:max-line-length
-      '<strong>Diagnostika a léčba poruch imunity</strong> (recidivující infekce dýchacích cest, močových cest, opakované herpetické infekce).',
-
-      'Diagnostika <strong>autoimunních onemocnění.</strong>',
-
-      'Vyšetření provádíme u <strong>dětských i dospělých pacientů.</strong>',
-    ],
-  },
-
-  investigationinves: {
-    title: 'Typy vyšetření',
-
-    items: [
-      'Kožní prick testy',
-      'Krevní odběry k laboratornímu vyšetření',
-      'Vyšetření plicních funkcí (spirometrie) včetně zátěžových testů',
-    ],
-  },
-};
+export interface DescriptionProps {
+  data: {
+    titleCare: string;
+    text: string;
+    titleInvestigation: string;
+    investigations: Investigation[];
+    boxes: Box[];
+  };
+}
 
 const Description = (props: DescriptionProps) => {
   return (
