@@ -60,7 +60,7 @@
           }
         },
         "social": {
-          "type": "text",
+          "type": "markdown",
           "title": "Social text"
         },
         "socialIcons": {
