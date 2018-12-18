@@ -40,7 +40,7 @@
           "title": "First title"
         },
         "text": {
-          "type": "text",
+          "type": "markdown",
           "title": "Text"
         },
         "titleInvestigation": {

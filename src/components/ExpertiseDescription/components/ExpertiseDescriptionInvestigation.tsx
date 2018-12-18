@@ -2,22 +2,22 @@ import * as React from 'react';
 
 export interface ExpertiseDescriptionInvestigationProps {
   title: string;
-  items: Array<string>;
+  investigations: Array<any>;
 }
 
 const ExpertiseDescriptionInvestigation = (props: ExpertiseDescriptionInvestigationProps) => {
-  const {title, items} = props;
+  const { title, investigations } = props;
   
   return (
 
     <div className={'investigation'}>
-      <h3>{title}</h3>
+      {title && <h3>{title}</h3>}
 
       <div className={'grid investigation__blocks hCenterBlock'}>
 
-        {items && items.map((item, i) => (
-          <a href="#" className={'investigation__block'}>
-            <p>{item}</p>
+        {investigations && investigations.map((investigation, i) => (
+          <a href={investigation.url} className={'investigation__block'} key={i}>
+            <p>{investigation.title}</p>
           </a>
         ))}
 

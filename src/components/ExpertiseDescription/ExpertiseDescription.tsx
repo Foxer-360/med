@@ -26,13 +26,24 @@ export interface DescriptionProps {
 }
 
 const Description = (props: DescriptionProps) => {
+  const { 
+    titleCare, 
+    text, 
+    titleInvestigation, 
+    investigations, 
+    boxes 
+  } = props.data;
+
   return (
     <div className={'container'}>
     <section className={'expertiseDescription'}>
-      <ExpertiseDescriptionCare title={data.care.title} items={data.care.items} />
-      <ExpertiseDescriptionInvestigation title={data.investigationinves.title} items={data.investigationinves.items} />
+      <ExpertiseDescriptionCare title={titleCare} text={text} />
+      <ExpertiseDescriptionInvestigation 
+        title={titleInvestigation} 
+        investigations={investigations} 
+      />
       <DividerCircles />
-      <ExpertiseDescriptionBoxes />
+      <ExpertiseDescriptionBoxes boxes={boxes} />
       </section>
     </div>
   );
