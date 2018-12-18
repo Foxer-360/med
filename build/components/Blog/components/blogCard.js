@@ -23,8 +23,6 @@ export function BlogCard(props) {
         title && React.createElement("h3", null, title),
         text && React.createElement("p", null, text),
         React.createElement("img", { src: img, alt: "" }),
-        React.createElement("div", { className: 'blogCard__colorGradient', style: {
-                background: "linear-gradient(\n      to bottom,\n      rgba(125, 185, 232, 0) 0%,\n      " + color + " 100%\n    )",
-            } })));
+        React.createElement("div", { className: 'blogCard__colorGradient', style: { background: "linear-gradient( to bottom,rgba(125, 185, 232, 0) 0%," + color + " 100%)" } })));
 }
 //# sourceMappingURL=blogCard.js.map

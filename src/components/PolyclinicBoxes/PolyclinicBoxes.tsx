@@ -17,7 +17,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
   const { title, polyclinics } = props.data;
   
   return (
-    <div className={'polyclinicBoxes'}>
+    <section className={'polyclinicBoxes'}>
       <div className={'container'}>
         {title && <h3>{title}</h3>}
 
@@ -42,7 +42,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
 
         </ul>
       </div>
-    </div>
+    </section>
   );
 };
 

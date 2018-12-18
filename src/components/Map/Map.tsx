@@ -4,9 +4,7 @@ import MapComponent from './components/MapComponent';
 export interface MapProps {}
 
 const Map = (props: MapProps) => {
-  return (
-      <MapComponent />
-  );
+  return <MapComponent />;
 };
 
 export default Map;

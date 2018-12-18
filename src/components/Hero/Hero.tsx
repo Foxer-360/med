@@ -9,7 +9,7 @@ export interface HeroProps {
   };
 }
 
-export interface HeroState {}
+export interface HeroState { }
 
 class Hero extends React.Component<HeroProps, HeroState> {
   public render() {

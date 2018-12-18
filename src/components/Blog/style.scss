@@ -81,10 +81,8 @@
     left: 0;
     z-index: 99;
     transition: 300ms ease;
-    // background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, $orange 100%);
-    background-color: red;
   }
-  
+
   h3 {
     color: #ffffff;
     font-size: 1.8rem;
@@ -95,24 +93,27 @@
     text-align: left;
     padding: 0;
     width: 100%;
-    padding-bottom: 17px;
+    padding-bottom: 0px;
     z-index: 100;
 
     @include md {
       font-size: 2rem;
+      padding-bottom: 17px;
     }
   }
 
   p {
     color: #ffffff;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 400;
-    letter-spacing: 0.71px;
-    z-index: 100;
     line-height: 22px;
+    letter-spacing: 0.89px;
+    z-index: 100;
 
     @include md {
+      letter-spacing: 0.71px;
       line-height: 23.43px;
+      font-size: 1.6rem;
     }
   }
 
@@ -149,11 +150,28 @@
         padding-left: 10px;
         color: #fff;
         padding: 0 5px;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0.89px;
+
+        @include md {
+          letter-spacing: 0.71px;
+          line-height: 23.43px;
+          font-size: 1.6rem;
+        }
 
         span {
           .arrowIcon {
             transform: rotate(-180deg);
             margin-right: 8px;
+            height: 10px;
+            width: 10px;
+
+            @include md {
+              height: 25px;
+              width: 25px;
+            }
           }
         }
       }
