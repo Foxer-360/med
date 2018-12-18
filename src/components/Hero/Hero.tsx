@@ -6,18 +6,19 @@ export interface HeroProps {
     title: string;
     text: string;
     displaySearch: boolean;
+    image: LooseObject;
   };
 }
 
-export interface HeroState { }
+export interface HeroState {}
 
 class Hero extends React.Component<HeroProps, HeroState> {
   public render() {
-    const { title, text, displaySearch } = this.props.data;
+    const { title, text, displaySearch, image } = this.props.data;
 
     return (
       <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: 'url(/assets/medicon/images/hero.png)' }}>
+        <section className={'hero'} style={{ backgroundImage: image && `url(${image})` }}>
           <div className={'container'}>
             <div className={'hero__holder'}>
               {title && <h1>{title}</h1>}

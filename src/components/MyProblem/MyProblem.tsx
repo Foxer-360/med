@@ -2,7 +2,7 @@ import * as React from 'react';
 import Avatar from './components/Avatar';
 import SvgIcon from '@source/partials/SvgIcon';
 
-export interface MyProblemProps {}
+export interface MyProblemProps { }
 
 export interface MyProblemState {
   area: string;
@@ -21,13 +21,13 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
     this.setState({
       area: area,
     });
-  }
+  };
 
   closeInfoBox = () => {
     this.setState({
       area: '',
     });
-  }
+  };
 
   public render() {
     return (
