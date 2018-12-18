@@ -39,16 +39,16 @@ const ContactInfo = (props: ContactInfoProps) => {
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-2.png" alt="phone number"/>
             <div>
-              {phones && phones.map((item, i) => (
-                <a href={`${item.type}:${item.name}`} key={i}>{item.type}: {item.name}</a>
+              {phones && phones.map((phone, i) => (
+                <a href={`${phone.type}:${phone.name}`} key={i}>{phone.type}: {phone.name}</a>
               ))}
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-3.png" alt="e-mail"/>
             <div>
-              {emails && emails.map((item, i) => (
-                <a href={`mailto:${item.name}}`} key={i}>{item.name}</a>
+              {emails && emails.map((email, i) => (
+                <a href={`mailto:${email.name}}`} key={i}>{email.name}</a>
               ))}
               
             </div>
@@ -56,8 +56,8 @@ const ContactInfo = (props: ContactInfoProps) => {
           <div className={'grid contact-info__grid__element'}>
             <img src="/assets/medicon/images/contact-info-4.png" alt="ICO and DIC"/>
             <div>
-              {additional && additional.map((item, i) => (
-                <p key={i}>{item.name}</p>  
+              {additional && additional.map((add, i) => (
+                <p key={i}>{add.name}</p>  
               ))}
             </div>
           </div>
