@@ -21,12 +21,12 @@ export default function ReviewElement(props: ReviewElementProps) {
   }
 
   return (
-    <div className="reviews__list__element">
-      <Media type={'image'} data={image}/>
+    <div className={'reviews__list__element'}>
+      {image && <Media type={'image'} data={image}/>}
 
-      <div className="reviews__list__element__content">
-        <cite>{cite}</cite>
-        <div className="stars">{rows}</div>
+      <div className={'reviews__list__element__content'}>
+        {cite && <cite>{cite}</cite>}
+        {rows && <div className={'stars'}>{rows}</div>}
       </div>
     </div>
   );
