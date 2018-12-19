@@ -28,9 +28,6 @@ class Media extends React.Component<MediaProps, MediaState> {
       case 'image':
         return <img src={this.getImgUrl(data)} alt={data && data.alt ? data.alt : ''} className={'mediaImage'} />;
         break;
-      case 'backgroundImage':
-        return <div style={{ backgroundImage: `url(${this.getImgUrl(data)})` }}>{this.props.children}</div>;
-        break;
       default:
         return <div>There was an error</div>;
     }
