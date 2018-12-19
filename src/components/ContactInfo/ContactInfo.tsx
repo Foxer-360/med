@@ -1,24 +1,12 @@
 import * as React from 'react';
-
-interface Phone {
-  name: string;
-  type: string;
-}
-
-interface Email {
-  name: string;
-}
-
-interface Additional {
-  name: string;
-}
+import ReactMarkdown from 'react-markdown';
 
 export interface ContactInfoProps {
   data: {
     address: string;
-    phones: Phone[];
-    emails: Email[];
-    additional: Additional[];
+    phones: string;
+    emails: string;
+    additional: string;
   };
 }
 
@@ -29,36 +17,29 @@ const ContactInfo = (props: ContactInfoProps) => {
     <div className={'contact-info'}>
       <div className={'container'}>
         <div className={'grid contact-info__grid'}>
-          
+        
           <div className={'grid contact-info__grid__element'}>
-            <img src="/assets/medicon/images/contact-info-1.png" alt="address"/>
+            <img src={'/assets/medicon/images/contact-info-1.png'} alt="address"/>
             <div>
-              {address && <p>{address}</p>}
+              {address && <ReactMarkdown source={address} />}
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
-            <img src="/assets/medicon/images/contact-info-2.png" alt="phone number"/>
+            <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number"/>
             <div>
-              {phones && phones.map((phone, i) => (
-                <a href={`${phone.type}:${phone.name}`} key={i}>{phone.type}: {phone.name}</a>
-              ))}
+              {phones && <ReactMarkdown source={phones} />}
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
-            <img src="/assets/medicon/images/contact-info-3.png" alt="e-mail"/>
+            <img src={'/assets/medicon/images/contact-info-3.png'} alt="e-mail"/>
             <div>
-              {emails && emails.map((email, i) => (
-                <a href={`mailto:${email.name}}`} key={i}>{email.name}</a>
-              ))}
-              
+              {emails && <ReactMarkdown source={emails} />}
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
-            <img src="/assets/medicon/images/contact-info-4.png" alt="ICO and DIC"/>
+            <img src={'/assets/medicon/images/contact-info-4.png'} alt="ICO and DIC"/>
             <div>
-              {additional && additional.map((add, i) => (
-                <p key={i}>{add.name}</p>  
-              ))}
+              {additional && <ReactMarkdown source={additional} />}
             </div>
           </div>
 
