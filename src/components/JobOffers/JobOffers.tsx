@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Media from '@source/partials/Media';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 interface Offer {
   title: string;
@@ -24,21 +24,13 @@ const jobOffers = (props: JobOffersProps) => {
 
         <div className="grid offers">
 
-          {offers && offers.map((item, index) => (
-            <a href={item.url} key={index} className={'flexRow offers__element'}>
-              
-              {(item.image && 
-                <Media 
-                  type={'background-image'}
-                  data={item.image}
-                >
-                  {item.title && 
-                    <p className={'hCenterBlock'}>{item.title}</p>}
-                </Media>) || (
-                  <div style={{ backgroundImage: 'url(/assets/medicon/images/offers-lekar.png)' }}>
-                    {item.title && <p className={'hCenterBlock'}>{item.title}</p>}
-                  </div>
-                )}
+          {offers && offers.map((offer, index) => (
+            <a href={offer.url} key={index} className={'flexRow offers__element'}>
+
+              {(offer.image && 
+                <div style={{ backgroundImage: offer.image && `url(${getImageUrl(offer.image)})` }}>
+                  {offer.title && <p className={'hCenterBlock'}>{offer.title}</p>}
+                </div>)}
 
             </a>
           ))}
