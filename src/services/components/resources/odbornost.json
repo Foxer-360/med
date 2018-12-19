@@ -2,7 +2,7 @@
   "name": "Odbornost",
   "data": {
     "image": {},
-    "doctor": "MUDr. Hana Kocherová",
+    "doctorname": "MUDr. Hana Kocherová",
     "cite": "Na našem oddělení Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio."
   },
   "form": {
@@ -12,7 +12,7 @@
         "image": {
           "type": "image"
         },
-        "doctor": {
+        "doctorname": {
           "type": "text",
           "title": "Doctor name"
         },
