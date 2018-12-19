@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Button from '../../../partials/Button';
+import Button from '@source/partials/Button';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 export interface InfoElementProps {
   title: string;
@@ -14,7 +15,7 @@ export default function InfoElement(props: InfoElementProps) {
   const { title, gradientColor, image, button, titleColor } = props;
 
   return (
-    <a className={'info-boxes__list__element'} style={{ backgroundImage: `url(/assets/medicon/images/info-el-2.jpg)`}}>
+    <a className={'info-boxes__list__element'} style={{ backgroundImage: image && `url(${getImageUrl(image)})` }}>
       <div className={'fullWidthContainer info-boxes__list__element__content'}>
         {titleColor && title && 
           <h5 style={{ color: `${titleColor}`}}>{title}</h5>}
