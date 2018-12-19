@@ -1,10 +1,10 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
 import ExpertiseDescriptionCare from './components/ExpertiseDescriptionCare';
-import ExpertiseDescriptionInvestigation from './components/ExpertiseDescriptionInvestigation';
+import ExpertiseDescriptionExamination from './components/ExpertiseDescriptionExamination';
 import ExpertiseDescriptionBoxes from './components/ExpertiseDescriptionBoxes';
 
-interface Investigation {
+interface Examination {
   title: string;
   url: string;
 }
@@ -19,8 +19,8 @@ export interface DescriptionProps {
   data: {
     titleCare: string;
     text: string;
-    titleInvestigation: string;
-    investigations: Investigation[];
+    titleExamination: string;
+    examinations: Examination[];
     boxes: Box[];
   };
 }
@@ -29,8 +29,8 @@ const Description = (props: DescriptionProps) => {
   const { 
     titleCare, 
     text, 
-    titleInvestigation, 
-    investigations, 
+    titleExamination, 
+    examinations, 
     boxes 
   } = props.data;
 
@@ -38,9 +38,9 @@ const Description = (props: DescriptionProps) => {
     <div className={'container'}>
     <section className={'expertiseDescription'}>
       <ExpertiseDescriptionCare title={titleCare} text={text} />
-      <ExpertiseDescriptionInvestigation 
-        title={titleInvestigation} 
-        investigations={investigations} 
+      <ExpertiseDescriptionExamination 
+        title={titleExamination} 
+        examinations={examinations} 
       />
       <DividerCircles />
       <ExpertiseDescriptionBoxes boxes={boxes} />
