@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import getImageUrl from '../../helpers/getImageUrl';
 var Hero = /** @class */ (function (_super) {
     __extends(Hero, _super);
     function Hero() {
@@ -21,7 +22,7 @@ var Hero = /** @class */ (function (_super) {
     Hero.prototype.render = function () {
         var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image;
         return (React.createElement("div", { className: "fullWidthContainer" },
-            React.createElement("section", { className: 'hero', style: { backgroundImage: image && "url(" + image + ")" } },
+            React.createElement("section", { className: 'hero', style: { backgroundImage: image && "url(" + getImageUrl(image) + ")" } },
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },
                         title && React.createElement("h1", null, title),

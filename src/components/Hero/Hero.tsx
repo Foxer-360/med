@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-
+import getImageUrl from '../../helpers/getImageUrl';
 export interface HeroProps {
   data: {
     title: string;
@@ -18,7 +18,7 @@ class Hero extends React.Component<HeroProps, HeroState> {
 
     return (
       <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: image && `url(${image})` }}>
+        <section className={'hero'} style={{ backgroundImage: image && `url(${getImageUrl(image)})` }}>
           <div className={'container'}>
             <div className={'hero__holder'}>
               {title && <h1>{title}</h1>}

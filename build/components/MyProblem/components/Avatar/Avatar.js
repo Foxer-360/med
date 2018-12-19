@@ -13,12 +13,12 @@ var Avatar = function (props) {
             React.createElement("path", { className: "avatar__area avatar__eyebrow", d: "M238.2,80.2c5.5-3.8,11.9-6.8,19-8.5", onClick: function () { return onClick('eyebrow'); } }),
             React.createElement("path", { className: "avatar__area avatar__ear avatar__lEar ", d: "M202.4,143.7c-12.3,1.5-20-10.7-21.6-23c-1.5-12.3,3.7-20,16-21.6", onClick: function () { return onClick('lEar'); } }),
             React.createElement("path", { className: "avatar__area avatar__ear avatar__rEar ", d: "M378,143.7c12.3,1.5,20-10.7,21.6-23s-3.7-20-16-21.6", onClick: function () { return onClick('rEar'); } }),
-            React.createElement("circle", { className: "avatar__area avatar__hand avatar__lHand", cx: "48.9", cy: "261.9", r: 25, onClick: function () { return onClick('lHand'); } }),
-            React.createElement("circle", { className: "avatar__area avatar__knee avatar__lKnee", cx: "237.3", cy: 523, r: 25, onClick: function () { return onClick('lKnee'); } }),
-            React.createElement("circle", { className: "avatar__area avatar__knee avatar__rKnee", cx: "343.4", cy: 523, r: 25, onClick: function () { return onClick('rKnee'); } }),
-            React.createElement("circle", { className: "avatar__area avatar__feet avatar__lFeet", cx: 182, cy: "653.3", r: 25, onClick: function () { return onClick('lFeet'); } }),
-            React.createElement("circle", { className: "avatar__area avatar__feet avatar__rFeet", cx: "397.9", cy: "653.3", r: 25, onClick: function () { return onClick('rFeet'); } }),
-            React.createElement("circle", { className: "avatar__area avatar__hand avatar__rHand", cx: "529.8", cy: "261.9", r: 25, onClick: function () { return onClick('rHand'); } }))));
+            React.createElement("circle", { className: "avatar__area avatar__hand avatar__lHand", cx: "48.9", cy: "261.9", r: 25, onClick: function () { return onClick('arm'); } }),
+            React.createElement("circle", { className: "avatar__area avatar__knee avatar__lKnee", cx: "237.3", cy: 523, r: 25, onClick: function () { return onClick('legs'); } }),
+            React.createElement("circle", { className: "avatar__area avatar__knee avatar__rKnee", cx: "343.4", cy: 523, r: 25, onClick: function () { return onClick('legs'); } }),
+            React.createElement("circle", { className: "avatar__area avatar__feet avatar__lFeet", cx: 182, cy: "653.3", r: 25, onClick: function () { return onClick('feet'); } }),
+            React.createElement("circle", { className: "avatar__area avatar__feet avatar__rFeet", cx: "397.9", cy: "653.3", r: 25, onClick: function () { return onClick('feet'); } }),
+            React.createElement("circle", { className: "avatar__area avatar__hand avatar__rHand", cx: "529.8", cy: "261.9", r: 25, onClick: function () { return onClick('arm'); } }))));
 };
 export default Avatar;
 //# sourceMappingURL=Avatar.js.map

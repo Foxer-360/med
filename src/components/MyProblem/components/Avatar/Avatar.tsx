@@ -80,42 +80,42 @@ const Avatar = (props: AvatarProps) => {
           cx="48.9"
           cy="261.9"
           r={25}
-          onClick={() => onClick('lHand')}
+          onClick={() => onClick('arm')}
         />
         <circle
           className="avatar__area avatar__knee avatar__lKnee"
           cx="237.3"
           cy={523}
           r={25}
-          onClick={() => onClick('lKnee')}
+          onClick={() => onClick('legs')}
         />
         <circle
           className="avatar__area avatar__knee avatar__rKnee"
           cx="343.4"
           cy={523}
           r={25}
-          onClick={() => onClick('rKnee')}
+          onClick={() => onClick('legs')}
         />
         <circle
           className="avatar__area avatar__feet avatar__lFeet"
           cx={182}
           cy="653.3"
           r={25}
-          onClick={() => onClick('lFeet')}
+          onClick={() => onClick('feet')}
         />
         <circle
           className="avatar__area avatar__feet avatar__rFeet"
           cx="397.9"
           cy="653.3"
           r={25}
-          onClick={() => onClick('rFeet')}
+          onClick={() => onClick('feet')}
         />
         <circle
           className="avatar__area avatar__hand avatar__rHand"
           cx="529.8"
           cy="261.9"
           r={25}
-          onClick={() => onClick('rHand')}
+          onClick={() => onClick('arm')}
         />
       </svg>
     </div>
