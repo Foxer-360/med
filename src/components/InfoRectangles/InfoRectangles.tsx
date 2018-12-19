@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Button from '../../partials/Button';
-import Media from '@source/partials/Media';
+import Button from '@source/partials/Button';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 interface InfoRectangles {
   image: LooseObject;
@@ -24,12 +24,15 @@ const InfoRectangles = (props: InfoRectanglesProps) => {
         <div className="grid-container">
 
           {infoRectangles && infoRectangles.map((rectangle, index) => (
-            <Media type={'background-image'} classes={'info-element'} data={rectangle.image} key={index}>
+            <div 
+              key={index}
+              className={'info-element'} 
+              style={{ backgroundImage: rectangle.image && `url(${getImageUrl(rectangle.image)})` }}>
               <div>
                 <h5>{rectangle.title}</h5>
                 <Button classes="btn--blueBorder">vice info</Button>
               </div>
-            </Media>
+            </div>
           ))}
           
         </div>
