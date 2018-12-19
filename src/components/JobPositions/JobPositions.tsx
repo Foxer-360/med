@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Button from '../../partials/Button';
+import Button from '@source/partials/Button';
+import getImageUrl from '@source/helpers/getImageUrl';
 import SelectButton from './components/index';
 
 interface Position {
@@ -36,7 +37,7 @@ const JobPositions = (props: JobPositionsProps) => {
         {positions && positions.map((position, index) => (
           <div 
             className={'positions__element'} 
-            style={{ backgroundImage: `url(/assets/medicon/images/positions-1.jpg)` }} 
+            style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
             key={index}
           >
             <div className={'positions__element-content'}>
