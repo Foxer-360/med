@@ -17,6 +17,10 @@ export interface DoctorCardProps {
             morningHoursdescription: string;
             morningOpeningHours: string;
         }];
+        additionalInfo: [{
+            title: string;
+            text: string;
+        }];
     };
 }
 declare const DoctorCard: (props: DoctorCardProps) => JSX.Element;

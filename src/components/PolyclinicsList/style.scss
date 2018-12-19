@@ -1,8 +1,6 @@
 .polyclinicsList {
   background-color: #f4f4f4;
   padding: 25px 0;
-
- 
 }
 
 .pcitem {
@@ -41,7 +39,7 @@
     display: block;
     position: relative;
 
-    @include md {
+    @include lg {
       width: 30%;
     }
 
@@ -56,7 +54,7 @@
     width: 100%;
     box-sizing: border-box;
 
-    @include md {
+    @include lg {
       width: 70%;
       padding-left: 32px;
     }
@@ -215,9 +213,12 @@
 
       .btn {
         width: 100%;
+        max-width: 240px;
+        margin: 0 auto;
 
         @include md {
           width: auto;
+          margin: 0;
         }
       }
     }

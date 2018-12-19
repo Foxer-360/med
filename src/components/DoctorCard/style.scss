@@ -20,10 +20,11 @@
     }
 
     h3 {
-      padding: 0 0 19px 0;
+      padding: 0 0 5px 0;
       font-size: 2rem;
 
       @include md {
+        padding: 0 0 19px 0;
         font-size: 3.2rem;
       }
     }
@@ -56,18 +57,25 @@
   &__info {
     box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
     background-color: #ffffff;
-    margin-top: 40px;
+    margin-top: 30px;
+
+    @include md {
+      margin-top: 40px;
+    }
 
     &__wrapper {
       @extend .flexRow;
       justify-content: space-between;
-      padding: 25px 0;
+
+      @include lg {
+        padding: 25px 0;
+      }
     }
 
     &__item {
       @extend .flexRow;
       color: $darkGray;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 400;
       line-height: 27.03px;
       align-items: center;
@@ -75,25 +83,34 @@
       flex-wrap: wrap;
       justify-content: center;
 
+      @include md {
+        font-size: 2rem;
+      }
+
       @include lg {
         flex-wrap: nowrap;
       }
 
       img {
-        height: auto;
-        width: 55px;
+        height: 55px;
+        width: auto;
         display: inline-block;
-        padding: 0 0 22px 0;
+        margin: 0 0 22px 0;
+
+        @include md {
+          width: 55px;
+          height: auto;
+        }
 
         @include lg {
           padding: 0 0 0 4%;
+          margin: 0;
           height: 64px;
           width: auto;
         }
       }
 
-      p,
-      & > div {
+      p {
         padding-left: 10px;
         width: 100%;
         text-align: center;
@@ -101,6 +118,23 @@
         @include lg {
           width: auto;
           text-align: left;
+        }
+
+        span {
+          height: 22px;
+          color: #cf1d4e;
+          font-family: 'Montserrat - Semi Bold Italic';
+          font-size: 1.8rem;
+          font-weight: 400;
+          line-height: 28.83px;
+          font-family: 'Montserrat Semi Bold';
+          font-weight: 600;
+          font-family: Montserrat;
+          font-style: italic;  
+
+          @include md {
+            font-size: 2rem;
+          }
         }
       }
 
@@ -117,6 +151,9 @@
 
       &:nth-of-type(3) {
         flex-basis: 100%;
+        & > div {
+          flex-basis: 100%;
+        }
 
         @include lg {
           flex-basis: 50%;
@@ -142,6 +179,11 @@
       @extend .flexRow;
       justify-content: center;
     }
+
+    img {
+      max-width: 330px;
+      margin: 0 auto;
+    }
   }
 
   &__btnHolder {
@@ -155,6 +197,14 @@
 
     .dividerCircles {
       margin: 0;
+    }
+  }
+
+  .textBlock {
+    padding: 6rem 0 0 0;
+
+    &:first-of-type {
+      padding: 0;
     }
   }
 }

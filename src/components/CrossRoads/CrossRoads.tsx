@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Media from '@source/partials/Media';
 
 export interface CrossRoadsProps {
   data: {
@@ -22,9 +23,11 @@ const CrossRoads = (props: CrossRoadsProps) => {
             items.map((item, index) => (
               <a className={'crossRoads__card'} href="" key={index}>
                 <div className={'crossRoads__card__img'}>
-                  <img src="./assets/medicon/images/polikliniky.png" />
+                  {(item.image && <Media type="image" data={item.image} />) || (
+                    <img src="./assets/medicon/images/hospitalIcon.svg" />
+                  )}
                 </div>
-                <p>{item.text}</p>
+                {item.text && <p>{item.text}</p>}
               </a>
             ))}
         </div>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
+import SvgIcon from '../../partials/SvgIcon';
 import ReactMarkdown from 'react-markdown';
 
 export interface CareerFormProps {
@@ -39,7 +40,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
     this.setState({
       formValues: { ...this.state.formValues, [e.target.name]: e.target.value },
     });
-  }
+  };
 
   public render() {
     const { gdprLink, title, text } = this.props.data;
@@ -125,15 +126,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                   <button>
                     Nahrát životopis
                     <span>
-                      <svg
-                        enableBackground="new 0 0 353.7 386.4"
-                        viewBox="0 0 353.7 386.4"
-                        xmlSpace="preserve"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="m340.7 360.3h-327.7c-7.2 0-13 5.8-13 13s5.8 13 13 13h327.7c7.2 0 13-5.8 13-13s-5.8-13-13-13z" />
-                        <path d="m307.7 105.8l-109.1-97.5c-12.4-11.1-31-11.1-43.4 0l-109.2 97.5c-5.4 4.8-5.8 13-1 18.4s13 5.8 18.4 1l100.5-89.8v252.6c0 7.2 5.8 13 13 13s13-5.8 13-13v-252.5l100.5 89.8c2.5 2.2 5.6 3.3 8.7 3.3 3.6 0 7.1-1.5 9.7-4.4 4.8-5.3 4.3-13.6-1.1-18.4z" />
-                      </svg>
+                      <SvgIcon name="download" />  
                     </span>
                   </button>
 

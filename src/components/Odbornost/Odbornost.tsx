@@ -17,7 +17,7 @@ const Odbornost = (props: OdbornostProps) => {
   return (
     <div className={'odbornost'}>
       <DividerCircles />
-      
+
       <div className={'container'}>
         <div className={'odbornost__doctor'}>
           {(image && <Media type={'image'} data={image} />) || (
@@ -30,9 +30,10 @@ const Odbornost = (props: OdbornostProps) => {
                 {doctorName && <p>{doctorName}</p>}
                 {cite && <cite>{cite}</cite>}
               </div>
+
             </div>
-          </div>					
-          
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -24,6 +24,12 @@ export interface DoctorCardProps {
         morningOpeningHours: string;
       }
     ];
+    additionalInfo: [
+      {
+        title: string;
+        text: string;
+      }
+    ];
   };
 }
 
@@ -32,15 +38,16 @@ const DoctorCard = (props: DoctorCardProps) => {
     name,
     specialization,
     phone,
-    nurse,  
+    nurse,
     doctorImage,
     clinicImage,
     clinicName,
     clinicExtraInfo,
     clinicAddress,
     schedule,
+    additionalInfo,
   } = props.data;
- 
+
   return (
     <section className={'doctorCard'}>
       <div className="container">
@@ -111,9 +118,10 @@ const DoctorCard = (props: DoctorCardProps) => {
         </div>
       </div>
 
-      <TextBlock data={{ title: 'Poskytovaná péče' }} />
-
-      <TextBlock data={{ title: 'typy provadenych vysetreni' }} />
+      {additionalInfo &&
+        additionalInfo.map((item, i) => {
+          return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
+        })}
     </section>
   );
 };

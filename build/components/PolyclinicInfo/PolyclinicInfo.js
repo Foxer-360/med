@@ -1,12 +1,12 @@
 import * as React from 'react';
 var PolyclinicInfo = function (props) {
-    return (React.createElement("div", { className: "policlinicInfo" },
-        React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/geo.png)' } },
+    return (React.createElement("section", { className: "policlinicInfo" },
+        React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/geoIcon.svg)' } },
             React.createElement("p", null,
                 "Antala Sta\u0161ka 1670/80",
                 React.createElement("br", null),
                 "140 00 Praha 4")),
-        React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/phone.png)' } },
+        React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' } },
             React.createElement("p", null, "+420 261 006 111")),
         React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/metro.png)' } },
             React.createElement("p", null,

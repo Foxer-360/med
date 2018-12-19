@@ -15,7 +15,7 @@
         "day": "Pondělí",
         "eveningHoursdescription": "Pro objednané",
         "eveningOpeningHours": "13.00 - 18.00",
-        "morningHoursdescription": "",  
+        "morningHoursdescription": "",
         "morningOpeningHours": ""
       },
       {
@@ -42,6 +42,16 @@
         "morningHoursdescription": "Pro nemocn",
         "morningOpeningHours": "8.00 - 12.00"
       }
+    ],
+    "additionalInfo": [
+      {
+        "title": "Poskytovaná péče",
+        "text": "Popis pozice Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio. Maecenas eu ligula eget ipsum scelerisque posuere. **Integer rutrum tristique nisl hendrerit fringilla. Etiam interdum nunc nec scelerisque pulvinar.** Phasellus iaculis commodo dui, non aliquet est egestas eget. "
+      },
+      {
+        "title": "typy  prováděných vyšetření",
+        "text": "Popis pozice Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio. Maecenas eu ligula eget ipsum scelerisque posuere. **Integer rutrum tristique nisl hendrerit fringilla. Etiam interdum nunc nec scelerisque pulvinar.** Phasellus iaculis commodo dui, non aliquet est egestas eget. "
+      }
     ]
   },
   "form": {
@@ -67,11 +77,9 @@
           "type": "text",
           "title": "Phone"
         },
-
         "clinicImage": {
           "type": "image"
         },
-
         "clinicName": {
           "type": "text",
           "title": "Clinic Name"
@@ -111,8 +119,24 @@
               }
             }
           }
+        },
+        "additionalInfo": {
+          "type": "array",
+          "title": "Additional Info",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "text": {
+                "type": "text",
+                "title": "markdown"
+              }
+            }
+          }
         }
-      }
+      }  
     }
   }
 }

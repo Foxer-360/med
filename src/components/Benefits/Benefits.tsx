@@ -6,7 +6,7 @@ interface Benefits {
   image: LooseObject;
 }
 
-export interface BenefitsProps { 
+export interface BenefitsProps {
   data: {
     benefits: Benefits[];
   };
@@ -19,21 +19,17 @@ const Benefits = (props: BenefitsProps) => {
     <section className={'benefits'}>
       <div className={'container'}>
         <div className={'grid benefits__list'}>
-
-          {benefits && benefits.map((benefit, index) => {
-            return (
-              <div key={index} className={'grid benefits__list__element'}>
-                {(benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />) || (
-                  <img 
-                    src={'/assets/medicon/images/benefity1.png'}
-                    alt="Our benefit"
-                  />
-                )}
-                <p>{benefit.text}</p>
-              </div>
-            );
-          })}
-
+          {benefits &&
+            benefits.map((benefit, index) => {
+              return (
+                <div key={index} className={'grid benefits__list__element'}>
+                  {(benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />) || (
+                    <img src={'/assets/medicon/images/doctorIcon.svg'} alt="Our benefit" />
+                  )}
+                  <p>{benefit.text}</p>
+                </div>
+              );
+            })}
         </div>
       </div>
     </section>

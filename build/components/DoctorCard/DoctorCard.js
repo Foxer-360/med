@@ -4,7 +4,7 @@ import TextBlock from '../TextBlock';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
 var DoctorCard = function (props) {
-    var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicImage = _a.clinicImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, schedule = _a.schedule;
+    var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicImage = _a.clinicImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, schedule = _a.schedule, additionalInfo = _a.additionalInfo;
     return (React.createElement("section", { className: 'doctorCard' },
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: 'doctorCard__main' },
@@ -40,8 +40,10 @@ var DoctorCard = function (props) {
             React.createElement("div", { className: 'doctorCard__divider' },
                 React.createElement("div", { className: "dividerCircles" },
                     React.createElement("div", null)))),
-        React.createElement(TextBlock, { data: { title: 'Poskytovaná péče' } }),
-        React.createElement(TextBlock, { data: { title: 'typy provadenych vysetreni' } })));
+        additionalInfo &&
+            additionalInfo.map(function (item, i) {
+                return React.createElement(TextBlock, { key: i, data: { title: item.title, text: item.text } });
+            })));
 };
 export default DoctorCard;
 //# sourceMappingURL=DoctorCard.js.map

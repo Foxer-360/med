@@ -4,6 +4,7 @@ export interface HeroProps {
         title: string;
         text: string;
         displaySearch: boolean;
+        image: LooseObject;
     };
 }
 export interface HeroState {

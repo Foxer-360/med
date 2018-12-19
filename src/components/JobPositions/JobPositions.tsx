@@ -2,39 +2,45 @@ import * as React from 'react';
 import Button from '../../partials/Button';
 import SelectButton from './components/index';
 
-export interface JobPositionsProps {}
+interface Position {
+  name: string;
+  url: string;
+  polyclinic: string;
+  image: LooseObject;
+}
 
-const data = {
-  title: 'Výpis aktuálních pozic',
-
-  items: [
-    {
-      position: 'Dermatolog',
-      img: '/assets/medicon/images/positions-1.jpg',
-    },
-    {
-      position: 'Gynekolog',
-      img: '/assets/medicon/images/positions-2.jpg',
-    },
-    {
-      position: 'Ortoped',
-      img: '/assets/medicon/images/positions-3.jpg',
-    },
-  ],
-};
+export interface JobPositionsProps {
+  data: {
+    title: string;
+    positions: Position[];
+  };
+}
 
 const JobPositions = (props: JobPositionsProps) => {
+  const { title, positions } = props.data;
+
+  let polyclinics = [];
+  if (positions && positions.length > 0) {
+    positions.map((position, i) => {
+      polyclinics.push(position.polyclinic);
+    });
+  }
+  
   return (
     <div className={'container actual-positions'}>
-      <h3>{data.title}</h3>
+      {title && <h3>{title}</h3>}
 
-      <SelectButton />
+      <SelectButton polyclinics={polyclinics} />
 
       <div className={'grid positions'}>
-        {data.items.map((item, index) => (
-          <div className={'positions__element'} style={{ backgroundImage: `url(${item.img})` }} key={index}>
+        {positions && positions.map((position, index) => (
+          <div 
+            className={'positions__element'} 
+            style={{ backgroundImage: `url(/assets/medicon/images/positions-1.jpg)` }} 
+            key={index}
+          >
             <div className={'positions__element-content'}>
-              <p>{item.position}</p>
+              <p>{position.name}</p>
               <Button classes={'btn--whiteBorder btn--fullWidth'}>Vice info</Button>
             </div>
 

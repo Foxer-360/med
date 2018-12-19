@@ -1,35 +1,11 @@
 import * as React from 'react';
 import InfoElement from './components/InfoElement';
-var data = {
-    items: [
-        {
-            title: 'široký výběr zdravýchpotravin',
-            img: '/assets/medicon/images/info-el-1.jpg',
-            color: '#5a2a20',
-            btn: 'btn--whiteBorder',
-            titleColor: '#ffffff',
-        },
-        {
-            title: 'široký výběr zdravýchpotravin',
-            img: '/assets/medicon/images/info-el-3.jpg',
-            color: '# ',
-            btn: 'btn--blueBorder',
-            titleColor: '#2eac6c',
-        },
-        {
-            title: 'široký výběr zdravýchpotravin',
-            img: '/assets/medicon/images/info-el-2.jpg',
-            color: '#ffffff',
-            btn: 'btn--whiteBorder',
-            titleColor: '#ffffff',
-        },
-    ]
-};
 var InfoBoxes = function (props) {
+    var _a = props.data, title = _a.title, boxes = _a.boxes;
     return (React.createElement("section", { className: 'info-boxes' },
-        React.createElement("h3", null, "Z na\u0161ich l\u00E9k\u00E1ren"),
+        title && React.createElement("h3", null, title),
         React.createElement("div", { className: 'container' },
-            React.createElement("div", { className: 'grid info-boxes__list' }, data.items.map(function (item, index) { return (React.createElement(InfoElement, { color: item.color, title: item.title, img: item.img, btn: item.btn, titleColor: item.titleColor, key: index })); })))));
+            React.createElement("div", { className: 'grid info-boxes__list' }, boxes && boxes.map(function (box, i) { return (React.createElement(InfoElement, { gradientColor: box.gradientColor, title: box.title, image: box.image, button: box.button, titleColor: box.titleColor, key: i })); })))));
 };
 export default InfoBoxes;
 //# sourceMappingURL=InfoBoxes.js.map

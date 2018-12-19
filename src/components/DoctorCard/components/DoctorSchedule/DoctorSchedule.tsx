@@ -9,8 +9,8 @@ export interface DoctorScheduleProps {
       eveningOpeningHours: string;
       morningHoursdescription: string;
       morningOpeningHours: string;
-    }  
-  ];  
+    }
+  ];
 }
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
@@ -18,9 +18,8 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
     <div className="doctorSchedule">
       <table>
         <tbody>
-          {props.data.map(item => {
-            return (
-              <>
+          {props.data.map((item, index) => {
+            return <>
                 <tr className={'mobileHeading'}>
                   <td colSpan={3}>{item.day}</td>
                 </tr>
@@ -37,10 +36,9 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                   <td>
                     <p>{item.eveningOpeningHours}</p>
                     <p>{item.eveningHoursdescription}</p>
-                  </td>
+                  </td>  
                 </tr>
-              </>
-            );
+              </>;
           })}
         </tbody>
       </table>
