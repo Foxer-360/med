@@ -17,12 +17,8 @@ body {
   margin: 0 auto;
   width: 90%;
 
-  @include md {
-    max-width: $layoutMinWidth;
-  }
-
   @include xl {
-    width: 100%;
+    max-width: $layoutMinWidth;
   }
 }
 

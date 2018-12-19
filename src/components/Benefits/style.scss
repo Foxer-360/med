@@ -19,9 +19,11 @@
       grid-template-rows: 1fr;
       align-items: center;
       
-      &:not(:last-of-type) {
+      &:not(:nth-child(4n)) {
         border-right: 1px solid #dbdbda;
       }
+
+      img { width: inherit; }
     }
   }
 
@@ -43,22 +45,10 @@
           line-height: initial;
         }
 
-        &:not(:last-of-type) {
-          border-right: none;
-        }
-
-        &:nth-of-type(1) { 
-          border-right: 1px solid #dbdbda;
-          border-bottom: 1px solid #dbdbda; 
-        }
-
-        &:nth-of-type(2) {
-          border-bottom: 1px solid #dbdbda;
-        }
-
-        &:nth-of-type(3) {
-          border-right: 1px solid #dbdbda;
-        }
+        &:not(:nth-child(4n)) { border-right: none; }
+        &:nth-of-type(1n) { border-bottom: 1px solid #dbdbda; }
+        &:nth-child(2n) { border-left: 1px solid #dbdbda; }
+        &:nth-last-child(-n+2) { border-bottom: none; }
       }
     }
   }

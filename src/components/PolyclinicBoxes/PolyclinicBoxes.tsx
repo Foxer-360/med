@@ -1,29 +1,48 @@
 import * as React from 'react';
+import Media from '@source/partials/Media';
 
-export interface PolyclinicBoxesProps {}
+interface Polyclinic {
+  url: string;
+  image: LooseObject;
+}
+
+export interface PolyclinicBoxesProps {
+  data: {
+    title: string;
+    polyclinics: Polyclinic[];
+  };
+}
 
 const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
+  const { title, polyclinics } = props.data;
+  
   return (
-    <div className={'polyclinicBoxes'}>
+    <section className={'polyclinicBoxes'}>
       <div className={'container'}>
-        <h3>Další polikliniky</h3>
+        {title && <h3>{title}</h3>}
 
         <ul className={'grid'}>
-          <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="/assets/medicon/images/poliklinika.png" alt="poliklinika" /></a>
-          </li>
+
+          {polyclinics && polyclinics.map((polyclinic, index) => {
+            return (
+              <li key={index}>
+                <a href="#">
+                  {(polyclinic.image && polyclinic.image.filename && 
+                    <Media data={polyclinic.image} type={'image'}/>) || (
+                    <img 
+                      src={'/assets/medicon/images/poliklinika.png'} 
+                      alt="poliklinika"
+                    />
+                  )}
+                  
+                </a>
+              </li>
+            );
+          })}
+
         </ul>
       </div>
-    </div>
+    </section>
   );
 };
 

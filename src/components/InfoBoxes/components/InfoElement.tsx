@@ -3,27 +3,30 @@ import Button from '../../../partials/Button';
 
 export interface InfoElementProps {
   title: string;
-  color: string;
-  img: string;
-  btn: string;
+  gradientColor: string;
+  button: string;
   titleColor: string;
+  image: LooseObject;
 }
 
 export default function InfoElement(props: InfoElementProps) {
   
-  const { title, color, img, btn, titleColor } = props;
+  const { title, gradientColor, image, button, titleColor } = props;
 
   return (
-    <a className={'info-boxes__list__element'} style={{ backgroundImage: `url(${img})`}}>
+    <a className={'info-boxes__list__element'} style={{ backgroundImage: `url(/assets/medicon/images/info-el-2.jpg)`}}>
       <div className={'fullWidthContainer info-boxes__list__element__content'}>
-        <h5 style={{ color: `${titleColor}`}}>{title}</h5>
-        <Button classes={'btn--fullWidth ' + btn}>vice info</Button>
+        {titleColor && title && 
+          <h5 style={{ color: `${titleColor}`}}>{title}</h5>}
+
+        {button && 
+          <Button classes={'btn--fullWidth ' + button}>vice info</Button>}
       </div>
 
-      <div 
+      {gradientColor && <div 
         className={'info-boxes__list__element--colorGradient'}
-        style={{ background: `linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, ${color} 100%)`, }}
-      />
+        style={{ background: `linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, ${gradientColor} 100%)`, }}
+      />}
     </a>
   );
 }

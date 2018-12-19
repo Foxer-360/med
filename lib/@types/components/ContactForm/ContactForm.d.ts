@@ -1,5 +1,9 @@
 import * as React from 'react';
 export interface ContactFormProps {
+    data: {
+        title: string;
+        gdprLink: string;
+    };
 }
 export interface ContactFormState {
     formValues: {

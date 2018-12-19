@@ -51,13 +51,7 @@ export function BlogCard(props: BlogCardProps) {
 
       <div
         className={'blogCard__colorGradient'}
-        style={{
-          background: `linear-gradient(
-      to bottom,
-      rgba(125, 185, 232, 0) 0%,
-      ${color} 100%
-    )`,
-        }}
+        style={{ background: `linear-gradient( to bottom,rgba(125, 185, 232, 0) 0%,${color} 100%)` }}
       />
     </a>
   );

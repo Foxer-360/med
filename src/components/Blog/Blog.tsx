@@ -4,13 +4,16 @@ import { BlogCard } from './components/blogCard';
 import Button from '../../partials/Button';
 import SearchBar from '../SearchBar/SearchBar';
 
-export interface BlogProps {}
+export interface BlogProps {
+  data: {
+    title: string;
+    displaySearch: boolean;
+  };
+}
 
 export interface BlogState {}
 
 const data = {
-  title: 'aktuality a informace',
-  displaySearch: false,
   items: [
     {
       title: 'Těhotenství',
@@ -56,12 +59,13 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
   }
 
   public render() {
+    const { title, displaySearch } = this.props.data;
     return (
       <section className={'blog'}>
         <div className="container">
-          {data.title && <h1>{data.title}</h1>}
+          {title && <h1>{title}</h1>}
 
-          {data.displaySearch && <SearchBar placeholder={'Vyhledat téma'} barColor={'gray'} />}
+          {displaySearch && <SearchBar placeholder={'Vyhledat téma'} barColor={'gray'} />}
 
           <Masonry
             breakpointCols={{ default: 3, 4000: 3, 800: 2, 500: 1 }}

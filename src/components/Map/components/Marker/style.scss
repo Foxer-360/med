@@ -1,39 +1,50 @@
 .marker {
-  border-radius: 50%;
-  @include topBottomgradient(#01a6ce, #2083c1);
   position: absolute;
   transform: rotate(0deg);
-  margin: -20px 0 0 0;
   z-index: 7;
-  left: -9px;
-  top: -16px;
+  // background-color: red;
+  transform-origin: left top;
+  transform: rotate(-135deg);
+  cursor: pointer;
 
   &.big {
-    width: 64px;
+    width: 65px;
     height: 64px;
 
-    &:after {
+    &:after {   
       width: 25px;
       height: 25px;
-      margin: 19px 0 0 19px;
+      margin: 0;
+      top: 20px;
+      left: 20px;
     }
 
     &:before {
       width: 64px;
       height: 64px;
+      top: -64px;
     }
   }
 
   &.small {
-    height: 27px;
-    width: 27px;
+    height: 30px;
+    width: 30px;
+
+    &:after {
+      width: 14px;
+      height: 14px;
+      top: 9px;
+      left: 8px;
+    }
+    &:before {
+      width: 30px;
+      height: 30px;
+      top: -30px;
+    }
   }
 
   &:after {
     content: '';
-    width: 14px;
-    height: 14px;
-    margin: 8px 0 0 8px;
     background: #fff;
     position: absolute;
     border-radius: 50%;
@@ -43,13 +54,12 @@
 
   &:before {
     content: '';
-    width: 30px;
-    height: 30px;
     @include topBottomgradient(#01a6ce, #2083c1);
     position: absolute;
     border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg) translate3d(0, 0, 0);
     backface-visibility: hidden;
+    transform-origin: left bottom;
+    transform: rotate(90deg);
   }
 }
 
@@ -60,6 +70,9 @@
   position: relative;
   @include leftRightGradient($blue, $lightBlue);
   z-index: 2;
+  left: -5px;
+  top: -5px;
+  transform-origin: left bottom;
 
   &:after,
   &:before {

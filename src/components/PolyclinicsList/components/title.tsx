@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-export interface TitleProps {}
+export interface TitleProps {
+  name: string;
+}
 
 const Title = (props: TitleProps) => {
   return (
@@ -10,7 +12,7 @@ const Title = (props: TitleProps) => {
       <div className={'pcTitle__title'}>
         <h3>Poliklinika</h3>
         <div className={'pcTitle__title__subtitle'}>
-          <span>Budejovicka</span>
+          <span>{props.name}</span>
           <span className={'pcTitle__title__subtitle__circles'}>
             <div />
             <div />

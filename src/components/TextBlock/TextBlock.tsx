@@ -1,26 +1,32 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 export interface TextBlockProps {
   data: {
-    title?: string;
-  };
+    title?: string;  
+    text?: string;
+  };   
 }
-   
-const TextBlock = (props: TextBlockProps) => {
-  const { title } = props.data;   
 
-  return (
-    <section className={'textBlock'}>  
-      <div className="container">
+const TextBlock = (props: TextBlockProps) => {
+  const { title, text } = props.data;
+
+  return (  
+    <section className={'textBlock'}>
+      <div className="container">   
         <div className={'textBlock__container'}>
           {title && <h3 className={'gradientHeading'}>{title}</h3>}
 
-          <div className="textBlock__container__text">
-            Skupina <strong>MEDICON</strong> patří mezi největší provozovatele ambulantních zařízení v Praze.
-            <br /> Její pracoviště senachází v lokalitých <strong>Praha 4, Praha 9 a Praha 10.</strong>
-            <br /> Poskytuje komletní spectrum ambulantních specializací a v každé z poliklinik i navazující lékařské
-            služby.
-          </div>
+          {text && (
+            <div className="textBlock__container__text">
+              <ReactMarkdown
+                source={text}
+                renderers={{
+                  paragraph: (rProps: any) => <>{rProps.children}</>,
+                }}
+              />
+            </div>
+          )}  
         </div>
       </div>
     </section>
