@@ -7,79 +7,77 @@
     "managementContacts": [
       {
         "name": "Jiří Adámek",
-        "position": "generální ředitel",
-        "email1": "management@mediconas.cz"
+        "positions": "generální ředitel",
+        "emails": "[management@mediconas.cz](mailto:management@mediconas.cz)"
       },
       {
         "name": "Ing. Andrea Sklenářová",
-        "position": "finanční ředitelka",
-        "email1": "management@mediconas.cz"
+        "positions": "finanční ředitelka",
+        "emails": "[management@mediconas.cz](mailto:management@mediconas.cz)"
       }
     ],
     "nextContacts": [
       {
         "name": "Andrea Nedomová",
-        "position": "sekretariát",
-        "email1": "sekretariat@mediconas.cz",
-        "phone1": "+420 261 006 630"
+        "positions": "sekretariát",
+        "emails": "[sekretariat@mediconas.cz](mailto:sekretariat@mediconas.cz)",
+        "phones": "[tel.: +420 261 006 630](tel:+420261006630)"
       },
       {
         "name": "Hana Malíková",
-        "position": "sekretariát",
-        "email1": "sekretariat@mediconas.cz",
-        "phone1": "+420 261 006 524"
+        "positions": "sekretariát",
+        "emails": "[sekretariat@mediconas.cz](mailto:sekretariat@mediconas.cz)",
+        "phones": "[tel.: +420 261 006 524](tel:+420261006524)"
       }
     ],
     "otherContacts": [
       {
         "name": "MUDr. Regina Šírová",
-        "position": "vedoucí lékařka mamografických center skupiny MEDICON",
-        "email1": "mamografie@mediconas.cz",
-        "phone1": "+420 261 006 630"
+        "positions": "vedoucí lékařka mamografických center skupiny MEDICON",
+        "emails": "[mamografie@mediconas.cz](mailto:mamografie@mediconas.cz)",
+        "phones": "[tel.: +420 261 006 630](tel:+420261006630)"
       },
       {
         "name": "Ing. Eva Sokolová",
-        "position": "vedoucí odboru agendy zdravotních pojišťoven",
-        "email1": "pojistovny@mediconas.cz",
-        "phone1": "+420 731 682 290"
+        "positions": "vedoucí odboru agendy zdravotních pojišťoven",
+        "emails": "[pojistovny@mediconas.cz](mailto:pojistovny@mediconas.cz)",
+        "phones": "[tel.: +420 731 682 290](tel:+420731682290)"
       },
       {
         "name": "Mgr. Matyáš Bittner",
-        "position": "obchodní a marketingový manažer (kontakt pro média)",
-        "email1": "marketing@mediconas.cz",
-        "phone1": "+420 261 006 427",
-        "phone2": "+420 730 807 487"
+        "positions": "obchodní a marketingový manažer (kontakt pro média)",
+        "emails": "[marketing@mediconas.cz](mailto:marketing@mediconas.cz)",
+        "phones": "[tel.: +420 261 006 427](tel:+420261006427) [tel.: +420 730 807 487](tel:+420730807487)"
       },
       {
         "name": "Marcela Větrovcová",
-        "position": "koordinátorka programů INCARE",
-        "email1": "incare@mediconas.cz",
-        "phone1": "+420 273 162 162"
+        "positions": "koordinátorka programů INCARE",
+        "emails": "[incare@mediconas.cz](mailto:incare@mediconas.cz)",
+        "phones": "[tel.: +420 273 162 162](tel:+420273162162)"
       },
       {
         "name": "MUDr. Regina Šírová",
-        "position": "vedoucí lékařka mamografických center skupiny MEDICON",
-        "email1": "mamografie@mediconas.cz",
-        "phone1": "+420 261 006 630"
+        "positions": "vedoucí lékařka mamografických center skupiny MEDICON",
+        "emails": "[mamografie@mediconas.cz](mailto:mamografie@mediconas.cz)",
+        "phones": "[tel.: +420 261 006 630](tel:+420261006630)"
       },
       {
         "name": "Ing. Eva Sokolová",
-        "position": "vedoucí odboru agendy zdravotních pojišťoven",
-        "email1": "pojistovny@mediconas.cz",
-        "phone1": "+420 731 682 290"
+        "positions": "vedoucí odboru agendy zdravotních pojišťoven",
+        "emails": "[pojistovny@mediconas.cz](mailto:pojistovny@mediconas.cz)",
+        "phones": "[tel.: +420 731 682 290](tel:+420731682290)"
       },
       {
         "name": "Mgr. Matyáš Bittner",
-        "position": "obchodní a marketingový manažer (kontakt pro média)",
-        "email1": "marketing@mediconas.cz",
-        "phone1": "+420 261 006 427",
-        "phone2": "+420 730 807 487"
+        "positions": "obchodní a marketingový manažer (kontakt pro média)",
+        "emails": "[marketing@mediconas.cz](mailto:marketing@mediconas.cz)",
+        "phones": "[tel.: +420 261 006 427](tel:+420006427) [tel.: +420 730 807 487](tel:+420730807487)"
       },
       {
         "name": "Marcela Větrovcová",
-        "position": "koordinátorka programů INCARE",
-        "email1": "incare@mediconas.cz",
-        "phone1": "+420 273 162 162"
+        "positions": "koordinátorka programů INCARE",
+        "emails": "[incare@mediconas.cz](mailto:incare@mediconas.cz)",
+        "phones": "[tel.: +420 273 162 162](tel:+420273162162)"
       }
     ]
   },
@@ -108,25 +106,17 @@
                 "type": "text",
                 "title": "Name"
               },
-              "position": {
-                "type": "text",
-                "title": "Position"
+              "positions": {
+                "type": "markdown",
+                "title": "Positions or other information"
               },
-              "email1": {
-                "type": "text",
-                "title": "Email 1"
+              "emails": {
+                "type": "markdown",
+                "title": "Email addresses"
               },
-              "email2": {
-                "type": "text",
-                "title": "Email 2"
-              },
-              "phone1": {
-                "type": "text",
-                "title": "Phone 1"
-              },
-              "phone2": {
-                "type": "text",
-                "title": "Phone 2"
+              "phones": {
+                "type": "markdown",
+                "title": "Phone numbers"
               }
             }
           }
@@ -140,25 +130,17 @@
                 "type": "text",
                 "title": "Name"
               },
-              "position": {
-                "type": "text",
-                "title": "Position"
+              "positions": {
+                "type": "markdown",
+                "title": "Positions or other information"
               },
-              "email1": {
-                "type": "text",
-                "title": "Email 1"
+              "emails": {
+                "type": "markdown",
+                "title": "Email addresses"
               },
-              "email2": {
-                "type": "text",
-                "title": "Email 2"
-              },
-              "phone1": {
-                "type": "text",
-                "title": "Phone 1"
-              },
-              "phone2": {
-                "type": "text",
-                "title": "Phone 2"
+              "phones": {
+                "type": "markdown",
+                "title": "Phone numbers"
               }
             }
           }
@@ -172,25 +154,17 @@
                 "type": "text",
                 "title": "Name"
               },
-              "position": {
-                "type": "text",
-                "title": "Position"
+              "positions": {
+                "type": "markdown",
+                "title": "Positions or other information"
               },
-              "email1": {
-                "type": "text",
-                "title": "Email 1"
+              "emails": {
+                "type": "markdown",
+                "title": "Email addresses"
               },
-              "email2": {
-                "type": "text",
-                "title": "Email 2"
-              },
-              "phone1": {
-                "type": "text",
-                "title": "Phone 1"
-              },
-              "phone2": {
-                "type": "text",
-                "title": "Phone 2"
+              "phones": {
+                "type": "markdown",
+                "title": "Phone numbers"
               }
             }
           }
