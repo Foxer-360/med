@@ -26,6 +26,7 @@ import * as React from 'react';
 import Button from '../../partials/Button';
 import SvgIcon from '../../partials/SvgIcon';
 import ReactMarkdown from 'react-markdown';
+import Link from '@source/partials/Link';
 var CareerForm = /** @class */ (function (_super) {
     __extends(CareerForm, _super);
     function CareerForm(props) {
@@ -98,9 +99,11 @@ var CareerForm = /** @class */ (function (_super) {
                                 React.createElement("input", { className: 'checkbox', id: "styled-checkbox-1", type: "checkbox" }),
                                 React.createElement("label", { htmlFor: "styled-checkbox-1" })),
                             React.createElement("div", null,
-                                "Souhlas\u00EDm se ",
-                                React.createElement("a", { href: gdprLink }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
-                                " \u00FAdaj\u016F.")),
+                                "Souhlas\u00EDm se",
+                                ' ',
+                                React.createElement(Link, { url: gdprLink.url, languageCode: this.props.languageCode }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                ' ',
+                                "\u00FAdaj\u016F.")),
                         React.createElement("div", { className: 'flexRow flexAlign--center' },
                             React.createElement(Button, { classes: "btn--blueBkg btn--fullWidth" }, "Odeslat")))))));
     };

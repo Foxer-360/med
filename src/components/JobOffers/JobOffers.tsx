@@ -4,7 +4,7 @@ import Link from '@source/partials/Link';
 
 interface Offer {
   title: string;
-  url: string;
+  url: LooseObject;
   image: LooseObject;
 }
 
@@ -27,7 +27,12 @@ const jobOffers = (props: JobOffersProps) => {
         <div className="grid offers">
           {offers &&
             offers.map((offer, index) => (
-              <Link url={offer.url} languageCode={props.languageCode} key={index} className={'flexRow offers__element'}>
+              <Link
+                url={offer.url.url}
+                languageCode={props.languageCode}
+                key={index}
+                className={'flexRow offers__element'}
+              >
                 {offer.image && (
                   <div style={{ backgroundImage: offer.image && `url(${getImageUrl(offer.image)})` }}>
                     {offer.title && <p className={'hCenterBlock'}>{offer.title}</p>}

@@ -1,9 +1,10 @@
 import * as React from 'react';
 export interface CareerFormProps {
+    languageCode?: string;
     data: {
         title: string;
         text: string;
-        gdprLink: string;
+        gdprLink: LooseObject;
     };
 }
 export interface CareerFormState {

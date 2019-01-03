@@ -2,17 +2,19 @@ import * as React from 'react';
 import Button from '../../partials/Button';
 import SvgIcon from '../../partials/SvgIcon';
 import ReactMarkdown from 'react-markdown';
+import Link from '@source/partials/Link';
 
 export interface CareerFormProps {
+  languageCode?: string;
   data: {
     title: string;
     text: string;
-    gdprLink: string;
+    gdprLink: LooseObject;
   };
 }
 
 export interface CareerFormState {
-  formValues: { 
+  formValues: {
     firstName: string;
     lastName: string;
     telephone: string;
@@ -40,7 +42,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
     this.setState({
       formValues: { ...this.state.formValues, [e.target.name]: e.target.value },
     });
-  };
+  }
 
   public render() {
     const { gdprLink, title, text } = this.props.data;
@@ -126,7 +128,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                   <button>
                     Nahrát životopis
                     <span>
-                      <SvgIcon name="download" />  
+                      <SvgIcon name="download" />
                     </span>
                   </button>
 
@@ -146,7 +148,11 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                 </div>
 
                 <div>
-                  Souhlasím se <a href={gdprLink}>zpracováním osobních</a> údajů.
+                  Souhlasím se{' '}
+                  <Link url={gdprLink.url} languageCode={this.props.languageCode}>
+                    zpracováním osobních
+                  </Link>{' '}
+                  údajů.
                 </div>
               </div>
 
