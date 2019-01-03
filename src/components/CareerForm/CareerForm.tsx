@@ -12,7 +12,7 @@ export interface CareerFormProps {
 }
 
 export interface CareerFormState {
-  formValues: {
+  formValues: { 
     firstName: string;
     lastName: string;
     telephone: string;

@@ -31,7 +31,7 @@ var isExternalLink = function (url) {
     var pattern = /^https?|^www/i;
     return pattern.test(url);
 };
-var GET_PAGES_URLS = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query pagesUrls($languageCode: String) {\n    pagesUrls(where: { languageCode: $languageCode }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($languageCode: String) {\n    pagesUrls(where: { languageCode: $languageCode }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
+var GET_PAGES_URLS = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query pagesUrls($languageCode: String) {\n    pagesUrls(where: { languageCode: $languageCode }) {\n      id\n      page\n      url\n      name\n      description\n    }  \n  }\n"], ["\n  query pagesUrls($languageCode: String) {\n    pagesUrls(where: { languageCode: $languageCode }) {\n      id\n      page\n      url\n      name\n      description\n    }  \n  }\n"])));
 var ComposerLink = function (props) {
     var children = props.children, urlNewWindow = props.urlNewWindow, url = props.url, pageId = props.pageId, languageCode = props.languageCode, args = __rest(props, ["children", "urlNewWindow", "url", "pageId", "languageCode"]);
     return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { languageCode: languageCode } }, function (_a) {

@@ -5,8 +5,10 @@ interface Box {
     button: string;
     titleColor: string;
     image: LooseObject;
+    link?: LooseObject;
 }
 export interface InfoBoxesProps {
+    languageCode?: string;
     data: {
         title: string;
         boxes: Box[];

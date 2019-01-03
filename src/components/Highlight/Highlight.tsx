@@ -4,13 +4,14 @@ import Button from '../../partials/Button';
 export interface HighlightProps {
   data: {
     text: string;
-    url: string;
+    url: LooseObject;
   };
+  languageCode?: string;
 }
 
 const Highlight = (props: HighlightProps) => {
-  const {text, url} = props.data;
-  
+  const { text, url } = props.data;
+
   return (
     <div className="fullWidthContainer">
       <section className={'highlight'}>
@@ -18,10 +19,12 @@ const Highlight = (props: HighlightProps) => {
           <div className="flexRow flexAlign--center">
             <div className={'highlight__info flexRow'}>
               <img src="/assets/medicon/images/info.png" alt="info" />
-              {text && <p>{text}</p>}  
+              {text && <p>{text}</p>}
             </div>
-            
-            <Button classes="btn--whiteBorder btn--fullWidth">vice info</Button>
+
+            <Button classes="btn--whiteBorder btn--fullWidth" url={url} languageCode={props.languageCode}>
+              vice info
+            </Button>
           </div>
         </div>
       </section>

@@ -64,7 +64,7 @@ var Header = /** @class */ (function (_super) {
             React.createElement("div", { className: "hiddenMenu " + (this.state.menuActive ? 'hiddenMenu--active' : '') },
                 React.createElement("div", { className: 'hiddenMenu__wrapper' },
                     React.createElement("ul", null, secondaryNav &&
-                        secondaryNav.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url, languageCode: _this.props.languageCode }, navItem.name))); }))))));
+                        secondaryNav.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url, languageCode: _this.props.languageCode, onClick: function () { return _this.closeMenu(); } }, navItem.name))); }))))));
     };
     return Header;
 }(React.Component));

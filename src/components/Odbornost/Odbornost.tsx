@@ -21,16 +21,14 @@ const Odbornost = (props: OdbornostProps) => {
       <div className={'container'}>
         <div className={'odbornost__doctor'}>
           {(image && <Media type={'image'} data={image} />) || (
-            <img src={'/assets/medicon/images/odbornost-lekar.jpg'} alt="Doctor photo"/>
+            <img src={'/assets/medicon/images/odbornost-lekar.jpg'} alt="Doctor photo" />
           )}
 
           <div className={'grid grid--vCenterBlock'}>
             <div>
-                <div className={'horizontal-line'} />
-                {doctorName && <p>{doctorName}</p>}
-                {cite && <cite>{cite}</cite>}
-              </div>
-
+              <div className={'horizontal-line'} />
+              {doctorName && <p>{doctorName}</p>}
+              {cite && <cite>{cite}</cite>}
             </div>
           </div>
         </div>

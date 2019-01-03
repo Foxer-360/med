@@ -7,9 +7,11 @@ interface Box {
   button: string;
   titleColor: string;
   image: LooseObject;
+  link?: LooseObject;
 }
 
 export interface InfoBoxesProps {
+  languageCode?: string;
   data: {
     title: string;
     boxes: Box[];
@@ -25,17 +27,19 @@ const InfoBoxes = (props: InfoBoxesProps) => {
 
       <div className={'container'}>
         <div className={'grid info-boxes__list'}>
-          {boxes && boxes.map((box, i) => (
-            <InfoElement
-              gradientColor={box.gradientColor}
-              title={box.title}
-              image={box.image}
-              button={box.button}
-              titleColor={box.titleColor}
-              key={i}
-            />
-          ))}
-
+          {boxes &&
+            boxes.map((box, i) => (
+              <InfoElement
+                languageCode={props.languageCode}
+                link={box.link}
+                gradientColor={box.gradientColor}
+                title={box.title}
+                image={box.image}
+                button={box.button}
+                titleColor={box.titleColor}
+                key={i}
+              />
+            ))}
         </div>
       </div>
     </section>
