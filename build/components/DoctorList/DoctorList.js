@@ -7,6 +7,7 @@ var DoctorList = function (props) {
     return (React.createElement("section", { className: 'doctorList' },
         React.createElement("div", { className: 'container' },
             title && React.createElement("h3", null, title),
+            console.log('%c Emilio: cacaca', 'background: #222; color: #bada55', props),
             React.createElement("div", { className: "doctorList__wrapper" }, doctors &&
                 doctors.map(function (doctor, index) {
                     return (React.createElement("div", { className: 'doctorList__item', key: index },

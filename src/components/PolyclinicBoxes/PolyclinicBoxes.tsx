@@ -1,12 +1,14 @@
 import * as React from 'react';
 import Media from '@source/partials/Media';
+import Link from '@source/partials/Link';
 
 interface Polyclinic {
-  url: string;
+  url: LooseObject;
   image: LooseObject;
 }
 
 export interface PolyclinicBoxesProps {
+  languageCode?: string;
   data: {
     title: string;
     polyclinics: Polyclinic[];
@@ -15,31 +17,27 @@ export interface PolyclinicBoxesProps {
 
 const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
   const { title, polyclinics } = props.data;
-  
+
   return (
     <section className={'polyclinicBoxes'}>
+    
       <div className={'container'}>
+
         {title && <h3>{title}</h3>}
 
         <ul className={'grid'}>
-
-          {polyclinics && polyclinics.map((polyclinic, index) => {
-            return (
-              <li key={index}>
-                <a href="#">
-                  {(polyclinic.image && polyclinic.image.filename && 
-                    <Media data={polyclinic.image} type={'image'}/>) || (
-                    <img 
-                      src={'/assets/medicon/images/poliklinika.png'} 
-                      alt="poliklinika"
-                    />
-                  )}
-                  
-                </a>
-              </li>
-            );
-          })}
-
+          {polyclinics &&
+            polyclinics.map((polyclinic, index) => {
+              return (
+                <li key={index}>
+                  <Link to={polyclinic.url.url} languageCode={props.languageCode}>
+                    {(polyclinic.image && polyclinic.image.filename && (
+                      <Media data={polyclinic.image} type={'image'} />
+                    )) || <img src={'/assets/medicon/images/poliklinika.png'} alt="poliklinika" />}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </section>

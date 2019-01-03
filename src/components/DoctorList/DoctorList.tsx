@@ -27,6 +27,8 @@ const DoctorList = (props: DoctorListProps) => {
       <div className={'container'}>
         {title && <h3>{title}</h3>}
 
+        {console.log('%c Emilio: cacaca', 'background: #222; color: #bada55', props)}
+
         <div className="doctorList__wrapper">
           {doctors &&
             doctors.map((doctor, index) => {
@@ -63,7 +65,7 @@ const DoctorList = (props: DoctorListProps) => {
                       vice info
                     </Button>
                   </div>
-                </div> 
+                </div>
               );
             })}
         </div>

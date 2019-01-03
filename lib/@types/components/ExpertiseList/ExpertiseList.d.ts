@@ -1,7 +1,7 @@
 /// <reference types="react" />
 interface Expertise {
     title: string;
-    url: string;
+    url: LooseObject;
     image: LooseObject;
 }
 export interface ExpertiseListProps {

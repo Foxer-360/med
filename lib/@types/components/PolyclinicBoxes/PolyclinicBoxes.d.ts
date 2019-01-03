@@ -1,9 +1,10 @@
 /// <reference types="react" />
 interface Polyclinic {
-    url: string;
+    url: LooseObject;
     image: LooseObject;
 }
 export interface PolyclinicBoxesProps {
+    languageCode?: string;
     data: {
         title: string;
         polyclinics: Polyclinic[];

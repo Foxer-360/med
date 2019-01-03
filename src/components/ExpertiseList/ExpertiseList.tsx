@@ -5,7 +5,7 @@ import Link from '@source/partials/Link';
 
 interface Expertise {
   title: string;
-  url: string;
+  url: LooseObject;
   image: LooseObject;
 }
 
@@ -24,10 +24,11 @@ const ExpertiseList = (props: ExpertiseListProps) => {
     <section className="expertiseList">
       {title && <h3>{title}</h3>}
 
+      {console.log('%c Emilio: ', 'background: #222; color: #bada55', props)}
       <div className="grid-container">
         {expertiseList &&
           expertiseList.map((item, index) => (
-            <Link url={item.url} key={index} languageCode={props.languageCode}>
+            <Link url={item.url.url} key={index} languageCode={props.languageCode}>
               <div className="expertiseList__element">
                 {(item.image && <Media type={'image'} data={item.image} />) || (
                   <img src={'/assets/medicon/images/od-el-1.png'} alt="image" />
