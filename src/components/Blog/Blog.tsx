@@ -5,6 +5,7 @@ import Button from '../../partials/Button';
 import SearchBar from '../SearchBar/SearchBar';
 
 export interface BlogProps {
+  languageCode?: string;
   data: {
     title: string;
     displaySearch: boolean;
@@ -80,6 +81,7 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
                 color={item.color}
                 img={item.img}
                 special={item.special}
+                languageCode={this.props.languageCode}
               />
             ))}
           </Masonry>

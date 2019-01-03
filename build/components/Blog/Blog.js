@@ -60,12 +60,13 @@ var Blog = /** @class */ (function (_super) {
         return _this;
     }
     Blog.prototype.render = function () {
+        var _this = this;
         var _a = this.props.data, title = _a.title, displaySearch = _a.displaySearch;
         return (React.createElement("section", { className: 'blog' },
             React.createElement("div", { className: "container" },
                 title && React.createElement("h1", null, title),
                 displaySearch && React.createElement(SearchBar, { placeholder: 'Vyhledat téma', barColor: 'gray' }),
-                React.createElement(Masonry, { breakpointCols: { default: 3, 4000: 3, 800: 2, 500: 1 }, className: "my-masonry-grid", columnClassName: "my-masonry-grid_column" }, data.items.map(function (item, index) { return (React.createElement(BlogCard, { title: item.title, text: item.text, key: index, color: item.color, img: item.img, special: item.special })); })),
+                React.createElement(Masonry, { breakpointCols: { default: 3, 4000: 3, 800: 2, 500: 1 }, className: "my-masonry-grid", columnClassName: "my-masonry-grid_column" }, data.items.map(function (item, index) { return (React.createElement(BlogCard, { title: item.title, text: item.text, key: index, color: item.color, img: item.img, special: item.special, languageCode: _this.props.languageCode })); })),
                 React.createElement("div", { className: 'blog__blur' },
                     React.createElement("div", null)),
                 React.createElement("div", { className: "blog__btnHolder" },

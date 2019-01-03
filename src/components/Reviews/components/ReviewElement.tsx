@@ -5,7 +5,7 @@ import Media from '@source/partials/Media';
 export interface ReviewElementProps {
   cite: string;
   image: LooseObject;
-  starCount: number;  
+  starCount: number;
 }
 
 export default function ReviewElement(props: ReviewElementProps) {
@@ -15,14 +15,14 @@ export default function ReviewElement(props: ReviewElementProps) {
   for (let i = 0; i < starCount; i++) {
     rows.push(<SvgIcon name="star" key={i} />);
   } // 5 stars by default
-  
+
   if (starCount < 5) {
     rows.slice(-(5 - starCount), starCount);
   }
 
   return (
     <div className={'reviews__list__element'}>
-      {image && <Media type={'image'} data={image}/>}
+      {image && <Media type={'image'} data={image} />}
 
       <div className={'reviews__list__element__content'}>
         {cite && <cite>{cite}</cite>}

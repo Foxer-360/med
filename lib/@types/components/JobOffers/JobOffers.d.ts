@@ -5,6 +5,7 @@ interface Offer {
     image: LooseObject;
 }
 export interface JobOffersProps {
+    languageCode?: string;
     data: {
         title: string;
         offers: Offer[];

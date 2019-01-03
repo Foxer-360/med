@@ -20,28 +20,26 @@ const CrossRoads = (props: CrossRoadsProps) => {
   return (
     <section className={'crossRoads'}>
       <div className={'container'}>
-        {/* <div className={'crossRoads__wrapper'}>
+        <div className={'crossRoads__wrapper'}>
           {items &&
             items.map((item, index) => {
-              if (item.link && item.link.url) {
-                return ( 
-                  <Link
-                    url={item.link.url}
-                    languageCode={props.languageCode}
-                    className={'crossRoads__card'}
-                    key={index}
-                  >
-                    <div className={'crossRoads__card__img'}>
-                      {(item.image && <Media type="image" data={item.image} />) || (
-                        <img src="./assets/medicon/images/hospitalIcon.svg" />
-                      )}
-                    </div>
-                    {item.text && <p>{item.text}</p>}
-                  </Link>
-                );
-              }
+              return (
+                <Link
+                  url={item.link && item.link.url}
+                  languageCode={props.languageCode}
+                  className={'crossRoads__card'}
+                  key={index}
+                >
+                  <div className={'crossRoads__card__img'}>
+                    {(item.image && <Media type="image" data={item.image} />) || (
+                      <img src="./assets/medicon/images/hospitalIcon.svg" />
+                    )}
+                  </div>
+                  {item.text && <p>{item.text}</p>}
+                </Link>
+              );
             })}
-        </div> */}
+        </div>
       </div>
     </section>
   );

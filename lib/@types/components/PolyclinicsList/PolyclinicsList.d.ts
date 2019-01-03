@@ -10,8 +10,10 @@ interface Clinic {
     transportImage: LooseObject;
     station: string;
     services: string;
+    url?: LooseObject;
 }
 interface PolyclinicsListProps {
+    languageCode?: string;
     data: {
         clinics: Clinic[];
     };

@@ -44,7 +44,7 @@ var PolyclinicsList = function (props) {
                                             paragraph: function (rProps) { return React.createElement("p", null, rProps.children); },
                                         } })),
                                 React.createElement("div", { className: 'pcitem__info__btnHolder' },
-                                    React.createElement(Button, { classes: "btn btn--blueBorder" }, "vice info"))))))))); })));
+                                    React.createElement(Button, { classes: "btn btn--blueBorder", url: clinic.url, languageCode: props.languageCode }, "vice info"))))))))); })));
 };
 export default PolyclinicsList;
 //# sourceMappingURL=PolyclinicsList.js.map

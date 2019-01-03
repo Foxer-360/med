@@ -1,11 +1,12 @@
 /// <reference types="react" />
 interface Position {
     name: string;
-    url: string;
+    url: LooseObject;
     polyclinic: string;
     image: LooseObject;
 }
 export interface JobPositionsProps {
+    languageCode?: string;
     data: {
         title: string;
         positions: Position[];

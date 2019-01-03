@@ -2,9 +2,10 @@
 interface InfoRectangles {
     image: LooseObject;
     title: string;
-    url: string;
+    url: LooseObject;
 }
 export interface InfoRectanglesProps {
+    languageCode?: string;
     data: {
         infoRectangles: InfoRectangles[];
     };

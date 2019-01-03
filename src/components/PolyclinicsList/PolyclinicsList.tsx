@@ -15,9 +15,11 @@ interface Clinic {
   transportImage: LooseObject;
   station: string;
   services: string;
+  url?: LooseObject;
 }
 
 interface PolyclinicsListProps {
+  languageCode?: string;
   data: {
     clinics: Clinic[];
   };
@@ -91,7 +93,9 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
                       </div>
 
                       <div className={'pcitem__info__btnHolder'}>
-                        <Button classes="btn btn--blueBorder">vice info</Button>
+                        <Button classes="btn btn--blueBorder" url={clinic.url} languageCode={props.languageCode}>
+                          vice info
+                        </Button>
                       </div>
                     </div>
                   </div>

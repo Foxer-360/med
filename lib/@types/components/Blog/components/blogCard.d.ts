@@ -5,5 +5,6 @@ export interface BlogCardProps {
     color: string;
     img: string;
     special?: boolean;
+    languageCode?: string;
 }
 export declare function BlogCard(props: BlogCardProps): JSX.Element;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
+import Link from '@source/partials/Link';
 var DoctorList = function (props) {
     var _a = props.data, doctors = _a.doctors, title = _a.title;
     return (React.createElement("section", { className: 'doctorList' },
@@ -13,8 +14,8 @@ var DoctorList = function (props) {
                         React.createElement("div", { className: 'doctorList__item__info' },
                             React.createElement("h3", null, doctor.name),
                             React.createElement("p", null, doctor.field),
-                            React.createElement("a", { className: 'doctorList__item__info__link', href: "" }, doctor.clinicName),
-                            React.createElement(Button, { classes: "btn--blueBorder btn--small" }, "vice info"))));
+                            React.createElement(Link, { languageCode: props.languageCode, url: doctor.clinicUrl, className: 'doctorList__item__info__link' }, doctor.clinicName),
+                            React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl, languageCode: props.languageCode }, "vice info"))));
                 })),
             React.createElement("div", { className: "doctorList__btnHolder" },
                 React.createElement(Button, { classes: "btn--blueBkg btn--down" }, "zobrazit vice")))));

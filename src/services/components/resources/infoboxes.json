@@ -70,6 +70,10 @@
                   "#2eac6c": "green"
                 }
               },
+              "link": {
+                "type": "urlAutocomplete",
+                "title": "Link Url"
+              },
               "image": {
                 "type": "image"
               }

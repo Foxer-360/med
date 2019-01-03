@@ -1,9 +1,10 @@
 import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
+import Link from '@source/partials/Link';
 export function BlogCard(props) {
-    var title = props.title, text = props.text, color = props.color, img = props.img, special = props.special;
+    var title = props.title, text = props.text, color = props.color, img = props.img, special = props.special, languageCode = props.languageCode;
     if (special) {
-        return (React.createElement("a", { href: "", className: 'blogCard blogCard--special' },
+        return (React.createElement(Link, { url: '', languageCode: languageCode, className: 'blogCard blogCard--special' },
             title && React.createElement("h3", null, title),
             React.createElement("ul", null,
                 React.createElement("li", null,
@@ -19,7 +20,7 @@ export function BlogCard(props) {
                         React.createElement(SvgIcon, { name: 'arrow', type: 'white' })),
                     "Dent\u00E1ln\u00ED hygienista/ka"))));
     }
-    return (React.createElement("a", { href: "", className: 'blogCard' },
+    return (React.createElement(Link, { url: '', languageCode: languageCode, className: 'blogCard' },
         title && React.createElement("h3", null, title),
         text && React.createElement("p", null, text),
         React.createElement("img", { src: img, alt: "" }),

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
+import Link from '@source/partials/Link';
 
 interface Expertise {
   title: string;
@@ -9,6 +10,7 @@ interface Expertise {
 }
 
 export interface ExpertiseListProps {
+  languageCode?: string;
   data: {
     title: string;
     expertiseList: Expertise[];
@@ -23,24 +25,20 @@ const ExpertiseList = (props: ExpertiseListProps) => {
       {title && <h3>{title}</h3>}
 
       <div className="grid-container">
+        {expertiseList &&
+          expertiseList.map((item, index) => (
+            <Link url={item.url} key={index} languageCode={props.languageCode}>
+              <div className="expertiseList__element">
+                {(item.image && <Media type={'image'} data={item.image} />) || (
+                  <img src={'/assets/medicon/images/od-el-1.png'} alt="image" />
+                )}
 
-        {expertiseList && expertiseList.map((item, index) => (
-          <a href={item.url} key={index}>
-            <div className="expertiseList__element">
-
-              {(item.image &&
-                <Media type={'image'} data={item.image} />) ||
-                <img src={'/assets/medicon/images/od-el-1.png'} alt="image" />
-              }
-
-              <p>{item.title}</p>
-            </div>
-          </a>
-
-        ))}
-
+                <p>{item.title}</p>
+              </div>
+            </Link>
+          ))}
       </div>
-      
+
       <div className={'container'}>
         <Button classes="btn--blueBkg btn--fullWidth">vice info</Button>
       </div>

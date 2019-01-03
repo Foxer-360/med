@@ -1,5 +1,6 @@
 import * as React from 'react';
 export interface BlogProps {
+    languageCode?: string;
     data: {
         title: string;
         displaySearch: boolean;

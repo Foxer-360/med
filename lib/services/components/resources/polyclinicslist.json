@@ -60,6 +60,10 @@
                 "type": "markdown",
                 "title": "Description"
               },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "Clinic URL"
+              },
 
               "image": {
                 "type": "image"

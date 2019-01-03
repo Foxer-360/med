@@ -42,7 +42,7 @@ class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState>
         activeIndex: index,
       });
     }
-  };
+  }
 
   componentDidMount() {
     let listHeight = this.list.current.getBoundingClientRect().height + 120;

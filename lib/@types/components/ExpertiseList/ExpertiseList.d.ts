@@ -5,6 +5,7 @@ interface Expertise {
     image: LooseObject;
 }
 export interface ExpertiseListProps {
+    languageCode?: string;
     data: {
         title: string;
         expertiseList: Expertise[];
