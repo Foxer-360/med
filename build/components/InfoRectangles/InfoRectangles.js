@@ -1,17 +1,14 @@
 import * as React from 'react';
-import Button from '../../partials/Button';
+import Button from '@source/partials/Button';
+import getImageUrl from '@source/helpers/getImageUrl';
 var InfoRectangles = function (props) {
+    var infoRectangles = props.data.infoRectangles;
     return (React.createElement("section", { className: "info-rectangles" },
         React.createElement("div", { className: "container" },
-            React.createElement("div", { className: "grid-container" },
-                React.createElement("div", { className: "info-element", style: { backgroundImage: 'url(/assets/medicon/images/rect-1.jpg' } },
-                    React.createElement("div", null,
-                        React.createElement("h5", null, "\u0161irok\u00FD v\u00FDb\u011Br zdrav\u00FDchpotravin"),
-                        React.createElement(Button, { classes: "btn--blueBorder" }, "vice info"))),
-                React.createElement("div", { className: "info-element" },
-                    React.createElement("div", { style: { backgroundImage: 'url(/assets/medicon/images/rect-2.jpg' } },
-                        React.createElement("h5", null, "\u0161irok\u00FD v\u00FDb\u011Br zdrav\u00FDchpotravin"),
-                        React.createElement(Button, { classes: "btn--blueBorder" }, "vice info")))))));
+            React.createElement("div", { className: "grid-container" }, infoRectangles && infoRectangles.map(function (rectangle, index) { return (React.createElement("div", { key: index, className: 'info-element', style: { backgroundImage: rectangle.image && "url(" + getImageUrl(rectangle.image) + ")" } },
+                React.createElement("div", null,
+                    React.createElement("h5", null, rectangle.title),
+                    React.createElement(Button, { classes: "btn--blueBorder" }, "vice info")))); })))));
 };
 export default InfoRectangles;
 //# sourceMappingURL=InfoRectangles.js.map

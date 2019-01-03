@@ -1,5 +1,11 @@
 /// <reference types="react" />
-export interface PolyclinicInfoProps {
+export interface ContactsProps {
+    data: {
+        geo: string;
+        phone: string;
+        transport: string;
+        transportImage: LooseObject;
+    };
 }
-declare const PolyclinicInfo: (props: PolyclinicInfoProps) => JSX.Element;
+declare const PolyclinicInfo: (props: ContactsProps) => JSX.Element;
 export default PolyclinicInfo;

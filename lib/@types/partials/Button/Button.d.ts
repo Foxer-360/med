@@ -3,6 +3,8 @@ export interface ButtonProps {
     classes?: string;
     children: string;
     noArrow?: boolean;
+    url?: LooseObject;
+    languageCode?: string;
 }
 declare const Button: (props: ButtonProps) => JSX.Element;
 export default Button;

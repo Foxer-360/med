@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import Hamburger from './components/Hamburger';
+import Link from '@source/partials/Link';
 var Header = /** @class */ (function (_super) {
     __extends(Header, _super);
     function Header(props) {
@@ -43,35 +44,27 @@ var Header = /** @class */ (function (_super) {
         this.getVertex();
     };
     Header.prototype.render = function () {
+        var _this = this;
+        var mainNav = this.props.navigations && this.props.navigations.main;
+        var secondaryNav = this.props.navigations && this.props.navigations.secondary;
         return (React.createElement("header", { className: "header " + (this.state.menuActive ? 'menuActive' : '') },
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: 'header__wrapper', ref: this.headerWrapper },
                     React.createElement("div", { className: 'header__logo' },
-                        React.createElement("a", { href: '' },
+                        React.createElement(Link, { languageCode: this.props.languageCode, url: '/' },
                             React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }))),
                     React.createElement("nav", null,
-                        React.createElement("ul", null,
-                            React.createElement("li", null,
-                                React.createElement("a", { href: "" }, "Domu")),
-                            React.createElement("li", null,
-                                React.createElement("a", { href: "" }, "O nas")),
-                            React.createElement("li", null,
-                                React.createElement("a", { href: "" }, "kontakty"))),
+                        React.createElement("ul", null, mainNav &&
+                            mainNav.map(function (navItem, i) { return (React.createElement("li", { key: i },
+                                React.createElement(Link, { url: navItem.url, languageCode: _this.props.languageCode }, navItem.name))); })),
                         React.createElement(Hamburger, { active: this.state.menuActive, onClick: this.toggleMenu })))),
             React.createElement("div", { className: 'header__iso' },
                 React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "none" },
                     React.createElement("polygon", { fill: "white", points: "0,0 0,50 " + this.state.vX + ",100 100,0" }))),
             React.createElement("div", { className: "hiddenMenu " + (this.state.menuActive ? 'hiddenMenu--active' : '') },
                 React.createElement("div", { className: 'hiddenMenu__wrapper' },
-                    React.createElement("ul", null,
-                        React.createElement("li", null,
-                            React.createElement("a", { href: "" }, "Link")),
-                        React.createElement("li", null,
-                            React.createElement("a", { href: "" }, "Link")),
-                        React.createElement("li", null,
-                            React.createElement("a", { href: "" }, "Link")),
-                        React.createElement("li", null,
-                            React.createElement("a", { href: "" }, "Link")))))));
+                    React.createElement("ul", null, secondaryNav &&
+                        secondaryNav.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url, languageCode: _this.props.languageCode }, navItem.name))); }))))));
     };
     return Header;
 }(React.Component));

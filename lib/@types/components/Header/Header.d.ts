@@ -1,5 +1,8 @@
 import * as React from 'react';
 export interface HeaderProps {
+    navigations?: LooseObject;
+    languages?: LooseObject;
+    languageCode?: string;
 }
 export interface HeaderState {
     vX: number;

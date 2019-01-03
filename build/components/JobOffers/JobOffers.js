@@ -1,13 +1,12 @@
 import * as React from 'react';
+import getImageUrl from '@source/helpers/getImageUrl';
 var jobOffers = function (props) {
+    var _a = props.data, title = _a.title, offers = _a.offers;
     return (React.createElement("div", { className: 'container' },
         React.createElement("section", { className: 'jobOffers' },
-            React.createElement("h3", null, "Aktu\u00E1ln\u00ED nab\u00EDdky"),
-            React.createElement("div", { className: "grid offers" },
-                React.createElement("a", { href: "#", className: 'flexRow offers__element', style: { backgroundImage: 'url(/assets/medicon/images/offers-lekar.png)' } },
-                    React.createElement("p", { className: 'hCenterBlock' }, "L\u00E9ka\u0159sk\u00E9 pozice")),
-                React.createElement("a", { href: "#", className: 'flexRow offers__element', style: { backgroundImage: 'url(/assets/medicon/images/offers-ostatni.png)' } },
-                    React.createElement("p", { className: 'hCenterBlock' }, "Ostatn\u00ED pozice"))))));
+            title && React.createElement("h3", null, title),
+            React.createElement("div", { className: "grid offers" }, offers && offers.map(function (offer, index) { return (React.createElement("a", { href: offer.url, key: index, className: 'flexRow offers__element' }, (offer.image &&
+                React.createElement("div", { style: { backgroundImage: offer.image && "url(" + getImageUrl(offer.image) + ")" } }, offer.title && React.createElement("p", { className: 'hCenterBlock' }, offer.title))))); })))));
 };
 export default jobOffers;
 //# sourceMappingURL=JobOffers.js.map

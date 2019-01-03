@@ -1,9 +1,9 @@
 import ExpertiseDescriptionCare from './ExpertiseDescriptionCare';
-import ExpertiseDescriptionInvestigation from './ExpertiseDescriptionInvestigation';
+import ExpertiseDescriptionExamination from './ExpertiseDescriptionExamination';
 import ExpertiseDescriptionBoxes from './ExpertiseDescriptionBoxes';
 export default {
     ExpertiseDescriptionCare: ExpertiseDescriptionCare,
-    ExpertiseDescriptionInvestigation: ExpertiseDescriptionInvestigation,
+    ExpertiseDescriptionExamination: ExpertiseDescriptionExamination,
     ExpertiseDescriptionBoxes: ExpertiseDescriptionBoxes,
 };
 //# sourceMappingURL=index.js.map

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Button from '../../partials/Button';
+import Button from '@source/partials/Button';
+import getImageUrl from '@source/helpers/getImageUrl';
 import SelectButton from './components/index';
 var JobPositions = function (props) {
     var _a = props.data, title = _a.title, positions = _a.positions;
@@ -12,7 +13,7 @@ var JobPositions = function (props) {
     return (React.createElement("div", { className: 'container actual-positions' },
         title && React.createElement("h3", null, title),
         React.createElement(SelectButton, { polyclinics: polyclinics }),
-        React.createElement("div", { className: 'grid positions' }, positions && positions.map(function (position, index) { return (React.createElement("div", { className: 'positions__element', style: { backgroundImage: "url(/assets/medicon/images/positions-1.jpg)" }, key: index },
+        React.createElement("div", { className: 'grid positions' }, positions && positions.map(function (position, index) { return (React.createElement("div", { className: 'positions__element', style: { backgroundImage: position.image && "url(" + getImageUrl(position.image) + ")" }, key: index },
             React.createElement("div", { className: 'positions__element-content' },
                 React.createElement("p", null, position.name),
                 React.createElement(Button, { classes: 'btn--whiteBorder btn--fullWidth' }, "Vice info")),
