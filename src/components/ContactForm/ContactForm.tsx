@@ -1,10 +1,12 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
+import Link from '@source/partials/Link';
 
 export interface ContactFormProps {
+  languageCode?: string;
   data: {
     title: string;
-    gdprLink: string;
+    gdprLink: LooseObject;
   };
 }
 
@@ -84,7 +86,11 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                 </div>
 
                 <div>
-                  Souhlasím se <a href={gdprLink}>zpracováním osobních</a> údajů.
+                  Souhlasím se{' '}
+                  <Link url={gdprLink.url} languageCode={this.props.languageCode}>
+                    zpracováním osobních
+                  </Link>{' '}
+                  údajů.
                 </div>
               </div>
 

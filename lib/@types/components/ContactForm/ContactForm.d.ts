@@ -1,8 +1,9 @@
 import * as React from 'react';
 export interface ContactFormProps {
+    languageCode?: string;
     data: {
         title: string;
-        gdprLink: string;
+        gdprLink: LooseObject;
     };
 }
 export interface ContactFormState {

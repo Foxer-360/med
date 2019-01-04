@@ -24,6 +24,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import Button from '../../partials/Button';
+import Link from '@source/partials/Link';
 var ContactForm = /** @class */ (function (_super) {
     __extends(ContactForm, _super);
     function ContactForm(props) {
@@ -70,9 +71,11 @@ var ContactForm = /** @class */ (function (_super) {
                                 React.createElement("input", { className: 'checkbox', id: "styled-checkbox-1", type: "checkbox" }),
                                 React.createElement("label", { htmlFor: "styled-checkbox-1" })),
                             React.createElement("div", null,
-                                "Souhlas\u00EDm se ",
-                                React.createElement("a", { href: gdprLink }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
-                                " \u00FAdaj\u016F.")),
+                                "Souhlas\u00EDm se",
+                                ' ',
+                                React.createElement(Link, { url: gdprLink.url, languageCode: this.props.languageCode }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                ' ',
+                                "\u00FAdaj\u016F.")),
                         React.createElement("div", { className: 'flexRow flexAlign--center' },
                             React.createElement(Button, { classes: "btn--blueBkg" }, "Odeslat")))))));
     };

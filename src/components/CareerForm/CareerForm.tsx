@@ -18,7 +18,7 @@ export interface CareerFormState {
     firstName: string;
     lastName: string;
     telephone: string;
-    email: string;
+    email: string; 
     message: string;
   };
 }
