@@ -24,7 +24,6 @@ const ExpertiseList = (props: ExpertiseListProps) => {
     <section className="expertiseList">
       {title && <h3>{title}</h3>}
 
-      {console.log('%c Emilio: ', 'background: #222; color: #bada55', props)}
       <div className="grid-container">
         {expertiseList &&
           expertiseList.map((item, index) => (

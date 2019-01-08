@@ -19,7 +19,7 @@ export interface DoctorListProps {
   };
 }
 
-const DoctorList = (props: DoctorListProps) => {
+const DoctorList = (props: DoctorListProps) => {  
   const { doctors, title } = props.data;
 
   return (
@@ -27,7 +27,6 @@ const DoctorList = (props: DoctorListProps) => {
       <div className={'container'}>
         {title && <h3>{title}</h3>}
 
-        {console.log('%c Emilio: cacaca', 'background: #222; color: #bada55', props)}
 
         <div className="doctorList__wrapper">
           {doctors &&

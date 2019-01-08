@@ -12,7 +12,7 @@ export interface BenefitsProps {
   };
 }
 
-const Benefits = (props: BenefitsProps) => {
+const Benefits = (props: BenefitsProps) => {  
   const { items } = props.data;
 
   return (
