@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 import * as React from 'react';
 import Hamburger from './components/Hamburger';
 import Link from '@source/partials/Link';
+import { Link as DomLink } from 'react-router-dom';
 var Header = /** @class */ (function (_super) {
     __extends(Header, _super);
     function Header(props) {
@@ -51,7 +52,7 @@ var Header = /** @class */ (function (_super) {
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: 'header__wrapper', ref: this.headerWrapper },
                     React.createElement("div", { className: 'header__logo' },
-                        React.createElement(Link, { languageCode: this.props.languageCode, url: '/' },
+                        React.createElement(DomLink, { to: '/' },
                             React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }))),
                     React.createElement("nav", null,
                         React.createElement("ul", null, mainNav &&

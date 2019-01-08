@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Hamburger from './components/Hamburger';
 import Link from '@source/partials/Link';
+import { Link as DomLink } from 'react-router-dom';
 
 export interface HeaderProps {
   navigations?: LooseObject;
@@ -56,9 +57,9 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         <div className="container">
           <div className={'header__wrapper'} ref={this.headerWrapper}>
             <div className={'header__logo'}>
-              <Link languageCode={this.props.languageCode} url={'/'}>
+              <DomLink to={'/'}>
                 <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
-              </Link>
+              </DomLink>
             </div>
 
             <nav>
