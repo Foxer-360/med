@@ -36,7 +36,7 @@ const DoctorList = (props: DoctorListProps) => {
                   <div className={'doctorList__item__img'}>
                     {(doctor.image && doctor.image.filename && <Media data={doctor.image} type="image" />) || (
                       <img
-                        className="avatar"
+                        className="avatarImg"
                         src={'../../../assets/medicon/images/doctorIcon.svg'}
                         alt="Medicon Doctor Icon"
                       />

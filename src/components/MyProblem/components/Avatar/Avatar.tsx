@@ -9,7 +9,7 @@ const Avatar = (props: AvatarProps) => {
   const { onClick, activeArea } = props;
 
   return (
-    <div className={`avatar ${activeArea}`}>
+    <div className={`avatarDoll ${activeArea}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
