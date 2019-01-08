@@ -87,7 +87,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
 
                 <div>
                   Souhlasím se{' '}
-                  <Link url={gdprLink.url} languageCode={this.props.languageCode}>
+                  <Link url={gdprLink && gdprLink.url} languageCode={this.props.languageCode}>
                     zpracováním osobních
                   </Link>{' '}
                   údajů.

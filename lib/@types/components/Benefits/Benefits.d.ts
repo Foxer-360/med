@@ -5,7 +5,7 @@ interface Benefits {
 }
 export interface BenefitsProps {
     data: {
-        benefits: Benefits[];
+        items: Benefits[];
     };
 }
 declare const Benefits: (props: BenefitsProps) => JSX.Element;

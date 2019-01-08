@@ -8,19 +8,19 @@ interface Benefits {
 
 export interface BenefitsProps {
   data: {
-    benefits: Benefits[];
+    items: Benefits[];
   };
 }
 
 const Benefits = (props: BenefitsProps) => {
-  const { benefits } = props.data;
+  const { items } = props.data;
 
   return (
     <section className={'benefits'}>
       <div className={'container'}>
         <div className={'grid benefits__list'}>
-          {benefits &&
-            benefits.map((benefit, index) => {
+          {items &&
+            items.map((benefit, index) => {
               return (
                 <div key={index} className={'grid benefits__list__element'}>
                   {(benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />) || (

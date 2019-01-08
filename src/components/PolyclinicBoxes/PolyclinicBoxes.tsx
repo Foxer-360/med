@@ -30,7 +30,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
             polyclinics.map((polyclinic, index) => {
               return (
                 <li key={index}>
-                  <Link to={polyclinic.url.url} languageCode={props.languageCode}>
+                  <Link url={polyclinic.url.url} languageCode={props.languageCode}>
                     {(polyclinic.image && polyclinic.image.filename && (
                       <Media data={polyclinic.image} type={'image'} />
                     )) || <img src={'/assets/medicon/images/poliklinika.png'} alt="poliklinika" />}

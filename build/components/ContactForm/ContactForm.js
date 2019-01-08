@@ -73,7 +73,7 @@ var ContactForm = /** @class */ (function (_super) {
                             React.createElement("div", null,
                                 "Souhlas\u00EDm se",
                                 ' ',
-                                React.createElement(Link, { url: gdprLink.url, languageCode: this.props.languageCode }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                React.createElement(Link, { url: gdprLink && gdprLink.url, languageCode: this.props.languageCode }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                 ' ',
                                 "\u00FAdaj\u016F.")),
                         React.createElement("div", { className: 'flexRow flexAlign--center' },
