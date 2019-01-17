@@ -16,5 +16,7 @@ declare class Header extends React.Component<HeaderProps, HeaderState> {
     toggleMenu: () => void;
     componentDidMount(): void;
     render(): JSX.Element;
+    private transformNavigationsIntoTree;
+    private buildNavTree;
 }
 export default Header;
