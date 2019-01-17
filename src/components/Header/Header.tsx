@@ -47,7 +47,7 @@ const ComposedQuery = adopt({
 export interface HeaderProps {
   navigations?: LooseObject;
   languages?: LooseObject;
-  languageCode?: string;
+  languageCode?: string;  
 }
 
 export interface HeaderState {
