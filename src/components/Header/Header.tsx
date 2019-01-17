@@ -47,7 +47,7 @@ const ComposedQuery = adopt({
 export interface HeaderProps {
   navigations?: LooseObject;
   languages?: LooseObject;
-  languageCode?: string;  
+  languageCode?: string;
 }
 
 export interface HeaderState {
@@ -72,7 +72,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     this.setState({
       vX,
     });
-  }  
+  }
 
   closeMenu = () => {
     this.setState({
