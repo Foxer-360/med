@@ -7,7 +7,7 @@ export interface MediaProps {
   data: any;
 }
 
-export interface MediaState { }
+export interface MediaState {}
 
 class Media extends React.Component<MediaProps, MediaState> {
   constructor(props: MediaProps) {
@@ -50,7 +50,10 @@ class Media extends React.Component<MediaProps, MediaState> {
       case 'embeddedVideo':
         return this.renderAsVideoEmbed(data);
       default:
-        return <div className={'mediaError'}>There was an error rendering media.</div>;
+        return this.renderAsImage(data);
+
+      // default:
+      //   return <div className={'mediaError'}>There was an error rendering media.</div>;
     }
   }
 }

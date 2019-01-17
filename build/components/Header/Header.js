@@ -83,6 +83,9 @@ var Header = /** @class */ (function (_super) {
     };
     Header.prototype.render = function () {
         var _this = this;
+        // if (window.innerWidth < 768) {
+        this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
+        // }
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
@@ -97,7 +100,6 @@ var Header = /** @class */ (function (_super) {
             var secNav = 'secondary';
             var mainNavItems = transformedNavigations && transformedNavigations[mainNav] ? transformedNavigations[mainNav] : [];
             var secNavItems = transformedNavigations && transformedNavigations[secNav] ? transformedNavigations[secNav] : [];
-            console.log('%c Emilio: ', 'background: #222; color: #bada55', secNavItems);
             return (React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: 'header__wrapper', ref: _this.headerWrapper },

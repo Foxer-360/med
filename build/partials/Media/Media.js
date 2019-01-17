@@ -38,7 +38,9 @@ var Media = /** @class */ (function (_super) {
             case 'embeddedVideo':
                 return this.renderAsVideoEmbed(data);
             default:
-                return React.createElement("div", { className: 'mediaError' }, "There was an error rendering media.");
+                return this.renderAsImage(data);
+            // default:
+            //   return <div className={'mediaError'}>There was an error rendering media.</div>;
         }
     };
     return Media;

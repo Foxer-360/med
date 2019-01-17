@@ -57,6 +57,7 @@ export interface HeaderState {
 
 class Header extends React.Component<HeaderProps, HeaderState> {
   public headerWrapper: any;
+
   constructor(props: HeaderProps) {
     super(props);
     this.headerWrapper = React.createRef();
@@ -71,7 +72,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     this.setState({
       vX,
     });
-  }
+  }  
 
   closeMenu = () => {
     this.setState({
@@ -90,6 +91,10 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   public render() {
+    // if (window.innerWidth < 768) {
+    this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
+    // }
+
     return (
       <ComposedQuery>
         {({ getPagesUrls: { loading, error, data }, context }) => {
@@ -116,8 +121,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
           const secNavItems =
             transformedNavigations && transformedNavigations[secNav] ? transformedNavigations[secNav] : [];
-
-          console.log('%c Emilio: ', 'background: #222; color: #bada55', secNavItems);
 
           return (
             <header className={`header ${this.state.menuActive ? 'menuActive' : ''}`}>
