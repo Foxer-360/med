@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Media from '../../partials/Media';
+import { blogarticle } from '@source/services/components/resources';
 
 export interface AppProps {
   data: {
@@ -14,17 +15,21 @@ const BlogArticle = (props: AppProps) => {
   const { title, text, image } = props.data;
 
   return (
-    <section>
-      {title && <h2>{title}</h2>}
+    <section className={'blogArticle'}>
+      <div className="container">
+        {title && <h1 className={'gradientHeading'}>{title}</h1>}
 
-      <Media data={image} type="image" />
+        <Media data={image} type="image" />
 
-      <ReactMarkdown
-        source={text}
-        renderers={{
-          paragraph: (rProps: any) => <p>{rProps.children}</p>,
-        }}
-      />
+        <div className={'blogArticle__content'}>
+          <ReactMarkdown
+            source={text}
+            renderers={{
+              paragraph: (rProps: any) => <p>{rProps.children}</p>,
+            }}
+          />
+        </div>
+      </div>
     </section>
   );
 };

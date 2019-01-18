@@ -18,7 +18,7 @@ const GET_CONTEXT = gql`
 const GET_ALL_PAGES = gql`
   query localizedPages($languageId: ID!) {
     pages {
-      id
+      id 
       type {
         id
         name
