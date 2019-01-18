@@ -26,7 +26,6 @@ const CrossRoads = (props: CrossRoadsProps) => {
               return (
                 <Link
                   url={item.link && item.link.url}
-                  languageCode={props.languageCode}
                   className={'crossRoads__card'}
                   key={index}
                 >

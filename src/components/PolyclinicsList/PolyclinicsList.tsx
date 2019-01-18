@@ -93,7 +93,7 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
                       </div>
 
                       <div className={'pcitem__info__btnHolder'}>
-                        <Button classes="btn btn--blueBorder" url={clinic.url} languageCode={props.languageCode}>
+                        <Button classes="btn btn--blueBorder" url={clinic.url}>
                           vice info
                         </Button>
                       </div>

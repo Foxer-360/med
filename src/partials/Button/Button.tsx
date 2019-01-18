@@ -6,14 +6,13 @@ export interface ButtonProps {
   children: string;
   noArrow?: boolean;
   url?: LooseObject;
-  languageCode?: string;
 }
 
 const Button = (props: ButtonProps) => {
   // Button with link
   if (props.url) {
     return (
-      <Link className={`btn ${props.classes}`} url={props.url && props.url.url} languageCode={props.languageCode}>
+      <Link className={`btn ${props.classes}`} url={props.url && props.url.url}>
         {props.children}
         {!props.noArrow && <span className="arrow" />}
       </Link>

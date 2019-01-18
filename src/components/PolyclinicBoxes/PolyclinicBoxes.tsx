@@ -20,9 +20,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
 
   return (
     <section className={'polyclinicBoxes'}>
-    
       <div className={'container'}>
-
         {title && <h3>{title}</h3>}
 
         <ul className={'grid'}>
@@ -30,7 +28,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
             polyclinics.map((polyclinic, index) => {
               return (
                 <li key={index}>
-                  <Link url={polyclinic.url.url} languageCode={props.languageCode}>
+                  <Link url={polyclinic.url.url}>
                     {(polyclinic.image && polyclinic.image.filename && (
                       <Media data={polyclinic.image} type={'image'} />
                     )) || <img src={'/assets/medicon/images/poliklinika.png'} alt="poliklinika" />}
@@ -38,7 +36,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
                 </li>
               );
             })}
-        </ul>  
+        </ul>
       </div>
     </section>
   );

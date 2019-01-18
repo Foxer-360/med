@@ -32,7 +32,7 @@ var Media = /** @class */ (function (_super) {
     };
     Media.prototype.render = function () {
         var data = this.props.data;
-        switch (data.type) {
+        switch (data && data.type) {
             case 'image':
                 return this.renderAsImage(data);
             case 'embeddedVideo':

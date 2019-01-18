@@ -26,23 +26,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Loader from '../../partials/Loader';
+import { adopt } from 'react-adopt';
 var isExternalLink = function (url) {
     var pattern = /^https?|^www/i;
     return pattern.test(url);
 };
-var GET_PAGES_URLS = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query pagesUrls($languageCode: String) {\n    pagesUrls(where: { languageCode: $languageCode }) {\n      id\n      page\n      url\n      name\n      description\n    }  \n  }\n"], ["\n  query pagesUrls($languageCode: String) {\n    pagesUrls(where: { languageCode: $languageCode }) {\n      id\n      page\n      url\n      name\n      description\n    }  \n  }\n"])));
+var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n  }\n"], ["\n  {\n    languageData @client\n  }\n"])));
+var ComposedQuery = adopt({
+    context: function (_a) {
+        var render = _a.render;
+        return React.createElement(Query, { query: GET_CONTEXT }, function (_a) {
+            var data = _a.data;
+            return render(data);
+        });
+    },
+    getPagesUrls: function (_a) {
+        var render = _a.render, languageData = _a.context.languageData;
+        if (!languageData) {
+            return render({ loading: true });
+        }
+        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id } }, function (data) {
+            return render(data);
+        }));
+    },
+});
+var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposerLink = function (props) {
-    var children = props.children, urlNewWindow = props.urlNewWindow, url = props.url, pageId = props.pageId, languageCode = props.languageCode, args = __rest(props, ["children", "urlNewWindow", "url", "pageId", "languageCode"]);
-    return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { languageCode: languageCode } }, function (_a) {
-        var pagesUrls = _a.data.pagesUrls, loading = _a.loading, error = _a.error;
+    var children = props.children, urlNewWindow = props.urlNewWindow, url = props.url, pageId = props.pageId, args = __rest(props, ["children", "urlNewWindow", "url", "pageId"]);
+    return (React.createElement(ComposedQuery, null, function (_a) {
+        var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data;
         if (loading) {
-            return React.createElement(Loader, null);
+            return React.createElement("div", null, "Loading...");
         }
         if (error) {
             return "Error: " + error;
         }
         var pageUrlObj;
+        var pagesUrls = data.pagesUrls;
         if (pagesUrls) {
             pageUrlObj = pagesUrls.find(function (u) { return u.page === pageId || u.url === url; });
         }
@@ -55,5 +75,5 @@ var ComposerLink = function (props) {
     }));
 };
 export default ComposerLink;
-var templateObject_1;
+var templateObject_1, templateObject_2;
 //# sourceMappingURL=Link.js.map

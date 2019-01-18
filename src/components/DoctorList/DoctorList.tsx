@@ -49,7 +49,6 @@ const DoctorList = (props: DoctorListProps) => {
                     <p>{doctor.field}</p>
 
                     <Link
-                      languageCode={props.languageCode}
                       url={doctor.clinicUrl}
                       className={'doctorList__item__info__link'}
                     >
@@ -59,7 +58,6 @@ const DoctorList = (props: DoctorListProps) => {
                     <Button
                       classes="btn--blueBorder btn--small"
                       url={doctor.doctorUrl}
-                      languageCode={props.languageCode}
                     >
                       vice info
                     </Button>

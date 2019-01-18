@@ -7,7 +7,7 @@ var ExpertiseList = function (props) {
     return (React.createElement("section", { className: "expertiseList" },
         title && React.createElement("h3", null, title),
         React.createElement("div", { className: "grid-container" }, expertiseList &&
-            expertiseList.map(function (item, index) { return (React.createElement(Link, { url: item.url.url, key: index, languageCode: props.languageCode },
+            expertiseList.map(function (item, index) { return (React.createElement(Link, { url: item.url.url, key: index },
                 React.createElement("div", { className: "expertiseList__element" },
                     (item.image && React.createElement(Media, { type: 'image', data: item.image })) || (React.createElement("img", { src: '/assets/medicon/images/od-el-1.png', alt: "image" })),
                     React.createElement("p", null, item.title)))); })),

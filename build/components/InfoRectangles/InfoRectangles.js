@@ -9,7 +9,7 @@ var InfoRectangles = function (props) {
                 infoRectangles.map(function (rectangle, index) { return (React.createElement("div", { key: index, className: 'info-element', style: { backgroundImage: rectangle.image && "url(" + getImageUrl(rectangle.image) + ")" } },
                     React.createElement("div", null,
                         React.createElement("h5", null, rectangle.title),
-                        React.createElement(Button, { classes: "btn--blueBorder", url: rectangle.url, languageCode: props.languageCode }, "vice info")))); })))));
+                        React.createElement(Button, { classes: "btn--blueBorder", url: rectangle.url }, "vice info")))); })))));
 };
 export default InfoRectangles;
 //# sourceMappingURL=InfoRectangles.js.map

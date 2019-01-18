@@ -30,7 +30,6 @@ const InfoBoxes = (props: InfoBoxesProps) => {
           {boxes &&
             boxes.map((box, i) => (
               <InfoElement
-                languageCode={props.languageCode}
                 link={box.link}
                 gradientColor={box.gradientColor}
                 title={box.title}

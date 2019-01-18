@@ -14,8 +14,8 @@ var DoctorList = function (props) {
                         React.createElement("div", { className: 'doctorList__item__info' },
                             React.createElement("h3", null, doctor.name),
                             React.createElement("p", null, doctor.field),
-                            React.createElement(Link, { languageCode: props.languageCode, url: doctor.clinicUrl, className: 'doctorList__item__info__link' }, doctor.clinicName),
-                            React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl, languageCode: props.languageCode }, "vice info"))));
+                            React.createElement(Link, { url: doctor.clinicUrl, className: 'doctorList__item__info__link' }, doctor.clinicName),
+                            React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "vice info"))));
                 })),
             React.createElement("div", { className: "doctorList__btnHolder" },
                 React.createElement(Button, { classes: "btn--blueBkg btn--down" }, "zobrazit vice")))));

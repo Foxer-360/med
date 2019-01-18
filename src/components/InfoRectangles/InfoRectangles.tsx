@@ -31,7 +31,7 @@ const InfoRectangles = (props: InfoRectanglesProps) => {
               >
                 <div>
                   <h5>{rectangle.title}</h5>
-                  <Button classes="btn--blueBorder" url={rectangle.url} languageCode={props.languageCode}>
+                  <Button classes="btn--blueBorder" url={rectangle.url}>
                     vice info
                   </Button>
                 </div>

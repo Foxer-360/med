@@ -12,7 +12,7 @@ import Reviews from './Reviews';
 import TextBlock from './TextBlock';
 import DoctorList from './DoctorList';
 import PolyclinicsList from './PolyclinicsList';
-import ExpertiseList from './ExpertiseList';  
+import ExpertiseList from './ExpertiseList';
 import InfoRectangles from './InfoRectangles';
 import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
@@ -32,9 +32,10 @@ import ContactForm from './ContactForm';
 import Downloads from './Downloads';
 import ContactsBlock from './ContactsBlock';
 import Faq from './Faq';
+import BlogArticle from './BlogArticle';
 
 export {
-  AlertNotFound,
+  AlertNotFound,  
   Benefits,
   CrossRoads,
   Dummy,
@@ -68,4 +69,5 @@ export {
   Downloads,
   ContactsBlock,
   Faq,
+  BlogArticle,
 };

@@ -6,7 +6,7 @@ var InfoBoxes = function (props) {
         title && React.createElement("h3", null, title),
         React.createElement("div", { className: 'container' },
             React.createElement("div", { className: 'grid info-boxes__list' }, boxes &&
-                boxes.map(function (box, i) { return (React.createElement(InfoElement, { languageCode: props.languageCode, link: box.link, gradientColor: box.gradientColor, title: box.title, image: box.image, button: box.button, titleColor: box.titleColor, key: i })); })))));
+                boxes.map(function (box, i) { return (React.createElement(InfoElement, { link: box.link, gradientColor: box.gradientColor, title: box.title, image: box.image, button: box.button, titleColor: box.titleColor, key: i })); })))));
 };
 export default InfoBoxes;
 //# sourceMappingURL=InfoBoxes.js.map

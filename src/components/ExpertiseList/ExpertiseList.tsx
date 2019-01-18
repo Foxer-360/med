@@ -27,7 +27,7 @@ const ExpertiseList = (props: ExpertiseListProps) => {
       <div className="grid-container">
         {expertiseList &&
           expertiseList.map((item, index) => (
-            <Link url={item.url.url} key={index} languageCode={props.languageCode}>
+            <Link url={item.url.url} key={index}>
               <div className="expertiseList__element">
                 {(item.image && <Media type={'image'} data={item.image} />) || (
                   <img src={'/assets/medicon/images/od-el-1.png'} alt="image" />

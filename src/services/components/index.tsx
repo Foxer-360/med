@@ -36,6 +36,7 @@ import {
   Downloads,
   ContactsBlock,
   Faq,
+  BlogArticle,
 } from '../../components';
 import * as resources from './resources';
 
@@ -84,6 +85,7 @@ class ComponentsService {
     DOWNLOADS: 'Downloads',
     CONTACTSBLOCK: 'ContactsBlock',
     FAQ: 'Faq',
+    BLOGARTICLE: 'BlogArticle',
   };
 
   /***/
@@ -164,7 +166,8 @@ class ComponentsService {
         return ContactsBlock;
       case this.Types.FAQ:
         return Faq;
-
+      case this.Types.BLOGARTICLE:
+        return BlogArticle;
       default:
         return () => <AlertNotFound type="component" />;
     }

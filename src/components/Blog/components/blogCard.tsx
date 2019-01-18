@@ -1,22 +1,23 @@
 import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
 import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
 
 export interface BlogCardProps {
+  id: string;
   title: string;
   text: string;
   color: string;
   img: string;
   special?: boolean;
-  languageCode?: string;
 }
 
 export function BlogCard(props: BlogCardProps) {
-  const { title, text, color, img, special, languageCode } = props;
+  const { id, title, text, color, img, special } = props;
 
   if (special) {
     return (
-      <Link url={''} languageCode={languageCode} className={'blogCard blogCard--special'}>
+      <Link pageId={id} className={'blogCard blogCard--special'}>
         {title && <h3>{title}</h3>}
 
         <ul>
@@ -44,12 +45,13 @@ export function BlogCard(props: BlogCardProps) {
   }
 
   return (
-    <Link url={''} languageCode={languageCode} className={'blogCard'}>
+    <Link pageId={id} className={'blogCard'}>
       {title && <h3>{title}</h3>}
 
       {text && <p>{text}</p>}
 
-      <img src={img} alt="" />
+      {console.log('%c Emilio: ', 'background: #222; color: #bada55', img)}
+      {img && <Media data={img} type="image" />}
 
       <div
         className={'blogCard__colorGradient'}

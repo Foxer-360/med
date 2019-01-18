@@ -19,7 +19,6 @@ export default function InfoElement(props: InfoElementProps) {
   return (
     <Link
       url={link && link.url}
-      languageCode={languageCode}
       className={'info-boxes__list__element'}
       style={{ backgroundImage: image && `url(${getImageUrl(image)})` }}
     >

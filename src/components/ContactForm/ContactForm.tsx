@@ -35,7 +35,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
     this.setState({
       formValues: { ...this.state.formValues, [e.target.name]: e.target.value },
     });
-  }
+  };
 
   public render() {
     const { gdprLink, title } = this.props.data;
@@ -86,11 +86,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                 </div>
 
                 <div>
-                  Souhlasím se{' '}
-                  <Link url={gdprLink && gdprLink.url} languageCode={this.props.languageCode}>
-                    zpracováním osobních
-                  </Link>{' '}
-                  údajů.
+                  Souhlasím se <Link url={gdprLink && gdprLink.url}>zpracováním osobních</Link> údajů.
                 </div>
               </div>
 

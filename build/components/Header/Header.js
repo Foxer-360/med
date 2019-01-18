@@ -109,7 +109,7 @@ var Header = /** @class */ (function (_super) {
                         React.createElement("nav", null,
                             React.createElement("ul", null, mainNavItems &&
                                 mainNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(DomLink, { to: navItem.url }, navItem.name))); })),
+                                    React.createElement(DomLink, { to: navItem.url ? navItem.url : '' }, navItem.name))); })),
                             React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu })))),
                 React.createElement("div", { className: 'header__iso' },
                     React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "none" },
@@ -117,7 +117,7 @@ var Header = /** @class */ (function (_super) {
                 React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                     React.createElement("div", { className: 'hiddenMenu__wrapper' },
                         React.createElement("ul", null, secNavItems &&
-                            secNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(DomLink, { to: navItem.url, onClick: function () { return _this.closeMenu(); } }, navItem.name))); }))))));
+                            secNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(DomLink, { to: navItem.url ? navItem.url : '', onClick: function () { return _this.closeMenu(); } }, navItem.name))); }))))));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {

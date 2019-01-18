@@ -47,7 +47,6 @@ const JobPositions = (props: JobPositionsProps) => {
                 <Button
                   classes={'btn--whiteBorder btn--fullWidth'}
                   url={position.url}
-                  languageCode={props.languageCode}
                 >
                   Vice info
                 </Button>

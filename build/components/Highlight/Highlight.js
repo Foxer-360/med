@@ -9,7 +9,7 @@ var Highlight = function (props) {
                     React.createElement("div", { className: 'highlight__info flexRow' },
                         React.createElement("img", { src: "/assets/medicon/images/info.png", alt: "info" }),
                         text && React.createElement("p", null, text)),
-                    React.createElement(Button, { classes: "btn--whiteBorder btn--fullWidth", url: url, languageCode: props.languageCode }, "vice info"))))));
+                    React.createElement(Button, { classes: "btn--whiteBorder btn--fullWidth", url: url }, "vice info"))))));
 };
 export default Highlight;
 //# sourceMappingURL=Highlight.js.map

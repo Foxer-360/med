@@ -29,7 +29,6 @@ const jobOffers = (props: JobOffersProps) => {
             offers.map((offer, index) => (
               <Link
                 url={offer.url.url}
-                languageCode={props.languageCode}
                 key={index}
                 className={'flexRow offers__element'}
               >

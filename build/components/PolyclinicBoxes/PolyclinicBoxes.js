@@ -9,7 +9,7 @@ var PolyclinicBoxes = function (props) {
             React.createElement("ul", { className: 'grid' }, polyclinics &&
                 polyclinics.map(function (polyclinic, index) {
                     return (React.createElement("li", { key: index },
-                        React.createElement(Link, { url: polyclinic.url.url, languageCode: props.languageCode }, (polyclinic.image && polyclinic.image.filename && (React.createElement(Media, { data: polyclinic.image, type: 'image' }))) || React.createElement("img", { src: '/assets/medicon/images/poliklinika.png', alt: "poliklinika" }))));
+                        React.createElement(Link, { url: polyclinic.url.url }, (polyclinic.image && polyclinic.image.filename && (React.createElement(Media, { data: polyclinic.image, type: 'image' }))) || React.createElement("img", { src: '/assets/medicon/images/poliklinika.png', alt: "poliklinika" }))));
                 })))));
 };
 export default PolyclinicBoxes;

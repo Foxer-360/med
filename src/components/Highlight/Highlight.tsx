@@ -22,7 +22,7 @@ const Highlight = (props: HighlightProps) => {
               {text && <p>{text}</p>}
             </div>
 
-            <Button classes="btn--whiteBorder btn--fullWidth" url={url} languageCode={props.languageCode}>
+            <Button classes="btn--whiteBorder btn--fullWidth" url={url} >
               vice info
             </Button>
           </div>

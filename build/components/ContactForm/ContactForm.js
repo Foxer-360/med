@@ -71,11 +71,9 @@ var ContactForm = /** @class */ (function (_super) {
                                 React.createElement("input", { className: 'checkbox', id: "styled-checkbox-1", type: "checkbox" }),
                                 React.createElement("label", { htmlFor: "styled-checkbox-1" })),
                             React.createElement("div", null,
-                                "Souhlas\u00EDm se",
-                                ' ',
-                                React.createElement(Link, { url: gdprLink && gdprLink.url, languageCode: this.props.languageCode }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
-                                ' ',
-                                "\u00FAdaj\u016F.")),
+                                "Souhlas\u00EDm se ",
+                                React.createElement(Link, { url: gdprLink && gdprLink.url }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                " \u00FAdaj\u016F.")),
                         React.createElement("div", { className: 'flexRow flexAlign--center' },
                             React.createElement(Button, { classes: "btn--blueBkg" }, "Odeslat")))))));
     };
