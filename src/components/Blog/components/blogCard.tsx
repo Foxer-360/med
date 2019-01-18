@@ -50,7 +50,6 @@ export function BlogCard(props: BlogCardProps) {
 
       {text && <p>{text}</p>}
 
-      {console.log('%c Emilio: ', 'background: #222; color: #bada55', img)}
       {img && <Media data={img} type="image" />}
 
       <div

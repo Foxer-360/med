@@ -24,7 +24,6 @@ export function BlogCard(props) {
     return (React.createElement(Link, { pageId: id, className: 'blogCard' },
         title && React.createElement("h3", null, title),
         text && React.createElement("p", null, text),
-        console.log('%c Emilio: ', 'background: #222; color: #bada55', img),
         img && React.createElement(Media, { data: img, type: "image" }),
         React.createElement("div", { className: 'blogCard__colorGradient', style: { background: "linear-gradient( to bottom,rgba(125, 185, 232, 0) 0%," + color + " 100%)" } })));
 }
