@@ -18,7 +18,8 @@ interface Box {
 export interface DescriptionProps {
   data: {
     titleCare: string;
-    text: string;
+    firstText: string;
+    secondText: string;
     titleExamination: string;
     examinations: Examination[];
     boxes: Box[];
@@ -28,7 +29,8 @@ export interface DescriptionProps {
 const Description = (props: DescriptionProps) => {
   const { 
     titleCare, 
-    text, 
+    firstText,
+    secondText,
     titleExamination, 
     examinations, 
     boxes 
@@ -37,7 +39,7 @@ const Description = (props: DescriptionProps) => {
   return (
     <div className={'container'}>
     <section className={'expertiseDescription'}>
-      <ExpertiseDescriptionCare title={titleCare} text={text} />
+      <ExpertiseDescriptionCare title={titleCare} firstText={firstText} secondText={secondText} />
       <ExpertiseDescriptionExamination 
         title={titleExamination} 
         examinations={examinations} 

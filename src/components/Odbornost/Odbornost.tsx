@@ -1,7 +1,6 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
 import Media from '@source/partials/Media';
-import getImageUrl from '@source/helpers/getImageUrl';
 
 export interface OdbornostProps {
   data: {

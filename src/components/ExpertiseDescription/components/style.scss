@@ -59,13 +59,10 @@
     position: relative;
     min-height: 90px;
 
+
     @include md {
       @include blockAnimation;
       min-height: 135px;
-    }
-
-    &:last-of-type() {
-      grid-column-start: span 2;
     }
 
     p {
