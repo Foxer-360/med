@@ -1,0 +1,33 @@
+{
+  "name": "BlogArticle",
+
+  "data": {
+    "title": "Title",
+    "text": "Text",
+    "perex": "Perex",
+    "image": {}
+  },
+
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "text"
+        },
+        "perex": {
+          "title": "Perex",
+          "type": "text"
+        },
+        "text": {
+          "title": "Text",
+          "type": "markdown"
+        },
+        "image": {
+          "type": "image"
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,86 @@
 {
-  "name": "InfoBoxes"
+  "name": "InfoBoxes",
+  "data": {
+    "title": "Z našich lékáren",
+    "boxes": [
+      {
+        "title": "široký výběr zdravýchpotravin",
+        "gradientColor": "#5a2a20",
+        "button": "btn--whiteBorder",
+        "titleColor": "#ffffff",
+        "image": {}
+      },
+      {
+        "title": "široký výběr zdravýchpotravin",
+        "gradientColor": "#ffffff",
+        "button": "btn--blueBorder",
+        "titleColor": "#2eac6c",
+        "image": {}
+      },
+      {
+        "title": "široký výběr zdravýchpotravin",
+        "gradientColor": "#ffffff",
+        "button": "btn--whiteBorder",
+        "titleColor": "#ffffff",
+        "image": {}
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "boxes": {
+          "type": "array",
+          "title": "Boxes",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Text"
+              },
+              "gradientColor": {
+                "type": "enum",
+                "title": "Background gradient color",
+                "options": {
+                  "#ffffff": "white",
+                  "#2473ba": "blue",
+                  "#5a2a20": "brown"
+                }
+              },
+              "button": {
+                "type": "enum",
+                "title": "type of button",
+                "options": {
+                  "btn--whiteBorder": "whiteBorder",
+                  "btn--blueBorder": "blueBorder",
+                  "btn--blueBkg": "blueBackground"
+                }
+              },
+              "titleColor": {
+                "type": "enum",
+                "title": "Color of title",
+                "options": {
+                  "#ffffff": "white",
+                  "#2473ba": "blue",
+                  "#2eac6c": "green"
+                }
+              },
+              "link": {
+                "type": "urlAutocomplete",
+                "title": "Link Url"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

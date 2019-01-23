@@ -1,38 +1,39 @@
 import * as React from 'react';
-import TextBlock from '../TextBlock';
 import DividerCircles from '../DividerCircles';
+import Media from '@source/partials/Media';
 
-export interface OdbornostProps {}
-
-const data = {
-  title: 'Alergologie a Imunologie',
-  img: '/assets/medicon/images/odbornost-lekar.jpg',
-  doctor: 'MUDr. Hana Kocherová',
-  cite: 'Na našem oddělení Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio.'
+export interface OdbornostProps {
+  data: {
+    image: LooseObject;
+    doctorName: string;
+    cite: string;
+  };
 }
 
 const Odbornost = (props: OdbornostProps) => {
+  const { image, doctorName, cite } = props.data;
+
   return (
     <div className={'odbornost'}>
-      <TextBlock data={data} />
       <DividerCircles />
-      
+
       <div className={'container'}>
         <div className={'odbornost__doctor'}>
-          <img src={data.img} alt="photo"/>
+          {(image && <Media type={'image'} data={image} />) || (
+            <img src={'/assets/medicon/images/odbornost-lekar.jpg'} alt="Doctor photo" />
+          )}
 
-          <div className="grid grid--vCenterBlock">
+          <div className={'grid grid--vCenterBlock'}>
             <div>
-                <div className={'horizontal-line'} />
-                <p>{data.doctor}</p>
-                <cite>{data.cite}</cite>
-              </div>
+              <div className={'horizontal-line'} />
+              {doctorName && <p>{doctorName}</p>}
+              {cite && <cite>{cite}</cite>}
             </div>
-          </div>					
-          
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Odbornost;

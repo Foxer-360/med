@@ -1,19 +1,25 @@
 import * as React from 'react';
+import Media from '@source/partials/Media';
 
 export interface ViewsAboutUsElementProps {
-  img: string;
-  cite: string; 
+  url: string;
+  link: string;
+  cite: string;
+  image: LooseObject;
 }
 
 export default function ViewsAboutUsElement(props: ViewsAboutUsElementProps) {
+  const { url, link, cite, image } = props;
 
   return (
     <div className="viewsAboutUs__list__element">
-      <img src={props.img} alt="review about us" />
+      {(image && <Media type={'image'} data={image} />) || (
+        <img src={'/assets/medicon/images/review-aboutus-1.jpg'} alt="review about us" />
+      )}
 
-      <div className="viewsAboutUs__list__element__content">
-        <cite>{props.cite}</cite>
-        <a href="#">Zdroj: <strong>Haló noviny</strong></a>
+      <div className={'viewsAboutUs__list__element__content'}>
+        <cite>{cite}</cite>
+        <a href={url}>Zdroj: <strong>{link}</strong></a>
       </div>
     </div>
   );

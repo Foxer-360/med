@@ -1,181 +1,97 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
+import ReactMarkdown from 'react-markdown';
 
-export interface ContactsBlockProps {}
+interface ManagementContact {
+  name: string;
+  emails?: string;
+  phones?: string;
+  positions?: string;
+}
+interface NextContact {
+  name: string;
+  emails?: string;
+  phones?: string;
+  positions?: string;
+}
+interface OtherContact {
+  name: string;
+  emails?: string;
+  phones?: string;
+  positions?: string;
+}
+
+export interface ContactsBlockProps {
+  data: {
+    title: string;
+    nextTitle: string;
+    managementTitle: string;
+    managementContacts: ManagementContact[];
+    nextContacts: NextContact[];
+    otherContacts: OtherContact[];
+  };
+}
 
 const ContactsBlock = (props: ContactsBlockProps) => {
+  const { 
+    title,
+    managementTitle,
+    nextTitle,
+    managementContacts,
+    nextContacts,
+    otherContacts
+  } = props.data;
+
   return (
     <div className={'contacts-block'}>
       <div className={'container'}>
-        <h3>Vedení společnosti a další kontakty</h3>
+        {title && <h3>{title}</h3>}
 
         <div>
-          <h4>Vedení společnosti</h4>
+          {managementTitle && <h4>{managementTitle}</h4>}
           <div className={'grid contacts-block__main'}>
-            <div className={'contacts-block__main__element'}>
-              <p className={'contacts-block__name'}>Jiří Adámek</p>
-              <p className={'contacts-block__position'}>generální ředitel</p>
-              <p>
-                <a className={'contacts-block__email'} href={'mailto:management@mediconas.cz'}>
-                  management@mediconas.cz
-                </a>
-              </p>
-            </div>
-            <div className={'contacts-block__main__element'}>
-              <p className={'contacts-block__name'}>Ing. Andrea Sklenářová</p>
-              <p className={'contacts-block__position'}>finanční ředitelka</p>
-              <p>
-                <a className={'contacts-block__email'} href={'mailto:management@mediconas.cz'}>
-                  management@mediconas.cz
-                </a>
-              </p>
-            </div>
+            
+            {managementContacts && managementContacts.map((mContact, i) => (
+              <div className={'contacts-block__main__element'} key={i}>
+                {mContact.name && <p className={'contacts-block__name'}>{mContact.name}</p>}
+                {mContact.positions && <p className={'contacts-block__position'}>{mContact.positions}</p>}
+                {mContact.emails && <ReactMarkdown className={'contacts-block__email'} source={mContact.emails} />}
+                {mContact.phones && <ReactMarkdown source={mContact.phones} />}
+              </div>
+            ))}
+
           </div>
         </div>
 
         <div>
-          <h4>Další kontakty</h4>
+          {nextTitle && <h4>{nextTitle}</h4>}
           <div className={'grid contacts-block__main'}>
-            <div className={'contacts-block__main__element'}>
-              <p className={'contacts-block__name'}>Andrea Nedomová</p>
-              <p className={'contacts-block__position'}>sekretariát</p>
-              <p>
-                <a className={'contacts-block__email'} href={'mailto:sekretariat@mediconas.cz'}>
-                  sekretariat@mediconas.cz
-                </a>
-              </p>
-              <p>
-                <a href={'tel:+420 261 006 630'}>tel.: +420 261 006 630</a>
-              </p>
-            </div>
-            <div className={'contacts-block__main__element'}>
-              <p className={'contacts-block__name'}>Hana Malíková</p>
-              <p className={'contacts-block__position'}>sekretariát</p>
-              <p>
-                <a className={'contacts-block__email'} href={'mailto:sekretariat@mediconas.cz'}>
-                  sekretariat@mediconas.cz
-                </a>
-              </p>
-              <p>
-                <a href={'tel:+420 261 006 524'}>tel.: +420 261 006 524</a>
-              </p>
-            </div>
+            
+            {nextContacts && nextContacts.map((nContact, i) => (
+              <div className={'contacts-block__main__element'} key={i}>
+                {nContact.name && <p className={'contacts-block__name'}>{nContact.name}</p>}
+                {nContact.positions && <p className={'contacts-block__position'}>{nContact.positions}</p>}
+                {nContact.emails && <ReactMarkdown className={'contacts-block__email'} source={nContact.emails} />}
+                {nContact.phones && <ReactMarkdown source={nContact.phones} />}
+              </div>
+            ))}
+
           </div>
         </div>
 
         <DividerCircles />
 
         <div className={'grid contacts-block__list'}>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>MUDr. Regina Šírová</p>
-            <p className={'contacts-block__position'}>vedoucí lékařka mamografických</p>
-            <p className={'contacts-block__position'}>center skupiny MEDICON</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:mamografie@mediconas.cz'}>
-                mamografie@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 261 006 630'}>tel.: +420 261 006 630</a>
-            </p>
-          </div>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>Ing. Eva Sokolová</p>
-            <p className={'contacts-block__position'}>vedoucí odboru agendy</p>
-            <p className={'contacts-block__position'}>zdravotních pojišťoven</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:pojistovny@mediconas.cz'}>
-                pojistovny@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 731 682 290'}>tel.: +420 731 682 290</a>
-            </p>
-          </div>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>Mgr. Matyáš Bittner</p>
-            <p className={'contacts-block__position'}>obchodní a marketingový manažer</p>
-            <p className={'contacts-block__position'}>(kontakt pro média)</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:marketing@mediconas.cz'}>
-                marketing@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 261 006 427'}>tel.: +420 261 006 427</a>
-            </p>
-            <p>
-              <a href={'tel:+420 730 807 487'}>tel.: +420 730 807 487</a>
-            </p>
-          </div>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>Marcela Větrovcová</p>
-            <p className={'contacts-block__position'}>koordinátorka programů</p>
-            <p className={'contacts-block__position'}>INCARE</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:incare@mediconas.cz'}>
-                incare@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 273 162 162'}>tel.: +420 273 162 162</a>
-            </p>
-          </div>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>MUDr. Regina Šírová</p>
-            <p className={'contacts-block__position'}>vedoucí lékařka mamografických</p>
-            <p className={'contacts-block__position'}>center skupiny MEDICON</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:mamografie@mediconas.cz'}>
-                mamografie@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 261 006 630'}>tel.: +420 261 006 630</a>
-            </p>
-          </div>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>Ing. Eva Sokolová</p>
-            <p className={'contacts-block__position'}>vedoucí odboru agendy</p>
-            <p className={'contacts-block__position'}>zdravotních pojišťoven</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:pojistovny@mediconas.cz'}>
-                pojistovny@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 731 682 290'}>tel.: +420 731 682 290</a>
-            </p>
-          </div>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>Mgr. Matyáš Bittner</p>
-            <p className={'contacts-block__position'}>obchodní a marketingový manažer</p>
-            <p className={'contacts-block__position'}>(kontakt pro média)</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:marketing@mediconas.cz'}>
-                marketing@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 261 006 427'}>tel.: +420 261 006 427</a>
-            </p>
-            <p>
-              <a href={'tel:+420 730 807 487'}>tel.: +420 730 807 487</a>
-            </p>
-          </div>
-          <div className={'contacts-block__list__element'}>
-            <p className={'contacts-block__name'}>Marcela Větrovcová</p>
-            <p className={'contacts-block__position'}>koordinátorka programů</p>
-            <p className={'contacts-block__position'}>INCARE</p>
-            <p>
-              <a className={'contacts-block__email'} href={'mailto:sekretariat@mediconas.cz'}>
-                incare@mediconas.cz
-              </a>
-            </p>
-            <p>
-              <a href={'tel:+420 261 006 524'}>tel.: +420 273 162 162</a>
-            </p>
-          </div>
+          
+          {otherContacts && otherContacts.map((oContact, i) => (
+            <div className={'contacts-block__main__element'} key={i}>
+              {oContact.name && <p className={'contacts-block__name'}>{oContact.name}</p>}
+              {oContact.positions && <p className={'contacts-block__position'}>{oContact.positions}</p>}
+              {oContact.emails && <ReactMarkdown className={'contacts-block__email'} source={oContact.emails} />}
+              {oContact.phones && <ReactMarkdown source={oContact.phones} />}
+            </div>
+          ))}
+          
         </div>
       </div>
     </div>

@@ -1,18 +1,17 @@
 import * as React from 'react';
+import Media from '@source/partials/Media';
 var PolyclinicInfo = function (props) {
-    return (React.createElement("div", { className: "policlinicInfo" },
-        React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/geo.png)' } },
-            React.createElement("p", null,
-                "Antala Sta\u0161ka 1670/80",
-                React.createElement("br", null),
-                "140 00 Praha 4")),
-        React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/phone.png)' } },
-            React.createElement("p", null, "+420 261 006 111")),
-        React.createElement("div", { className: "policlinicInfo__item", style: { backgroundImage: 'url(/assets/medicon/images/metro.png)' } },
-            React.createElement("p", null,
-                "Metro C ",
-                React.createElement("br", null),
-                "stanice Bud\u011Bjovick\u00E1"))));
+    var _a = props.data, geo = _a.geo, phone = _a.phone, transport = _a.transport, transportImage = _a.transportImage;
+    return (React.createElement("div", { className: 'policlinicInfo' },
+        React.createElement("div", { className: 'policlinicInfo__item' },
+            React.createElement("img", { src: '/assets/medicon/images/geo.svg', alt: "address" }),
+            geo && React.createElement("p", null, geo)),
+        React.createElement("div", { className: 'policlinicInfo__item' },
+            React.createElement("img", { src: '/assets/medicon/images/phone.svg', alt: "phone nubmer" }),
+            phone && React.createElement("p", null, phone)),
+        React.createElement("div", { className: 'policlinicInfo__item' },
+            (transportImage && React.createElement(Media, { type: 'image', data: transportImage })) || (React.createElement("img", { src: '/assets/medicon/images/metro.svg', alt: "metro" })),
+            transport && React.createElement("p", null, transport))));
 };
 export default PolyclinicInfo;
 //# sourceMappingURL=PolyclinicInfo.js.map

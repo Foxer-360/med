@@ -7,28 +7,32 @@
         "name": "MUDr. Jana Pavluchová",
         "field": "Alergologie a Imunologie",
         "clinicName": "Poliklinika Budějovická",
-        "clinincUrl": "",
+        "clinicUrl": "",
+        "doctorUrl": "",
         "image": {}
       },
       {
         "name": "MUDr. Michala Jakubíková, Ph.D.",
         "field": "Neurologie",
         "clinicName": "Poliklinika Vysočany",
-        "clinincUrl": "",
+        "clinicUrl": "",
+        "doctorUrl": "",
         "image": {}
       },
       {
         "name": "MUDr. Michala Pelikánová",
         "field": "Diabetologie",
         "clinicName": "Poliklinika Budějovická",
-        "clinincUrl": "",
+        "clinicUrl": "",
+        "doctorUrl": "",
         "image": {}
       },
       {
         "name": "MUDr. Petr Novák",
         "field": "Ortopedie",
         "clinicName": "Poliklinika Zelený pruh",
-        "clinincUrl": "",
+        "clinicUrl": "",
+        "doctorUrl": "",
         "image": {}
       }
     ]
@@ -42,10 +46,10 @@
           "title": "Title"
         },
         "doctors": {
-          "type": "array",  
+          "type": "array",
           "title": "Doctors",
           "items": {
-            "properties": {  
+            "properties": {
               "name": {
                 "type": "text",
                 "title": "Doctor Name"
@@ -58,12 +62,14 @@
                 "type": "text",
                 "title": "Clinic Name"
               },
-
               "clinicUrl": {
                 "type": "urlAutocomplete",
                 "title": "Clinic Url"
               },
-
+              "doctorUrl": {
+                "type": "urlAutocomplete",
+                "title": "Doctor Url"
+              },
               "image": {
                 "type": "image"
               }

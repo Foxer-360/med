@@ -1,29 +1,39 @@
 import * as React from 'react';
-import Button from '../../../partials/Button';
+import Button from '@source/partials/Button';
+import getImageUrl from '@source/helpers/getImageUrl';
+import Link from '@source/partials/Link';
 
 export interface InfoElementProps {
   title: string;
-  color: string;
-  img: string;
-  btn: string;
+  gradientColor: string;
+  button: string;
   titleColor: string;
+  image: LooseObject;
+  languageCode?: string;
+  link?: LooseObject;
 }
 
 export default function InfoElement(props: InfoElementProps) {
-  
-  const { title, color, img, btn, titleColor } = props;
+  const { title, gradientColor, image, button, titleColor, link, languageCode } = props;
 
   return (
-    <a className={'info-boxes__list__element'} style={{ backgroundImage: `url(${img})`}}>
+    <Link
+      url={link && link.url}
+      className={'info-boxes__list__element'}
+      style={{ backgroundImage: image && `url(${getImageUrl(image)})` }}
+    >
       <div className={'fullWidthContainer info-boxes__list__element__content'}>
-        <h5 style={{ color: `${titleColor}`}}>{title}</h5>
-        <Button classes={'btn--fullWidth ' + btn}>vice info</Button>
+        {titleColor && title && <h5 style={{ color: `${titleColor}` }}>{title}</h5>}
+
+        {button && <Button classes={'btn--fullWidth ' + button}>vice info</Button>}
       </div>
 
-      <div 
-        className={'info-boxes__list__element--colorGradient'}
-        style={{ background: `linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, ${color} 100%)`, }}
-      />
-    </a>
+      {gradientColor && (
+        <div
+          className={'info-boxes__list__element--colorGradient'}
+          style={{ background: `linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, ${gradientColor} 100%)` }}
+        />
+      )}
+    </Link>
   );
 }

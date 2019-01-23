@@ -2,23 +2,69 @@ import * as React from 'react';
 import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
 import Button from '../../partials/Button';
+import Media from '../../partials/Media';
 
-export interface DoctorCardProps {}
+export interface DoctorCardProps {
+  data: {
+    name: string;
+    specialization: string;
+    nurse: string;
+    phone: string;
+    doctorImage: LooseObject;
+    clinicImage: LooseObject;
+    clinicName: string;
+    clinicExtraInfo: string;
+    clinicAddress: string;
+    schedule: [
+      {
+        day: string;
+        eveningHoursdescription: string;
+        eveningOpeningHours: string;
+        morningHoursdescription: string;
+        morningOpeningHours: string;
+      }
+    ];
+    additionalInfo: [
+      {
+        title: string;
+        text: string;
+      }
+    ];
+  };
+}
 
 const DoctorCard = (props: DoctorCardProps) => {
+  const {
+    name,
+    specialization,
+    phone,
+    nurse,
+    doctorImage,
+    clinicImage,
+    clinicName,
+    clinicExtraInfo,
+    clinicAddress,
+    schedule,
+    additionalInfo,
+  } = props.data;
+
   return (
     <section className={'doctorCard'}>
       <div className="container">
         <div className={'doctorCard__main'}>
-          <img src="/assets/medicon/images/doctorIcon.svg" />
+          {(doctorImage && <Media data={doctorImage} type="image" />) || (
+            <img src="/assets/medicon/images/doctorIcon.svg" />
+          )}
 
-          <h3 className={'gradientHeading'}>mudr. jana pavluchová</h3>
+          {name && <h3 className={'gradientHeading'}>{name}</h3>}
 
-          <p className={'doctorCard__main__spe'}>Alergologie a imunologie</p>
+          {specialization && <p className={'doctorCard__main__spe'}>{specialization}</p>}
 
-          <p className={'doctorCard__main__sis'}>
-            Sestra: <strong>Jiřina Slezáková</strong>
-          </p>
+          {nurse && (
+            <p className={'doctorCard__main__sis'}>
+              Sestra: <strong>{nurse}</strong>
+            </p>
+          )}
         </div>
       </div>
 
@@ -28,27 +74,23 @@ const DoctorCard = (props: DoctorCardProps) => {
             <div className="doctorCard__info__wrapper">
               <div className={'doctorCard__info__item'}>
                 <img src="/assets/medicon/images/stethoscopeIcon.svg" />
-                <p>
-                  Alergologie
-                  <br />
-                  Imunologie
-                </p>
+                <p>{specialization}</p>
               </div>
 
               <div className={'doctorCard__info__item'}>
                 <img src="/assets/medicon/images/phoneIcon.svg" />
-                <p>+420 261 003 404</p>
+                {phone && <p>{phone}</p>}
               </div>
-              
+
               <div className={'doctorCard__info__item'}>
                 <img src="/assets/medicon/images/geoIcon.svg" />
 
                 <div>
                   <p>
-                    <strong>Poliklinika Budějovická </strong>
-                    Červená budova 9. patro
+                    <strong>{clinicName}</strong>
+                    {clinicExtraInfo && <span>{' - ' + clinicExtraInfo}</span>}
                   </p>
-                  <p>Antala Staška 1670/80, 140 00 Praha 4</p>
+                  <p>{clinicAddress}</p>
                 </div>
               </div>
             </div>
@@ -58,13 +100,9 @@ const DoctorCard = (props: DoctorCardProps) => {
 
       <div className={'container'}>
         <div className={'doctorCard__timePlace'}>
-          <div>
-            <DoctorSchedule />
-          </div>
+          <div>{schedule && <DoctorSchedule data={schedule} />}</div>
 
-          <div>
-            <img src="/assets/medicon/images/floorMap.png" alt="" />
-          </div>
+          <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>
         </div>
 
         <div className={'doctorCard__btnHolder'}>
@@ -80,9 +118,10 @@ const DoctorCard = (props: DoctorCardProps) => {
         </div>
       </div>
 
-      <TextBlock data={{ title: 'Poskytovaná péče' }} />
-
-      <TextBlock data={{ title: 'typy provadenych vysetreni' }} />
+      {additionalInfo &&
+        additionalInfo.map((item, i) => {
+          return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
+        })}
     </section>
   );
 };

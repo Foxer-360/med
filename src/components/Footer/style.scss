@@ -11,13 +11,15 @@
   }
 
   &__list {
+    position: relative;
+
     &::before {
       background: white;
       width: 1px;
       content: '';
       display: block;
       position: absolute;
-      min-height: 190px;
+      height: 100%;
     }
 
     li {
@@ -86,11 +88,13 @@
   @include max-md {
     &__list {
       @include flexChild(3, 10px);
-      
+
       text-align: center;
       margin-bottom: 30px;
 
-      li { margin-left: 0; }
+      li {
+        margin-left: 0;
+      }
 
       &::before {
         display: none;
@@ -112,7 +116,9 @@
     }
   }
 
-  @include max-sm { padding-top: 30px; }
+  @include max-sm {
+    padding-top: 30px;
+  }
 }
 
 .copyrights {
@@ -155,7 +161,7 @@
 
   @include max-sm {
     margin-top: 30px;
-    
+
     .copyrights {
       grid-template-columns: 1fr;
       grid-template-rows: 2fr;

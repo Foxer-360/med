@@ -1,9 +1,11 @@
 import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
+import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
 export function BlogCard(props) {
-    var title = props.title, text = props.text, color = props.color, img = props.img, special = props.special;
+    var id = props.id, title = props.title, text = props.text, color = props.color, img = props.img, special = props.special;
     if (special) {
-        return (React.createElement("a", { href: "", className: 'blogCard blogCard--special' },
+        return (React.createElement(Link, { pageId: id, className: 'blogCard blogCard--special' },
             title && React.createElement("h3", null, title),
             React.createElement("ul", null,
                 React.createElement("li", null,
@@ -19,12 +21,10 @@ export function BlogCard(props) {
                         React.createElement(SvgIcon, { name: 'arrow', type: 'white' })),
                     "Dent\u00E1ln\u00ED hygienista/ka"))));
     }
-    return (React.createElement("a", { href: "", className: 'blogCard' },
+    return (React.createElement(Link, { pageId: id, className: 'blogCard' },
         title && React.createElement("h3", null, title),
         text && React.createElement("p", null, text),
-        React.createElement("img", { src: img, alt: "" }),
-        React.createElement("div", { className: 'blogCard__colorGradient', style: {
-                background: "linear-gradient(\n      to bottom,\n      rgba(125, 185, 232, 0) 0%,\n      " + color + " 100%\n    )",
-            } })));
+        img && React.createElement(Media, { data: img, type: "image" }),
+        React.createElement("div", { className: 'blogCard__colorGradient', style: { background: "linear-gradient( to bottom,rgba(125, 185, 232, 0) 0%," + color + " 100%)" } })));
 }
 //# sourceMappingURL=blogCard.js.map

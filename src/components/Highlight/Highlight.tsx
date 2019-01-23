@@ -1,9 +1,17 @@
 import * as React from 'react';
 import Button from '../../partials/Button';
 
-export interface HighlightProps {}
+export interface HighlightProps {
+  data: {
+    text: string;
+    url: LooseObject;
+  };
+  languageCode?: string;
+}
 
 const Highlight = (props: HighlightProps) => {
+  const { text, url } = props.data;
+
   return (
     <div className="fullWidthContainer">
       <section className={'highlight'}>
@@ -11,10 +19,12 @@ const Highlight = (props: HighlightProps) => {
           <div className="flexRow flexAlign--center">
             <div className={'highlight__info flexRow'}>
               <img src="/assets/medicon/images/info.png" alt="info" />
-              <p>Poliklinika Zelený pruh je od 16.9. do 19.9. zavřená</p>  
+              {text && <p>{text}</p>}
             </div>
-            
-            <Button classes="btn--whiteBorder btn--fullWidth">vice info</Button>
+
+            <Button classes="btn--whiteBorder btn--fullWidth" url={url} >
+              vice info
+            </Button>
           </div>
         </div>
       </section>

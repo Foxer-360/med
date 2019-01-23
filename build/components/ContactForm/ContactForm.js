@@ -24,6 +24,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import Button from '../../partials/Button';
+import Link from '@source/partials/Link';
 var ContactForm = /** @class */ (function (_super) {
     __extends(ContactForm, _super);
     function ContactForm(props) {
@@ -45,10 +46,11 @@ var ContactForm = /** @class */ (function (_super) {
     }
     ContactForm.prototype.render = function () {
         var _this = this;
+        var _a = this.props.data, gdprLink = _a.gdprLink, title = _a.title;
         return (React.createElement("div", { className: 'fullWidthContainer' },
             React.createElement("section", { className: 'contactForm form' },
                 React.createElement("div", { className: 'container' },
-                    React.createElement("h3", { className: 'gradientHeading' }, "pokud se chcete zeptat, koktaktujte n\u00E1s"),
+                    React.createElement("h3", { className: 'gradientHeading' }, title),
                     React.createElement("form", null,
                         React.createElement("div", { className: 'form__row form__row--first' },
                             React.createElement("div", null,
@@ -70,7 +72,7 @@ var ContactForm = /** @class */ (function (_super) {
                                 React.createElement("label", { htmlFor: "styled-checkbox-1" })),
                             React.createElement("div", null,
                                 "Souhlas\u00EDm se ",
-                                React.createElement("a", { href: '' }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                React.createElement(Link, { url: gdprLink && gdprLink.url }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                 " \u00FAdaj\u016F.")),
                         React.createElement("div", { className: 'flexRow flexAlign--center' },
                             React.createElement(Button, { classes: "btn--blueBkg" }, "Odeslat")))))));

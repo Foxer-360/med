@@ -12,27 +12,35 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
+import ImgWithFallback from './components/ImgWithFallback';
 var Media = /** @class */ (function (_super) {
     __extends(Media, _super);
     function Media(props) {
         var _this = _super.call(this, props) || this;
-        _this.getImgUrl = function (data) {
+        _this.renderAsImage = function (data) {
             var baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
-            if (data) {
-                return baseUrl + data.category + data.hash + '_' + data.filename;
-            }
-            return null;
+            var recommendedSizes = data.recommendedSizes;
+            var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
+            return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data }));
         };
         return _this;
     }
+    Media.prototype.renderAsVideoEmbed = function (data) {
+        var embedUrl = data.url + '?rel=0&amp;controls=0&amp;showinfo=0';
+        return (React.createElement("div", { className: 'aspect-ratio' },
+            React.createElement("iframe", { className: "mediaEmbeddedVideo", src: embedUrl, allowFullScreen: true, frameBorder: "0" })));
+    };
     Media.prototype.render = function () {
-        var _a = this.props, type = _a.type, data = _a.data;
-        switch (type) {
+        var data = this.props.data;
+        switch (data && data.type) {
             case 'image':
-                return React.createElement("img", { src: this.getImgUrl(data), alt: data && data.alt ? data.alt : '', className: 'mediaImage' });
-                break;
+                return this.renderAsImage(data);
+            case 'embeddedVideo':
+                return this.renderAsVideoEmbed(data);
             default:
-                return React.createElement("div", null, "There was an error");
+                return this.renderAsImage(data);
+            // default:
+            //   return <div className={'mediaError'}>There was an error rendering media.</div>;
         }
     };
     return Media;

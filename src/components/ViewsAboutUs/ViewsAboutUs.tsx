@@ -1,38 +1,37 @@
 import * as React from 'react';
 import ViewsAboutUsElement from './components/ViewsAboutUsElement';
 
-export interface ViewsAboutUsPops {}
+interface View {
+  url: string;
+  link: string;
+  cite: string;
+  image: LooseObject;
+}
 
-const data = {
-  items: [
-    {
-      img: '/assets/medicon/images/review-aboutus-1.jpg',
-      cite: '„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“',      
-    },
-    {
-      img: '/assets/medicon/images/review-aboutus-1.jpg',
-      cite: '„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“',      
-    },
-    {
-      img: '/assets/medicon/images/review-aboutus-1.jpg',
-      cite: '„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“',      
-    },
-  ]
-};
+export interface ViewsAboutUsPops {
+  data: {
+    title: string;
+    views: View[];
+  };
+}
 
 const ViewsAboutUs = (props: ViewsAboutUsPops) => {
+  const { title, views } = props.data;
+
   return (
     <div className={'viewsAboutUs'}>
       <div className={'container'}>
-        <h3>Napsali o nás</h3>
+        {title && <h3>{title}</h3>}
         
         <div className={'grid viewsAboutUs__list'}>
-          {data.items.map((item, index) => (
+          {views && views.map((item, i) => (
             <ViewsAboutUsElement 
-              key={index}
-              img={item.img} 
-              cite={item.cite} 
-            />  
+              key={i}
+              url={item.url}
+              link={item.link}
+              cite={item.cite}
+              image={item.image}
+            />
           ))}
         </div>
       </div>

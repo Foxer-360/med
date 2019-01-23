@@ -7,9 +7,9 @@ export interface AvatarProps {
 
 const Avatar = (props: AvatarProps) => {
   const { onClick, activeArea } = props;
-  
+
   return (
-    <div className={`avatar ${activeArea}`}>
+    <div className={`avatarDoll ${activeArea}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -18,10 +18,9 @@ const Avatar = (props: AvatarProps) => {
         viewBox="0 0 579 692"
         xmlSpace="preserve"
       >
-        <path className="st0" d="M331.3,191c-12.2,9.1-26.7,14.3-42.2,14.3c-15.6,0-30.2-5.3-42.5-14.5" />
+        <path d="M331.3,191c-12.2,9.1-26.7,14.3-42.2,14.3c-15.6,0-30.2-5.3-42.5-14.5" />
 
         <path
-          className="st0"
           d="M289.7,11.9c51.3-0.7,93.1,45.6,93.1,96.7c0,34.5-19.1,64.6-47.2,80.2c-9,5-14.6,14.4-14.6,24.7l0,0
 	c0,15.5,12.6,28.1,28.1,28.1l183.3-14.8c20.2,0,36.6,16.4,36.6,36.6l0,0c0,20.2-16.4,36.6-36.6,36.6l-168.2,14.5c-3,0.3-5.2,3-4.9,6
 	L392,596c1,11.6,10.8,25.5,22.4,25.5h27.9c16.9,0,30.7,13.7,30.7,30.7l0,0c0,16.9-13.7,30.7-30.7,30.7h-42h-36.8
@@ -81,42 +80,42 @@ const Avatar = (props: AvatarProps) => {
           cx="48.9"
           cy="261.9"
           r={25}
-          onClick={() => onClick('lHand')}
+          onClick={() => onClick('arm')}
         />
         <circle
           className="avatar__area avatar__knee avatar__lKnee"
           cx="237.3"
           cy={523}
           r={25}
-          onClick={() => onClick('lKnee')}
+          onClick={() => onClick('legs')}
         />
         <circle
           className="avatar__area avatar__knee avatar__rKnee"
           cx="343.4"
           cy={523}
           r={25}
-          onClick={() => onClick('rKnee')}
+          onClick={() => onClick('legs')}
         />
         <circle
           className="avatar__area avatar__feet avatar__lFeet"
           cx={182}
           cy="653.3"
           r={25}
-          onClick={() => onClick('lFeet')}
+          onClick={() => onClick('feet')}
         />
         <circle
           className="avatar__area avatar__feet avatar__rFeet"
           cx="397.9"
           cy="653.3"
           r={25}
-          onClick={() => onClick('rFeet')}
+          onClick={() => onClick('feet')}
         />
         <circle
           className="avatar__area avatar__hand avatar__rHand"
           cx="529.8"
           cy="261.9"
           r={25}
-          onClick={() => onClick('rHand')}
+          onClick={() => onClick('arm')}
         />
       </svg>
     </div>

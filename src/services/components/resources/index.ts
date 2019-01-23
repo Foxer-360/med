@@ -31,6 +31,8 @@ import * as contactinfo from './contactinfo.json';
 import * as contactform from './contactform.json';
 import * as downloads from './downloads.json';
 import * as contactsblock from './contactsblock.json';
+import * as faq from './faq.json';
+import * as blogarticle from './blogarticle.json';
 
 export {
   def as default,
@@ -66,4 +68,6 @@ export {
   contactform,
   downloads,
   contactsblock,
+  faq,
+  blogarticle,
 };

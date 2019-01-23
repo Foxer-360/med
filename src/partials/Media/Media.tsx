@@ -1,7 +1,9 @@
 import * as React from 'react';
+import ImgWithFallback from './components/ImgWithFallback';
 
 export interface MediaProps {
   type: string;
+  // tslint:disable:no-any
   data: any;
 }
 
@@ -12,24 +14,47 @@ class Media extends React.Component<MediaProps, MediaState> {
     super(props);
   }
 
-  getImgUrl = data => {
+  renderAsImage = data => {
     const baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
+    let recommendedSizes = data.recommendedSizes;
 
-    if (data) {
-      return baseUrl + data.category + data.hash + '_' + data.filename;
-    }
-    return null;
+    let originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
+
+    return (
+      <ImgWithFallback
+        originalSrc={originalUrl}
+        alt={data.alt || ''}
+        baseUrl={baseUrl}
+        recommendedSizes={recommendedSizes}
+        originalData={data}
+      />
+    );
+  }
+
+  renderAsVideoEmbed(data: any) {
+    let embedUrl = data.url + '?rel=0&amp;controls=0&amp;showinfo=0';
+
+    return (
+      <div className={'aspect-ratio'}>
+        <iframe className="mediaEmbeddedVideo" src={embedUrl} allowFullScreen={true} frameBorder="0" />
+      </div>
+    );
   }
 
   render() {
-    const { type, data } = this.props;
+    const { data } = this.props;
 
-    switch (type) {
+
+    switch (data && data.type) {
       case 'image':
-        return <img src={this.getImgUrl(data)} alt={data && data.alt ? data.alt : ''} className={'mediaImage'} />;
-        break;
+        return this.renderAsImage(data);
+      case 'embeddedVideo':
+        return this.renderAsVideoEmbed(data);
       default:
-        return <div>There was an error</div>;
+        return this.renderAsImage(data);
+
+      // default:
+      //   return <div className={'mediaError'}>There was an error rendering media.</div>;
     }
   }
 }

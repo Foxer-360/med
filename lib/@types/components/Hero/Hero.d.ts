@@ -2,6 +2,9 @@ import * as React from 'react';
 export interface HeroProps {
     data: {
         title: string;
+        text: string;
+        displaySearch: boolean;
+        image: LooseObject;
     };
 }
 export interface HeroState {

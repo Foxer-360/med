@@ -1,1 +1,2 @@
-import Media from './Media'; export default Media;
+import Media from './Media';
+export default Media;

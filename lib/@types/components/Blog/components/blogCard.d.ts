@@ -1,5 +1,6 @@
 /// <reference types="react" />
 export interface BlogCardProps {
+    id: string;
     title: string;
     text: string;
     color: string;

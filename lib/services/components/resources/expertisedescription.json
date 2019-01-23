@@ -1,3 +1,88 @@
 {
-  "name": "ExpertiseDescription"
+  "name": "ExpertiseDescription",
+  "data": {
+    "titleCare": "Poskytovaná péče",
+    "text": "**Diagnostika a léčba všech alergických onemocnění** jako např. alergická rýma, alergický zánět spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie, alergie na léky, hmyz nebo kožní alergie.",
+    "titleExamination": "Typy vyšetření",
+    "examinations": [
+      {
+        "title": "Kožní prick testy",
+        "url": ""
+      },
+      {
+        "title": "Krevní odběry k laboratornímu vyšetření",
+        "url": ""
+      },
+      {
+        "title": "Vyšetření plicních funkcí (spirometrie) včetně zátěžových testů",
+        "url": ""
+      }
+    ],
+    "boxes": [
+      {
+        "title": "Doklady které pro vyšetření potřebujete",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "Jak vyšetření probíhá",
+        "url": "",
+        "image": {}
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "titleCare": {
+          "type": "text",
+          "title": "First title"
+        },
+        "text": {
+          "type": "markdown",
+          "title": "Text"
+        },
+        "titleExamination": {
+          "type": "text",
+          "title": "Second title"
+        },
+        "examinations": {
+          "type": "array",
+          "title": "Examinations",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
+        },
+        "boxes": {
+          "type": "array",
+          "title": "Boxes",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

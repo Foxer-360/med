@@ -1,35 +1,44 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
+import Button from '@source/partials/Button';
 
 export interface ExpertiseDescriptionCareProps {
   title: string;
-  items: Array<string>;
+  firstText: string;
+  secondText: string;
 }
 
-const ExpertiseDescriptionCare = (props: ExpertiseDescriptionCareProps) => {
-  const { title } = props;
+export interface ExpertiseDescriptionCareState {
+  showHiddenText: boolean;
+}
 
-  return (
-    <div className={'care'}>
-      <h3>{title}</h3>
-      <div className={'hCenterBlock'}>
-        <p>
-          <strong>Diagnostika a léčba všech alergických onemocnění</strong> jako např. alergická rýma, alergický zánět
-          spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie, alergie na léky, hmyz
-          nebo kožní alergie.
-        </p>
-        <p>
-          <strong>Diagnostika a léčba poruch imunity</strong> (recidivující infekce dýchacích cest, močových cest,
-          opakované herpetické infekce).
-        </p>
-        <p>
-          Diagnostika <strong>autoimunních onemocnění.</strong>
-        </p>
-        <p>
-          Vyšetření provádíme u <strong>dětských i dospělých pacientů.</strong>
-        </p>
+// tslint:disable-next-line:max-line-length
+export default class ExpertiseDescriptionCare extends React.Component<ExpertiseDescriptionCareProps, ExpertiseDescriptionCareState> {
+  constructor(props: ExpertiseDescriptionCareProps) {
+    super(props);
+
+    this.state = {
+      showHiddenText: false,
+    };
+  }
+
+  render() {
+    return (
+      <div className={'care'}>
+        {this.props.title && <h3>{this.props.title}</h3>}
+        <div className={'hCenterBlock'}>
+          {this.props.firstText && <ReactMarkdown source={this.props.firstText} />}
+        </div>
+        <h3 style={{ cursor: 'pointer' }} onClick={() => this.setState({ showHiddenText: !this.state.showHiddenText })}>
+          Více info
+        </h3>
+        {this.state.showHiddenText ? 
+          <div className={'hCenterBlock'}>
+            {this.props.secondText && <ReactMarkdown source={this.props.secondText} />}
+          </div>
+          : ''
+        }
       </div>
-    </div>
-  );
-};
-
-export default ExpertiseDescriptionCare;
+    );
+  }
+}

@@ -1,4 +1,4 @@
 # Ignore NodeJS modules
 node_modules/
 .prettierrc
-.eslintrc.yml
+.vscode/

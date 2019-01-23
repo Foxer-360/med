@@ -1,11 +1,10 @@
 .hero {
   @extend .flexColumn;
+  @include background-image(cover, center);
   height: 395px;
   width: 100%;
-  background: lightblue;
   justify-content: center;
   align-items: center;
-  @include background-image(cover, center);
   background-repeat: no-repeat;
 
   @include md {

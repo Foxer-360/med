@@ -31,4 +31,6 @@ import * as contactinfo from './contactinfo.json';
 import * as contactform from './contactform.json';
 import * as downloads from './downloads.json';
 import * as contactsblock from './contactsblock.json';
-export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, jobpositions, joboffers, careerform, expertisedescription, medicalgroup, viewsaboutus, contactinfo, timeline, contactform, downloads, contactsblock, };
+import * as faq from './faq.json';
+import * as blogarticle from './blogarticle.json';
+export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, jobpositions, joboffers, careerform, expertisedescription, medicalgroup, viewsaboutus, contactinfo, timeline, contactform, downloads, contactsblock, faq, blogarticle, };

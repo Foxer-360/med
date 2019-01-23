@@ -1,7 +1,14 @@
-import * as React from 'react';
+/// <reference types="react" />
+interface Reviews {
+    cite: string;
+    image: LooseObject;
+    starCount: number;
+}
 export interface ReviewsProps {
+    data: {
+        title: string;
+        reviews: Reviews[];
+    };
 }
-declare class Reviews extends React.Component<any, any> {
-    render(): JSX.Element;
-}
+declare const Reviews: (props: ReviewsProps) => JSX.Element;
 export default Reviews;

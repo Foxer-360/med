@@ -1,4 +1,22 @@
 {
-  "name": "Blog"
+  "name": "Blog",
+  "data": {
+    "title": "aktuality a informace",
+    "displaySearch": false
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "displaySearch": {
+          "type": "boolean",
+          "title": "Display Search?"
+        }
+      }
+    }
+  }
 }
-  

@@ -1,5 +1,8 @@
 import * as React from 'react';
 export interface HeaderProps {
+    navigations?: LooseObject;
+    languages?: LooseObject;
+    languageCode?: string;
 }
 export interface HeaderState {
     vX: number;
@@ -13,5 +16,7 @@ declare class Header extends React.Component<HeaderProps, HeaderState> {
     toggleMenu: () => void;
     componentDidMount(): void;
     render(): JSX.Element;
+    private transformNavigationsIntoTree;
+    private buildNavTree;
 }
 export default Header;

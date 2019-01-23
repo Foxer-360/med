@@ -11,7 +11,7 @@
 
   @include md {
     width: 100%;
-    padding: 25px;
+    padding: 37px;
   }
 
   .container {
@@ -39,7 +39,7 @@
     display: block;
     position: relative;
 
-    @include md {
+    @include lg {
       width: 30%;
     }
 
@@ -54,7 +54,7 @@
     width: 100%;
     box-sizing: border-box;
 
-    @include md {
+    @include lg {
       width: 70%;
       padding-left: 32px;
     }
@@ -98,6 +98,7 @@
 
         img {
           height: 35px;
+          width: auto;
 
           @include md {
             height: 40px;
@@ -150,7 +151,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
         padding: 15px 0;
         text-align: center;
         border-top: 1px solid #cecece;
@@ -213,9 +213,12 @@
 
       .btn {
         width: 100%;
+        max-width: 240px;
+        margin: 0 auto;
 
         @include md {
           width: auto;
+          margin: 0;
         }
       }
     }

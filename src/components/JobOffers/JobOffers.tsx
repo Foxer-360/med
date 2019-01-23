@@ -1,29 +1,44 @@
 import * as React from 'react';
+import getImageUrl from '@source/helpers/getImageUrl';
+import Link from '@source/partials/Link';
 
-export interface JobOffersProps {}
+interface Offer {
+  title: string;
+  url: LooseObject;
+  image: LooseObject;
+}
+
+export interface JobOffersProps {
+  languageCode?: string;
+  data: {
+    title: string;
+    offers: Offer[];
+  };
+}
 
 const jobOffers = (props: JobOffersProps) => {
+  const { title, offers } = props.data;
+
   return (
     <div className={'container'}>
       <section className={'jobOffers'}>
-        <h3>Aktuální nabídky</h3>
+        {title && <h3>{title}</h3>}
 
         <div className="grid offers">
-          <a
-            href="#"
-            className={'flexRow offers__element'}
-            style={{ backgroundImage: 'url(/assets/medicon/images/offers-lekar.png)' }}
-          >
-            <p className={'hCenterBlock'}>Lékařské pozice</p>
-          </a>
-
-          <a
-            href="#"
-            className={'flexRow offers__element'}
-            style={{ backgroundImage: 'url(/assets/medicon/images/offers-ostatni.png)' }}
-          >
-            <p className={'hCenterBlock'}>Ostatní pozice</p>
-          </a>
+          {offers &&
+            offers.map((offer, index) => (
+              <Link
+                url={offer.url.url}
+                key={index}
+                className={'flexRow offers__element'}
+              >
+                {offer.image && (
+                  <div style={{ backgroundImage: offer.image && `url(${getImageUrl(offer.image)})` }}>
+                    {offer.title && <p className={'hCenterBlock'}>{offer.title}</p>}
+                  </div>
+                )}
+              </Link>
+            ))}
         </div>
       </section>
     </div>

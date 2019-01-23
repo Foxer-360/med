@@ -1,50 +1,44 @@
 import * as React from 'react';
 import InfoElement from './components/InfoElement';
-export interface InfoBoxesProps {}
 
-const data = {
-  items: [
-    {
-      title: 'široký výběr zdravýchpotravin',
-      img: '/assets/medicon/images/info-el-1.jpg',
-      color: '#5a2a20',
-      btn: 'btn--whiteBorder',
-      titleColor: '#ffffff',
-    },
-    {
-      title: 'široký výběr zdravýchpotravin',
-      img: '/assets/medicon/images/info-el-3.jpg',
-      color: '# ',
-      btn: 'btn--blueBorder',
-      titleColor: '#2eac6c',
-    },
-    {
-      title: 'široký výběr zdravýchpotravin',
-      img: '/assets/medicon/images/info-el-2.jpg',
-      color: '#ffffff',
-      btn: 'btn--whiteBorder',
-      titleColor: '#ffffff',
-    },
-  ]
-};
+interface Box {
+  title: string;
+  gradientColor: string;
+  button: string;
+  titleColor: string;
+  image: LooseObject;
+  link?: LooseObject;
+}
+
+export interface InfoBoxesProps {
+  languageCode?: string;
+  data: {
+    title: string;
+    boxes: Box[];
+  };
+}
 
 const InfoBoxes = (props: InfoBoxesProps) => {
+  const { title, boxes } = props.data;
+
   return (
     <section className={'info-boxes'}>
-      <h3>Z našich lékáren</h3>
+      {title && <h3>{title}</h3>}
 
       <div className={'container'}>
         <div className={'grid info-boxes__list'}>
-          {data.items.map((item, index) => (
-            <InfoElement
-              color={item.color}  
-              title={item.title}
-              img={item.img}
-              btn={item.btn}
-              titleColor={item.titleColor}
-              key={index}
-            />
-          ))}
+          {boxes &&
+            boxes.map((box, i) => (
+              <InfoElement
+                link={box.link}
+                gradientColor={box.gradientColor}
+                title={box.title}
+                image={box.image}
+                button={box.button}
+                titleColor={box.titleColor}
+                key={i}
+              />
+            ))}
         </div>
       </div>
     </section>

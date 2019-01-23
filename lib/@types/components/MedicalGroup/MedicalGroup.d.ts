@@ -1,5 +1,13 @@
 import * as React from 'react';
 export interface MedicalGroupProps {
+    data: {
+        title: string;
+        companies: [{
+            name: string;
+            subtitle: string;
+            text: string;
+        }];
+    };
 }
 export interface MedicalGroupState {
     activeIndex: number;

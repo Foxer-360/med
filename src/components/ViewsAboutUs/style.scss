@@ -9,6 +9,7 @@
   img {
     align-self: center;
     margin: 10px;
+    width: initial;
   }
 
   &__list {
@@ -28,7 +29,7 @@
       &__content {
         display: grid;
         grid-template-rows: 1fr 50px;
-        padding: 25px 5px 0 15px;
+        padding: 25px 5px 0 25px;
 
         cite {
           max-width: 250px;
