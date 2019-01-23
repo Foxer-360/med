@@ -4,6 +4,7 @@ export interface ImgWithFallbackProps {
   alt?: string;
   originalSrc?: string;
   baseUrl: string;
+  hash: string;
   recommendedSizes: LooseObject;
   originalData: LooseObject;
 }
@@ -24,7 +25,6 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
   }
 
   createVariantIfDoesNotExist = () => {
-
     if (this.props.recommendedSizes) {
       fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
         method: 'POST',
@@ -44,9 +44,9 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
           console.log('There was an error creating variant');
         });
     }
-  }  
+  }
 
-  getSizedUrl = (props) => {
+  getSizedUrl = props => {
     let sizedUrl = null;
     let sizes = props.recommendedSizes;
     let sizedFile = null;
@@ -60,34 +60,11 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
       filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
       filename = filename.join('.');
 
-      // fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/findByFilename?filename=${filename}`, {
-      fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/findByFilename?filename=${filename}`, {
-        method: 'GET',
-      })
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          if (data && data.files[0]) {
-            sizedFile = data.files[0];
-            sizedUrl =
-              props.baseUrl + props.originalData.category + sizedFile.hash + '_' + sizedFile.filename;
+      sizedUrl = props.baseUrl + props.originalData.category + props.hash + '_' + filename;
 
-            this.setState({
-              src: sizedUrl,
-            });
-          } else {
-            this.setState({
-              src: props.originalSrc,
-            });
-            this.createVariantIfDoesNotExist();
-          }
-        })
-        .catch(() => {
-          this.setState({
-            src: props.originalSrc,
-          });
-        });
+      this.setState({
+        src: sizedUrl,
+      });
     } else {
       this.setState({
         src: props.originalSrc,
@@ -130,17 +107,29 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     this.createVariantIfDoesNotExist();
 
     this.setState({
-      loading: true,
+      loading: true,     
+      src: this.props.originalSrc,    
     });
   }
 
-  public render() {
+  public render() {  
     const { alt } = this.props;
 
     if (this.state.loading) {
       return <div className={'mediaImageLoader'} />;
     } else {
-      return <img className={'mediaImage'} alt={alt} src={this.state.src} />;
+      return (
+        <div
+          className={'mediaRatio'}
+          style={{
+            paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
+              parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
+              100}%`,
+          }}
+        >
+          <img className={'mediaImage inner'} alt={alt} src={this.state.src} />
+        </div>
+      );
     }
   }
 }

@@ -16,34 +16,44 @@ class Media extends React.Component<MediaProps, MediaState> {
 
   renderAsImage = data => {
     const baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
-    let recommendedSizes = data.recommendedSizes;
+    if (data && data.filename) {
+      let recommendedSizes = (data && data.recommendedSizes) || null;
+      let originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
 
-    let originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
-
-    return (
-      <ImgWithFallback
-        originalSrc={originalUrl}
-        alt={data.alt || ''}
-        baseUrl={baseUrl}
-        recommendedSizes={recommendedSizes}
-        originalData={data}
-      />
-    );
+      return (
+        <ImgWithFallback
+          originalSrc={originalUrl}
+          alt={data.alt || ''}
+          baseUrl={baseUrl}
+          recommendedSizes={recommendedSizes}
+          originalData={data}
+          hash={data.hash}
+        />
+      );
+    } else {
+      return null;
+    }
   }
 
   renderAsVideoEmbed(data: any) {
-    let embedUrl = data.url + '?rel=0&amp;controls=0&amp;showinfo=0';
+    let embedUrl = data.url;
 
     return (
-      <div className={'aspect-ratio'}>
-        <iframe className="mediaEmbeddedVideo" src={embedUrl} allowFullScreen={true} frameBorder="0" />
+      <div
+        className={'mediaRatio'}
+        style={{
+          paddingTop: `${(parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
+            parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *
+            100}%`,
+        }}
+      >
+        <iframe className="mediaEmbeddedVideo inner" src={embedUrl} allowFullScreen={true} frameBorder="0" />
       </div>
     );
   }
 
   render() {
     const { data } = this.props;
-
 
     switch (data && data.type) {
       case 'image':
