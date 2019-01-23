@@ -30,7 +30,7 @@ var HelpPopup = /** @class */ (function (_super) {
         var _this = this;
         return (React.createElement("div", { className: "helpPopup " + (this.state.active ? 'helpPopup--active' : '') + " " },
             React.createElement("div", { className: 'helpPopup__main', style: { backgroundImage: 'url(/assets/medicon/images/phone2.png)' }, onClick: function () { return _this.toggleList(); } },
-                React.createElement("h4", null, "Potrebujete poraditz")),
+                React.createElement("h4", null, "Pot\u0159ebujete poradit")),
             React.createElement("ul", { className: 'helpPopup__list' },
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phone2.png)' } },
                     React.createElement("p", null, "Polikinika Budejovicka"),

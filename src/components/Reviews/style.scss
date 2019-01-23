@@ -2,7 +2,9 @@
   margin-bottom: 40px;
   color: $darkGray;
 
-  h3 { @include webkitGradientText; }
+  h3 {
+    @include webkitGradientText;
+  }
 
   &__list {
     justify-items: center;
@@ -17,6 +19,10 @@
       background-repeat: no-repeat;
       display: grid;
       grid-template-columns: 110px 1fr;
+
+      .mediaRatio {
+        height: 100%;
+      }
 
       &__content {
         display: grid;
@@ -62,7 +68,9 @@
     }
   }
 
-  @include max-xl { font-size: 1.4rem; }
+  @include max-xl {
+    font-size: 1.4rem;
+  }
   @include max-lg {
     font-size: 1.6rem;
 
@@ -79,5 +87,7 @@
       }
     }
   }
-  @include max-xs { font-size: 1.4rem; }
+  @include max-xs {
+    font-size: 1.4rem;
+  }
 }

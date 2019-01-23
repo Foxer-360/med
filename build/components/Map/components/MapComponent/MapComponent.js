@@ -22,7 +22,7 @@ var clinics = [
     {
         lat: 50.042957,
         lng: 14.451078,
-        name: 'Poliklinika Budějovická'
+        name: 'Poliklinika Budějovická',
     },
     {
         lat: 50.108288,
@@ -30,7 +30,7 @@ var clinics = [
         name: 'Poliklinika Vysočany',
     },
     {
-        lat: 50.041000,
+        lat: 50.041,
         lng: 14.429081,
         name: 'Poliklinika Zelený pruh',
     },
@@ -106,23 +106,24 @@ var MapComponent = /** @class */ (function (_super) {
     MapComponent.prototype.render = function () {
         var _this = this;
         var markers = [];
-        if (clinics && this.props.coords) {
+        var defaultCenter = { lat: 50.08804, lng: 14.42076 };
+        var defaultZoom = 7;
+        if (clinics) {
             clinics.forEach(function (clinic, index) {
                 if (clinic.lat && clinic.lng) {
-                    markers.push(React.createElement(Marker, { type: clinic.name === _this.nearestClinic(_this.props.coords.latitude, _this.props.coords.longitude).name
+                    markers.push(React.createElement(Marker, { type: clinic.name ===
+                            _this.nearestClinic(_this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng).name
                             ? 'big'
                             : 'small', lat: clinic.lat, lng: clinic.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic.lat, clinic.lng); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index }));
                 }
             });
-            markers.push(React.createElement(Marker, { type: 'geoLocation', lat: this.props.coords.latitude, lng: this.props.coords.longitude, key: markers.length + 1, index: markers.length + 1 }));
+            markers.push(React.createElement(Marker, { type: 'geoLocation', lat: this.props.coords ? this.props.coords.latitude : defaultCenter.lat, lng: this.props.coords ? this.props.coords.longitude : defaultCenter.lng, key: markers.length + 1, index: markers.length + 1 }));
         }
-        var defaultCenter = { lat: 50.08804, lng: 14.42076 };
-        var defaultZoom = 7;
         return (React.createElement("div", { className: "fullWidthContainer" },
             React.createElement("section", { className: 'map' },
                 React.createElement("div", { className: 'map__container' },
                     React.createElement("button", null, "Zobrazit v\u0161echny polikliniky")),
-                React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, defaultZoom: defaultZoom, options: {
+                React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, center: defaultCenter, defaultZoom: defaultZoom, options: {
                         scrollwheel: false,
                     }, yesIWantToUseGoogleMapApiInternals: true, onGoogleApiLoaded: function (_a) {
                         var map = _a.map, maps = _a.maps;

@@ -19,16 +19,25 @@ var Media = /** @class */ (function (_super) {
         var _this = _super.call(this, props) || this;
         _this.renderAsImage = function (data) {
             var baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
-            var recommendedSizes = data.recommendedSizes;
-            var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
-            return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data }));
+            if (data && data.filename) {
+                var recommendedSizes = (data && data.recommendedSizes) || null;
+                var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
+                return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash }));
+            }
+            else {
+                return null;
+            }
         };
         return _this;
     }
     Media.prototype.renderAsVideoEmbed = function (data) {
-        var embedUrl = data.url + '?rel=0&amp;controls=0&amp;showinfo=0';
-        return (React.createElement("div", { className: 'aspect-ratio' },
-            React.createElement("iframe", { className: "mediaEmbeddedVideo", src: embedUrl, allowFullScreen: true, frameBorder: "0" })));
+        var embedUrl = data.url;
+        return (React.createElement("div", { className: 'mediaRatio', style: {
+                paddingTop: (parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
+                    parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *
+                    100 + "%",
+            } },
+            React.createElement("iframe", { className: "mediaEmbeddedVideo inner", src: embedUrl, allowFullScreen: true, frameBorder: "0" })));
     };
     Media.prototype.render = function () {
         var data = this.props.data;

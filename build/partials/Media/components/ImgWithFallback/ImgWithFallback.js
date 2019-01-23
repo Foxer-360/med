@@ -48,33 +48,9 @@ var ImgWithFallback = /** @class */ (function (_super) {
                 var filename = props.originalData.filename.split('.');
                 filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
                 filename = filename.join('.');
-                // fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/findByFilename?filename=${filename}`, {
-                fetch(process.env.REACT_APP_MEDIA_LIBRARY_SERVER + "/findByFilename?filename=" + filename, {
-                    method: 'GET',
-                })
-                    .then(function (response) {
-                    return response.json();
-                })
-                    .then(function (data) {
-                    if (data && data.files[0]) {
-                        sizedFile = data.files[0];
-                        sizedUrl =
-                            props.baseUrl + props.originalData.category + sizedFile.hash + '_' + sizedFile.filename;
-                        _this.setState({
-                            src: sizedUrl,
-                        });
-                    }
-                    else {
-                        _this.setState({
-                            src: props.originalSrc,
-                        });
-                        _this.createVariantIfDoesNotExist();
-                    }
-                })
-                    .catch(function () {
-                    _this.setState({
-                        src: props.originalSrc,
-                    });
+                sizedUrl = props.baseUrl + props.originalData.category + props.hash + '_' + filename;
+                _this.setState({
+                    src: sizedUrl,
                 });
             }
             else {
@@ -87,6 +63,7 @@ var ImgWithFallback = /** @class */ (function (_super) {
             _this.createVariantIfDoesNotExist();
             _this.setState({
                 loading: true,
+                src: _this.props.originalSrc,
             });
         };
         _this.state = {
@@ -127,7 +104,12 @@ var ImgWithFallback = /** @class */ (function (_super) {
             return React.createElement("div", { className: 'mediaImageLoader' });
         }
         else {
-            return React.createElement("img", { className: 'mediaImage', alt: alt, src: this.state.src });
+            return (React.createElement("div", { className: 'mediaRatio', style: {
+                    paddingTop: (parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
+                        parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
+                        100 + "%",
+                } },
+                React.createElement("img", { className: 'mediaImage inner', alt: alt, src: this.state.src })));
         }
     };
     return ImgWithFallback;

@@ -11,7 +11,8 @@ interface Box {
 export interface DescriptionProps {
     data: {
         titleCare: string;
-        text: string;
+        firstText: string;
+        secondText: string;
         titleExamination: string;
         examinations: Examination[];
         boxes: Box[];

@@ -4,8 +4,7 @@ import HelpPopup from './components/HelpPopup';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
-import Link from '@source/partials/Link';
-import { Link as DomLink } from 'react-router-dom';
+import Link from '../../partials/Link';
 
 const GET_CONTEXT = gql`
   {
@@ -89,8 +88,8 @@ class Footer extends React.Component<FooterProps, FooterState> {
 
         <div className="container">
           <div className="flexRow flexAlign--space-between">
-          
-            {links && links.length > 0 && 
+
+            {links && links.length > 0 &&
               <ul className={'footer__list'}>
                 {links.slice(0, 5).map((link, index) => (
                   <li key={index}>
@@ -100,7 +99,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
               </ul>
             }
 
-            {links && links.length > 5 && 
+            {links && links.length > 5 &&
               <ul className={'footer__list'}>
                 {links.slice(5, 10).map((link, index) => (
                   <li key={index}>
@@ -110,14 +109,14 @@ class Footer extends React.Component<FooterProps, FooterState> {
               </ul>
             }
 
-            {links && links.length > 10 && 
+            {links && links.length > 10 &&
               <ul className={'footer__list'}>
-              {links.slice(10, 15).map((link, index) => (
-                <li key={index}>
-                  <a href={link.url}>{link.text}</a>
-                </li>
-              ))}
-            </ul>
+                {links.slice(10, 15).map((link, index) => (
+                  <li key={index}>
+                    <a href={link.url}>{link.text}</a>
+                  </li>
+                ))}
+              </ul>
             }
 
             {social && <Social info={social} icons={socialIcons} />}
@@ -128,9 +127,9 @@ class Footer extends React.Component<FooterProps, FooterState> {
         <div className="bottom">
           <div className="container">
             <div className="copyrights grid">
-              
+
               {company && <p>{company}</p>}
-              {text && 
+              {text &&
                 <a href={url}><p>{text}</p></a>
               }
 

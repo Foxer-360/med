@@ -71,19 +71,19 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     this.setState({
       vX,
     });
-  };
+  }
 
   closeMenu = () => {
     this.setState({
       menuActive: false,
     });
-  };
+  }
 
   toggleMenu = () => {
     this.setState({
       menuActive: !this.state.menuActive,
     });
-  };
+  }
 
   componentDidMount() {
     this.getVertex();
@@ -161,8 +161,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                           {
                             <DomLink to={navItem.url ? navItem.url : ''} onClick={() => this.closeMenu()}>
                               {navItem.name}
-                            </DomLink>
-                          }
+                            </DomLink>}
                         </li>
                       ))}
                   </ul>

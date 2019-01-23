@@ -32,7 +32,6 @@ import HelpPopup from './components/HelpPopup';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
-import { Link as DomLink } from 'react-router-dom';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
@@ -55,54 +54,32 @@ var ComposedQuery = adopt({
 });
 var Footer = /** @class */ (function (_super) {
     __extends(Footer, _super);
-    function Footer() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Footer(props) {
+        return _super.call(this, props) || this;
     }
     Footer.prototype.render = function () {
-        var _this = this;
-        return (React.createElement(ComposedQuery, null, function (_a) {
-            var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
-            if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
-                return React.createElement("div", null, "Loading...");
-            }
-            if (error) {
-                return "Error..." + error;
-            }
-            var navigations = context.navigationsData, languageCode = context.languageData.code;
-            var transformedNavigations = _this.transformNavigationsIntoTree(navigations, data.pagesUrls);
-            var footerFirstNav = 'footerFirst';
-            var footerSecondNav = 'footerSecond';
-            var footerThirdNav = 'footerThird';
-            var footerFirstNavItems = transformedNavigations && transformedNavigations[footerFirstNav]
-                ? transformedNavigations[footerFirstNav]
-                : [];
-            var footerSecondNavItems = transformedNavigations && transformedNavigations[footerSecondNav]
-                ? transformedNavigations[footerSecondNav]
-                : [];
-            var footerThirdNavItems = transformedNavigations && transformedNavigations[footerThirdNav]
-                ? transformedNavigations[footerThirdNav]
-                : [];
-            return (React.createElement("footer", { className: 'footer' },
-                React.createElement(HelpPopup, null),
+        var _a = this.props.data, links = _a.links, social = _a.social, socialIcons = _a.socialIcons, company = _a.company, url = _a.url, text = _a.text;
+        return (React.createElement("footer", { className: 'footer' },
+            React.createElement(HelpPopup, null),
+            React.createElement("div", { className: "container" },
+                React.createElement("div", { className: "flexRow flexAlign--space-between" },
+                    links && links.length > 0 &&
+                        React.createElement("ul", { className: 'footer__list' }, links.slice(0, 5).map(function (link, index) { return (React.createElement("li", { key: index },
+                            React.createElement("a", { href: link.url }, link.text))); })),
+                    links && links.length > 5 &&
+                        React.createElement("ul", { className: 'footer__list' }, links.slice(5, 10).map(function (link, index) { return (React.createElement("li", { key: index },
+                            React.createElement("a", { href: link.url }, link.text))); })),
+                    links && links.length > 10 &&
+                        React.createElement("ul", { className: 'footer__list' }, links.slice(10, 15).map(function (link, index) { return (React.createElement("li", { key: index },
+                            React.createElement("a", { href: link.url }, link.text))); })),
+                    social && React.createElement(Social, { info: social, icons: socialIcons }))),
+            React.createElement("div", { className: "bottom" },
                 React.createElement("div", { className: "container" },
-                    React.createElement("div", { className: "flexRow flexAlign--space-between" },
-                        React.createElement("ul", { className: 'footer__list' }, footerFirstNavItems &&
-                            footerFirstNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                React.createElement(DomLink, { to: navItem.url }, navItem.name))); })),
-                        React.createElement("ul", { className: 'footer__list' }, footerSecondNavItems &&
-                            footerSecondNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                React.createElement(DomLink, { to: navItem.url }, navItem.name))); })),
-                        React.createElement("ul", { className: 'footer__list' }, footerThirdNavItems &&
-                            footerThirdNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                React.createElement(DomLink, { to: navItem.url }, navItem.name))); })),
-                        React.createElement(Social, null))),
-                React.createElement("div", { className: "bottom" },
-                    React.createElement("div", { className: "container" },
-                        React.createElement("div", { className: "copyrights grid" },
-                            React.createElement("p", null, "\u00A9 2018 - MEDICON a.s."),
-                            React.createElement("a", { href: "#" },
-                                React.createElement("p", null, "Prohl\u00E1\u0161en\u00ED o ochran\u011B osobn\u00EDch \u00FAdaj\u016F")))))));
-        }));
+                    React.createElement("div", { className: "copyrights grid" },
+                        company && React.createElement("p", null, company),
+                        text &&
+                            React.createElement("a", { href: url },
+                                React.createElement("p", null, text)))))));
     };
     Footer.prototype.transformNavigationsIntoTree = function (navigation, urls) {
         var _this = this;

@@ -1,5 +1,3 @@
 /// <reference types="react" />
-export interface SocialProps {
-}
-declare const Social: (props: SocialProps) => JSX.Element;
+declare const Social: (props: any) => JSX.Element;
 export default Social;

@@ -2,7 +2,8 @@
   "name": "ExpertiseDescription",
   "data": {
     "titleCare": "Poskytovaná péče",
-    "text": "**Diagnostika a léčba všech alergických onemocnění** jako např. alergická rýma, alergický zánět spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie, alergie na léky, hmyz nebo kožní alergie.",
+    "firstText": "**Diagnostika a léčba všech alergických onemocnění** jako např. alergická rýma, alergický zánět spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie, alergie na léky, hmyz nebo kožní alergie.",
+    "secondText": "**Hidden text** jako např. alergický zánět spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie.",
     "titleExamination": "Typy vyšetření",
     "examinations": [
       {
@@ -39,9 +40,13 @@
           "type": "text",
           "title": "First title"
         },
-        "text": {
+        "firstText": {
           "type": "markdown",
-          "title": "Text"
+          "title": "Main text"
+        },
+        "secondText": {
+          "type": "markdown",
+          "title": "Hidden text"
         },
         "titleExamination": {
           "type": "text",
