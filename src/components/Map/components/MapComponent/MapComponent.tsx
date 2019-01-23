@@ -19,14 +19,14 @@ interface MapComponentState {
   };
 }
 
-interface MapComponentProps {}
+interface MapComponentProps {}  
 
 // !DEV ONLY
 const clinics = [
   {
     lat: 50.042957,
     lng: 14.451078,
-    name: 'Poliklinika Budějovická'
+    name: 'Poliklinika Budějovická',
   },
   {
     lat: 50.108288,
@@ -34,7 +34,7 @@ const clinics = [
     name: 'Poliklinika Vysočany',
   },
   {
-    lat: 50.041000,
+    lat: 50.041,
     lng: 14.429081,
     name: 'Poliklinika Zelený pruh',
   },
@@ -63,14 +63,14 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
       activeMarkerCenter: { lat, lng },
     });
     e.stopPropagation();
-  }
+  };
 
   handleMarkerClose = () => {
     this.setState({
       activeMarker: null,
       activeMarkerCenter: null,
     });
-  }
+  };
 
   getMapBounds = (map, maps, locations) => {
     const bounds = new maps.LatLngBounds();
@@ -79,18 +79,18 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
       bounds.extend(new maps.LatLng(location.props.lat, location.props.lng));
     });
     return bounds;
-  }
+  };
 
   apiIsLoaded = (map, maps, locations) => {
     if (map) {
       const bounds = this.getMapBounds(map, maps, locations);
       map.fitBounds(bounds);
     }
-  }
+  };
 
   deg2Rad = deg => {
     return (deg * Math.PI) / 180;
-  }
+  };
 
   pythagorasEquirectangular = (lat1, lon1, lat2, lon2) => {
     lat1 = this.deg2Rad(lat1);
@@ -102,7 +102,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     const y = lat2 - lat1;
     const d = Math.sqrt(x * x + y * y) * R;
     return d;
-  }
+  };
 
   nearestClinic = (latitude, longitude) => {
     let mindif = 99999;
@@ -118,18 +118,24 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     }
 
     return clinics[closest];
-  }
+  };
 
   public render() {
     let markers = [];
+    const defaultCenter = { lat: 50.08804, lng: 14.42076 };
+    const defaultZoom = 7;
 
-    if (clinics && this.props.coords) {
+    if (clinics) {
       clinics.forEach((clinic: Clinic, index: number) => {
         if (clinic.lat && clinic.lng) {
           markers.push(
             <Marker
               type={
-                clinic.name === this.nearestClinic(this.props.coords.latitude, this.props.coords.longitude).name
+                clinic.name ===
+                this.nearestClinic(
+                  this.props.coords ? this.props.coords.latitude : defaultCenter.lat,
+                  this.props.coords ? this.props.coords.longitude : defaultCenter.lng
+                ).name
                   ? 'big'
                   : 'small'
               }
@@ -144,20 +150,17 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
           );
         }
       });
-
+  
       markers.push(
         <Marker
           type={'geoLocation'}
-          lat={this.props.coords.latitude}
-          lng={this.props.coords.longitude}
+          lat={this.props.coords ? this.props.coords.latitude : defaultCenter.lat}
+          lng={this.props.coords ? this.props.coords.longitude : defaultCenter.lng}
           key={markers.length + 1}
           index={markers.length + 1}
         />
       );
     }
-
-    const defaultCenter = { lat: 50.08804, lng: 14.42076 };
-    const defaultZoom = 7;
 
     return (
       <div className="fullWidthContainer">
@@ -169,6 +172,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
           <GoogleMapReact
             bootstrapURLKeys={{ key: GoogleMapsApiKey }}
             defaultCenter={defaultCenter}
+            center={defaultCenter}
             defaultZoom={defaultZoom}
             options={{
               scrollwheel: false,

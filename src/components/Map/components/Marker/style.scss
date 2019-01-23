@@ -11,7 +11,7 @@
     width: 65px;
     height: 64px;
 
-    &:after {   
+    &:after {
       width: 25px;
       height: 25px;
       margin: 0;
@@ -33,8 +33,8 @@
     &:after {
       width: 14px;
       height: 14px;
-      top: 9px;
-      left: 8px;
+      top: 8.5px;
+      left: 8.5px;
     }
     &:before {
       width: 30px;
@@ -84,21 +84,20 @@
     width: 50px;
     height: 50px;
     opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(0);
+    transform: translate3d(-50%, -50%, 0) scale(1);
     background-color: transparentize($lightBlue, 0.65);
-    border: 2px solid ($lightBlue, 0.4);
   }
 
   &:after {
-    animation: pulse 1.3s ease-in-out infinite normal forwards;
+    animation: pulseScale 1.3s cubic-bezier(0.39, 0.575, 0.565, 1) infinite forwards;
   }
 
   &:before {
-    animation: pulse 1.3s 350ms ease-in-out infinite normal forwards;
-  }
+    animation: pulseScale 1.3s cubic-bezier(0.39, 0.575, 0.565, 1) 600ms infinite forwards;
+  }  
 }
 
-@keyframes pulse {
+@keyframes pulseScale {
   0% {
     opacity: 0;
     transform: translate3d(-50%, -50%, 0) scale(0);
