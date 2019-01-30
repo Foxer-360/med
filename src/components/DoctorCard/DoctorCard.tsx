@@ -3,6 +3,13 @@ import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import * as R from 'ramda';
+
+const GET_CONTEXT = gql`{
+  datasourceItems @client
+}`;
 
 export interface DoctorCardProps {
   data: {
@@ -34,95 +41,135 @@ export interface DoctorCardProps {
 }
 
 const DoctorCard = (props: DoctorCardProps) => {
-  const {
-    name,
-    specialization,
-    phone,
-    nurse,
-    doctorImage,
-    clinicImage,
-    clinicName,
-    clinicExtraInfo,
-    clinicAddress,
-    schedule,
-    additionalInfo,
-  } = props.data;
 
+  
   return (
-    <section className={'doctorCard'}>
-      <div className="container">
-        <div className={'doctorCard__main'}>
-          {(doctorImage && <Media data={doctorImage} type="image" />) || (
-            <img src="/assets/medicon/images/doctorIcon.svg" />
-          )}
+    <Query query={GET_CONTEXT}>{({ error, loading, data }) => {
+      if (error) { return 'Error...'; }
+      if (loading) { return 'Loading...'; }
+      
+      const { datasourceItems } = data;
 
-          {name && <h3 className={'gradientHeading'}>{name}</h3>}
+      const regex = /%([^%]*)%/g;
+      let stringifiedData = JSON.stringify(props.data);
+      let result;
+      let matches = [];
+      while (result = regex.exec(stringifiedData)) {
+        console.log(result);
+        if (result[1]) {
+          try {
+            const searchKeys = result[1].split(',');
+            console.log(searchKeys);
+            if (Array.isArray(searchKeys) && searchKeys.length > 0) {
+              const getValueFromDatasourceItems = R.path(searchKeys);
+              console.log(datasourceItems[datasourceItems.length - 1]);
+              const replacement = getValueFromDatasourceItems(datasourceItems[datasourceItems.length - 1].content);
+              console.log(result, replacement);
+              if (replacement) {
+                
+                stringifiedData = stringifiedData.replace(result[0], replacement);
+              }
+            }    
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      }
+      
+      const parsedData = JSON.parse(stringifiedData);
+      console.log(parsedData);
+      const {
+        name,
+        specialization,
+        phone,
+        nurse,
+        doctorImage,
+        clinicImage,
+        clinicName,
+        clinicExtraInfo,
+        clinicAddress,
+        schedule,
+        additionalInfo,
+      } = parsedData;
 
-          {specialization && <p className={'doctorCard__main__spe'}>{specialization}</p>}
 
-          {nurse && (
-            <p className={'doctorCard__main__sis'}>
-              Sestra: <strong>{nurse}</strong>
-            </p>
-          )}
+
+      return (<section className={'doctorCard'}>
+        <div className="container">
+          <div className={'doctorCard__main'}>
+            {(doctorImage && <Media data={doctorImage} type="image" />) || (
+              <img src="/assets/medicon/images/doctorIcon.svg" />
+            )}
+
+            {name && <h3 className={'gradientHeading'}>{name}</h3>}
+
+            {specialization && <p className={'doctorCard__main__spe'}>{specialization}</p>}
+
+            {nurse && (
+              <p className={'doctorCard__main__sis'}>
+                Sestra: <strong>{nurse}</strong>
+              </p>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div className={'fullwidthContainer'}>
-        <div className="doctorCard__info">
-          <div className={'container'}>
-            <div className="doctorCard__info__wrapper">
-              <div className={'doctorCard__info__item'}>
-                <img src="/assets/medicon/images/stethoscopeIcon.svg" />
-                <p>{specialization}</p>
-              </div>
+        <div className={'fullwidthContainer'}>
+          <div className="doctorCard__info">
+            <div className={'container'}>
+              <div className="doctorCard__info__wrapper">
+                <div className={'doctorCard__info__item'}>
+                  <img src="/assets/medicon/images/stethoscopeIcon.svg" />
+                  <p>{specialization}</p>
+                </div>
 
-              <div className={'doctorCard__info__item'}>
-                <img src="/assets/medicon/images/phoneIcon.svg" />
-                {phone && <p>{phone}</p>}
-              </div>
+                <div className={'doctorCard__info__item'}>
+                  <img src="/assets/medicon/images/phoneIcon.svg" />
+                  {phone && <p>{phone}</p>}
+                </div>
 
-              <div className={'doctorCard__info__item'}>
-                <img src="/assets/medicon/images/geoIcon.svg" />
+                <div className={'doctorCard__info__item'}>
+                  <img src="/assets/medicon/images/geoIcon.svg" />
 
-                <div>
-                  <p>
-                    <strong>{clinicName}</strong>
-                    {clinicExtraInfo && <span>{' - ' + clinicExtraInfo}</span>}
-                  </p>
-                  <p>{clinicAddress}</p>
+                  <div>
+                    <p>
+                      <strong>{clinicName}</strong>
+                      {clinicExtraInfo && <span>{' - ' + clinicExtraInfo}</span>}
+                    </p>
+                    <p>{clinicAddress}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={'container'}>
-        <div className={'doctorCard__timePlace'}>
-          <div>{schedule && <DoctorSchedule data={schedule} />}</div>
+        <div className={'container'}>
+          <div className={'doctorCard__timePlace'}>
+            <div>{schedule && <DoctorSchedule data={schedule} />}</div>
 
-          <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>
-        </div>
+            <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>
+          </div>
 
-        <div className={'doctorCard__btnHolder'}>
-          <Button classes={'btn--blueBkg'} noArrow={true}>
-            objednat
-          </Button>
-        </div>
+          <div className={'doctorCard__btnHolder'}>
+            <Button classes={'btn--blueBkg'} noArrow={true}>
+              objednat
+            </Button>
+          </div>
 
-        <div className={'doctorCard__divider'}>
-          <div className="dividerCircles">
-            <div />
+          <div className={'doctorCard__divider'}>
+            <div className="dividerCircles">
+              <div />
+            </div>
           </div>
         </div>
-      </div>
 
-      {additionalInfo &&
-        additionalInfo.map((item, i) => {
-          return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
-        })}
-    </section>
+        {additionalInfo &&
+          additionalInfo.map((item, i) => {
+            return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
+          })}
+      </section>);
+
+    }}</Query>
   );
 };
 
