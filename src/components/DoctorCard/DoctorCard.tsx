@@ -50,7 +50,7 @@ const DoctorCard = (props: DoctorCardProps) => {
       
       const { datasourceItems } = data;
 
-      const regex = /%([^%]*)%/g;
+      const regex = /%([^%]*)%/mg;
       let stringifiedData = JSON.stringify(props.data);
       let result;
       let matches = [];
