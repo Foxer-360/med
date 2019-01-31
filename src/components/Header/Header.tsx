@@ -136,7 +136,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       {mainNavItems &&
                         mainNavItems.map((navItem, i) => (
                           <li key={i}>
-                            <DomLink to={navItem.url ? navItem.url : ''}>{navItem.name}</DomLink>
+                            <DomLink to={navItem.url ? navItem.url : ''}>{navItem.name || navItem.title}</DomLink>
                           </li>
                         ))}
                     </ul>
@@ -160,7 +160,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                         <li key={i}>
                           {
                             <DomLink to={navItem.url ? navItem.url : ''} onClick={() => this.closeMenu()}>
-                              {navItem.name}
+                              {navItem.name || navItem.title}
                             </DomLink>}
                         </li>
                       ))}
