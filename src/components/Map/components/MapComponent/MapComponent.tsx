@@ -63,14 +63,14 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
       activeMarkerCenter: { lat, lng },
     });
     e.stopPropagation();
-  };
+  }
 
   handleMarkerClose = () => {
     this.setState({
       activeMarker: null,
       activeMarkerCenter: null,
     });
-  };
+  }
 
   getMapBounds = (map, maps, locations) => {
     const bounds = new maps.LatLngBounds();
@@ -79,18 +79,18 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
       bounds.extend(new maps.LatLng(location.props.lat, location.props.lng));
     });
     return bounds;
-  };
+  }
 
   apiIsLoaded = (map, maps, locations) => {
     if (map) {
       const bounds = this.getMapBounds(map, maps, locations);
       map.fitBounds(bounds);
     }
-  };
+  }
 
   deg2Rad = deg => {
     return (deg * Math.PI) / 180;
-  };
+  }
 
   pythagorasEquirectangular = (lat1, lon1, lat2, lon2) => {
     lat1 = this.deg2Rad(lat1);
@@ -102,7 +102,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     const y = lat2 - lat1;
     const d = Math.sqrt(x * x + y * y) * R;
     return d;
-  };
+  }
 
   nearestClinic = (latitude, longitude) => {
     let mindif = 99999;
@@ -118,7 +118,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     }
 
     return clinics[closest];
-  };
+  }
 
   public render() {
     let markers = [];
@@ -149,7 +149,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
             />
           );
         }
-      });
+      });  
   
       markers.push(
         <Marker
@@ -183,7 +183,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
             {markers}
           </GoogleMapReact>
 
-          {this.state.activeMarker && <MapBox />}
+          {this.state.activeMarker && <MapBox close={this.handleMarkerClose}/>}
         </section>
       </div>
     );

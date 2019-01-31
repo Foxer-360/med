@@ -129,7 +129,7 @@ var MapComponent = /** @class */ (function (_super) {
                         var map = _a.map, maps = _a.maps;
                         return _this.apiIsLoaded(map, maps, markers);
                     } }, markers),
-                this.state.activeMarker && React.createElement(MapBox, null))));
+                this.state.activeMarker && React.createElement(MapBox, { close: this.handleMarkerClose }))));
     };
     return MapComponent;
 }(React.Component));

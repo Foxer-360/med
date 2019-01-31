@@ -1,7 +1,7 @@
 .marker {
   position: absolute;
   transform: rotate(0deg);
-  z-index: 7;
+  z-index: 200;
   // background-color: red;
   transform-origin: left top;
   transform: rotate(-135deg);
@@ -94,7 +94,7 @@
 
   &:before {
     animation: pulseScale 1.3s cubic-bezier(0.39, 0.575, 0.565, 1) 600ms infinite forwards;
-  }  
+  }
 }
 
 @keyframes pulseScale {

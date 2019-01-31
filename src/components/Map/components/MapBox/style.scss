@@ -7,9 +7,30 @@
   z-index: 199;
   right: 100px;
 
-  //
-
   @include vertical-center;
+
+  .mapBox__close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 300ms ease;
+
+    svg {
+      fill: white;
+      transition: 300ms ease;
+    }
+
+    &:hover {
+      svg {
+        fill: white;
+        // transform: scale(0.8);
+      }
+    }
+  }
 
   .pcTitle {
     border: none;
