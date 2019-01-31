@@ -23,21 +23,18 @@ var DoctorCard = function (props) {
         var datasourceItems = data.datasourceItems;
         var regex = /%([^%]*)%/g;
         var stringifiedData = JSON.stringify(props.data);
+        var replacedData = String(stringifiedData);
         var result;
-        var matches = [];
         while (result = regex.exec(stringifiedData)) {
-            console.log(result);
             if (result[1]) {
                 try {
                     var searchKeys = result[1].split(',');
                     console.log(searchKeys);
                     if (Array.isArray(searchKeys) && searchKeys.length > 0) {
                         var getValueFromDatasourceItems = R.path(searchKeys);
-                        console.log(datasourceItems[datasourceItems.length - 1]);
                         var replacement = getValueFromDatasourceItems(datasourceItems[datasourceItems.length - 1].content);
-                        console.log(result, replacement);
                         if (replacement) {
-                            stringifiedData = stringifiedData.replace(result[0], replacement);
+                            replacedData = replacedData.replace(result[0], replacement);
                         }
                     }
                 }
@@ -46,7 +43,7 @@ var DoctorCard = function (props) {
                 }
             }
         }
-        var parsedData = JSON.parse(stringifiedData);
+        var parsedData = JSON.parse(replacedData);
         console.log(parsedData);
         var name = parsedData.name, specialization = parsedData.specialization, phone = parsedData.phone, nurse = parsedData.nurse, doctorImage = parsedData.doctorImage, clinicImage = parsedData.clinicImage, clinicName = parsedData.clinicName, clinicExtraInfo = parsedData.clinicExtraInfo, clinicAddress = parsedData.clinicAddress, schedule = parsedData.schedule, additionalInfo = parsedData.additionalInfo;
         return (React.createElement("section", { className: 'doctorCard' },

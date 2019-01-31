@@ -50,24 +50,22 @@ const DoctorCard = (props: DoctorCardProps) => {
       
       const { datasourceItems } = data;
 
-      const regex = /%([^%]*)%/mg;
+      const regex = /%([^%]*)%/g;
       let stringifiedData = JSON.stringify(props.data);
+      let replacedData = String(stringifiedData);
       let result;
-      let matches = [];
+      
       while (result = regex.exec(stringifiedData)) {
-        console.log(result);
         if (result[1]) {
           try {
             const searchKeys = result[1].split(',');
             console.log(searchKeys);
             if (Array.isArray(searchKeys) && searchKeys.length > 0) {
               const getValueFromDatasourceItems = R.path(searchKeys);
-              console.log(datasourceItems[datasourceItems.length - 1]);
               const replacement = getValueFromDatasourceItems(datasourceItems[datasourceItems.length - 1].content);
-              console.log(result, replacement);
               if (replacement) {
                 
-                stringifiedData = stringifiedData.replace(result[0], replacement);
+                replacedData = replacedData.replace(result[0], replacement);
               }
             }    
           } catch (e) {
@@ -76,7 +74,7 @@ const DoctorCard = (props: DoctorCardProps) => {
         }
       }
       
-      const parsedData = JSON.parse(stringifiedData);
+      const parsedData = JSON.parse(replacedData);
       console.log(parsedData);
       const {
         name,
