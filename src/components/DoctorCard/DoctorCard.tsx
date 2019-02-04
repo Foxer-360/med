@@ -3,6 +3,7 @@ import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
+import List from '../List';
 
 export interface DoctorCardProps {
   data: {
@@ -100,7 +101,9 @@ const DoctorCard = (props: DoctorCardProps) => {
 
       <div className={'container'}>
         <div className={'doctorCard__timePlace'}>
-          <div>{schedule && <DoctorSchedule data={schedule} />}</div>
+          <div><List data={schedule}>
+            {({ data }) => data && <DoctorSchedule data={data} />}
+          </List></div>
 
           <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>
         </div>
@@ -118,10 +121,12 @@ const DoctorCard = (props: DoctorCardProps) => {
         </div>
       </div>
 
-      {additionalInfo &&
-        additionalInfo.map((item, i) => {
+      <List data={additionalInfo}>
+        {({ data }) => data &&
+        data.map((item, i) => {
           return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
         })}
+      </List>
     </section>
   );
 };

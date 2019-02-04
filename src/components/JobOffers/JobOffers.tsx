@@ -1,6 +1,7 @@
 import * as React from 'react';
 import getImageUrl from '@source/helpers/getImageUrl';
 import Link from '@source/partials/Link';
+import List from '../List';
 
 interface Offer {
   title: string;
@@ -25,8 +26,9 @@ const jobOffers = (props: JobOffersProps) => {
         {title && <h3>{title}</h3>}
 
         <div className="grid offers">
-          {offers &&
-            offers.map((offer, index) => (
+          <List data={offers}>
+          {({ data }) => data &&
+            data.map((offer, index) => (
               <Link
                 url={offer.url.url}
                 key={index}
@@ -39,6 +41,7 @@ const jobOffers = (props: JobOffersProps) => {
                 )}
               </Link>
             ))}
+          </List>
         </div>
       </section>
     </div>

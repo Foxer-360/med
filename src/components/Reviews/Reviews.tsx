@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ReviewElement from './components/ReviewElement';
+import Link from '@source/partials/Link';
 
 interface Reviews {
   cite: string;
@@ -23,9 +24,11 @@ const Reviews = (props: ReviewsProps) => {
       {title && <h3>{title}</h3>}
       <div className="container">
         <div className="grid reviews__list">
-          {reviews && reviews.map((review, index) => (
-            <ReviewElement key={index} image={review.image} cite={review.cite} starCount={review.starCount} />
-          ))}
+          <Link data={reviews}>
+            {({ data }) => data && data.map((review, index) => (
+              <ReviewElement key={index} image={review.image} cite={review.cite} starCount={review.starCount} />
+            ))}
+          </Link>
         </div>
       </div>
     </section>

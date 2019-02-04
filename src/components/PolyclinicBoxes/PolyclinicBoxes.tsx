@@ -24,8 +24,9 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
         {title && <h3>{title}</h3>}
 
         <ul className={'grid'}>
-          {polyclinics &&
-            polyclinics.map((polyclinic, index) => {
+          <Link data={polyclinics}>
+          {({ data }) => data &&
+            data.map((polyclinic, index) => {
               return (
                 <li key={index}>
                   <Link url={polyclinic.url.url}>
@@ -36,6 +37,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
                 </li>
               );
             })}
+          </Link>
         </ul>
       </div>
     </section>

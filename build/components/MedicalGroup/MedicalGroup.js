@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
+import Link from '@source/partials/Link';
 var MedicalGroup = /** @class */ (function (_super) {
     __extends(MedicalGroup, _super);
     function MedicalGroup(props) {
@@ -49,16 +50,20 @@ var MedicalGroup = /** @class */ (function (_super) {
             React.createElement("section", { className: 'medicalGroup' },
                 title && React.createElement("h4", null, "sou\u010D\u00E1sti skupiny medicon jsou tyto spole\u010Dnosti"),
                 React.createElement("div", { className: 'medicalGroup__list', ref: this.list, style: { height: this.state.listHeight > 0 && this.state.listHeight } },
-                    React.createElement("ul", null, companies &&
-                        companies.map(function (item, index) {
-                            return (React.createElement("li", { key: index, className: "medicalGroup__list__item " + (_this.state.activeIndex === index ? 'active' : ''), onClick: function () { return _this.handleItemClick(index); } },
-                                React.createElement("p", { className: 'medicalGroup__list__item__title' },
-                                    React.createElement("span", null, item.name),
-                                    " - ",
-                                    React.createElement("span", null, item.subtitle)),
-                                React.createElement("div", { className: 'medicalGroup__list__item__text' }, item.text && (React.createElement(ReactMarkdown, { source: item.text, renderers: {
-                                        paragraph: function (props) { return React.createElement("p", null, props.children); },
-                                    } })))));
+                    React.createElement("ul", null,
+                        React.createElement(Link, { data: companies }, function (_a) {
+                            var data = _a.data;
+                            return data &&
+                                data.map(function (item, index) {
+                                    return (React.createElement("li", { key: index, className: "medicalGroup__list__item " + (_this.state.activeIndex === index ? 'active' : ''), onClick: function () { return _this.handleItemClick(index); } },
+                                        React.createElement("p", { className: 'medicalGroup__list__item__title' },
+                                            React.createElement("span", null, item.name),
+                                            " - ",
+                                            React.createElement("span", null, item.subtitle)),
+                                        React.createElement("div", { className: 'medicalGroup__list__item__text' }, item.text && (React.createElement(ReactMarkdown, { source: item.text, renderers: {
+                                                paragraph: function (props) { return React.createElement("p", null, props.children); },
+                                            } })))));
+                                });
                         }))))));
     };
     return MedicalGroup;

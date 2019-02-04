@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '@source/partials/Button';
 import getImageUrl from '@source/helpers/getImageUrl';
 import SelectButton from './components/index';
+import List from '../List';
 
 interface Position {
   name: string;
@@ -35,29 +36,31 @@ const JobPositions = (props: JobPositionsProps) => {
       <SelectButton polyclinics={polyclinics} />
 
       <div className={'grid positions'}>
-        {positions &&
-          positions.map((position, index) => (
-            <div
-              className={'positions__element'}
-              style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
-              key={index}
-            >
-              <div className={'positions__element-content'}>
-                <p>{position.name}</p>
-                <Button
-                  classes={'btn--whiteBorder btn--fullWidth'}
-                  url={position.url}
-                >
-                  Vice info
-                </Button>
-              </div>
-
+        <List data={positions}>
+          {({ data }) => data &&
+            data.map((position, index) => (
               <div
-                className={'positions__colorGradient'}
-                style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
-              />
-            </div>
-          ))}
+                className={'positions__element'}
+                style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
+                key={index}
+              >
+                <div className={'positions__element-content'}>
+                  <p>{position.name}</p>
+                  <Button
+                    classes={'btn--whiteBorder btn--fullWidth'}
+                    url={position.url}
+                  >
+                    Vice info
+                  </Button>
+                </div>
+
+                <div
+                  className={'positions__colorGradient'}
+                  style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
+                />
+              </div>
+            ))}
+          </List>
       </div>
 
       <Button classes="hCenterBlock btn--blueBkg btn--down btn--fullWidth">další pozice</Button>

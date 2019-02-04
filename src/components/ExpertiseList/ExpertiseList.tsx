@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
+import List from '../List';
 
 interface Expertise {
   title: string;
@@ -25,8 +26,9 @@ const ExpertiseList = (props: ExpertiseListProps) => {
       {title && <h3>{title}</h3>}
 
       <div className="grid-container">
-        {expertiseList &&
-          expertiseList.map((item, index) => (
+        <List data={expertiseList}>
+          {({ data }) => data &&
+            data.map((item, index) => (
             <Link url={item.url.url} key={index}>
               <div className="expertiseList__element">
                 {(item.image && <Media type={'image'} data={item.image} />) || (
@@ -37,6 +39,7 @@ const ExpertiseList = (props: ExpertiseListProps) => {
               </div>
             </Link>
           ))}
+        </List>
       </div>
 
       <div className={'container'}>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Swipeable from 'react-swipeable';
 import Media from '@source/partials/Media';
+import Link from '@source/partials/Link';
 
 interface Item {
   name: string;
@@ -152,7 +153,9 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
                   ref={this.timeline}
                   style={{ transform: `translate3d(${this.state.x + 'px'},-7px,0)` }}
                 >
-                  {this.renderPoints(items)}
+                  <Link data={items}>
+                  {({ data }) => this.renderPoints(data)}
+                  </Link>
                 </div>
               </Swipeable>
             </div>

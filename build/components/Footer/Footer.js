@@ -32,6 +32,7 @@ import HelpPopup from './components/HelpPopup';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
+import List from '../List';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
@@ -63,16 +64,23 @@ var Footer = /** @class */ (function (_super) {
             React.createElement(HelpPopup, null),
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: "flexRow flexAlign--space-between" },
-                    links && links.length > 0 &&
-                        React.createElement("ul", { className: 'footer__list' }, links.slice(0, 5).map(function (link, index) { return (React.createElement("li", { key: index },
-                            React.createElement("a", { href: link.url }, link.text))); })),
-                    links && links.length > 5 &&
-                        React.createElement("ul", { className: 'footer__list' }, links.slice(5, 10).map(function (link, index) { return (React.createElement("li", { key: index },
-                            React.createElement("a", { href: link.url }, link.text))); })),
-                    links && links.length > 10 &&
-                        React.createElement("ul", { className: 'footer__list' }, links.slice(10, 15).map(function (link, index) { return (React.createElement("li", { key: index },
-                            React.createElement("a", { href: link.url }, link.text))); })),
-                    social && React.createElement(Social, { info: social, icons: socialIcons }))),
+                    React.createElement(List, { data: links }, function (_a) {
+                        var data = _a.data;
+                        return (React.createElement(React.Fragment, null,
+                            data && data.length > 0 &&
+                                React.createElement("ul", { className: 'footer__list' }, data.slice(0, 5).map(function (link, index) { return (React.createElement("li", { key: index },
+                                    React.createElement("a", { href: link.url }, link.text))); })),
+                            data && data.length > 5 &&
+                                React.createElement("ul", { className: 'footer__list' }, data.slice(5, 10).map(function (link, index) { return (React.createElement("li", { key: index },
+                                    React.createElement("a", { href: link.url }, link.text))); })),
+                            data && data.length > 10 &&
+                                React.createElement("ul", { className: 'footer__list' }, data.slice(10, 15).map(function (link, index) { return (React.createElement("li", { key: index },
+                                    React.createElement("a", { href: link.url }, link.text))); }))));
+                    }),
+                    social && React.createElement(List, { data: socialIcons }, function (_a) {
+                        var data = _a.data;
+                        return React.createElement(Social, { info: social, icons: data });
+                    }))),
             React.createElement("div", { className: "bottom" },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "copyrights grid" },

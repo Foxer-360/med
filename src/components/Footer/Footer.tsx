@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 import Link from '../../partials/Link';
+import List from '../List';
 
 const GET_CONTEXT = gql`
   {
@@ -88,39 +89,43 @@ class Footer extends React.Component<FooterProps, FooterState> {
 
         <div className="container">
           <div className="flexRow flexAlign--space-between">
+          <List data={links}>
+          {({ data }) => {
+            return (<>
+              {data && data.length > 0 &&
+                <ul className={'footer__list'}>
+                  {data.slice(0, 5).map((link, index) => (
+                    <li key={index}>
+                      <a href={link.url}>{link.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              }
 
-            {links && links.length > 0 &&
-              <ul className={'footer__list'}>
-                {links.slice(0, 5).map((link, index) => (
-                  <li key={index}>
-                    <a href={link.url}>{link.text}</a>
-                  </li>
-                ))}
-              </ul>
-            }
+              {data && data.length > 5 &&
+                <ul className={'footer__list'}>
+                  {data.slice(5, 10).map((link, index) => (
+                    <li key={index}>
+                      <a href={link.url}>{link.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              }
 
-            {links && links.length > 5 &&
-              <ul className={'footer__list'}>
-                {links.slice(5, 10).map((link, index) => (
-                  <li key={index}>
-                    <a href={link.url}>{link.text}</a>
-                  </li>
-                ))}
-              </ul>
-            }
-
-            {links && links.length > 10 &&
-              <ul className={'footer__list'}>
-                {links.slice(10, 15).map((link, index) => (
-                  <li key={index}>
-                    <a href={link.url}>{link.text}</a>
-                  </li>
-                ))}
-              </ul>
-            }
-
-            {social && <Social info={social} icons={socialIcons} />}
-
+              {data && data.length > 10 &&
+                <ul className={'footer__list'}>
+                  {data.slice(10, 15).map((link, index) => (
+                    <li key={index}>
+                      <a href={link.url}>{link.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              }
+            </>);
+          }}</List>  
+          {social && <List data={socialIcons}>
+            {({ data }) => <Social info={social} icons={data} />}
+          </List>}
           </div>
         </div>
 

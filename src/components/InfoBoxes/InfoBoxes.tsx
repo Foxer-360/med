@@ -1,5 +1,6 @@
 import * as React from 'react';
 import InfoElement from './components/InfoElement';
+import List from '../List';
 
 interface Box {
   title: string;
@@ -27,18 +28,20 @@ const InfoBoxes = (props: InfoBoxesProps) => {
 
       <div className={'container'}>
         <div className={'grid info-boxes__list'}>
-          {boxes &&
-            boxes.map((box, i) => (
-              <InfoElement
-                link={box.link}
-                gradientColor={box.gradientColor}
-                title={box.title}
-                image={box.image}
-                button={box.button}
-                titleColor={box.titleColor}
-                key={i}
-              />
+          <List data={boxes}>
+            {({ data }) => data &&
+              data.map((box, i) => (
+                <InfoElement
+                  link={box.link}
+                  gradientColor={box.gradientColor}
+                  title={box.title}
+                  image={box.image}
+                  button={box.button}
+                  titleColor={box.titleColor}
+                  key={i}
+                />
             ))}
+          </List>
         </div>
       </div>
     </section>

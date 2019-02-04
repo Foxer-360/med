@@ -3,6 +3,7 @@ import DividerCircles from '../DividerCircles';
 import ExpertiseDescriptionCare from './components/ExpertiseDescriptionCare';
 import ExpertiseDescriptionExamination from './components/ExpertiseDescriptionExamination';
 import ExpertiseDescriptionBoxes from './components/ExpertiseDescriptionBoxes';
+import List from '../List';
 
 interface Examination {
   title: string;
@@ -40,13 +41,21 @@ const Description = (props: DescriptionProps) => {
     <div className={'container'}>
     <section className={'expertiseDescription'}>
       <ExpertiseDescriptionCare title={titleCare} firstText={firstText} secondText={secondText} />
-      <ExpertiseDescriptionExamination 
-        title={titleExamination} 
-        examinations={examinations} 
-      />
+      <List data={examinations}>
+        {({ data }) => data && 
+        <ExpertiseDescriptionExamination 
+          title={titleExamination} 
+          examinations={data} 
+        />}
+      </List>
       <DividerCircles />
-      <ExpertiseDescriptionBoxes boxes={boxes} />
-      </section>
+      <List data={boxes}>
+        {({ data }) => data && 
+        <ExpertiseDescriptionBoxes 
+          boxes={data} 
+        />}
+      </List>
+    </section>
     </div>
   );
 };

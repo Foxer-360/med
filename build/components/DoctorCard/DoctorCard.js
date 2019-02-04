@@ -3,6 +3,7 @@ import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
+import List from '../List';
 var DoctorCard = function (props) {
     var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicImage = _a.clinicImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, schedule = _a.schedule, additionalInfo = _a.additionalInfo;
     return (React.createElement("section", { className: 'doctorCard' },
@@ -33,17 +34,24 @@ var DoctorCard = function (props) {
                                 React.createElement("p", null, clinicAddress))))))),
         React.createElement("div", { className: 'container' },
             React.createElement("div", { className: 'doctorCard__timePlace' },
-                React.createElement("div", null, schedule && React.createElement(DoctorSchedule, { data: schedule })),
+                React.createElement("div", null,
+                    React.createElement(List, { data: schedule }, function (_a) {
+                        var data = _a.data;
+                        return data && React.createElement(DoctorSchedule, { data: data });
+                    })),
                 React.createElement("div", null, clinicImage && React.createElement(Media, { data: clinicImage, type: "image" }))),
             React.createElement("div", { className: 'doctorCard__btnHolder' },
                 React.createElement(Button, { classes: 'btn--blueBkg', noArrow: true }, "objednat")),
             React.createElement("div", { className: 'doctorCard__divider' },
                 React.createElement("div", { className: "dividerCircles" },
                     React.createElement("div", null)))),
-        additionalInfo &&
-            additionalInfo.map(function (item, i) {
-                return React.createElement(TextBlock, { key: i, data: { title: item.title, text: item.text } });
-            })));
+        React.createElement(List, { data: additionalInfo }, function (_a) {
+            var data = _a.data;
+            return data &&
+                data.map(function (item, i) {
+                    return React.createElement(TextBlock, { key: i, data: { title: item.title, text: item.text } });
+                });
+        })));
 };
 export default DoctorCard;
 //# sourceMappingURL=DoctorCard.js.map

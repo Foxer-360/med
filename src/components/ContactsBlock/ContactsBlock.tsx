@@ -1,6 +1,7 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
 import ReactMarkdown from 'react-markdown';
+import List from '../List';
 
 interface ManagementContact {
   name: string;
@@ -51,14 +52,16 @@ const ContactsBlock = (props: ContactsBlockProps) => {
           {managementTitle && <h4>{managementTitle}</h4>}
           <div className={'grid contacts-block__main'}>
             
-            {managementContacts && managementContacts.map((mContact, i) => (
-              <div className={'contacts-block__main__element'} key={i}>
-                {mContact.name && <p className={'contacts-block__name'}>{mContact.name}</p>}
-                {mContact.positions && <p className={'contacts-block__position'}>{mContact.positions}</p>}
-                {mContact.emails && <ReactMarkdown className={'contacts-block__email'} source={mContact.emails} />}
-                {mContact.phones && <ReactMarkdown source={mContact.phones} />}
-              </div>
-            ))}
+            <List data={managementContacts}>
+              {({ data }) => data && data.map((mContact, i) => (
+                <div className={'contacts-block__main__element'} key={i}>
+                  {mContact.name && <p className={'contacts-block__name'}>{mContact.name}</p>}
+                  {mContact.positions && <p className={'contacts-block__position'}>{mContact.positions}</p>}
+                  {mContact.emails && <ReactMarkdown className={'contacts-block__email'} source={mContact.emails} />}
+                  {mContact.phones && <ReactMarkdown source={mContact.phones} />}
+                </div>
+              ))}
+            </List>
 
           </div>
         </div>
@@ -66,16 +69,16 @@ const ContactsBlock = (props: ContactsBlockProps) => {
         <div>
           {nextTitle && <h4>{nextTitle}</h4>}
           <div className={'grid contacts-block__main'}>
-            
-            {nextContacts && nextContacts.map((nContact, i) => (
-              <div className={'contacts-block__main__element'} key={i}>
-                {nContact.name && <p className={'contacts-block__name'}>{nContact.name}</p>}
-                {nContact.positions && <p className={'contacts-block__position'}>{nContact.positions}</p>}
-                {nContact.emails && <ReactMarkdown className={'contacts-block__email'} source={nContact.emails} />}
-                {nContact.phones && <ReactMarkdown source={nContact.phones} />}
-              </div>
-            ))}
-
+            <List data={nextContacts}>
+              {({ data }) => data && data.map((nContact, i) => (
+                <div className={'contacts-block__main__element'} key={i}>
+                  {nContact.name && <p className={'contacts-block__name'}>{nContact.name}</p>}
+                  {nContact.positions && <p className={'contacts-block__position'}>{nContact.positions}</p>}
+                  {nContact.emails && <ReactMarkdown className={'contacts-block__email'} source={nContact.emails} />}
+                  {nContact.phones && <ReactMarkdown source={nContact.phones} />}
+                </div>
+              ))}
+            </List>
           </div>
         </div>
 
@@ -83,7 +86,8 @@ const ContactsBlock = (props: ContactsBlockProps) => {
 
         <div className={'grid contacts-block__list'}>
           
-          {otherContacts && otherContacts.map((oContact, i) => (
+          <List data={otherContacts}>
+          {({ data }) => data && data.map((oContact, i) => (
             <div className={'contacts-block__main__element'} key={i}>
               {oContact.name && <p className={'contacts-block__name'}>{oContact.name}</p>}
               {oContact.positions && <p className={'contacts-block__position'}>{oContact.positions}</p>}
@@ -91,7 +95,7 @@ const ContactsBlock = (props: ContactsBlockProps) => {
               {oContact.phones && <ReactMarkdown source={oContact.phones} />}
             </div>
           ))}
-          
+          </List>
         </div>
       </div>
     </div>

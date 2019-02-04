@@ -3,6 +3,7 @@ import PcTitle from './components/title';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
 import ReactMarkdown from 'react-markdown';
+import Link from '@source/partials/Link';
 
 interface Clinic {
   name: string;
@@ -30,8 +31,9 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
 
   return (
     <section className="polyclinicsList">
-      {clinics &&
-        clinics.map((clinic, index) => (
+    <Link data={clinics}>
+      {({ data }) => data &&
+        data.map((clinic, index) => (
           <div className={'pcitem'} key={index}>
             <div className="fullWidthContainer">
               <div className="container">
@@ -104,6 +106,7 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
             </div>
           </div>
         ))}
+      </Link>
     </section>
   );
 };

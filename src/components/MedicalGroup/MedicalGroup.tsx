@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
+import Link from '@source/partials/Link';
 
 export interface MedicalGroupProps {
   data: {
@@ -66,31 +67,33 @@ class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState>
             style={{ height: this.state.listHeight > 0 && this.state.listHeight }}
           >
             <ul>
-              {companies &&
-                companies.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className={`medicalGroup__list__item ${this.state.activeIndex === index ? 'active' : ''}`}
-                      onClick={() => this.handleItemClick(index)}
-                    >
-                      <p className={'medicalGroup__list__item__title'}>
-                        <span>{item.name}</span> - <span>{item.subtitle}</span>
-                      </p>
+              <Link data={companies}>
+                {({ data }) => data &&
+                  data.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className={`medicalGroup__list__item ${this.state.activeIndex === index ? 'active' : ''}`}
+                        onClick={() => this.handleItemClick(index)}
+                      >
+                        <p className={'medicalGroup__list__item__title'}>
+                          <span>{item.name}</span> - <span>{item.subtitle}</span>
+                        </p>
 
-                      <div className={'medicalGroup__list__item__text'}>
-                        {item.text && (
-                          <ReactMarkdown
-                            source={item.text}
-                            renderers={{
-                              paragraph: (props: any) => <p>{props.children}</p>,
-                            }}
-                          />
-                        )}
-                      </div>
-                    </li>
-                  );
-                })}
+                        <div className={'medicalGroup__list__item__text'}>
+                          {item.text && (
+                            <ReactMarkdown
+                              source={item.text}
+                              renderers={{
+                                paragraph: (props: any) => <p>{props.children}</p>,
+                              }}
+                            />
+                          )}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </Link>
             </ul>
           </div>
         </section>
