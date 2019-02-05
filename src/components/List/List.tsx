@@ -32,7 +32,7 @@ class List extends React.Component<Properties, {}> {
   render(): JSX.Element {
 
     const { data } = this.props;
-
+    console.log(data);
     if (Array.isArray(data)) {
       return this.props.children({ data });
     }
@@ -62,6 +62,10 @@ class List extends React.Component<Properties, {}> {
                 res.orderBy = this.replaceWithSourceItemValues(data.orderBy, item);
               }
 
+              if (data.filterBy) {
+                res.filterBy = this.replaceWithSourceItemValues(data.filterBy, item);
+              }
+
               Object.keys(res).forEach(key => {
                 if (typeof res[key] === 'string') {
                   let replaced = this.replaceWithSourceItemValues(res[key], item);
@@ -70,7 +74,7 @@ class List extends React.Component<Properties, {}> {
               });
 
               return res;
-            });
+            }).filter(item => !item.filterBy || item.filterBy.toLowerCase().includes(data.includes.toLowerCase()));
 
           if (error) { return <span>Error...</span>; }
 
@@ -102,7 +106,7 @@ class List extends React.Component<Properties, {}> {
         </Query>);
     }
 
-    return (<div>No data</div>);
+    return this.props.children({ data: [] });
   }
 
   replaceWithSourceItemValues(source: string, item: LooseObject) {

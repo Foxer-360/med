@@ -40,6 +40,7 @@ var List = /** @class */ (function (_super) {
     List.prototype.render = function () {
         var _this = this;
         var data = this.props.data;
+        console.log(data);
         if (Array.isArray(data)) {
             return this.props.children({ data: data });
         }
@@ -59,6 +60,9 @@ var List = /** @class */ (function (_super) {
                     if (data.orderBy) {
                         res.orderBy = _this.replaceWithSourceItemValues(data.orderBy, item);
                     }
+                    if (data.filterBy) {
+                        res.filterBy = _this.replaceWithSourceItemValues(data.filterBy, item);
+                    }
                     Object.keys(res).forEach(function (key) {
                         if (typeof res[key] === 'string') {
                             var replaced = _this.replaceWithSourceItemValues(res[key], item);
@@ -66,7 +70,7 @@ var List = /** @class */ (function (_super) {
                         }
                     });
                     return res;
-                });
+                }).filter(function (item) { return !item.filterBy || item.filterBy.toLowerCase().includes(data.includes.toLowerCase()); });
                 if (error) {
                     return React.createElement("span", null, "Error...");
                 }
@@ -105,7 +109,7 @@ var List = /** @class */ (function (_super) {
                             datasourceItems }));
             }));
         }
-        return (React.createElement("div", null, "No data"));
+        return this.props.children({ data: [] });
     };
     List.prototype.replaceWithSourceItemValues = function (source, item) {
         var regex = /%([^%]*)%/g;
