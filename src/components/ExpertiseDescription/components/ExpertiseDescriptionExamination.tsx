@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from '@source/partials/Link';
 
 export interface ExpertiseDescriptionExaminationProps {
   title: string;
@@ -11,29 +12,31 @@ const ExpertiseDescriptionExamination = (props: ExpertiseDescriptionExaminationP
 
   return (
     <div className={'examination'}>
-      {title && <h3>{title}</h3>}
+      <div className="container">
+        {title && <h3>{title}</h3>}
 
-      <div className={'grid examination__blocks hCenterBlock'}>
-        
-        {examinations && examinations.map((examination, i) => {
-          if (examinations.length % 2 !== 0) {
-            lastLong = {
-              gridColumnStart: 'span 2'
-            };
-          }
+        <div className={'grid examination__blocks'}>
           
-          return (
-            <a 
-              style={examinations.length - 1 === i ? lastLong : null} 
-              href={examination.url} 
-              className={'examination__block'} 
-              key={i}
-            >
-              <p>{examination.title}</p>
-            </a>
-          );
-        })}
+          {examinations && examinations.map((examination, i) => {
+            if (examinations.length % 2 !== 0) {
+              lastLong = {
+                gridColumnStart: 'span 2'
+              };
+            }
+            
+            return (
+              <Link
+                key={i}
+                className={'examination__block'}
+                url={examination.url && examination.url.url}
+                style={examinations.length - 1 === i ? lastLong : null}
+              >
+                {examination.title && <p>{examination.title}</p>}
+              </Link>
+            );
+          })}
 
+        </div>
       </div>
     </div> 
   );

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Button from '@source/partials/Button';
 
 export interface ExpertiseDescriptionCareProps {
   title: string;
@@ -29,9 +28,15 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
         <div className={'hCenterBlock'}>
           {this.props.firstText && <ReactMarkdown source={this.props.firstText} />}
         </div>
-        <h3 style={{ cursor: 'pointer' }} onClick={() => this.setState({ showHiddenText: !this.state.showHiddenText })}>
-          Více info
-        </h3>
+        {this.props.secondText.length > 1 && 
+          <h3 
+            style={{ cursor: 'pointer' }} 
+            onClick={() => this.setState({ showHiddenText: !this.state.showHiddenText })}
+          >
+            Více informací
+          </h3>
+        }
+        
         {this.state.showHiddenText ? 
           <div className={'hCenterBlock'}>
             {this.props.secondText && <ReactMarkdown source={this.props.secondText} />}

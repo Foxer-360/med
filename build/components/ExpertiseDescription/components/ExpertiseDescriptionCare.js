@@ -28,7 +28,8 @@ var ExpertiseDescriptionCare = /** @class */ (function (_super) {
         return (React.createElement("div", { className: 'care' },
             this.props.title && React.createElement("h3", null, this.props.title),
             React.createElement("div", { className: 'hCenterBlock' }, this.props.firstText && React.createElement(ReactMarkdown, { source: this.props.firstText })),
-            React.createElement("h3", { style: { cursor: 'pointer' }, onClick: function () { return _this.setState({ showHiddenText: !_this.state.showHiddenText }); } }, "V\u00EDce info"),
+            this.props.secondText.length > 1 &&
+                React.createElement("h3", { style: { cursor: 'pointer' }, onClick: function () { return _this.setState({ showHiddenText: !_this.state.showHiddenText }); } }, "V\u00EDce informac\u00ED"),
             this.state.showHiddenText ?
                 React.createElement("div", { className: 'hCenterBlock' }, this.props.secondText && React.createElement(ReactMarkdown, { source: this.props.secondText }))
                 : ''));
