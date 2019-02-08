@@ -71,7 +71,7 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
                       <div className={'doctorList__item__info'}>
                         <h3>{doctor.name}</h3>
                         <p>{doctor.field}</p>
-                        <Link url={doctor.clinicUrl} className={'doctorList__item__info__link'}>
+                        <Link {...doctor.clinicUrl} className={'doctorList__item__info__link'}>
                           {doctor.clinicName}
                         </Link>
                         <Button classes="btn--blueBorder btn--small" url={doctor.doctorUrl}>

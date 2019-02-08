@@ -11,6 +11,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import * as React from 'react';
 import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
@@ -44,7 +55,7 @@ var DoctorList = /** @class */ (function (_super) {
                             React.createElement("div", { className: 'doctorList__item__info' },
                                 React.createElement("h3", null, doctor.name),
                                 React.createElement("p", null, doctor.field),
-                                React.createElement(Link, { url: doctor.clinicUrl, className: 'doctorList__item__info__link' }, doctor.clinicName),
+                                React.createElement(Link, __assign({}, doctor.clinicUrl, { className: 'doctorList__item__info__link' }), doctor.clinicName),
                                 React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "vice info"))));
                     })),
                     _this.state.showMore ? (React.createElement("div", { className: "doctorList__wrapper" }, otherDoctors && otherDoctors.map(function (doc, i) {
