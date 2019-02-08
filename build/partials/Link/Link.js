@@ -52,7 +52,7 @@ var ComposedQuery = adopt({
 });
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposerLink = function (props) {
-    var children = props.children, urlNewWindow = props.urlNewWindow, url = props.url, pageId = props.pageId, args = __rest(props, ["children", "urlNewWindow", "url", "pageId"]);
+    var children = props.children, urlNewWindow = props.urlNewWindow, url = props.url, pageId = props.pageId, dynamic = props.dynamic, args = __rest(props, ["children", "urlNewWindow", "url", "pageId", "dynamic"]);
     return (React.createElement(ComposedQuery, null, function (_a) {
         var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data;
         if (loading) {
@@ -70,7 +70,7 @@ var ComposerLink = function (props) {
             return (React.createElement("a", __assign({ href: (isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '/404' }, args, { target: urlNewWindow ? '_blank' : '' }), children));
         }
         else {
-            return (React.createElement(Link, __assign({ to: pageUrlObj ? pageUrlObj.url : '/404' }, args), children));
+            return (React.createElement(Link, __assign({ to: (dynamic && url) || (pageUrlObj ? pageUrlObj.url : '/404') }, args), children));
         }
     }));
 };

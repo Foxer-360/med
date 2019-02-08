@@ -12,7 +12,7 @@ const Button = (props: ButtonProps) => {
   // Button with link
   if (props.url) {
     return (
-      <Link className={`btn ${props.classes}`} url={props.url && props.url.url}>
+      <Link className={`btn ${props.classes}`} {...(props.url || {})}>
         {props.children}
         {!props.noArrow && <span className="arrow" />}
       </Link>
