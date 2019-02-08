@@ -29,12 +29,12 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
           {this.props.firstText && <ReactMarkdown source={this.props.firstText} />}
         </div>
         {this.props.secondText.length > 1 && 
-          <h3 
-            style={{ cursor: 'pointer' }} 
+          <h4 
+            style={{ cursor: 'pointer', padding: '45px 0 0 0' }} 
             onClick={() => this.setState({ showHiddenText: !this.state.showHiddenText })}
           >
             Více informací
-          </h3>
+          </h4>
         }
         
         {this.state.showHiddenText ? 

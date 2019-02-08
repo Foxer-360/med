@@ -8,35 +8,26 @@ export interface ExpertiseDescriptionExaminationProps {
 
 const ExpertiseDescriptionExamination = (props: ExpertiseDescriptionExaminationProps) => {
   const { title, examinations } = props;
-  let lastLong = {};
 
   return (
     <div className={'examination'}>
-      <div className="container">
-        {title && <h3>{title}</h3>}
+      {title && <h3 style={{ paddingTop: 45 }}>{title}</h3>}
 
-        <div className={'grid examination__blocks'}>
+      <div className={'examination__list grid'}>
+        {examinations && examinations.map((examination, i) => {
           
-          {examinations && examinations.map((examination, i) => {
-            if (examinations.length % 2 !== 0) {
-              lastLong = {
-                gridColumnStart: 'span 2'
-              };
-            }
-            
-            return (
-              <Link
-                key={i}
-                className={'examination__block'}
-                url={examination.url && examination.url.url}
-                style={examinations.length - 1 === i ? lastLong : null}
-              >
-                {examination.title && <p>{examination.title}</p>}
-              </Link>
-            );
-          })}
-
-        </div>
+          let lastLong = examinations.length % 2 !== 0 && examinations.length - 1 === i;
+          
+          return (
+            <Link 
+              key={i} 
+              className={`examination__list__item ${lastLong ? 'examination__list__item--last-long' : ''}`} 
+              url={examination.url && examination.url.url}
+            >
+              {examination.title && examination.title}
+            </Link>
+          );
+        })}
       </div>
     </div> 
   );
