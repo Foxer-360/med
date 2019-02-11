@@ -23,12 +23,22 @@
       {
         "title": "Doklady které pro vyšetření potřebujete",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "270"
+          }
+        }
       },
       {
         "title": "Jak vyšetření probíhá",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "270"
+          }
+        }
       }
     ]
   },

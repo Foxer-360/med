@@ -1,11 +1,11 @@
 /// <reference types="react" />
 interface Examination {
     title: string;
-    url: string;
+    url: LooseObject;
 }
 interface Box {
     title: string;
-    url: string;
+    url: LooseObject;
     image: LooseObject;
 }
 export interface DescriptionProps {

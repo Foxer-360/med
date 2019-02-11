@@ -19,7 +19,7 @@ interface MapComponentState {
   };
 }
 
-interface MapComponentProps {}  
+interface MapComponentProps {}
 
 // !DEV ONLY
 const clinics = [
@@ -149,8 +149,9 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
             />
           );
         }
-      });  
-  
+      });
+
+
       markers.push(
         <Marker
           type={'geoLocation'}

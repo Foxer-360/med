@@ -6,12 +6,12 @@ import ExpertiseDescriptionBoxes from './components/ExpertiseDescriptionBoxes';
 
 interface Examination {
   title: string;
-  url: string;
+  url: LooseObject;
 }
 
 interface Box {
   title: string;
-  url: string;
+  url: LooseObject;
   image: LooseObject;
 }
 

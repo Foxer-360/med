@@ -10,6 +10,10 @@ body {
   font-size: 1.6rem;
   line-height: 24px;
   padding: 0;
+  
+  a {
+    word-break: break-all;
+  }
 
   &::-webkit-scrollbar {
     width: 8px;

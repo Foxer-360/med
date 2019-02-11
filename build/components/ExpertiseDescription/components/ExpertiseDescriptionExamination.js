@@ -1,17 +1,12 @@
 import * as React from 'react';
+import Link from '@source/partials/Link';
 var ExpertiseDescriptionExamination = function (props) {
     var title = props.title, examinations = props.examinations;
-    var lastLong = {};
     return (React.createElement("div", { className: 'examination' },
-        title && React.createElement("h3", null, title),
-        React.createElement("div", { className: 'grid examination__blocks hCenterBlock' }, examinations && examinations.map(function (examination, i) {
-            if (examinations.length % 2 !== 0) {
-                lastLong = {
-                    gridColumnStart: 'span 2'
-                };
-            }
-            return (React.createElement("a", { style: examinations.length - 1 === i ? lastLong : null, href: examination.url, className: 'examination__block', key: i },
-                React.createElement("p", null, examination.title)));
+        title && React.createElement("h3", { style: { paddingTop: 45 } }, title),
+        React.createElement("div", { className: 'examination__list grid' }, examinations && examinations.map(function (examination, i) {
+            var lastLong = examinations.length % 2 !== 0 && examinations.length - 1 === i;
+            return (React.createElement(Link, { key: i, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : ''), url: examination.url && examination.url.url }, examination.title && examination.title));
         }))));
 };
 export default ExpertiseDescriptionExamination;
