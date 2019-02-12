@@ -10,13 +10,12 @@
   &__main {
     text-align: center;
 
-    img {
-      margin-bottom: 24px;
-      width: 100px;
-
-      @include md {
-        width: 91px;
-      }
+    .mediaRatio {
+      margin: 0 auto;
+      padding-top: 0 !important;
+      margin-bottom: 50px;
+      width: 400px;
+      height: 400px;
     }
 
     h3 {
@@ -180,8 +179,10 @@
       justify-content: center;
     }
 
-    img {
-      max-width: 330px;
+    .mediaRatio {
+      padding-top: 0 !important;
+      height: 400px;
+      width: 400px;
       margin: 0 auto;
     }
   }

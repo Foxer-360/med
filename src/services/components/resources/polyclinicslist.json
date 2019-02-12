@@ -8,11 +8,21 @@
         "distric": "140 00 Praha 4",
         "phone": "+420 261 006 111",
         "transport": "Metro C",
-        "transportImage": {},
+        "transportImage": {
+          "recommendedSizes": {
+            "width": "50",
+            "height": "50"
+          }
+        },
         "station": "stanice Budějovická",
         "description": "Poliklinika Budějovická je největší nestátní ambulantní zařízení v Praze. Klientům poskytuje široké spektrum ambulantních specializací včetně nejmodernějšími přístroji vybavené gastroenterologie a špičkově vybaveného oddělení RDG a zobrazovacích metod...",
         "services": "* Psychologie * Neurologie * Mammacentrum",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "420",
+            "height": "420"
+          }
+        }
       }
     ]
   },

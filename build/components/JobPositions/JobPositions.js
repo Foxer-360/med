@@ -20,7 +20,7 @@ var JobPositions = function (props) {
                 return data &&
                     data.map(function (position, index) { return (React.createElement("div", { className: 'positions__element', style: { backgroundImage: position.image && "url(" + getImageUrl(position.image) + ")" }, key: index },
                         React.createElement("div", { className: 'positions__element-content' },
-                            React.createElement("p", null, position.name),
+                            position.name && React.createElement("p", null, position.name),
                             React.createElement(Button, { classes: 'btn--whiteBorder btn--fullWidth', url: position.url }, "Vice info")),
                         React.createElement("div", { className: 'positions__colorGradient', style: { background: "linear-gradient(to bottom, transparent 0%, #2473ba 100%)" } }))); });
             })),

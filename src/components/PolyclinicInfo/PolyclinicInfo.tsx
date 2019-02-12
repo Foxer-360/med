@@ -25,9 +25,7 @@ const PolyclinicInfo = (props: ContactsProps) => {
         {phone && <p>{phone}</p>}
       </div>
       <div className={'policlinicInfo__item'}>
-        {(transportImage && <Media type={'image'} data={transportImage} />) || (
-          <img src={'/assets/medicon/images/metro.svg'} alt="metro"/>
-        )}
+        {transportImage && <Media type={'image'} data={transportImage} />}
         {transport && <p>{transport}</p>}
       </div>
       

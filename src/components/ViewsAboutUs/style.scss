@@ -6,10 +6,12 @@
     color: $lightBlue;
     padding-top: 10px;
   }
-  img {
+  .mediaRatio {
+    padding-top: 0 !important;
     align-self: center;
     margin: 10px;
-    width: initial;
+    width: 106px;
+    height: 124px;
   }
 
   &__list {

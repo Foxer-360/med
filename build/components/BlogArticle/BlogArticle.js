@@ -6,7 +6,7 @@ var BlogArticle = function (props) {
     return (React.createElement("section", { className: 'blogArticle' },
         React.createElement("div", { className: "container" },
             title && React.createElement("h1", { className: 'gradientHeading' }, title),
-            React.createElement(Media, { data: image, type: "image" }),
+            image && React.createElement(Media, { data: image, type: "image" }),
             React.createElement("div", { className: 'blogArticle__content' },
                 React.createElement(ReactMarkdown, { source: text, renderers: {
                         paragraph: function (rProps) { return React.createElement("p", null, rProps.children); },

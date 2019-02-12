@@ -2,7 +2,7 @@
   padding: 0 0 5rem 0;
 
   h2 {
-    padding: 0 0 5.3rem 0;
+    padding: 5rem 0;
     @include webkitGradientText;
   }
 }
@@ -158,9 +158,6 @@
         padding: 46px 18px 18px 18px;
         top: 20px;
 
-        &:after {
-        }
-
         img {
           bottom: -59px;
         }
@@ -168,9 +165,6 @@
       &--bottom {
         padding: 18px 18px 46px 18px;
         bottom: 20px;
-
-        &:after {
-        }
 
         img {
           top: -59px;

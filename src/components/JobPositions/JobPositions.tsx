@@ -45,7 +45,7 @@ const JobPositions = (props: JobPositionsProps) => {
                 key={index}
               >
                 <div className={'positions__element-content'}>
-                  <p>{position.name}</p>
+                  {position.name && <p>{position.name}</p>}
                   <Button
                     classes={'btn--whiteBorder btn--fullWidth'}
                     url={position.url}
@@ -63,7 +63,9 @@ const JobPositions = (props: JobPositionsProps) => {
           </List>
       </div>
 
-      <Button classes="hCenterBlock btn--blueBkg btn--down btn--fullWidth">další pozice</Button>
+      <Button classes="hCenterBlock btn--blueBkg btn--down btn--fullWidth">
+        další pozice
+      </Button>
     </div>
   );
 };

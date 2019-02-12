@@ -30,7 +30,7 @@ const jobOffers = (props: JobOffersProps) => {
           {({ data }) => data &&
             data.map((offer, index) => (
               <Link
-                url={offer.url.url}
+                url={offer.url && offer.url.url}
                 key={index}
                 className={'flexRow offers__element'}
               >

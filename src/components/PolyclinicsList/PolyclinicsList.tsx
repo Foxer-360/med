@@ -3,7 +3,7 @@ import PcTitle from './components/title';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
 import ReactMarkdown from 'react-markdown';
-import Link from '@source/partials/Link';
+import List from '../List';
 
 interface Clinic {
   name: string;
@@ -19,7 +19,7 @@ interface Clinic {
   url?: LooseObject;
 }
 
-interface PolyclinicsListProps {
+export interface PolyclinicsListProps {
   languageCode?: string;
   data: {
     clinics: Clinic[];
@@ -31,10 +31,11 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
 
   return (
     <section className="polyclinicsList">
-    <Link data={clinics}>
+    <List data={clinics}>
       {({ data }) => data &&
         data.map((clinic, index) => (
           <div className={'pcitem'} key={index}>
+
             <div className="fullWidthContainer">
               <div className="container">
                 <div className="pcitem__wrapper">
@@ -48,14 +49,14 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
                         <img src="../../../assets/medicon/images/geoIcon.svg" alt="Medicon GeoLocation Icon" />
 
                         <p>
-                          {clinic.address} <br />
-                          {clinic.district}
+                          {clinic.address && clinic.address} <br />
+                          {clinic.district && clinic.district}
                         </p>
                       </div>
 
                       <div className="pcitem__info__details__item">
                         <img src="../../../assets/medicon/images/phoneIcon.svg" alt="Medicon Phone Icon" />
-                        <p>{clinic.phone}</p>
+                        {clinic.phone && <p>{clinic.phone}</p>}
                       </div>
 
                       <div className="pcitem__info__details__item">
@@ -64,9 +65,9 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
                         {!clinic.transportImage && <img src="../../../assets/medicon/images/metro2.png" alt="" />}
 
                         <p>
-                          {clinic.transport}
+                          {clinic.transport && clinic.transport}
                           <br />
-                          {clinic.station}
+                          {clinic.station && clinic.station}
                         </p>
                       </div>
                     </div>
@@ -95,7 +96,7 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
                       </div>
 
                       <div className={'pcitem__info__btnHolder'}>
-                        <Button classes="btn btn--blueBorder" url={clinic.url}>
+                        <Button classes="btn btn--blueBorder" url={clinic.url && clinic.url}>
                           vice info
                         </Button>
                       </div>
@@ -106,7 +107,7 @@ const PolyclinicsList = (props: PolyclinicsListProps) => {
             </div>
           </div>
         ))}
-      </Link>
+      </List>
     </section>
   );
 };

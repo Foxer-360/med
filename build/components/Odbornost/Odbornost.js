@@ -7,7 +7,7 @@ var Odbornost = function (props) {
         React.createElement(DividerCircles, null),
         React.createElement("div", { className: 'container' },
             React.createElement("div", { className: 'odbornost__doctor' },
-                (image && React.createElement(Media, { type: 'image', data: image })) || (React.createElement("img", { src: '/assets/medicon/images/odbornost-lekar.jpg', alt: "Doctor photo" })),
+                image && React.createElement(Media, { type: 'image', data: image }),
                 React.createElement("div", { className: 'grid grid--vCenterBlock' },
                     React.createElement("div", null,
                         React.createElement("div", { className: 'horizontal-line' }),
