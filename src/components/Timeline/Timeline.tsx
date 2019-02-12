@@ -94,7 +94,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     this.translateTimeline(ammount);
   }
 
-  renderPoints = items => {
+  renderPoints = (items): Element[] => {
     const point = <div className={'point'} />;
 
     const points = [];
@@ -105,7 +105,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
       if (positionItem) {
 
         points.push(
-          <div className={`point ${'point--' + positionItem.color}`}>
+          <div key={i} className={`point ${'point--' + positionItem.color}`}>
             <div
               className={`point__content ${
                 items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom'
@@ -155,7 +155,9 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
                   style={{ transform: `translate3d(${this.state.x + 'px'},-7px,0)` }}
                 >
                 <List data={items}>
-                  {({ data }) => this.renderPoints(data)}}
+                  {({ data }) => (<>
+                    {this.renderPoints(data)}
+                  </>)}
                 </List>
                 </div>
               </Swipeable>
