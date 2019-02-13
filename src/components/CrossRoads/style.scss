@@ -79,12 +79,12 @@
         margin: 0 auto 36px auto;
       }
 
-      img {
+      .mediaRatio {
+        padding-top: 0 !important;
         margin: 0 auto;
         display: block;
-        height: 100%;
-        width: auto;
-        object-fit: cover;
+        height: 95px;
+        width: 95px;
       }
     }
 
