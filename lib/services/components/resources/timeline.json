@@ -10,7 +10,7 @@
         "color": "blue",
         "descriptionA": "Otevřena",
         "descriptionB": "Poliklinika",
-        "icon": {
+        "image": {
           "recommendedSizes": {
             "width": "50",
             "height": "50"
@@ -24,7 +24,7 @@
         "color": "red",
         "descriptionA": "Otevřena",
         "descriptionB": "3. poliklinika",
-        "icon": {
+        "image": {
           "recommendedSizes": {
             "width": "50",
             "height": "50"
@@ -38,7 +38,7 @@
         "color": "green",
         "descriptionA": "Otevřeno",
         "descriptionB": "Mamacentrum",
-        "icon": {
+        "image": {
           "recommendedSizes": {
             "width": "50",
             "height": "50"

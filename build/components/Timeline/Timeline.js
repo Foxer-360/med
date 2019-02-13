@@ -66,7 +66,7 @@ var Timeline = /** @class */ (function (_super) {
                 if (positionItem) {
                     points.push(React.createElement("div", { key: i, className: "point " + ('point--' + positionItem.color) },
                         React.createElement("div", { className: "point__content " + (items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom') },
-                            positionItem.icon && React.createElement(Media, { data: positionItem.icon, type: "image" }),
+                            positionItem.image && React.createElement(Media, { data: positionItem.image, type: "image" }),
                             React.createElement("p", null, positionItem.descriptionA),
                             React.createElement("p", null, positionItem.descriptionB),
                             React.createElement("h5", null, positionItem.name),
