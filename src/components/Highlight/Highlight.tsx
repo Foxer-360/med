@@ -13,21 +13,17 @@ const Highlight = (props: HighlightProps) => {
   const { text, url } = props.data;
 
   return (
-    <div className="fullWidthContainer">
-      <section className={'highlight'}>
-        <div className="container">
-          <div className="flexRow flexAlign--center">
-            <div className={'highlight__info flexRow'}>
-              <img src="/assets/medicon/images/info.png" alt="info" />
-              {text && <p>{text}</p>}
-            </div>
-
-            <Button classes="btn--whiteBorder btn--fullWidth" url={url} >
-              vice info
-            </Button>
-          </div>
+    <div className={'highlight'}>
+      <div className={'container'}>
+        <div className={'highlight__content grid'}>
+          <img src="/assets/medicon/images/info.png" alt="info" />
+          {text && <p>{text}</p>}
+          
+          <Button classes={'btn--whiteBorder'} url={url && url}>
+            vice info
+          </Button>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
