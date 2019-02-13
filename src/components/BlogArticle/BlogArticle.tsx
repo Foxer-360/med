@@ -8,11 +8,12 @@ export interface AppProps {
     title: string;
     image?: LooseObject;
     text: string;
+    textAlign: string;
   };
 }
 
 const BlogArticle = (props: AppProps) => {
-  const { title, text, image } = props.data;
+  const { title, text, image, textAlign} = props.data;
 
   return (
     <section className={'blogArticle'}>
@@ -21,7 +22,7 @@ const BlogArticle = (props: AppProps) => {
 
         <Media data={image} type="image" />
 
-        <div className={'blogArticle__content'}>
+        <div className={`blogArticle__content ${textAlign || 'center'}`}>
           <ReactMarkdown
             source={text}
             renderers={{

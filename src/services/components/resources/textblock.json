@@ -16,6 +16,15 @@
         "text": {
           "type": "markdown",
           "title": "Text"
+        },
+        "textAlign": {
+          "type": "enum",
+          "title": "Text Align",
+          "options": {
+            "textCenter": "center",
+            "textLeft": "left",
+            "textRight": "right"
+          }
         }
       }
     }

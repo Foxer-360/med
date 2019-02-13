@@ -21,8 +21,17 @@
           "type": "text"
         },
         "text": {
-          "title": "Text",
+          "title": "Text",  
           "type": "markdown"
+        },
+        "textAlign": {
+          "type": "enum",
+          "title": "Text Align",
+          "options": {
+            "textCenter": "center",
+            "textLeft": "left",
+            "textRight": "right"
+          }
         },
         "image": {
           "type": "image"

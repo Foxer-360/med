@@ -12,7 +12,6 @@ h6 {
   padding-bottom: 45px;
   margin-bottom: 0;
 
-
   @include md {
     padding: 45px;
   }
@@ -48,4 +47,14 @@ p {
 
 .gradientHeading {
   @include webkitGradientText;
+}
+
+.textCenter {
+  text-align: center;
+}
+.textLeft {
+  text-align: left;
+}
+.textRight {
+  text-align: right;
 }

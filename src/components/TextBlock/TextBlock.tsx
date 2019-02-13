@@ -3,22 +3,23 @@ import ReactMarkdown from 'react-markdown';
 
 export interface TextBlockProps {
   data: {
-    title?: string;  
+    title?: string;
     text?: string;
-  };   
+    textAlign?: string;
+  };  
 }
-
+  
 const TextBlock = (props: TextBlockProps) => {
-  const { title, text } = props.data;
+  const { title, text, textAlign } = props.data;
 
-  return (  
+  return (
     <section className={'textBlock'}>
-      <div className="container">   
+      <div className="container">
         <div className={'textBlock__container'}>
           {title && <h3 className={'gradientHeading'}>{title}</h3>}
 
           {text && (
-            <div className="textBlock__container__text">
+            <div className={`textBlock__container__text ${textAlign}`}>
               <ReactMarkdown
                 source={text}
                 renderers={{
@@ -26,7 +27,7 @@ const TextBlock = (props: TextBlockProps) => {
                 }}
               />
             </div>
-          )}  
+          )}
         </div>
       </div>
     </section>
