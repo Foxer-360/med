@@ -8,15 +8,18 @@
     "examinations": [
       {
         "title": "Kožní prick testy",
-        "url": ""
+        "url": "",
+        "description": "**DESCRIPTION** desc"
       },
       {
         "title": "Krevní odběry k laboratornímu vyšetření",
-        "url": ""
+        "url": "",
+        "description": "**DESCRIPTION** desc"
       },
       {
         "title": "Vyšetření plicních funkcí (spirometrie) včetně zátěžových testů",
-        "url": ""
+        "url": "",
+        "description": "**DESCRIPTION** desc"
       }
     ],
     "boxes": [
@@ -74,6 +77,10 @@
               "url": {
                 "type": "urlAutocomplete",
                 "title": "URL"
+              },
+              "description": {
+                "type": "markdown",
+                "title": "Description"
               }
             }
           }
