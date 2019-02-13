@@ -16,14 +16,21 @@
     &__element {
       height: 100%;
       grid-template-columns: 65px 1fr;
-      grid-template-rows: 1fr;
+      grid-template-rows: auto;
       align-items: center;
       
       &:not(:nth-child(4n)) {
         border-right: 1px solid #dbdbda;
       }
 
-      img { width: inherit; }
+      p {
+        max-width: 200px;
+        word-break: break-all;
+      }
+
+      @media (max-width: 1050px) {
+        grid-gap: 15px;
+      }
     }
   }
 

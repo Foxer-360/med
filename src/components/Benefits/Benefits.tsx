@@ -20,18 +20,17 @@ const Benefits = (props: BenefitsProps) => {
     <List data={items}>
       {({ data }) => <section className={'benefits'}>
           <div className={'container'}>
-            <div className={'grid benefits__list'}>
-              {data &&
-                data.map((benefit, index) => {
-                  return (
-                    <div key={index} className={'grid benefits__list__element'}>
-                      {(benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />) || (
-                        <img src={'/assets/medicon/images/doctorIcon.svg'} alt="Our benefit" />
-                      )}
-                      <p>{benefit.text}</p>
-                    </div>
-                  );
-                })}
+            <div className={'benefits__list grid'}>
+              {data && data.map((benefit, index) => {
+                return (
+                  <div key={index} className={'benefits__list__element grid'}>
+                    {benefit.image && benefit.image.filename && 
+                      <Media type={'image'} data={benefit.image} />}
+                      
+                    {benefit.text && <p>{benefit.text}</p>}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>}
