@@ -70,13 +70,13 @@ const AllPagesComposedQuery = adopt({
     }
 
     return (
-      <div>
+      <>
         <Query query={GET_ALL_PAGES} variables={{ languageId: languageData.id }}>
           {data => {
             return render(data);
           }}
         </Query>
-      </div>
+      </>
     );
   },
 });
@@ -97,7 +97,7 @@ class List extends React.Component<Properties, {}> {
     if (data && data.sourceType === 'pages') {
 
       return (
-        <section className={'categoryContent'}>
+        <>
           <AllPagesComposedQuery>
             {({
               allPages: { data: allPagesData, loading: allPagesLoading, error: allPagesError },
@@ -190,13 +190,13 @@ class List extends React.Component<Properties, {}> {
                     .map(item => {
                       delete item.orderBy;
                       return item;
-                    }) 
+                    })  
                   :
                   pagesWithTag
                 });
             }}
           </AllPagesComposedQuery>
-        </section>
+        </>
       );
     }
 
