@@ -1,13 +1,14 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
 import ExpertiseDescriptionCare from './components/ExpertiseDescriptionCare';
-import ExpertiseDescriptionExamination from './components/ExpertiseDescriptionExamination';
 import ExpertiseDescriptionBoxes from './components/ExpertiseDescriptionBoxes';
 import List from '../List';
+import ExpertiseDescriptionExamination from './components/ExpertiseDescriptionExamination';
 
 interface Examination {
   title: string;
   url: LooseObject;
+  description: string;
 }
 
 interface Box {

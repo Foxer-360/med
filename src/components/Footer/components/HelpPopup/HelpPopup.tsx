@@ -34,18 +34,23 @@ export default class HelpPopup extends React.Component<HelpPopupProps, HelpPopup
 
         <ul className={'helpPopup__list'}>
           <li style={{ backgroundImage: 'url(/assets/medicon/images/phone2.png)' }}>
-            <p>Polikinika Budejovicka</p>
+            <p>Poliklinika Budějovická</p>
             <a href="tel:+420261006111">+420 261 006 111</a>
           </li>
 
           <li style={{ backgroundImage: 'url(/assets/medicon/images/phone2.png)' }}>
-            <p>Polikinika Budejovicka</p>
-            <a href="tel:+420261006111">+420 261 006 111</a>
+            <p>Poliklinika Zelený pruh</p>
+            <a href="tel:+420234105111">+420 234 105 111</a>
           </li>
 
           <li style={{ backgroundImage: 'url(/assets/medicon/images/phone2.png)' }}>
-            <p>Polikinika Budejovicka</p>
-            <a href="tel:+420261006111">+420 261 006 111</a>
+            <p>Poliklinika Vysočany</p>
+            <a href="tel:+420266006211">+420 266 006 211</a>
+          </li>
+
+          <li style={{ backgroundImage: 'url(/assets/medicon/images/phone2.png)' }}>
+            <p>Poliklinika Holešovice</p>
+            <a href="tel:+420227777677">+420 227 777 677</a>
           </li>
         </ul>
       </div>

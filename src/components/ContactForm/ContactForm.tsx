@@ -35,7 +35,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
     this.setState({
       formValues: { ...this.state.formValues, [e.target.name]: e.target.value },
     });
-  };
+  }
 
   public render() {
     const { gdprLink, title } = this.props.data;
