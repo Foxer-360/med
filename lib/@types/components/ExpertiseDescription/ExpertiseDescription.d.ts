@@ -2,6 +2,7 @@
 interface Examination {
     title: string;
     url: LooseObject;
+    description: string;
 }
 interface Box {
     title: string;

@@ -20,14 +20,15 @@ var Hero = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Hero.prototype.render = function () {
-        var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image;
+        var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image, placeholder = _a.placeholder;
         return (React.createElement("div", { className: "fullWidthContainer" },
             React.createElement("section", { className: 'hero', style: { backgroundImage: image && "url(" + getImageUrl(image) + ")" } },
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },
                         title && React.createElement("h1", null, title),
                         text && React.createElement("div", { className: 'hero__text' }, text),
-                        displaySearch && React.createElement(SearchBar, { placeholder: 'Hledám odbornost', barColor: 'lightBlue' }))))));
+                        displaySearch &&
+                            React.createElement(SearchBar, { placeholder: placeholder ? placeholder : 'Search..', barColor: 'lightBlue' }))))));
     };
     return Hero;
 }(React.Component));

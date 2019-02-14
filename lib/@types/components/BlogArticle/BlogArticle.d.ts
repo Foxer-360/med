@@ -4,6 +4,7 @@ export interface AppProps {
         title: string;
         image?: LooseObject;
         text: string;
+        textAlign: string;
     };
 }
 declare const BlogArticle: (props: AppProps) => JSX.Element;

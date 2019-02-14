@@ -1,7 +1,12 @@
-/// <reference types="react" />
+import * as React from 'react';
 export interface ExpertiseDescriptionExaminationProps {
     title: string;
     examinations: Array<any>;
 }
-declare const ExpertiseDescriptionExamination: (props: ExpertiseDescriptionExaminationProps) => JSX.Element;
+export interface ExpertiseDescriptionExaminationState {
+}
+declare class ExpertiseDescriptionExamination extends React.Component<ExpertiseDescriptionExaminationProps, ExpertiseDescriptionExaminationState> {
+    constructor(props: ExpertiseDescriptionExaminationProps);
+    render(): JSX.Element;
+}
 export default ExpertiseDescriptionExamination;

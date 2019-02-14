@@ -126,6 +126,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               <div className="container">
                 <div className={'header__wrapper'} ref={this.headerWrapper}>
                   <div className={'header__logo'}>
+
                     <DomLink to={'/'}>
                       <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
                     </DomLink>

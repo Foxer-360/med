@@ -49,7 +49,7 @@ var AllPagesComposedQuery = adopt({
         if (!languageData) {
             return render({ loading: true });
         }
-        return (React.createElement("div", null,
+        return (React.createElement(React.Fragment, null,
             React.createElement(Query, { query: GET_ALL_PAGES, variables: { languageId: languageData.id } }, function (data) {
                 return render(data);
             })));
@@ -169,7 +169,7 @@ var List = /** @class */ (function (_super) {
             return this.datasourcesList(data);
         }
         if (data && data.sourceType === 'pages') {
-            return (React.createElement("section", { className: 'categoryContent' },
+            return (React.createElement(React.Fragment, null,
                 React.createElement(AllPagesComposedQuery, null, function (_a) {
                     var _b = _a.allPages, allPagesData = _b.data, allPagesLoading = _b.loading, allPagesError = _b.error, _c = _a.getContext, languageData = _c.languageData, pageData = _c.pageData;
                     if (allPagesLoading || !allPagesData || !languageData) {
