@@ -1,5 +1,4 @@
 .care {
-
   h4 {
     @include webkitGradientText();
   }
@@ -19,7 +18,7 @@
     }
   }
   p {
-    margin-bottom: 25px;
+    margin: 24px 0;
 
     &:last-of-type() {
       margin-bottom: 0;
@@ -54,7 +53,7 @@
       line-height: 28px;
       letter-spacing: initial;
       font-weight: 400;
-  
+
       &--last-long {
         grid-column-start: span 2;
 
@@ -62,7 +61,7 @@
           grid-column-start: initial;
         }
       }
-      
+
       @include md {
         font-size: 2.2rem;
         line-height: 34px;
@@ -112,7 +111,8 @@
         max-width: 200px;
         margin-left: 35px;
 
-        a, button {
+        a,
+        button {
           width: 100%;
           margin: 0;
         }
