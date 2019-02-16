@@ -3,7 +3,7 @@
   "data": {
     "title": "sample title",
     "text": "A dui magna ullamcorper dignissim scelerisque sociosqu a elementum consectetur convallis etiam a a nec condimentum ridiculus dui ullamcorper aptent magna eleifend.Mi commodo tincidunt fermentum integer class ut posuere in dolor molestie parturient ullamcorper erat a nibh habitasse vestibulum ut nunc lectus.",
-    "textAlign": "center"
+    "textAlign": "textCenter"
   },
   "form": {
     "schema": {
