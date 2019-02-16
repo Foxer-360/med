@@ -5,6 +5,9 @@
     "text": "Sample Text",
     "placeholder": "Search..",
     "displaySearch": false,
+    "displayOverlay": false,
+    "TitleColor": "blue",
+    "textColor": "gray",
     "image": {}
   },
   "form": {
@@ -12,13 +15,33 @@
       "type": "object",
 
       "properties": {
+        "displayOverlay": {
+          "type": "boolean",
+          "title": "Display Overlay?"
+        },
         "title": {
           "type": "text",
           "title": "Title"
         },
+        "titleColor": {
+          "type": "enum",
+          "title": "Title Color",
+          "options": {
+            "blue": "blue",
+            "white": "white"
+          }
+        },
         "text": {
           "type": "text",
           "title": "Text"
+        },
+        "textColor": {
+          "type": "enum",
+          "title": "Text Color",
+          "options": {
+            "gray": "gray",
+            "white": "white"
+          }
         },
         "placeholder": {
           "type": "text",
