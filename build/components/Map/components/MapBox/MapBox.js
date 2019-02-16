@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from '../../../../partials/Button';
 var MapBox = function (props) {
+    var _a = props.clinicData, title = _a.title, address = _a.address, city = _a.city, phone = _a.phone;
     return (React.createElement("div", { className: 'mapBox' },
         React.createElement("div", { className: 'mapBox__close', onClick: function () { return props.close(); } },
             React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 52 52" },
@@ -13,7 +14,7 @@ var MapBox = function (props) {
             React.createElement("div", { className: 'pcTitle__title' },
                 React.createElement("h3", null, "Poliklinika"),
                 React.createElement("div", { className: 'pcTitle__title__subtitle' },
-                    React.createElement("span", null, "Budejovicka"),
+                    React.createElement("span", null, title),
                     React.createElement("span", { className: 'pcTitle__title__subtitle__circles' },
                         React.createElement("div", null),
                         React.createElement("div", null),
@@ -25,12 +26,12 @@ var MapBox = function (props) {
             React.createElement("div", { className: 'mapBox__contacts__item' },
                 React.createElement("img", { src: '/assets/medicon/images/geoIcon.svg' }),
                 React.createElement("div", null,
-                    React.createElement("p", null, "Sokolovsk\u00E1 304 "),
-                    React.createElement("p", null, " 190 00 Praha 9"))),
+                    React.createElement("p", null, address),
+                    React.createElement("p", null, city))),
             React.createElement("div", { className: 'mapBox__contacts__item' },
                 React.createElement("img", { src: '/assets/medicon/images/phoneIcon.svg' }),
                 React.createElement("div", null,
-                    React.createElement("p", null, "+420 266 006 211")))),
+                    React.createElement("p", null, phone)))),
         React.createElement("div", { className: 'mapBox__buttons' },
             React.createElement(Button, { classes: "btn--small btn--blueBkg", noArrow: true }, "ambulance"),
             React.createElement(Button, { classes: "btn--small btn--blueBorder" }, "kuddy k nam"))));

@@ -8,15 +8,20 @@ interface MarkerProps {
   handleMarkerClick?: Function;
   handleClose?: Function;
   index: number;
+  handleMarkerClose?: () => void;
 }
 
 const Marker: React.SFC<MarkerProps> = props => {
-  const { type, active, handleMarkerClick, index } = props;
+  const { type, active, handleMarkerClick, index, handleMarkerClose } = props;
   return (
-    <div className={'markerHolder'}>
-      {type !== 'geoLocation' && <div className={`marker ${type}`} onClick={e => handleMarkerClick(e, index)} />}
-      {type === 'geoLocation' && <div className={'geoLocationMarker'} />}
-    </div>
+    <>
+      <div className={`markerHolder`}>
+        {type !== 'geoLocation' && (
+          <div className={`marker ${active ? 'active' : type}`} onClick={e => handleMarkerClick(e, index)} />
+        )}
+        {type === 'geoLocation' && <div className={'geoLocationMarker'} />}
+      </div>
+    </>
   );
 };
 

@@ -1,3 +1,48 @@
 {
-  "name": "Map"
+  "name": "Map",
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "title": "Items",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "address": {
+                "type": "text",
+                "title": "Address"
+              },
+              "city": {
+                "type": "text",
+                "title": "City"
+              },
+
+              "phone": {
+                "type": "text",
+                "title": "Phone"
+              },
+
+              "lat": {
+                "type": "text",
+                "title": "lat"
+              },
+              "lng": {
+                "type": "text",
+                "title": "lng"
+              },
+
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

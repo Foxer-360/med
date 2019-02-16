@@ -7,6 +7,7 @@ interface MarkerProps {
     handleMarkerClick?: Function;
     handleClose?: Function;
     index: number;
+    handleMarkerClose?: () => void;
 }
 declare const Marker: React.SFC<MarkerProps>;
 export default Marker;

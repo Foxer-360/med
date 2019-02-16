@@ -3,9 +3,12 @@ import Button from '../../../../partials/Button';
 
 interface MapBoxProps {
   close: () => void;
+  clinicData?: LooseObject;
 }
 
 const MapBox: React.SFC<MapBoxProps> = props => {
+  const { title, address, city, phone } = props.clinicData;
+
   return (
     <div className={'mapBox'}>
       <div className={'mapBox__close'} onClick={() => props.close()}>
@@ -24,7 +27,7 @@ const MapBox: React.SFC<MapBoxProps> = props => {
         <div className={'pcTitle__title'}>
           <h3>Poliklinika</h3>
           <div className={'pcTitle__title__subtitle'}>
-            <span>Budejovicka</span>
+            <span>{title}</span>
 
             <span className={'pcTitle__title__subtitle__circles'}>
               <div />
@@ -43,15 +46,15 @@ const MapBox: React.SFC<MapBoxProps> = props => {
           <img src={'/assets/medicon/images/geoIcon.svg'} />
 
           <div>
-            <p>Sokolovská 304 </p>
-            <p> 190 00 Praha 9</p>
+            <p>{address}</p>
+            <p>{city}</p>
           </div>
         </div>
 
         <div className={'mapBox__contacts__item'}>
           <img src={'/assets/medicon/images/phoneIcon.svg'} />
           <div>
-            <p>+420 266 006 211</p>
+            <p>{phone}</p>
           </div>
         </div>
       </div>
