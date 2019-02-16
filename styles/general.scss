@@ -10,7 +10,7 @@ body {
   font-size: 1.6rem;
   line-height: 24px;
   padding: 0;
-  
+
   a {
     word-break: break-all;
   }
@@ -109,10 +109,21 @@ ol,
 ul {
   margin: 0;
   padding: 0;
-  list-style: none;
 
   li {
-    padding: 5px 5px 5px 15px;
+    padding: 5px 5px 5px 5px;
+    position: relative;
+
+    & > ol {
+      margin-left: 15px;
+      margin-top: 15px;
+    }
+  }
+}
+
+ul {
+  li {
+    padding: 5px 5px 5px 25px;
     position: relative;
 
     &:before {
@@ -123,8 +134,13 @@ ul {
       @include pseudo;
       border-radius: 50%;
       left: 0;
-      top: 50%;
+      top: 18px;
       transform: translateY(-50%);
+    }
+
+    & > ul {
+      margin-left: 15px;
+      margin-top: 15px;
     }
   }
 }
