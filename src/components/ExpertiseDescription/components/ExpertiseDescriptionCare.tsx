@@ -5,6 +5,8 @@ export interface ExpertiseDescriptionCareProps {
   title: string;
   firstText: string;
   secondText: string;
+  hideBtn: string;
+  showHiddenText: boolean;
 }
 
 export interface ExpertiseDescriptionCareState {
@@ -21,25 +23,31 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
     };
   }
 
+  componentWillReceiveProps(nextProps: ExpertiseDescriptionCareProps) {
+    this.setState({ showHiddenText: nextProps.showHiddenText });
+  }
+
   render() {
+    const { title, firstText, secondText, hideBtn } = this.props;
+
     return (
       <div className={'care'}>
-        {this.props.title && <h3>{this.props.title}</h3>}
+        {title && <h3>{title}</h3>}
         <div className={'hCenterBlock'}>
-          {this.props.firstText && <ReactMarkdown source={this.props.firstText} />}
+          {firstText && <ReactMarkdown source={firstText} />}
         </div>
-        {this.props.secondText && this.props.secondText.length > 1 && 
+        {secondText && secondText.length > 1 && hideBtn &&
           <h4 
-            style={{ cursor: 'pointer', padding: '45px 0 0 0' }} 
+            style={{ cursor: 'pointer', paddingTop: '45px', paddingBottom: 0 }} 
             onClick={() => this.setState({ showHiddenText: !this.state.showHiddenText })}
           >
-            Více informací
+            {hideBtn}
           </h4>
         }
         
         {this.state.showHiddenText ? 
-          <div className={'hCenterBlock'}>
-            {this.props.secondText && <ReactMarkdown source={this.props.secondText} />}
+          <div className={'hCenterBlock'} style={{ marginTop: 45 }}>
+            {secondText && <ReactMarkdown source={secondText} />}
           </div>
           : ''
         }

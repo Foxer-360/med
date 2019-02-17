@@ -4,19 +4,24 @@
     "titleCare": "Poskytovaná péče",
     "firstText": "**Diagnostika a léčba všech alergických onemocnění** jako např. alergická rýma, alergický zánět spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie, alergie na léky, hmyz nebo kožní alergie.",
     "secondText": "**Hidden text** jako např. alergický zánět spojivek, atopický ekzém, astma bronchiale na alergickém terénu, potravinové alergie.",
+    "hideBtn": "Vice info",
+    "showHiddenText": false,
     "titleExamination": "Typy vyšetření",
     "examinations": [
       {
         "title": "Kožní prick testy",
-        "url": ""
+        "url": "",
+        "description": "**DESCRIPTION** desc"
       },
       {
         "title": "Krevní odběry k laboratornímu vyšetření",
-        "url": ""
+        "url": "",
+        "description": "**DESCRIPTION** desc"
       },
       {
         "title": "Vyšetření plicních funkcí (spirometrie) včetně zátěžových testů",
-        "url": ""
+        "url": "",
+        "description": "**DESCRIPTION** desc"
       }
     ],
     "boxes": [
@@ -58,6 +63,14 @@
           "type": "markdown",
           "title": "Hidden text"
         },
+        "hideBtn": {
+          "type": "text",
+          "title": "Hide button text"
+        },
+        "showHiddenText": {
+          "type": "boolean",
+          "title": "Display hidden text?"
+        },
         "titleExamination": {
           "type": "text",
           "title": "Second title"
@@ -74,6 +87,10 @@
               "url": {
                 "type": "urlAutocomplete",
                 "title": "URL"
+              },
+              "description": {
+                "type": "markdown",
+                "title": "Description"
               }
             }
           }

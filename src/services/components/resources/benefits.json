@@ -57,6 +57,10 @@
               },
               "image": {
                 "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
               }
             }
           }

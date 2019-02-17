@@ -3,6 +3,7 @@
   "data": {
     "title": "Sample Title",
     "text": "Sample Text",
+    "placeholder": "Search..",
     "displaySearch": false,
     "image": {
       "recommendedSizes": {
@@ -23,6 +24,10 @@
         "text": {
           "type": "text",
           "title": "Text"
+        },
+        "placeholder": {
+          "type": "text",
+          "title": "placeholder"
         },
         "displaySearch": {
           "type": "boolean",
