@@ -5,19 +5,23 @@
     "items": [
       {
         "text": "Přívětivý personál",
-        "image": {}
+        "image": {},
+        "url": ""
       },
       {
         "text": "Přívětivý personál",
-        "image": {}
+        "image": {},
+        "url": ""
       },
       {
         "text": "Přívětivý personál",
-        "image": {}
+        "image": {},
+        "url": ""
       },
       {
         "text": "Přívětivý personál",
-        "image": {}
+        "image": {},
+        "url": ""
       }
     ]
   },
@@ -37,6 +41,10 @@
               },
               "image": {
                 "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
               }
             }
           }
