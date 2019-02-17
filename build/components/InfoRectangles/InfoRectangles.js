@@ -12,7 +12,7 @@ var InfoRectangles = function (props) {
                     return data &&
                         data.map(function (rectangle, index) { return (React.createElement("div", { key: index, className: 'info-element', style: { backgroundImage: rectangle.image && "url(" + getImageUrl(rectangle.image) + ")" } },
                             React.createElement("div", null,
-                                React.createElement("h5", null, rectangle.title),
+                                rectangle.title && React.createElement("h5", null, rectangle.title),
                                 React.createElement(Button, { classes: "btn--blueBorder", url: rectangle.url }, "vice info")))); });
                 })))));
 };

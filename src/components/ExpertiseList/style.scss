@@ -1,4 +1,8 @@
 .expertiseList {
+  .grid-container {
+    grid-template-rows: auto;
+  }
+
   h3 {
     padding: 0;
     margin: 50px 0;
@@ -24,11 +28,13 @@
     transition: 300ms ease;
     overflow: auto;
 
-    img {
+    .mediaRatio {
+      padding-top: 0 !important;
       margin-left: 35px;
-      max-width: none;
-      width: initial;
+      width: 60px;
+      height: 60px;
     }
+
     p {
       text-transform: uppercase;
       font-size: 1.8rem;
@@ -87,12 +93,9 @@
   }
 
   @include max-sm {
-    img {
+    .mediaRatio {
+      padding-top: 0 !important;
       margin-left: 25px;
-      height: auto; 
-      width: auto; 
-      max-width: 35px;
-      max-height: 35px;
     }
   }
 }

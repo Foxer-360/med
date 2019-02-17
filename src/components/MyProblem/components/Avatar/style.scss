@@ -1,5 +1,5 @@
 $avatar: 'avatar';
-$avatarRed: #ea6545;
+$avatarRed: rgb(255, 153, 153);
 
 .avatarDoll {
   width: 100%;
@@ -15,8 +15,8 @@ $avatarRed: #ea6545;
   svg {
     width: 100%;
     fill: transparent;
-    stroke: $lightBlue;
-    stroke-width: 4px;
+    // stroke: $lightBlue;
+    // stroke-width: 4px;
 
     @include sm {
       height: 100%;
@@ -34,7 +34,11 @@ $avatarRed: #ea6545;
       transition: 300ms ease;
 
       &:hover {
-        fill: transparentize($avatarRed, 0.6);
+        fill: $avatarRed;
+
+        path {
+          fill: $avatarRed;
+        }
       }
     }
     .#{avatar}__eye {
@@ -45,16 +49,20 @@ $avatarRed: #ea6545;
     .#{avatar}__mouth,
     .#{avatar}__ear,
     .#{avatar}__nose {
-      stroke: $lightBlue;
+      // stroke: $lightBlue;
     }
   }
 
-  $areaList: rEye lEye mouth lEar rEar lKnee rKnee lHand rHand lFeet rFeet mouth nose;
+  $areaList: body belly chest feet arm legs face;
 
   @each $area in $areaList {
     &.active--#{$area} {
       .avatar__#{$area} {
-        fill: transparentize($avatarRed, 0.6);
+        fill: $avatarRed;
+
+        path {
+          fill: $avatarRed;
+        }
       }
     }
   }

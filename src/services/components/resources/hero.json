@@ -8,7 +8,12 @@
     "displayOverlay": false,
     "TitleColor": "blue",
     "textColor": "gray",
-    "image": {}
+    "image": {
+      "recommendedSizes": {
+        "width": "1600",
+        "height": "610"
+      }
+    }
   },
   "form": {
     "schema": {

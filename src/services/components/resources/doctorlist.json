@@ -9,7 +9,12 @@
         "clinicName": "Poliklinika Budějovická",
         "clinicUrl": "",
         "doctorUrl": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "190",
+            "height": "190"
+          }
+        }
       },
       {
         "name": "MUDr. Michala Jakubíková, Ph.D.",
@@ -17,7 +22,12 @@
         "clinicName": "Poliklinika Vysočany",
         "clinicUrl": "",
         "doctorUrl": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "190",
+            "height": "190"
+          }
+        }
       },
       {
         "name": "MUDr. Michala Pelikánová",
@@ -25,7 +35,12 @@
         "clinicName": "Poliklinika Budějovická",
         "clinicUrl": "",
         "doctorUrl": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "190",
+            "height": "190"
+          }
+        }
       },
       {
         "name": "MUDr. Petr Novák",
@@ -33,7 +48,12 @@
         "clinicName": "Poliklinika Zelený pruh",
         "clinicUrl": "",
         "doctorUrl": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "190",
+            "height": "190"
+          }
+        }
       }
     ]
   },

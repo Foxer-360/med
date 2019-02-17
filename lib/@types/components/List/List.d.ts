@@ -1,6 +1,6 @@
 import * as React from 'react';
 interface Properties {
-    data: any;
+    data?: any;
     children: (data: LooseObject) => JSX.Element;
 }
 declare class List extends React.Component<Properties, {}> {

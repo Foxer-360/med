@@ -5,17 +5,32 @@
     "reviews": [
       {
         "cite": "„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“",
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
         "starCount": 5
       },
       {
         "cite": "„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“",
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
         "starCount": 5
       },
       {
         "cite": "„Jedna z nejlepších poliklinik v Praze, od recepčních po lékaře.“",
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
         "starCount": 5
       }
     ]

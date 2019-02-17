@@ -152,7 +152,6 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
 
                   return a > b ? -1 : a < b ? 1 : 0;
                 });
-
               return (
                 <Masonry
                   breakpointCols={{ default: 3, 4000: 3, 800: 2, 500: 1 }}

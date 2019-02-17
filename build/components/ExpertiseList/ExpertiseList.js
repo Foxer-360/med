@@ -11,10 +11,10 @@ var ExpertiseList = function (props) {
             React.createElement(List, { data: expertiseList }, function (_a) {
                 var data = _a.data;
                 return data &&
-                    data.map(function (item, index) { return (React.createElement(Link, { url: item.url.url, key: index },
+                    data.map(function (item, index) { return (React.createElement(Link, { url: item.url && item.url.url, key: index },
                         React.createElement("div", { className: "expertiseList__element" },
-                            (item.image && React.createElement(Media, { type: 'image', data: item.image })) || (React.createElement("img", { src: '/assets/medicon/images/od-el-1.png', alt: "image" })),
-                            React.createElement("p", null, item.title)))); });
+                            item.image && React.createElement(Media, { type: 'image', data: item.image }),
+                            item.title && React.createElement("p", null, item.title)))); });
             })),
         React.createElement("div", { className: 'container' },
             React.createElement(Button, { classes: "btn--blueBkg btn--fullWidth" }, "vice info"))));

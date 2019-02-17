@@ -18,18 +18,25 @@
       grid-template-columns: 65px 1fr;
       grid-template-rows: auto;
       align-items: center;
-      
+
       &:not(:nth-child(4n)) {
         border-right: 1px solid #dbdbda;
       }
 
       p {
         max-width: 200px;
-        word-break: break-all;
+
+        @include lg {
+          padding-right: 20px;
+        }
       }
 
       @media (max-width: 1050px) {
         grid-gap: 15px;
+      }
+
+      img {
+        object-fit: contain !important;
       }
     }
   }
@@ -40,31 +47,43 @@
     &__list {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 0;
-      
+
       &__element {
         grid-template-columns: none;
         justify-content: center;
         padding: 25px;
 
-        img { margin: 0 auto; }
-        p { 
+        .mediaRatio {
+          margin: 0 auto;
+        }
+
+        p {
           text-align: center;
           line-height: initial;
         }
 
-        &:not(:nth-child(4n)) { border-right: none; }
-        &:nth-of-type(1n) { border-bottom: 1px solid #dbdbda; }
-        &:nth-child(2n) { border-left: 1px solid #dbdbda; }
-        &:nth-last-child(-n+2) { border-bottom: none; }
+        &:not(:nth-child(4n)) {
+          border-right: none;
+        }
+        &:nth-of-type(1n) {
+          border-bottom: 1px solid #dbdbda;
+        }
+        &:nth-child(2n) {
+          border-left: 1px solid #dbdbda;
+        }
+        &:nth-last-child(-n + 2) {
+          border-bottom: none;
+        }
       }
     }
   }
 
   @include max-sm {
-    img {
-      width: 35px;
-      height: auto;
+    .mediaRatio {
+      width: 100%;
     }
-    p { font-size: 14px; }
+    p {
+      font-size: 14px;
+    }
   }
 }

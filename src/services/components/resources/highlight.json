@@ -2,7 +2,9 @@
   "name": "Highlight",
   "data": {
     "text": "Poliklinika Zelený pruh je od 16.9. do 19.9. zavřená",
-    "url": ""
+    "url": "",
+    "description": "Description",
+    "urlTitle": "vice info"
   },
   "form": {
     "schema": {
@@ -10,11 +12,19 @@
       "properties": {
         "text": {
           "type": "text",
-          "title": "Text"
+          "title": "Headline text"
         },
         "url": {
           "type": "urlAutocomplete",
           "title": "Button Url"
+        },
+        "description": {
+          "type": "markdown",
+          "title": "Description text"
+        },
+        "urlTitle": {
+          "type": "text",
+          "title": "Button text"
         }
       }
     }
