@@ -7,19 +7,34 @@
         "url": "",
         "link": "Halo noviny",
         "cite": "„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "106",
+            "height": "124"
+          }
+        }
       },
       {
         "url": "",
         "link": "Halo noviny",
         "cite": "„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "106",
+            "height": "124"
+          }
+        }
       },
       {
         "url": "",
         "link": "Halo noviny",
         "cite": "„Úryvek článku lorem ipsum dolor sit amet, consectetuer adipiscing elit.“",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "106",
+            "height": "124"
+          }
+        }
       }
     ]
   },

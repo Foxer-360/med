@@ -5,7 +5,12 @@
     "text": "Sample Text",
     "placeholder": "Search..",
     "displaySearch": false,
-    "image": {}
+    "image": {
+      "recommendedSizes": {
+        "width": "1600",
+        "height": "610"
+      }
+    }
   },
   "form": {
     "schema": {

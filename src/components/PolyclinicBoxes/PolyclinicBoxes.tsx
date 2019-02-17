@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
+import List from '../List';
 
 interface Polyclinic {
   url: LooseObject;
@@ -24,12 +25,12 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
         {title && <h3>{title}</h3>}
 
         <ul className={'grid'}>
-          <Link data={polyclinics}>
+          <List data={polyclinics}>
           {({ data }) => data &&
             data.map((polyclinic, index) => {
               return (
                 <li key={index}>
-                  <Link url={polyclinic.url.url}>
+                  <Link url={polyclinic.url && polyclinic.url.url}>
                     {(polyclinic.image && polyclinic.image.filename && (
                       <Media data={polyclinic.image} type={'image'} />
                     )) || <img src={'/assets/medicon/images/poliklinika.png'} alt="poliklinika" />}
@@ -37,7 +38,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
                 </li>
               );
             })}
-          </Link>
+          </List>
         </ul>
       </div>
     </section>

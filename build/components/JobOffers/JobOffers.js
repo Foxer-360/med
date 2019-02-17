@@ -11,7 +11,7 @@ var jobOffers = function (props) {
                 React.createElement(List, { data: offers }, function (_a) {
                     var data = _a.data;
                     return data &&
-                        data.map(function (offer, index) { return (React.createElement(Link, { url: offer.url.url, key: index, className: 'flexRow offers__element' }, offer.image && (React.createElement("div", { style: { backgroundImage: offer.image && "url(" + getImageUrl(offer.image) + ")" } }, offer.title && React.createElement("p", { className: 'hCenterBlock' }, offer.title))))); });
+                        data.map(function (offer, index) { return (React.createElement(Link, { url: offer.url && offer.url.url, key: index, className: 'flexRow offers__element' }, offer.image && (React.createElement("div", { style: { backgroundImage: offer.image && "url(" + getImageUrl(offer.image) + ")" } }, offer.title && React.createElement("p", { className: 'hCenterBlock' }, offer.title))))); });
                 })))));
 };
 export default jobOffers;

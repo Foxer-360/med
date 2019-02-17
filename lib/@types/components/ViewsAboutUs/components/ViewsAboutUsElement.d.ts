@@ -1,6 +1,6 @@
 /// <reference types="react" />
 export interface ViewsAboutUsElementProps {
-    url: string;
+    url: LooseObject;
     link: string;
     cite: string;
     image: LooseObject;

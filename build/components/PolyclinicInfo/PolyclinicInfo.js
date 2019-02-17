@@ -10,7 +10,7 @@ var PolyclinicInfo = function (props) {
             React.createElement("img", { src: '/assets/medicon/images/phone.svg', alt: "phone nubmer" }),
             phone && React.createElement("p", null, phone)),
         React.createElement("div", { className: 'policlinicInfo__item' },
-            (transportImage && React.createElement(Media, { type: 'image', data: transportImage })) || (React.createElement("img", { src: '/assets/medicon/images/metro.svg', alt: "metro" })),
+            transportImage && React.createElement(Media, { type: 'image', data: transportImage }),
             transport && React.createElement("p", null, transport))));
 };
 export default PolyclinicInfo;

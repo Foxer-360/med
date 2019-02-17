@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 import * as React from 'react';
 import Swipeable from 'react-swipeable';
 import Media from '@source/partials/Media';
-import Link from '@source/partials/Link';
+import List from '../List';
 var Timeline = /** @class */ (function (_super) {
     __extends(Timeline, _super);
     function Timeline(props) {
@@ -64,9 +64,9 @@ var Timeline = /** @class */ (function (_super) {
             var _loop_1 = function (i) {
                 var positionItem = items.find(function (item) { return Math.round((item.position * 60) / 100) === i; });
                 if (positionItem) {
-                    points.push(React.createElement("div", { className: "point " + ('point--' + positionItem.color) },
+                    points.push(React.createElement("div", { key: i, className: "point " + ('point--' + positionItem.color) },
                         React.createElement("div", { className: "point__content " + (items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom') },
-                            positionItem.icon && React.createElement(Media, { data: positionItem.icon, type: "image" }),
+                            positionItem.image && React.createElement(Media, { data: positionItem.image, type: "image" }),
                             React.createElement("p", null, positionItem.descriptionA),
                             React.createElement("p", null, positionItem.descriptionB),
                             React.createElement("h5", null, positionItem.name),
@@ -101,9 +101,9 @@ var Timeline = /** @class */ (function (_super) {
                     React.createElement("div", { className: 'timeline__cont', onMouseDown: function (e) { return _this.handleDrag(e); } },
                         React.createElement(Swipeable, { trackMouse: true, preventDefaultTouchmoveEvent: true, onSwipedLeft: function (e, deltaX, velocity) { return _this.handleSwipe(e, 'left', deltaX, velocity); }, onSwipedRight: function (e, deltaX, velocity) { return _this.handleSwipe(e, 'right', deltaX, velocity); } },
                             React.createElement("div", { className: 'timeline__holder', ref: this.timeline, style: { transform: "translate3d(" + (this.state.x + 'px') + ",-7px,0)" } },
-                                React.createElement(Link, { data: items }, function (_a) {
+                                React.createElement(List, { data: items }, function (_a) {
                                     var data = _a.data;
-                                    return _this.renderPoints(data);
+                                    return (React.createElement(React.Fragment, null, _this.renderPoints(data)));
                                 })))),
                     !this.state.limitRight && (React.createElement("div", { className: 'timeline__arrow  timeline__arrow--right', onClick: function (e) { return _this.arrowClick(e, 'right'); } })),
                     React.createElement("div", { className: 'timeline__blur timeline__blur--right', onClick: function (e) { return _this.arrowClick(e, 'right'); } })))));

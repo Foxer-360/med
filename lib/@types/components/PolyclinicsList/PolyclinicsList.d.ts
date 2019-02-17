@@ -12,7 +12,7 @@ interface Clinic {
     services: string;
     url?: LooseObject;
 }
-interface PolyclinicsListProps {
+export interface PolyclinicsListProps {
     languageCode?: string;
     data: {
         clinics: Clinic[];

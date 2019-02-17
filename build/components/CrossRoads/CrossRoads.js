@@ -12,7 +12,7 @@ var CrossRoads = function (props) {
                     return data &&
                         data.map(function (item, index) {
                             return (React.createElement(Link, { url: item.link && item.link.url, className: 'crossRoads__card', key: index },
-                                React.createElement("div", { className: 'crossRoads__card__img' }, (item.image && React.createElement(Media, { type: "image", data: item.image })) || (React.createElement("img", { src: "./assets/medicon/images/hospitalIcon.svg" }))),
+                                React.createElement("div", { className: 'crossRoads__card__img' }, item.image && React.createElement(Media, { type: "image", data: item.image })),
                                 item.text && React.createElement("p", null, item.text)));
                         });
                 })))));

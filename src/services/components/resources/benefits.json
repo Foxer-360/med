@@ -5,23 +5,39 @@
     "items": [
       {
         "text": "Přívětivý personál",
-        "image": {},
-        "url": ""
+        "image": {
+          "recommendedSizes": {
+            "width": "64",
+            "height": "64"
+          }
+        }
       },
       {
         "text": "Přívětivý personál",
-        "image": {},
-        "url": ""
+        "image": {
+          "recommendedSizes": {
+            "width": "64",
+            "height": "64"
+          }
+        }
       },
       {
         "text": "Přívětivý personál",
-        "image": {},
-        "url": ""
+        "image": {
+          "recommendedSizes": {
+            "width": "64",
+            "height": "64"
+          }
+        }
       },
       {
         "text": "Přívětivý personál",
-        "image": {},
-        "url": ""
+        "image": {
+          "recommendedSizes": {
+            "width": "64",
+            "height": "64"
+          }
+        }
       }
     ]
   },

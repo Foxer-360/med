@@ -6,42 +6,82 @@
       {
         "title": "Alergologie",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       },
       {
         "title": "Gynekologie",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       },
       {
         "title": "Chirurgie",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       },
       {
         "title": "CT/MR",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       },
       {
         "title": "eeg",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       },
       {
         "title": "foniatrie",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       },
       {
         "title": "neurologie",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       },
       {
         "title": "gyneorlkologie",
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "60",
+            "height": "60"
+          }
+        }
       }
     ]
   },

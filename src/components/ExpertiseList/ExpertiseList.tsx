@@ -29,13 +29,11 @@ const ExpertiseList = (props: ExpertiseListProps) => {
         <List data={expertiseList}>
           {({ data }) => data &&
             data.map((item, index) => (
-            <Link url={item.url.url} key={index}>
+            <Link url={item.url && item.url.url} key={index}>
               <div className="expertiseList__element">
-                {(item.image && <Media type={'image'} data={item.image} />) || (
-                  <img src={'/assets/medicon/images/od-el-1.png'} alt="image" />
-                )}
+                {item.image && <Media type={'image'} data={item.image} />}
 
-                <p>{item.title}</p>
+                {item.title && <p>{item.title}</p>}
               </div>
             </Link>
           ))}

@@ -26,7 +26,7 @@ declare class Timeline extends React.Component<TimelineProps, TimelineState> {
     handleSwipe: (e: any, direction: any, deltaX: any, velocity: any) => void;
     handleDrag: (e: any) => void;
     arrowClick: (e: any, direction: any) => void;
-    renderPoints: (items: any) => any[];
+    renderPoints: (items: any) => Element[];
     render(): JSX.Element;
 }
 export default Timeline;

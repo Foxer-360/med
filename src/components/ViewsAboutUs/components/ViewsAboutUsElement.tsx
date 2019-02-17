@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Media from '@source/partials/Media';
+import Link from '@source/partials/Link';
 
 export interface ViewsAboutUsElementProps {
-  url: string;
+  url: LooseObject;
   link: string;
   cite: string;
   image: LooseObject;
@@ -13,13 +14,11 @@ export default function ViewsAboutUsElement(props: ViewsAboutUsElementProps) {
 
   return (
     <div className="viewsAboutUs__list__element">
-      {(image && <Media type={'image'} data={image} />) || (
-        <img src={'/assets/medicon/images/review-aboutus-1.jpg'} alt="review about us" />
-      )}
+      {image && <Media type={'image'} data={image} />}
 
       <div className={'viewsAboutUs__list__element__content'}>
-        <cite>{cite}</cite>
-        <a href={url}>Zdroj: <strong>{link}</strong></a>
+        {cite && <cite>{cite}</cite>}
+        <Link url={url && url.url}>Zdroj: <strong>{link}</strong></Link>
       </div>
     </div>
   );

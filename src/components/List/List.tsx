@@ -7,7 +7,7 @@ import { adopt } from 'react-adopt';
 
 interface Properties {
   // tslint:disable-next-line:no-any
-  data: any;
+  data?: any;
   children: (data: LooseObject) => JSX.Element;
 }
 

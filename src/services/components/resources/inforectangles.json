@@ -3,12 +3,22 @@
   "data": {
     "infoRectangles": [
       {
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "270"
+          }
+        },
         "title": "široký výběr zdravýchpotravin",
         "url": ""
       },
       {
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "270"
+          }
+        },
         "title": "široký výběr zdravýchpotravin",
         "url": ""
       }
@@ -20,7 +30,7 @@
       "properties": {
         "infoRectangles": {
           "type": "array",
-          "title": "Advertise",
+          "title": "Rectangles",
           "items": {
             "properties": {
               "image": {

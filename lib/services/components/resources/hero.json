@@ -4,7 +4,12 @@
     "title": "Sample Title",
     "text": "Sample Text",
     "displaySearch": false,
-    "image": {}
+    "image": {
+      "recommendedSizes": {
+        "width": "1600",
+        "height": "610"
+      }
+    }
   },
   "form": {
     "schema": {

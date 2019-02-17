@@ -12,9 +12,10 @@
 
     &:not(:last-of-type) { margin-right: 50px; }
 
-    img { 
-      width: initial;
-      max-width: 45px;
+    .mediaRatio {
+      padding-top: 0 !important;
+      width: 50px;
+      height: 50px;
     }
 
     p {
@@ -22,6 +23,7 @@
       line-height: 20px;
       padding-left: 20px;
       font-size: 1.8rem;
+      vertical-align: middle;
     }
   }
 
