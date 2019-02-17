@@ -34,9 +34,9 @@ const Benefits = (props: BenefitsProps) => {
                     </Link>
                   ) : (
                     <div key={index} className={'benefits__list__element grid'}>
-                      {(benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />) || (
-                        <img src={'../../../assets/medicon/images/doctorIcon.svg'} alt="Medicon Doctor Icon" />
-                      )}
+                      <div>
+                        {benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />}
+                      </div>
 
                       {benefit.text && <p>{benefit.text}</p>}
                     </div>

@@ -8,6 +8,10 @@
     width: initial;
     width: 420px;
     height: 290px;
+
+    img {
+      object-fit: contain !important;
+    }
   }
   p {
     font-size: 2rem;

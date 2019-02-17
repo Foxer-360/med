@@ -11,7 +11,7 @@ export default function ReviewElement(props) {
         rows.slice(-(5 - starCount), starCount);
     }
     return (React.createElement("div", { className: 'reviews__list__element' },
-        image && React.createElement(Media, { type: 'image', data: image }),
+        React.createElement("div", null, image && React.createElement(Media, { type: 'image', data: image })),
         React.createElement("div", { className: 'reviews__list__element__content' },
             cite && React.createElement("cite", null, cite),
             rows && React.createElement("div", { className: 'stars' }, rows))));

@@ -356,7 +356,7 @@ var Avatar = function (props) {
                 React.createElement("linearGradient", { id: "man_x5F__x5F_arm_3_", gradientUnits: "userSpaceOnUse", x1: "638.3", y1: "130.9186", x2: "999.5", y2: "130.9186", gradientTransform: "matrix(1 0 0 1 0 432)" },
                     React.createElement("stop", { offset: 0, style: { stopColor: '#3EB558' } }),
                     React.createElement("stop", { offset: 1, style: { stopColor: '#00ADCF' } })),
-                React.createElement("path", { id: "man_x5F__x5F_arm", className: "st23 avatar__area avatar__arm", onClick: function () { return onClick('amr'); }, d: "M996.2,576.4c-0.3-13.9-19.5-188.8-39.8-202.6c-1.2-0.9-2.6-1.7-4-2.5L936.5,464\r\n\t\tc9.5,34.4,17.6,107.8,17.9,114.7c1,18.7,7.5,175.8,7.5,175.8l37.6-1.3C999.2,752.8,996.5,590.3,996.2,576.4z" }),
+                React.createElement("path", { id: "man_x5F__x5F_arm", className: "st23 avatar__area avatar__arm", onClick: function () { return onClick('arm'); }, d: "M996.2,576.4c-0.3-13.9-19.5-188.8-39.8-202.6c-1.2-0.9-2.6-1.7-4-2.5L936.5,464\r\n\t\tc9.5,34.4,17.6,107.8,17.9,114.7c1,18.7,7.5,175.8,7.5,175.8l37.6-1.3C999.2,752.8,996.5,590.3,996.2,576.4z" }),
                 React.createElement("linearGradient", { id: "man_x5F__x5F_belly_1_", gradientUnits: "userSpaceOnUse", x1: "638.3", y1: "184.295", x2: "999.5", y2: "184.295", gradientTransform: "matrix(1 0 0 1 0 432)" },
                     React.createElement("stop", { offset: 0, style: { stopColor: '#3EB558' } }),
                     React.createElement("stop", { offset: 1, style: { stopColor: '#00ADCF' } })),

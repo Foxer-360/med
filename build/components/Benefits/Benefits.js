@@ -13,7 +13,7 @@ var Benefits = function (props) {
                         return benefit.url ? (React.createElement(Link, { key: index, url: benefit.url.url, className: 'benefits__list__element grid' },
                             benefit.image && benefit.image.filename && React.createElement(Media, { type: 'image', data: benefit.image }),
                             benefit.text && React.createElement("p", null, benefit.text))) : (React.createElement("div", { key: index, className: 'benefits__list__element grid' },
-                            (benefit.image && benefit.image.filename && React.createElement(Media, { type: 'image', data: benefit.image })) || (React.createElement("img", { src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" })),
+                            React.createElement("div", null, benefit.image && benefit.image.filename && React.createElement(Media, { type: 'image', data: benefit.image })),
                             benefit.text && React.createElement("p", null, benefit.text)));
                     })))));
     }));
