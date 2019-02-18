@@ -6,9 +6,9 @@ export interface TextBlockProps {
     title?: string;
     text?: string;
     textAlign?: string;
-  };  
+  };
 }
-  
+
 const TextBlock = (props: TextBlockProps) => {
   const { title, text, textAlign } = props.data;
 
