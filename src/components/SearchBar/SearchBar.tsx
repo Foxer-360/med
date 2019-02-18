@@ -7,6 +7,8 @@ import { doctorcard } from '@source/services/components/resources';
 export interface SearchBarProps {
   placeholder: string;
   barColor: string;
+  doctorSearchResults?: LooseObject;
+  blogSearchResults?: LooseObject;
 }
 
 export interface SearchBarState {
@@ -77,41 +79,53 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         <div className={`searchBar__bar`} />
 
         <div className={`searchBarResults ${this.state.query.length !== 0 ? 'active' : ''}`}>
-          <List data={null}>
-            {({ data }) => (
-              <ul className={'searchBarResults__doctors'}>
-                {data.map((doctor, i) => (
-                  <li className={doctor.active ? 'active' : ''} key={i}>
-                    <span>
-                      <p>{doctor.name}</p>
-                      <p>{doctor.speciality}</p>
-                    </span>
-                    <span>{doctor.clinic}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </List>
+          {this.props.doctorSearchResults && (
+            <List data={this.props.doctorSearchResults}>
+              {({ data }) => {
+                if (data) {
+                  return (
+                    <ul className={'searchBarResults__doctors'}>
+                      {data.map((doctor, i) => (
+                        <li className={doctor.active ? 'active' : ''} key={i}>
+                          <span>
+                            <p>{doctor.name}</p>
+                            <p>{doctor.speciality}</p>
+                          </span>
+                          <span>{doctor.clinic}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
+              }}
+            </List>
+          )}
 
           <hr />
 
-          <List data={null}>
-            {({ data }) => (
-              <ul className={'searchBarResults__blog'}>
-                <label>Blog:</label>
-                {data.map((blogItem, i) => (
-                  <li key={i}>
-                    <div>{blogItem.image && <Media type="" data={blogItem.image} />}</div>
+          {this.props.blogSearchResults && (
+            <List data={this.props.blogSearchResults}>
+              {({ data }) => {
+                if (data) {
+                  return (
+                    <ul className={'searchBarResults__blog'}>
+                      {data.length > 0 && <label>Blog:</label>}
+                      {data.map((blogItem, i) => (
+                        <li key={i}>
+                          <div>{blogItem.image && <Media type="" data={blogItem.image} />}</div>
 
-                    <div>
-                      <h4>{blogItem.title}</h4>
-                      <p>{blogItem.perex}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </List>
+                          <div>
+                            <h4>{blogItem.title}</h4>
+                            <p>{blogItem.perex}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
+              }}
+            </List>
+          )}
         </div>
       </div>
     );

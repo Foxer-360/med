@@ -1,11 +1,9 @@
 import * as React from 'react';
-interface Properties {
+import { RouteComponentProps } from 'react-router';
+interface Properties extends RouteComponentProps<LooseObject> {
     data: any;
     children: (data: LooseObject) => JSX.Element;
+    searchedText?: string;
 }
-declare class List extends React.Component<Properties, {}> {
-    render(): JSX.Element;
-    replaceWithSourceItemValues(source: string, item: LooseObject): string;
-    datasourcesList: (data: any) => JSX.Element;
-}
-export default List;
+declare const _default: React.ComponentClass<Pick<Properties, "data" | "children" | "searchedText">, any>;
+export default _default;

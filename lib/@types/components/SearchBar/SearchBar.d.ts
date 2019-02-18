@@ -2,6 +2,8 @@ import * as React from 'react';
 export interface SearchBarProps {
     placeholder: string;
     barColor: string;
+    doctorSearchResults?: LooseObject;
+    blogSearchResults?: LooseObject;
 }
 export interface SearchBarState {
     focused: boolean;

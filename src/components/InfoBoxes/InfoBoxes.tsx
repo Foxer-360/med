@@ -39,8 +39,7 @@ const InfoBoxes = (props: InfoBoxesProps) => {
                   button={box.button}
                   titleColor={box.titleColor}
                   key={i}
-                />
-            ))}
+                />))}
           </List>
         </div>
       </div>

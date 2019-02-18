@@ -53,6 +53,15 @@
         },
         "image": {
           "type": "image"
+        },
+
+        "doctorSearchResults": {
+          "type": "string",
+          "title": "Doctor Search Results"
+        },
+        "blogSearchResults": {
+          "type": "string",
+          "title": "Blog Search Results"
         }
       }
     }

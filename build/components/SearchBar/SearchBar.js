@@ -13,6 +13,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
+import Media from '@source/partials/Media';
+import List from '@source/components/List';
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {
@@ -55,43 +57,29 @@ var SearchBar = /** @class */ (function (_super) {
                 React.createElement(SvgIcon, { name: 'search', type: barColor })),
             React.createElement("div", { className: "searchBar__bar" }),
             React.createElement("div", { className: "searchBarResults " + (this.state.query.length !== 0 ? 'active' : '') },
-                React.createElement("ul", { className: 'searchBarResults__doctors' },
-                    React.createElement("li", { className: 'active' },
-                        React.createElement("span", null,
-                            React.createElement("p", null, "Mudr. Emilio Soukup"),
-                            React.createElement("p", null, "Alergologie")),
-                        React.createElement("span", null, "Poliklinika Bud\u011Bjovick\u00E1")),
-                    React.createElement("li", { className: '' },
-                        React.createElement("span", null,
-                            React.createElement("p", null, "Mudr. Emilio Soukup"),
-                            React.createElement("p", null, "Alergologie")),
-                        React.createElement("span", null, "Poliklinika Bud\u011Bjovick\u00E1")),
-                    React.createElement("li", { className: '' },
-                        React.createElement("span", null,
-                            React.createElement("p", null, "Mudr. Emilio Soukup"),
-                            React.createElement("p", null, "Alergologie")),
-                        React.createElement("span", null, "Poliklinika Bud\u011Bjovick\u00E1"))),
+                this.props.doctorSearchResults && (React.createElement(List, { data: this.props.doctorSearchResults }, function (_a) {
+                    var data = _a.data;
+                    if (data) {
+                        return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data.map(function (doctor, i) { return (React.createElement("li", { className: doctor.active ? 'active' : '', key: i },
+                            React.createElement("span", null,
+                                React.createElement("p", null, doctor.name),
+                                React.createElement("p", null, doctor.speciality)),
+                            React.createElement("span", null, doctor.clinic))); })));
+                    }
+                })),
                 React.createElement("hr", null),
-                React.createElement("ul", { className: 'searchBarResults__blog' },
-                    React.createElement("label", null, "Blog:"),
-                    React.createElement("li", null,
-                        React.createElement("div", null,
-                            React.createElement("img", null)),
-                        React.createElement("div", null,
-                            React.createElement("h4", null, "Alergologie"),
-                            React.createElement("p", null, "Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus."))),
-                    React.createElement("li", null,
-                        React.createElement("div", null,
-                            React.createElement("img", null)),
-                        React.createElement("div", null,
-                            React.createElement("h4", null, "Alergologie"),
-                            React.createElement("p", null, "Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus."))),
-                    React.createElement("li", null,
-                        React.createElement("div", null,
-                            React.createElement("img", null)),
-                        React.createElement("div", null,
-                            React.createElement("h4", null, "Alergologie"),
-                            React.createElement("p", null, "Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus.")))))));
+                this.props.blogSearchResults && (React.createElement(List, { data: this.props.blogSearchResults }, function (_a) {
+                    var data = _a.data;
+                    if (data) {
+                        return (React.createElement("ul", { className: 'searchBarResults__blog' },
+                            data.length > 0 && React.createElement("label", null, "Blog:"),
+                            data.map(function (blogItem, i) { return (React.createElement("li", { key: i },
+                                React.createElement("div", null, blogItem.image && React.createElement(Media, { type: "", data: blogItem.image })),
+                                React.createElement("div", null,
+                                    React.createElement("h4", null, blogItem.title),
+                                    React.createElement("p", null, blogItem.perex)))); })));
+                    }
+                })))));
     };
     return SearchBar;
 }(React.Component));
