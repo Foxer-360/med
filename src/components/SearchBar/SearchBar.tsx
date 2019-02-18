@@ -2,7 +2,6 @@ import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
 import Media from '@source/partials/Media';
 import List from '@source/components/List';
-import { doctorcard } from '@source/services/components/resources';
 
 export interface SearchBarProps {
   placeholder: string;
@@ -85,15 +84,18 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                 if (data) {
                   return (
                     <ul className={'searchBarResults__doctors'}>
-                      {data.map((doctor, i) => (
-                        <li className={doctor.active ? 'active' : ''} key={i}>
-                          <span>
-                            <p>{doctor.name}</p>
-                            <p>{doctor.speciality}</p>
-                          </span>
-                          <span>{doctor.clinic}</span>
-                        </li>
-                      ))}
+                      {data.map((doctor, i) => {
+                        console.log('%c Emilio: ', 'background: #222; color: #83FFFF', doctor);
+                        return (
+                          <li className={doctor.active ? 'active' : ''} key={i}>
+                            <span>
+                              <p>{doctor.name}</p>
+                              <p>{doctor.speciality}</p>
+                            </span>
+                            <span>{doctor.clinic}</span>
+                          </li>
+                        );
+                      })}
                     </ul>
                   );
                 }
@@ -112,7 +114,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                       {data.length > 0 && <label>Blog:</label>}
                       {data.map((blogItem, i) => (
                         <li key={i}>
-                          <div>{blogItem.image && <Media type="" data={blogItem.image} />}</div>
+                          <div>{blogItem.image && <Media type="image" data={blogItem.image} />}</div>
 
                           <div>
                             <h4>{blogItem.title}</h4>

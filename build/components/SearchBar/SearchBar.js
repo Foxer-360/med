@@ -60,11 +60,14 @@ var SearchBar = /** @class */ (function (_super) {
                 this.props.doctorSearchResults && (React.createElement(List, { data: this.props.doctorSearchResults }, function (_a) {
                     var data = _a.data;
                     if (data) {
-                        return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data.map(function (doctor, i) { return (React.createElement("li", { className: doctor.active ? 'active' : '', key: i },
-                            React.createElement("span", null,
-                                React.createElement("p", null, doctor.name),
-                                React.createElement("p", null, doctor.speciality)),
-                            React.createElement("span", null, doctor.clinic))); })));
+                        return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data.map(function (doctor, i) {
+                            console.log('%c Emilio: ', 'background: #222; color: #83FFFF', doctor);
+                            return (React.createElement("li", { className: doctor.active ? 'active' : '', key: i },
+                                React.createElement("span", null,
+                                    React.createElement("p", null, doctor.name),
+                                    React.createElement("p", null, doctor.speciality)),
+                                React.createElement("span", null, doctor.clinic)));
+                        })));
                     }
                 })),
                 React.createElement("hr", null),
@@ -74,7 +77,7 @@ var SearchBar = /** @class */ (function (_super) {
                         return (React.createElement("ul", { className: 'searchBarResults__blog' },
                             data.length > 0 && React.createElement("label", null, "Blog:"),
                             data.map(function (blogItem, i) { return (React.createElement("li", { key: i },
-                                React.createElement("div", null, blogItem.image && React.createElement(Media, { type: "", data: blogItem.image })),
+                                React.createElement("div", null, blogItem.image && React.createElement(Media, { type: "image", data: blogItem.image })),
                                 React.createElement("div", null,
                                     React.createElement("h4", null, blogItem.title),
                                     React.createElement("p", null, blogItem.perex)))); })));

@@ -8,7 +8,9 @@
     "displayOverlay": false,
     "TitleColor": "blue",
     "textColor": "gray",
-    "image": {}
+    "image": {},
+    "doctorSearchResults": [{ "name": "", "speciality": "", "clinic": "", "active": false }],
+    "blogSearchResults": [{ "title": "", "perex": "", "image": {} }]
   },
   "form": {
     "schema": {
@@ -56,12 +58,48 @@
         },
 
         "doctorSearchResults": {
-          "type": "string",
-          "title": "Doctor Search Results"
+          "type": "array",
+          "title": "Doctor Search Results",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Doctor result name"
+              },
+              "speciality": {
+                "type": "text",
+                "title": "Doctor result Speciality"
+              },
+              "clinic": {
+                "type": "text",
+                "title": "Doctor result clinic"
+              },
+              "active": {
+                "type": "boolean",
+                "title": "Doctor result active"
+              }
+            }
+          }
         },
+
         "blogSearchResults": {
-          "type": "string",
-          "title": "Blog Search Results"
+          "type": "array",
+          "title": "Doctor Search Results",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Blog result title "
+              },
+              "perex": {
+                "type": "text",
+                "title": "Blog results perex"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
         }
       }
     }
