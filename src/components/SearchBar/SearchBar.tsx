@@ -1,5 +1,8 @@
 import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
+import Media from '@source/partials/Media';
+import List from '@source/components/List';
+import { doctorcard } from '@source/services/components/resources';
 
 export interface SearchBarProps {
   placeholder: string;
@@ -74,69 +77,41 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         <div className={`searchBar__bar`} />
 
         <div className={`searchBarResults ${this.state.query.length !== 0 ? 'active' : ''}`}>
-          <ul className={'searchBarResults__doctors'}>
-            <li className={'active'}>
-              <span>
-                <p>Mudr. Emilio Soukup</p>
-                <p>Alergologie</p>
-              </span>
-              <span>Poliklinika Budějovická</span>
-            </li>
-            <li className={''}>
-              <span>
-                <p>Mudr. Emilio Soukup</p>
-                <p>Alergologie</p>
-              </span>
-              <span>Poliklinika Budějovická</span>
-            </li>
-
-            <li className={''}>
-              <span>
-                <p>Mudr. Emilio Soukup</p>
-                <p>Alergologie</p>
-              </span>
-              <span>Poliklinika Budějovická</span>
-            </li>
-          </ul>
+          <List data={null}>
+            {({ data }) => (
+              <ul className={'searchBarResults__doctors'}>
+                {data.map((doctor, i) => (
+                  <li className={doctor.active ? 'active' : ''} key={i}>
+                    <span>
+                      <p>{doctor.name}</p>
+                      <p>{doctor.speciality}</p>
+                    </span>
+                    <span>{doctor.clinic}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </List>
 
           <hr />
 
-          <ul className={'searchBarResults__blog'}>
-            <label>Blog:</label>
+          <List data={null}>
+            {({ data }) => (
+              <ul className={'searchBarResults__blog'}>
+                <label>Blog:</label>
+                {data.map((blogItem, i) => (
+                  <li key={i}>
+                    <div>{blogItem.image && <Media type="" data={blogItem.image} />}</div>
 
-            <li>
-              <div>
-                <img />
-              </div>
-
-              <div>
-                <h4>Alergologie</h4>
-                <p>Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus.</p>
-              </div>
-            </li>
-
-            <li>
-              <div>
-                <img />
-              </div>
-
-              <div>
-                <h4>Alergologie</h4>
-                <p>Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus.</p>
-              </div>
-            </li>
-
-            <li>
-              <div>
-                <img />
-              </div>
-
-              <div>
-                <h4>Alergologie</h4>
-                <p>Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus.</p>
-              </div>
-            </li>
-          </ul>
+                    <div>
+                      <h4>{blogItem.title}</h4>
+                      <p>{blogItem.perex}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </List>
         </div>
       </div>
     );
