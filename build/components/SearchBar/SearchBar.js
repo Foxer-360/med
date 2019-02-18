@@ -11,10 +11,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
-import Media from '@source/partials/Media';
 import List from '@source/components/List';
+import Link from '@source/partials/Link';
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {
@@ -57,30 +68,31 @@ var SearchBar = /** @class */ (function (_super) {
                 React.createElement(SvgIcon, { name: 'search', type: barColor })),
             React.createElement("div", { className: "searchBar__bar" }),
             React.createElement("div", { className: "searchBarResults " + (this.state.query.length !== 0 ? 'active' : '') },
-                this.props.doctorSearchResults && (React.createElement(List, { data: this.props.doctorSearchResults }, function (_a) {
+                this.props.doctorSearchResults && (React.createElement(List, { data: this.props.doctorSearchResults, searchedText: this.state.query }, function (_a) {
                     var data = _a.data;
+                    console.log(data);
                     if (data) {
                         return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data.map(function (doctor, i) {
-                            console.log('%c Emilio: ', 'background: #222; color: #83FFFF', doctor);
-                            return (React.createElement("li", { className: doctor.active ? 'active' : '', key: i },
-                                React.createElement("span", null,
-                                    React.createElement("p", null, doctor.name),
-                                    React.createElement("p", null, doctor.speciality)),
-                                React.createElement("span", null, doctor.clinic)));
+                            return (React.createElement("li", { key: i, className: doctor.active ? 'active' : '' },
+                                React.createElement(Link, __assign({}, doctor.link),
+                                    React.createElement("span", null,
+                                        React.createElement("p", null, doctor.name),
+                                        React.createElement("p", null, doctor.speciality)),
+                                    React.createElement("span", null, doctor.clinic))));
                         })));
                     }
                 })),
                 React.createElement("hr", null),
-                this.props.blogSearchResults && (React.createElement(List, { data: this.props.blogSearchResults }, function (_a) {
+                this.props.blogSearchResults && (React.createElement(List, { data: this.props.blogSearchResults, searchedText: this.state.query }, function (_a) {
                     var data = _a.data;
                     if (data) {
                         return (React.createElement("ul", { className: 'searchBarResults__blog' },
                             data.length > 0 && React.createElement("label", null, "Blog:"),
                             data.map(function (blogItem, i) { return (React.createElement("li", { key: i },
-                                React.createElement("div", null, blogItem.image && React.createElement(Media, { type: "image", data: blogItem.image })),
-                                React.createElement("div", null,
-                                    React.createElement("h4", null, blogItem.title),
-                                    React.createElement("p", null, blogItem.perex)))); })));
+                                React.createElement(Link, __assign({}, blogItem.link),
+                                    React.createElement("div", null,
+                                        React.createElement("h4", null, blogItem.title),
+                                        React.createElement("p", null, blogItem.perex))))); })));
                     }
                 })))));
     };

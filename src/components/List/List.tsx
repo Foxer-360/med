@@ -34,12 +34,13 @@ const GET_CONTEXT = gql`
   {
     pageData @client
     languageData @client
+    projectData @client
   }
 `;
 
 const GET_ALL_PAGES = gql`
-  query localizedPages($languageId: ID!) {
-    pages {
+  query localizedPages($languageId: ID! $projectId: ID!) {
+    pages(where: { website: { project: { id: $projectId } } }) {
       id
       type {
         id
@@ -49,7 +50,9 @@ const GET_ALL_PAGES = gql`
         id
         name
       }
-      translations(where: { language: { id: $languageId } }) {
+      translations(where: { 
+        language: { id: $languageId }
+      }) {
         id
         name
         createdAt
@@ -69,15 +72,26 @@ const GET_ALL_PAGES = gql`
 
 const AllPagesComposedQuery = adopt({
   getContext: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
-  allPages: ({ render, getContext: { languageData } }) => {
-    console.log('Blogholder language data:', languageData.id);
-    if (!languageData) {
+  allPages: ({ 
+    render,
+    getContext: { 
+      languageData,
+      projectData,
+    }
+  }) => {
+    if (!languageData || !projectData) {
       return render({ loading: true });
     }
 
     return (
       <div>
-        <Query query={GET_ALL_PAGES} variables={{ languageId: languageData.id }}>
+        <Query 
+          query={GET_ALL_PAGES}
+          variables={{ 
+            languageId: languageData.id,
+            projectId: projectData.id,
+          }}
+        >
           {data => {
             return render(data);
           }}
@@ -104,15 +118,16 @@ class List extends React.Component<Properties, {}> {
 
       if (res && res[1]) {
         const textFromSearchParams = searchParams.get(res[1]);
+
+        if (!textFromSearchParams) {
+          return this.props.children({ data: [] });
+        }
         searchedText = `${searchedText ? searchedText : ''} ${textFromSearchParams ? textFromSearchParams  : '' }`;
       } else {
         searchedText = `${searchedText ? searchedText : ''} ${fulltextFilter}`;
       }
     }
 
-    console.log(searchedText, fulltextFilter);
-    
-    const searchedParams = new URLSearchParams();
     const searchedFragments = searchedText && searchedText.trim().split(' ').map(fragment => fragment.trim());
     if (Array.isArray(data)) {
       return this.props.children({ data });
@@ -148,7 +163,7 @@ class List extends React.Component<Properties, {}> {
                 },                                       
                 pages);
               }
-
+          
               const pagesWithTag = pages
                 .filter(p => {
   
@@ -264,8 +279,10 @@ class List extends React.Component<Properties, {}> {
           if (Array.isArray(searchKeys) && searchKeys.length > 0) {
             const getValueFromDatasourceItems = R.path(searchKeys);
             const replacement = getValueFromDatasourceItems(item);
-            if (replacement) {
+            if (replacement && typeof replacement === 'string') {
               replaced = replaced.replace(result[0], replacement);
+            } else if (replacement && typeof replacement === 'object') {
+              replaced = replaced.replace(result[0], JSON.stringify(replacement));
             } else {
               replaced = replaced.replace(result[0], '');
             }
@@ -294,14 +311,13 @@ class List extends React.Component<Properties, {}> {
 
         if (searchedFragments && searchedFragments.length > 0) {
           datasourceItems = searchedFragments.reduce(
-          (filteredPages, fragment) => {
-            return filteredPages.filter(page => JSON.stringify(page).toLowerCase().includes(fragment)); 
+          (filteredItems, fragment) => {
+            return filteredItems.filter(page => JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase())); 
           },                                       
           datasourceItems);
         }
-        
         // Map datasourceItem data to placeholders
-        datasourceItems
+        datasourceItems = datasourceItems
           .map((item) => {
 
             // Iterate through dataShape 

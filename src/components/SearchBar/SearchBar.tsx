@@ -2,6 +2,7 @@ import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
 import Media from '@source/partials/Media';
 import List from '@source/components/List';
+import Link from '@source/partials/Link';
 
 export interface SearchBarProps {
   placeholder: string;
@@ -79,21 +80,22 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
         <div className={`searchBarResults ${this.state.query.length !== 0 ? 'active' : ''}`}>
           {this.props.doctorSearchResults && (
-            <List data={this.props.doctorSearchResults}>
+            <List data={this.props.doctorSearchResults} searchedText={this.state.query}>
               {({ data }) => {
                 if (data) {
                   return (
                     <ul className={'searchBarResults__doctors'}>
                       {data.map((doctor, i) => {
-                        console.log('%c Emilio: ', 'background: #222; color: #83FFFF', doctor);
                         return (
-                          <li className={doctor.active ? 'active' : ''} key={i}>
-                            <span>
-                              <p>{doctor.name}</p>
-                              <p>{doctor.speciality}</p>
-                            </span>
-                            <span>{doctor.clinic}</span>
-                          </li>
+                            <li key={i} className={doctor.active ? 'active' : ''} >
+                              <Link  {...doctor.link}>
+                                <span>
+                                  <p>{doctor.name}</p>
+                                  <p>{doctor.speciality}</p>
+                                </span>
+                                <span>{doctor.clinic}</span>
+                              </Link>
+                            </li>
                         );
                       })}
                     </ul>
@@ -106,7 +108,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
           <hr />
 
           {this.props.blogSearchResults && (
-            <List data={this.props.blogSearchResults}>
+            <List data={this.props.blogSearchResults} searchedText={this.state.query}>
               {({ data }) => {
                 if (data) {
                   return (
@@ -114,12 +116,12 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                       {data.length > 0 && <label>Blog:</label>}
                       {data.map((blogItem, i) => (
                         <li key={i}>
-                          <div>{blogItem.image && <Media type="image" data={blogItem.image} />}</div>
-
-                          <div>
-                            <h4>{blogItem.title}</h4>
-                            <p>{blogItem.perex}</p>
-                          </div>
+                          <Link {...blogItem.link}>
+                            <div>
+                              <h4>{blogItem.title}</h4>
+                              <p>{blogItem.perex}</p>
+                            </div>
+                          </Link>
                         </li>
                       ))}
                     </ul>

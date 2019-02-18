@@ -77,6 +77,14 @@
               "active": {
                 "type": "boolean",
                 "title": "Doctor result active"
+              },
+              "workingHours": {
+                "type": "object",
+                "title": "Working hours"
+              },
+              "link": {
+                "type": "urlAutocomplete",
+                "title": "Link URL"
               }
             }
           }
@@ -97,6 +105,10 @@
               },
               "image": {
                 "type": "image"
+              },
+              "link": {
+                "type": "urlAutocomplete",
+                "title": "Link URL"
               }
             }
           }

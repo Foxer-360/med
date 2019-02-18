@@ -34,8 +34,8 @@ import { adopt } from 'react-adopt';
 import Loader from '@source/partials/Loader';
 import { withRouter } from 'react-router';
 var DATASOURCE = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"], ["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"])));
-var GET_CONTEXT = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n  }\n"])));
-var GET_ALL_PAGES = gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
+var GET_CONTEXT = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n    projectData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n    projectData @client\n  }\n"])));
+var GET_ALL_PAGES = gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  query localizedPages($languageId: ID! $projectId: ID!) {\n    pages(where: { website: { project: { id: $projectId } } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID! $projectId: ID!) {\n    pages(where: { website: { project: { id: $projectId } } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
 var AllPagesComposedQuery = adopt({
     getContext: function (_a) {
         var render = _a.render;
@@ -45,13 +45,15 @@ var AllPagesComposedQuery = adopt({
         });
     },
     allPages: function (_a) {
-        var render = _a.render, languageData = _a.getContext.languageData;
-        console.log('Blogholder language data:', languageData.id);
-        if (!languageData) {
+        var render = _a.render, _b = _a.getContext, languageData = _b.languageData, projectData = _b.projectData;
+        if (!languageData || !projectData) {
             return render({ loading: true });
         }
         return (React.createElement("div", null,
-            React.createElement(Query, { query: GET_ALL_PAGES, variables: { languageId: languageData.id } }, function (data) {
+            React.createElement(Query, { query: GET_ALL_PAGES, variables: {
+                    languageId: languageData.id,
+                    projectId: projectData.id,
+                } }, function (data) {
                 return render(data);
             })));
     },
@@ -67,12 +69,12 @@ var List = /** @class */ (function (_super) {
                 var dataShape = data.data, error = data.error, loading = data.loading;
                 var datasourceItems = ((queryData.data.datasource && queryData.data.datasource.datasourceItems) || []);
                 if (searchedFragments && searchedFragments.length > 0) {
-                    datasourceItems = searchedFragments.reduce(function (filteredPages, fragment) {
-                        return filteredPages.filter(function (page) { return JSON.stringify(page).toLowerCase().includes(fragment); });
+                    datasourceItems = searchedFragments.reduce(function (filteredItems, fragment) {
+                        return filteredItems.filter(function (page) { return JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase()); });
                     }, datasourceItems);
                 }
                 // Map datasourceItem data to placeholders
-                datasourceItems
+                datasourceItems = datasourceItems
                     .map(function (item) {
                     // Iterate through dataShape 
                     // in case that value inside some of keys is string
@@ -175,14 +177,15 @@ var List = /** @class */ (function (_super) {
             var res = regex.exec(fulltextFilter.trim());
             if (res && res[1]) {
                 var textFromSearchParams = searchParams.get(res[1]);
+                if (!textFromSearchParams) {
+                    return this.props.children({ data: [] });
+                }
                 searchedText = (searchedText ? searchedText : '') + " " + (textFromSearchParams ? textFromSearchParams : '');
             }
             else {
                 searchedText = (searchedText ? searchedText : '') + " " + fulltextFilter;
             }
         }
-        console.log(searchedText, fulltextFilter);
-        var searchedParams = new URLSearchParams();
         var searchedFragments = searchedText && searchedText.trim().split(' ').map(function (fragment) { return fragment.trim(); });
         if (Array.isArray(data)) {
             return this.props.children({ data: data });
@@ -321,8 +324,11 @@ var List = /** @class */ (function (_super) {
                     if (Array.isArray(searchKeys) && searchKeys.length > 0) {
                         var getValueFromDatasourceItems = R.path(searchKeys);
                         var replacement = getValueFromDatasourceItems(item);
-                        if (replacement) {
+                        if (replacement && typeof replacement === 'string') {
                             replaced = replaced.replace(result[0], replacement);
+                        }
+                        else if (replacement && typeof replacement === 'object') {
+                            replaced = replaced.replace(result[0], JSON.stringify(replacement));
                         }
                         else {
                             replaced = replaced.replace(result[0], '');
