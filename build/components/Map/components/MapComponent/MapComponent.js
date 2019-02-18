@@ -95,8 +95,6 @@ var MapComponent = /** @class */ (function (_super) {
         var defaultZoom = 7;
         return (React.createElement("div", { className: "fullWidthContainer" },
             React.createElement("section", { className: 'map' },
-                React.createElement("div", { className: 'map__container' },
-                    React.createElement("button", null, "Zobrazit v\u0161echny polikliniky")),
                 React.createElement(List, { data: this.props.clinics }, function (_a) {
                     var data = _a.data;
                     return (React.createElement(React.Fragment, null, data && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, center: defaultCenter, defaultZoom: defaultZoom, options: {

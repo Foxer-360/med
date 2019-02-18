@@ -1,6 +1,17 @@
 .expertiseList {
   .grid-container {
     grid-template-rows: auto;
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include xl {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   h3 {
@@ -69,7 +80,6 @@
 
   @include max-lg {
     .grid-container {
-      grid-template-columns: repeat(3, 1fr);
       grid-template-rows: auto;
       padding: 0 30px;
     }

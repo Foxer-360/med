@@ -14,11 +14,13 @@ export default function ViewsAboutUsElement(props: ViewsAboutUsElementProps) {
 
   return (
     <div className="viewsAboutUs__list__element">
-      {image && <Media type={'image'} data={image} />}
+      <div>{image && <Media type={'image'} data={image} />}</div>
 
       <div className={'viewsAboutUs__list__element__content'}>
         {cite && <cite>{cite}</cite>}
-        <Link url={url && url.url}>Zdroj: <strong>{link}</strong></Link>
+        <Link url={url && url.url}>
+          Zdroj: <strong>{link}</strong>
+        </Link>
       </div>
     </div>
   );

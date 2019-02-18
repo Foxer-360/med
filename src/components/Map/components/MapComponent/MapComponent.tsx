@@ -116,10 +116,12 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     return (
       <div className="fullWidthContainer">
         <section className={'map'}>
-          <div className={'map__container'}>
-            <button>Zobrazit všechny polikliniky</button>
-          </div>
 
+          {/* // ! HIDDEN UNTIL FUNTIONALITY IMPLEMENTED */}
+          {/* {<div className={'map__container'}>
+            <button>Zobrazit všechny polikliniky</button>
+          </div>} */}
+          
           <List data={this.props.clinics}>
             {({ data }) => (
               <>
@@ -174,7 +176,6 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
               </>
             )}
           </List>
-
           {this.state.boxData && <MapBox clinicData={this.state.boxData} close={this.handleMarkerClose} />}
         </section>
       </div>
