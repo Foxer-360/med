@@ -62,6 +62,10 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
       bounds.extend(new maps.LatLng(location.lat, location.lng));
     });
 
+    if (this.props.coords) {
+      bounds.extend(new maps.LatLng(this.props.coords.latitude, this.props.coords.longitude));
+    }
+
     return bounds;
   }
 
@@ -111,12 +115,11 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     return (
       <div className="fullWidthContainer">
         <section className={'map'}>
-
           {/* // ! HIDDEN UNTIL FUNTIONALITY IMPLEMENTED */}
           {/* {<div className={'map__container'}>
             <button>Zobrazit všechny polikliniky</button>
           </div>} */}
-          
+
           <List data={this.props.clinics}>
             {({ data }) => (
               <>

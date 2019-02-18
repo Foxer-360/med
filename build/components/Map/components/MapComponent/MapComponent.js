@@ -47,6 +47,9 @@ var MapComponent = /** @class */ (function (_super) {
             locations.forEach(function (location) {
                 bounds.extend(new maps.LatLng(location.lat, location.lng));
             });
+            if (_this.props.coords) {
+                bounds.extend(new maps.LatLng(_this.props.coords.latitude, _this.props.coords.longitude));
+            }
             return bounds;
         };
         _this.apiIsLoaded = function (map, maps, locations) {
