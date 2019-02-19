@@ -88,8 +88,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
           {this.props.doctorSearchResults && (
             <List data={this.props.doctorSearchResults} searchedText={this.state.query}>
               {({ data }) => {
-
-                if (data) {
+                if (data.length > 0) {
                   return (
                     <ul className={'searchBarResults__doctors'}>
                       {data.map((doctor, i) => {
@@ -97,24 +96,24 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
                         try {
                           workingHours = JSON.parse(doctor.workingHours);
-                        } catch (e) 
-                        // eslint-disable-next-line no-empty
-                        {}
+                        } catch (e) {}
 
                         return (
-                            <li key={i} className={this.isDoctorActive(workingHours) ? 'active' : ''} >
-                              <Link  {...doctor.link}>
-                                <span>
-                                  <p>{doctor.name}</p>
-                                  <p>{doctor.speciality}</p>
-                                </span>
-                                <span>{doctor.clinic}</span>
-                              </Link>
-                            </li>
+                          <li key={i} className={this.isDoctorActive(workingHours) ? 'active' : ''}>
+                            <Link {...doctor.link}>
+                              <span>
+                                <p>{doctor.name}</p>
+                                <p>{doctor.speciality}</p>
+                              </span>
+                              <span>{doctor.clinic}</span>
+                            </Link>
+                          </li>
                         );
                       })}
                     </ul>
                   );
+                } else {
+                  return <div className={'searchBarResults__noResults'}>No Results!</div>;
                 }
               }}
             </List>
@@ -125,15 +124,16 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
           {this.props.blogSearchResults && (
             <List data={this.props.blogSearchResults} searchedText={this.state.query}>
               {({ data }) => {
-                if (data) {
+                if (data.length > 0) {
                   return (
                     <ul className={'searchBarResults__blog'}>
-                      {data.length > 0 && <label>Blog:</label>}
+                      <label>Blog:</label>
+
                       {data.map((blogItem, i) => (
                         <li key={i}>
                           <Link {...blogItem.link}>
                             <div>
-                              <h4>{blogItem.title}</h4>
+                              <h4>{blogItem.title}</h4>  
                               <p>{blogItem.perex}</p>
                             </div>
                           </Link>
@@ -141,6 +141,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                       ))}
                     </ul>
                   );
+                } else {
+                  return <div className={'searchBarResults__noResults'}>No Results!</div>;
                 }
               }}
             </List>
@@ -151,7 +153,6 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   }
 
   public getWeekDayKey() {
-
     let day;
 
     switch (moment().isoWeekday()) {
@@ -176,16 +177,15 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
       case 7:
         day = 'su';
         break;
-      default: 
+      default:
         day = 'mo';
         break;
     }
 
     return day;
-  } 
+  }
 
   public isDoctorActive(workingHours: LooseObject) {
-
     const weekDayKey = this.getWeekDayKey();
 
     if (
@@ -199,17 +199,22 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
       workingHours.weeks[0].days[weekDayKey].length > 0 &&
       workingHours.weeks[0].days[weekDayKey].length > 0
     ) {
-
       return workingHours.weeks[0].days[weekDayKey].some(doctorWorkingHours => {
         const regex = /^\s*([0-9]{2}):([0-9]{2})\s*$/;
-        const from =  regex.exec(doctorWorkingHours.from);
+        const from = regex.exec(doctorWorkingHours.from);
         const to = regex.exec(doctorWorkingHours.to);
-  
+
         if (from && from[1] && from[2] && to && to[1] && to[2]) {
-          const startOfShift = moment().startOf('day').add(from[1], 'hours').add(from[2], 'minutes');
-          const endOfShift = moment().startOf('day').add(to[1], 'hours').add(to[2], 'minutes');
+          const startOfShift = moment()
+            .startOf('day')
+            .add(from[1], 'hours')
+            .add(from[2], 'minutes');
+          const endOfShift = moment()
+            .startOf('day')
+            .add(to[1], 'hours')
+            .add(to[2], 'minutes');
           const now = moment();
-  
+
           if (now.isSameOrBefore(endOfShift) && now.isSameOrAfter(startOfShift)) {
             return true;
           }
