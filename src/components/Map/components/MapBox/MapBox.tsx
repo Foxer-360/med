@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '../../../../partials/Button';
+import Media from '../../../../partials/Media';
 
 interface MapBoxProps {
   close: () => void;
@@ -7,11 +8,11 @@ interface MapBoxProps {
 }
 
 const MapBox: React.SFC<MapBoxProps> = props => {
-  const { title, address, city, phone } = props.clinicData;
+  const { title, address, city, phone, image } = props.clinicData;
 
   return (
     <div className={'mapBox'}>
-      <div className={'mapBox__close'} onClick={() => props.close()}>
+      <div className={`mapBox__close ${!image.filename ? 'mapBox__close--white' : ''}`} onClick={() => props.close()}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
           <g>
             <path d="M26 0C11.664 0 0 11.663 0 26s11.664 26 26 26 26-11.663 26-26S40.336 0 26 0zm0 50C12.767 50 2 39.233 2 26S12.767 2 26 2s24 10.767 24 24-10.767 24-24 24z" />
@@ -19,7 +20,9 @@ const MapBox: React.SFC<MapBoxProps> = props => {
           </g>
         </svg>
       </div>
-      <img src={'/assets/medicon/images/mapbox.png'} />
+
+      {console.log('%c Emilio:as ', 'background: #222; color: #83FFFF', props)}
+      {image && image.filename && <Media type="image" data={image} />}
 
       <div className={'pcTitle'}>
         <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
@@ -59,12 +62,12 @@ const MapBox: React.SFC<MapBoxProps> = props => {
         </div>
       </div>
 
-      <div className={'mapBox__buttons'}>
+      {/* <div className={'mapBox__buttons'}>
         <Button classes="btn--small btn--blueBkg" noArrow={true}>
           ambulance
         </Button>
         <Button classes="btn--small btn--blueBorder">kuddy k nam</Button>
-      </div>
+      </div> */}
     </div>
   );
 };

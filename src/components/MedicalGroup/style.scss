@@ -1,5 +1,5 @@
 .medicalGroup {
-  height: calc(100% + 50%);
+  height: 100%;
 
   h4 {
     @include webkitGradientText;
@@ -45,8 +45,6 @@
 
             &:first-of-type {
               color: $lightBlue;
-            }
-            &:last-of-type {
             }
           }
 

@@ -19,13 +19,14 @@ import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import { BlogCard } from './components/blogCard';
 import Button from '../../partials/Button';
+import Loader from '../../partials/Loader';
 import SearchBar from '../SearchBar/SearchBar';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 import { findFirst, findAll } from 'obj-traverse/lib/obj-traverse';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n  }\n"])));
-var GET_ALL_PAGES = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id \n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id \n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
+var GET_ALL_PAGES = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
 var GET_PAGE = gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  query($pageId: ID!) {\n    page(where: { id: $pageId }) {\n      id\n      tags {\n        id\n        name\n      }\n    }\n  }\n"], ["\n  query($pageId: ID!) {\n    page(where: { id: $pageId }) {\n      id\n      tags {\n        id\n        name\n      }\n    }\n  }\n"])));
 var ComposedQuery = adopt({
     getContext: function (_a) {
@@ -69,7 +70,7 @@ var Blog = /** @class */ (function (_super) {
                 React.createElement(ComposedQuery, null, function (_a) {
                     var _b = _a.allPages, allPagesData = _b.data, allPagesLoading = _b.loading, allPagesError = _b.error, _c = _a.currentPage, currentPageData = _c.data, currentPageLoading = _c.loading, currentPageError = _c.error, languageData = _a.getContext.languageData;
                     if (allPagesLoading || currentPageLoading || !allPagesData || !languageData) {
-                        return React.createElement("div", null, "Loading");
+                        return React.createElement(Loader, null);
                     }
                     if (allPagesError) {
                         return "Error...";

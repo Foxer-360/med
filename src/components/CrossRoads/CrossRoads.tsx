@@ -32,9 +32,7 @@ const CrossRoads = (props: CrossRoadsProps) => {
                     key={index}
                   >
                     <div className={'crossRoads__card__img'}>
-                      {(item.image && <Media type="image" data={item.image} />) || (
-                        <img src="./assets/medicon/images/hospitalIcon.svg" />
-                      )}
+                      {item.image && <Media type="image" data={item.image} />}
                     </div>
                     {item.text && <p>{item.text}</p>}
                   </Link>

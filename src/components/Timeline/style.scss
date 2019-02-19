@@ -2,7 +2,7 @@
   padding: 0 0 5rem 0;
 
   h2 {
-    padding: 0 0 5.3rem 0;
+    padding: 5rem 0;
     @include webkitGradientText;
   }
 }
@@ -138,11 +138,12 @@
         }
       }
 
-      img {
+      .mediaRatio {
         position: absolute;
         left: -24px;
+        padding-top: 0 !important;
+        height: 50px;
         width: 50px;
-        height: auto;
       }
 
       &:before {
@@ -158,10 +159,7 @@
         padding: 46px 18px 18px 18px;
         top: 20px;
 
-        &:after {
-        }
-
-        img {
+        .mediaRatio {
           bottom: -59px;
         }
       }
@@ -169,10 +167,7 @@
         padding: 18px 18px 46px 18px;
         bottom: 20px;
 
-        &:after {
-        }
-
-        img {
+        .mediaRatio {
           top: -59px;
         }
       }

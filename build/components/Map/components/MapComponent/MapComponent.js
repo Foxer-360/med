@@ -47,10 +47,13 @@ var MapComponent = /** @class */ (function (_super) {
             locations.forEach(function (location) {
                 bounds.extend(new maps.LatLng(location.lat, location.lng));
             });
+            if (_this.props.coords) {
+                bounds.extend(new maps.LatLng(_this.props.coords.latitude, _this.props.coords.longitude));
+            }
             return bounds;
         };
         _this.apiIsLoaded = function (map, maps, locations) {
-            if (map) {
+            if (map && locations && locations.length > 0) {
                 var bounds = _this.getMapBounds(map, maps, locations);
                 map.fitBounds(bounds);
             }
@@ -95,8 +98,6 @@ var MapComponent = /** @class */ (function (_super) {
         var defaultZoom = 7;
         return (React.createElement("div", { className: "fullWidthContainer" },
             React.createElement("section", { className: 'map' },
-                React.createElement("div", { className: 'map__container' },
-                    React.createElement("button", null, "Zobrazit v\u0161echny polikliniky")),
                 React.createElement(List, { data: this.props.clinics }, function (_a) {
                     var data = _a.data;
                     return (React.createElement(React.Fragment, null, data && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, center: defaultCenter, defaultZoom: defaultZoom, options: {
@@ -105,14 +106,15 @@ var MapComponent = /** @class */ (function (_super) {
                             var map = _a.map, maps = _a.maps;
                             return _this.apiIsLoaded(map, maps, data);
                         } },
-                        data.map(function (clinic, index) {
-                            if (clinic.lat && clinic.lng) {
-                                return (React.createElement(Marker, { type: clinic.title ===
-                                        _this.nearestClinic(_this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng, data).title
-                                        ? 'big'
-                                        : 'small', lat: clinic.lat, lng: clinic.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index, handleMarkerClose: _this.handleMarkerClose }));
-                            }
-                        }),
+                        data.length > 0 &&
+                            data.map(function (clinic, index) {
+                                if (clinic.lat && clinic.lng) {
+                                    return (React.createElement(Marker, { type: clinic.title ===
+                                            _this.nearestClinic(_this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng, data).title
+                                            ? 'big'
+                                            : 'small', lat: clinic.lat, lng: clinic.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index, handleMarkerClose: _this.handleMarkerClose }));
+                                }
+                            }),
                         React.createElement(Marker, { type: 'geoLocation', lat: _this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, lng: _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng, key: data.length + 1, index: data.length + 1 })))));
                 }),
                 this.state.boxData && React.createElement(MapBox, { clinicData: this.state.boxData, close: this.handleMarkerClose }))));

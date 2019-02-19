@@ -23,15 +23,19 @@ var ExpertiseDescriptionCare = /** @class */ (function (_super) {
         };
         return _this;
     }
+    ExpertiseDescriptionCare.prototype.componentWillReceiveProps = function (nextProps) {
+        this.setState({ showHiddenText: nextProps.showHiddenText });
+    };
     ExpertiseDescriptionCare.prototype.render = function () {
         var _this = this;
+        var _a = this.props, title = _a.title, firstText = _a.firstText, secondText = _a.secondText, hideBtn = _a.hideBtn;
         return (React.createElement("div", { className: 'care' },
-            this.props.title && React.createElement("h3", null, this.props.title),
-            React.createElement("div", { className: 'hCenterBlock' }, this.props.firstText && React.createElement(ReactMarkdown, { source: this.props.firstText })),
-            this.props.secondText && this.props.secondText.length > 1 &&
-                React.createElement("h4", { style: { cursor: 'pointer', padding: '45px 0 0 0' }, onClick: function () { return _this.setState({ showHiddenText: !_this.state.showHiddenText }); } }, "V\u00EDce informac\u00ED"),
+            title && React.createElement("h3", null, title),
+            React.createElement("div", { className: 'hCenterBlock' }, firstText && React.createElement(ReactMarkdown, { source: firstText })),
+            secondText && secondText.length > 1 && hideBtn &&
+                React.createElement("h4", { style: { cursor: 'pointer', paddingTop: '45px', paddingBottom: 0 }, onClick: function () { return _this.setState({ showHiddenText: !_this.state.showHiddenText }); } }, hideBtn),
             this.state.showHiddenText ?
-                React.createElement("div", { className: 'hCenterBlock' }, this.props.secondText && React.createElement(ReactMarkdown, { source: this.props.secondText }))
+                React.createElement("div", { className: 'hCenterBlock', style: { marginTop: 45 } }, secondText && React.createElement(ReactMarkdown, { source: secondText }))
                 : ''));
     };
     return ExpertiseDescriptionCare;

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import { BlogCard } from './components/blogCard';
 import Button from '../../partials/Button';
+import Loader from '../../partials/Loader';
 import SearchBar from '../SearchBar/SearchBar';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
@@ -18,7 +19,7 @@ const GET_CONTEXT = gql`
 const GET_ALL_PAGES = gql`
   query localizedPages($languageId: ID!) {
     pages {
-      id 
+      id
       type {
         id
         name
@@ -114,7 +115,7 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
               getContext: { languageData },
             }) => {
               if (allPagesLoading || currentPageLoading || !allPagesData || !languageData) {
-                return <div>Loading</div>;
+                return <Loader />;
               }
 
               if (allPagesError) {
@@ -152,7 +153,6 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
 
                   return a > b ? -1 : a < b ? 1 : 0;
                 });
-
               return (
                 <Masonry
                   breakpointCols={{ default: 3, 4000: 3, 800: 2, 500: 1 }}

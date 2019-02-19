@@ -41,7 +41,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
     this.setState({
       formValues: { ...this.state.formValues, [e.target.name]: e.target.value },
     });
-  };
+  }
 
   public render() {
     const { gdprLink, title, text } = this.props.data;

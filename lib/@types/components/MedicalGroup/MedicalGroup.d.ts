@@ -1,12 +1,13 @@
 import * as React from 'react';
+interface Company {
+    name: string;
+    subtitle: string;
+    text: string;
+}
 export interface MedicalGroupProps {
     data: {
         title: string;
-        companies: [{
-            name: string;
-            subtitle: string;
-            text: string;
-        }];
+        companies: Company[];
     };
 }
 export interface MedicalGroupState {

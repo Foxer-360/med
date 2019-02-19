@@ -20,7 +20,7 @@ const BlogArticle = (props: AppProps) => {
       <div className="container">
         {title && <h1 className={'gradientHeading'}>{title}</h1>}
 
-        <Media data={image} type="image" />
+        {image && <Media data={image} type="image" />}
 
         <div className={`blogArticle__content ${textAlign || 'center'}`}>
           <ReactMarkdown

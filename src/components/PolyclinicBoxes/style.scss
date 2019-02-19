@@ -1,10 +1,15 @@
 .polyclinicBoxes {
- 
+  margin: 50px 0;
+
+  @include md {
+    margin: 50px 0;
+  }
+
   h3 {
     padding-bottom: 50px;
     padding-top: 10px;
     margin-bottom: 0;
-    
+
     @include webkitGradientText;
   }
 
@@ -14,7 +19,6 @@
     grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
     grid-template-rows: 295px;
     justify-items: center;
-    margin-bottom: 50px;
 
     li {
       padding: 0;

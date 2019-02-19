@@ -24,6 +24,13 @@
       transition: 300ms ease;
     }
 
+    &--white {
+      svg {
+        fill: black;
+        transition: 300ms ease;
+      }
+    }
+
     &:hover {
       svg {
         fill: white;
@@ -60,6 +67,7 @@
       @extend .flexRow;
       justify-content: space-between;
       flex-wrap: nowrap;
+      margin-bottom: 15px;
 
       img {
         width: 23px;

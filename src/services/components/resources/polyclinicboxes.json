@@ -5,19 +5,39 @@
     "polyclinics": [
       {
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "295"
+          }
+        }
       },
       {
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "295"
+          }
+        }
       },
       {
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "295"
+          }
+        }
       },
       {
         "url": "",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "295"
+          }
+        }
       }
     ]
   },

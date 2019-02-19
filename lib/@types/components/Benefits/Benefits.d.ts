@@ -2,6 +2,7 @@
 interface Benefits {
     text: string;
     image: LooseObject;
+    url?: LooseObject;
 }
 export interface BenefitsProps {
     data: {

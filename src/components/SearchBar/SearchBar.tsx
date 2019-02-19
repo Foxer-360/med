@@ -13,7 +13,7 @@ export interface SearchBarProps {
   doctorSearchResults?: LooseObject;
   blogSearchResults?: LooseObject;
 }
-
+ 
 export interface SearchBarState {
   focused: boolean;
   query: string;
@@ -82,7 +82,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
           <SvgIcon name={'search'} type={barColor} />
         </div>
 
-        <div className={`searchBar__bar`} />
+        <div className={`searchBar__bar`} />  
 
         <div className={`searchBarResults ${this.state.query.length !== 0 ? 'active' : ''}`}>
           {this.props.doctorSearchResults && (

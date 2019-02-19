@@ -7,6 +7,6 @@ export interface MapProps {
 
 const Map = (props: MapProps) => {
   return <MapComponent clinics={props.data.items} />;
-};
+};  
 
 export default Map;
