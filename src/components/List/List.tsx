@@ -8,7 +8,7 @@ import { withRouter, RouteComponentProps } from 'react-router';
 
 interface Properties extends RouteComponentProps<LooseObject> {
   // tslint:disable-next-line:no-any
-  data: any;
+  data?: any;
   children: (data: LooseObject) => JSX.Element;
   searchedText?: string;
 }
@@ -96,7 +96,7 @@ const AllPagesComposedQuery = adopt({
             return render(data);
           }}
         </Query>
-      </div>
+      </>
     );
   },
 });
@@ -256,7 +256,7 @@ class List extends React.Component<Properties, {}> {
                     .map(item => {
                       delete item.orderBy;
                       return item;
-                    }) 
+                    })  
                   :
                   pagesWithTag
                 });
