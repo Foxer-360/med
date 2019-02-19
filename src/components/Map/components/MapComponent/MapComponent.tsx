@@ -6,12 +6,6 @@ import Marker from '../Marker';
 import List from '../../../List';
 import MapBox from '../MapBox';
 
-interface Clinic {
-  lat: number;
-  lng: number;
-  name: string;
-}
-
 interface MapComponentState {
   activeMarker: number | null;
   boxData: LooseObject;
@@ -67,11 +61,16 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     locations.forEach(location => {
       bounds.extend(new maps.LatLng(location.lat, location.lng));
     });
+
+    if (this.props.coords) {
+      bounds.extend(new maps.LatLng(this.props.coords.latitude, this.props.coords.longitude));
+    }
+
     return bounds;
   }
 
   apiIsLoaded = (map, maps, locations) => {
-    if (map) {
+    if (map && locations && locations.length > 0) {
       const bounds = this.getMapBounds(map, maps, locations);
       map.fitBounds(bounds);
     }
@@ -116,9 +115,10 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
     return (
       <div className="fullWidthContainer">
         <section className={'map'}>
-          <div className={'map__container'}>
+          {/* // ! HIDDEN UNTIL FUNTIONALITY IMPLEMENTED */}
+          {/* {<div className={'map__container'}>
             <button>Zobrazit všechny polikliniky</button>
-          </div>
+          </div>} */}
 
           <List data={this.props.clinics}>
             {({ data }) => (
@@ -135,32 +135,33 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
                     yesIWantToUseGoogleMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps, data)}
                   >
-                    {data.map((clinic, index) => {
-                      if (clinic.lat && clinic.lng) {
-                        return (
-                          <Marker
-                            type={
-                              clinic.title ===
-                              this.nearestClinic(
-                                this.props.coords ? this.props.coords.latitude : defaultCenter.lat,
-                                this.props.coords ? this.props.coords.longitude : defaultCenter.lng,
-                                data
-                              ).title
-                                ? 'big'
-                                : 'small'
-                            }
-                            lat={clinic.lat}
-                            lng={clinic.lng}
-                            handleMarkerClick={(e, key) => this.handleMarkerClick(e, key, clinic)}
-                            handleClose={this.handleMarkerClose}
-                            active={this.state.activeMarker === index}
-                            key={index}
-                            index={index}
-                            handleMarkerClose={this.handleMarkerClose}
-                          />
-                        );
-                      }
-                    })}
+                    {data.length > 0 &&
+                      data.map((clinic, index) => {
+                        if (clinic.lat && clinic.lng) {
+                          return (
+                            <Marker
+                              type={
+                                clinic.title ===
+                                this.nearestClinic(
+                                  this.props.coords ? this.props.coords.latitude : defaultCenter.lat,
+                                  this.props.coords ? this.props.coords.longitude : defaultCenter.lng,
+                                  data
+                                ).title
+                                  ? 'big'
+                                  : 'small'
+                              }
+                              lat={clinic.lat}
+                              lng={clinic.lng}
+                              handleMarkerClick={(e, key) => this.handleMarkerClick(e, key, clinic)}
+                              handleClose={this.handleMarkerClose}
+                              active={this.state.activeMarker === index}
+                              key={index}
+                              index={index}
+                              handleMarkerClose={this.handleMarkerClose}
+                            />
+                          );
+                        }
+                      })}
 
                     <Marker
                       type={'geoLocation'}
@@ -174,7 +175,6 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
               </>
             )}
           </List>
-
           {this.state.boxData && <MapBox clinicData={this.state.boxData} close={this.handleMarkerClose} />}
         </section>
       </div>

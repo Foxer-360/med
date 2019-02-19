@@ -74,15 +74,13 @@ var SearchBar = /** @class */ (function (_super) {
             React.createElement("div", { className: "searchBarResults " + (this.state.query.length !== 0 ? 'active' : '') },
                 this.props.doctorSearchResults && (React.createElement(List, { data: this.props.doctorSearchResults, searchedText: this.state.query }, function (_a) {
                     var data = _a.data;
-                    if (data) {
+                    if (data.length > 0) {
                         return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data.map(function (doctor, i) {
                             var workingHours = {};
                             try {
                                 workingHours = JSON.parse(doctor.workingHours);
                             }
-                            catch (e) 
-                            // eslint-disable-next-line no-empty
-                            { }
+                            catch (e) { }
                             return (React.createElement("li", { key: i, className: _this.isDoctorActive(workingHours) ? 'active' : '' },
                                 React.createElement(Link, __assign({}, doctor.link),
                                     React.createElement("span", null,
@@ -91,18 +89,24 @@ var SearchBar = /** @class */ (function (_super) {
                                     React.createElement("span", null, doctor.clinic))));
                         })));
                     }
+                    else {
+                        return React.createElement("div", { className: 'searchBarResults__noResults' }, "No Results!");
+                    }
                 })),
                 React.createElement("hr", null),
                 this.props.blogSearchResults && (React.createElement(List, { data: this.props.blogSearchResults, searchedText: this.state.query }, function (_a) {
                     var data = _a.data;
-                    if (data) {
+                    if (data.length > 0) {
                         return (React.createElement("ul", { className: 'searchBarResults__blog' },
-                            data.length > 0 && React.createElement("label", null, "Blog:"),
+                            React.createElement("label", null, "Blog:"),
                             data.map(function (blogItem, i) { return (React.createElement("li", { key: i },
                                 React.createElement(Link, __assign({}, blogItem.link),
                                     React.createElement("div", null,
                                         React.createElement("h4", null, blogItem.title),
                                         React.createElement("p", null, blogItem.perex))))); })));
+                    }
+                    else {
+                        return React.createElement("div", { className: 'searchBarResults__noResults' }, "No Results!");
                     }
                 })))));
     };
@@ -152,8 +156,14 @@ var SearchBar = /** @class */ (function (_super) {
                 var from = regex.exec(doctorWorkingHours.from);
                 var to = regex.exec(doctorWorkingHours.to);
                 if (from && from[1] && from[2] && to && to[1] && to[2]) {
-                    var startOfShift = moment().startOf('day').add(from[1], 'hours').add(from[2], 'minutes');
-                    var endOfShift = moment().startOf('day').add(to[1], 'hours').add(to[2], 'minutes');
+                    var startOfShift = moment()
+                        .startOf('day')
+                        .add(from[1], 'hours')
+                        .add(from[2], 'minutes');
+                    var endOfShift = moment()
+                        .startOf('day')
+                        .add(to[1], 'hours')
+                        .add(to[2], 'minutes');
                     var now = moment();
                     if (now.isSameOrBefore(endOfShift) && now.isSameOrAfter(startOfShift)) {
                         return true;

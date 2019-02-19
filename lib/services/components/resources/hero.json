@@ -8,9 +8,12 @@
     "displayOverlay": false,
     "TitleColor": "blue",
     "textColor": "gray",
-    "image": {},
-    "doctorSearchResults": [{ "name": "", "speciality": "", "clinic": "", "active": false }],
-    "blogSearchResults": [{ "title": "", "perex": "", "image": {} }]
+    "image": {
+      "recommendedSizes": {
+        "width": "1600",
+        "height": "610"
+      }
+    }
   },
   "form": {
     "schema": {
@@ -55,63 +58,6 @@
         },
         "image": {
           "type": "image"
-        },
-
-        "doctorSearchResults": {
-          "type": "array",
-          "title": "Doctor Search Results",
-          "items": {
-            "properties": {
-              "name": {
-                "type": "text",
-                "title": "Doctor result name"
-              },
-              "speciality": {
-                "type": "text",
-                "title": "Doctor result Speciality"
-              },
-              "clinic": {
-                "type": "text",
-                "title": "Doctor result clinic"
-              },
-              "active": {
-                "type": "boolean",
-                "title": "Doctor result active"
-              },
-              "workingHours": {
-                "type": "text",
-                "title": "Working hours"
-              },
-              "link": {
-                "type": "urlAutocomplete",
-                "title": "Link URL"
-              }
-            }
-          }
-        },
-
-        "blogSearchResults": {
-          "type": "array",
-          "title": "Doctor Search Results",
-          "items": {
-            "properties": {
-              "title": {
-                "type": "text",
-                "title": "Blog result title "
-              },
-              "perex": {
-                "type": "text",
-                "title": "Blog results perex"
-              },
-              "image": {
-                "type": "image"
-              },
-              "link": {
-                "type": "urlAutocomplete",
-                "title": "Link URL"
-              }
-            }
-          }
         }
       }
     }

@@ -1,17 +1,18 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from '@source/partials/Link';
+import List from '../List';
+
+interface Company {
+  name: string;
+  subtitle: string;
+  text: string;
+}
 
 export interface MedicalGroupProps {
   data: {
     title: string;
-    companies: [
-      {
-        name: string;
-        subtitle: string;
-        text: string;
-      }
-    ];
+    companies: Company[];
   };
 }
 
@@ -21,6 +22,7 @@ export interface MedicalGroupState {
 }
 
 class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState> {
+  // tslint:disable-next-line:no-any
   public list: any;
 
   constructor(props: MedicalGroupProps) {
@@ -67,7 +69,7 @@ class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState>
             style={{ height: this.state.listHeight > 0 && this.state.listHeight }}
           >
             <ul>
-              <Link data={companies}>
+              <List data={companies}>
                 {({ data }) => data &&
                   data.map((item, index) => {
                     return (
@@ -85,6 +87,7 @@ class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState>
                             <ReactMarkdown
                               source={item.text}
                               renderers={{
+                                // tslint:disable-next-line:no-any
                                 paragraph: (props: any) => <p>{props.children}</p>,
                               }}
                             />
@@ -93,7 +96,7 @@ class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState>
                       </li>
                     );
                   })}
-                </Link>
+                </List>
             </ul>
           </div>
         </section>

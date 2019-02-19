@@ -9,8 +9,6 @@ export interface HeroProps {
         displayOverlay: boolean;
         titleColor: string;
         textColor: string;
-        doctorSearchResults: LooseObject;
-        blogSearchResults: LooseObject;
     };
 }
 export interface HeroState {

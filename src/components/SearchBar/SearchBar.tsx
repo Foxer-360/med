@@ -13,7 +13,7 @@ export interface SearchBarProps {
   doctorSearchResults?: LooseObject;
   blogSearchResults?: LooseObject;
 }
-
+ 
 export interface SearchBarState {
   focused: boolean;
   query: string;

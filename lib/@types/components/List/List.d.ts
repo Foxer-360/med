@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 interface Properties extends RouteComponentProps<LooseObject> {
-    data: any;
+    data?: any;
     children: (data: LooseObject) => JSX.Element;
     searchedText?: string;
 }

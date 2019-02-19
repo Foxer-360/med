@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Swipeable from 'react-swipeable';
 import Media from '@source/partials/Media';
-import Link from '@source/partials/Link';
+import List from '../List';
 
 interface Item {
   name: string;
@@ -27,6 +27,7 @@ export interface TimelineState {
 }
 
 class Timeline extends React.Component<TimelineProps, TimelineState> {
+  // tslint:disable-next-line:no-any
   public timeline: any;
 
   constructor(props: TimelineProps) {
@@ -67,7 +68,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
         }
       }
     );
-  };
+  }
 
   handleSwipe = (e, direction, deltaX, velocity) => {
     let ammount = deltaX < 0 ? deltaX * -1 : deltaX;
@@ -77,11 +78,11 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     }
 
     this.translateTimeline(ammount);
-  };
+  }
 
   handleDrag = e => {
     e.preventDefault();
-  };
+  }
 
   arrowClick = (e, direction) => {
     let ammount = 300;
@@ -91,9 +92,9 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     }
 
     this.translateTimeline(ammount);
-  };
+  }
 
-  renderPoints = items => {
+  renderPoints = (items): Element[] => {
     const point = <div className={'point'} />;
 
     const points = [];
@@ -104,13 +105,13 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
       if (positionItem) {
 
         points.push(
-          <div className={`point ${'point--' + positionItem.color}`}>
+          <div key={i} className={`point ${'point--' + positionItem.color}`}>
             <div
               className={`point__content ${
                 items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom'
               }`}
             >
-              {positionItem.icon && <Media data={positionItem.icon} type="image" />}
+              {positionItem.image && <Media data={positionItem.image} type="image" />}
               <p>{positionItem.descriptionA}</p>
               <p>{positionItem.descriptionB}</p>
               <h5>{positionItem.name}</h5>
@@ -124,7 +125,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
     }
 
     return points;
-  };
+  }
 
   public render() {
     const { title, items } = this.props.data;
@@ -153,9 +154,11 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
                   ref={this.timeline}
                   style={{ transform: `translate3d(${this.state.x + 'px'},-7px,0)` }}
                 >
-                  <Link data={items}>
-                  {({ data }) => this.renderPoints(data)}
-                  </Link>
+                <List data={items}>
+                  {({ data }) => (<>
+                    {this.renderPoints(data)}
+                  </>)}
+                </List>
                 </div>
               </Swipeable>
             </div>

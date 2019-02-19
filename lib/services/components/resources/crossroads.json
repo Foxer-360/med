@@ -4,18 +4,33 @@
     "items": [
       {
         "text": "Hledám polikliniku",
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "95",
+            "height": "95"
+          }
+        },
         "link": ""
       },
       {
         "text": "Hledám lékaře",
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "95",
+            "height": "95"
+          }
+        },
         "link": ""
       },
 
       {
         "text": "Potřebuji poradit",
-        "image": {},
+        "image": {
+          "recommendedSizes": {
+            "width": "95",
+            "height": "95"
+          }
+        },
         "link": ""
       }
     ]

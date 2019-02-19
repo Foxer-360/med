@@ -14,6 +14,8 @@ export interface DescriptionProps {
         titleCare: string;
         firstText: string;
         secondText: string;
+        hideBtn: string;
+        showHiddenText: boolean;
         titleExamination: string;
         examinations: Examination[];
         boxes: Box[];

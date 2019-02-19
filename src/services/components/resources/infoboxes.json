@@ -8,21 +8,36 @@
         "gradientColor": "#5a2a20",
         "button": "btn--whiteBorder",
         "titleColor": "#ffffff",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        }
       },
       {
         "title": "široký výběr zdravýchpotravin",
         "gradientColor": "#ffffff",
         "button": "btn--blueBorder",
         "titleColor": "#2eac6c",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        }
       },
       {
         "title": "široký výběr zdravýchpotravin",
         "gradientColor": "#ffffff",
         "button": "btn--whiteBorder",
         "titleColor": "#ffffff",
-        "image": {}
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        }
       }
     ]
   },

@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Link from '@source/partials/Link';
+import List from '../List';
 var MedicalGroup = /** @class */ (function (_super) {
     __extends(MedicalGroup, _super);
     function MedicalGroup(props) {
@@ -51,7 +51,7 @@ var MedicalGroup = /** @class */ (function (_super) {
                 title && React.createElement("h4", null, "sou\u010D\u00E1sti skupiny medicon jsou tyto spole\u010Dnosti"),
                 React.createElement("div", { className: 'medicalGroup__list', ref: this.list, style: { height: this.state.listHeight > 0 && this.state.listHeight } },
                     React.createElement("ul", null,
-                        React.createElement(Link, { data: companies }, function (_a) {
+                        React.createElement(List, { data: companies }, function (_a) {
                             var data = _a.data;
                             return data &&
                                 data.map(function (item, index) {
@@ -61,6 +61,7 @@ var MedicalGroup = /** @class */ (function (_super) {
                                             " - ",
                                             React.createElement("span", null, item.subtitle)),
                                         React.createElement("div", { className: 'medicalGroup__list__item__text' }, item.text && (React.createElement(ReactMarkdown, { source: item.text, renderers: {
+                                                // tslint:disable-next-line:no-any
                                                 paragraph: function (props) { return React.createElement("p", null, props.children); },
                                             } })))));
                                 });

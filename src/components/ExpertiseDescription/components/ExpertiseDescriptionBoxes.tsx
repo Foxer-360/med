@@ -22,7 +22,7 @@ const ExpertiseDescriptionBoxes = (props: ExpertiseDescriptionBoxesProps) => {
             <div className={'info__element--cell'}>
               {box.title && <h5>{box.title}</h5>}
                 <div>
-                  <Button url={box.url && box.url} classes={'btn--whiteBorder'}>
+                  <Button url={box.url} classes={'btn--whiteBorder'}>
                     vice info
                   </Button>
                 </div>
