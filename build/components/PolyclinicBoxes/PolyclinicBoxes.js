@@ -13,7 +13,22 @@ var PolyclinicBoxes = function (props) {
                     return data &&
                         data.map(function (polyclinic, index) {
                             return (React.createElement("li", { key: index },
-                                React.createElement(Link, { url: polyclinic.url && polyclinic.url.url }, (polyclinic.image && polyclinic.image.filename && (React.createElement(Media, { data: polyclinic.image, type: 'image' }))) || React.createElement("img", { src: '/assets/medicon/images/poliklinika.png', alt: "poliklinika" }))));
+                                React.createElement(Link, { url: polyclinic.url && polyclinic.url.url }),
+                                React.createElement("div", { className: 'colorGradient' }),
+                                (polyclinic.image && polyclinic.image.filename && (React.createElement(Media, { data: polyclinic.image, type: 'image' }))) || React.createElement("img", { src: '/assets/medicon/images/poliklinika.png', alt: "poliklinika" }),
+                                React.createElement("div", { className: 'pcTitle' },
+                                    React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }),
+                                    React.createElement("div", { className: 'pcTitle__title' },
+                                        React.createElement("h3", null, "Poliklinika"),
+                                        React.createElement("div", { className: 'pcTitle__title__subtitle' },
+                                            React.createElement("span", null, 'test'),
+                                            React.createElement("span", { className: 'pcTitle__title__subtitle__circles' },
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null)))))));
                         });
                 })))));
 };

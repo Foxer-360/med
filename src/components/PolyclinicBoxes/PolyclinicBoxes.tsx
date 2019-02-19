@@ -26,18 +26,38 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
 
         <ul className={'grid'}>
           <List data={polyclinics}>
-          {({ data }) => data &&
-            data.map((polyclinic, index) => {
-              return (
-                <li key={index}>
-                  <Link url={polyclinic.url && polyclinic.url.url}>
+            {({ data }) =>
+              data &&
+              data.map((polyclinic, index) => {
+                return (
+                  <li key={index}>
+                    <Link url={polyclinic.url && polyclinic.url.url} />
+                    <div className={'colorGradient'} />
                     {(polyclinic.image && polyclinic.image.filename && (
                       <Media data={polyclinic.image} type={'image'} />
                     )) || <img src={'/assets/medicon/images/poliklinika.png'} alt="poliklinika" />}
-                  </Link>
-                </li>
-              );
-            })}
+
+                    <div className={'pcTitle'}>
+                      <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
+
+                      <div className={'pcTitle__title'}>
+                        <h3>Poliklinika</h3>
+                        <div className={'pcTitle__title__subtitle'}>
+                          <span>{'test'}</span>
+                          <span className={'pcTitle__title__subtitle__circles'}>
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
           </List>
         </ul>
       </div>
