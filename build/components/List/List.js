@@ -212,6 +212,12 @@ var List = /** @class */ (function (_super) {
                 }
                 var pagesWithTag = pages
                     .filter(function (p) {
+                    var annotations = {};
+                    var translation = (p && p.translations && p.translations[0] && p.translations[0]);
+                    translation.annotations.forEach(function (_a) {
+                        var key = _a.key, value = _a.value;
+                        annotations[key] = value;
+                    });
                     if (!(p.translations && p.translations.length > 0)) {
                         return false;
                     }
@@ -263,6 +269,7 @@ var List = /** @class */ (function (_super) {
                             catch (e) {
                                 console.log(e);
                             }
+                            console.log(image);
                             res[key] = image || {};
                         }
                     });

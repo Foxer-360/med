@@ -166,6 +166,11 @@ class List extends React.Component<Properties, {}> {
           
               const pagesWithTag = pages
                 .filter(p => {
+                  const annotations = {};
+                  const translation = (p && p.translations && p.translations[0] && p.translations[0]);
+                  translation.annotations.forEach(({ key, value }) => {
+                    annotations[key] = value;
+                  });
   
                   if (!(p.translations && p.translations.length > 0)) {
                     return false;
@@ -224,6 +229,7 @@ class List extends React.Component<Properties, {}> {
                       } catch (e) {
                         console.log(e);
                       }
+                      console.log(image);
                       res[key] = image || {};
                     }
                   });
