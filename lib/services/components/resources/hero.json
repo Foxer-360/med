@@ -92,7 +92,7 @@
 
         "blogSearchResults": {
           "type": "array",
-          "title": "Doctor Search Results",
+          "title": "Pages",
           "items": {
             "properties": {
               "title": {
