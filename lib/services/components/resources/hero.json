@@ -79,7 +79,7 @@
                 "title": "Doctor result active"
               },
               "workingHours": {
-                "type": "object",
+                "type": "text",
                 "title": "Working hours"
               },
               "link": {

@@ -26,6 +26,8 @@ import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
 import List from '@source/components/List';
 import Link from '@source/partials/Link';
+import moment from 'moment';
+import debounce from 'lodash/debounce';
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {
@@ -35,14 +37,11 @@ var SearchBar = /** @class */ (function (_super) {
                 focused: !_this.state.focused,
             });
         };
-        _this.changeSearchQuery = function (query) {
-            _this.setState({
-                query: query,
-            });
-        };
         _this.searchBar = React.createRef();
         _this.state = { focused: false, query: '' };
         _this.handleClick = _this.handleClick.bind(_this);
+        _this.input = React.createRef();
+        _this.changeSearchQuery = debounce(_this.changeSearchQuery, 300).bind(_this);
         return _this;
     }
     SearchBar.prototype.componentDidMount = function () {
@@ -50,6 +49,11 @@ var SearchBar = /** @class */ (function (_super) {
     };
     SearchBar.prototype.componentWillUnmount = function () {
         document.removeEventListener('click', this.handleClick, false);
+    };
+    SearchBar.prototype.changeSearchQuery = function (query) {
+        this.setState({
+            query: query,
+        });
     };
     SearchBar.prototype.handleClick = function (e) {
         if (this.searchBar.current.contains(e.target)) {
@@ -64,16 +68,22 @@ var SearchBar = /** @class */ (function (_super) {
         var _a = this.props, placeholder = _a.placeholder, barColor = _a.barColor;
         return (React.createElement("div", { className: "searchBar " + (this.state.focused ? 'searchBar--focused' : '') + " searchBar--" + barColor, ref: this.searchBar },
             React.createElement("div", { className: 'searchBar__input' },
-                React.createElement("input", { type: "text", placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); }, onChange: function (e) { return _this.changeSearchQuery(e.target.value); }, value: this.state.query }),
+                React.createElement("input", { type: "text", placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); }, onChange: function (e) { return _this.changeSearchQuery(e.target.value); }, ref: this.input }),
                 React.createElement(SvgIcon, { name: 'search', type: barColor })),
             React.createElement("div", { className: "searchBar__bar" }),
             React.createElement("div", { className: "searchBarResults " + (this.state.query.length !== 0 ? 'active' : '') },
                 this.props.doctorSearchResults && (React.createElement(List, { data: this.props.doctorSearchResults, searchedText: this.state.query }, function (_a) {
                     var data = _a.data;
-                    console.log(data);
                     if (data) {
                         return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data.map(function (doctor, i) {
-                            return (React.createElement("li", { key: i, className: doctor.active ? 'active' : '' },
+                            var workingHours = {};
+                            try {
+                                workingHours = JSON.parse(doctor.workingHours);
+                            }
+                            catch (e) 
+                            // eslint-disable-next-line no-empty
+                            { }
+                            return (React.createElement("li", { key: i, className: _this.isDoctorActive(workingHours) ? 'active' : '' },
                                 React.createElement(Link, __assign({}, doctor.link),
                                     React.createElement("span", null,
                                         React.createElement("p", null, doctor.name),
@@ -95,6 +105,64 @@ var SearchBar = /** @class */ (function (_super) {
                                         React.createElement("p", null, blogItem.perex))))); })));
                     }
                 })))));
+    };
+    SearchBar.prototype.getWeekDayKey = function () {
+        var day;
+        switch (moment().isoWeekday()) {
+            case 1:
+                day = 'mo';
+                break;
+            case 2:
+                day = 'tu';
+                break;
+            case 3:
+                day = 'we';
+                break;
+            case 4:
+                day = 'th';
+                break;
+            case 5:
+                day = 'fr';
+                break;
+            case 6:
+                day = 'st';
+                break;
+            case 7:
+                day = 'su';
+                break;
+            default:
+                day = 'mo';
+                break;
+        }
+        return day;
+    };
+    SearchBar.prototype.isDoctorActive = function (workingHours) {
+        var weekDayKey = this.getWeekDayKey();
+        if (workingHours &&
+            workingHours.weeks &&
+            workingHours.weeks[0] &&
+            workingHours.weeks[0].days &&
+            workingHours.weeks[0].days[weekDayKey] &&
+            workingHours.weeks[0].days[weekDayKey] &&
+            workingHours.weeks[0].days[weekDayKey] &&
+            workingHours.weeks[0].days[weekDayKey].length > 0 &&
+            workingHours.weeks[0].days[weekDayKey].length > 0) {
+            return workingHours.weeks[0].days[weekDayKey].some(function (doctorWorkingHours) {
+                var regex = /^\s*([0-9]{2}):([0-9]{2})\s*$/;
+                var from = regex.exec(doctorWorkingHours.from);
+                var to = regex.exec(doctorWorkingHours.to);
+                if (from && from[1] && from[2] && to && to[1] && to[2]) {
+                    var startOfShift = moment().startOf('day').add(from[1], 'hours').add(from[2], 'minutes');
+                    var endOfShift = moment().startOf('day').add(to[1], 'hours').add(to[2], 'minutes');
+                    var now = moment();
+                    if (now.isSameOrBefore(endOfShift) && now.isSameOrAfter(startOfShift)) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+        }
+        return false;
     };
     return SearchBar;
 }(React.Component));
