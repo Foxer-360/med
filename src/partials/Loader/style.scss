@@ -16,12 +16,13 @@
     border-radius: 5px;
     animation: grow 1000ms ease-in-out infinite forwards;
     position: absolute;
+    left: 10px;
   }
 
   @for $i from 1 through 6 {
     span:nth-child(#{$i + 1}) {
       animation-delay: $i * 83ms;
-      left: $i * 8px;
+      left: $i * 8px + 10px;
     }
   }
 }

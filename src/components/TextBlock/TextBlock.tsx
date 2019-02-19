@@ -14,7 +14,7 @@ const TextBlock = (props: TextBlockProps) => {
 
   return (
     <section className={'textBlock'}>
-      <div className="container">
+      <div className="container">  
         <div className={'textBlock__container'}>
           {title && <h3 className={'gradientHeading'}>{title}</h3>}
 

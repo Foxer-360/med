@@ -7,7 +7,7 @@ export function Loader(props: LoaderProps) {
     <div className={'loader'}>
       <span /> 
       <span />
-      <span /> 
+      <span />  
       <span />
       <span />
       <span />

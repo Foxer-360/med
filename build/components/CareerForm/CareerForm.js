@@ -59,7 +59,6 @@ var CareerForm = /** @class */ (function (_super) {
                             paragraph: function (props) { return React.createElement("p", null, props.children); },
                         } }),
                     React.createElement("form", null,
-                        "z",
                         React.createElement("div", { className: 'form__row form__row--first' },
                             React.createElement("div", null,
                                 React.createElement("div", { className: 'form__input active' },
