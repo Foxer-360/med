@@ -49,11 +49,8 @@ var AllPagesComposedQuery = adopt({
         if (!languageData || !projectData) {
             return render({ loading: true });
         }
-        return (React.createElement("div", null,
-            React.createElement(Query, { query: GET_ALL_PAGES, variables: {
-                    languageId: languageData.id,
-                    projectId: projectData.id,
-                } }, function (data) {
+        return (React.createElement(React.Fragment, null,
+            React.createElement(Query, { query: GET_ALL_PAGES, variables: { languageId: languageData.id, projectId: projectData.id } }, function (data) {
                 return render(data);
             })));
     },
@@ -195,128 +192,123 @@ var List = /** @class */ (function (_super) {
             return this.datasourcesList(data, searchedFragments);
         }
         if (data && data.sourceType === 'pages') {
-            return (React.createElement(AllPagesComposedQuery, null, function (_a) {
-                var _b = _a.allPages, allPagesData = _b.data, allPagesLoading = _b.loading, allPagesError = _b.error, _c = _a.getContext, languageData = _c.languageData, pageData = _c.pageData;
-                if (allPagesLoading || !allPagesData || !languageData) {
-                    return React.createElement(Loader, null);
-                }
-                if (allPagesError) {
-                    return "Error...";
-                }
-                var pages = allPagesData.pages;
-                if (searchedFragments && searchedFragments.length > 0) {
-                    pages = searchedFragments.reduce(function (filteredPages, fragment) {
-                        return filteredPages
-                            .filter(function (page) { return JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase()); });
-                    }, pages);
-                }
-                var pagesWithTag = pages
-                    .filter(function (p) {
-                    var annotations = {};
-                    var translation = (p && p.translations && p.translations[0] && p.translations[0]);
-                    translation.annotations.forEach(function (_a) {
-                        var key = _a.key, value = _a.value;
-                        annotations[key] = value;
-                    });
-                    if (!(p.translations && p.translations.length > 0)) {
-                        return false;
+            return (React.createElement(React.Fragment, null,
+                React.createElement(AllPagesComposedQuery, null, function (_a) {
+                    var _b = _a.allPages, allPagesData = _b.data, allPagesLoading = _b.loading, allPagesError = _b.error, _c = _a.getContext, languageData = _c.languageData, pageData = _c.pageData;
+                    if (allPagesLoading || !allPagesData || !languageData) {
+                        return React.createElement(Loader, null);
                     }
-                    if (data.tagIds && !p.tags.some(function (t) { return data.tagIds.some(function (tagId) { return t.id === tagId; }); })) {
-                        return false;
+                    if (allPagesError) {
+                        return "Error...";
                     }
-                    if (pageData && p.id === pageData.id) {
-                        return false;
+                    var pages = allPagesData.pages;
+                    if (searchedFragments && searchedFragments.length > 0) {
+                        pages = searchedFragments.reduce(function (filteredPages, fragment) {
+                            return filteredPages
+                                .filter(function (page) { return JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase()); });
+                        }, pages);
                     }
-                    return true;
-                })
-                    .map(function (p) {
-                    var annotations = {};
-                    var translation = (p && p.translations && p.translations[0]);
-                    translation.annotations.forEach(function (_a) {
-                        var key = _a.key, value = _a.value;
-                        annotations[key] = value;
-                    });
-                    var res = __assign({}, data.data);
-                    var item = {
-                        page: {
-                            name: (translation && translation.name) || '',
-                            annotations: annotations,
+                    var pagesWithTag = pages
+                        .filter(function (p) {
+                        if (!(p.translations && p.translations.length > 0)) {
+                            return false;
                         }
-                    };
-                    if (data.orderBy) {
-                        res.orderBy = _this.replaceWithSourceItemValues(data.orderBy, item);
-                    }
-                    if (data.filters) {
-                        res.filters = data.filters.map(function (filter) {
-                            var parsedFilter = __assign({}, filter);
-                            parsedFilter.filterBy = _this.replaceWithSourceItemValues(filter.filterBy, item);
-                            return parsedFilter;
+                        if (data.tagIds && !p.tags.some(function (t) { return data.tagIds.some(function (tagId) { return t.id === tagId; }); })) {
+                            return false;
+                        }
+                        if (pageData && p.id === pageData.id) {
+                            return false;
+                        }
+                        return true;
+                    })
+                        .map(function (p) {
+                        var annotations = {};
+                        var translation = (p && p.translations && p.translations[0]);
+                        translation.annotations.forEach(function (_a) {
+                            var key = _a.key, value = _a.value;
+                            annotations[key] = value;
                         });
-                    }
-                    Object.keys(res).forEach(function (key) {
-                        if (typeof res[key] === 'string') {
-                            var replaced = _this.replaceWithSourceItemValues(res[key], item);
-                            res[key] = replaced;
-                        }
-                        else if (res[key].pageSourcedUrl) {
-                            res[key] = { pageId: p.id };
-                        }
-                        else if (res[key].dynamiclySourcedImage) {
-                            var image = void 0;
-                            try {
-                                image = JSON.parse(_this.replaceWithSourceItemValues(res[key].dynamiclySourcedImage, item) || '{}');
+                        var res = __assign({}, data.data);
+                        var item = {
+                            page: {
+                                name: (translation && translation.name) || '',
+                                annotations: annotations,
                             }
-                            catch (e) {
-                                console.log(e);
-                            }
-                            console.log(image);
-                            res[key] = image || {};
+                        };
+                        if (data.orderBy) {
+                            res.orderBy = _this.replaceWithSourceItemValues(data.orderBy, item);
                         }
-                    });
-                    return res;
-                })
-                    .filter(function (item) {
-                    return !item.filters ||
-                        !item.filters
-                            .some(function (filter) {
-                            return !filter.filterBy.toLowerCase()
-                                .includes(filter && filter.includes && filter.includes.toLowerCase());
+                        if (data.filters) {
+                            res.filters = data.filters.map(function (filter) {
+                                var parsedFilter = __assign({}, filter);
+                                parsedFilter.filterBy = _this.replaceWithSourceItemValues(filter.filterBy, item);
+                                return parsedFilter;
+                            });
+                        }
+                        Object.keys(res).forEach(function (key) {
+                            if (typeof res[key] === 'string') {
+                                var replaced = _this.replaceWithSourceItemValues(res[key], item);
+                                res[key] = replaced;
+                            }
+                            else if (res[key].pageSourcedUrl) {
+                                res[key] = { pageId: p.id };
+                            }
+                            else if (res[key].dynamiclySourcedImage) {
+                                var image = void 0;
+                                try {
+                                    image = JSON.parse(_this.replaceWithSourceItemValues(res[key].dynamiclySourcedImage, item) || '{}');
+                                }
+                                catch (e) {
+                                    console.log(e);
+                                }
+                                console.log(image);
+                                res[key] = image || {};
+                            }
                         });
-                })
-                    .filter(function (item, i) { return !data.limit || i < data.limit; });
-                return _this.props.children({
-                    data: data.orderBy ?
-                        pagesWithTag
-                            .sort(function (a, b) {
-                            if (data.order === 'DESC') {
-                                if (a.orderBy > b.orderBy) {
+                        return res;
+                    })
+                        .filter(function (item) {
+                        return !item.filters ||
+                            !item.filters
+                                .some(function (filter) {
+                                return !filter.filterBy.toLowerCase()
+                                    .includes(filter && filter.includes && filter.includes.toLowerCase());
+                            });
+                    })
+                        .filter(function (item, i) { return !data.limit || i < data.limit; });
+                    return _this.props.children({
+                        data: data.orderBy ?
+                            pagesWithTag
+                                .sort(function (a, b) {
+                                if (data.order === 'DESC') {
+                                    if (a.orderBy > b.orderBy) {
+                                        return -1;
+                                    }
+                                    {
+                                        if (a.orderBy < b.orderBy) {
+                                            return 1;
+                                        }
+                                    }
+                                    return 0;
+                                }
+                                if (a.orderBy < b.orderBy) {
                                     return -1;
                                 }
                                 {
-                                    if (a.orderBy < b.orderBy) {
+                                    if (a.orderBy > b.orderBy) {
                                         return 1;
                                     }
                                 }
                                 return 0;
-                            }
-                            if (a.orderBy < b.orderBy) {
-                                return -1;
-                            }
-                            {
-                                if (a.orderBy > b.orderBy) {
-                                    return 1;
-                                }
-                            }
-                            return 0;
-                        })
-                            .map(function (item) {
-                            delete item.orderBy;
-                            return item;
-                        })
-                        :
-                            pagesWithTag
-                });
-            }));
+                            })
+                                .map(function (item) {
+                                delete item.orderBy;
+                                return item;
+                            })
+                            :
+                                pagesWithTag
+                    });
+                })));
         }
         return this.props.children({ data: [] });
     };

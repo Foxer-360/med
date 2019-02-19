@@ -16,7 +16,6 @@ import GoogleMapReact from 'google-map-react';
 import { geolocated } from 'react-geolocated';
 export var GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
 import Marker from '../Marker';
-import List from '../../../List';
 import MapBox from '../MapBox';
 var MapComponent = /** @class */ (function (_super) {
     __extends(MapComponent, _super);
@@ -97,24 +96,21 @@ var MapComponent = /** @class */ (function (_super) {
             React.createElement("section", { className: 'map' },
                 React.createElement("div", { className: 'map__container' },
                     React.createElement("button", null, "Zobrazit v\u0161echny polikliniky")),
-                React.createElement(List, { data: this.props.clinics }, function (_a) {
-                    var data = _a.data;
-                    return (React.createElement(React.Fragment, null, data && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, center: defaultCenter, defaultZoom: defaultZoom, options: {
-                            scrollwheel: false,
-                        }, yesIWantToUseGoogleMapApiInternals: true, onGoogleApiLoaded: function (_a) {
-                            var map = _a.map, maps = _a.maps;
-                            return _this.apiIsLoaded(map, maps, data);
-                        } },
-                        data.map(function (clinic, index) {
-                            if (clinic.lat && clinic.lng) {
-                                return (React.createElement(Marker, { type: clinic.title ===
-                                        _this.nearestClinic(_this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng, data).title
-                                        ? 'big'
-                                        : 'small', lat: clinic.lat, lng: clinic.lng, handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index, handleMarkerClose: _this.handleMarkerClose }));
-                            }
-                        }),
-                        React.createElement(Marker, { type: 'geoLocation', lat: _this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, lng: _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng, key: data.length + 1, index: data.length + 1 })))));
-                }),
+                this.props.clinics && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, center: defaultCenter, defaultZoom: defaultZoom, options: {
+                        scrollwheel: false,
+                    }, yesIWantToUseGoogleMapApiInternals: true, onGoogleApiLoaded: function (_a) {
+                        var map = _a.map, maps = _a.maps;
+                        return _this.apiIsLoaded(map, maps, _this.props.clinics);
+                    } },
+                    this.props.clinics.map(function (clinic, index) {
+                        if (clinic.lat && clinic.lng) {
+                            return (React.createElement(Marker, { type: clinic.title ===
+                                    _this.nearestClinic(_this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng, _this.props.clinics).title
+                                    ? 'big'
+                                    : 'small', lat: Number(clinic.lat), lng: Number(clinic.lng), handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index, key: index, index: index, handleMarkerClose: _this.handleMarkerClose }));
+                        }
+                    }),
+                    React.createElement(Marker, { type: 'geoLocation', lat: this.props.coords ? this.props.coords.latitude : defaultCenter.lat, lng: this.props.coords ? this.props.coords.longitude : defaultCenter.lng, key: this.props.clinics.length + 1, index: this.props.clinics.length + 1 }))),
                 this.state.boxData && React.createElement(MapBox, { clinicData: this.state.boxData, close: this.handleMarkerClose }))));
     };
     return MapComponent;

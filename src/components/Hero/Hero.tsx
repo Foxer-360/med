@@ -35,7 +35,7 @@ class Hero extends React.Component<HeroProps, HeroState> {
 
               {displaySearch && (
                 <SearchBar
-                  placeholder={placeholder ? placeholder : 'Search..'}
+                  placeholder={placeholder ? placeholder : 'Hledat..'}
                   barColor={'lightBlue'}
                   blogSearchResults={this.props.data.blogSearchResults}
                   doctorSearchResults={this.props.data.doctorSearchResults}

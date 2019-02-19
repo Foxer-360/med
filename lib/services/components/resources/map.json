@@ -35,7 +35,14 @@
                 "type": "text",
                 "title": "lng"
               },
-
+              "ambulanceLink": {
+                "type": "urlAutocomplete",
+                "title": "Ambulance URL"
+              },
+              "orientationLink": {
+                "type": "urlAutocomplete",
+                "title": "Orientation URL"
+              },
               "image": {
                 "type": "image"
               }

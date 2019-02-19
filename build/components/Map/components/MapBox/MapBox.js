@@ -1,7 +1,19 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import * as React from 'react';
 import Button from '../../../../partials/Button';
+import Link from '@source/partials/Link';
 var MapBox = function (props) {
-    var _a = props.clinicData, title = _a.title, address = _a.address, city = _a.city, phone = _a.phone;
+    var _a = props.clinicData, title = _a.title, address = _a.address, city = _a.city, phone = _a.phone, ambulanceLink = _a.ambulanceLink, orientationLink = _a.orientationLink;
     return (React.createElement("div", { className: 'mapBox' },
         React.createElement("div", { className: 'mapBox__close', onClick: function () { return props.close(); } },
             React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 52 52" },
@@ -33,8 +45,10 @@ var MapBox = function (props) {
                 React.createElement("div", null,
                     React.createElement("p", null, phone)))),
         React.createElement("div", { className: 'mapBox__buttons' },
-            React.createElement(Button, { classes: "btn--small btn--blueBkg", noArrow: true }, "ambulance"),
-            React.createElement(Button, { classes: "btn--small btn--blueBorder" }, "kuddy k nam"))));
+            React.createElement(Link, __assign({}, ambulanceLink),
+                React.createElement(Button, { classes: "btn--small btn--blueBkg", noArrow: true }, "ambulance")),
+            React.createElement(Link, __assign({}, orientationLink),
+                React.createElement(Button, { classes: "btn--small btn--blueBorder" }, "kuddy k nam")))));
 };
 export default MapBox;
 //# sourceMappingURL=MapBox.js.map

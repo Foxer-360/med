@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '../../../../partials/Button';
+import Link from '@source/partials/Link';
 
 interface MapBoxProps {
   close: () => void;
@@ -7,7 +8,7 @@ interface MapBoxProps {
 }
 
 const MapBox: React.SFC<MapBoxProps> = props => {
-  const { title, address, city, phone } = props.clinicData;
+  const { title, address, city, phone, ambulanceLink, orientationLink } = props.clinicData;
 
   return (
     <div className={'mapBox'}>
@@ -60,10 +61,14 @@ const MapBox: React.SFC<MapBoxProps> = props => {
       </div>
 
       <div className={'mapBox__buttons'}>
-        <Button classes="btn--small btn--blueBkg" noArrow={true}>
-          ambulance
-        </Button>
-        <Button classes="btn--small btn--blueBorder">kuddy k nam</Button>
+        <Link {...ambulanceLink}  >
+          <Button classes="btn--small btn--blueBkg" noArrow={true}>
+            ambulance
+          </Button>
+        </Link>
+        <Link {...orientationLink}>
+          <Button classes="btn--small btn--blueBorder">kuddy k nam</Button>
+        </Link>
       </div>
     </div>
   );

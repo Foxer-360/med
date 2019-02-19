@@ -119,61 +119,54 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
           <div className={'map__container'}>
             <button>Zobrazit všechny polikliniky</button>
           </div>
-
-          <List data={this.props.clinics}>
-            {({ data }) => (
-              <>
-                {data && (
-                  <GoogleMapReact
-                    bootstrapURLKeys={{ key: GoogleMapsApiKey }}
-                    defaultCenter={defaultCenter}
-                    center={defaultCenter}
-                    defaultZoom={defaultZoom}
-                    options={{
-                      scrollwheel: false,
-                    }}
-                    yesIWantToUseGoogleMapApiInternals={true}
-                    onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps, data)}
-                  >
-                    {data.map((clinic, index) => {
-                      if (clinic.lat && clinic.lng) {
-                        return (
-                          <Marker
-                            type={
-                              clinic.title ===
-                              this.nearestClinic(
-                                this.props.coords ? this.props.coords.latitude : defaultCenter.lat,
-                                this.props.coords ? this.props.coords.longitude : defaultCenter.lng,
-                                data
-                              ).title
-                                ? 'big'
-                                : 'small'
-                            }
-                            lat={clinic.lat}
-                            lng={clinic.lng}
-                            handleMarkerClick={(e, key) => this.handleMarkerClick(e, key, clinic)}
-                            handleClose={this.handleMarkerClose}
-                            active={this.state.activeMarker === index}
-                            key={index}
-                            index={index}
-                            handleMarkerClose={this.handleMarkerClose}
-                          />
-                        );
-                      }
-                    })}
-
+          {this.props.clinics && (
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: GoogleMapsApiKey }}
+              defaultCenter={defaultCenter}
+              center={defaultCenter}
+              defaultZoom={defaultZoom}
+              options={{
+                scrollwheel: false,
+              }}
+              yesIWantToUseGoogleMapApiInternals={true}
+              onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps, this.props.clinics)}
+            >
+              {this.props.clinics.map((clinic, index) => {
+                if (clinic.lat && clinic.lng) {
+                  return (
                     <Marker
-                      type={'geoLocation'}
-                      lat={this.props.coords ? this.props.coords.latitude : defaultCenter.lat}
-                      lng={this.props.coords ? this.props.coords.longitude : defaultCenter.lng}
-                      key={data.length + 1}
-                      index={data.length + 1}
+                      type={
+                        clinic.title ===
+                        this.nearestClinic(
+                          this.props.coords ? this.props.coords.latitude : defaultCenter.lat,
+                          this.props.coords ? this.props.coords.longitude : defaultCenter.lng,
+                          this.props.clinics
+                        ).title
+                          ? 'big'
+                          : 'small'
+                      }
+                      lat={Number(clinic.lat)}
+                      lng={Number(clinic.lng)}
+                      handleMarkerClick={(e, key) => this.handleMarkerClick(e, key, clinic)}
+                      handleClose={this.handleMarkerClose}
+                      active={this.state.activeMarker === index}
+                      key={index}
+                      index={index}
+                      handleMarkerClose={this.handleMarkerClose}
                     />
-                  </GoogleMapReact>
-                )}
-              </>
-            )}
-          </List>
+                  );
+                }
+              })}
+
+              <Marker
+                type={'geoLocation'}
+                lat={this.props.coords ? this.props.coords.latitude : defaultCenter.lat}
+                lng={this.props.coords ? this.props.coords.longitude : defaultCenter.lng}
+                key={this.props.clinics.length + 1}
+                index={this.props.clinics.length + 1}
+              />
+            </GoogleMapReact>
+          )}
 
           {this.state.boxData && <MapBox clinicData={this.state.boxData} close={this.handleMarkerClose} />}
         </section>

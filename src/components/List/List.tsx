@@ -8,7 +8,7 @@ import { withRouter, RouteComponentProps } from 'react-router';
 
 interface Properties extends RouteComponentProps<LooseObject> {
   // tslint:disable-next-line:no-any
-  data: any;
+  data?: any;
   children: (data: LooseObject) => JSX.Element;
   searchedText?: string;
 }
@@ -84,19 +84,13 @@ const AllPagesComposedQuery = adopt({
     }
 
     return (
-      <div>
-        <Query 
-          query={GET_ALL_PAGES}
-          variables={{ 
-            languageId: languageData.id,
-            projectId: projectData.id,
-          }}
-        >
+      <>
+        <Query query={GET_ALL_PAGES} variables={{ languageId: languageData.id, projectId: projectData.id }}>
           {data => {
             return render(data);
           }}
         </Query>
-      </div>
+      </>
     );
   },
 });
@@ -140,6 +134,7 @@ class List extends React.Component<Properties, {}> {
     if (data && data.sourceType === 'pages') {
 
       return (
+        <>
           <AllPagesComposedQuery>
             {({
               allPages: { data: allPagesData, loading: allPagesLoading, error: allPagesError },
@@ -166,11 +161,6 @@ class List extends React.Component<Properties, {}> {
           
               const pagesWithTag = pages
                 .filter(p => {
-                  const annotations = {};
-                  const translation = (p && p.translations && p.translations[0] && p.translations[0]);
-                  translation.annotations.forEach(({ key, value }) => {
-                    annotations[key] = value;
-                  });
   
                   if (!(p.translations && p.translations.length > 0)) {
                     return false;
@@ -192,7 +182,6 @@ class List extends React.Component<Properties, {}> {
                   translation.annotations.forEach(({ key, value }) => {
                     annotations[key] = value;
                   });
-
                   const res = { ...data.data };
                   
                   const item = {
@@ -262,12 +251,13 @@ class List extends React.Component<Properties, {}> {
                     .map(item => {
                       delete item.orderBy;
                       return item;
-                    }) 
+                    })  
                   :
                   pagesWithTag
                 });
             }}
           </AllPagesComposedQuery>
+        </>
       );
     }
 
