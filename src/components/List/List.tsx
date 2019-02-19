@@ -84,13 +84,19 @@ const AllPagesComposedQuery = adopt({
     }
 
     return (
-      <>
-        <Query query={GET_ALL_PAGES} variables={{ languageId: languageData.id }}>
+      <div>
+        <Query 
+          query={GET_ALL_PAGES}
+          variables={{ 
+            languageId: languageData.id,
+            projectId: projectData.id,
+          }}
+        >
           {data => {
             return render(data);
           }}
         </Query>
-      </>
+      </div>
     );
   },
 });
@@ -134,7 +140,6 @@ class List extends React.Component<Properties, {}> {
     if (data && data.sourceType === 'pages') {
 
       return (
-        <>
           <AllPagesComposedQuery>
             {({
               allPages: { data: allPagesData, loading: allPagesLoading, error: allPagesError },
@@ -257,7 +262,6 @@ class List extends React.Component<Properties, {}> {
                 });
             }}
           </AllPagesComposedQuery>
-        </>
       );
     }
 
