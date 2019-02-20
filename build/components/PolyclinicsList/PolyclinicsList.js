@@ -30,7 +30,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
         };
         _this.toggleDisplayServices = function (index) {
             _this.setState({
-                displayAllServices: !_this.state.displayAllServices,
+                displayAllServices: index === null ? false : true,
                 activeCard: index,
             });
         };

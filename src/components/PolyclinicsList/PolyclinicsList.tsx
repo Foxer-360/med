@@ -52,7 +52,7 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
 
   toggleDisplayServices = (index: number) => {
     this.setState({
-      displayAllServices: !this.state.displayAllServices,
+      displayAllServices: index === null ?  false : true,
       activeCard: index,
     });
   }

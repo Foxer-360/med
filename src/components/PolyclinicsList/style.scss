@@ -237,6 +237,7 @@
         width: 100%;
         max-width: 240px;
         margin: 0 auto;
+        text-align: center;
 
         @include md {
           width: auto;
