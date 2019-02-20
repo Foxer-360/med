@@ -2,13 +2,15 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import * as R from 'ramda';
-import Loader from '@source/partials/Loader';
 import { adopt } from 'react-adopt';
+import Loader from '@source/partials/Loader';
+import { withRouter, RouteComponentProps } from 'react-router';
 
-interface Properties {
+interface Properties extends RouteComponentProps<LooseObject> {
   // tslint:disable-next-line:no-any
   data?: any;
   children: (data: LooseObject) => JSX.Element;
+  searchedText?: string;
 }
 
 const DATASOURCE = gql`
@@ -32,12 +34,13 @@ const GET_CONTEXT = gql`
   {
     pageData @client
     languageData @client
+    projectData @client
   }
 `;
 
 const GET_ALL_PAGES = gql`
-  query localizedPages($languageId: ID!) {
-    pages {
+  query localizedPages($languageId: ID! $projectId: ID!) {
+    pages(where: { website: { project: { id: $projectId } } }) {
       id
       type {
         id
@@ -47,11 +50,17 @@ const GET_ALL_PAGES = gql`
         id
         name
       }
-      translations(where: { language: { id: $languageId } }) {
+      translations(where: { 
+        language: { id: $languageId }
+      }) {
         id
         name
         createdAt
         content
+        annotations {
+          key
+          value
+        }
         language {
           id
           code
@@ -63,20 +72,31 @@ const GET_ALL_PAGES = gql`
 
 const AllPagesComposedQuery = adopt({
   getContext: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
-  allPages: ({ render, getContext: { languageData } }) => {
-    console.log('Blogholder language data:', languageData.id);
-    if (!languageData) {
+  allPages: ({ 
+    render,
+    getContext: { 
+      languageData,
+      projectData,
+    }
+  }) => {
+    if (!languageData || !projectData) {
       return render({ loading: true });
     }
 
     return (
-      <>
-        <Query query={GET_ALL_PAGES} variables={{ languageId: languageData.id }}>
+      <div>
+        <Query 
+          query={GET_ALL_PAGES}
+          variables={{ 
+            languageId: languageData.id,
+            projectId: projectData.id,
+          }}
+        >
           {data => {
             return render(data);
           }}
         </Query>
-      </>
+      </div>
     );
   },
 });
@@ -84,20 +104,42 @@ class List extends React.Component<Properties, {}> {
 
   render(): JSX.Element {
 
-    const { data } = this.props;
-    console.log(data);
+    const { data, location } = this.props;
+    let { searchedText } = this.props;
+
+    const fulltextFilter = data && data.fulltextFilter;
+
+    const regex = /^\[([a-z]*)\]$/;
+
+    var searchParams = new URLSearchParams(location && location.search || '');
+
+    if (fulltextFilter) {
+      const res = regex.exec(fulltextFilter.trim());
+
+      if (res && res[1]) {
+        const textFromSearchParams = searchParams.get(res[1]);
+
+        if (!textFromSearchParams) {
+          return this.props.children({ data: [] });
+        }
+        searchedText = `${searchedText ? searchedText : ''} ${textFromSearchParams ? textFromSearchParams  : '' }`;
+      } else {
+        searchedText = `${searchedText ? searchedText : ''} ${fulltextFilter}`;
+      }
+    }
+
+    const searchedFragments = searchedText && searchedText.trim().split(' ').map(fragment => fragment.trim());
     if (Array.isArray(data)) {
       return this.props.children({ data });
     }
     // In case that data isn't array and contain datasourceId try to fetch datasource with his items
     if (data && data.datasourceId) {
-      return this.datasourcesList(data);
+      return this.datasourcesList(data, searchedFragments);
     }
 
     if (data && data.sourceType === 'pages') {
 
       return (
-        <>
           <AllPagesComposedQuery>
             {({
               allPages: { data: allPagesData, loading: allPagesLoading, error: allPagesError },
@@ -111,8 +153,17 @@ class List extends React.Component<Properties, {}> {
                 return `Error...`;
               }
   
-              const { pages } = allPagesData;
-  
+              let { pages } = allPagesData;
+
+              if (searchedFragments && searchedFragments.length > 0) {
+                pages = searchedFragments.reduce(
+                (filteredPages, fragment) => {
+                  return filteredPages
+                    .filter(page => JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase())); 
+                },                                       
+                pages);
+              }
+          
               const pagesWithTag = pages
                 .filter(p => {
   
@@ -131,15 +182,21 @@ class List extends React.Component<Properties, {}> {
                   return true;
                 })
                 .map(p => {
+                  const annotations = {};
+                  const translation = (p && p.translations && p.translations[0]);
+                  translation.annotations.forEach(({ key, value }) => {
+                    annotations[key] = value;
+                  });
 
                   const res = { ...data.data };
-
+                  
                   const item = {
                     page: {
-                      name: (p && p.translations && p.translations[0] && p.translations[0].name) || '' 
+                      name: (translation && translation.name) || '', 
+                      annotations,
                     }
                   };
-                  console.log(item);
+
                   if (data.orderBy) {
                     res.orderBy = this.replaceWithSourceItemValues(data.orderBy, item);
                   }
@@ -159,7 +216,16 @@ class List extends React.Component<Properties, {}> {
                       res[key] = replaced;
                     } else if (res[key].pageSourcedUrl) {
                       res[key] = { pageId: p.id };
-                    } 
+                    } else if (res[key].dynamiclySourcedImage) {
+                      let image;
+                      try {
+                        image = JSON.parse(
+                          this.replaceWithSourceItemValues(res[key].dynamiclySourcedImage, item) || '{}');
+                      } catch (e) {
+                        console.log(e);
+                      }
+                      res[key] = image || {};
+                    }
                   });
                   return res;
                 })
@@ -196,7 +262,6 @@ class List extends React.Component<Properties, {}> {
                 });
             }}
           </AllPagesComposedQuery>
-        </>
       );
     }
 
@@ -214,8 +279,10 @@ class List extends React.Component<Properties, {}> {
           if (Array.isArray(searchKeys) && searchKeys.length > 0) {
             const getValueFromDatasourceItems = R.path(searchKeys);
             const replacement = getValueFromDatasourceItems(item);
-            if (replacement) {
+            if (replacement && typeof replacement === 'string') {
               replaced = replaced.replace(result[0], replacement);
+            } else if (replacement && typeof replacement === 'object') {
+              replaced = replaced.replace(result[0], JSON.stringify(replacement));
             } else {
               replaced = replaced.replace(result[0], '');
             }
@@ -229,7 +296,7 @@ class List extends React.Component<Properties, {}> {
     return replaced;
   }
 
-  datasourcesList = (data) => {
+  datasourcesList = (data, searchedFragments) => {
     return (
       <Query 
         query={DATASOURCE}
@@ -239,9 +306,18 @@ class List extends React.Component<Properties, {}> {
       >{(queryData) => {
 
         const { data: dataShape, error, loading } = data;
-        
+
+        let datasourceItems = ((queryData.data.datasource && queryData.data.datasource.datasourceItems) || []);
+
+        if (searchedFragments && searchedFragments.length > 0) {
+          datasourceItems = searchedFragments.reduce(
+          (filteredItems, fragment) => {
+            return filteredItems.filter(page => JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase())); 
+          },                                       
+          datasourceItems);
+        }
         // Map datasourceItem data to placeholders
-        const datasourceItems = ((queryData.data.datasource && queryData.data.datasource.datasourceItems) || [])
+        datasourceItems = datasourceItems
           .map((item) => {
 
             // Iterate through dataShape 
@@ -331,4 +407,4 @@ class List extends React.Component<Properties, {}> {
   }
 }
 
-export default List;
+export default withRouter(List);

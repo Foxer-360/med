@@ -101,6 +101,10 @@
 
               "image": {
                 "type": "image"
+              },
+              "ambulanceLink": {
+                "type": "urlAutocomplete",
+                "title": "Ambulance URL"
               }
             }
           }

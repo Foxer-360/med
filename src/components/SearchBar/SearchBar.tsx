@@ -1,11 +1,19 @@
 import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
+import Media from '@source/partials/Media';
+import List from '@source/components/List';
+import Link from '@source/partials/Link';
+import moment from 'moment';
+import debounce from 'lodash/debounce';
+import { start } from 'repl';
 
 export interface SearchBarProps {
   placeholder: string;
   barColor: string;
+  doctorSearchResults?: LooseObject;
+  blogSearchResults?: LooseObject;
 }
-
+ 
 export interface SearchBarState {
   focused: boolean;
   query: string;
@@ -13,6 +21,7 @@ export interface SearchBarState {
 
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   public searchBar: any;
+  public input: any;
 
   constructor(props: SearchBarProps) {
     super(props);
@@ -21,6 +30,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     this.state = { focused: false, query: '' };
 
     this.handleClick = this.handleClick.bind(this);
+    this.input = React.createRef();
+    this.changeSearchQuery = debounce(this.changeSearchQuery, 300).bind(this);
   }
 
   componentDidMount() {
@@ -37,9 +48,9 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     });
   }
 
-  changeSearchQuery = query => {
+  public changeSearchQuery(query) {
     this.setState({
-      query: query,
+      query,
     });
   }
 
@@ -66,7 +77,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
             onFocus={() => this.handleFocus()}
             onBlur={() => this.handleFocus()}
             onChange={e => this.changeSearchQuery(e.target.value)}
-            value={this.state.query}
+            ref={this.input}
           />
           <SvgIcon name={'search'} type={barColor} />
         </div>
@@ -74,72 +85,145 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         <div className={`searchBar__bar`} />
 
         <div className={`searchBarResults ${this.state.query.length !== 0 ? 'active' : ''}`}>
-          <ul className={'searchBarResults__doctors'}>
-            <li className={'active'}>
-              <span>
-                <p>Mudr. Emilio Soukup</p>
-                <p>Alergologie</p>
-              </span>
-              <span>Poliklinika Budějovická</span>
-            </li>
-            <li className={''}>
-              <span>
-                <p>Mudr. Emilio Soukup</p>
-                <p>Alergologie</p>
-              </span>
-              <span>Poliklinika Budějovická</span>
-            </li>
+          {this.props.doctorSearchResults && (
+            <List data={this.props.doctorSearchResults} searchedText={this.state.query}>
+              {({ data }) => {
+                if (data.length > 0) {
+                  return (
+                    <ul className={'searchBarResults__doctors'}>
+                      {data.map((doctor, i) => {
+                        let workingHours = {};
 
-            <li className={''}>
-              <span>
-                <p>Mudr. Emilio Soukup</p>
-                <p>Alergologie</p>
-              </span>
-              <span>Poliklinika Budějovická</span>
-            </li>
-          </ul>
+                        try {
+                          workingHours = JSON.parse(doctor.workingHours);
+                        } catch (e) {}
+
+                        return (
+                          <li key={i} className={this.isDoctorActive(workingHours) ? 'active' : ''}>
+                            <Link {...doctor.link}>
+                              <span>
+                                <p>{doctor.name}</p>
+                                <p>{doctor.speciality}</p>
+                              </span>
+                              <span>{doctor.clinic}</span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  );
+                } else {
+                  return <div className={'searchBarResults__noResults'}>No Results!</div>;
+                }
+              }}
+            </List>
+          )}
 
           <hr />
 
-          <ul className={'searchBarResults__blog'}>
-            <label>Blog:</label>
+          {this.props.blogSearchResults && (
+            <List data={this.props.blogSearchResults} searchedText={this.state.query}>
+              {({ data }) => {
+                if (data.length > 0) {
+                  return (
+                    <ul className={'searchBarResults__blog'}>
+                      <label>Blog:</label>
 
-            <li>
-              <div>
-                <img />
-              </div>
-
-              <div>
-                <h4>Alergologie</h4>
-                <p>Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus.</p>
-              </div>
-            </li>
-
-            <li>
-              <div>
-                <img />
-              </div>
-
-              <div>
-                <h4>Alergologie</h4>
-                <p>Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus.</p>
-              </div>
-            </li>
-
-            <li>
-              <div>
-                <img />
-              </div>
-
-              <div>
-                <h4>Alergologie</h4>
-                <p>Netus consectetur commodo eget malesuada sem habitant elit id a etiam mauris class lacus.</p>
-              </div>
-            </li>
-          </ul>
+                      {data.map((blogItem, i) => (
+                        <li key={i}>
+                          <Link {...blogItem.link}>
+                            <div>
+                              <h4>{blogItem.title}</h4>  
+                              <p>{blogItem.perex}</p>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                } else {
+                  return <div className={'searchBarResults__noResults'}>No Results!</div>;
+                }
+              }}
+            </List>
+          )}
         </div>
       </div>
     );
+  }
+
+  public getWeekDayKey() {
+    let day;
+
+    switch (moment().isoWeekday()) {
+      case 1:
+        day = 'mo';
+        break;
+      case 2:
+        day = 'tu';
+        break;
+      case 3:
+        day = 'we';
+        break;
+      case 4:
+        day = 'th';
+        break;
+      case 5:
+        day = 'fr';
+        break;
+      case 6:
+        day = 'st';
+        break;
+      case 7:
+        day = 'su';
+        break;
+      default:
+        day = 'mo';
+        break;
+    }
+
+    return day;
+  }
+
+  public isDoctorActive(workingHours: LooseObject) {
+    const weekDayKey = this.getWeekDayKey();
+
+    if (
+      workingHours &&
+      workingHours.weeks &&
+      workingHours.weeks[0] &&
+      workingHours.weeks[0].days &&
+      workingHours.weeks[0].days[weekDayKey] &&
+      workingHours.weeks[0].days[weekDayKey] &&
+      workingHours.weeks[0].days[weekDayKey] &&
+      workingHours.weeks[0].days[weekDayKey].length > 0 &&
+      workingHours.weeks[0].days[weekDayKey].length > 0
+    ) {
+      return workingHours.weeks[0].days[weekDayKey].some(doctorWorkingHours => {
+        const regex = /^\s*([0-9]{2}):([0-9]{2})\s*$/;
+        const from = regex.exec(doctorWorkingHours.from);
+        const to = regex.exec(doctorWorkingHours.to);
+
+        if (from && from[1] && from[2] && to && to[1] && to[2]) {
+          const startOfShift = moment()
+            .startOf('day')
+            .add(from[1], 'hours')
+            .add(from[2], 'minutes');
+          const endOfShift = moment()
+            .startOf('day')
+            .add(to[1], 'hours')
+            .add(to[2], 'minutes');
+          const now = moment();
+
+          if (now.isSameOrBefore(endOfShift) && now.isSameOrAfter(startOfShift)) {
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+
+    return false;
   }
 }
 

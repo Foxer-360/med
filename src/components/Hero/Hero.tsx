@@ -8,10 +8,12 @@ export interface HeroProps {
     text: string;
     placeholder: string;
     displaySearch: boolean;
-    image: LooseObject;  
+    image: LooseObject;
     displayOverlay: boolean;
     titleColor: string;
     textColor: string;
+    doctorSearchResults: LooseObject;
+    blogSearchResults: LooseObject;
   };
 }
 
@@ -32,12 +34,17 @@ class Hero extends React.Component<HeroProps, HeroState> {
               {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
 
               {displaySearch && (
-                <SearchBar placeholder={placeholder ? placeholder : 'Search..'} barColor={'lightBlue'} />
+                <SearchBar
+                  placeholder={placeholder ? placeholder : 'Hledat..'}
+                  barColor={'lightBlue'}
+                  blogSearchResults={this.props.data.blogSearchResults}
+                  doctorSearchResults={this.props.data.doctorSearchResults}
+                />
               )}
             </div>
           </div>
         </section>
-      </div>
+      </div> 
     );
   }
 }
