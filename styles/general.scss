@@ -233,3 +233,13 @@ cite {
     margin: 50px 0;
   }
 }
+
+.info-rectangles + .reviews {
+  box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+  padding: 35px 0;
+  margin-bottom: 0;
+
+  @include md {
+    padding: 40px 0;
+  }
+}

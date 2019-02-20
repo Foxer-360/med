@@ -6,7 +6,7 @@ import Link from '@source/partials/Link';
 interface Benefits {
   text: string;
   image: LooseObject;
-  url?: LooseObject;
+  url?: LooseObject;  
 }
 
 export interface BenefitsProps {

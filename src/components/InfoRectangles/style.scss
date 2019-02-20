@@ -1,14 +1,9 @@
 .info-rectangles {
   margin-bottom: 50px;
-  
+
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-  }
-
-  h5 {
-    text-align: left;
-    color: $lightBlue;
   }
 
   .info-element {
@@ -18,21 +13,37 @@
     display: table;
     box-shadow: 0 0 10px rgba(15, 52, 86, 0.2);
     background-size: cover;
+    font-weight: 600;
+    padding: 24px;
 
+    @include md {
+      padding: 22px;
+    }
     div {
       display: table-cell;
       vertical-align: bottom;
-      padding-bottom: 35px;
     }
 
-    h5,
-    button {
-      margin-left: 35px;
+    button,
+    a {
+      display: inline-block;
+
+      @include max-xs {
+        font-size: 1.4rem;
+        line-height: 1;
+        display: block;
+        text-align: center;
+      }
     }
 
     h5 {
       padding: 0;
       padding-bottom: 35px;
+      width: 50%;
+      line-height: 1.2;
+      text-align: left;
+      color: $lightBlue;
+      font-weight: 500;
     }
   }
 

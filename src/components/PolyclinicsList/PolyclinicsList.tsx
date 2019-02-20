@@ -121,7 +121,7 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                             onClick={() => this.toggleDisplayServices(index === this.state.activeCard ? null : index)}
                           >  
                             {this.state.displayAllServices && index === this.state.activeCard
-                              ? 'skrýt'
+                              ? 'Skrýt'
                               : 'Další odbornosti'}{' '}
                             <span className="arrow" />
                           </div>

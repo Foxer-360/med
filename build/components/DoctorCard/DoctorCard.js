@@ -9,7 +9,7 @@ var DoctorCard = function (props) {
     return (React.createElement("section", { className: 'doctorCard' },
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: 'doctorCard__main' },
-                (doctorImage && React.createElement(Media, { data: doctorImage, type: "image" })) || (React.createElement("img", { src: "/assets/medicon/images/doctorIcon.svg" })),
+                (doctorImage && doctorImage.filename && React.createElement(Media, { data: doctorImage, type: "image" })) || (React.createElement("img", { src: "/assets/medicon/images/doctorIcon.svg" })),
                 name && React.createElement("h3", { className: 'gradientHeading' }, name),
                 specialization && React.createElement("p", { className: 'doctorCard__main__spe' }, specialization),
                 nurse && (React.createElement("p", { className: 'doctorCard__main__sis' },

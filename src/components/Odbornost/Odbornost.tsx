@@ -12,14 +12,13 @@ export interface OdbornostProps {
 
 const Odbornost = (props: OdbornostProps) => {
   const { image, doctorName, cite } = props.data;
-  
+
   return (
     <div className={'odbornost'}>
       <DividerCircles />
 
       <div className={'container'}>
         <div className={'odbornost__doctor'}>
-  
           <div className={'odbornost__doctor__imageWrapper'}>{image && <Media type={'image'} data={image} />}</div>
 
           <div className={'grid grid--vCenterBlock'}>

@@ -82,7 +82,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                 } }),
                                             React.createElement("div", { onClick: function () { return _this.toggleDisplayServices(index === _this.state.activeCard ? null : index); } },
                                                 _this.state.displayAllServices && index === _this.state.activeCard
-                                                    ? 'skrýt'
+                                                    ? 'Skrýt'
                                                     : 'Další odbornosti',
                                                 ' ',
                                                 React.createElement("span", { className: "arrow" }))),

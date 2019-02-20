@@ -2,17 +2,22 @@
   margin-bottom: 50px;
 
   .odbornost__doctor__imageWrapper {
+    margin-bottom: 30px;
+    height: 192px;
+
     @include md {
+      justify-self: flex-end;
+      height: 292px;
+      width: 480px;
       margin-right: 18px;
+      margin-bottom: 0;
     }
   }
 
   .mediaRatio {
-    // padding-top: 0 !important;
-    justify-self: end;
-    margin-right: 50px;
-    width: initial;
-    width: 100%;
+    height: 100%;
+    padding-left: 100% !important;
+    padding-top: 0 !important;
 
     img {
       object-fit: contain !important;
@@ -32,6 +37,11 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
+
+    grid-template-rows: 1fr;
+    @include md {
+      grid-template-columns: 50% 1fr;
+    }
   }
 
   @include max-md {
@@ -43,11 +53,11 @@
     }
     .mediaRatio {
       justify-self: center;
-      margin-bottom: 30px;
     }
+
     &__doctor {
       grid-template-rows: auto;
-      grid-template-columns: 1fr;
+      grid-template-columns: 100%;
     }
   }
 }

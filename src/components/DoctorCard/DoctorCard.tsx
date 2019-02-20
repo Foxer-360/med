@@ -53,7 +53,7 @@ const DoctorCard = (props: DoctorCardProps) => {
     <section className={'doctorCard'}>
       <div className="container">
         <div className={'doctorCard__main'}>
-          {(doctorImage && <Media data={doctorImage} type="image" />) || (
+          {(doctorImage && doctorImage.filename && <Media data={doctorImage} type="image" />) || (
             <img src="/assets/medicon/images/doctorIcon.svg" />
           )}
 
@@ -101,9 +101,9 @@ const DoctorCard = (props: DoctorCardProps) => {
 
       <div className={'container'}>
         <div className={'doctorCard__timePlace'}>
-          <div><List data={schedule}>
-            {({ data }) => data && <DoctorSchedule data={data} />}
-          </List></div>
+          <div>
+            <List data={schedule}>{({ data }) => data && <DoctorSchedule data={data} />}</List>
+          </div>
 
           <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>
         </div>
@@ -122,10 +122,11 @@ const DoctorCard = (props: DoctorCardProps) => {
       </div>
 
       <List data={additionalInfo}>
-        {({ data }) => data &&
-        data.map((item, i) => {
-          return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
-        })}
+        {({ data }) =>
+          data &&
+          data.map((item, i) => {
+            return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
+          })}
       </List>
     </section>
   );

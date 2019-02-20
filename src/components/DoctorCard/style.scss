@@ -10,6 +10,11 @@
   &__main {
     text-align: center;
 
+    & > img {
+      margin-bottom: 24px;
+      width: 91px;
+    }
+
     .mediaRatio {
       margin: 0 auto;
       padding-top: 0 !important;
@@ -129,7 +134,7 @@
           font-family: 'Montserrat Semi Bold';
           font-weight: 600;
           font-family: Montserrat;
-          font-style: italic;  
+          font-style: italic;
 
           @include md {
             font-size: 2rem;

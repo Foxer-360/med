@@ -22,9 +22,10 @@
   table {
     width: 100%;
     table-layout: fixed;
+    overflow: hidden;
 
     @include lg {
-      table-layout: auto;
+      // table-layout: auto;
     }
 
     & > p {

@@ -49,28 +49,30 @@ var DoctorList = /** @class */ (function (_super) {
             return (React.createElement("section", { className: 'doctorList' },
                 React.createElement("div", { className: 'container' },
                     title && React.createElement("h3", null, title),
-                    React.createElement("div", { className: "doctorList__wrapper" }, sourcedDoctors && sourcedDoctors.slice(0, 4).map(function (doctor, index) {
-                        return (React.createElement("div", { className: 'doctorList__item', key: index },
-                            React.createElement("div", { className: 'doctorList__item__img' }, (doctor.image && doctor.image.filename && React.createElement(Media, { data: doctor.image, type: "image" })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
-                            React.createElement("div", { className: 'doctorList__item__info' },
-                                React.createElement("h3", null, doctor.name),
-                                React.createElement("p", null, doctor.field),
-                                React.createElement(Link, __assign({}, doctor.clinicUrl, { className: 'doctorList__item__info__link' }), doctor.clinicName),
-                                React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "vice info"))));
-                    })),
-                    _this.state.showMore ? (React.createElement("div", { className: "doctorList__wrapper" }, otherDoctors && otherDoctors.map(function (doc, i) {
-                        return (React.createElement("div", { className: 'doctorList__item', key: i },
-                            React.createElement("div", { className: 'doctorList__item__img' }, (doc.image && doc.image.filename && React.createElement(Media, { data: doc.image, type: "image" })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
-                            React.createElement("div", { className: 'doctorList__item__info' },
-                                React.createElement("h3", null, doc.name),
-                                React.createElement("p", null, doc.field),
-                                React.createElement(Link, { url: doc.clinicUrl, className: 'doctorList__item__info__link' }, doc.clinicName),
-                                React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doc.doctorUrl }, "vice info"))));
-                    }))) : '',
+                    React.createElement("div", { className: "doctorList__wrapper" }, sourcedDoctors &&
+                        sourcedDoctors.slice(0, 4).map(function (doctor, index) {
+                            return (React.createElement("div", { className: 'doctorList__item', key: index },
+                                React.createElement("div", { className: 'doctorList__item__img' }, (doctor.image && doctor.image.filename && React.createElement(Media, { data: doctor.image, type: "image" })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
+                                React.createElement("div", { className: 'doctorList__item__info' },
+                                    React.createElement("h3", null, doctor.name),
+                                    React.createElement("p", null, doctor.field),
+                                    React.createElement(Link, __assign({}, doctor.clinicUrl, { className: 'doctorList__item__info__link' }), doctor.clinicName),
+                                    React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "vice info"))));
+                        })),
+                    _this.state.showMore ? (React.createElement("div", { className: "doctorList__wrapper" }, otherDoctors &&
+                        otherDoctors.map(function (doc, i) {
+                            return (React.createElement("div", { className: 'doctorList__item', key: i },
+                                React.createElement("div", { className: 'doctorList__item__img' }, (doc.image && doc.image.filename && React.createElement(Media, { data: doc.image, type: "image" })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
+                                React.createElement("div", { className: 'doctorList__item__info' },
+                                    React.createElement("h3", null, doc.name),
+                                    React.createElement("p", null, doc.field),
+                                    React.createElement(Link, __assign({}, doc.clinicUrl, { className: 'doctorList__item__info__link' }), doc.clinicName),
+                                    React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doc.doctorUrl }, "vice info"))));
+                        }))) : (''),
                     otherDoctors.length >= 1 ? (React.createElement("div", { className: "doctorList__btnHolder" },
                         React.createElement("button", { onClick: function () { return _this.setState({ showMore: !_this.state.showMore }); }, className: 'btn btn--blueBkg' },
                             "zobrazit ",
-                            _this.state.showMore ? "m\u00E9n\u011B \u2BC5" : "vice \u2BC6"))) : '')));
+                            _this.state.showMore ? "m\u00E9n\u011B \u2BC5" : "vice \u2BC6"))) : (''))));
         }));
     };
     return DoctorList;
