@@ -69,6 +69,7 @@
   background: -webkit-linear-gradient(left, $blue, $lightBlue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 @mixin blockAnimation() {

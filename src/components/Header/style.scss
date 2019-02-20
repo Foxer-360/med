@@ -44,17 +44,30 @@
     padding: 10px 0;
     position: relative;
     background-color: #fff;
+    flex-wrap: nowrap;
 
     @include md {
       padding: 20px 0;
     }
   }
 
-  &__logo {
+  &__logo {   
+    @include md {
+      flex-basis: 10%;
+    }
+
+    @include lg {
+      flex-basis: auto;
+    }
+
     img {
       width: 55px;
 
       @include md {
+        width: 100%;
+      }
+
+      @include lg {
         width: 123px;
       }
     }
@@ -65,6 +78,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
+    flex-shrink: 0;
     position: relative;
 
     ul {
@@ -122,7 +136,6 @@
 }
 
 .menuActive {
-  
   padding-right: 8px;
 
   svg {

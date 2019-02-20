@@ -1,7 +1,11 @@
 .dividerCircles {
   @extend .flexRow;
   justify-content: center;
-  margin: 40px 0;
+  margin: 20px 0;
+
+  @include md {
+    margin: 40px 0;
+  }
 
   & > div {
     width: 7px;

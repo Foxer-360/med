@@ -84,7 +84,7 @@ const AllPagesComposedQuery = adopt({
     }
 
     return (
-      <div>
+      <>  
         <Query 
           query={GET_ALL_PAGES}
           variables={{ 
@@ -96,7 +96,7 @@ const AllPagesComposedQuery = adopt({
             return render(data);
           }}
         </Query>
-      </div>
+      </> 
     );
   },
 });

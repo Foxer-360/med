@@ -44,19 +44,19 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
           console.log('There was an error creating variant');
         });
     }
-  }
+  };
 
   getSizedUrl = props => {
     let sizedUrl = null;
     let sizes = props.recommendedSizes;
     let sizedFile = null;
+    let filename = props.originalData.filename.split('.');
 
     this.setState({
       loading: true,
     });
 
-    if (sizes && sizes.width && sizes.height) {
-      let filename = props.originalData.filename.split('.');
+    if (sizes && sizes.width && sizes.height && filename[1] !== 'svg') {
       filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
       filename = filename.join('.');
 
@@ -70,7 +70,7 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
         src: props.originalSrc,
       });
     }
-  }
+  };
 
   loadImg(src: any) {
     if (src) {
@@ -107,12 +107,12 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     this.createVariantIfDoesNotExist();
 
     this.setState({
-      loading: true,     
-      src: this.props.originalSrc,    
+      loading: true,
+      src: this.props.originalSrc,
     });
-  }
+  };
 
-  public render() {  
+  public render() {
     const { alt } = this.props;
 
     if (this.state.loading) {

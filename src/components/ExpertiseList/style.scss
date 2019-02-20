@@ -16,8 +16,12 @@
 
   h3 {
     padding: 0;
-    margin: 50px 0;
+    margin: 38px 0;
     @include webkitGradientText;
+
+    @include md {
+      margin: 50px 0;
+    }
   }
 
   button {
@@ -26,6 +30,7 @@
     @include md {
       min-width: 230px;
       letter-spacing: 2.49px;
+      margin: 30px auto 55px;
     }
   }
 
@@ -82,6 +87,7 @@
     .grid-container {
       grid-template-rows: auto;
       padding: 0 30px;
+      width: 100%;
     }
     p {
       font-size: 1.6rem;
@@ -92,6 +98,9 @@
     .grid-container {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: auto;
+      grid-gap: 8px;
+      padding: 0 0;
+      width: 90%;
     }
   }
 

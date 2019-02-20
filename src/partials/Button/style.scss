@@ -11,6 +11,170 @@
   font-family: 'Montserrat';
   text-transform: uppercase;
   font-size: 1.6rem;
+  white-space: nowrap;
+
+  .arrow {
+    content: '';
+    padding: 3px;
+    border: solid white;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    border-width: 0 2px 2px 0;
+    transform: rotate(-45deg);
+    margin-bottom: 1px;
+    left: 10px;
+    transition: 230ms ease;
+
+    &--down {
+      transform: rotate(45deg);
+    }
+    &--up {
+      transform: rotate(225deg);
+    }
+  }
+
+  &:hover {
+    @include md {
+      .arrow {
+        left: 15px;
+      }
+    }
+  }
+
+  @include md {
+    &:hover {
+      background-position: 95%;
+    }
+  }
+
+  &--down {
+    .arrow {
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      @include md {
+        .arrow {
+          left: 10px;
+          top: 5px;
+        }
+      }
+    }
+  }
+
+  &--small {
+    font-size: 1.4rem;
+    padding: 10px 40px;
+  }
+
+  &--blueBkg {
+    color: white;
+    background-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 14px 36px;
+    
+
+    &:hover {
+      @include md {
+        background-image: linear-gradient(to right, $blue 0%, $blue 100%);
+        background-color: $blue;
+      }
+
+      .arrow {
+        border-color: white;
+      }
+    }
+  }
+
+  &--whiteBorder {
+    color: white;
+    border: 2px solid white;
+    background-color: transparent;
+
+    &:hover {
+      @include md {
+        color: $blue;
+        background-color: white;
+
+        .arrow {
+          border-color: $blue;
+        }
+      }
+    }
+  }
+
+  &--blueBorder {
+    color: $lightBlue;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+    -webkit-border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+    -moz-webkit-border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+    border-image-slice: 1;
+
+    .arrow {
+      border-color: $lightBlue;
+    }
+
+    &:hover {
+      color: white;
+      background-color: $lightBlue;
+      border-image: none;
+
+      .arrow {
+        border-color: white;
+      }
+    }
+  }
+
+  &--greyBkg {
+    background-color: #f4f5f7;
+    text-transform: none;
+
+    .arrow {
+      border-color: $lightBlue;
+    }
+  }
+
+  &--fullWidth {
+    @include max-sm {
+      width: 100%;
+
+      p {
+        font-size: 1.6rem;
+      }
+      .arrow {
+        left: 30%;
+      }
+    }
+
+    @include max-xs {
+      .arrow {
+        left: 20%;
+      }
+    }
+    @media (max-width: 336px) {
+      .arrow {
+        left: 10%;
+      }
+    }
+  }
+}
+.btn {
+  border: none;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 12px 35px;
+  transition: ease 0.2s;
+  letter-spacing: 2.4px;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-size: 1.6rem;
 
   .arrow {
     content: '';
@@ -108,6 +272,8 @@
     background-color: transparent;
     border: 2px solid transparent;
     border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+    -webkit-border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
+    -moz-webkit-border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     border-image-slice: 1;
 
     .arrow {

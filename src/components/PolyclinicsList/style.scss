@@ -99,10 +99,12 @@
 
         img {
           height: 35px;
-          width: auto;
+          width: 35px;
+          object-fit: contain;
 
           @include md {
             height: 40px;
+            width: auto;
           }
         }
 

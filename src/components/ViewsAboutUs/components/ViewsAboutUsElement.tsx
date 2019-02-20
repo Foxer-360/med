@@ -18,7 +18,7 @@ export default function ViewsAboutUsElement(props: ViewsAboutUsElementProps) {
 
       <div className={'viewsAboutUs__list__element__content'}>
         {cite && <cite>{cite}</cite>}
-        <Link url={url && url.url}>
+        <Link {...url}>
           Zdroj: <strong>{link}</strong>
         </Link>
       </div>

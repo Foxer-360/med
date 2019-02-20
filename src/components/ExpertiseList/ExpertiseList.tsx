@@ -27,22 +27,25 @@ const ExpertiseList = (props: ExpertiseListProps) => {
 
       <div className="grid-container">
         <List data={expertiseList}>
-          {({ data }) => data &&
+          {({ data }) =>
+            data &&
             data.map((item, index) => (
-            <Link url={item.url && item.url.url} key={index}>
-              <div className="expertiseList__element">
-                {item.image && <Media type={'image'} data={item.image} />}
+              <Link {...item.url} key={index}>
+                <div className="expertiseList__element">
+                  {item.image && <Media type={'image'} data={item.image} />}
 
-                {item.title && <p>{item.title}</p>}
-              </div>
-            </Link>
-          ))}
+                  {item.title && <p>{item.title}</p>}
+                </div>
+              </Link>
+            ))}
         </List>
       </div>
 
-      <div className={'container'}>
-        <Button classes="btn--blueBkg btn--fullWidth">vice info</Button>
-      </div>
+      {expertiseList.length > 0 && (
+        <div className={'container'}>
+          <Button classes="btn--blueBkg btn--fullWidth">zobrazit dalši odbornosti</Button>
+        </div>
+      )}
     </section>
   );
 };

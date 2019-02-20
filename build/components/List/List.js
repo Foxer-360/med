@@ -49,7 +49,7 @@ var AllPagesComposedQuery = adopt({
         if (!languageData || !projectData) {
             return render({ loading: true });
         }
-        return (React.createElement("div", null,
+        return (React.createElement(React.Fragment, null,
             React.createElement(Query, { query: GET_ALL_PAGES, variables: {
                     languageId: languageData.id,
                     projectId: projectData.id,

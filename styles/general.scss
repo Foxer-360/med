@@ -12,7 +12,7 @@ body {
   padding: 0;
 
   a {
-    word-break: break-all;
+    word-break: break-word;
   }
 
   &::-webkit-scrollbar {
@@ -148,6 +148,7 @@ ul {
 cite {
   line-height: 44px;
   font-weight: 600;
+  font-style: italic;
 }
 
 .horizontal-line {
@@ -205,5 +206,29 @@ cite {
     border-left: 2px solid $blue;
     border-bottom: 2px solid $blue;
     transform: rotate(-55deg);
+  }
+}
+
+// PAGE SPECIFIC STYLES
+
+.textBlock + .policlinicInfo {
+  .dividerCircles {
+    display: flex;
+    margin-bottom: 0;
+  }
+  .policlinicInfo__wrapper {
+    margin-top: 30px;
+  }
+}
+
+.textBlock + .benefits {
+  @include md {
+    margin: 50px 0;
+  }
+}
+
+.textBlock + .contact-info {
+  @include md {
+    margin: 50px 0;
   }
 }

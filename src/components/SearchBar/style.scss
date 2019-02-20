@@ -102,7 +102,6 @@
 
   &Results {
     position: absolute;
-    top: 73px;
     background-color: #fff;
     width: 100%;
     box-sizing: border-box;
@@ -114,6 +113,10 @@
     opacity: 0;
     transition: 300ms ease;
     z-index: 200;
+
+    @include md {
+      top: 73px;
+    }
 
     &__noResults {
       padding: 0px 25px;
@@ -199,7 +202,7 @@
         color: #000;
         font-size: 1.6rem;
         width: 100%;
-        font-weight: bold;
+        font-weight: 600;
         text-align-last: left;
         margin-bottom: 12px;
       }

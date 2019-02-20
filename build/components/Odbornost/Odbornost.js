@@ -7,12 +7,12 @@ var Odbornost = function (props) {
         React.createElement(DividerCircles, null),
         React.createElement("div", { className: 'container' },
             React.createElement("div", { className: 'odbornost__doctor' },
-                image && React.createElement(Media, { type: 'image', data: image }),
+                React.createElement("div", { className: 'odbornost__doctor__imageWrapper' }, image && React.createElement(Media, { type: 'image', data: image })),
                 React.createElement("div", { className: 'grid grid--vCenterBlock' },
                     React.createElement("div", null,
                         React.createElement("div", { className: 'horizontal-line' }),
-                        doctorName && React.createElement("p", null, doctorName),
-                        cite && React.createElement("cite", null, cite)))))));
+                        React.createElement("p", null, doctorName || ''),
+                        React.createElement("cite", null, cite || '')))))));
 };
 export default Odbornost;
 //# sourceMappingURL=Odbornost.js.map

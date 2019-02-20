@@ -1,6 +1,5 @@
 .highlight {
-  background-image: 
-    linear-gradient(to right, #2472b8 0%, $lightBlue 100%),
+  background-image: linear-gradient(to right, #2472b8 0%, $lightBlue 100%),
     linear-gradient(to right, #2472b8 0%, #00aadd 100%);
   background-repeat: no-repeat;
   background-position: 0 0, 0 100%;
@@ -12,18 +11,18 @@
     letter-spacing: 1px;
     color: white;
     text-align: center;
-    word-break: break-all;
-    
+    word-break: break-word;
+
     @media (max-width: 1100px) {
-      font-size: 2.2rem;  
+      font-size: 2.2rem;
     }
 
     @media (max-width: 1050px) {
-      font-size: 2rem;  
+      font-size: 2rem;
     }
 
     @include max-md {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
   }
 
@@ -47,7 +46,7 @@
         text-align: center;
         font-weight: initial;
         letter-spacing: initial;
-        word-break: break-all;
+        word-break: break-word;
         line-height: 2rem;
         padding-top: 15px;
       }

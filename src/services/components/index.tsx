@@ -43,7 +43,7 @@ import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
   google: {
-    families: ['Montserrat:400,500,600,700:latin-ext'],
+    families: ['Montserrat:400,500,600,600i,700:latin-ext'],
   },
 });
 

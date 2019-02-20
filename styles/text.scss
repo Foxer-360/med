@@ -8,11 +8,12 @@ h6 {
   text-transform: uppercase;
   color: $blue;
   text-align: center;
-  line-height: 1;
+  line-height: 1.4;
   padding-bottom: 45px;
   margin-bottom: 0;
 
   @include md {
+    line-height: 1;
     padding: 45px;
   }
 }

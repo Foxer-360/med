@@ -49,7 +49,7 @@ var MapBox = function (props) {
         React.createElement(Link, __assign({}, ambulanceLink),
             React.createElement("div", { className: 'mapBox__buttons' },
                 React.createElement(Button, { classes: "btn--small btn--blueBkg", noArrow: true }, "ambulance"),
-                React.createElement(Button, { classes: "btn--small btn--blueBorder" }, "kuddy k nam")))));
+                React.createElement(Button, { classes: "btn--small btn--blueBorder" }, "kudy k n\u00E1m")))));
 };
 export default MapBox;
 //# sourceMappingURL=MapBox.js.map

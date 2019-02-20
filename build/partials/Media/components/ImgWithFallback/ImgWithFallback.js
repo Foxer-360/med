@@ -41,11 +41,11 @@ var ImgWithFallback = /** @class */ (function (_super) {
             var sizedUrl = null;
             var sizes = props.recommendedSizes;
             var sizedFile = null;
+            var filename = props.originalData.filename.split('.');
             _this.setState({
                 loading: true,
             });
-            if (sizes && sizes.width && sizes.height) {
-                var filename = props.originalData.filename.split('.');
+            if (sizes && sizes.width && sizes.height && filename[1] !== 'svg') {
                 filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
                 filename = filename.join('.');
                 sizedUrl = props.baseUrl + props.originalData.category + props.hash + '_' + filename;

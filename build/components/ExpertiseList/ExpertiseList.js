@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import * as React from 'react';
 import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
@@ -11,13 +22,13 @@ var ExpertiseList = function (props) {
             React.createElement(List, { data: expertiseList }, function (_a) {
                 var data = _a.data;
                 return data &&
-                    data.map(function (item, index) { return (React.createElement(Link, { url: item.url && item.url.url, key: index },
+                    data.map(function (item, index) { return (React.createElement(Link, __assign({}, item.url, { key: index }),
                         React.createElement("div", { className: "expertiseList__element" },
                             item.image && React.createElement(Media, { type: 'image', data: item.image }),
                             item.title && React.createElement("p", null, item.title)))); });
             })),
-        React.createElement("div", { className: 'container' },
-            React.createElement(Button, { classes: "btn--blueBkg btn--fullWidth" }, "vice info"))));
+        expertiseList.length > 0 && (React.createElement("div", { className: 'container' },
+            React.createElement(Button, { classes: "btn--blueBkg btn--fullWidth" }, "zobrazit dal\u0161i odbornosti")))));
 };
 export default ExpertiseList;
 //# sourceMappingURL=ExpertiseList.js.map

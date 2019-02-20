@@ -1,9 +1,7 @@
 .benefits {
   width: 100%;
-  // min-height: 140px;
   font-size: 2rem;
   background: white;
-  margin-bottom: 40px;
   box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
 
   &__list {
@@ -37,6 +35,14 @@
 
       img {
         object-fit: contain !important;
+      }
+
+      .mediaRatio {
+        @include sm {
+          width: 65px;
+          height: 65px;
+          padding-top: 0 !important;
+        }
       }
     }
   }
@@ -80,7 +86,9 @@
 
   @include max-sm {
     .mediaRatio {
-      width: 100%;
+      width: 34px;
+      height: 34px;
+      padding-top: 0 !important;
     }
     p {
       font-size: 14px;

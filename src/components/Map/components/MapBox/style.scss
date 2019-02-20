@@ -1,13 +1,18 @@
 .mapBox {
   background-color: #fff;
-  width: 400px;
   display: block;
   position: absolute;
   box-shadow: 0 0 30px rgba(27, 97, 160, 0.3);
   z-index: 199;
-  right: 100px;
-
+  width: 100%;
+  right: 0;
   @include vertical-center;
+  max-width: 400px;
+
+  @include md {
+    right: 100px;
+    width: 400px;
+  }
 
   .mapBox__close {
     position: absolute;
@@ -29,12 +34,18 @@
         fill: black;
         transition: 300ms ease;
       }
+
+      &:hover {
+        svg {
+          fill: black !important;
+          transition: 300ms ease;
+        }
+      }
     }
 
     &:hover {
       svg {
         fill: white;
-        // transform: scale(0.8);
       }
     }
   }
@@ -80,25 +91,49 @@
 
         p {
           color: $darkGray;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
           font-weight: 400;
-          letter-spacing: 0.71px;
+          letter-spacing: 0.56px;
           line-height: 1.2;
+
+          @include md {
+            font-size: 1.6rem;
+            letter-spacing: 0.71px;
+          }
         }
       }
     }
   }
+
   &__buttons {
     padding: 0 20px 20px;
     @extend .flexRow;
+    flex-wrap: nowrap;
     justify-content: space-between;
+
+    button + button {
+      margin-left: 2px;
+
+      span {
+        display: none !important;
+      }
+
+      @media screen and (min-width: 400px) {
+        margin-left: 0;
+
+        span {
+          display: block;
+        }
+      }
+    }
 
     button {
       margin-top: 0;
-      padding: 13px 22px;
+      padding: 13px 13px;
       font-size: 1.2rem;
 
-      @include md {
+      @media screen and (min-width: 400px) {
+        padding: 13px 22px;
         min-width: 170px;
       }
     }

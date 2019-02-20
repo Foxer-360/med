@@ -6,7 +6,7 @@
   h3 {
     @include webkitGradientText;
   }
-  
+
   h5 {
     color: white;
     text-align: left;
@@ -15,8 +15,16 @@
   }
 
   &__list {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto;
+
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     &__element {
       width: 100%;
@@ -81,8 +89,6 @@
     }
 
     &__list {
-      grid-template-columns: repeat(1, 1fr);
-
       &__element {
         height: 100%;
         min-height: 280px;
