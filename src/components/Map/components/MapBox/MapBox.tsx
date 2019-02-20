@@ -22,7 +22,6 @@ const MapBox: React.SFC<MapBoxProps> = props => {
           </svg>
         </div>
 
-        {console.log('%c Emilio:as ', 'background: #222; color: #83FFFF', props)}
         {image && image.filename && <Media type="image" data={image} />}
 
         <div className={'pcTitle'}>

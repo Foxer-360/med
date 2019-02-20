@@ -4,6 +4,7 @@ import { Link as DomLink } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
+import Link from '../../partials/Link';
 
 const GET_CONTEXT = gql`
   {
@@ -127,7 +128,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 <div className={'header__wrapper'} ref={this.headerWrapper}>
                   <div className={'header__logo'}>
 
-                    <DomLink to={'/'}>
+                    <DomLink to={`/${context.websiteData.title.toLowerCase()}/${context.languageData.code}`}>
                       <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
                     </DomLink>
                   </div>

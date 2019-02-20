@@ -417,7 +417,6 @@ var MyProblem = /** @class */ (function (_super) {
         var _this = this;
         return (React.createElement("div", { className: "container" },
             React.createElement("section", { className: 'myProblem' },
-                console.log('%c Emilio: ', 'background: #222; color: #83FFFF', this.state),
                 React.createElement("h3", null, "M\u016Fj Probl\u00E9m se t\u00FDk\u00E1"),
                 React.createElement("p", null, "Klikn\u011Bte na \u010D\u00E1st t\u011Bla se kterou m\u00E1te probl\u00E9m."),
                 React.createElement("div", { className: 'flexRow myProblem__holder' },

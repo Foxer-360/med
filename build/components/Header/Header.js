@@ -104,7 +104,7 @@ var Header = /** @class */ (function (_super) {
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: 'header__wrapper', ref: _this.headerWrapper },
                         React.createElement("div", { className: 'header__logo' },
-                            React.createElement(DomLink, { to: '/' },
+                            React.createElement(DomLink, { to: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
                                 React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }))),
                         React.createElement("nav", null,
                             React.createElement("ul", null, mainNavItems &&

@@ -222,6 +222,7 @@ cite {
 }
 
 .textBlock + .benefits {
+  margin: 30px 0;
   @include md {
     margin: 50px 0;
   }

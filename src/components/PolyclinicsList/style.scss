@@ -182,6 +182,14 @@
           width: auto;
         }
 
+        @include lg {
+          margin: 24px 0 0 0;
+        }
+
+        @include xl {
+          margin: 0;
+        }
+
         .arrow {
           content: '';
           padding: 3px;

@@ -7,10 +7,12 @@
 
     @include lg {
       grid-template-columns: repeat(3, 1fr);
+      width: 90%;
     }
 
     @include xl {
       grid-template-columns: repeat(4, 1fr);
+      width: 100%;
     }
   }
 
@@ -87,7 +89,7 @@
     .grid-container {
       grid-template-rows: auto;
       padding: 0 30px;
-      width: 100%;
+      width: 90%;
     }
     p {
       font-size: 1.6rem;

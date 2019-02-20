@@ -24,7 +24,7 @@ var ExpertiseList = function (props) {
                 return data &&
                     data.map(function (item, index) { return (React.createElement(Link, __assign({}, item.url, { key: index }),
                         React.createElement("div", { className: "expertiseList__element" },
-                            item.image && React.createElement(Media, { type: 'image', data: item.image }),
+                            React.createElement("div", null, item.image && React.createElement(Media, { type: 'image', data: item.image })),
                             item.title && React.createElement("p", null, item.title)))); });
             })),
         expertiseList.length > 0 && (React.createElement("div", { className: 'container' },

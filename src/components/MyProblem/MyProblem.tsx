@@ -428,8 +428,6 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
       <div className="container">
         <section className={'myProblem'}>
         
-          {console.log('%c Emilio: ', 'background: #222; color: #83FFFF', this.state)}
-          
           <h3>Můj Problém se týká</h3>
 
           <p>Klikněte na část těla se kterou máte problém.</p>

@@ -32,12 +32,13 @@ const ExpertiseList = (props: ExpertiseListProps) => {
             data.map((item, index) => (
               <Link {...item.url} key={index}>
                 <div className="expertiseList__element">
-                  {item.image && <Media type={'image'} data={item.image} />}
+                  <div>{item.image && <Media type={'image'} data={item.image} />}</div>
 
                   {item.title && <p>{item.title}</p>}
                 </div>
               </Link>
-            ))}
+            ))
+          }
         </List>
       </div>
 

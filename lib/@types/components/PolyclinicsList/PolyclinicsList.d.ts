@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import * as React from 'react';
 interface Clinic {
     name: string;
     image: LooseObject;
@@ -18,5 +18,14 @@ export interface PolyclinicsListProps {
         clinics: Clinic[];
     };
 }
-declare const PolyclinicsList: (props: PolyclinicsListProps) => JSX.Element;
+export interface PolyclinicsListState {
+    displayAllServices: boolean;
+    activeCard: number;
+}
+declare class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsListState> {
+    constructor(props: PolyclinicsListProps);
+    filterServices: (services: any, index: any) => any;
+    toggleDisplayServices: (index: number) => void;
+    render(): JSX.Element;
+}
 export default PolyclinicsList;

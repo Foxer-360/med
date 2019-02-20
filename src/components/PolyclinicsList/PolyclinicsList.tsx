@@ -26,90 +26,133 @@ export interface PolyclinicsListProps {
   };
 }
 
-const PolyclinicsList = (props: PolyclinicsListProps) => {
-  const { clinics } = props.data;
+export interface PolyclinicsListState {
+  displayAllServices: boolean;
+  activeCard: number;
+}
 
-  return (
-    <section className="polyclinicsList">
-    <List data={clinics}>
-      {({ data }) => data &&
-        data.map((clinic, index) => (
-          <div className={'pcitem'} key={index}>
+class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsListState> {
+  constructor(props: PolyclinicsListProps) {
+    super(props);
 
-            <div className="fullWidthContainer">
-              <div className="container">
-                <div className="pcitem__wrapper">
-                  <div className={'pcitem__img'}>{clinic.image && <Media data={clinic.image} type="image" />}</div>
+    this.state = {
+      displayAllServices: false,
+      activeCard: null,
+    };
+  }
 
-                  <div className={'pcitem__info'}>
-                    <PcTitle name={clinic.name} />
+  filterServices = (services, index) => {
+    services = services
+      .split('\n')
+      .filter((service, i) => i <= 8)
+      .join('\n');
 
-                    <div className="pcitem__info__details">
-                      <div className="pcitem__info__details__item">
-                        <img src="../../../assets/medicon/images/geoIcon.svg" alt="Medicon GeoLocation Icon" />
+    return services;
+  }
 
-                        <p>
-                          {clinic.address && clinic.address} <br />
-                          {clinic.district && clinic.district}
-                        </p>
-                      </div>
+  toggleDisplayServices = (index: number) => {
+    this.setState({
+      displayAllServices: !this.state.displayAllServices,
+      activeCard: index,
+    });
+  }
 
-                      <div className="pcitem__info__details__item">
-                        <img src="../../../assets/medicon/images/phoneIcon.svg" alt="Medicon Phone Icon" />
-                        {clinic.phone && <p>{clinic.phone}</p>}
-                      </div>
+  render() {
+    const { clinics } = this.props.data;
 
-                      <div className="pcitem__info__details__item">
-                        {clinic.transportImage && <Media data={clinic.transportImage} type="image" />}
+    return (
+      <section className="polyclinicsList">
+        <List data={clinics}>
+          {({ data }) =>
+            data &&
+            data.map((clinic, index) => (
+              <div className={'pcitem'} key={index}>
+                <div className="fullWidthContainer">
+                  <div className="container">
+                    <div className="pcitem__wrapper">
+                      <div className={'pcitem__img'}>{clinic.image && <Media data={clinic.image} type="image" />}</div>
 
-                        {!clinic.transportImage && <img src="../../../assets/medicon/images/metro2.png" alt="" />}
+                      <div className={'pcitem__info'}>
+                        <PcTitle name={clinic.name} />
 
-                        <p>
-                          {clinic.transport && clinic.transport}
-                          <br />
-                          {clinic.station && clinic.station}
-                        </p>
-                      </div>
-                    </div>
+                        <div className="pcitem__info__details">
+                          <div className="pcitem__info__details__item">
+                            <img src="../../../assets/medicon/images/geoIcon.svg" alt="Medicon GeoLocation Icon" />
 
-                    <div className={'pcitem__info__list'}>
-                      <ReactMarkdown
-                        source={clinic.services}
-                        renderers={{
-                          paragraph: (rProps: any) => <ul>{rProps.children}</ul>,
-                        }}
-                      />
+                            <p>
+                              {clinic.address && clinic.address} <br />
+                              {clinic.district && clinic.district}
+                            </p>
+                          </div>
 
-                      <div>
-                        Další odbornosti <span className="arrow" />
-                      </div>
-                    </div>
+                          <div className="pcitem__info__details__item">
+                            <img src="../../../assets/medicon/images/phoneIcon.svg" alt="Medicon Phone Icon" />
+                            {clinic.phone && <p>{clinic.phone}</p>}
+                          </div>
 
-                    <div className={'pcitem__info__desc'}>
-                      <div className={'pcitem__info__desc__txt'}>
-                        <ReactMarkdown
-                          source={clinic.description}
-                          renderers={{
-                            paragraph: (rProps: any) => <p>{rProps.children}</p>,
-                          }}
-                        />
-                      </div>
+                          <div className="pcitem__info__details__item">
+                            {clinic.transportImage && <Media data={clinic.transportImage} type="image" />}
 
-                      <div className={'pcitem__info__btnHolder'}>
-                        <Button classes="btn btn--blueBorder" url={clinic.url && clinic.url}>
-                          vice info
-                        </Button>
+                            {!clinic.transportImage && <img src="../../../assets/medicon/images/metro2.png" alt="" />}
+
+                            <p>
+                              {clinic.transport && clinic.transport}
+                              <br />
+                              {clinic.station && clinic.station}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className={'pcitem__info__list'}>
+                          <ReactMarkdown
+                            source={
+                              this.state.displayAllServices && index === this.state.activeCard
+                                ? clinic.services
+                                : this.filterServices(clinic.services, index)
+                            }
+                            renderers={{
+                              paragraph: (rProps: any) => {
+                                return <ul>{rProps.children}</ul>;
+                              },
+                            }}
+                          />
+
+                          <div
+                            onClick={() => this.toggleDisplayServices(index === this.state.activeCard ? null : index)}
+                          >  
+                            {this.state.displayAllServices && index === this.state.activeCard
+                              ? 'skrýt'
+                              : 'Další odbornosti'}{' '}
+                            <span className="arrow" />
+                          </div>
+                        </div>
+
+                        <div className={'pcitem__info__desc'}>
+                          <div className={'pcitem__info__desc__txt'}>
+                            <ReactMarkdown
+                              source={clinic.description}
+                              renderers={{
+                                paragraph: (rProps: any) => <p>{rProps.children}</p>,
+                              }}
+                            />
+                          </div>
+
+                          <div className={'pcitem__info__btnHolder'}>
+                            <Button classes="btn btn--blueBorder" url={clinic.url && clinic.url}>
+                              vice info
+                            </Button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </List>
-    </section>
-  );
-};
+            ))}
+        </List>
+      </section>
+    );
+  }
+}
 
 export default PolyclinicsList;
