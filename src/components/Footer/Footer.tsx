@@ -169,7 +169,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
               {text && (
                 <Link {...url}>
                   <p>{text}</p>
-                </Link>
+                </Link> 
               )}
             </div>
           </div>

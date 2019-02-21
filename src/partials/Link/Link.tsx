@@ -7,7 +7,7 @@ import { adopt } from 'react-adopt';
 
 const isExternalLink = url => {
   const pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
-  return pattern.test(url);
+  return pattern.test(url);  
 };
 
 const GET_CONTEXT = gql`
