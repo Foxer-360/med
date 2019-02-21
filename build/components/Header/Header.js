@@ -28,10 +28,10 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import Hamburger from './components/Hamburger';
-import { Link as DomLink } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
+import Link from '@source/partials/Link';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
@@ -104,12 +104,12 @@ var Header = /** @class */ (function (_super) {
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: 'header__wrapper', ref: _this.headerWrapper },
                         React.createElement("div", { className: 'header__logo' },
-                            React.createElement(DomLink, { to: '/' },
+                            React.createElement(Link, { url: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
                                 React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }))),
                         React.createElement("nav", null,
                             React.createElement("ul", null, mainNavItems &&
                                 mainNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(DomLink, { to: navItem.url ? navItem.url : '' }, navItem.name || navItem.title))); })),
+                                    React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); })),
                             React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu })))),
                 React.createElement("div", { className: 'header__iso' },
                     React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "none" },
@@ -117,7 +117,7 @@ var Header = /** @class */ (function (_super) {
                 React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                     React.createElement("div", { className: 'hiddenMenu__wrapper' },
                         React.createElement("ul", null, secNavItems &&
-                            secNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(DomLink, { to: navItem.url ? navItem.url : '', onClick: function () { return _this.closeMenu(); } }, navItem.name || navItem.title))); }))))));
+                            secNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {
@@ -147,6 +147,10 @@ var Header = /** @class */ (function (_super) {
                 if (node.title && node.link) {
                     item.url = node.link;
                 }
+                item.url = {
+                    url: item.url,
+                    pageId: item.id,
+                };
                 res.push(item);
             }
         });

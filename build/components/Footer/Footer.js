@@ -32,7 +32,9 @@ import HelpPopup from './components/HelpPopup';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
+import Link from '../../partials/Link';
 import List from '../List';
+import Loader from '@source/partials/Loader';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
@@ -59,23 +61,48 @@ var Footer = /** @class */ (function (_super) {
         return _super.call(this, props) || this;
     }
     Footer.prototype.render = function () {
+        var _this = this;
         var _a = this.props.data, links = _a.links, social = _a.social, socialIcons = _a.socialIcons, company = _a.company, url = _a.url, text = _a.text;
         return (React.createElement("footer", { className: 'footer' },
             React.createElement(HelpPopup, null),
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: "flexRow flexAlign--space-between" },
-                    React.createElement(List, { data: links }, function (_a) {
-                        var data = _a.data;
+                    React.createElement(ComposedQuery, null, function (_a) {
+                        var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
+                        if (!context.navigationsData ||
+                            !context.languageData ||
+                            !context.languagesData ||
+                            !data ||
+                            !data.pagesUrls) {
+                            return React.createElement(Loader, null);
+                        }
+                        if (error) {
+                            return "Error..." + error;
+                        }
+                        var navigations = context.navigationsData, languageCode = context.languageData.code;
+                        var transformedNavigations = _this.transformNavigationsIntoTree(navigations, data.pagesUrls);
+                        var footerFirst = 'footerFirst';
+                        var footerSecond = 'footerSecond';
+                        var footerThird = 'footerThird';
+                        var footerFirstItems = transformedNavigations && transformedNavigations[footerFirst]
+                            ? transformedNavigations[footerFirst]
+                            : [];
+                        var footerSecondItems = transformedNavigations && transformedNavigations[footerSecond]
+                            ? transformedNavigations[footerSecond]
+                            : [];
+                        var footerThirdItems = transformedNavigations && transformedNavigations[footerThird]
+                            ? transformedNavigations[footerThird]
+                            : [];
                         return (React.createElement(React.Fragment, null,
-                            data && data.length > 0 &&
-                                React.createElement("ul", { className: 'footer__list' }, data.slice(0, 5).map(function (link, index) { return (React.createElement("li", { key: index },
-                                    React.createElement("a", { href: link.url }, link.text))); })),
-                            data && data.length > 5 &&
-                                React.createElement("ul", { className: 'footer__list' }, data.slice(5, 10).map(function (link, index) { return (React.createElement("li", { key: index },
-                                    React.createElement("a", { href: link.url }, link.text))); })),
-                            data && data.length > 10 &&
-                                React.createElement("ul", { className: 'footer__list' }, data.slice(10, 15).map(function (link, index) { return (React.createElement("li", { key: index },
-                                    React.createElement("a", { href: link.url }, link.text))); }))));
+                            React.createElement("ul", { className: 'footer__list' }, footerFirstItems &&
+                                footerFirstItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
+                                    React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); })),
+                            React.createElement("ul", { className: 'footer__list' }, footerSecondItems &&
+                                footerSecondItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
+                                    React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); })),
+                            React.createElement("ul", { className: 'footer__list' }, footerThirdItems &&
+                                footerThirdItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
+                                    React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))));
                     }),
                     social && React.createElement(List, { data: socialIcons }, function (_a) {
                         var data = _a.data;
@@ -85,9 +112,8 @@ var Footer = /** @class */ (function (_super) {
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "copyrights grid" },
                         company && React.createElement("p", null, company),
-                        text &&
-                            React.createElement("a", { href: url },
-                                React.createElement("p", null, text)))))));
+                        text && (React.createElement(Link, __assign({}, url),
+                            React.createElement("p", null, text))))))));
     };
     Footer.prototype.transformNavigationsIntoTree = function (navigation, urls) {
         var _this = this;
@@ -116,6 +142,10 @@ var Footer = /** @class */ (function (_super) {
                 if (node.title && node.link) {
                     item.url = node.link;
                 }
+                item.url = {
+                    url: item.url,
+                    pageId: item.id,
+                };
                 res.push(item);
             }
         });
