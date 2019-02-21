@@ -9,6 +9,9 @@ interface Specialization {
     body: boolean;
 }
 export interface MyProblemProps {
+    data: {
+        specializations: Specialization[];
+    };
 }
 export interface MyProblemState {
     area: string;
