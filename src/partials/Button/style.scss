@@ -74,7 +74,6 @@
     background-repeat: no-repeat;
     background-position: center;
     padding: 14px 36px;
-    
 
     &:hover {
       @include md {
@@ -119,12 +118,13 @@
     }
 
     &:hover {
-      color: white;
-      background-color: $lightBlue;
-      border-image: none;
-
-      .arrow {
-        border-color: white;
+      @include md {
+        color: white;
+        background-color: $lightBlue;
+        border-image: none;
+        .arrow {
+          border-color: white;
+        }
       }
     }
   }
@@ -281,12 +281,14 @@
     }
 
     &:hover {
-      color: white;
-      background-color: $lightBlue;
-      border-image: none;
+      @include md {
+        color: white;
+        background-color: $lightBlue;
+        border-image: none;
 
-      .arrow {
-        border-color: white;
+        .arrow {
+          border-color: white;
+        }
       }
     }
   }
