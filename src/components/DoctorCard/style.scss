@@ -69,7 +69,12 @@
 
     &__wrapper {
       @extend .flexRow;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: stretch;
+
+      @include lg {
+        justify-content: space-between;
+      }
 
       @include lg {
         padding: 23px 0;
@@ -95,6 +100,18 @@
         flex-wrap: nowrap;
       }
 
+      &__wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+
+        @include lg {
+          flex-wrap: nowrap;
+        }
+      }
+
       img {
         height: 55px;
         width: auto;
@@ -102,12 +119,15 @@
         margin: 0 0 22px 0;
 
         @include md {
-          width: 55px;
+          width: 45px;
           height: auto;
         }
 
         @include lg {
-          padding: 0 0 0 4%;
+          margin: 0;
+        }
+
+        @include xl {
           margin: 0;
           height: 64px;
           width: auto;
@@ -116,12 +136,18 @@
 
       p {
         padding-left: 10px;
+        padding-right: 10px;
         width: 100%;
         text-align: center;
 
         @include lg {
           width: auto;
-          text-align: left;
+          text-align: center;
+          font-size: 1.6rem;
+        }
+
+        @include xl {
+          font-size: 2rem;
         }
 
         span {
@@ -137,6 +163,10 @@
           font-style: italic;
 
           @include md {
+            font-size: 1.6rem;
+          }
+
+          @include xl {
             font-size: 2rem;
           }
         }
@@ -147,9 +177,25 @@
         flex-basis: 100%;
         border-bottom: 1px solid #d0d0d0;
 
+        @include sm {
+          flex-basis: 65%;
+        }
+
         @include lg {
           flex-basis: calc((100% / 2) / 2);
           border-bottom: 0px;
+          padding: 0 18px;
+
+          p {
+            padding-left: 15px;
+          }
+        }
+
+        @include xl {
+          padding: 0 24px;
+          p {
+            padding-left: 24px;
+          }
         }
       }
 
@@ -159,8 +205,31 @@
           flex-basis: 100%;
         }
 
+        @include md {
+          span {
+            width: 100%;
+            display: block;
+            margin-bottom: 6px;
+          }
+        }
+
         @include lg {
           flex-basis: 50%;
+
+          span {
+            margin-bottom: 0;
+            display: inline-block;
+            width: auto;
+          }
+
+          img {
+            margin-left: 24px;
+          }
+
+          p {
+            padding-left: 24px;
+            text-align: left;
+          }
         }
       }
 
@@ -177,12 +246,6 @@
     @extend .flexRow;
     justify-content: space-between;
     padding: 40px 0;
-
-    & > div {
-      @include flexChild(2, 10px);
-      @extend .flexRow;
-      justify-content: center;
-    }
 
     .mediaRatio {
       padding-top: 0 !important;

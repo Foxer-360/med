@@ -139,7 +139,7 @@ class List extends React.Component<Properties, {}> {
       } else {
         searchedText = `${searchedText ? searchedText : ''} ${fulltextFilter}`;
       }
-    }
+    }  
 
     const searchedFragments = searchedText && searchedText.trim().split(' ').map(fragment => fragment.trim());
     if (Array.isArray(data)) {

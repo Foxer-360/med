@@ -1,6 +1,20 @@
 .doctorSchedule {
   width: 100%;
 
+  &__title {
+    border-bottom: 1px solid #cecece;
+
+    h4 {
+      text-align: center;
+      padding: 24px 0;
+
+      @include md {
+        padding: 24px 0;
+        text-align: left;
+      }
+    }
+  }
+
   .mobileHeading {
     border-bottom: 0;
 
@@ -21,8 +35,11 @@
 
   table {
     width: 100%;
-    table-layout: fixed;
     overflow: hidden;
+
+    @include sm {
+      table-layout: fixed;
+    }
 
     @include lg {
       // table-layout: auto;
@@ -41,14 +58,32 @@
         border-bottom: 1px solid #cecece;
       }
 
+      .circleCell {
+        display: none;
+        @include sm{
+          display: table-cell;
+        }
+      }
+
       td {
         padding: 0px 0 15px;
         vertical-align: top;
         text-align: center;
+        display: inline-block;
+        width: 50%;
+
+        @include sm {
+          width: auto;
+          display: table-cell;
+        }
 
         @include lg {
           padding: 15px 25px;
           text-align: left;
+        }
+
+        @include xl {
+          white-space: nowrap;
         }
 
         &:last-of-type {
@@ -67,8 +102,17 @@
           }
         }
 
-        &:nth-of-type(3) {
+        &:nth-of-type(3),
+        &:nth-of-type(5),
+        &:nth-of-type(7) {
           vertical-align: middle;
+          padding: 6px 0 17px;
+          // width: 50px;
+
+          @include lg {
+            width: auto;
+            padding: 0;
+          }
         }
 
         &:first-of-type {
@@ -108,9 +152,18 @@
         }
 
         .dividerCircles {
-          margin: 0 13px;
+          margin: 0 0px;
+
         }
       }
     }
+  }
+}
+
+.doctorSchedule + .doctorSchedule {
+  margin-top: 24px;
+
+  @include md {
+    margin-top: 50px;
   }
 }

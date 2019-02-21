@@ -16,15 +16,7 @@ export interface DoctorCardProps {
     clinicName: string;
     clinicExtraInfo: string;
     clinicAddress: string;
-    schedule: [
-      {
-        day: string;
-        eveningHoursdescription: string;
-        eveningOpeningHours: string;
-        morningHoursdescription: string;
-        morningOpeningHours: string;
-      }
-    ];
+    schedule: [];
     additionalInfo: [
       {
         title: string;
@@ -48,6 +40,104 @@ const DoctorCard = (props: DoctorCardProps) => {
     schedule,
     additionalInfo,
   } = props.data;
+
+  let mockWeek = [
+    {
+      day: 'Monday',
+      morningHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      noonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      afternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      lateAfternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+    },
+    {
+      day: 'Tuesday',
+      morningHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      noonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      afternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      lateAfternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+    },
+    {
+      day: 'Wednesday',
+      morningHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      noonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      afternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      lateAfternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+    },
+    {
+      day: 'Thrusday',
+      morningHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      noonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      afternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      lateAfternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+    },
+    {
+      day: 'Friday',
+      morningHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      noonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      afternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+      lateAfternoonHours: {
+        time: '6:00 - 9:00',
+        description: 'description',
+      },
+    },
+  ];
 
   return (
     <section className={'doctorCard'}>
@@ -74,22 +164,26 @@ const DoctorCard = (props: DoctorCardProps) => {
           <div className={'container'}>
             <div className="doctorCard__info__wrapper">
               <div className={'doctorCard__info__item'}>
-                <img src="/assets/medicon/images/stethoscopeIcon.svg" />
-                <p>{specialization}</p>
+                <div className={'doctorCard__info__item__wrap'}>
+                  <img src="/assets/medicon/images/stethoscopeIcon.svg" />
+                  <p>{specialization}</p>
+                </div>
               </div>
 
               <div className={'doctorCard__info__item'}>
-                <img src="/assets/medicon/images/phoneIcon.svg" />
-                {phone && <p>{phone}</p>}
+                <div className={'doctorCard__info__item__wrap'}>
+                  <img src="/assets/medicon/images/phoneIcon.svg" />
+                  {phone && <p>{phone}</p>}
+                </div>
               </div>
 
-              <div className={'doctorCard__info__item'}>
+              <div className={'doctorCard__info__item doctorCard__info__item--location '}>
                 <img src="/assets/medicon/images/geoIcon.svg" />
 
                 <div>
                   <p>
                     <strong>{clinicName}</strong>
-                    {clinicExtraInfo && <span>{' - ' + clinicExtraInfo}</span>}
+                    {clinicExtraInfo && <span>{'  - ' + clinicExtraInfo}</span>}
                   </p>
                   <p>{clinicAddress}</p>
                 </div>
@@ -101,19 +195,15 @@ const DoctorCard = (props: DoctorCardProps) => {
 
       <div className={'container'}>
         <div className={'doctorCard__timePlace'}>
-          <div>
-            <List data={schedule}>{({ data }) => data && <DoctorSchedule data={data} />}</List>
-          </div>
-
-          <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>
+          <DoctorSchedule data={mockWeek} title={'Odd Week'} />
+          <DoctorSchedule data={mockWeek} title={'Normal Week'} />
         </div>
 
-        <div className={'doctorCard__btnHolder'}>
+        {/* <div className={'doctorCard__btnHolder'}>
           <Button classes={'btn--blueBkg'} noArrow={true}>
             objednat
           </Button>
-        </div>
-
+        </div> */}
         <div className={'doctorCard__divider'}>
           <div className="dividerCircles">
             <div />
