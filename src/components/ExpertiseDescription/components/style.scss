@@ -35,6 +35,24 @@
       letter-spacing: 0.8px;
     }
   }
+  
+  ul {
+    word-break: break-all;
+
+    p {
+      margin: 0;
+      font-size: 1.6rem;
+      line-height: inherit;
+    }
+  }
+
+  &--hidden {
+    h1, h2, h3, h4, h5, h6 {
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
 }
 
 .examination {
@@ -62,7 +80,7 @@
       line-height: 28px;
       letter-spacing: initial;
       font-weight: 400;
-      display: flex;
+      display: grid;
       align-items: center;
 
       @include md {
