@@ -243,3 +243,11 @@ cite {
     padding: 40px 0;
   }
 }
+
+.expertiseList + .polyclinicBoxes {
+  padding-top: 10px;
+
+  .dividerCircles {
+    display: flex !important;
+  }
+}

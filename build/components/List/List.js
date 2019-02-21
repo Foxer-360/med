@@ -33,6 +33,18 @@ import * as R from 'ramda';
 import { adopt } from 'react-adopt';
 import Loader from '@source/partials/Loader';
 import { withRouter } from 'react-router';
+var escape = function (str) {
+    // TODO: escape %x75 4HEXDIG ?? chars
+    return str
+        .replace(/[\"]/g, '\\"')
+        .replace(/[\\]/g, '\\\\')
+        .replace(/[\/]/g, '\\/')
+        .replace(/[\b]/g, '\\b')
+        .replace(/[\f]/g, '\\f')
+        .replace(/[\n]/g, '\\n')
+        .replace(/[\r]/g, '\\r')
+        .replace(/[\t]/g, '\\t');
+};
 var DATASOURCE = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"], ["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"])));
 var GET_CONTEXT = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n    projectData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n    projectData @client\n  }\n"])));
 var GET_ALL_PAGES = gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  query localizedPages($languageId: ID! $projectId: ID!) {\n    pages(where: { website: { project: { id: $projectId } } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID! $projectId: ID!) {\n    pages(where: { website: { project: { id: $projectId } } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
@@ -325,7 +337,7 @@ var List = /** @class */ (function (_super) {
                         var getValueFromDatasourceItems = R.path(searchKeys);
                         var replacement = getValueFromDatasourceItems(item);
                         if (replacement && typeof replacement === 'string') {
-                            replaced = replaced.replace(result[0], replacement);
+                            replaced = replaced.replace(result[0], escape(replacement));
                         }
                         else if (replacement && typeof replacement === 'object') {
                             replaced = replaced.replace(result[0], JSON.stringify(replacement));

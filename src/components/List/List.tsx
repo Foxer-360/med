@@ -6,6 +6,19 @@ import { adopt } from 'react-adopt';
 import Loader from '@source/partials/Loader';
 import { withRouter, RouteComponentProps } from 'react-router';
 
+const escape = function (str: string) {
+  // TODO: escape %x75 4HEXDIG ?? chars
+  return str
+    .replace(/[\"]/g, '\\"')
+    .replace(/[\\]/g, '\\\\')
+    .replace(/[\/]/g, '\\/')
+    .replace(/[\b]/g, '\\b')
+    .replace(/[\f]/g, '\\f')
+    .replace(/[\n]/g, '\\n')
+    .replace(/[\r]/g, '\\r')
+    .replace(/[\t]/g, '\\t'); 
+};
+
 interface Properties extends RouteComponentProps<LooseObject> {
   // tslint:disable-next-line:no-any
   data?: any;
@@ -262,7 +275,7 @@ class List extends React.Component<Properties, {}> {
                 });
             }}
           </AllPagesComposedQuery>
-      );
+      ); 
     }
 
     return this.props.children({ data: [] });
@@ -280,7 +293,7 @@ class List extends React.Component<Properties, {}> {
             const getValueFromDatasourceItems = R.path(searchKeys);
             const replacement = getValueFromDatasourceItems(item);
             if (replacement && typeof replacement === 'string') {
-              replaced = replaced.replace(result[0], replacement);
+              replaced = replaced.replace(result[0], escape(replacement));
             } else if (replacement && typeof replacement === 'object') {
               replaced = replaced.replace(result[0], JSON.stringify(replacement));
             } else {

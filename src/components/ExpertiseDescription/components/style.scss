@@ -1,7 +1,11 @@
 .care {
   h4 {
     @include webkitGradientText();
+    line-height: 3rem;
+    word-break: unset;
   }
+
+  a { word-break: unset; }
 
   div {
     width: 100%;
@@ -68,6 +72,12 @@
       p {
         width: 100%;
       }
+
+      &--markdown {
+        ul {
+          text-align: left;
+        }
+      } 
 
       &--last-long {
         grid-column-start: span 2;

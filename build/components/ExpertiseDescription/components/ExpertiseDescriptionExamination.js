@@ -26,7 +26,7 @@ var ExpertiseDescriptionExamination = /** @class */ (function (_super) {
             title && React.createElement("h3", { style: { paddingTop: 45 } }, title),
             React.createElement("div", { className: 'examination__list grid' }, examinations && examinations.map(function (examination, i) {
                 var lastLong = examinations.length % 2 !== 0 && examinations.length - 1 === i;
-                return examination.url ? (React.createElement(Link, { key: i, style: examination.url ? {} : { cursor: 'default' }, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : ''), url: examination.url && examination.url.url }, examination.title && examination.title)) : (React.createElement(Examination, { key: i, description: examination.description, title: examination.title, lastLong: lastLong }));
+                return examination.url ? (React.createElement(Link, { key: i, style: examination.url ? { fontWeight: 500 } : { cursor: 'default' }, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : ''), url: examination.url && examination.url.url }, examination.title && examination.title)) : (React.createElement(Examination, { key: i, description: examination.description, title: examination.title, lastLong: lastLong }));
             }))));
     };
     return ExpertiseDescriptionExamination;

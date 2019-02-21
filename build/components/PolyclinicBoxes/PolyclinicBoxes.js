@@ -13,9 +13,11 @@ import * as React from 'react';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
 import List from '../List';
+import DividerCircles from '../DividerCircles';
 var PolyclinicBoxes = function (props) {
     var _a = props.data, title = _a.title, polyclinics = _a.polyclinics;
     return (React.createElement("section", { className: 'polyclinicBoxes' },
+        React.createElement(DividerCircles, null),
         React.createElement("div", { className: 'container' },
             title && React.createElement("h3", null, title),
             React.createElement("ul", { className: 'grid' },

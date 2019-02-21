@@ -27,12 +27,14 @@ var Examination = /** @class */ (function (_super) {
         var _a = this.props, title = _a.title, description = _a.description, lastLong = _a.lastLong;
         return (React.createElement("div", { style: description ? { cursor: 'pointer' } : { cursor: 'default' }, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : '') },
             title &&
-                React.createElement("p", { onClick: function () { return _this.setState({ isDescriptionVisible: !_this.state.isDescriptionVisible }); } }, title),
+                React.createElement("p", { style: { fontWeight: 500 }, onClick: function () { return _this.setState({ isDescriptionVisible: !_this.state.isDescriptionVisible }); } }, title),
             description &&
                 React.createElement(ReactMarkdown, { source: description, renderers: {
                         // tslint:disable-next-line:no-any
-                        paragraph: function (props) {
-                            return React.createElement("p", { style: _this.state.isDescriptionVisible ? { display: 'block' } : { display: 'none' } }, props.children);
+                        root: function (props) {
+                            return React.createElement("div", { className: 'examination__list__item--markdown', style: _this.state.isDescriptionVisible ?
+                                    { display: 'block', paddingTop: 15 } :
+                                    { display: 'none' } }, props.children);
                         },
                     } })));
     };

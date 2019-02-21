@@ -2,6 +2,7 @@ import * as React from 'react';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
 import List from '../List';
+import DividerCircles from '../DividerCircles';
 
 interface Polyclinic {
   url: LooseObject;
@@ -20,7 +21,9 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
   const { title, polyclinics } = props.data;
 
   return (
-    <section className={'polyclinicBoxes'}>
+    <section className={'polyclinicBoxes'}> 
+      <DividerCircles />
+
       <div className={'container'}>
         {title && <h3>{title}</h3>}
 

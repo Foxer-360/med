@@ -29,21 +29,30 @@ class Examination extends React.Component<ExaminationProps, ExaminationState> {
         className={`examination__list__item ${lastLong ? 'examination__list__item--last-long' : ''}`}
       >
         {title && 
-          <p onClick={() => this.setState({ isDescriptionVisible: !this.state.isDescriptionVisible })}>
+          <p
+            style={{ fontWeight: 500 }} 
+            onClick={() => this.setState({ isDescriptionVisible: !this.state.isDescriptionVisible })}
+          >
             {title}
           </p>}
+
         {description && 
           <ReactMarkdown
             source={description}
             renderers={{
               // tslint:disable-next-line:no-any
-              paragraph: (props: any) => 
-                <p style={this.state.isDescriptionVisible ? { display: 'block' } : { display: 'none' }}>
+              root: (props: any) => 
+                <div 
+                  className={'examination__list__item--markdown'}
+                  style={
+                    this.state.isDescriptionVisible ? 
+                    { display: 'block', paddingTop: 15 } : 
+                    { display: 'none' }}
+                >
                   {props.children}
-                </p>,
+                </div>,
             }}
           />}
-          
       </div>
     );
   }
