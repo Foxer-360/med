@@ -26,9 +26,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import Loader from '../Loader';
 import { adopt } from 'react-adopt';
 var isExternalLink = function (url) {
-    var pattern = /^https?|^www/i;
+    var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
     return pattern.test(url);
 };
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n  }\n"], ["\n  {\n    languageData @client\n  }\n"])));
@@ -56,7 +57,7 @@ var ComposerLink = function (props) {
     return (React.createElement(ComposedQuery, null, function (_a) {
         var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data;
         if (loading) {
-            return React.createElement("div", null, "Loading...");
+            return React.createElement(Loader, null);
         }
         if (error) {
             return "Error: " + error;
