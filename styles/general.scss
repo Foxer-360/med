@@ -245,7 +245,10 @@ cite {
 }
 
 .expertiseList + .polyclinicBoxes {
+
+  @include md {
   padding-top: 10px;
+  }
 
   .dividerCircles {
     display: flex !important;
