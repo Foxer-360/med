@@ -18,10 +18,20 @@
     padding-bottom: 55px;
   }
 
+  h5 {
+    padding-top: 50px;
+    padding-bottom: 24px;
+  }
+
   .mediaRatio {
     padding-top: 0 !important;
     width: 100%;
     height: 360px;
+    margin-bottom: 24px;
+
+    @include md {
+      margin-bottom: 50px;
+    }
   }
 
   &__content {

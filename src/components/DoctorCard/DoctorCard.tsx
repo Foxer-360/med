@@ -61,7 +61,7 @@ const DoctorCard = (props: DoctorCardProps) => {
 
           {specialization && <p className={'doctorCard__main__spe'}>{specialization}</p>}
 
-          {nurse && (
+          {nurse && nurse.length > 1 && (
             <p className={'doctorCard__main__sis'}>
               Sestra: <strong>{nurse}</strong>
             </p>

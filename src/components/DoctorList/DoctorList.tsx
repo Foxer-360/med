@@ -51,7 +51,6 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
           return (
             <section className={'doctorList'}>
               <div className={'container'}>
-              
                 {title && <h3>{title}</h3>}
 
                 <div className="doctorList__wrapper">

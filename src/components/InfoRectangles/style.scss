@@ -1,5 +1,9 @@
 .info-rectangles {
-  margin-bottom: 50px;
+  margin-bottom: 39px;
+  
+  @include md {
+    margin-bottom: 50px;
+  }
 
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
@@ -39,11 +43,15 @@
     h5 {
       padding: 0;
       padding-bottom: 35px;
-      width: 50%;
+      width: 65%;
       line-height: 1.2;
       text-align: left;
       color: $lightBlue;
       font-weight: 500;
+
+      @include md {
+        width: 50%;
+      }
     }
   }
 

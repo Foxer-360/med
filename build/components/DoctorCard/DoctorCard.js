@@ -12,7 +12,7 @@ var DoctorCard = function (props) {
                 (doctorImage && doctorImage.filename && React.createElement(Media, { data: doctorImage, type: "image" })) || (React.createElement("img", { src: "/assets/medicon/images/doctorIcon.svg" })),
                 name && React.createElement("h3", { className: 'gradientHeading' }, name),
                 specialization && React.createElement("p", { className: 'doctorCard__main__spe' }, specialization),
-                nurse && (React.createElement("p", { className: 'doctorCard__main__sis' },
+                nurse && nurse.length > 1 && (React.createElement("p", { className: 'doctorCard__main__sis' },
                     "Sestra: ",
                     React.createElement("strong", null, nurse))))),
         React.createElement("div", { className: 'fullwidthContainer' },

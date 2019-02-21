@@ -8,4 +8,3 @@ const getImgUrl = data => {
 };
 
 export default getImgUrl;
-  
