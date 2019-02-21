@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Hamburger from './components/Hamburger';
-import { Link as DomLink } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
@@ -128,9 +127,9 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               <div className="container">
                 <div className={'header__wrapper'} ref={this.headerWrapper}>
                   <div className={'header__logo'}>
-                    <DomLink to={`/${context.websiteData.title.toLowerCase()}/${context.languageData.code}`}>
+                    <Link url={`/${context.websiteData.title.toLowerCase()}/${context.languageData.code}`}>
                       <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
-                    </DomLink>
+                    </Link>
                   </div>
 
                   <nav>
@@ -138,7 +137,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       {mainNavItems &&
                         mainNavItems.map((navItem, i) => (
                           <li key={i}>
-                            <DomLink to={navItem.url ? navItem.url : ''}>{navItem.name || navItem.title}</DomLink>
+                            <Link {...navItem.url}>{navItem.name || navItem.title}</Link>
                           </li>
                         ))}
                     </ul>
@@ -161,9 +160,9 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       secNavItems.map((navItem, i) => (
                         <li key={i}>
                           {
-                            <DomLink to={navItem.url ? navItem.url : ''} onClick={() => this.closeMenu()}>
+                            <Link {...navItem.url} onClick={() => this.closeMenu()}>
                               {navItem.name || navItem.title}
-                            </DomLink>}
+                            </Link>}
                         </li>
                       ))}
                   </ul>
@@ -209,6 +208,11 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         if (node.title && node.link) {
           item.url = node.link;
         }
+
+        item.url = {
+          url: item.url,
+          pageId: item.id,
+        };
 
         res.push(item);
       }

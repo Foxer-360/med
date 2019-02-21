@@ -5,6 +5,11 @@
   background-color: #48c5e0;
   line-height: 28px;
   padding-top: 50px;
+  padding-bottom: 52px;
+
+  @include md {
+    padding-bottom: 0;
+  }
 
   .flexRow {
     align-items: stretch;
@@ -22,8 +27,16 @@
       height: 100%;
     }
 
+    @include lg {
+      flex-shrink: 2;
+      flex: 1;
+    }
+
     li {
       margin-left: 15px;
+      margin-right: 15px;
+      padding-left: 0;
+
       &:before {
         content: none;
         padding-right: 12px;
@@ -46,11 +59,16 @@
     text-align: right;
     justify-content: space-between;
 
+    @include lg {
+      flex: 1;
+      flex-shrink: 2;
+      min-height: 181px;
+    }
+
     &__text {
       width: 50%;
       align-self: flex-end;
       p {
-        
         text-align: right;
         line-height: 22px;
       }
@@ -79,7 +97,7 @@
 
         p {
           text-align: left;
-          float: left;  
+          float: left;
         }
       }
     }
@@ -94,6 +112,7 @@
 
       li {
         margin-left: 0;
+        margin-right: 0;
       }
 
       &::before {

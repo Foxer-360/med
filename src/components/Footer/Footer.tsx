@@ -6,6 +6,7 @@ import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 import Link from '../../partials/Link';
 import List from '../List';
+import Loader from '@source/partials/Loader';
 
 const GET_CONTEXT = gql`
   {
@@ -66,7 +67,7 @@ export interface FooterProps {
   };
 }
 
-export interface FooterState { }
+export interface FooterState {}
 
 class Footer extends React.Component<FooterProps, FooterState> {
   constructor(props: FooterProps) {
@@ -74,14 +75,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
   }
 
   public render() {
-    const {
-      links,
-      social,
-      socialIcons,
-      company,
-      url,
-      text
-    } = this.props.data;
+    const { links, social, socialIcons, company, url, text } = this.props.data;
 
     return (
       <footer className={'footer'}>
@@ -89,55 +83,94 @@ class Footer extends React.Component<FooterProps, FooterState> {
 
         <div className="container">
           <div className="flexRow flexAlign--space-between">
-          <List data={links}>
-          {({ data }) => {
-            return (<>
-              {data && data.length > 0 &&
-                <ul className={'footer__list'}>
-                  {data.slice(0, 5).map((link, index) => (
-                    <li key={index}>
-                      <a href={link.url}>{link.text}</a>
-                    </li>
-                  ))}
-                </ul>
-              }
+            <ComposedQuery>
+              {({ getPagesUrls: { loading, error, data }, context }) => {
+                if (
+                  !context.navigationsData ||
+                  !context.languageData ||
+                  !context.languagesData ||
+                  !data ||
+                  !data.pagesUrls
+                ) {
+                  return <Loader />;
+                }
 
-              {data && data.length > 5 &&
-                <ul className={'footer__list'}>
-                  {data.slice(5, 10).map((link, index) => (
-                    <li key={index}>
-                      <a href={link.url}>{link.text}</a>
-                    </li>
-                  ))}
-                </ul>
-              }
+                if (error) {
+                  return `Error...${error}`;
+                }
 
-              {data && data.length > 10 &&
-                <ul className={'footer__list'}>
-                  {data.slice(10, 15).map((link, index) => (
-                    <li key={index}>
-                      <a href={link.url}>{link.text}</a>
-                    </li>
-                  ))}
-                </ul>
-              }
-            </>);
-          }}</List>  
-          {social && <List data={socialIcons}>
-            {({ data }) => <Social info={social} icons={data} />}
-          </List>}
+                const {
+                  navigationsData: navigations,
+                  languageData: { code: languageCode },
+                } = context;
+
+                const transformedNavigations = this.transformNavigationsIntoTree(navigations, data.pagesUrls);
+
+                const footerFirst = 'footerFirst';
+                const footerSecond = 'footerSecond';
+                const footerThird = 'footerThird';
+
+                const footerFirstItems =
+                  transformedNavigations && transformedNavigations[footerFirst]
+                    ? transformedNavigations[footerFirst]
+                    : [];
+
+                const footerSecondItems =
+                  transformedNavigations && transformedNavigations[footerSecond]
+                    ? transformedNavigations[footerSecond]
+                    : [];
+
+                const footerThirdItems =
+                  transformedNavigations && transformedNavigations[footerThird]
+                    ? transformedNavigations[footerThird]
+                    : [];
+
+                return (
+                  <>
+                    <ul className={'footer__list'}>
+                      {footerFirstItems &&
+                        footerFirstItems.map((navItem, i) => (
+                          <li key={i}>
+                            <Link {...navItem.url}>{navItem.name || navItem.title}</Link>
+                          </li>
+                        ))}
+                    </ul>
+
+                    <ul className={'footer__list'}>
+                      {footerSecondItems &&
+                        footerSecondItems.map((navItem, i) => (
+                          <li key={i}>
+                            <Link {...navItem.url}>{navItem.name || navItem.title}</Link>
+                          </li>
+                        ))}
+                    </ul>
+
+                    <ul className={'footer__list'}>
+                      {footerThirdItems &&
+                        footerThirdItems.map((navItem, i) => (
+                          <li key={i}>
+                            <Link {...navItem.url}>{navItem.name || navItem.title}</Link>
+                          </li>
+                        ))}
+                    </ul>
+                  </>
+                );
+              }}
+            </ComposedQuery>
+
+            {social && <List data={socialIcons}>{({ data }) => <Social info={social} icons={data} />}</List>}
           </div>
         </div>
 
         <div className="bottom">
           <div className="container">
             <div className="copyrights grid">
-
               {company && <p>{company}</p>}
-              {text &&
-                <a href={url}><p>{text}</p></a>
-              }
-
+              {text && (
+                <Link {...url}>
+                  <p>{text}</p>
+                </Link> 
+              )}
             </div>
           </div>
         </div>
@@ -165,10 +198,12 @@ class Footer extends React.Component<FooterProps, FooterState> {
     nav.forEach((node: LooseObject) => {
       if (node.parent === parent) {
         const url = urls.find((u: LooseObject) => u.page === node.page);
+
         const item = {
           ...node,
           ...url,
         } as LooseObject;
+
         if (node.page) {
           const children = this.buildNavTree(nav, node.page, urls);
           if (children && children.length > 0) {
@@ -178,6 +213,11 @@ class Footer extends React.Component<FooterProps, FooterState> {
         if (node.title && node.link) {
           item.url = node.link;
         }
+
+        item.url = {
+          url: item.url,
+          pageId: item.id,
+        };
 
         res.push(item);
       }
