@@ -6,7 +6,7 @@ import Loader from '../Loader';
 import { adopt } from 'react-adopt';
 
 const isExternalLink = url => {
-  const pattern = /^https?|^www/i;
+  const pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
   return pattern.test(url);
 };
 
@@ -50,7 +50,7 @@ const ComposerLink = props => {
     <ComposedQuery>
       {({ getPagesUrls: { loading, error, data } }) => {
         if (loading) {
-          return <div>Loading...</div>;
+          return <Loader />;
         }
 
         if (error) {
