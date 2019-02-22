@@ -1,107 +1,9 @@
 import * as React from 'react';
-import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
 import Media from '../../partials/Media';
 import List from '../List';
 var DoctorCard = function (props) {
-    var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicImage = _a.clinicImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, schedule = _a.schedule, additionalInfo = _a.additionalInfo;
-    var mockWeek = [
-        {
-            day: 'Monday',
-            morningHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            noonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            afternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            lateAfternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-        },
-        {
-            day: 'Tuesday',
-            morningHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            noonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            afternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            lateAfternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-        },
-        {
-            day: 'Wednesday',
-            morningHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            noonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            afternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            lateAfternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-        },
-        {
-            day: 'Thrusday',
-            morningHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            noonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            afternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            lateAfternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-        },
-        {
-            day: 'Friday',
-            morningHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            noonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            afternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-            lateAfternoonHours: {
-                time: '6:00 - 9:00',
-                description: 'description',
-            },
-        },
-    ];
+    var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicImage = _a.clinicImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, additionalInfo = _a.additionalInfo;
     return (React.createElement("section", { className: 'doctorCard' },
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: 'doctorCard__main' },
@@ -131,9 +33,6 @@ var DoctorCard = function (props) {
                                     clinicExtraInfo && React.createElement("span", null, '  - ' + clinicExtraInfo)),
                                 React.createElement("p", null, clinicAddress))))))),
         React.createElement("div", { className: 'container' },
-            React.createElement("div", { className: 'doctorCard__timePlace' },
-                React.createElement(DoctorSchedule, { data: mockWeek, title: 'Odd Week' }),
-                React.createElement(DoctorSchedule, { data: mockWeek, title: 'Normal Week' })),
             React.createElement("div", { className: 'doctorCard__divider' },
                 React.createElement("div", { className: "dividerCircles" },
                     React.createElement("div", null)))),

@@ -270,7 +270,7 @@ var List = /** @class */ (function (_super) {
                         else if (res[key].dynamiclySourcedImage) {
                             var image = void 0;
                             try {
-                                image = JSON.parse(_this.replaceWithSourceItemValues(res[key].dynamiclySourcedImage, item) || '{}');
+                                image = JSON.parse(_this.replaceWithSourceItemValues(res[key].dynamiclySourcedImage, item, true) || '{}');
                             }
                             catch (e) {
                                 console.log(e);
@@ -325,7 +325,7 @@ var List = /** @class */ (function (_super) {
         }
         return this.props.children({ data: [] });
     };
-    List.prototype.replaceWithSourceItemValues = function (source, item) {
+    List.prototype.replaceWithSourceItemValues = function (source, item, isImage) {
         var regex = /%([^%]*)%/g;
         var result;
         var replaced = String(source);
@@ -337,7 +337,7 @@ var List = /** @class */ (function (_super) {
                         var getValueFromDatasourceItems = R.path(searchKeys);
                         var replacement = getValueFromDatasourceItems(item);
                         if (replacement && typeof replacement === 'string') {
-                            replaced = replaced.replace(result[0], escape(replacement));
+                            replaced = replaced.replace(result[0], isImage ? replacement : escape(replacement));
                         }
                         else if (replacement && typeof replacement === 'object') {
                             replaced = replaced.replace(result[0], JSON.stringify(replacement));

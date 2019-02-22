@@ -20,7 +20,6 @@
     "clinicName": "Poliklinika Budějovická",
     "clinicExtraInfo": "Červená budova 9. patro",
     "clinicAddress": "Antala Staška 1670/80, 140 00 Praha 4",
-    "schedule": "",
     "additionalInfo": [
       {
         "title": "Poskytovaná péče",
@@ -70,10 +69,7 @@
           "type": "text",
           "title": "Clinic Address"
         },
-        "schedule": {
-          "type": "string",
-          "title": "Schedule"
-        },
+
         "additionalInfo": {
           "type": "array",
           "title": "Additional Info",
