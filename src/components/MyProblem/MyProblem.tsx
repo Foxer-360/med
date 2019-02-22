@@ -52,7 +52,7 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
 
   closeInfoBox = () => {
     this.setState({
-      area: '',
+      area: '',  
     });
   }
 

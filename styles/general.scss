@@ -244,6 +244,7 @@ cite {
 }
 
 .expertiseList + .polyclinicBoxes {
+  
   @include md {
     padding-top: 10px;
   }
@@ -254,5 +255,9 @@ cite {
 }
 
 .expertiseList + .doctorList {
+  margin-top: 50px;
+}
+
+.textBlock + .crossRoads {
   margin-top: 50px;
 }

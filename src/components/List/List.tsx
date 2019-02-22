@@ -233,7 +233,7 @@ class List extends React.Component<Properties, {}> {
                       let image;
                       try {
                         image = JSON.parse(
-                          this.replaceWithSourceItemValues(res[key].dynamiclySourcedImage, item) || '{}');
+                          this.replaceWithSourceItemValues(res[key].dynamiclySourcedImage, item, true) || '{}');
                       } catch (e) {
                         console.log(e);
                       }
@@ -281,7 +281,7 @@ class List extends React.Component<Properties, {}> {
     return this.props.children({ data: [] });
   }
 
-  replaceWithSourceItemValues(source: string, item: LooseObject) {
+  replaceWithSourceItemValues(source: string, item: LooseObject, isImage?: boolean) {
     const regex = /%([^%]*)%/g;
     let result;
     let replaced = String(source);
@@ -293,7 +293,7 @@ class List extends React.Component<Properties, {}> {
             const getValueFromDatasourceItems = R.path(searchKeys);
             const replacement = getValueFromDatasourceItems(item);
             if (replacement && typeof replacement === 'string') {
-              replaced = replaced.replace(result[0], escape(replacement));
+              replaced = replaced.replace(result[0], isImage ? replacement : escape(replacement));
             } else if (replacement && typeof replacement === 'object') {
               replaced = replaced.replace(result[0], JSON.stringify(replacement));
             } else {

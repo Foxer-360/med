@@ -17,7 +17,15 @@
   grid-template-rows: 295px;
   grid-template-columns: repeat(3, 1fr);
 
-  @include max-lg {
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include max-sm {
     grid-template-rows: auto;
     grid-template-columns: repeat(1, 1fr);
   }
@@ -27,8 +35,15 @@
     text-transform: uppercase;
     font-size: 2.2rem;
     letter-spacing: 1px;
-    font-weight: 600;
     padding-bottom: 20px;
+  }
+
+  .btn {
+    text-align: center;
+    @include md {
+      text-align: left;
+      display: inline-block;
+    }
   }
 
   &__colorGradient {
@@ -47,10 +62,10 @@
     position: relative;
     z-index: 2;
 
-    @include max-md { 
+    @include max-md {
       padding: 20px;
-      
-      p { 
+
+      p {
         font-size: 1.8rem;
         padding-bottom: 15px;
       }

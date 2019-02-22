@@ -70,12 +70,13 @@
       @include md {
         position: relative;
         height: 45px;
-        width: auto;
+        width: 45px;
         margin: 0 auto 14px auto;
       }
 
       @include lg {
         height: 90px;
+        width: 90px;
         margin: 0 auto 36px auto;
       }
 
@@ -83,8 +84,7 @@
         padding-top: 0 !important;
         margin: 0 auto;
         display: block;
-        height: 95px;
-        width: 95px;
+        height: 100%;
       }
     }
 
