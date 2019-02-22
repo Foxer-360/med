@@ -1,3 +1,7 @@
+.doctorScheduleSection {
+  padding: 50px 0;
+}
+
 .doctorSchedule {
   width: 100%;
 
@@ -60,7 +64,7 @@
 
       .circleCell {
         display: none;
-        @include sm{
+        @include sm {
           display: table-cell;
         }
       }
@@ -153,7 +157,6 @@
 
         .dividerCircles {
           margin: 0 0px;
-
         }
       }
     }

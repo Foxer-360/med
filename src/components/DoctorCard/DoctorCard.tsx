@@ -1,5 +1,4 @@
 import * as React from 'react';
-import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
@@ -16,7 +15,6 @@ export interface DoctorCardProps {
     clinicName: string;
     clinicExtraInfo: string;
     clinicAddress: string;
-    schedule: [];
     additionalInfo: [
       {
         title: string;
@@ -37,107 +35,8 @@ const DoctorCard = (props: DoctorCardProps) => {
     clinicName,
     clinicExtraInfo,
     clinicAddress,
-    schedule,
     additionalInfo,
   } = props.data;
-
-  let mockWeek = [
-    {
-      day: 'Monday',
-      morningHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      noonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      afternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      lateAfternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-    },
-    {
-      day: 'Tuesday',
-      morningHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      noonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      afternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      lateAfternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-    },
-    {
-      day: 'Wednesday',
-      morningHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      noonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      afternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      lateAfternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-    },
-    {
-      day: 'Thrusday',
-      morningHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      noonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      afternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      lateAfternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-    },
-    {
-      day: 'Friday',
-      morningHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      noonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      afternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-      lateAfternoonHours: {
-        time: '6:00 - 9:00',
-        description: 'description',
-      },
-    },
-  ];
 
   return (
     <section className={'doctorCard'}>
@@ -194,11 +93,6 @@ const DoctorCard = (props: DoctorCardProps) => {
       </div>
 
       <div className={'container'}>
-        <div className={'doctorCard__timePlace'}>
-          <DoctorSchedule data={mockWeek} title={'Odd Week'} />
-          <DoctorSchedule data={mockWeek} title={'Normal Week'} />
-        </div>
-
         {/* <div className={'doctorCard__btnHolder'}>
           <Button classes={'btn--blueBkg'} noArrow={true}>
             objednat
