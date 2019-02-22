@@ -45,7 +45,7 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
     services = services && services.length > 0 && services
       .split('\n')
       .filter((service, i) => i <= 8)
-      .join('\n') || [];
+      .join('\n') || "";
 
     return services;
   }
