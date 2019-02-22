@@ -98,22 +98,22 @@ var DoctorSchedule = function (props) {
                                 React.createElement("td", null, item.day),
                                 React.createElement("td", null,
                                     React.createElement("p", null, (item.morningHours && item.morningHours.time) || ' - '),
-                                    React.createElement("p", null, (item.morningHours && item.morningHours.description) || '')),
+                                    item.morningHours && item.morningHours.description && (React.createElement("p", null, item.morningHours.description))),
                                 React.createElement("td", { className: 'circleCell' },
                                     React.createElement(DividerCircles, null)),
                                 React.createElement("td", null,
                                     React.createElement("p", null, (item.noonHours && item.noonHours.time) || ' - '),
-                                    React.createElement("p", null, (item.noonHours && item.noonHours.description) || '')),
+                                    item.noonHours && item.noonHours.description && React.createElement("p", null, item.noonHours.description)),
                                 React.createElement("td", { className: 'circleCell' },
                                     React.createElement(DividerCircles, null)),
                                 React.createElement("td", null,
                                     React.createElement("p", null, (item.afternoonHours && item.afternoonHours.time) || ' - '),
-                                    React.createElement("p", null, (item.afternoonHours && item.afternoonHours.description) || '')),
+                                    item.afternoonHours && item.afternoonHours.description && (React.createElement("p", null, item.afternoonHours.description))),
                                 React.createElement("td", { className: 'circleCell' },
                                     React.createElement(DividerCircles, null)),
                                 React.createElement("td", null,
                                     React.createElement("p", null, (item.lateAfternoonHours && item.lateAfternoonHours.time) || ' - '),
-                                    React.createElement("p", null, (item.lateAfternoonHours && item.lateAfternoonHours.description) || '')))));
+                                    item.lateAfternoonHours && item.lateAfternoonHours.description && (React.createElement("p", null, item.lateAfternoonHours.description))))));
                     }))))); })));
 };
 export default DoctorSchedule;

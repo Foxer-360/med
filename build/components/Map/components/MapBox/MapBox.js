@@ -45,9 +45,10 @@ var MapBox = function (props) {
                 React.createElement("img", { src: '/assets/medicon/images/phoneIcon.svg' }),
                 React.createElement("div", null,
                     React.createElement("p", null, phone)))),
-        React.createElement(Link, __assign({}, ambulanceLink),
-            React.createElement("div", { className: 'mapBox__buttons' },
-                React.createElement(Button, { classes: "btn--small btn--blueBkg", noArrow: true }, "ambulance"),
+        React.createElement("div", { className: 'mapBox__buttons' },
+            React.createElement(Link, __assign({}, ambulanceLink),
+                React.createElement(Button, { classes: "btn--small btn--blueBkg", noArrow: true }, "ambulance")),
+            React.createElement(Link, { urlNewWindow: true, url: "https://www.google.com/maps/search/?api=1&query=" + title + "+medicon+" + address + "+" + city },
                 React.createElement(Button, { classes: "btn--small btn--blueBorder" }, "kudy k n\u00E1m")))));
 };
 export default MapBox;
