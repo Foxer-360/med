@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Avatar from './components/Avatar';
 import SvgIcon from '@source/partials/SvgIcon';
+import Link from '@source/partials/Link';
 
 interface Specialization {
   name: string;
+  link: LooseObject;
   head: boolean;
   belly: boolean;
   arm: boolean;
@@ -21,7 +23,7 @@ export interface MyProblemProps {
 export interface MyProblemState {
   area: string;
   availableSpecializations: Specialization[];
-} 
+}
 
 class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
   constructor(props: MyProblemProps) {
@@ -43,7 +45,7 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
     }
 
     this.setState({
-      availableSpecializations: availableSpecializations,  
+      availableSpecializations: availableSpecializations,
       area: area,
     });
   }
@@ -58,8 +60,6 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
     return (
       <div className="container">
         <section className={'myProblem'}>
-          {console.log('%c Emilio: ', 'background: #222; color: #83FFFF', this.props)}
-
           <h3>Můj Problém se týká</h3>
 
           <p>Klikněte na část těla se kterou máte problém.</p>
@@ -76,7 +76,7 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
                 {this.state.availableSpecializations &&
                   this.state.availableSpecializations.map((specialization, i) => (
                     <div className={'infoBox__item'} key={i}>
-                      <a href="">{specialization.name}</a>
+                      <Link {...specialization.link}>{specialization.name}</Link>
                     </div>
                   ))}
               </div>

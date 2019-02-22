@@ -1,6 +1,7 @@
 import * as React from 'react';
 interface Specialization {
     name: string;
+    link: LooseObject;
     head: boolean;
     belly: boolean;
     arm: boolean;

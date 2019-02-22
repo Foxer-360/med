@@ -376,7 +376,7 @@
   },
   "form": {
     "schema": {
-      "type": "object", 
+      "type": "object",
       "properties": {
         "specializations": {
           "type": "array",
@@ -386,6 +386,11 @@
               "name": {
                 "type": "text",
                 "title": "Name"
+              },
+
+              "link": {
+                "type": "urlAutocomplete",
+                "title": "link"
               },
               "head": {
                 "type": "boolean",

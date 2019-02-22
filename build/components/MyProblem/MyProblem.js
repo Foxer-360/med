@@ -11,9 +11,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import * as React from 'react';
 import Avatar from './components/Avatar';
 import SvgIcon from '@source/partials/SvgIcon';
+import Link from '@source/partials/Link';
 var MyProblem = /** @class */ (function (_super) {
     __extends(MyProblem, _super);
     function MyProblem(props) {
@@ -45,7 +57,6 @@ var MyProblem = /** @class */ (function (_super) {
         var _this = this;
         return (React.createElement("div", { className: "container" },
             React.createElement("section", { className: 'myProblem' },
-                console.log('%c Emilio: ', 'background: #222; color: #83FFFF', this.props),
                 React.createElement("h3", null, "M\u016Fj Probl\u00E9m se t\u00FDk\u00E1"),
                 React.createElement("p", null, "Klikn\u011Bte na \u010D\u00E1st t\u011Bla se kterou m\u00E1te probl\u00E9m."),
                 React.createElement("div", { className: 'flexRow myProblem__holder' },
@@ -55,7 +66,7 @@ var MyProblem = /** @class */ (function (_super) {
                             React.createElement(SvgIcon, { name: "close", type: "gray" })),
                         this.state.availableSpecializations &&
                             this.state.availableSpecializations.map(function (specialization, i) { return (React.createElement("div", { className: 'infoBox__item', key: i },
-                                React.createElement("a", { href: "" }, specialization.name))); })))))));
+                                React.createElement(Link, __assign({}, specialization.link), specialization.name))); })))))));
     };
     return MyProblem;
 }(React.Component));
