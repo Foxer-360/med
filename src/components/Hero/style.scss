@@ -1,6 +1,6 @@
 .hero {
   @extend .flexColumn;
-  @include background-image(cover, center);
+  @include background-image(cover, top center);
   height: 395px;
   width: 100%;
   justify-content: center;

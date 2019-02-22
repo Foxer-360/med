@@ -2,6 +2,7 @@ import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
 import Link from '@source/partials/Link';
 import Media from '@source/partials/Media';
+import LinesEllipsis from 'react-lines-ellipsis';
 
 export interface BlogCardProps {
   id: string;
@@ -46,7 +47,11 @@ export function BlogCard(props: BlogCardProps) {
 
   return (
     <Link pageId={id} className={'blogCard'}>
-      {title && <h3>{title}</h3>}
+      {title && (
+        <h3>
+          <LinesEllipsis text={title} maxLine="3" ellipsis="..." basedOn="letters" trimRight={true} />
+        </h3>
+      )}
 
       {text && <p>{text}</p>}
 

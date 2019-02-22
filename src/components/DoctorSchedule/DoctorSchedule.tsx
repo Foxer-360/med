@@ -136,28 +136,34 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                           <td>{item.day}</td>
                           <td>
                             <p>{(item.morningHours && item.morningHours.time) || ' - '}</p>
-                            <p>{(item.morningHours && item.morningHours.description) || ''}</p>
+                            {item.morningHours && item.morningHours.description && (
+                              <p>{item.morningHours.description}</p>
+                            )}
                           </td>
                           <td className={'circleCell'}>
                             <DividerCircles />
                           </td>
                           <td>
                             <p>{(item.noonHours && item.noonHours.time) || ' - '}</p>
-                            <p>{(item.noonHours && item.noonHours.description) || ''}</p>
+                            {item.noonHours && item.noonHours.description && <p>{item.noonHours.description}</p>}
                           </td>
                           <td className={'circleCell'}>
                             <DividerCircles />
                           </td>
                           <td>
                             <p>{(item.afternoonHours && item.afternoonHours.time) || ' - '}</p>
-                            <p>{(item.afternoonHours && item.afternoonHours.description) || ''}</p>
+                            {item.afternoonHours && item.afternoonHours.description && (
+                              <p>{item.afternoonHours.description}</p>
+                            )}
                           </td>
                           <td className={'circleCell'}>
                             <DividerCircles />
                           </td>
                           <td>
                             <p>{(item.lateAfternoonHours && item.lateAfternoonHours.time) || ' - '}</p>
-                            <p>{(item.lateAfternoonHours && item.lateAfternoonHours.description) || ''}</p>
+                            {item.lateAfternoonHours && item.lateAfternoonHours.description && (
+                              <p>{item.lateAfternoonHours.description}</p>
+                            )}
                           </td>
                         </tr>
                       </>

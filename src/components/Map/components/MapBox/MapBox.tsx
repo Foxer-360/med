@@ -65,14 +65,20 @@ const MapBox: React.SFC<MapBoxProps> = props => {
         </div>
       </div>
 
-      <Link {...ambulanceLink}>
-        <div className={'mapBox__buttons'}>
+      <div className={'mapBox__buttons'}>
+        <Link {...ambulanceLink}>
           <Button classes="btn--small btn--blueBkg" noArrow={true}>
             ambulance
           </Button>
+        </Link>
+
+        <Link
+          urlNewWindow={true}
+          url={`https://www.google.com/maps/search/?api=1&query=${title}+medicon+${address}+${city}`}
+        >
           <Button classes="btn--small btn--blueBorder">kudy k nám</Button>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };
