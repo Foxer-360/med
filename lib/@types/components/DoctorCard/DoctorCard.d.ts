@@ -10,13 +10,6 @@ export interface DoctorCardProps {
         clinicName: string;
         clinicExtraInfo: string;
         clinicAddress: string;
-        schedule: [{
-            day: string;
-            eveningHoursdescription: string;
-            eveningOpeningHours: string;
-            morningHoursdescription: string;
-            morningOpeningHours: string;
-        }];
         additionalInfo: [{
             title: string;
             text: string;

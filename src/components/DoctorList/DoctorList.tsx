@@ -3,7 +3,6 @@ import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
 import List from '../List';
-import Loader from '@source/partials/Loader';
 
 interface Doctors {
   name: string;
@@ -123,7 +122,8 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
                       onClick={() => this.setState({ showMore: !this.state.showMore })}
                       className={'btn btn--blueBkg'}
                     >
-                      zobrazit {this.state.showMore ? `méně ⯅` : `vice ⯆`}
+                      zobrazit {this.state.showMore ? `méně` : `vice`}
+                      <span className={`arrow ${this.state.showMore ? `arrow--up` : `arrow--down`}  `} />
                     </button>
                   </div>
                 ) : (

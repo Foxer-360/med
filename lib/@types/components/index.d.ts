@@ -33,4 +33,5 @@ import Downloads from './Downloads';
 import ContactsBlock from './ContactsBlock';
 import Faq from './Faq';
 import BlogArticle from './BlogArticle';
-export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, JobOffers, Odbornost, MyProblem, JobPositions, CareerForm, ExpertiseDescription, MedicalGroup, ViewsAboutUs, ContactInfo, Timeline, ContactForm, Downloads, ContactsBlock, Faq, BlogArticle, };
+import DoctorSchedule from './DoctorSchedule';
+export { AlertNotFound, Benefits, CrossRoads, Dummy, Footer, Header, Hero, Highlight, InfoBoxes, Map, Reviews, TextBlock, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, PolyclinicBoxes, DoctorCard, Blog, JobOffers, Odbornost, MyProblem, JobPositions, CareerForm, ExpertiseDescription, MedicalGroup, ViewsAboutUs, ContactInfo, Timeline, ContactForm, Downloads, ContactsBlock, Faq, BlogArticle, DoctorSchedule, };
