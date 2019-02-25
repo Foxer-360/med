@@ -5,7 +5,6 @@ import List from '@source/components/List';
 import Link from '@source/partials/Link';
 import moment from 'moment';
 import debounce from 'lodash/debounce';
-import { start } from 'repl';
 
 export interface SearchBarProps {
   placeholder: string;
@@ -13,7 +12,7 @@ export interface SearchBarProps {
   doctorSearchResults?: LooseObject;
   blogSearchResults?: LooseObject;
 }
- 
+
 export interface SearchBarState {
   focused: boolean;
   query: string;
@@ -55,7 +54,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   }
 
   handleClick(e: LooseObject) {
-    if (this.searchBar.current.contains(e.target)) {
+    if (this.searchBar.current && this.searchBar && this.searchBar.current.contains(e.target)) {
       return;
     } else {
       this.changeSearchQuery('');
@@ -133,7 +132,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                         <li key={i}>
                           <Link {...blogItem.link}>
                             <div>
-                              <h4>{blogItem.title}</h4>  
+                              <h4>{blogItem.title}</h4>
                               <p>{blogItem.perex}</p>
                             </div>
                           </Link>

@@ -15,7 +15,7 @@ export interface DoctorListProps {
     };
 }
 export interface DoctorListState {
-    showMore: boolean;
+    numberOfPage: number;
 }
 export default class DoctorList extends React.Component<DoctorListProps, DoctorListState> {
     constructor(props: DoctorListProps);

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import DoctorSchedule from './components/DoctorSchedule/DoctorSchedule';
 import TextBlock from '../TextBlock';
 import Button from '../../partials/Button';
 import Media from '../../partials/Media';
@@ -16,15 +15,6 @@ export interface DoctorCardProps {
     clinicName: string;
     clinicExtraInfo: string;
     clinicAddress: string;
-    schedule: [
-      {
-        day: string;
-        eveningHoursdescription: string;
-        eveningOpeningHours: string;
-        morningHoursdescription: string;
-        morningOpeningHours: string;
-      }
-    ];
     additionalInfo: [
       {
         title: string;
@@ -45,7 +35,6 @@ const DoctorCard = (props: DoctorCardProps) => {
     clinicName,
     clinicExtraInfo,
     clinicAddress,
-    schedule,
     additionalInfo,
   } = props.data;
 
@@ -74,22 +63,26 @@ const DoctorCard = (props: DoctorCardProps) => {
           <div className={'container'}>
             <div className="doctorCard__info__wrapper">
               <div className={'doctorCard__info__item'}>
-                <img src="/assets/medicon/images/stethoscopeIcon.svg" />
-                <p>{specialization}</p>
+                <div className={'doctorCard__info__item__wrap'}>
+                  <img src="/assets/medicon/images/stethoscopeIcon.svg" />
+                  <p>{specialization}</p>
+                </div>
               </div>
 
               <div className={'doctorCard__info__item'}>
-                <img src="/assets/medicon/images/phoneIcon.svg" />
-                {phone && <p>{phone}</p>}
+                <div className={'doctorCard__info__item__wrap'}>
+                  <img src="/assets/medicon/images/phoneIcon.svg" />
+                  {phone && <p>{phone}</p>}
+                </div>
               </div>
 
-              <div className={'doctorCard__info__item'}>
+              <div className={'doctorCard__info__item doctorCard__info__item--location '}>
                 <img src="/assets/medicon/images/geoIcon.svg" />
 
                 <div>
                   <p>
                     <strong>{clinicName}</strong>
-                    {clinicExtraInfo && <span>{' - ' + clinicExtraInfo}</span>}
+                    {clinicExtraInfo && <span>{'  - ' + clinicExtraInfo}</span>}
                   </p>
                   <p>{clinicAddress}</p>
                 </div>
@@ -100,35 +93,11 @@ const DoctorCard = (props: DoctorCardProps) => {
       </div>
 
       <div className={'container'}>
-        <div className={'doctorCard__timePlace'}>
-          <div>
-            <List data={schedule}>{({ data }) => data &&
-              <DoctorSchedule 
-                data={data.map(({
-                  day,
-                  eveningHoursdescription,
-                  eveningOpeningHours,
-                  morningHoursdescription,
-                  morningOpeningHours
-                }) => ({
-                  day,
-                  eveningHoursdescription,
-                  eveningOpeningHours,
-                  morningHoursdescription,
-                  morningOpeningHours,
-                }))} 
-              />}</List>
-          </div>
-
-          <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>
-        </div>
-
-        <div className={'doctorCard__btnHolder'}>
+        {/* <div className={'doctorCard__btnHolder'}>
           <Button classes={'btn--blueBkg'} noArrow={true}>
             objednat
           </Button>
-        </div>
-
+        </div> */}
         <div className={'doctorCard__divider'}>
           <div className="dividerCircles">
             <div />

@@ -19,7 +19,7 @@ const Avatar = (props: AvatarProps) => {
         y="0px"
         viewBox="0 0 1218 1275.6"
         xmlSpace="preserve"
-      >  
+      >
         <style
           type="text/css"
           dangerouslySetInnerHTML={{
@@ -266,7 +266,7 @@ const Avatar = (props: AvatarProps) => {
             d="M822.6,209.5c-18.3,3.6-22.9,11-24.5,9.1s10.4-12,25-14.8s27.4-2.9,26.4,1.6S837.2,206.6,822.6,209.5z"
           />
         </g>
-        <g id="man_x5F__x5F_face" className="avatar__face avatar__area" onClick={() => onClick('face')}>
+        <g id="man_x5F__x5F_head" className="avatar__head avatar__area" onClick={() => onClick('head')}>
           <g>
             <path
               className="st2"
@@ -683,7 +683,7 @@ const Avatar = (props: AvatarProps) => {
           <circle className="st15" cx="428.6" cy="318.9" r="5.2" />
           <circle className="st15" cx="242.1" cy="318.9" r="5.2" />
         </g>
-        <g id="woman_x5F__x5F_face" className="avatar__face avatar__area" onClick={() => onClick('face')}>
+        <g id="woman_x5F__x5F_head" className="avatar__head avatar__area" onClick={() => onClick('head')}>
           <g>
             <path
               className="st2"
@@ -1100,7 +1100,7 @@ const Avatar = (props: AvatarProps) => {
           d="M540.7,593.3c0,0-11.7,3-18.1-4.5c-6.4-7.5-5.2-12.1-3.8-16.3c2.3-7,11.3-8,15.8-3.5c5.3,5.3,5.9,7.5,5.9,7.5
 	L540.7,593.3z"
         />
-        <g id="kid_x5F__x5F_face" className="avatar__face avatar__area" onClick={() => onClick('face')}>
+        <g id="kid_x5F__x5F_head" className="avatar__head avatar__area" onClick={() => onClick('head')}>
           <path
             className="st2"
             d="M723,574.3c-6.4,23.5-12.4,61.8-32.3,73.2c-19.9,11.4-56.1,26.3-80,21.3c-23.8-5-70.4-29.9-74.3-54.7

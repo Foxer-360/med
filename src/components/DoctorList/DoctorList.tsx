@@ -3,7 +3,6 @@ import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
 import List from '../List';
-import Loader from '@source/partials/Loader';
 
 interface Doctors {
   name: string;

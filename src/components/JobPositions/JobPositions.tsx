@@ -37,7 +37,8 @@ const JobPositions = (props: JobPositionsProps) => {
 
       <div className={'grid positions'}>
         <List data={positions}>
-          {({ data }) => data &&
+          {({ data }) =>
+            data &&
             data.map((position, index) => (
               <div
                 className={'positions__element'}
@@ -46,10 +47,7 @@ const JobPositions = (props: JobPositionsProps) => {
               >
                 <div className={'positions__element-content'}>
                   {position.name && <p>{position.name}</p>}
-                  <Button
-                    classes={'btn--whiteBorder btn--fullWidth'}
-                    url={position.url}
-                  >
+                  <Button classes={'btn--whiteBorder'} url={position.url}>
                     Vice info
                   </Button>
                 </div>
@@ -60,12 +58,10 @@ const JobPositions = (props: JobPositionsProps) => {
                 />
               </div>
             ))}
-          </List>
+        </List>
       </div>
 
-      <Button classes="hCenterBlock btn--blueBkg btn--down btn--fullWidth">
-        další pozice
-      </Button>
+      <Button classes="hCenterBlock btn--blueBkg btn--down btn--fullWidth">další pozice</Button>
     </div>
   );
 };

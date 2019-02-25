@@ -2,6 +2,7 @@ import * as React from 'react';
 import SvgIcon from '@source/partials/SvgIcon';
 import Link from '@source/partials/Link';
 import Media from '@source/partials/Media';
+import LinesEllipsis from 'react-lines-ellipsis';
 export function BlogCard(props) {
     var id = props.id, title = props.title, text = props.text, color = props.color, img = props.img, special = props.special;
     if (special) {
@@ -22,7 +23,8 @@ export function BlogCard(props) {
                     "Dent\u00E1ln\u00ED hygienista/ka"))));
     }
     return (React.createElement(Link, { pageId: id, className: 'blogCard' },
-        title && React.createElement("h3", null, title),
+        title && (React.createElement("h3", null,
+            React.createElement(LinesEllipsis, { text: title, maxLine: "3", ellipsis: "...", basedOn: "letters", trimRight: true }))),
         text && React.createElement("p", null, text),
         img && React.createElement(Media, { data: img, type: "image" }),
         React.createElement("div", { className: 'blogCard__colorGradient', style: { background: "linear-gradient( to bottom,rgba(125, 185, 232, 0) 0%," + color + " 100%)" } })));

@@ -46,7 +46,7 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
         }
         
         {this.state.showHiddenText ? 
-          <div className={'hCenterBlock'} style={{ marginTop: 45 }}>
+          <div className={'hCenterBlock care--hidden'} style={{ marginTop: 45 }}>
             {secondText && <ReactMarkdown source={secondText} />}
           </div>
           : ''

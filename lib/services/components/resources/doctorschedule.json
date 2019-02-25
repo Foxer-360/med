@@ -1,0 +1,28 @@
+{
+  "name": "DoctorSchedule",
+
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "schedule": {
+          "type": "string",
+          "title": "Schedule"
+        },
+
+        "oddWeekTitle": {
+          "type": "string",
+          "title": "Odd week title"
+        },
+        "evenWeekTitle": {
+          "type": "string",
+          "title": "Even week title"
+        },
+        "regularWeekTitle": {
+          "type": "string",
+          "title": "Regular week title"
+        }
+      }
+    }
+  }
+}

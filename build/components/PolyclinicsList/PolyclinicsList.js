@@ -22,10 +22,10 @@ var PolyclinicsList = /** @class */ (function (_super) {
     function PolyclinicsList(props) {
         var _this = _super.call(this, props) || this;
         _this.filterServices = function (services, index) {
-            services = services
+            services = services && services.length > 0 && services
                 .split('\n')
                 .filter(function (service, i) { return i <= 8; })
-                .join('\n');
+                .join('\n') || "";
             return services;
         };
         _this.toggleDisplayServices = function (index) {
