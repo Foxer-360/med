@@ -53,7 +53,7 @@ $avatarRed: rgb(255, 153, 153);
     }
   }
 
-  $areaList: body belly chest feet arm legs face;
+  $areaList: body belly chest feet arm legs head;
 
   @each $area in $areaList {
     &.active--#{$area} {

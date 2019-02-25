@@ -5,41 +5,60 @@
   background-position: 0 0, 0 100%;
   padding: 25px 0;
 
-  p {
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: white;
-    text-align: center;
-    word-break: break-word;
-
-    @media (max-width: 1100px) {
-      font-size: 2.2rem;
-    }
-
-    @media (max-width: 1050px) {
-      font-size: 2rem;
-    }
-
-    @include max-md {
-      font-size: 1.6rem;
-    }
-  }
-
   &__content {
-    max-width: 90%;
-    margin: 0 auto;
-    grid-template-columns: 55px 3fr 1fr;
-    grid-template-rows: auto;
-    justify-items: center;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    @include max-lg {
-      max-width: 100%;
-      grid-template-columns: 1fr;
+    @include md {
+      flex-wrap: nowrap;
     }
 
-    &--description {
+    img {
+      width: 46px;
+      height: 46px;
+
+      @include md {
+        width: 53px;
+        height: 53px;
+        margin-right: 29px;
+      }
+    }
+
+    & > div {
+      width: 100%;
+      margin: 24px 0;
+
+      @include md {
+        width: auto;
+        margin: 0;
+      }
+    }
+
+    p {
+      color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 28px;
+      letter-spacing: 0.64px;
+      letter-spacing: 0.64px;
+      width: 85%;
+      margin: 0 auto;
+      text-align: center;
+
+      @include md {
+        width: auto;
+        color: #ffffff;
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 28.83px;
+        letter-spacing: 1.07px;
+        letter-spacing: 1.07px;
+      }
+    }
+
+    .highlight__content--description {
       p {
         color: white;
         font-size: 1.6rem;
@@ -49,6 +68,12 @@
         word-break: break-word;
         line-height: 2rem;
         padding-top: 15px;
+      }
+    }
+
+    .btn {
+      @include md {
+        margin-left: 89px;
       }
     }
   }

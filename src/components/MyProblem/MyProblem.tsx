@@ -48,13 +48,13 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
       availableSpecializations: availableSpecializations,
       area: area,
     });
-  }
+  };
 
   closeInfoBox = () => {
     this.setState({
-      area: '',  
+      area: '',
     });
-  }
+  };
 
   public render() {
     return (
@@ -74,11 +74,21 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
                 </div>
 
                 {this.state.availableSpecializations &&
-                  this.state.availableSpecializations.map((specialization, i) => (
-                    <div className={'infoBox__item'} key={i}>
-                      <Link {...specialization.link}>{specialization.name}</Link>
-                    </div>
-                  ))}
+                  this.state.availableSpecializations.map((specialization, i) => {
+                    if (specialization.link) {
+                      return (
+                        <div className={'infoBox__item'} key={i}>
+                          <Link {...specialization.link}>{specialization.name}</Link>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div className={'infoBox__item'}>
+                          <p>{specialization.name}</p>
+                        </div>
+                      );
+                    }
+                  })}
               </div>
             )}
           </div>
