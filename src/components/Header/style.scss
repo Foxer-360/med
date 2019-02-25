@@ -13,11 +13,11 @@
     width: 100%;
     left: 0;
 
-    @include md {
+    @include xl {
       height: 70px;
       bottom: -70px;
       height: 50px;
-      bottom: -50px;
+      bottom: -70px;
     }
 
     svg {
@@ -31,7 +31,7 @@
         transition: 300ms ease;
       }
 
-      @include md {
+      @include xl {
         height: 70px;
       }
     }

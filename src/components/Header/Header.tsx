@@ -56,22 +56,12 @@ export interface HeaderState {
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
-  public headerWrapper: any;
+  public logo: any;
 
   constructor(props: HeaderProps) {
     super(props);
-    this.headerWrapper = React.createRef();
+    this.logo = React.createRef();
     this.state = { vX: 15, menuActive: false };
-  }
-
-  getVertex = () => {
-    let offsetLeft = this.headerWrapper.current && this.headerWrapper.current.offsetLeft + 61;
-    let windowWidth = window.innerWidth;
-    let vX = (offsetLeft * 100) / windowWidth;
-
-    this.setState({
-      vX,
-    });
   }
 
   closeMenu = () => {
@@ -86,14 +76,33 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     });
   }
 
+  getVertex() {
+    let container = (90 * window.innerWidth) / 100;
+    let logoWidth = (this.logo.current && this.logo.current.clientWidth) || 55;
+
+    if (window.innerWidth >= 992) {
+      logoWidth = (this.logo.current && this.logo.current.clientWidth) || 123;
+    }
+
+    if (window.innerWidth >= 1250) {
+      container = 1204;
+    }
+
+    logoWidth = Math.ceil(logoWidth / 2);
+
+    let vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
+
+    this.setState({
+      vX: Math.ceil((vX * 100) / window.innerWidth - 1),
+    });
+  }
+
   componentDidMount() {
     this.getVertex();
   }
 
   public render() {
-    // if (window.innerWidth < 768) {
     this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
-    // }
 
     return (
       <ComposedQuery>
@@ -125,8 +134,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
           return (
             <header className={`header ${this.state.menuActive ? 'menuActive' : ''}`}>
               <div className="container">
-                <div className={'header__wrapper'} ref={this.headerWrapper}>
-                  <div className={'header__logo'}>
+                <div className={'header__wrapper'}>
+                  <div className={'header__logo'} ref={this.logo}>
                     <Link url={`/${context.websiteData.title.toLowerCase()}/${context.languageData.code}`}>
                       <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
                     </Link>

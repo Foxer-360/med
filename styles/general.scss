@@ -261,3 +261,21 @@ cite {
 .textBlock + .crossRoads {
   margin-top: 50px;
 }
+
+.header + .layout {
+  & > *:first-child {
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    @include md {
+      min-height: calc(80vh);
+      padding-top: 300px;
+    }
+  }
+
+  & > .fullWidthContainer {
+    min-height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
