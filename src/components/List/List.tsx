@@ -19,10 +19,10 @@ const escape = function (str: string) {
     .replace(/[\t]/g, '\\t'); 
 };
 
-interface Properties extends RouteComponentProps<LooseObject> {
+export interface Properties extends RouteComponentProps<LooseObject> {
   // tslint:disable-next-line:no-any
   data?: any;
-  children: (data: LooseObject) => JSX.Element;
+  children: (data: QueryResult) => React.ReactNode;
   searchedText?: string;
 }
 
@@ -42,6 +42,25 @@ const DATASOURCE = gql`
     }
   }
 `;
+
+export interface GetPage {
+  (
+    numberOfPage: number,
+    paginationType: 'pagination' | 'infinite',
+    pageSize: number
+  ): { items: Array<LooseObject>, lastPage: number } ;
+}
+
+export interface GetPaginatingFunction {
+  (
+    items: Array<LooseObject>
+  ): GetPage;
+}
+
+export interface QueryResult {
+  getPage: GetPage;
+  data: Array<LooseObject>;
+}
 
 const GET_CONTEXT = gql`
   {
@@ -106,6 +125,7 @@ const AllPagesComposedQuery = adopt({
           }}
         >
           {data => {
+            const { fetchMore} = data;
             return render(data);
           }}
         </Query>
@@ -115,7 +135,34 @@ const AllPagesComposedQuery = adopt({
 });
 class List extends React.Component<Properties, {}> {
 
-  render(): JSX.Element {
+  getPaginatingFunction: GetPaginatingFunction = (items) => {
+    
+    const getPage: GetPage = function (
+      numberOfPage: number, 
+      paginationType: 'pagination' | 'infinite' = 'pagination',
+      pageSize: number = 10) {
+
+        let numberOfItems = items.length;
+        let lastPage = Math.ceil(items.length / pageSize);
+
+        const cutTo = 
+          (numberOfPage) * pageSize < numberOfItems ? 
+            (numberOfPage) * pageSize : numberOfItems;
+        const cutFrom = 
+          (numberOfPage) * pageSize < numberOfItems ? 
+            cutTo - pageSize : (((numberOfPage - 1) && ((numberOfPage - 1) * pageSize)) || 0);
+
+        return { items: items.slice(
+          paginationType === 'pagination' ? cutFrom : 0, 
+          cutTo),
+          lastPage
+        };
+      };
+    return getPage;
+    
+  }
+
+  render() {
 
     const { data, location } = this.props;
     let { searchedText } = this.props;
@@ -133,7 +180,7 @@ class List extends React.Component<Properties, {}> {
         const textFromSearchParams = searchParams.get(res[1]);
 
         if (!textFromSearchParams) {
-          return this.props.children({ data: [] });
+          return this.props.children({ data: [], getPage: this.getPaginatingFunction([]) });
         }
         searchedText = `${searchedText ? searchedText : ''} ${textFromSearchParams ? textFromSearchParams  : '' }`;
       } else {
@@ -143,7 +190,7 @@ class List extends React.Component<Properties, {}> {
 
     const searchedFragments = searchedText && searchedText.trim().split(' ').map(fragment => fragment.trim());
     if (Array.isArray(data)) {
-      return this.props.children({ data });
+      return this.props.children({ data, getPage: this.getPaginatingFunction(data) });
     }
     // In case that data isn't array and contain datasourceId try to fetch datasource with his items
     if (data && data.datasourceId) {
@@ -252,33 +299,33 @@ class List extends React.Component<Properties, {}> {
                 })
                 .filter((item, i) => !data.limit || i < data.limit);
 
-              return this.props.children({
-                data: data.orderBy ? 
-                  pagesWithTag
-                    .sort((a, b) => {
-                      if (data.order === 'DESC') {
-                        if (a.orderBy > b.orderBy) { return -1; }
-                        { if (a.orderBy < b.orderBy) { return 1; } }
-                        return 0;
-                      }
-      
-                      if (a.orderBy < b.orderBy) { return -1; }
-                      { if (a.orderBy > b.orderBy) { return 1; } }
+              pages = data.orderBy ? 
+                pagesWithTag
+                  .sort((a, b) => {
+                    if (data.order === 'DESC') {
+                      if (a.orderBy > b.orderBy) { return -1; }
+                      { if (a.orderBy < b.orderBy) { return 1; } }
                       return 0;
-                    })
-                    .map(item => {
-                      delete item.orderBy;
-                      return item;
-                    })  
-                  :
-                  pagesWithTag
-                });
+                    }
+    
+                    if (a.orderBy < b.orderBy) { return -1; }
+                    { if (a.orderBy > b.orderBy) { return 1; } }
+                    return 0;
+                  })
+                  .map(item => {
+                    delete item.orderBy;
+                    return item;
+                  })  
+                :
+                pagesWithTag;
+ 
+              return this.props.children({ data: pages, getPage: this.getPaginatingFunction(pages) });
             }}
           </AllPagesComposedQuery>
       ); 
     }
 
-    return this.props.children({ data: [] });
+    return this.props.children({ data: [], getPage: this.getPaginatingFunction([]) });
   }
 
   replaceWithSourceItemValues(source: string, item: LooseObject, isImage?: boolean) {
@@ -394,27 +441,30 @@ class List extends React.Component<Properties, {}> {
 
         if (loading) { return <Loader />; }
 
-        return this.props.children({
-          data: data.orderBy ? 
-            datasourceItems
-              .sort((a, b) => {
-                if (data.order === 'DESC') {
-                  if (a.orderBy > b.orderBy) { return -1; }
-                  { if (a.orderBy < b.orderBy) { return 1; } }
-                  return 0;
-                }
+        const items = data.orderBy ? 
+        datasourceItems
+          .sort((a, b) => {
+            if (data.order === 'DESC') {
+              if (a.orderBy > b.orderBy) { return -1; }
+              { if (a.orderBy < b.orderBy) { return 1; } }
+              return 0;
+            }
 
-                if (a.orderBy < b.orderBy) { return -1; }
-                { if (a.orderBy > b.orderBy) { return 1; } }
-                return 0;
-              })
-              .map(item => {
-                delete item.orderBy;
-                return item;
-              }) 
-            :
-            datasourceItems 
-          });
+            if (a.orderBy < b.orderBy) { return -1; }
+            { if (a.orderBy > b.orderBy) { return 1; } }
+            return 0;
+          })
+          .map(item => {
+            delete item.orderBy;
+            return item;
+          }) 
+        :
+        datasourceItems;
+
+        return this.props.children({
+          data: items,
+          getPage: this.getPaginatingFunction(items)
+        });
       }}
       </Query>);
   }
