@@ -33,6 +33,7 @@ import * as downloads from './downloads.json';
 import * as contactsblock from './contactsblock.json';
 import * as faq from './faq.json';
 import * as blogarticle from './blogarticle.json';
+import * as doctorschedule from './doctorschedule.json';
 
 export {
   def as default,
@@ -70,4 +71,5 @@ export {
   contactsblock,
   faq,
   blogarticle,
+  doctorschedule
 };

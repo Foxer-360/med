@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 import WebFont from 'webfontloader';
-import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, ViewsAboutUs, ContactInfo, ContactForm, Downloads, ContactsBlock, Faq, BlogArticle, } from '../../components';
+import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, ViewsAboutUs, ContactInfo, ContactForm, Downloads, ContactsBlock, Faq, BlogArticle, DoctorSchedule, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
@@ -60,6 +60,7 @@ var ComponentsService = /** @class */ (function () {
             CONTACTSBLOCK: 'ContactsBlock',
             FAQ: 'Faq',
             BLOGARTICLE: 'BlogArticle',
+            DOCTORSCHEDULE: 'DoctorSchedule',
         };
     }
     /***/
@@ -141,6 +142,8 @@ var ComponentsService = /** @class */ (function () {
                 return Faq;
             case this.Types.BLOGARTICLE:
                 return BlogArticle;
+            case this.Types.DOCTORSCHEDULE:
+                return DoctorSchedule;
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }

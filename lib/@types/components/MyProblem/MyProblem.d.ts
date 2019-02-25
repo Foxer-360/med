@@ -1,6 +1,7 @@
 import * as React from 'react';
 interface Specialization {
     name: string;
+    link: LooseObject;
     head: boolean;
     belly: boolean;
     arm: boolean;
@@ -9,6 +10,9 @@ interface Specialization {
     body: boolean;
 }
 export interface MyProblemProps {
+    data: {
+        specializations: Specialization[];
+    };
 }
 export interface MyProblemState {
     area: string;

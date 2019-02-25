@@ -72,7 +72,8 @@ var DoctorList = /** @class */ (function (_super) {
                     otherDoctors.length >= 1 ? (React.createElement("div", { className: "doctorList__btnHolder" },
                         React.createElement("button", { onClick: function () { return _this.setState({ showMore: !_this.state.showMore }); }, className: 'btn btn--blueBkg' },
                             "zobrazit ",
-                            _this.state.showMore ? "m\u00E9n\u011B \u2BC5" : "vice \u2BC6"))) : (''))));
+                            _this.state.showMore ? "m\u00E9n\u011B" : "vice",
+                            React.createElement("span", { className: "arrow " + (_this.state.showMore ? "arrow--up" : "arrow--down") + "  " })))) : (''))));
         }));
     };
     return DoctorList;

@@ -8,7 +8,6 @@ body {
   line-height: 24px;
   font-family: $mons;
   font-size: 1.6rem;
-  line-height: 24px;
   padding: 0;
 
   a {
@@ -245,12 +244,20 @@ cite {
 }
 
 .expertiseList + .polyclinicBoxes {
-
+  
   @include md {
-  padding-top: 10px;
+    padding-top: 10px;
   }
 
   .dividerCircles {
     display: flex !important;
   }
+}
+
+.expertiseList + .doctorList {
+  margin-top: 50px;
+}
+
+.textBlock + .crossRoads {
+  margin-top: 50px;
 }

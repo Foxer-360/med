@@ -56,7 +56,7 @@ var SearchBar = /** @class */ (function (_super) {
         });
     };
     SearchBar.prototype.handleClick = function (e) {
-        if (this.searchBar.current.contains(e.target)) {
+        if (this.searchBar.current && this.searchBar && this.searchBar.current.contains(e.target)) {
             return;
         }
         else {
