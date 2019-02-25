@@ -102,7 +102,22 @@ const DoctorCard = (props: DoctorCardProps) => {
       <div className={'container'}>
         <div className={'doctorCard__timePlace'}>
           <div>
-            <List data={schedule}>{({ data }) => data && <DoctorSchedule data={data} />}</List>
+            <List data={schedule}>{({ data }) => data &&
+              <DoctorSchedule 
+                data={data.map(({
+                  day,
+                  eveningHoursdescription,
+                  eveningOpeningHours,
+                  morningHoursdescription,
+                  morningOpeningHours
+                }) => ({
+                  day,
+                  eveningHoursdescription,
+                  eveningOpeningHours,
+                  morningHoursdescription,
+                  morningOpeningHours,
+                }))} 
+              />}</List>
           </div>
 
           <div>{clinicImage && <Media data={clinicImage} type="image" />}</div>

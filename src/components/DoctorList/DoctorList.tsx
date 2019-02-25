@@ -22,7 +22,7 @@ export interface DoctorListProps {
 }
 
 export interface DoctorListState {
-  showMore: boolean;
+  numberOfPage: number;
 }
 
 export default class DoctorList extends React.Component<DoctorListProps, DoctorListState> {
@@ -30,7 +30,7 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
     super(props);
 
     this.state = {
-      showMore: false,
+      numberOfPage: 1,
     };
   }
 
@@ -39,14 +39,8 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
 
     return (
       <List data={doctors}>
-        {({ data }) => {
-          let otherDoctors = [];
-
-          const sourcedDoctors = data;
-
-          if (sourcedDoctors.length > 4) {
-            otherDoctors = sourcedDoctors.slice(4, sourcedDoctors.length);
-          }
+        {({ getPage }) => {
+          const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 9);
 
           return (
             <section className={'doctorList'}>
@@ -54,8 +48,8 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
                 {title && <h3>{title}</h3>}
 
                 <div className="doctorList__wrapper">
-                  {sourcedDoctors &&
-                    sourcedDoctors.slice(0, 4).map((doctor, index) => {
+                  {items &&
+                    items.map((doctor, index) => {
                       return (
                         <div className={'doctorList__item'} key={index}>
                           <div className={'doctorList__item__img'}>
@@ -82,53 +76,14 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
                       );
                     })}
                 </div>
-
-                {this.state.showMore ? (
-                  <div className="doctorList__wrapper">
-                    {otherDoctors &&
-                      otherDoctors.map((doc, i) => {
-                        return (
-                          <div className={'doctorList__item'} key={i}>
-                            <div className={'doctorList__item__img'}>
-                              {(doc.image && doc.image.filename && <Media data={doc.image} type="image" />) || (
-                                <img
-                                  className="avatarImg"
-                                  src={'../../../assets/medicon/images/doctorIcon.svg'}
-                                  alt="Medicon Doctor Icon"
-                                />
-                              )}
-                            </div>
-
-                            <div className={'doctorList__item__info'}>
-                              <h3>{doc.name}</h3>
-                              <p>{doc.field}</p>
-                              <Link {...doc.clinicUrl} className={'doctorList__item__info__link'}>
-                                {doc.clinicName}
-                              </Link>
-                              <Button classes="btn--blueBorder btn--small" url={doc.doctorUrl}>
-                                vice info
-                              </Button>
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                ) : (
-                  ''
-                )}
-
-                {otherDoctors.length >= 1 ? (
-                  <div className="doctorList__btnHolder">
-                    <button
-                      onClick={() => this.setState({ showMore: !this.state.showMore })}
-                      className={'btn btn--blueBkg'}
-                    >
-                      zobrazit {this.state.showMore ? `méně ⯅` : `vice ⯆`}
-                    </button>
-                  </div>
-                ) : (
-                  ''
-                )}
+                {this.state.numberOfPage < lastPage && <div className="doctorList__btnHolder">
+                  <button
+                    onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                    className={'btn btn--blueBkg'}
+                  >
+                    zobrazit více
+                  </button>
+                </div>}
               </div>
             </section>
           );

@@ -37,7 +37,17 @@ var DoctorCard = function (props) {
                 React.createElement("div", null,
                     React.createElement(List, { data: schedule }, function (_a) {
                         var data = _a.data;
-                        return data && React.createElement(DoctorSchedule, { data: data });
+                        return data &&
+                            React.createElement(DoctorSchedule, { data: data.map(function (_a) {
+                                    var day = _a.day, eveningHoursdescription = _a.eveningHoursdescription, eveningOpeningHours = _a.eveningOpeningHours, morningHoursdescription = _a.morningHoursdescription, morningOpeningHours = _a.morningOpeningHours;
+                                    return ({
+                                        day: day,
+                                        eveningHoursdescription: eveningHoursdescription,
+                                        eveningOpeningHours: eveningOpeningHours,
+                                        morningHoursdescription: morningHoursdescription,
+                                        morningOpeningHours: morningOpeningHours,
+                                    });
+                                }) });
                     })),
                 React.createElement("div", null, clinicImage && React.createElement(Media, { data: clinicImage, type: "image" }))),
             React.createElement("div", { className: 'doctorCard__btnHolder' },

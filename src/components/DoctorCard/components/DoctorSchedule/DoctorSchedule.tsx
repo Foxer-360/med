@@ -2,15 +2,13 @@ import * as React from 'react';
 import DividerCircles from '../../../DividerCircles';
 
 export interface DoctorScheduleProps {
-  data: [
-    {
+  data: Array<{
       day: string;
       eveningHoursdescription: string;
       eveningOpeningHours: string;
       morningHoursdescription: string;
       morningOpeningHours: string;
-    }
-  ];
+    }>;
 }
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {

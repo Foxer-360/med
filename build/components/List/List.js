@@ -66,6 +66,7 @@ var AllPagesComposedQuery = adopt({
                     languageId: languageData.id,
                     projectId: projectData.id,
                 } }, function (data) {
+                var fetchMore = data.fetchMore;
                 return render(data);
             })));
     },
@@ -74,6 +75,22 @@ var List = /** @class */ (function (_super) {
     __extends(List, _super);
     function List() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.getPaginatingFunction = function (items) {
+            var getPage = function (numberOfPage, paginationType, pageSize) {
+                if (paginationType === void 0) { paginationType = 'pagination'; }
+                if (pageSize === void 0) { pageSize = 10; }
+                var numberOfItems = items.length;
+                var lastPage = Math.ceil(items.length / pageSize);
+                var cutTo = (numberOfPage) * pageSize < numberOfItems ?
+                    (numberOfPage) * pageSize : numberOfItems;
+                var cutFrom = (numberOfPage) * pageSize < numberOfItems ?
+                    cutTo - pageSize : (((numberOfPage - 1) && ((numberOfPage - 1) * pageSize)) || 0);
+                return { items: items.slice(paginationType === 'pagination' ? cutFrom : 0, cutTo),
+                    lastPage: lastPage
+                };
+            };
+            return getPage;
+        };
         _this.datasourcesList = function (data, searchedFragments) {
             return (React.createElement(Query, { query: DATASOURCE, variables: {
                     id: data.datasourceId
@@ -142,37 +159,39 @@ var List = /** @class */ (function (_super) {
                 if (loading) {
                     return React.createElement(Loader, null);
                 }
-                return _this.props.children({
-                    data: data.orderBy ?
-                        datasourceItems
-                            .sort(function (a, b) {
-                            if (data.order === 'DESC') {
-                                if (a.orderBy > b.orderBy) {
-                                    return -1;
-                                }
-                                {
-                                    if (a.orderBy < b.orderBy) {
-                                        return 1;
-                                    }
-                                }
-                                return 0;
-                            }
-                            if (a.orderBy < b.orderBy) {
+                var items = data.orderBy ?
+                    datasourceItems
+                        .sort(function (a, b) {
+                        if (data.order === 'DESC') {
+                            if (a.orderBy > b.orderBy) {
                                 return -1;
                             }
                             {
-                                if (a.orderBy > b.orderBy) {
+                                if (a.orderBy < b.orderBy) {
                                     return 1;
                                 }
                             }
                             return 0;
-                        })
-                            .map(function (item) {
-                            delete item.orderBy;
-                            return item;
-                        })
-                        :
-                            datasourceItems
+                        }
+                        if (a.orderBy < b.orderBy) {
+                            return -1;
+                        }
+                        {
+                            if (a.orderBy > b.orderBy) {
+                                return 1;
+                            }
+                        }
+                        return 0;
+                    })
+                        .map(function (item) {
+                        delete item.orderBy;
+                        return item;
+                    })
+                    :
+                        datasourceItems;
+                return _this.props.children({
+                    data: items,
+                    getPage: _this.getPaginatingFunction(items)
                 });
             }));
         };
@@ -190,7 +209,7 @@ var List = /** @class */ (function (_super) {
             if (res && res[1]) {
                 var textFromSearchParams = searchParams.get(res[1]);
                 if (!textFromSearchParams) {
-                    return this.props.children({ data: [] });
+                    return this.props.children({ data: [], getPage: this.getPaginatingFunction([]) });
                 }
                 searchedText = (searchedText ? searchedText : '') + " " + (textFromSearchParams ? textFromSearchParams : '');
             }
@@ -200,7 +219,7 @@ var List = /** @class */ (function (_super) {
         }
         var searchedFragments = searchedText && searchedText.trim().split(' ').map(function (fragment) { return fragment.trim(); });
         if (Array.isArray(data)) {
-            return this.props.children({ data: data });
+            return this.props.children({ data: data, getPage: this.getPaginatingFunction(data) });
         }
         // In case that data isn't array and contain datasourceId try to fetch datasource with his items
         if (data && data.datasourceId) {
@@ -289,41 +308,40 @@ var List = /** @class */ (function (_super) {
                         });
                 })
                     .filter(function (item, i) { return !data.limit || i < data.limit; });
-                return _this.props.children({
-                    data: data.orderBy ?
-                        pagesWithTag
-                            .sort(function (a, b) {
-                            if (data.order === 'DESC') {
-                                if (a.orderBy > b.orderBy) {
-                                    return -1;
-                                }
-                                {
-                                    if (a.orderBy < b.orderBy) {
-                                        return 1;
-                                    }
-                                }
-                                return 0;
-                            }
-                            if (a.orderBy < b.orderBy) {
+                pages = data.orderBy ?
+                    pagesWithTag
+                        .sort(function (a, b) {
+                        if (data.order === 'DESC') {
+                            if (a.orderBy > b.orderBy) {
                                 return -1;
                             }
                             {
-                                if (a.orderBy > b.orderBy) {
+                                if (a.orderBy < b.orderBy) {
                                     return 1;
                                 }
                             }
                             return 0;
-                        })
-                            .map(function (item) {
-                            delete item.orderBy;
-                            return item;
-                        })
-                        :
-                            pagesWithTag
-                });
+                        }
+                        if (a.orderBy < b.orderBy) {
+                            return -1;
+                        }
+                        {
+                            if (a.orderBy > b.orderBy) {
+                                return 1;
+                            }
+                        }
+                        return 0;
+                    })
+                        .map(function (item) {
+                        delete item.orderBy;
+                        return item;
+                    })
+                    :
+                        pagesWithTag;
+                return _this.props.children({ data: pages, getPage: _this.getPaginatingFunction(pages) });
             }));
         }
-        return this.props.children({ data: [] });
+        return this.props.children({ data: [], getPage: this.getPaginatingFunction([]) });
     };
     List.prototype.replaceWithSourceItemValues = function (source, item, isImage) {
         var regex = /%([^%]*)%/g;
