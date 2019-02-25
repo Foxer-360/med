@@ -65,8 +65,16 @@ var MyProblem = /** @class */ (function (_super) {
                         React.createElement("div", { className: 'infoBox__close', onClick: function () { return _this.closeInfoBox(); } },
                             React.createElement(SvgIcon, { name: "close", type: "gray" })),
                         this.state.availableSpecializations &&
-                            this.state.availableSpecializations.map(function (specialization, i) { return (React.createElement("div", { className: 'infoBox__item', key: i },
-                                React.createElement(Link, __assign({}, specialization.link), specialization.name))); })))))));
+                            this.state.availableSpecializations.map(function (specialization, i) {
+                                if (specialization.link) {
+                                    return (React.createElement("div", { className: 'infoBox__item', key: i },
+                                        React.createElement(Link, __assign({}, specialization.link), specialization.name)));
+                                }
+                                else {
+                                    return (React.createElement("div", { className: 'infoBox__item' },
+                                        React.createElement("p", null, specialization.name)));
+                                }
+                            })))))));
     };
     return MyProblem;
 }(React.Component));
