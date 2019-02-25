@@ -9,11 +9,11 @@ export interface HeaderState {
     menuActive: boolean;
 }
 declare class Header extends React.Component<HeaderProps, HeaderState> {
-    headerWrapper: any;
+    logo: any;
     constructor(props: HeaderProps);
-    getVertex: () => void;
     closeMenu: () => void;
     toggleMenu: () => void;
+    getVertex(): void;
     componentDidMount(): void;
     render(): JSX.Element;
     private transformNavigationsIntoTree;

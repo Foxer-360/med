@@ -25,7 +25,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
             services = services && services.length > 0 && services
                 .split('\n')
                 .filter(function (service, i) { return i <= 8; })
-                .join('\n') || [];
+                .join('\n') || "";
             return services;
         };
         _this.toggleDisplayServices = function (index) {
