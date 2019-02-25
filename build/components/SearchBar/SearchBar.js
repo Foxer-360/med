@@ -28,6 +28,21 @@ import List from '@source/components/List';
 import Link from '@source/partials/Link';
 import moment from 'moment';
 import debounce from 'lodash/debounce';
+var doctorSearchResultsTemplate = {
+    'datasourceId': 'cjrkew3eu02gp0d71xoi0i5em',
+    'data': {
+        'name': '%doctorPersonalInformation,firstName% %doctorPersonalInformation,lastName% ',
+        'speciality': '%doctorPersonalInformation,expertises,0,name% ',
+        'clinic': '%doctorPersonalInformation,polyclinic,name% ',
+        'workingHours': '%doctorPersonalInformation,workingHours% ',
+        'link': {
+            'url': '/medicon/cs/ds:doctor',
+            'pageId': 'cjoy8qfdl001b0845fwgt2200',
+            'urlNewWindow': false
+        }
+    },
+    'filters': []
+};
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {
@@ -66,22 +81,31 @@ var SearchBar = /** @class */ (function (_super) {
     SearchBar.prototype.render = function () {
         var _this = this;
         var _a = this.props, placeholder = _a.placeholder, barColor = _a.barColor;
+        var doctorSearchResults = __assign({}, doctorSearchResultsTemplate);
+        if (this.props.doctorsLink) {
+            doctorSearchResults = __assign({}, doctorSearchResults, { data: __assign({}, doctorSearchResults.data, { link: this.props.doctorsLink }) });
+        }
         return (React.createElement("div", { className: "searchBar " + (this.state.focused ? 'searchBar--focused' : '') + " searchBar--" + barColor, ref: this.searchBar },
             React.createElement("div", { className: 'searchBar__input' },
                 React.createElement("input", { type: "text", placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); }, onChange: function (e) { return _this.changeSearchQuery(e.target.value); }, ref: this.input }),
                 React.createElement(SvgIcon, { name: 'search', type: barColor })),
             React.createElement("div", { className: "searchBar__bar" }),
             React.createElement("div", { className: "searchBarResults " + (this.state.query.length !== 0 ? 'active' : '') },
-                this.props.doctorSearchResults && (React.createElement(List, { data: this.props.doctorSearchResults, searchedText: this.state.query }, function (_a) {
+                React.createElement(List, { data: doctorSearchResults, searchedText: this.state.query }, function (_a) {
                     var data = _a.data;
                     if (data.length > 0) {
-                        return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data.map(function (doctor, i) {
-                            var workingHours = {};
+                        return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data
+                            .map(function (item) {
+                            var workingHours = null;
                             try {
-                                workingHours = JSON.parse(doctor.workingHours);
+                                workingHours = JSON.parse(item.workingHours);
                             }
                             catch (e) { }
-                            return (React.createElement("li", { key: i, className: _this.isDoctorActive(workingHours) ? 'active' : '' },
+                            return __assign({}, item, { isDoctorActive: _this.isDoctorActive(workingHours) });
+                        })
+                            .sort(function (a, b) { return a.isDoctorActive === true ? -1 : 1; })
+                            .map(function (doctor, i) {
+                            return (React.createElement("li", { key: i, className: doctor.isDoctorActive ? 'active' : '' },
                                 React.createElement(Link, __assign({}, doctor.link),
                                     React.createElement("span", null,
                                         React.createElement("p", null, doctor.name),
@@ -90,15 +114,15 @@ var SearchBar = /** @class */ (function (_super) {
                         })));
                     }
                     else {
-                        return React.createElement("div", { className: 'searchBarResults__noResults' }, "No Results!");
+                        return React.createElement("div", { className: 'searchBarResults__noResults' });
                     }
-                })),
+                }),
                 React.createElement("hr", null),
                 this.props.blogSearchResults && (React.createElement(List, { data: this.props.blogSearchResults, searchedText: this.state.query }, function (_a) {
                     var data = _a.data;
                     if (data.length > 0) {
                         return (React.createElement("ul", { className: 'searchBarResults__blog' },
-                            React.createElement("label", null, "Blog:"),
+                            React.createElement("label", null, "Mo\u017En\u00E1 jste hledali:"),
                             data.map(function (blogItem, i) { return (React.createElement("li", { key: i },
                                 React.createElement(Link, __assign({}, blogItem.link),
                                     React.createElement("div", null,
@@ -106,7 +130,7 @@ var SearchBar = /** @class */ (function (_super) {
                                         React.createElement("p", null, blogItem.perex))))); })));
                     }
                     else {
-                        return React.createElement("div", { className: 'searchBarResults__noResults' }, "No Results!");
+                        return React.createElement("div", { className: 'searchBarResults__noResults' });
                     }
                 })))));
     };

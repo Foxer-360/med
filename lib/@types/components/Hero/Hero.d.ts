@@ -11,6 +11,7 @@ export interface HeroProps {
         textColor: string;
         doctorSearchResults: LooseObject;
         blogSearchResults: LooseObject;
+        doctorsLink?: LooseObject;
     };
 }
 export interface HeroState {

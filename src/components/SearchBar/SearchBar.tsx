@@ -9,7 +9,7 @@ import debounce from 'lodash/debounce';
 export interface SearchBarProps {
   placeholder: string;
   barColor: string;
-  doctorSearchResults?: LooseObject;
+  doctorsLink?: LooseObject;
   blogSearchResults?: LooseObject;
 }
 
@@ -17,6 +17,22 @@ export interface SearchBarState {
   focused: boolean;
   query: string;
 }
+
+const doctorSearchResultsTemplate: LooseObject = {
+  'datasourceId': 'cjrkew3eu02gp0d71xoi0i5em',
+  'data': {
+    'name': '%doctorPersonalInformation,firstName% %doctorPersonalInformation,lastName% ',
+    'speciality': '%doctorPersonalInformation,expertises,0,name% ',
+    'clinic': '%doctorPersonalInformation,polyclinic,name% ',
+    'workingHours': '%doctorPersonalInformation,workingHours% ',
+    'link': {
+      'url': '/medicon/cs/ds:doctor',
+      'pageId': 'cjoy8qfdl001b0845fwgt2200',
+      'urlNewWindow': false
+    }
+  },
+  'filters': []
+};
 
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   public searchBar: any;
@@ -63,7 +79,17 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
   public render() {
     const { placeholder, barColor } = this.props;
+    let doctorSearchResults = {...doctorSearchResultsTemplate};
 
+    if (this.props.doctorsLink) {
+      doctorSearchResults = {
+        ...doctorSearchResults,
+        data: {
+          ...doctorSearchResults.data,
+          link: this.props.doctorsLink
+        }
+      };
+    }
     return (
       <div
         className={`searchBar ${this.state.focused ? 'searchBar--focused' : ''} searchBar--${barColor}`}
@@ -82,41 +108,46 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         </div>
 
         <div className={`searchBar__bar`} />
-
         <div className={`searchBarResults ${this.state.query.length !== 0 ? 'active' : ''}`}>
-          {this.props.doctorSearchResults && (
-            <List data={this.props.doctorSearchResults} searchedText={this.state.query}>
-              {({ data }) => {
-                if (data.length > 0) {
-                  return (
-                    <ul className={'searchBarResults__doctors'}>
-                      {data.map((doctor, i) => {
-                        let workingHours = {};
+        <List data={doctorSearchResults} searchedText={this.state.query}>
+          {({ data }) => {
+            if (data.length > 0) {
+              return (
+                <ul className={'searchBarResults__doctors'}>
+                  {data
+                    .map((item): LooseObject => {
+                      let workingHours = null;
+                      try {
+                        workingHours = JSON.parse(item.workingHours);
+                      } catch (e) {}
+  
+                      return {
+                        ...item,
+                        isDoctorActive: this.isDoctorActive(workingHours)
+                      };
+                    })
+                    .sort((a, b) => a.isDoctorActive === true ? -1 : 1)
+                    .map((doctor, i) => {
 
-                        try {
-                          workingHours = JSON.parse(doctor.workingHours);
-                        } catch (e) {}
-
-                        return (
-                          <li key={i} className={this.isDoctorActive(workingHours) ? 'active' : ''}>
-                            <Link {...doctor.link}>
-                              <span>
-                                <p>{doctor.name}</p>
-                                <p>{doctor.speciality}</p>
-                              </span>
-                              <span>{doctor.clinic}</span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  );
-                } else {
-                  return <div className={'searchBarResults__noResults'}>No Results!</div>;
-                }
-              }}
-            </List>
-          )}
+                    return (
+                      <li key={i} className={doctor.isDoctorActive ? 'active' : ''}>
+                        <Link {...doctor.link}>
+                          <span>
+                            <p>{doctor.name}</p>
+                            <p>{doctor.speciality}</p>
+                          </span>
+                          <span>{doctor.clinic}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              );
+            } else {
+              return <div className={'searchBarResults__noResults'} />;
+            }
+          }}
+        </List>
 
           <hr />
 
@@ -126,7 +157,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                 if (data.length > 0) {
                   return (
                     <ul className={'searchBarResults__blog'}>
-                      <label>Blog:</label>
+                      <label>Možná jste hledali:</label>
 
                       {data.map((blogItem, i) => (
                         <li key={i}>
@@ -141,7 +172,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                     </ul>
                   );
                 } else {
-                  return <div className={'searchBarResults__noResults'}>No Results!</div>;
+                  return <div className={'searchBarResults__noResults'} />;
                 }
               }}
             </List>
