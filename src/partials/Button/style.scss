@@ -107,7 +107,7 @@
   &--blueBorder {
     color: $lightBlue;
     background-color: transparent;
-    border: 2px solid transparent;
+    border: 2px solid;
     border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     -webkit-border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     -moz-webkit-border-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
