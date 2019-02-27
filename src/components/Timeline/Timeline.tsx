@@ -101,7 +101,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
 
     let x = 30;
 
-    if (window.innerWidth > 768) {
+    if (window && window.innerWidth > 768) {
       x = 60;
     }
 

@@ -77,24 +77,26 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   getVertex() {
-    let container = (90 * window.innerWidth) / 100;
-    let logoWidth = (this.logo.current && this.logo.current.clientWidth) || 55;
+    if (window) {
+      let container = (90 * window.innerWidth) / 100;
+      let logoWidth = (this.logo.current && this.logo.current.clientWidth) || 55;
 
-    if (window.innerWidth >= 992) {
-      logoWidth = (this.logo.current && this.logo.current.clientWidth) || 123;
+      if (window.innerWidth >= 992) {
+        logoWidth = (this.logo.current && this.logo.current.clientWidth) || 123;
+      }
+
+      if (window.innerWidth >= 1250) {
+        container = 1204;
+      }
+
+      logoWidth = Math.ceil(logoWidth / 2);
+
+      let vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
+
+      this.setState({
+        vX: Math.ceil((vX * 100) / window.innerWidth - 1),
+      });
     }
-
-    if (window.innerWidth >= 1250) {
-      container = 1204;
-    }
-
-    logoWidth = Math.ceil(logoWidth / 2);
-
-    let vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
-
-    this.setState({
-      vX: Math.ceil((vX * 100) / window.innerWidth - 1),
-    });
   }
 
   componentDidMount() {
