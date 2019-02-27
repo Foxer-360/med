@@ -32,7 +32,7 @@ class Hero extends React.Component<HeroProps, HeroState> {
               {title && <h1 className={`hero__title hero__title--${titleColor}`}>{title}</h1>}
 
               {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
-
+  
               {displaySearch && (
                 <SearchBar
                   placeholder={placeholder ? placeholder : 'Hledat..'}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 export interface ContactInfoProps {
-  data: {
+  data: { 
     address: string;
     phones: string;
     emails: string;

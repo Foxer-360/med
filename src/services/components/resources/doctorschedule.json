@@ -10,6 +10,11 @@
           "title": "Schedule"
         },
 
+        "absences": {
+          "type": "string",
+          "title": "Absences"
+        },  
+
         "oddWeekTitle": {
           "type": "string",
           "title": "Odd week title"

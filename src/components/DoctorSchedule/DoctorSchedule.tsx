@@ -1,6 +1,20 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
+import Link from '../../partials/Link';
 import moment from 'moment';
+import gql from 'graphql-tag';
+import { urlize } from 'urlize';
+import { Query } from 'react-apollo';
+
+const GET_CONTEXT = gql`
+  {
+    languageData @client
+    pageData @client
+    websiteData @client
+    languagesData @client
+    navigationsData @client
+  }
+`;
 
 export interface DoctorScheduleProps {
   data: {
@@ -8,6 +22,7 @@ export interface DoctorScheduleProps {
     oddWeekTitle: String;
     evenWeekTitle: String;
     regularWeekTitle: String;
+    absences: LooseObject[];
   };
 }
 
@@ -110,8 +125,23 @@ const getScheduleTitle = (regularity, oddWeekTitle, evenWeekTitle, regularWeekTi
   return null;
 };
 
+const getAbsenceLink = (data, alternate) => {
+  if (alternate && data) {
+    const { firstName, lastName } = alternate;
+
+    let doctorSlug = urlize(`${firstName}-${lastName}`);
+
+    let link = `/${data.websiteData && data.websiteData.title.toLowerCase()}/${data.languageData &&
+      data.languageData.code}/${doctorSlug}`;
+
+    return link;
+  }
+
+  return null;
+};
+
 const DoctorSchedule = (props: DoctorScheduleProps) => {
-  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle } = props.data;
+  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences } = props.data;
 
   return (
     <section className={'container doctorScheduleSection'}>
@@ -173,6 +203,46 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             </table>
           </div>
         ))}
+
+      <Query query={GET_CONTEXT}>
+        {({ data }) => (
+          <>
+            {absences && Array.isArray(absences) && absences.length > 0 && (
+              <div className={'absences'}>
+                <h4>Nepřítomnost</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Od</td>
+                      <td>Do</td>
+                      <td>Zastupuje</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {absences.map((absence, i) => {
+                      if (absence) {
+                        return (
+                          <tr key={i}>
+                            <td>{(absence.fromDate && moment(absence.fromDate.date).format('YYYY-MM-DD')) || ''}</td>
+                            <td>{(absence.toDate.date && moment(absence.toDate.date).format('YYYY-MM-DD')) || ''}</td>
+                            <td>
+                              <Link dynamic={true} url={getAbsenceLink(data, absence.alternate)}>
+                                {`${(absence.alternate && absence.alternate.firstName) || ''} ${(absence.alternate &&
+                                  absence.alternate.lastName) ||
+                                  ''}`}
+                              </Link>
+                            </td>
+                          </tr>
+                        );
+                      }
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </>
+        )}
+      </Query>
     </section>
   );
 };
