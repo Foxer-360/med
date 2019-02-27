@@ -17,6 +17,9 @@
 
   &--active {
     .helpPopup__main {
+      transition: 300ms ease;
+      background-size: 0px;
+
       h4 {
         &:after {
           transform: rotate(45deg);
@@ -43,6 +46,7 @@
       padding: 0;
       line-height: 1;
       @include webkitGradientText;
+      text-align: left;
 
       &:after {
         @include pseudo;
@@ -53,6 +57,10 @@
         border-bottom: 2px solid $blue;
         transform: rotate(-135deg);
         top: 20px;
+      }
+
+      @include md {
+        text-align: center;
       }
     }
 
