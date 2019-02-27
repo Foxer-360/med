@@ -12,8 +12,8 @@ export interface HeroProps {
     displayOverlay: boolean;
     titleColor: string;
     textColor: string;
-    doctorSearchResults: LooseObject;
     blogSearchResults: LooseObject;
+    doctorsLink?: LooseObject;
   };
 }
 
@@ -35,10 +35,10 @@ class Hero extends React.Component<HeroProps, HeroState> {
 
               {displaySearch && (
                 <SearchBar
-                  placeholder={placeholder ? placeholder : 'Hledat..'}
+                  placeholder={placeholder ? placeholder : 'Hledat ...'}
                   barColor={'lightBlue'}
                   blogSearchResults={this.props.data.blogSearchResults}
-                  doctorSearchResults={this.props.data.doctorSearchResults}
+                  doctorsLink={this.props.data.doctorsLink}
                 />
               )}
             </div>
