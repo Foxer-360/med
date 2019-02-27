@@ -57,14 +57,6 @@ var Header = /** @class */ (function (_super) {
     __extends(Header, _super);
     function Header(props) {
         var _this = _super.call(this, props) || this;
-        _this.getVertex = function () {
-            var offsetLeft = _this.headerWrapper.current && _this.headerWrapper.current.offsetLeft + 61;
-            var windowWidth = window.innerWidth;
-            var vX = (offsetLeft * 100) / windowWidth;
-            _this.setState({
-                vX: vX,
-            });
-        };
         _this.closeMenu = function () {
             _this.setState({
                 menuActive: false,
@@ -75,18 +67,31 @@ var Header = /** @class */ (function (_super) {
                 menuActive: !_this.state.menuActive,
             });
         };
-        _this.headerWrapper = React.createRef();
+        _this.logo = React.createRef();
         _this.state = { vX: 15, menuActive: false };
         return _this;
     }
+    Header.prototype.getVertex = function () {
+        var container = (90 * window.innerWidth) / 100;
+        var logoWidth = (this.logo.current && this.logo.current.clientWidth) || 55;
+        if (window.innerWidth >= 992) {
+            logoWidth = (this.logo.current && this.logo.current.clientWidth) || 123;
+        }
+        if (window.innerWidth >= 1250) {
+            container = 1204;
+        }
+        logoWidth = Math.ceil(logoWidth / 2);
+        var vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
+        this.setState({
+            vX: Math.ceil((vX * 100) / window.innerWidth - 1),
+        });
+    };
     Header.prototype.componentDidMount = function () {
         this.getVertex();
     };
     Header.prototype.render = function () {
         var _this = this;
-        // if (window.innerWidth < 768) {
         this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
-        // }
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
@@ -103,8 +108,8 @@ var Header = /** @class */ (function (_super) {
             var secNavItems = transformedNavigations && transformedNavigations[secNav] ? transformedNavigations[secNav] : [];
             return (React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
                 React.createElement("div", { className: "container" },
-                    React.createElement("div", { className: 'header__wrapper', ref: _this.headerWrapper },
-                        React.createElement("div", { className: 'header__logo' },
+                    React.createElement("div", { className: 'header__wrapper' },
+                        React.createElement("div", { className: 'header__logo', ref: _this.logo },
                             React.createElement(Link, { url: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
                                 React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }))),
                         React.createElement("nav", null,
