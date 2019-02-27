@@ -99,11 +99,16 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
 
     const points = [];
 
-    for (let i = 0; i < 60; i++) {
-      let positionItem = items.find(item => Math.round((item.position * 60) / 100) === i);
+    let x = 30;
+
+    if (window.innerWidth > 768) {
+      x = 60;
+    }
+
+    for (let i = 0; i < x; i++) {
+      let positionItem = items.find(item => Math.round((item.position * x) / 100) === i);
 
       if (positionItem) {
-
         points.push(
           <div key={i} className={`point ${'point--' + positionItem.color}`}>
             <div
@@ -154,11 +159,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
                   ref={this.timeline}
                   style={{ transform: `translate3d(${this.state.x + 'px'},-7px,0)` }}
                 >
-                <List data={items}>
-                  {({ data }) => (<>
-                    {this.renderPoints(data)}
-                  </>)}
-                </List>
+                  <List data={items}>{({ data }) => <>{this.renderPoints(data)}</>}</List>
                 </div>
               </Swipeable>
             </div>
@@ -168,6 +169,16 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
             )}
 
             <div className={'timeline__blur timeline__blur--right'} onClick={e => this.arrowClick(e, 'right')} />
+          </div>
+
+          <div className={'timeline timeline__mobile'}>
+            <div
+              className={'timeline__holder'}
+              ref={this.timeline}
+              style={{ transform: `translate3d(${this.state.x + 'px'},-7px,0)` }}
+            >
+              <List data={items}>{({ data }) => <>{this.renderPoints(data)}</>}</List>
+            </div>
           </div>
         </section>
       </div>

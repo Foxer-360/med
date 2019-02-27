@@ -12,6 +12,11 @@
   box-sizing: content-box;
   position: relative;
   margin: 0 auto;
+  display: none;
+
+  @include md {
+    display: block;
+  }
 
   &__cont {
     position: relative;
@@ -169,6 +174,46 @@
 
         .mediaRatio {
           top: -59px;
+        }
+      }
+    }
+  }
+
+  &__mobile {
+    display: block;
+
+    @include md {
+      display: none;
+    }
+
+    .timeline__holder {
+      position: relative;
+      width: 80%;
+      margin: 0 auto 50px;
+
+      @include sm {
+        width: 50%;
+        margin: 0 auto 50px;
+      }
+    }
+
+    .point {
+      display: block;
+      margin-bottom: 5px;
+
+      &__content {
+        right: 0;
+        left: 200%;
+        bottom: 0;
+        position: relative;
+
+        &--top {
+          top: 0;
+          padding: 0 18px 0px 18px;
+        }
+
+        &--bottom {
+          padding: 0 18px 0px 18px;
         }
       }
     }
