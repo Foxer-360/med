@@ -61,8 +61,12 @@ var Timeline = /** @class */ (function (_super) {
         _this.renderPoints = function (items) {
             var point = React.createElement("div", { className: 'point' });
             var points = [];
+            var x = 30;
+            if (window.innerWidth > 768) {
+                x = 60;
+            }
             var _loop_1 = function (i) {
-                var positionItem = items.find(function (item) { return Math.round((item.position * 60) / 100) === i; });
+                var positionItem = items.find(function (item) { return Math.round((item.position * x) / 100) === i; });
                 if (positionItem) {
                     points.push(React.createElement("div", { key: i, className: "point " + ('point--' + positionItem.color) },
                         React.createElement("div", { className: "point__content " + (items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom') },
@@ -76,7 +80,7 @@ var Timeline = /** @class */ (function (_super) {
                     points.push(point);
                 }
             };
-            for (var i = 0; i < 60; i++) {
+            for (var i = 0; i < x; i++) {
                 _loop_1(i);
             }
             return points;
@@ -103,10 +107,16 @@ var Timeline = /** @class */ (function (_super) {
                             React.createElement("div", { className: 'timeline__holder', ref: this.timeline, style: { transform: "translate3d(" + (this.state.x + 'px') + ",-7px,0)" } },
                                 React.createElement(List, { data: items }, function (_a) {
                                     var data = _a.data;
-                                    return (React.createElement(React.Fragment, null, _this.renderPoints(data)));
+                                    return React.createElement(React.Fragment, null, _this.renderPoints(data));
                                 })))),
                     !this.state.limitRight && (React.createElement("div", { className: 'timeline__arrow  timeline__arrow--right', onClick: function (e) { return _this.arrowClick(e, 'right'); } })),
-                    React.createElement("div", { className: 'timeline__blur timeline__blur--right', onClick: function (e) { return _this.arrowClick(e, 'right'); } })))));
+                    React.createElement("div", { className: 'timeline__blur timeline__blur--right', onClick: function (e) { return _this.arrowClick(e, 'right'); } })),
+                React.createElement("div", { className: 'timeline timeline__mobile' },
+                    React.createElement("div", { className: 'timeline__holder', ref: this.timeline, style: { transform: "translate3d(" + (this.state.x + 'px') + ",-7px,0)" } },
+                        React.createElement(List, { data: items }, function (_a) {
+                            var data = _a.data;
+                            return React.createElement(React.Fragment, null, _this.renderPoints(data));
+                        }))))));
     };
     return Timeline;
 }(React.Component));
