@@ -4,6 +4,7 @@
 
   h3 {
     @include webkitGradientText;
+    padding-top: 45px;
   }
   p {
     font-size: 1.8rem;
@@ -30,11 +31,13 @@
         max-width: 228px;
         margin: 0 auto;
 
-        &:hover {
-          color: white !important;
+        @include md {
+          &:hover {
+            color: white !important;
 
-          .downloadIcon {
-            fill: white;
+            .downloadIcon {
+              fill: white;
+            }
           }
         }
 

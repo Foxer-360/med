@@ -1,6 +1,7 @@
 import * as React from 'react';
 import DividerCircles from '../DividerCircles';
 import SvgIcon from '@source/partials/SvgIcon';
+import Link from '@source/partials/Link';
 import List from '../List';
 
 interface Downloads {
@@ -28,17 +29,20 @@ const Downloads = (props: DownloadsProps) => {
 
         <div className="grid downloads__list">
           <List data={downloads}>
-            {({ data }) => data && data.map((item, i) => (
-              <div className={'downloads__list__element'} key={i}>
-                {item.title && <p>{item.title}</p>}
-                {item.url && 
-                  <a href={item.url} className={'btn btn--blueBorder'}>
-                    Stáhnout
-                    <SvgIcon name={'download'} type={'lightBlue'} />
-                  </a>
-                }
-              </div>
-            ))}
+            {({ data }) =>
+              data &&
+              data.map((item, i) => (
+                <div className={'downloads__list__element'} key={i}>
+                  {item.title && <p>{item.title}</p>}
+                  {item.url && item.url.url && (
+                    <Link url={item.url.url} className={'btn btn--blueBorder'}>
+                      Stáhnout
+                      <SvgIcon name={'download'} type={'lightBlue'} />
+                    </Link>
+                  )}
+                </div>
+              ))
+            }
           </List>
         </div>
       </div>
