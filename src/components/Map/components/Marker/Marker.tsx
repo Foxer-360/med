@@ -3,7 +3,7 @@ import * as React from 'react';
 interface MarkerProps {
   type: string;
   lat: number;
-  lng: number;
+  lng: number; 
   active?: boolean;
   handleMarkerClick?: Function;
   handleClose?: Function;

@@ -16,8 +16,10 @@
 
   &__img {
     height: 220px;
+    display: none;
 
     @include md {
+      display: block;
       height: 220px;
     }
 
@@ -73,7 +75,11 @@
 
   .pcTitle {
     border: none;
-    padding: 20px;
+    padding: 24px 20px 20px 20px;
+
+    @include md {
+      padding: 20px;
+    }
 
     img {
       width: 65px;
@@ -95,11 +101,25 @@
     @extend .flexRow;
     justify-content: space-between;
 
+    & > div {
+      @include md {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+
     &__item {
       @extend .flexRow;
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: nowrap;
       margin-bottom: 15px;
+
+      @include md {
+        min-width: 170px;
+        width: 48%;
+      }
 
       img {
         width: 23px;
@@ -123,6 +143,20 @@
           }
         }
       }
+
+      &:nth-of-type(2) {
+        & > div {
+          padding: 0 0 0 0;
+        }
+      }
+    }
+
+    .mapBox__mobile__img {
+      width: 75px;
+      height: 75px;
+      @include md {
+        display: none;
+      }
     }
   }
 
@@ -132,18 +166,20 @@
     flex-wrap: nowrap;
     justify-content: space-between;
 
-    button + button {
-      margin-left: 2px;
-
-      span {
-        display: none !important;
-      }
-
-      @media screen and (min-width: 400px) {
-        margin-left: 0;
+    a + a {
+      button {
+        margin-left: 2px;
 
         span {
-          display: block;
+          display: none !important;
+        }
+
+        @media screen and (min-width: 400px) {
+          margin-left: 0;
+
+          span {
+            display: inline-block !important;
+          }
         }
       }
     }

@@ -3,7 +3,6 @@ import GoogleMapReact from 'google-map-react';
 import { GeolocatedProps, geolocated } from 'react-geolocated';
 export const GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
 import Marker from '../Marker';
-import List from '../../../List';
 import MapBox from '../MapBox';
 
 interface MapComponentState {
@@ -137,21 +136,17 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
                   if (clinic.lat && clinic.lng) {
                     return (
                       <Marker
-                        type={
-                          clinic.title ===
-                          this.nearestClinic(
-                            this.props.coords ? this.props.coords.latitude : defaultCenter.lat,
-                            this.props.coords ? this.props.coords.longitude : defaultCenter.lng,
-                            this.props.clinics
-                          ).title
-                            ? 'big'
-                            : 'small'
-                        }
+                        type={'small'}
                         lat={Number(clinic.lat)}
                         lng={Number(clinic.lng)}
                         handleMarkerClick={(e, key) => this.handleMarkerClick(e, key, clinic)}
                         handleClose={this.handleMarkerClose}
-                        active={this.state.activeMarker === index}
+                        active={this.state.activeMarker === index || ( clinic.title ===
+                          this.nearestClinic(
+                            this.props.coords ? this.props.coords.latitude : defaultCenter.lat,
+                            this.props.coords ? this.props.coords.longitude : defaultCenter.lng,
+                            this.props.clinics
+                          ).title && this.state.activeMarker === null)}
                         key={index}
                         index={index}
                         handleMarkerClose={this.handleMarkerClose}

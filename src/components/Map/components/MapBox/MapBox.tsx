@@ -48,21 +48,25 @@ const MapBox: React.SFC<MapBoxProps> = props => {
       </div>
 
       <div className={'mapBox__contacts'}>
-        <div className={'mapBox__contacts__item'}>
-          <img src={'/assets/medicon/images/geoIcon.svg'} />
+        <div>
+          <div className={'mapBox__contacts__item'}>
+            <img src={'/assets/medicon/images/geoIcon.svg'} />
 
-          <div>
-            <p>{address}</p>
-            <p>{city}</p>
+            <div>
+              <p>{address}</p>
+              <p>{city}</p>
+            </div>
+          </div>
+
+          <div className={'mapBox__contacts__item'}>
+            <img src={'/assets/medicon/images/phoneIcon.svg'} />
+            <div>
+              <p>{phone}</p>
+            </div>
           </div>
         </div>
 
-        <div className={'mapBox__contacts__item'}>
-          <img src={'/assets/medicon/images/phoneIcon.svg'} />
-          <div>
-            <p>{phone}</p>
-          </div>
-        </div>
+        <div className={'mapBox__mobile__img'}>{image && image.filename && <Media type="image" data={image} />}</div>
       </div>
 
       <div className={'mapBox__buttons'}>
