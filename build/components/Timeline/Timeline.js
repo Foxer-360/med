@@ -62,7 +62,7 @@ var Timeline = /** @class */ (function (_super) {
             var point = React.createElement("div", { className: 'point' });
             var points = [];
             var x = 30;
-            if (window.innerWidth > 768) {
+            if (window && window.innerWidth > 768) {
                 x = 60;
             }
             var _loop_1 = function (i) {

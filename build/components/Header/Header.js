@@ -72,19 +72,21 @@ var Header = /** @class */ (function (_super) {
         return _this;
     }
     Header.prototype.getVertex = function () {
-        var container = (90 * window.innerWidth) / 100;
-        var logoWidth = (this.logo.current && this.logo.current.clientWidth) || 55;
-        if (window.innerWidth >= 992) {
-            logoWidth = (this.logo.current && this.logo.current.clientWidth) || 123;
+        if (window) {
+            var container = (90 * window.innerWidth) / 100;
+            var logoWidth = (this.logo.current && this.logo.current.clientWidth) || 55;
+            if (window.innerWidth >= 992) {
+                logoWidth = (this.logo.current && this.logo.current.clientWidth) || 123;
+            }
+            if (window.innerWidth >= 1250) {
+                container = 1204;
+            }
+            logoWidth = Math.ceil(logoWidth / 2);
+            var vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
+            this.setState({
+                vX: Math.ceil((vX * 100) / window.innerWidth - 1),
+            });
         }
-        if (window.innerWidth >= 1250) {
-            container = 1204;
-        }
-        logoWidth = Math.ceil(logoWidth / 2);
-        var vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
-        this.setState({
-            vX: Math.ceil((vX * 100) / window.innerWidth - 1),
-        });
     };
     Header.prototype.componentDidMount = function () {
         this.getVertex();
