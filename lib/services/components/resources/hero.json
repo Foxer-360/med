@@ -56,40 +56,10 @@
         "image": {
           "type": "image"
         },
-
-        "doctorSearchResults": {
-          "type": "array",
-          "title": "Doctor Search Results",
-          "items": {
-            "properties": {
-              "name": {
-                "type": "text",
-                "title": "Doctor result name"
-              },
-              "speciality": {
-                "type": "text",
-                "title": "Doctor result Speciality"
-              },
-              "clinic": {
-                "type": "text",
-                "title": "Doctor result clinic"
-              },
-              "active": {
-                "type": "boolean",
-                "title": "Doctor result active"
-              },
-              "workingHours": {
-                "type": "text",
-                "title": "Working hours"
-              },
-              "link": {
-                "type": "urlAutocomplete",
-                "title": "Link URL"
-              }
-            }
-          }
+        "doctorsLink": {
+          "type": "urlAutocomplete",
+          "title": "Doctor Search Results link url"
         },
-
         "blogSearchResults": {
           "type": "array",
           "title": "Pages",

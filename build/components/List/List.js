@@ -203,6 +203,7 @@ var List = /** @class */ (function (_super) {
         var searchedText = this.props.searchedText;
         var fulltextFilter = data && data.fulltextFilter;
         var regex = /^\[([a-z]*)\]$/;
+
         var searchParams = new URLSearchParams(location && location.search || '');
         if (fulltextFilter) {
             var res = regex.exec(fulltextFilter.trim());

@@ -170,14 +170,14 @@ class List extends React.Component<Properties, {}> {
     const fulltextFilter = data && data.fulltextFilter;
 
     const regex = /^\[([a-z]*)\]$/;
-
-    var searchParams = new URLSearchParams(location && location.search || '');
+    
+    var searchParams = typeof window !== 'undefined' && new URLSearchParams(location && location.search || '');
 
     if (fulltextFilter) {
       const res = regex.exec(fulltextFilter.trim());
 
       if (res && res[1]) {
-        const textFromSearchParams = searchParams.get(res[1]);
+        const textFromSearchParams = searchParams && searchParams.get(res[1]);
 
         if (!textFromSearchParams) {
           return this.props.children({ data: [], getPage: this.getPaginatingFunction([]) });
