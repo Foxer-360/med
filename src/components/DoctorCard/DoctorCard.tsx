@@ -72,7 +72,7 @@ const DoctorCard = (props: DoctorCardProps) => {
               <div className={'doctorCard__info__item'}>
                 <div className={'doctorCard__info__item__wrap'}>
                   <img src="/assets/medicon/images/phoneIcon.svg" />
-                  {phone && <p>{phone}</p>}
+                  <a href={`callto:${phone}`}>{phone}</a>
                 </div>
               </div>
 
@@ -110,7 +110,8 @@ const DoctorCard = (props: DoctorCardProps) => {
           data &&
           data.map((item, i) => {
             return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
-          })}
+          })
+        }
       </List>
     </section>
   );
