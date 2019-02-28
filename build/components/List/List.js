@@ -203,12 +203,11 @@ var List = /** @class */ (function (_super) {
         var searchedText = this.props.searchedText;
         var fulltextFilter = data && data.fulltextFilter;
         var regex = /^\[([a-z]*)\]$/;
-
-        var searchParams = new URLSearchParams(location && location.search || '');
+        var searchParams = typeof window !== 'undefined' && new URLSearchParams(location && location.search || '');
         if (fulltextFilter) {
             var res = regex.exec(fulltextFilter.trim());
             if (res && res[1]) {
-                var textFromSearchParams = searchParams.get(res[1]);
+                var textFromSearchParams = searchParams && searchParams.get(res[1]);
                 if (!textFromSearchParams) {
                     return this.props.children({ data: [], getPage: this.getPaginatingFunction([]) });
                 }
