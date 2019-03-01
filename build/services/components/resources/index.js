@@ -34,5 +34,6 @@ import * as contactsblock from './contactsblock.json';
 import * as faq from './faq.json';
 import * as blogarticle from './blogarticle.json';
 import * as doctorschedule from './doctorschedule.json';
-export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, jobpositions, joboffers, careerform, expertisedescription, medicalgroup, viewsaboutus, contactinfo, timeline, contactform, downloads, contactsblock, faq, blogarticle, doctorschedule };
+import * as workinghours from './workinghours.json';
+export { def as default, benefits, crossroads, doctorlist, dummy, footer, header, hero, highlight, infoboxes, map, polyclinicslist, reviews, textblock, expertiselist, inforectangles, polyclinicinfo, blog, polyclinicboxes, doctorcard, odbornost, myproblem, jobpositions, joboffers, careerform, expertisedescription, medicalgroup, viewsaboutus, contactinfo, timeline, contactform, downloads, contactsblock, faq, blogarticle, doctorschedule, workinghours, };
 //# sourceMappingURL=index.js.map
