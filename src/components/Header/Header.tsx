@@ -17,8 +17,8 @@ const GET_CONTEXT = gql`
 `;
 
 const GET_PAGES_URLS = gql`
-  query pagesUrls($language: ID!) {
-    pagesUrls(where: { language: $language }) {
+  query pagesUrls($language: ID!, $websiteId: ID!) {
+    pagesUrls(where: { language: $language, websiteId: $websiteId }) {
       id
       page
       url
@@ -30,12 +30,12 @@ const GET_PAGES_URLS = gql`
 
 const ComposedQuery = adopt({
   context: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
-  getPagesUrls: ({ render, context: { languageData } }) => {
-    if (!languageData) {
+  getPagesUrls: ({ render, context: { languageData, websiteData } }) => {
+    if (!(languageData && websiteData)) {
       return render({});
     }
     return (
-      <Query query={GET_PAGES_URLS} variables={{ language: languageData.id }}>
+      <Query query={GET_PAGES_URLS} variables={{ language: languageData.id, websiteId: websiteData.id }}>
         {data => {
           return render(data);
         }}

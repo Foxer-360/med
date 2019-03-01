@@ -32,7 +32,7 @@ var isExternalLink = function (url) {
     var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
     return pattern.test(url);
 };
-var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n  }\n"], ["\n  {\n    languageData @client\n  }\n"])));
+var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    websiteData @client\n  }\n"], ["\n  {\n    languageData @client\n    websiteData @client\n  }\n"])));
 var ComposedQuery = adopt({
     context: function (_a) {
         var render = _a.render;
@@ -42,16 +42,16 @@ var ComposedQuery = adopt({
         });
     },
     getPagesUrls: function (_a) {
-        var render = _a.render, languageData = _a.context.languageData;
-        if (!languageData) {
+        var render = _a.render, _b = _a.context, languageData = _b.languageData, websiteData = _b.websiteData;
+        if (!(languageData && websiteData)) {
             return render({ loading: true });
         }
-        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id } }, function (data) {
+        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
             return render(data);
         }));
     },
 });
-var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
+var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposerLink = function (props) {
     var children = props.children, urlNewWindow = props.urlNewWindow, url = props.url, pageId = props.pageId, dynamic = props.dynamic, args = __rest(props, ["children", "urlNewWindow", "url", "pageId", "dynamic"]);
     return (React.createElement(ComposedQuery, null, function (_a) {

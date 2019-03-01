@@ -1,0 +1,42 @@
+{
+  "name": "WorkingHours",
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "items": {
+          "type": "array",
+          "title": "Hours",
+          "items": {
+            "properties": {
+              "day": {
+                "type": "string",
+                "title": "Day"
+              },
+              "morningHours": {
+                "type": "string",
+                "title": "Morning hours"
+              },
+              "morningHoursDescription": {
+                "type": "string",
+                "title": "Morning hours description"
+              },
+              "eveningHours": {
+                "type": "string",
+                "title": "Evening hours"
+              },
+              "eveningHoursDescription": {
+                "type": "string",
+                "title": "Evening hours description"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
