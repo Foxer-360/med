@@ -16,7 +16,15 @@
         &:after {
           background-color: red;
           background-image: none;
+          width: 100%;
         }
+      }
+      .form__input__label {
+        color: red;
+      }
+
+      label {
+        color: red;
       }
     }
 
@@ -183,7 +191,6 @@
         & ~ .form__input__bar {
           padding: 0;
         }
-
         &:hover {
           @include md {
             & ~ .form__input__bar {
@@ -202,6 +209,14 @@
           width: 16px;
           height: 20px;
         }
+      }
+
+      p {
+        margin-top: 5px;
+        max-width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
 
@@ -272,6 +287,41 @@
           text-decoration-color: $blue;
         }
       }
+    }
+  }
+
+  &__messageHolder {
+    position: relative;
+    padding: 40px 0;
+  }
+
+  &__message {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+
+    @include md {
+      font-size: 2rem;
+    }
+    &--error {
+      color: red;
+      display: flex;
+      flex-wrap: wrap;
+      
+      p {
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    &--success {
+      color: $blue;
     }
   }
 }
