@@ -1,0 +1,116 @@
+.workingHours {
+  width: 100%;
+
+  .mobileHeading {
+    border-bottom: 0;
+
+    & > td {
+      display: table-cell !important;
+      padding: 10px 0 10px;
+      text-align: center;
+      color: $lightBlue;
+      font-weight: 600;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    @include lg {
+      display: none;
+    }
+  }
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    overflow: hidden;
+
+    @include lg {
+      // table-layout: auto;
+    }
+
+    & > p {
+      width: 100%;
+      text-align: center;
+
+      @include lg {
+        display: none;
+      }
+    }
+    .normalRow {
+      &:not(:last-of-type) {
+        border-bottom: 1px solid #cecece;
+      }
+
+      td {
+        padding: 0px 0 15px;
+        vertical-align: top;
+        text-align: center;
+
+        @include lg {
+          padding: 15px 25px;
+          text-align: left;
+        }
+
+        &:last-of-type {
+          // padding: 0;
+
+          @include lg {
+            padding: 15px 15px 15px 25px;
+          }
+        }
+
+        &:first-of-type {
+          padding: 0 0 15px 0;
+
+          @include xl {
+            padding: 15px 50px 15px 0;
+          }
+        }
+
+        &:nth-of-type(3) {
+          vertical-align: middle;
+        }
+
+        &:first-of-type {
+          color: $lightBlue;
+          text-transform: uppercase;
+          font-size: 1.4rem;
+          font-weight: 600;
+          display: none;
+
+          @include lg {
+            display: table-cell;
+            font-size: 2rem;
+          }
+        }
+
+        p {
+          color: $darkGray;
+          font-size: 1.4rem;
+          font-weight: 400;
+          line-height: 1;
+
+          @include lg {
+            font-size: 2rem;
+          }
+
+          &:first-of-type {
+            margin-bottom: 10px;
+          }
+
+          &:nth-of-type(2) {
+            font-size: 1.4rem;
+
+            @include md {
+              font-size: 1.6rem;
+            }
+          }
+        }
+
+        .dividerCircles {
+          margin: 0 13px;
+        }
+      }
+    }
+  }
+}
