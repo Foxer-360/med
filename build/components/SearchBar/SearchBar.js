@@ -29,19 +29,19 @@ import Link from '@source/partials/Link';
 import moment from 'moment';
 import debounce from 'lodash/debounce';
 var doctorSearchResultsTemplate = {
-    'datasourceId': 'cjrkew3eu02gp0d71xoi0i5em',
-    'data': {
-        'name': '%doctorPersonalInformation,firstName% %doctorPersonalInformation,lastName% ',
-        'speciality': '%doctorPersonalInformation,expertises,0,name% ',
-        'clinic': '%doctorPersonalInformation,polyclinic,name% ',
-        'workingHours': '%doctorPersonalInformation,workingHours% ',
-        'link': {
-            'url': '/medicon/cs/ds:doctor',
-            'pageId': 'cjoy8qfdl001b0845fwgt2200',
-            'urlNewWindow': false
-        }
+    datasourceId: 'cjrkew3eu02gp0d71xoi0i5em',
+    data: {
+        name: '%doctorPersonalInformation,firstName% %doctorPersonalInformation,lastName% ',
+        speciality: '%doctorPersonalInformation,expertises,0,name% ',
+        clinic: '%doctorPersonalInformation,polyclinic,name% ',
+        workingHours: '%doctorPersonalInformation,workingHours% ',
+        link: {
+            url: '/medicon/cs/ds:doctor',
+            pageId: 'cjoy8qfdl001b0845fwgt2200',
+            urlNewWindow: false,
+        },
     },
-    'filters': []
+    filters: [],
 };
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
@@ -100,15 +100,19 @@ var SearchBar = /** @class */ (function (_super) {
                             try {
                                 workingHours = JSON.parse(item.workingHours);
                             }
-                            catch (e) { }
+                            catch (e) {
+                                console.log('error', e);
+                            }
                             return __assign({}, item, { isDoctorActive: _this.isDoctorActive(workingHours) });
                         })
-                            .sort(function (a, b) { return a.isDoctorActive === true ? -1 : 1; })
+                            .sort(function (a, b) { return (a.isDoctorActive === true ? -1 : 1); })
                             .map(function (doctor, i) {
                             return (React.createElement("li", { key: i, className: doctor.isDoctorActive ? 'active' : '' },
                                 React.createElement(Link, __assign({}, doctor.link),
                                     React.createElement("span", null,
-                                        React.createElement("p", null, doctor.name),
+                                        React.createElement("p", null,
+                                            React.createElement("span", null, doctor.name),
+                                            React.createElement("span", null, doctor.isDoctorActive ? 'ordinuje' : 'neordinuje')),
                                         React.createElement("p", null, doctor.speciality)),
                                     React.createElement("span", null, doctor.clinic))));
                         })));

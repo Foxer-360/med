@@ -158,6 +158,18 @@
 
         &.active {
           color: black;
+
+          span {
+            p {
+              span {
+                &:nth-of-type(1) {
+                  &:after {
+                    background: rgb(49, 160, 49);
+                  }
+                }
+              }
+            }
+          }
         }
 
         &:hover {
@@ -178,6 +190,23 @@
               line-height: 1;
               font-size: 1.2rem;
               text-transform: uppercase;
+            }
+
+            span {
+              &:nth-of-type(1) {
+                padding-right: 10px;
+
+                &:after {
+                  display: inline-block;
+                  content: '';
+                  width: 5px;
+                  height: 5px;
+                  background: rgb(194, 54, 54);
+                  border-radius: 50%;
+                  position: absolute;
+                  top: 23px;
+                }
+              }
             }
           }
         }
