@@ -65,6 +65,7 @@ var SearchBar = /** @class */ (function (_super) {
     SearchBar.prototype.componentWillUnmount = function () {
         document.removeEventListener('click', this.handleClick, false);
     };
+    // tslint:disable-next-line:typedef
     SearchBar.prototype.changeSearchQuery = function (query) {
         this.setState({
             query: query,
@@ -113,7 +114,9 @@ var SearchBar = /** @class */ (function (_super) {
                                         React.createElement("span", null,
                                             React.createElement("p", null,
                                                 React.createElement("span", null, doctor.name),
-                                                React.createElement("span", null, doctor.isDoctorActive ? 'ordinuje' : 'neordinuje')),
+                                                React.createElement("span", { style: doctor.isDoctorActive ?
+                                                        { color: '#31a031' } :
+                                                        { color: '#c23636' } }, doctor.isDoctorActive ? 'ordinuje' : 'neordinuje')),
                                             React.createElement("p", null, doctor.speciality)),
                                         React.createElement("span", null, doctor.clinic))));
                             })));

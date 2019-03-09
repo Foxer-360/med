@@ -35,7 +35,9 @@ const doctorSearchResultsTemplate: LooseObject = {
 };
 
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+  // tslint:disable-next-line:no-any
   public searchBar: any;
+  // tslint:disable-next-line:no-any
   public input: any;
 
   constructor(props: SearchBarProps) {
@@ -63,6 +65,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     });
   }
 
+  // tslint:disable-next-line:typedef
   public changeSearchQuery(query) {
     this.setState({
       query,
@@ -139,7 +142,15 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                                 <span>
                                   <p>
                                     <span>{doctor.name}</span>
-                                    <span>{doctor.isDoctorActive ? 'ordinuje' : 'neordinuje'}</span>
+                                    <span 
+                                      style={
+                                        doctor.isDoctorActive ? 
+                                        {color: '#31a031'} : 
+                                        {color: '#c23636'} 
+                                      }
+                                    >
+                                      {doctor.isDoctorActive ? 'ordinuje' : 'neordinuje'}
+                                    </span>
                                   </p>
                                   <p>{doctor.speciality}</p>
                                 </span>
