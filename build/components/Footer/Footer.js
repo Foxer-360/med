@@ -27,14 +27,15 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from 'react';
-import Social from './components/Social';
-import HelpPopup from './components/HelpPopup';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
-import Link from '../../partials/Link';
 import List from '../List';
+import Link from '../../partials/Link';
+import Social from './components/Social';
 import Loader from '@source/partials/Loader';
+import HelpPopup from './components/HelpPopup';
+import TemporaryPopup from './components/TemporaryPopup';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
@@ -65,6 +66,7 @@ var Footer = /** @class */ (function (_super) {
         var _a = this.props.data, links = _a.links, social = _a.social, socialIcons = _a.socialIcons, company = _a.company, url = _a.url, text = _a.text;
         return (React.createElement("footer", { className: 'footer' },
             React.createElement(HelpPopup, null),
+            React.createElement(TemporaryPopup, null),
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: "flexRow flexAlign--space-between" },
                     React.createElement(ComposedQuery, null, function (_a) {

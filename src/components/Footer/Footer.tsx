@@ -1,12 +1,14 @@
 import * as React from 'react';
-import Social from './components/Social';
-import HelpPopup from './components/HelpPopup';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
-import Link from '../../partials/Link';
+
 import List from '../List';
+import Link from '../../partials/Link';
+import Social from './components/Social';
 import Loader from '@source/partials/Loader';
+import HelpPopup from './components/HelpPopup';
+import TemporaryPopup from './components/TemporaryPopup';
 
 const GET_CONTEXT = gql`
   {
@@ -80,6 +82,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
     return (
       <footer className={'footer'}>
         <HelpPopup />
+        <TemporaryPopup />
 
         <div className="container">
           <div className="flexRow flexAlign--space-between">

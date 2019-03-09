@@ -1,0 +1,62 @@
+.temporaryPopup {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  padding: 30px 200px;
+  background-color: white;
+  box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+
+  @include max-xl { padding: 20px 100px; }
+  @include max-md { padding: 20px 50px; }
+  @include max-sm { padding: 20px 30px; }
+
+  p {
+    font-size: 1.6rem;
+    text-align: center;
+    line-height: 2.2rem;
+  }
+
+  a {
+    color: $lightBlue !important;
+
+    &:hover {
+      color: $lightBlue !important;
+      text-decoration: underline;
+    }
+  }
+
+  &__close {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    left: 105%;
+
+    @include max-md { left: 100%; }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:before, &:after {
+      position: absolute;
+      left: 15px;
+      content: ' ';
+      height: 33px;
+      width: 2px;
+      background-color: #333;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &--disabled { display: none; }
+}
