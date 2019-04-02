@@ -34,7 +34,7 @@
         },
         "clinicColor": {
           "type": "text",
-          "title": "Clinic color"
+          "title": "Clinic color (HEX)"
         }
       }
     }

@@ -9,7 +9,9 @@
         "width": "50",
         "height": "50"
       }
-    }
+    },
+    "clinic": "",
+    "clinicColor": ""
   },
   "form": {
     "schema": {
@@ -29,6 +31,14 @@
         },
         "transportImage": {
           "type": "image"
+        },
+        "clinic": {
+          "type": "text",
+          "title": "Clinic"
+        },
+        "clinicColor": {
+          "type": "text",
+          "title": "Clinic color (HEX)"
         }
       }
     }
