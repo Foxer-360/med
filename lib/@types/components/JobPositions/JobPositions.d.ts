@@ -1,9 +1,12 @@
-/// <reference types="react" />
+import * as React from 'react';
 interface Position {
     name: string;
     url: LooseObject;
     polyclinic: string;
     image: LooseObject;
+}
+export interface JobPositionsState {
+    numberOfPage: number;
 }
 export interface JobPositionsProps {
     languageCode?: string;
@@ -12,5 +15,8 @@ export interface JobPositionsProps {
         positions: Position[];
     };
 }
-declare const JobPositions: (props: JobPositionsProps) => JSX.Element;
+declare class JobPositions extends React.Component<JobPositionsProps, JobPositionsState> {
+    constructor(props: JobPositionsProps);
+    render(): JSX.Element;
+}
 export default JobPositions;

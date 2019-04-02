@@ -122,7 +122,7 @@ var SearchBar = /** @class */ (function (_super) {
                             })));
                         }
                         else {
-                            return (React.createElement("div", { className: 'searchBarResults__noResults' }, "Bohu\u017Eel jsme nenalezli \u017E\u00E1dn\u00E9ho l\u00E9ka\u0159e."));
+                            return (React.createElement("div", { className: 'searchBarResults__noResults' }, "Bohu\u017Eel jsme nena\u0161li \u017E\u00E1dn\u00E9 v\u00FDsledeky."));
                         }
                     }),
                     this.props.blogSearchResults && this.state.query.length > 2 && (React.createElement(List, { data: this.props.blogSearchResults, searchedText: this.state.query }, function (_a) {

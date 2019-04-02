@@ -22,7 +22,9 @@
             "width": "420",
             "height": "420"
           }
-        }
+        },
+        "clinic": "",
+        "clinicColor": ""
       }
     ]
   },
@@ -42,6 +44,14 @@
               "address": {
                 "type": "text",
                 "title": "Address"
+              },
+              "clinic": {
+                "type": "text",
+                "title": "Clinic"
+              },
+              "clinicColor": {
+                "type": "text",
+                "title": "Clinic color (HEX)"
               },
               "district": {
                 "type": "text",

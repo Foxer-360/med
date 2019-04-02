@@ -1,9 +1,9 @@
 import * as React from 'react';
+import List from '../List';
 import TextBlock from '../TextBlock';
 import Media from '../../partials/Media';
-import List from '../List';
 var DoctorCard = function (props) {
-    var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicImage = _a.clinicImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, additionalInfo = _a.additionalInfo;
+    var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, additionalInfo = _a.additionalInfo, clinicColor = _a.clinicColor;
     return (React.createElement("section", { className: 'doctorCard' },
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: 'doctorCard__main' },
@@ -30,7 +30,8 @@ var DoctorCard = function (props) {
                             React.createElement("div", null,
                                 React.createElement("p", null,
                                     React.createElement("strong", null, clinicName),
-                                    clinicExtraInfo && React.createElement("span", null, '  - ' + clinicExtraInfo)),
+                                    clinicExtraInfo &&
+                                        React.createElement("span", { style: clinicColor && { color: "" + clinicColor } }, '  - ' + clinicExtraInfo)),
                                 React.createElement("p", null, clinicAddress))))))),
         React.createElement("div", { className: 'container' },
             React.createElement("div", { className: 'doctorCard__divider' },

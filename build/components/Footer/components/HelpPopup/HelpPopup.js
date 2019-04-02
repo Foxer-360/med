@@ -30,20 +30,20 @@ var HelpPopup = /** @class */ (function (_super) {
         var _this = this;
         return (React.createElement("div", { className: "helpPopup " + (this.state.active ? 'helpPopup--active' : '') + " " },
             React.createElement("div", { className: 'helpPopup__main', style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' }, onClick: function () { return _this.toggleList(); } },
-                React.createElement("h4", null, "Pot\u0159ebujete poradit")),
+                React.createElement("h4", null, "Pot\u0159ebujete poradit?")),
             React.createElement("ul", { className: 'helpPopup__list' },
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' } },
                     React.createElement("p", null, "Poliklinika Bud\u011Bjovick\u00E1"),
                     React.createElement("a", { href: "tel:+420261006111" }, "+420 261 006 111")),
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' } },
-                    React.createElement("p", null, "Poliklinika Zelen\u00FD pruh"),
-                    React.createElement("a", { href: "tel:+420234105111" }, "+420 234 105 111")),
+                    React.createElement("p", null, "Poliklinika Hole\u0161ovice"),
+                    React.createElement("a", { href: "tel:+420227777677" }, "+420 227 777 677")),
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' } },
                     React.createElement("p", null, "Poliklinika Vyso\u010Dany"),
                     React.createElement("a", { href: "tel:+420266006211" }, "+420 266 006 211")),
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' } },
-                    React.createElement("p", null, "Poliklinika Hole\u0161ovice"),
-                    React.createElement("a", { href: "tel:+420227777677" }, "+420 227 777 677")))));
+                    React.createElement("p", null, "Poliklinika Zelen\u00FD pruh"),
+                    React.createElement("a", { href: "tel:+420234105111" }, "+420 234 105 111")))));
     };
     return HelpPopup;
 }(React.Component));

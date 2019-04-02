@@ -8,7 +8,7 @@ var ExpertiseDescriptionBoxes = function (props) {
             React.createElement("div", { className: 'info__element--cell' },
                 box.title && React.createElement("h5", null, box.title),
                 React.createElement("div", null,
-                    React.createElement(Button, { url: box.url, classes: 'btn--whiteBorder' }, "vice info"))),
+                    React.createElement(Button, { url: box.url, classes: 'btn--whiteBorder' }, "v\u00EDce informac\u00ED"))),
             React.createElement("div", { className: 'info__element--colorGradient' }))); }))));
 };
 export default ExpertiseDescriptionBoxes;

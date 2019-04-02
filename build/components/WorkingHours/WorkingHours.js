@@ -1,13 +1,14 @@
 import * as React from 'react';
+import List from '../List';
 import DividerCircles from '../DividerCircles';
 var WorkingHours = function (props) {
-    console.log('%c Emilio: ', 'background: #222; color: #83FFFF', props);
-    return (React.createElement("div", { className: "workingHours" },
-        React.createElement("div", { className: "container" },
-            React.createElement("table", null,
-                React.createElement("tbody", null, props.data &&
-                    props.data.items.length > 0 &&
-                    props.data.items.map(function (item, index) {
+    return (React.createElement(List, { data: props.data.items }, function (_a) {
+        var data = _a.data;
+        return (React.createElement("div", { className: "workingHours" },
+            React.createElement("div", { className: "container" },
+                "111111111",
+                React.createElement("table", null,
+                    React.createElement("tbody", null, data && data.map(function (item, index) {
                         return (React.createElement(React.Fragment, null,
                             React.createElement("tr", { className: 'mobileHeading' },
                                 React.createElement("td", { colSpan: 3 }, item.day)),
@@ -22,6 +23,7 @@ var WorkingHours = function (props) {
                                     React.createElement("p", null, item.eveningHours),
                                     React.createElement("p", null, item.eveningHoursDescription)))));
                     }))))));
+    }));
 };
 export default WorkingHours;
 //# sourceMappingURL=WorkingHours.js.map

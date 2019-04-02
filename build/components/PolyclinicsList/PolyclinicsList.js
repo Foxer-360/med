@@ -12,11 +12,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
-import PcTitle from './components/title';
-import Button from '../../partials/Button';
-import Media from '../../partials/Media';
 import ReactMarkdown from 'react-markdown';
 import List from '../List';
+import Media from '../../partials/Media';
+import PcTitle from './components/title';
+import Button from '../../partials/Button';
 var PolyclinicsList = /** @class */ (function (_super) {
     __extends(PolyclinicsList, _super);
     function PolyclinicsList(props) {
@@ -25,9 +25,10 @@ var PolyclinicsList = /** @class */ (function (_super) {
             services = services && services.length > 0 && services
                 .split('\n')
                 .filter(function (service, i) { return i <= 8; })
-                .join('\n') || "";
+                .join('\n') || '';
             return services;
         };
+        _this.getServicesLength = function (services) { return services.split('\n').length; };
         _this.toggleDisplayServices = function (index) {
             _this.setState({
                 displayAllServices: index === null ? false : true,
@@ -36,7 +37,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
         };
         _this.state = {
             displayAllServices: false,
-            activeCard: null,
+            activeCard: null
         };
         return _this;
     }
@@ -57,11 +58,16 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                         React.createElement("div", { className: "pcitem__info__details" },
                                             React.createElement("div", { className: "pcitem__info__details__item" },
                                                 React.createElement("img", { src: "../../../assets/medicon/images/geoIcon.svg", alt: "Medicon GeoLocation Icon" }),
-                                                React.createElement("p", null,
-                                                    clinic.address && clinic.address,
-                                                    " ",
-                                                    React.createElement("br", null),
-                                                    clinic.district && clinic.district)),
+                                                React.createElement("div", null,
+                                                    React.createElement("p", null,
+                                                        clinic.address && clinic.address,
+                                                        " ",
+                                                        React.createElement("br", null),
+                                                        clinic.district && clinic.district),
+                                                    clinic.clinic &&
+                                                        React.createElement("p", { style: clinic.clinicColor ?
+                                                                { color: "" + clinic.clinicColor } :
+                                                                {} }, clinic.clinic))),
                                             React.createElement("div", { className: "pcitem__info__details__item" },
                                                 React.createElement("img", { src: "../../../assets/medicon/images/phoneIcon.svg", alt: "Medicon Phone Icon" }),
                                                 clinic.phone && React.createElement("p", null, clinic.phone)),
@@ -80,19 +86,20 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                         return React.createElement("ul", null, rProps.children);
                                                     },
                                                 } }),
-                                            React.createElement("div", { onClick: function () { return _this.toggleDisplayServices(index === _this.state.activeCard ? null : index); } },
-                                                _this.state.displayAllServices && index === _this.state.activeCard
-                                                    ? 'Skrýt'
-                                                    : 'Další odbornosti',
-                                                ' ',
-                                                React.createElement("span", { className: "arrow" }))),
+                                            _this.getServicesLength(clinic.services) > 9 &&
+                                                React.createElement("div", { className: 'pcitem__info__list__showMore', onClick: function () { return _this.toggleDisplayServices(index === _this.state.activeCard ? null : index); } },
+                                                    _this.state.displayAllServices && index === _this.state.activeCard
+                                                        ? 'Skrýt'
+                                                        : 'Další odbornosti',
+                                                    ' ',
+                                                    React.createElement("span", { className: "arrow" }))),
                                         React.createElement("div", { className: 'pcitem__info__desc' },
                                             React.createElement("div", { className: 'pcitem__info__desc__txt' },
                                                 React.createElement(ReactMarkdown, { source: clinic.description, renderers: {
                                                         paragraph: function (rProps) { return React.createElement("p", null, rProps.children); },
                                                     } })),
                                             React.createElement("div", { className: 'pcitem__info__btnHolder' },
-                                                React.createElement(Button, { classes: "btn btn--blueBorder", url: clinic.url && clinic.url }, "vice info"))))))))); });
+                                                React.createElement(Button, { classes: "btn btn--blueBorder", url: clinic.url && clinic.url }, "v\u00EDce informac\u00ED"))))))))); });
             })));
     };
     return PolyclinicsList;

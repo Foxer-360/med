@@ -11,6 +11,8 @@ interface Clinic {
     station: string;
     services: string;
     url?: LooseObject;
+    clinic?: string;
+    clinicColor?: string;
 }
 export interface PolyclinicsListProps {
     languageCode?: string;
@@ -25,6 +27,7 @@ export interface PolyclinicsListState {
 declare class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsListState> {
     constructor(props: PolyclinicsListProps);
     filterServices: (services: any, index: any) => any;
+    getServicesLength: (services: any) => any;
     toggleDisplayServices: (index: number) => void;
     render(): JSX.Element;
 }

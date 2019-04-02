@@ -2,6 +2,8 @@
 export interface ContactInfoProps {
     data: {
         address: string;
+        clinic?: string;
+        clinicColor?: string;
         phones: string;
         emails: string;
         additional: string;

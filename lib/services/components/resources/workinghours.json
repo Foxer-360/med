@@ -1,13 +1,20 @@
 {
   "name": "WorkingHours",
+  "data": {
+    "items": [
+      {
+        "day": "",
+        "morningHours": "",
+        "morningHoursDescription": "",
+        "eveningHours": "",
+        "eveningHoursDescription": ""
+      }
+    ]
+  },
   "form": {
     "schema": {
       "type": "object",
       "properties": {
-        "title": {
-          "type": "text",
-          "title": "Title"
-        },
         "items": {
           "type": "array",
           "title": "Hours",

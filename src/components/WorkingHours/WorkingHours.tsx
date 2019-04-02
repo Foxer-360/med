@@ -26,7 +26,6 @@ const WorkingHours = (props: WorkingHoursProps) => {
         return (
           <div className="workingHours">
             <div className="container">
-            111111111
               <table>
                 <tbody>
                   {data && data.map((item, index) => {

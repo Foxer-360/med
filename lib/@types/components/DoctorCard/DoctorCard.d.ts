@@ -10,6 +10,7 @@ export interface DoctorCardProps {
         clinicName: string;
         clinicExtraInfo: string;
         clinicAddress: string;
+        clinicColor: string;
         additionalInfo: [{
             title: string;
             text: string;

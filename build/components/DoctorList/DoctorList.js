@@ -53,7 +53,7 @@ var DoctorList = /** @class */ (function (_super) {
                                     React.createElement("h3", null, doctor.name),
                                     React.createElement("p", null, doctor.field),
                                     React.createElement(Link, __assign({}, doctor.clinicUrl, { className: 'doctorList__item__info__link' }), doctor.clinicName),
-                                    React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "vice info"))));
+                                    React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "v\u00EDce informac\u00ED"))));
                         })),
                     _this.state.numberOfPage < lastPage && React.createElement("div", { className: "doctorList__btnHolder" },
                         React.createElement("button", { onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); }, className: 'btn btn--blueBkg' }, "zobrazit v\u00EDce")))));

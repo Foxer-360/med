@@ -2,6 +2,8 @@
 export interface ContactsProps {
     data: {
         geo: string;
+        clinic?: string;
+        clinicColor?: string;
         phone: string;
         transport: string;
         transportImage: LooseObject;

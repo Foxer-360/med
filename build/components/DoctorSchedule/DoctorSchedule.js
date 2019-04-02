@@ -148,8 +148,8 @@ var DoctorSchedule = function (props) {
                     React.createElement("tbody", null, absences.map(function (absence, i) {
                         if (absence) {
                             return (React.createElement("tr", { key: i },
-                                React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('YYYY-MM-DD')) || ''),
-                                React.createElement("td", null, (absence.toDate.date && moment(absence.toDate.date).format('YYYY-MM-DD')) || ''),
+                                React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('DD-MM-YYYY')) || ''),
+                                React.createElement("td", null, (absence.toDate.date && moment(absence.toDate.date).format('DD-MM-YYYY')) || ''),
                                 React.createElement("td", null,
                                     React.createElement(Link, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " " + ((absence.alternate &&
                                         absence.alternate.lastName) ||

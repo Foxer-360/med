@@ -36,12 +36,12 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import * as React from 'react';
-import Link from '@source/partials/Link';
-import { Query } from 'react-apollo';
-import Loader from '../../partials/Loader';
-import testEmail from '../../helpers/testEmail';
 import axios from 'axios';
 import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import Link from '@source/partials/Link';
+import Loader from '../../partials/Loader';
+import testEmail from '../../helpers/testEmail';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n  }\n"], ["\n  {\n    pageData @client\n  }\n"])));
 var ContactForm = /** @class */ (function (_super) {
     __extends(ContactForm, _super);
@@ -85,7 +85,9 @@ var ContactForm = /** @class */ (function (_super) {
                         .then(function (response) {
                         _this.setState(__assign({}, _this.state, { formStatus: 'success' }));
                     })
-                        .catch(function (err) { return _this.setState(__assign({}, _this.state, { formStatus: 'error', formErrorMessage: err.toString() })); });
+                        .catch(function (err) {
+                        _this.setState(__assign({}, _this.state, { formStatus: 'error', formErrorMessage: err.toString() }));
+                    });
                 }
                 catch (e) {
                     return _this.setState(__assign({}, _this.state, { formStatus: 'error', formErrorMessage: 'Network Problem' }));
