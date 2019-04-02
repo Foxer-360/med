@@ -23,7 +23,7 @@ const ExpertiseDescriptionBoxes = (props: ExpertiseDescriptionBoxesProps) => {
               {box.title && <h5>{box.title}</h5>}
                 <div>
                   <Button url={box.url} classes={'btn--whiteBorder'}>
-                    vice info
+                    více informací
                   </Button>
                 </div>
             </div>

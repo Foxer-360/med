@@ -34,7 +34,7 @@ const InfoRectangles = (props: InfoRectanglesProps) => {
               <div>
                 {rectangle.title && <h5>{rectangle.title}</h5>}
                 <Button classes="btn--blueBorder" url={rectangle.url}>
-                  vice info
+                  více informací
                 </Button>
               </div>
             </div>)

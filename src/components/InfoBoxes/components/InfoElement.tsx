@@ -25,7 +25,7 @@ export default function InfoElement(props: InfoElementProps) {
       <div className={'fullWidthContainer info-boxes__list__element__content'}>
         {titleColor && title && <h5 style={{ color: `${titleColor}` }}>{title}</h5>}
 
-        {button && <Button classes={'btn--fullWidth ' + button}>vice info</Button>}
+        {button && <Button classes={'btn--fullWidth ' + button}>více informací</Button>}
       </div>
 
       {gradientColor && (

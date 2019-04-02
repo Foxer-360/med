@@ -68,7 +68,7 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
                               {doctor.clinicName}
                             </Link>
                             <Button classes="btn--blueBorder btn--small" url={doctor.doctorUrl}>
-                              vice info
+                              více informací
                             </Button>
                           </div>
                         </div>

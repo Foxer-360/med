@@ -1,14 +1,19 @@
 import * as React from 'react';
-import Button from '@source/partials/Button';
-import getImageUrl from '@source/helpers/getImageUrl';
-import SelectButton from './components/index';
+
 import List from '../List';
+import Button from '@source/partials/Button';
+import SelectButton from './components/index';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 interface Position {
   name: string;
   url: LooseObject;
   polyclinic: string;
   image: LooseObject;
+}
+
+export interface JobPositionsState {
+  numberOfPage: number;
 }
 
 export interface JobPositionsProps {
@@ -19,51 +24,71 @@ export interface JobPositionsProps {
   };
 }
 
-const JobPositions = (props: JobPositionsProps) => {
-  const { title, positions } = props.data;
+class JobPositions extends React.Component<JobPositionsProps, JobPositionsState> {
+  constructor(props: JobPositionsProps) {
+    super(props);
 
-  let polyclinics = [];
-  if (positions && positions.length > 0) {
-    positions.map((position, i) => {
-      polyclinics.push(position.polyclinic);
-    });
+    this.state = {
+      numberOfPage: 1
+    };
   }
 
-  return (
-    <div className={'container actual-positions'}>
-      {title && <h3>{title}</h3>}
+  render() {
+    const { title, positions } = this.props.data;
 
-      <SelectButton polyclinics={polyclinics} />
+    let polyclinics = [];
+    if (positions && positions.length > 0) {
+      positions.map((position, i) => {
+        polyclinics.push(position.polyclinic);
+      });
+    }
 
-      <div className={'grid positions'}>
-        <List data={positions}>
-          {({ data }) =>
-            data &&
-            data.map((position, index) => (
-              <div
-                className={'positions__element'}
-                style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
-                key={index}
-              >
-                <div className={'positions__element-content'}>
-                  {position.name && <p>{position.name}</p>}
-                  <Button classes={'btn--whiteBorder'} url={position.url}>
-                    Vice info
-                  </Button>
-                </div>
+    return (
+      <List data={positions}>
+        {({ getPage }) => {
+          const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 3);
+          
+          return (
+            <div className={'container actual-positions'}>
+              {title && <h3>{title}</h3>}
 
-                <div
-                  className={'positions__colorGradient'}
-                  style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
-                />
+              <SelectButton polyclinics={polyclinics} />
+
+              <div className={'grid positions'}>
+                {items && items.map((position, index) => (
+                  <div
+                    className={'positions__element'}
+                    style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
+                    key={index}
+                  >
+                    <div className={'positions__element-content'}>
+                      {position.name && <p>{position.name}</p>}
+                      <Button classes={'btn--whiteBorder'} url={position.url}>
+                        více informací
+                      </Button>
+                    </div>
+
+                    <div
+                      className={'positions__colorGradient'}
+                      style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-        </List>
-      </div>
 
-      <Button classes="hCenterBlock btn--blueBkg btn--down btn--fullWidth">další pozice</Button>
-    </div>
-  );
-};
+              {this.state.numberOfPage < lastPage &&
+                <button 
+                  className={'btn hCenterBlock btn--blueBkg btn--down btn--fullWidth'}
+                  onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                >
+                  další pozice
+                </button>}
+            </div>
+          );
+        }}
+      </List>
+    );
+  }
+}
 
 export default JobPositions;

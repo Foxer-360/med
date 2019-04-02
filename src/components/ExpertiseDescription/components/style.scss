@@ -161,12 +161,14 @@
 
       h5 {
         font-weight: 400;
+        @include max-sm { margin-left: 15px !important; }
       }
 
       div {
         position: relative;
-        max-width: 200px;
+        max-width: 260px;
         margin-left: 35px;
+        @include max-sm { margin-left: 15px; }
 
         a,
         button {
@@ -188,13 +190,9 @@
     }
 
     h5,
-    button {
-      margin-left: 35px;
-    }
+    button { margin-left: 35px; }
 
-    h5 {
-      padding-bottom: 35px;
-    }
+    h5 { padding-bottom: 35px; }
   }
 
   @include max-md {
