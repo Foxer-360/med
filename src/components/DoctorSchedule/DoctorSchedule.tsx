@@ -223,8 +223,8 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                       if (absence) {
                         return (
                           <tr key={i}>
-                            <td>{(absence.fromDate && moment(absence.fromDate.date).format('YYYY-MM-DD')) || ''}</td>
-                            <td>{(absence.toDate.date && moment(absence.toDate.date).format('YYYY-MM-DD')) || ''}</td>
+                            <td>{(absence.fromDate && moment(absence.fromDate.date).format('DD-MM-YYYY')) || ''}</td>
+                            <td>{(absence.toDate.date && moment(absence.toDate.date).format('DD-MM-YYYY')) || ''}</td>
                             <td>
                               <Link dynamic={true} url={getAbsenceLink(data, absence.alternate)}>
                                 {`${(absence.alternate && absence.alternate.firstName) || ''} ${(absence.alternate &&
