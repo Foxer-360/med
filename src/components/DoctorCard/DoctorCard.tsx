@@ -1,8 +1,8 @@
 import * as React from 'react';
-import TextBlock from '../TextBlock';
-import Button from '../../partials/Button';
-import Media from '../../partials/Media';
+
 import List from '../List';
+import TextBlock from '../TextBlock';
+import Media from '../../partials/Media';
 
 export interface DoctorCardProps {
   data: {
@@ -15,6 +15,7 @@ export interface DoctorCardProps {
     clinicName: string;
     clinicExtraInfo: string;
     clinicAddress: string;
+    clinicColor: string;
     additionalInfo: [
       {
         title: string;
@@ -31,11 +32,11 @@ const DoctorCard = (props: DoctorCardProps) => {
     phone,
     nurse,
     doctorImage,
-    clinicImage,
     clinicName,
     clinicExtraInfo,
     clinicAddress,
     additionalInfo,
+    clinicColor
   } = props.data;
 
   return (
@@ -82,7 +83,9 @@ const DoctorCard = (props: DoctorCardProps) => {
                 <div>
                   <p>
                     <strong>{clinicName}</strong>
-                    {clinicExtraInfo && <span>{'  - ' + clinicExtraInfo}</span>}
+                    {clinicExtraInfo && 
+                      <span style={clinicColor && { color: `${clinicColor}`}}>
+                        {'  - ' + clinicExtraInfo}</span>}
                   </p>
                   <p>{clinicAddress}</p>
                 </div>
@@ -110,8 +113,7 @@ const DoctorCard = (props: DoctorCardProps) => {
           data &&
           data.map((item, i) => {
             return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
-          })
-        }
+          })}
       </List>
     </section>
   );
