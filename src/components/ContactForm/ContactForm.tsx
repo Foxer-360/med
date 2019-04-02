@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Link from '@source/partials/Link';
-import { Query } from 'react-apollo';
-import Loader from '../../partials/Loader';
-import testEmail from '../../helpers/testEmail';
 import axios from 'axios';
 import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
+import Link from '@source/partials/Link';
+import Loader from '../../partials/Loader';
+import testEmail from '../../helpers/testEmail';
 
 export interface ContactFormProps {
   languageCode?: string;
@@ -143,7 +144,9 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
           .then(response => {
             this.setState({ ...this.state, formStatus: 'success' });
           })
-          .catch(err => this.setState({ ...this.state, formStatus: 'error', formErrorMessage: err.toString() }));
+          .catch(err => {
+            this.setState({ ...this.state, formStatus: 'error', formErrorMessage: err.toString() });
+          });
       } catch (e) {
         return this.setState({
           ...this.state,
