@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown';
 export interface ContactInfoProps {
   data: { 
     address: string;
+    clinic?: string;
+    clinicColor?: string;
     phones: string;
     emails: string;
     additional: string;
@@ -11,7 +13,7 @@ export interface ContactInfoProps {
 }
 
 const ContactInfo = (props: ContactInfoProps) => {
-  const { address, phones, emails, additional } = props.data;
+  const { address, phones, emails, additional, clinic, clinicColor } = props.data;
 
   return (
     <div className={'contact-info'}>
@@ -19,7 +21,10 @@ const ContactInfo = (props: ContactInfoProps) => {
         <div className={'grid contact-info__grid'}>
           <div className={'grid contact-info__grid__element'}>
             <img src={'/assets/medicon/images/contact-info-1.png'} alt="address" />
-            <div>{address && <ReactMarkdown source={address} />}</div>
+            <div>
+              {address && <ReactMarkdown source={address} />}
+              {clinic && <p style={clinicColor ? {color: `${clinicColor}`} : {}}>{clinic}</p>}
+            </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
             <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number" />  
