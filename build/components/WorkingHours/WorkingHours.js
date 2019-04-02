@@ -6,7 +6,6 @@ var WorkingHours = function (props) {
         var data = _a.data;
         return (React.createElement("div", { className: "workingHours" },
             React.createElement("div", { className: "container" },
-                "111111111",
                 React.createElement("table", null,
                     React.createElement("tbody", null, data && data.map(function (item, index) {
                         return (React.createElement(React.Fragment, null,
