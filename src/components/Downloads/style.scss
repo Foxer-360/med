@@ -47,6 +47,10 @@
           transition: $customEase;
           width: 14px;
           height: 20px;
+
+          &--lightBlue {
+            fill: $lightBlue;
+          }
         }
       }
     }

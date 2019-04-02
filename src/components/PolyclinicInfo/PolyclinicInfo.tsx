@@ -21,15 +21,15 @@ const PolyclinicInfo = (props: ContactsProps) => {
       <div className={'policlinicInfo__wrapper'}>
         <div className={'policlinicInfo__item'}>
           <img src={'/assets/medicon/images/geo.svg'} alt="address" />
-          {geo && <p>{geo}</p>}
+          <p>{geo}</p>
         </div>
         <div className={'policlinicInfo__item'}>
           <img src={'/assets/medicon/images/phone.svg'} alt="phone nubmer" />
-          {phone && <p>{phone}</p>}
+          <p>{phone}</p>
         </div>
         <div className={'policlinicInfo__item'}>
           {transportImage && <Media type={'image'} data={transportImage} />}
-          {transport && <p>{transport}</p>}
+          <p>{transport}</p>
         </div>
       </div>
     </div>
