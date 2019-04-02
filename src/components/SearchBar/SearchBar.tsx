@@ -163,7 +163,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                   );
                 } else {
                   return (
-                      <div className={'searchBarResults__noResults'}>Bohužel jsme nenalezli žádného lékaře.</div>
+                    <div className={'searchBarResults__noResults'}>Bohužel jsme nenašli žádné výsledeky.</div>
                   );
                 }
               }}
