@@ -40,7 +40,7 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
 
     this.state = {
       displayAllServices: false,
-      activeCard: null,
+      activeCard: null
     };
   }
 
@@ -53,9 +53,11 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
     return services;
   }
 
+  getServicesLength = (services) => services.split('\n').length;
+
   toggleDisplayServices = (index: number) => {
     this.setState({
-      displayAllServices: index === null ?  false : true,
+      displayAllServices: index === null ? false : true,
       activeCard: index,
     });
   }
@@ -132,16 +134,18 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                             }}
                           />
 
-                          <div
-                            onClick={() => this.toggleDisplayServices(index === this.state.activeCard ? null : index)}
-                          >  
-                            {this.state.displayAllServices && index === this.state.activeCard
-                              ? 'Skrýt'
-                              : 'Další odbornosti'}{' '}
-                            <span className="arrow" />
-                          </div>
+                          {this.getServicesLength(clinic.services) > 9 &&
+                            <div
+                              className={'pcitem__info__list__showMore'}
+                              onClick={() => this.toggleDisplayServices(index === this.state.activeCard ? null : index)}
+                            >  
+                              {this.state.displayAllServices && index === this.state.activeCard
+                                ? 'Skrýt'
+                                : 'Další odbornosti'}{' '}
+                              <span className="arrow" />
+                            </div>}
                         </div>
-
+                         
                         <div className={'pcitem__info__desc'}>
                           <div className={'pcitem__info__desc__txt'}>
                             <ReactMarkdown
@@ -154,7 +158,7 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
 
                           <div className={'pcitem__info__btnHolder'}>
                             <Button classes="btn btn--blueBorder" url={clinic.url && clinic.url}>
-                              vice info
+                              více informací
                             </Button>
                           </div>
                         </div>

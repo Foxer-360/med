@@ -29,7 +29,7 @@ export default class HelpPopup extends React.Component<HelpPopupProps, HelpPopup
           style={{ backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' }}
           onClick={() => this.toggleList()}
         >
-          <h4>Potřebujete poradit</h4>
+          <h4>Potřebujete poradit?</h4>
         </div>
 
         <ul className={'helpPopup__list'}>

@@ -52,14 +52,10 @@
       padding: 0 !important;
       width: 100%;
       height: 100%;
+      max-width: 420px;
+      max-height: 420px;
 
-      img {
-        // object-fit: contain !important;
-
-        @include md {
-          // object-fit: cover !important;
-        }
-      }
+      @include max-lg { max-width: 100%; }
     }
   }
 
@@ -163,17 +159,26 @@
         padding: 25px 0;
       }
 
+      &__showMore {
+        position: absolute;
+        right: 0;
+        @include max-md { 
+          position: relative;
+
+        }
+      }
+
       ul {
         column-count: 1;
         column-gap: 10px;
         width: 100%;
+        padding-bottom: 0;
 
-        @include md {
+        @include md { 
           column-count: 3;
+          padding-bottom: 25px;
         }
-        li {
-          display: block;
-        }
+        li { display: block; }
       }
 
       div {
@@ -199,14 +204,6 @@
           border-top: 0px #cecece;
           border-bottom: 0px #cecece;
           width: auto;
-        }
-
-        @include lg {
-          margin: 24px 0 0 0;
-        }
-
-        @include xl {
-          margin: 0;
         }
 
         .arrow {
@@ -238,8 +235,8 @@
         font-size: 1.4rem;
         margin-bottom: 18px;
 
-        @include md {
-          width: 70%;
+        @include xl {
+          width: 65%;
           font-size: 1.6rem;
           margin-bottom: 0;
         }
@@ -249,13 +246,14 @@
     &__btnHolder {
       width: 100%;
 
-      @include md {
+      @include xl {
         width: auto;
+        margin-top: 20px;
       }
 
       .btn {
         width: 100%;
-        max-width: 240px;
+        max-width: 260px;
         margin: 0 auto;
         text-align: center;
 
