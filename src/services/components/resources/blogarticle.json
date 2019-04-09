@@ -6,12 +6,13 @@
     "text": "Text",
     "textAlign": "textCenter",
     "perex": "Perex",
-     "image": {
+    "image": {
       "recommendedSizes": {
         "width": "820",
         "height": "360"
       }
-    }
+    },
+    "isImageSquare": false
   },
 
   "form": {
@@ -41,6 +42,10 @@
         },
         "image": {
           "type": "image"
+        },
+        "isImageSquare": {
+          "type": "boolean",
+          "title": "Square image?"
         }
       }
     }

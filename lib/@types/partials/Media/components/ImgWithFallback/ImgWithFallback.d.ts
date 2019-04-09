@@ -6,6 +6,7 @@ export interface ImgWithFallbackProps {
     hash: string;
     recommendedSizes: LooseObject;
     originalData: LooseObject;
+    classes?: string;
 }
 export interface ImgWithFallbackState {
     src: string;

@@ -72,6 +72,7 @@ var ImgWithFallback = /** @class */ (function (_super) {
         };
         return _this;
     }
+    // tslint:disable-next-line:no-any
     ImgWithFallback.prototype.loadImg = function (src) {
         var _this = this;
         if (src) {
@@ -99,12 +100,12 @@ var ImgWithFallback = /** @class */ (function (_super) {
         }
     };
     ImgWithFallback.prototype.render = function () {
-        var alt = this.props.alt;
+        var _a = this.props, alt = _a.alt, classes = _a.classes;
         if (this.state.loading) {
             return React.createElement("div", { className: 'mediaImageLoader' });
         }
         else {
-            return (React.createElement("div", { className: 'mediaRatio', style: {
+            return (React.createElement("div", { className: "mediaRatio " + classes, style: {
                     paddingTop: (parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
                         parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
                         100 + "%",

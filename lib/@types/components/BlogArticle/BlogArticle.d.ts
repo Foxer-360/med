@@ -5,6 +5,7 @@ export interface AppProps {
         title: string;
         image?: LooseObject;
         textAlign: string;
+        isImageSquare: boolean;
     };
 }
 declare const BlogArticle: (props: AppProps) => JSX.Element;

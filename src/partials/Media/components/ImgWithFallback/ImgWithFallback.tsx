@@ -7,6 +7,7 @@ export interface ImgWithFallbackProps {
   hash: string;
   recommendedSizes: LooseObject;
   originalData: LooseObject;
+  classes?: string;
 }
 
 export interface ImgWithFallbackState {
@@ -44,7 +45,7 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
           console.log('There was an error creating variant');
         });
     }
-  };
+  }
 
   getSizedUrl = props => {
     let sizedUrl = null;
@@ -70,8 +71,9 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
         src: props.originalSrc,
       });
     }
-  };
+  }
 
+  // tslint:disable-next-line:no-any
   loadImg(src: any) {
     if (src) {
       const img = new Image();
@@ -110,17 +112,17 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
       loading: true,
       src: this.props.originalSrc,
     });
-  };
+  }
 
   public render() {
-    const { alt } = this.props;
+    const { alt, classes } = this.props;
 
     if (this.state.loading) {
       return <div className={'mediaImageLoader'} />;
     } else {
       return (
         <div
-          className={'mediaRatio'}
+          className={`mediaRatio ${classes}`}
           style={{
             paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
               parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *

@@ -17,14 +17,15 @@ var Media = /** @class */ (function (_super) {
     __extends(Media, _super);
     function Media(props) {
         var _this = _super.call(this, props) || this;
-        _this.setDimensions = function (recommendedSizes) {
-            var result = null;
-            if (recommendedSizes === null) {
-                result = {
-                    width: _this.props.width,
-                    height: _this.props.height
-                };
+        _this.setDimensions = function () {
+            if (!(_this.props.width || _this.props.height)) {
+                return;
             }
+            var result = null;
+            result = {
+                width: _this.props.width && _this.props.width,
+                height: _this.props.height && _this.props.height
+            };
             return result;
         };
         _this.renderAsImage = function (data) {
@@ -32,8 +33,8 @@ var Media = /** @class */ (function (_super) {
             if (data && data.filename) {
                 var recommendedSizes = (data && data.recommendedSizes) || null;
                 var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
-                _this.setDimensions(recommendedSizes);
-                return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash }));
+                recommendedSizes = _this.setDimensions();
+                return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, classes: _this.props.classes }));
             }
             else {
                 return null;

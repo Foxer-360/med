@@ -5,6 +5,7 @@ export interface MediaProps {
   type: string;
   height?: string;
   width?: string;
+  classes?: string;
   // tslint:disable:no-any
   data: any;
 }
@@ -16,18 +17,17 @@ class Media extends React.Component<MediaProps, MediaState> {
     super(props);
   }
 
-  setDimensions = (recommendedSizes: any) => {
+  setDimensions = () => {
+    if (!(this.props.width || this.props.height)) { return; }
+    
     let result = null;
-
-    if (recommendedSizes === null) {
-      result = {
-        width: this.props.width,
-        height: this.props.height
-      };
-    }
+    result = {
+      width: this.props.width && this.props.width,
+      height: this.props.height && this.props.height
+    };
 
     return result;
-  }
+  }  
 
   renderAsImage = data => {
     const baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
@@ -36,7 +36,7 @@ class Media extends React.Component<MediaProps, MediaState> {
       let recommendedSizes = (data && data.recommendedSizes) || null;
       let originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
 
-      this.setDimensions(recommendedSizes);
+      recommendedSizes = this.setDimensions();
 
       return (
         <ImgWithFallback
@@ -46,11 +46,10 @@ class Media extends React.Component<MediaProps, MediaState> {
           recommendedSizes={recommendedSizes}
           originalData={data}
           hash={data.hash}
+          classes={this.props.classes}
         />
       );
-    } else {
-      return null;
-    }
+    } else { return null; }
   }
 
   renderAsVideoEmbed(data: any) {
