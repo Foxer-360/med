@@ -1,7 +1,8 @@
 import * as React from 'react';
+
+import List from '../List';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
-import List from '../List';
 
 export interface CrossRoadsProps {
   languageCode?: string;
@@ -27,7 +28,7 @@ const CrossRoads = (props: CrossRoadsProps) => {
               data.map((item, index) => {
                 return (
                   <Link
-                    url={item.link && item.link.url}
+                    {...item.link}
                     className={'crossRoads__card'}
                     key={index}
                   >

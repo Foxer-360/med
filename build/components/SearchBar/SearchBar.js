@@ -23,11 +23,11 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from 'react';
+import moment from 'moment';
+import debounce from 'lodash/debounce';
 import SvgIcon from '@source/partials/SvgIcon';
 import List from '@source/components/List';
 import Link from '@source/partials/Link';
-import moment from 'moment';
-import debounce from 'lodash/debounce';
 var doctorSearchResultsTemplate = {
     datasourceId: 'cjrkew3eu02gp0d71xoi0i5em',
     data: {

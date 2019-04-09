@@ -1,7 +1,8 @@
 import * as React from 'react';
-import getImageUrl from '@source/helpers/getImageUrl';
-import Link from '@source/partials/Link';
+
 import List from '../List';
+import Link from '@source/partials/Link';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 interface Offer {
   title: string;
@@ -27,20 +28,20 @@ const jobOffers = (props: JobOffersProps) => {
 
         <div className="grid offers">
           <List data={offers}>
-          {({ data }) => data &&
-            data.map((offer, index) => (
-              <Link
-                url={offer.url && offer.url.url}
-                key={index}
-                className={'flexRow offers__element'}
-              >
-                {offer.image && (
-                  <div style={{ backgroundImage: offer.image && `url(${getImageUrl(offer.image)})` }}>
-                    {offer.title && <p className={'hCenterBlock'}>{offer.title}</p>}
-                  </div>
-                )}
-              </Link>
-            ))}
+            {({ data }) => data &&
+              data.map((offer, index) => (
+                <Link
+                  {...offer.url}
+                  key={index}
+                  className={'flexRow offers__element'}
+                >
+                  {offer.image && (
+                    <div style={{ backgroundImage: offer.image && `url(${getImageUrl(offer.image)})` }}>
+                      {offer.title && <p className={'hCenterBlock'}>{offer.title}</p>}
+                    </div>
+                  )}
+                </Link>
+              ))}
           </List>
         </div>
       </section>

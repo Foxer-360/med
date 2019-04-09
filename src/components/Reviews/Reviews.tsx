@@ -1,7 +1,7 @@
 import * as React from 'react';
-import ReviewElement from './components/ReviewElement';
-import Link from '@source/partials/Link';
+
 import List from '../List';
+import ReviewElement from './components/ReviewElement';
 
 interface Reviews {
   cite: string;

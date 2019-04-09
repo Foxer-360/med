@@ -10,10 +10,10 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from 'react';
+import List from '../List';
 import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
-import List from '../List';
 var ExpertiseList = function (props) {
     var _a = props.data, title = _a.title, expertiseList = _a.expertiseList;
     return (React.createElement("section", { className: "expertiseList" },

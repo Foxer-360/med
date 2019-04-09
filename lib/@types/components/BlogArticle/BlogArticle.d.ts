@@ -1,9 +1,9 @@
 /// <reference types="react" />
 export interface AppProps {
     data: {
+        text: string;
         title: string;
         image?: LooseObject;
-        text: string;
         textAlign: string;
     };
 }

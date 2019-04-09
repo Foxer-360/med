@@ -1,7 +1,7 @@
 import * as React from 'react';
-import DividerCircles from '../DividerCircles';
 import ReactMarkdown from 'react-markdown';
 import List from '../List';
+import DividerCircles from '../DividerCircles';
 var ContactsBlock = function (props) {
     var _a = props.data, title = _a.title, managementTitle = _a.managementTitle, nextTitle = _a.nextTitle, managementContacts = _a.managementContacts, nextContacts = _a.nextContacts, otherContacts = _a.otherContacts;
     return (React.createElement("div", { className: 'contacts-block' },

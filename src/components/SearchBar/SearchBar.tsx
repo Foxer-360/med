@@ -1,10 +1,10 @@
 import * as React from 'react';
-import SvgIcon from '@source/partials/SvgIcon';
-import Media from '@source/partials/Media';
-import List from '@source/components/List';
-import Link from '@source/partials/Link';
 import moment from 'moment';
 import debounce from 'lodash/debounce';
+
+import SvgIcon from '@source/partials/SvgIcon';
+import List from '@source/components/List';
+import Link from '@source/partials/Link';
 
 export interface SearchBarProps {
   placeholder: string;

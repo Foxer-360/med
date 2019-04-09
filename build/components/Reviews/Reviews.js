@@ -1,6 +1,6 @@
 import * as React from 'react';
-import ReviewElement from './components/ReviewElement';
 import List from '../List';
+import ReviewElement from './components/ReviewElement';
 var Reviews = function (props) {
     var _a = props.data, title = _a.title, reviews = _a.reviews;
     return (React.createElement("section", { className: "reviews" },

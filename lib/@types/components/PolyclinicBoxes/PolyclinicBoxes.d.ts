@@ -1,7 +1,7 @@
 /// <reference types="react" />
 interface Polyclinic {
-    url: LooseObject;
-    image: LooseObject;
+    url?: LooseObject;
+    image?: LooseObject;
 }
 export interface PolyclinicBoxesProps {
     languageCode?: string;

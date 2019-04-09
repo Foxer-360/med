@@ -1,13 +1,14 @@
 import * as React from 'react';
+import gql from 'graphql-tag';
+import { adopt } from 'react-adopt';
+import { Query } from 'react-apollo';
 import Masonry from 'react-masonry-css';
-import { BlogCard } from './components/blogCard';
+import { findFirst, findAll } from 'obj-traverse/lib/obj-traverse';
+
 import Button from '../../partials/Button';
 import Loader from '../../partials/Loader';
 import SearchBar from '../SearchBar/SearchBar';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import { adopt } from 'react-adopt';
-import { findFirst, findAll } from 'obj-traverse/lib/obj-traverse';
+import { BlogCard } from './components/blogCard';
 
 const GET_CONTEXT = gql`
   {

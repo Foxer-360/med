@@ -1,12 +1,13 @@
 import * as React from 'react';
-import Media from '@source/partials/Media';
+
 import List from '../List';
 import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
 
 interface Benefits {
   text: string;
-  image: LooseObject;
-  url?: LooseObject;  
+  image?: LooseObject;
+  url?: LooseObject;
 }
 
 export interface BenefitsProps {
@@ -27,7 +28,7 @@ const Benefits = (props: BenefitsProps) => {
               {data &&
                 data.map((benefit, index) => {
                   return benefit.url ? (
-                    <Link key={index} url={benefit.url.url} className={'benefits__list__element grid'}>
+                    <Link key={index} {...benefit.url} className={'benefits__list__element grid'}>
                       {benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />}
 
                       {benefit.text && <p>{benefit.text}</p>}

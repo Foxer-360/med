@@ -184,7 +184,7 @@ var ContactForm = /** @class */ (function (_super) {
                                     React.createElement("label", { htmlFor: "styled-checkbox-1" })),
                                 React.createElement("div", null,
                                     "Souhlas\u00EDm se ",
-                                    React.createElement(Link, { url: gdprLink && gdprLink.url }, "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                    React.createElement(Link, __assign({}, gdprLink), "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                     " \u00FAdaj\u016F.")),
                             React.createElement("div", { className: 'flexRow flexAlign--center' },
                                 React.createElement("button", { className: "btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat")),

@@ -48,13 +48,13 @@ class MyProblem extends React.Component<MyProblemProps, MyProblemState> {
       availableSpecializations: availableSpecializations,
       area: area,
     });
-  };
-
+  }
+  
   closeInfoBox = () => {
     this.setState({
       area: '',
     });
-  };
+  }
 
   public render() {
     return (

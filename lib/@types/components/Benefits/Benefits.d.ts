@@ -1,7 +1,7 @@
 /// <reference types="react" />
 interface Benefits {
     text: string;
-    image: LooseObject;
+    image?: LooseObject;
     url?: LooseObject;
 }
 export interface BenefitsProps {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Link from '@source/partials/Link';
+
 import List from '../List';
 
 interface Company {

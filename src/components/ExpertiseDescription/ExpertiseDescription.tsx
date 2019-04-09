@@ -1,8 +1,9 @@
 import * as React from 'react';
+
+import List from '../List';
 import DividerCircles from '../DividerCircles';
 import ExpertiseDescriptionCare from './components/ExpertiseDescriptionCare';
 import ExpertiseDescriptionBoxes from './components/ExpertiseDescriptionBoxes';
-import List from '../List';
 import ExpertiseDescriptionExamination from './components/ExpertiseDescriptionExamination';
 
 interface Examination {

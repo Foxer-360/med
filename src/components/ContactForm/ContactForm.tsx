@@ -236,7 +236,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                         </div>
 
                         <div>
-                          Souhlasím se <Link url={gdprLink && gdprLink.url}>zpracováním osobních</Link> údajů.
+                          Souhlasím se <Link {...gdprLink}>zpracováním osobních</Link> údajů.
                         </div>
                       </div>
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
+import List from '../List';
 import Button from '@source/partials/Button';
 import getImageUrl from '@source/helpers/getImageUrl';
-import List from '../List';
 var InfoRectangles = function (props) {
     var infoRectangles = props.data.infoRectangles;
     return (React.createElement("section", { className: "info-rectangles" },

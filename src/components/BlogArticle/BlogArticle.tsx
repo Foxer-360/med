@@ -1,12 +1,13 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
+
 import Media from '../../partials/Media';
 
 export interface AppProps {
   data: {
+    text: string;
     title: string;
     image?: LooseObject;
-    text: string;
     textAlign: string;
   };
 }

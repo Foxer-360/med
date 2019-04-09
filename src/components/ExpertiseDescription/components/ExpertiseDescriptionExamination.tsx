@@ -30,10 +30,10 @@ class ExpertiseDescriptionExamination extends React.Component<ExpertiseDescripti
 
             return examination.url ? (
               <Link 
-                key={i} 
+                key={i}
+                {...examination.url}
                 style={examination.url ? { fontWeight: 500 } : { cursor: 'default' }}
-                className={`examination__list__item ${lastLong ? 'examination__list__item--last-long' : ''}`} 
-                url={examination.url && examination.url.url}
+                className={`examination__list__item ${lastLong ? 'examination__list__item--last-long' : ''}`}
               >
                 {examination.title && examination.title}
               </Link>) : (

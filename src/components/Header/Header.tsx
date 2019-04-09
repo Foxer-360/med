@@ -138,7 +138,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               <div className="container">
                 <div className={'header__wrapper'}>
                   <div className={'header__logo'} ref={this.logo}>
-                  <Link 
+                    <Link 
                       url={`${context.websiteData.urlMask === '/' ? 
                               '' : context.websiteData.urlMask}/${context.languageData.code}`}
                     >

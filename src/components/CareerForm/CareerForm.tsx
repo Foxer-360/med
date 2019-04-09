@@ -358,7 +358,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                       </div>
 
                       <div>
-                        Souhlasím se <Link url={gdprLink.url}>zpracováním osobních</Link> údajů.
+                        Souhlasím se <Link {...gdprLink}>zpracováním osobních</Link> údajů.
                       </div>
                     </div>
 

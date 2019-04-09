@@ -1,8 +1,9 @@
 import * as React from 'react';
-import SvgIcon from '@source/partials/SvgIcon';
+import LinesEllipsis from 'react-lines-ellipsis';
+
 import Link from '@source/partials/Link';
 import Media from '@source/partials/Media';
-import LinesEllipsis from 'react-lines-ellipsis';
+import SvgIcon from '@source/partials/SvgIcon';
 
 export interface BlogCardProps {
   id: string;

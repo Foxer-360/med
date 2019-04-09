@@ -1,7 +1,8 @@
 import * as React from 'react';
-import DividerCircles from '../DividerCircles';
 import ReactMarkdown from 'react-markdown';
+
 import List from '../List';
+import DividerCircles from '../DividerCircles';
 
 interface ManagementContact {
   name: string;

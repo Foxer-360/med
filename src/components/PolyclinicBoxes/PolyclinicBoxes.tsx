@@ -5,8 +5,8 @@ import List from '../List';
 import DividerCircles from '../DividerCircles';
 
 interface Polyclinic {
-  url: LooseObject;
-  image: LooseObject;
+  url?: LooseObject;
+  image?: LooseObject;
 }
 
 export interface PolyclinicBoxesProps {
@@ -30,8 +30,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
         <ul className={'grid'}>
           <List data={polyclinics}>
             {({ data }) =>
-              data &&
-              data.map((polyclinic, index) => {
+              data && data.map((polyclinic, index) => {
                 const { url, name, image } = polyclinic;
 
                 return (
@@ -62,8 +61,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
                     )}
                   </li>
                 );
-              })
-            }
+              })}
           </List>
         </ul>
       </div>

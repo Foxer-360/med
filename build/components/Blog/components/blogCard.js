@@ -1,8 +1,8 @@
 import * as React from 'react';
-import SvgIcon from '@source/partials/SvgIcon';
+import LinesEllipsis from 'react-lines-ellipsis';
 import Link from '@source/partials/Link';
 import Media from '@source/partials/Media';
-import LinesEllipsis from 'react-lines-ellipsis';
+import SvgIcon from '@source/partials/SvgIcon';
 export function BlogCard(props) {
     var id = props.id, title = props.title, text = props.text, color = props.color, img = props.img, special = props.special;
     if (special) {
