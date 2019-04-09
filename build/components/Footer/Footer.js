@@ -114,8 +114,8 @@ var Footer = /** @class */ (function (_super) {
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "copyrights grid" },
                         company && React.createElement("p", null, company),
-                        text && (React.createElement(Link, __assign({}, url),
-                            React.createElement("p", null, text))))))));
+                        text && React.createElement(Link, __assign({}, url),
+                            React.createElement("p", null, text)))))));
     };
     Footer.prototype.transformNavigationsIntoTree = function (navigation, urls) {
         var _this = this;

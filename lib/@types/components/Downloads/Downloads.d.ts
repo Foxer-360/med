@@ -1,7 +1,7 @@
 /// <reference types="react" />
 interface Downloads {
     title: string;
-    url: string;
+    file?: LooseObject;
 }
 export interface DownloadsProps {
     data: {

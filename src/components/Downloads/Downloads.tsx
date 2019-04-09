@@ -1,12 +1,13 @@
 import * as React from 'react';
+
+import List from '../List';
+import getUrl from '@source/helpers/getImageUrl';
 import DividerCircles from '../DividerCircles';
 import SvgIcon from '@source/partials/SvgIcon';
-import Link from '@source/partials/Link';
-import List from '../List';
 
 interface Downloads {
   title: string;
-  url: string;
+  file?: LooseObject;
 }
 
 export interface DownloadsProps {
@@ -34,12 +35,17 @@ const Downloads = (props: DownloadsProps) => {
               data.map((item, i) => (
                 <div className={'downloads__list__element'} key={i}>
                   {item.title && <p>{item.title}</p>}
-                  {item.url && item.url.url && (
-                    <Link {...item.url} className={'btn btn--blueBorder'}>
+                  {item.file &&
+                    <a 
+                      href={getUrl(item.file)}
+                      download={true} 
+                      target={'_blank'} 
+                      className={'btn btn--blueBorder'}
+                    >
                       Stáhnout
                       <SvgIcon name={'download'} type={'lightBlue'} />
-                    </Link>
-                  )}
+                    </a>
+                  }
                 </div>
               ))
             }

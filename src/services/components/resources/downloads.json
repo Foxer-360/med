@@ -6,19 +6,19 @@
     "downloads": [
       {
         "title": "Jak podat stížnost",
-        "url": ""
+        "file": ""
       },
       {
         "title": "Lorem ipsum dolor",
-        "url": ""
+        "file": ""
       },
       {
         "title": "Lorem ipsum dolor",
-        "url": ""
+        "file": ""
       },
       {
         "title": "Lorem ipsum dolor",
-        "url": ""
+        "file": ""
       }
     ]
   },
@@ -43,9 +43,8 @@
                 "type": "text",
                 "title": "Title"
               },
-              "url": {
-                "type": "urlAutocomplete",
-                "title": "URL"
+              "file": {
+                "type": "file"
               }
             }
           }

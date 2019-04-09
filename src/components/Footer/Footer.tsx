@@ -169,11 +169,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
           <div className="container">
             <div className="copyrights grid">
               {company && <p>{company}</p>}
-              {text && (
-                <Link {...url}>
-                  <p>{text}</p>
-                </Link> 
-              )}
+              {text && <Link {...url}><p>{text}</p></Link>}
             </div>
           </div>
         </div>
