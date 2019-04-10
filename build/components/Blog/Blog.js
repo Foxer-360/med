@@ -21,9 +21,9 @@ import { adopt } from 'react-adopt';
 import { Query } from 'react-apollo';
 import Masonry from 'react-masonry-css';
 import { findFirst, findAll } from 'obj-traverse/lib/obj-traverse';
-import Button from '../../partials/Button';
-import Loader from '../../partials/Loader';
-import SearchBar from '../SearchBar/SearchBar';
+import List from '../List';
+import Loader from '@source/partials/Loader';
+import SearchBar from './components/SearchBar';
 import { BlogCard } from './components/blogCard';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n  }\n"])));
 var GET_ALL_PAGES = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID!) {\n    pages {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { language: { id: $languageId } }) {\n        id\n        name\n        createdAt\n        content\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
@@ -57,7 +57,14 @@ var Blog = /** @class */ (function (_super) {
     __extends(Blog, _super);
     function Blog(props) {
         var _this = _super.call(this, props) || this;
-        _this.state = {};
+        // tslint:disable-next-line:no-any
+        _this.onSearchChange = function (e) {
+            _this.setState({ searchQuery: e.target.value });
+        };
+        _this.state = {
+            numberOfPage: 1,
+            searchQuery: ''
+        };
         return _this;
     }
     Blog.prototype.render = function () {
@@ -66,7 +73,8 @@ var Blog = /** @class */ (function (_super) {
         return (React.createElement("section", { className: 'blog' },
             React.createElement("div", { className: "container" },
                 title && React.createElement("h1", null, title),
-                displaySearch && React.createElement(SearchBar, { placeholder: 'Vyhledat téma', barColor: 'gray' }),
+                displaySearch &&
+                    React.createElement(SearchBar, { value: this.state.searchQuery, onChange: this.onSearchChange, placeholder: 'Vyhledat', barColor: 'gray' }),
                 React.createElement(ComposedQuery, null, function (_a) {
                     var _b = _a.allPages, allPagesData = _b.data, allPagesLoading = _b.loading, allPagesError = _b.error, _c = _a.currentPage, currentPageData = _c.data, currentPageLoading = _c.loading, currentPageError = _c.error, languageData = _a.getContext.languageData;
                     if (allPagesLoading || currentPageLoading || !allPagesData || !languageData) {
@@ -99,20 +107,27 @@ var Blog = /** @class */ (function (_super) {
                         b = b.translations[0].createdAt;
                         return a > b ? -1 : a < b ? 1 : 0;
                     });
-                    return (React.createElement(Masonry, { breakpointCols: { default: 3, 4000: 3, 800: 2, 500: 1 }, className: "my-masonry-grid", columnClassName: "my-masonry-grid_column" }, articles.map(function (article, i) { return _this.mapArticleToContent(article, languageData.code, i); })));
-                }),
-                React.createElement("div", { className: 'blog__blur' },
-                    React.createElement("div", null)),
-                React.createElement("div", { className: "blog__btnHolder" },
-                    React.createElement(Button, { classes: "btn--blueBkg btn--fullWidth" }, "Na\u010D\u00EDst dal\u0161\u00ED")))));
+                    return (React.createElement(List, { data: articles, searchedText: _this.state.searchQuery }, function (_a) {
+                        var getPage = _a.getPage;
+                        var _b = getPage(_this.state.numberOfPage, 'infinite', 6), items = _b.items, lastPage = _b.lastPage;
+                        return (React.createElement(React.Fragment, null,
+                            React.createElement(Masonry, { breakpointCols: { default: 3, 4000: 3, 800: 2, 500: 1 }, className: "my-masonry-grid", columnClassName: "my-masonry-grid_column" }, items.map(function (article, i) {
+                                return _this.mapArticleToContent(article, languageData.code, i);
+                            })),
+                            React.createElement("div", { className: 'blog__blur' },
+                                React.createElement("div", null)),
+                            _this.state.numberOfPage < lastPage &&
+                                React.createElement("button", { style: { margin: '0 auto' }, className: 'btn btn--greenBkg btn--fullWidth', onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); } }, "Na\u010D\u00EDst dal\u0161\u00ED")));
+                    }));
+                }))));
     };
     Blog.prototype.mapArticleToContent = function (article, languageCode, index) {
         var content = article.translations.find(function (t) { return t.language.code === languageCode || 'cs'; });
         var tags = article.tags;
         var blogArticleComponentData = findFirst(content.content, 'content', { name: 'BlogArticle' });
         if (blogArticleComponentData) {
-            var _a = findFirst(content.content, 'content', { name: 'BlogArticle' }).data, perex = _a.perex, image = _a.image, name_1 = _a.title;
-            return (React.createElement(BlogCard, { id: article.id, title: name_1, text: perex, key: index, color: '#386fa2', img: image, special: false }));
+            var _a = findFirst(content.content, 'content', { name: 'BlogArticle' }).data, text = _a.text, perex = _a.perex, image = _a.image, name_1 = _a.title;
+            return (React.createElement(BlogCard, { id: article.id, title: name_1, text: text.slice(0, 35) + " ..", key: index, color: '#386fa2', img: image, special: false }));
         }
         return React.createElement("div", null);
     };

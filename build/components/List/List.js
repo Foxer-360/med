@@ -31,8 +31,8 @@ import gql from 'graphql-tag';
 import { Query, ApolloConsumer } from 'react-apollo';
 import * as R from 'ramda';
 import { adopt } from 'react-adopt';
-import Loader from '@source/partials/Loader';
 import { withRouter } from 'react-router';
+import Loader from '@source/partials/Loader';
 var escape = function (str) {
     // TODO: escape %x75 4HEXDIG ?? chars
     return str
@@ -45,7 +45,7 @@ var escape = function (str) {
         .replace(/[\r]/g, '\\r')
         .replace(/[\t]/g, '\\t');
 };
-var FRONTEND = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"], ["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"])));
+var FRONTEND = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n        urlMask\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"], ["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n        urlMask\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"])));
 var DATASOURCE = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"], ["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"])));
 var GET_CONTEXT = gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"])));
 var GET_ALL_PAGES = gql(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
@@ -101,7 +101,7 @@ var List = /** @class */ (function (_super) {
     __extends(List, _super);
     function List() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.getPaginatingFunction = function (items) {
+        _this.getPaginatingFunction = function (items, searchedFragments) {
             var getPage = function (numberOfPage, paginationType, pageSize) {
                 if (paginationType === void 0) { paginationType = 'pagination'; }
                 if (pageSize === void 0) { pageSize = 10; }
@@ -111,6 +111,11 @@ var List = /** @class */ (function (_super) {
                     (numberOfPage) * pageSize : numberOfItems;
                 var cutFrom = (numberOfPage) * pageSize < numberOfItems ?
                     cutTo - pageSize : (((numberOfPage - 1) && ((numberOfPage - 1) * pageSize)) || 0);
+                if (searchedFragments && searchedFragments.length > 0) {
+                    items = searchedFragments.reduce(function (filteredPages, fragment) {
+                        return filteredPages.filter(function (page) { return JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase()); });
+                    }, items);
+                }
                 return { items: items.slice(paginationType === 'pagination' ? cutFrom : 0, cutTo),
                     lastPage: lastPage
                 };
@@ -249,7 +254,7 @@ var List = /** @class */ (function (_super) {
         }
         var searchedFragments = searchedText && searchedText.trim().split(' ').map(function (fragment) { return fragment.trim(); });
         if (Array.isArray(data)) {
-            return this.props.children({ data: data, getPage: this.getPaginatingFunction(data) });
+            return this.props.children({ data: data, getPage: this.getPaginatingFunction(data, searchedFragments) });
         }
         // In case that data isn't array and contain datasourceId try to fetch datasource with his items
         if (data && data.datasourceId) {
@@ -393,8 +398,8 @@ var List = /** @class */ (function (_super) {
                         else if (replacement && typeof replacement === 'object') {
                             replaced = replaced.replace(result[0], JSON.stringify(replacement));
                         }
-                        else {
-                            replaced = replaced.replace(result[0], '');
+                        else if (replacement && typeof replacement === 'number') {
+                            replaced = replaced.replace(result[0], replacement.toString());
                         }
                     }
                 }
