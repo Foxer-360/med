@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import * as React from 'react';
 interface Expertise {
     title: string;
     url: LooseObject;
@@ -11,5 +11,11 @@ export interface ExpertiseListProps {
         expertiseList: Expertise[];
     };
 }
-declare const ExpertiseList: (props: ExpertiseListProps) => JSX.Element;
-export default ExpertiseList;
+interface ExpertiseListState {
+    numberOfPage: number;
+}
+export default class ExpertiseList extends React.Component<ExpertiseListProps, ExpertiseListState> {
+    constructor(props: ExpertiseListProps);
+    render(): JSX.Element;
+}
+export {};

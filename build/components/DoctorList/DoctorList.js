@@ -23,10 +23,10 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from 'react';
+import List from '../List';
+import Link from '@source/partials/Link';
 import Button from '../../partials/Button';
 import Media from '@source/partials/Media';
-import Link from '@source/partials/Link';
-import List from '../List';
 var DoctorList = /** @class */ (function (_super) {
     __extends(DoctorList, _super);
     function DoctorList(props) {

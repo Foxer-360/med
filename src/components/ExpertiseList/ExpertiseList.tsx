@@ -1,9 +1,8 @@
 import * as React from 'react';
 
 import List from '../List';
-import Button from '../../partials/Button';
-import Media from '@source/partials/Media';
 import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
 
 interface Expertise {
   title: string;
@@ -19,37 +18,55 @@ export interface ExpertiseListProps {
   };
 }
 
-const ExpertiseList = (props: ExpertiseListProps) => {
-  const { title, expertiseList } = props.data;
+interface ExpertiseListState {
+  numberOfPage: number;
+}
 
-  return (
-    <section className="expertiseList">
-      {title && <h3>{title}</h3>}
+export default class ExpertiseList extends React.Component<ExpertiseListProps, ExpertiseListState> {
+  constructor(props: ExpertiseListProps) {
+    super(props);
 
-      <div className="grid-container">
-        <List data={expertiseList}>
-          {({ data }) =>
-            data &&
-            data.map((item, index) => (
-              <Link {...item.url} key={index}>
-                <div className="expertiseList__element">
-                  <div>{item.image && <Media type={'image'} data={item.image} />}</div>
+    this.state = {
+      numberOfPage: 1,
+    };
+  }
 
-                  {item.title && <p>{item.title}</p>}
-                </div>
-              </Link>
-            ))
-          }
-        </List>
-      </div>
+  render () {
+    const { title, expertiseList } = this.props.data;
 
-      {expertiseList.length > 0 && (
-        <div className={'container'}>
-          <Button classes="btn--blueBkg btn--fullWidth">zobrazit dalši odbornosti</Button>
-        </div>
-      )}
-    </section>
-  );
-};
-
-export default ExpertiseList;
+    return (
+      <List data={expertiseList}>
+        {({ getPage }) => {
+          const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 9);
+  
+          return (
+            <section className="expertiseList">
+              {title && <h3>{title}</h3>}
+        
+              <div className="grid-container">
+                {items && items.map((item, index) => (
+                  <Link {...item.url} key={index}>
+                    <div className="expertiseList__element">
+                      <div>{item.image && <Media type={'image'} data={item.image} />}</div>
+  
+                      {item.title && <p>{item.title}</p>}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+  
+              {this.state.numberOfPage < lastPage && <div className="container">
+                <button
+                  onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                  className={'btn btn--blueBkg btn--fullWidth'}
+                >
+                  zobrazit dalši odbornosti
+                </button>
+              </div>}
+            </section>
+          );
+        }}
+      </List>
+    );
+  }
+}
