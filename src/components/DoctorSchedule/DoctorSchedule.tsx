@@ -38,16 +38,16 @@ const getDayOfWeek = day => {
       return 'středa';
 
     case 'th':
-      return 'pondělí';
-
-    case 'fr':
       return 'čtvrtek';
 
-    case 'st':
+    case 'fr':
       return 'pátek';
 
-    case 'su':
+    case 'st':
       return 'sobota';
+
+    case 'su':
+      return 'neděle';
 
     default:
       return 'neděle';
