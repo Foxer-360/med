@@ -117,7 +117,7 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
       <section className={'blog'}>
         <div className="container">
           {title && <h1>{title}</h1>}
-          {console.log(this.state.searchQuery)}
+
           {displaySearch && 
             <SearchBar 
               value={this.state.searchQuery}
@@ -220,14 +220,14 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
 
     if (blogArticleComponentData) {
       const {
-        data: { perex, image, title: name },
+        data: { text, perex, image, title: name },
       } = findFirst(content.content, 'content', { name: 'BlogArticle' });
 
       return (
         <BlogCard 
           id={article.id} 
           title={name} 
-          text={perex} 
+          text={`${text.slice(0, 35)} ..`}
           key={index} 
           color={'#386fa2'} 
           img={image} 
