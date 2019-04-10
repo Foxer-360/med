@@ -5,9 +5,9 @@ import { Query } from 'react-apollo';
 import Masonry from 'react-masonry-css';
 import { findFirst, findAll } from 'obj-traverse/lib/obj-traverse';
 
-import Button from '../../partials/Button';
-import Loader from '../../partials/Loader';
-import SearchBar from '../SearchBar/SearchBar';
+import List from '../List';
+import Loader from '@source/partials/Loader';
+import SearchBar from './components/SearchBar';
 import { BlogCard } from './components/blogCard';
 
 const GET_CONTEXT = gql`
@@ -90,13 +90,24 @@ export interface BlogProps {
   };
 }
 
-export interface BlogState {}
+export interface BlogState {
+  numberOfPage: number;
+  searchQuery: string;
+}
 
 export default class Blog extends React.Component<BlogProps, BlogState> {
   constructor(props: BlogProps) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      numberOfPage: 1,
+      searchQuery: ''
+    };
+  }
+
+  // tslint:disable-next-line:no-any
+  onSearchChange = (e: any) => {
+    this.setState({ searchQuery: e.target.value });
   }
 
   public render() {
@@ -106,8 +117,14 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
       <section className={'blog'}>
         <div className="container">
           {title && <h1>{title}</h1>}
-
-          {displaySearch && <SearchBar placeholder={'Vyhledat téma'} barColor={'gray'} />}
+          {console.log(this.state.searchQuery)}
+          {displaySearch && 
+            <SearchBar 
+              value={this.state.searchQuery}
+              onChange={this.onSearchChange}
+              placeholder={'Vyhledat'} 
+              barColor={'gray'} 
+            />}
 
           <ComposedQuery>
             {({
@@ -155,24 +172,40 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
                   return a > b ? -1 : a < b ? 1 : 0;
                 });
               return (
-                <Masonry
-                  breakpointCols={{ default: 3, 4000: 3, 800: 2, 500: 1 }}
-                  className="my-masonry-grid"
-                  columnClassName="my-masonry-grid_column"
-                >
-                  {articles.map((article, i) => this.mapArticleToContent(article, languageData.code, i))}
-                </Masonry>
+                <List data={articles} searchedText={this.state.searchQuery}>
+                  {({ getPage }) => {
+                    const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 6);
+                    
+                    return (
+                      <>
+                        <Masonry
+                          breakpointCols={{ default: 3, 4000: 3, 800: 2, 500: 1 }}
+                          className="my-masonry-grid"
+                          columnClassName="my-masonry-grid_column"
+                        >
+                          {items.map((article, i) => 
+                            this.mapArticleToContent(article, languageData.code, i))}
+                        </Masonry>
+
+                        <div className={'blog__blur'}>
+                          <div />
+                        </div>
+                        
+                        {this.state.numberOfPage < lastPage &&
+                          <button 
+                            style={{ margin: '0 auto' }}
+                            className={'btn btn--greenBkg btn--fullWidth'}
+                            onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                          >
+                            Načíst další
+                          </button>}
+                      </>
+                    );
+                  }}
+                </List>
               );
             }}
           </ComposedQuery>
-
-          <div className={'blog__blur'}>
-            <div />
-          </div>
-
-          <div className="blog__btnHolder">
-            <Button classes="btn--blueBkg btn--fullWidth">Načíst další</Button>
-          </div>
         </div>
       </section>
     );
@@ -191,7 +224,15 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
       } = findFirst(content.content, 'content', { name: 'BlogArticle' });
 
       return (
-        <BlogCard id={article.id} title={name} text={perex} key={index} color={'#386fa2'} img={image} special={false} />
+        <BlogCard 
+          id={article.id} 
+          title={name} 
+          text={perex} 
+          key={index} 
+          color={'#386fa2'} 
+          img={image} 
+          special={false} 
+        />
       );
     }
     return <div />;

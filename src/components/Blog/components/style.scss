@@ -1,0 +1,101 @@
+.searchbar {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+
+  &--focused {
+    .svgIcon {
+      fill: $lightBlue;
+    }
+
+    .searchBar__bar {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__input {
+    display: block;
+    position: relative;
+    background-color: #fff;
+    padding: 10.5px 19px;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include md {
+      padding: 19px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding-right: 25px;
+      background-color: white;
+      color: $darkGray;
+      font-family: $mons;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 12px;
+      letter-spacing: 1.12px;
+
+      @include md {
+        font-size: 2rem;
+        letter-spacing: 0.88px;
+      }
+
+      &::placeholder {
+        color: $darkGray;
+      }
+    }
+
+    .searchIcon {
+      position: absolute;
+      right: 21px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &__bar {
+    display: block;
+    height: 4px;
+    width: 100%;
+    transition: 300ms;
+    position: relative;
+
+    &:after {
+      @include pseudo;
+      height: 4px;
+      width: 0;
+      left: 0;
+      top: 0;
+      @include leftRightGradient($green, #00aadd);
+      z-index: 2;
+      transition: 300ms ease;
+
+      @include md {
+        height: 8px;
+      }
+    }
+
+    @include md {
+      height: 8px;
+    }
+  }
+
+  &--lightBlue {
+    .searchBar__bar {
+      @include leftRightGradient($green, #00aadd);
+    }
+  }
+
+  &--gray {
+    .searchBar__bar {
+      background-color: #c5c8ca;
+    }
+  }
+}
