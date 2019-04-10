@@ -47,8 +47,7 @@ const Downloads = (props: DownloadsProps) => {
                     </a>
                   }
                 </div>
-              ))
-            }
+              ))}
           </List>
         </div>
       </div>

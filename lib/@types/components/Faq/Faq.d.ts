@@ -1,5 +1,18 @@
-/// <reference types="react" />
-export interface FaqProps {
+import * as React from 'react';
+interface Item {
+    title: string;
+    description: string;
 }
-declare const Faq: (props: FaqProps) => JSX.Element;
-export default Faq;
+export interface FaqProps {
+    data: {
+        items: Item[];
+    };
+}
+interface FaqState {
+    numberOfPage: number;
+}
+export default class Faq extends React.Component<FaqProps, FaqState> {
+    constructor(props: FaqProps);
+    render(): JSX.Element;
+}
+export {};

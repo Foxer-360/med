@@ -1,54 +1,61 @@
 import * as React from 'react';
-import Button from '@source/partials/Button';
+import ReactMarkdown from 'react-markdown';
 
-export interface FaqProps {}
+import List from '../List';
 
-const data = {
-  items: [
-    {
-      title: 'Lorem ipsum dolor sit amet?',
-      // tslint:disable-next-line:max-line-length
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio. Maecenas eu ligula eget ipsum scelerisque posuere. Integer rutrum tristique nisl hendrerit fringilla. Etiam interdum nunc nec scelerisque pulvinar. Phasellus iaculis commodo dui, non aliquet est egestas eget. Nullam arcu enim, laoreet non consectetur in, sodales eu risus.',
-    },
-    {
-      title: 'Lorem ipsum dolor sit amet?',
-      // tslint:disable-next-line:max-line-length
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio. Maecenas eu ligula eget ipsum scelerisque posuere. Integer rutrum tristique nisl hendrerit fringilla. Etiam interdum nunc nec scelerisque pulvinar. Phasellus iaculis commodo dui, non aliquet est egestas eget. Nullam arcu enim, laoreet non consectetur in, sodales eu risus.',
-    },
-    {
-      title: 'Lorem ipsum dolor sit amet?',
-      // tslint:disable-next-line:max-line-length
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio. Maecenas eu ligula eget ipsum scelerisque posuere. Integer rutrum tristique nisl hendrerit fringilla. Etiam interdum nunc nec scelerisque pulvinar. Phasellus iaculis commodo dui, non aliquet est egestas eget. Nullam arcu enim, laoreet non consectetur in, sodales eu risus.',
-    },
-    {
-      title: 'Lorem ipsum dolor sit amet?',
-      // tslint:disable-next-line:max-line-length
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio. Maecenas eu ligula eget ipsum scelerisque posuere. Integer rutrum tristique nisl hendrerit fringilla. Etiam interdum nunc nec scelerisque pulvinar. Phasellus iaculis commodo dui, non aliquet est egestas eget. Nullam arcu enim, laoreet non consectetur in, sodales eu risus.',
-    }
-  ]
-};
+interface Item {
+  title: string;
+  description: string;
+}
 
-const Faq = (props: FaqProps) => {
-  const { items } = data;
+export interface FaqProps {
+  data: {
+    items: Item[];
+  };
+}
 
-  return (
-    <div className={'faq'}>
-      <div className={'container'}>
+interface FaqState {
+  numberOfPage: number;
+}
 
-        {items && items.map((item, index) => {
+export default class Faq extends React.Component<FaqProps, FaqState> {
+  constructor(props: FaqProps) {
+    super(props);
+
+    this.state = {
+      numberOfPage: 1,
+    };
+  }
+
+  render () {
+    return (
+      <List data={this.props.data.items}>
+        {({ getPage }) => {
+          const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 4);
+          
           return (
-            <div key={index} className={'faq__element'}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+            <div className={'faq'}>
+              <div className={'container'}>
+                {items && items.map((item, i) => {
+                  return (
+                    <div key={i} className={'faq__element'}>
+                      <h3>{item.title}</h3>
+                      {item.description && <ReactMarkdown source={item.description} />}
+                    </div>
+                  );
+                })}
+
+                {this.state.numberOfPage < lastPage && <button 
+                  className={'btn hCenterBlock btn--blueBkg btn--fullWidth'}
+                  onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                >
+                  více info
+                </button>}
+              </div>
             </div>
           );
-        })}
-        <Button classes={'hCenterBlock btn--blueBkg btn--down btn--fullWidth'}>více info</Button>
-      
-      </div>
-    </div>
-    
-  );
-};
-
-export default Faq;
+        }}
+      </List>
+    );
+  }
+}
