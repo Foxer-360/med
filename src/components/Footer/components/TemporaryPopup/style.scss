@@ -10,7 +10,6 @@
 
   @include max-xl { padding: 20px 100px; }
   @include max-md { padding: 20px 50px; }
-  @include max-sm { padding: 20px 30px; }
 
   p {
     font-size: 1.6rem;
@@ -28,17 +27,13 @@
   }
 
   &__close {
-    position: relative;
-    width: 32px;
-    height: 32px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
     opacity: 0.3;
-    left: 105%;
-
-    @include max-md { left: 100%; }
-
-    &:hover {
-      opacity: 1;
-    }
+    right: 0;
+    cursor: pointer;
+    &:hover { opacity: 1; }
 
     &:before, &:after {
       position: absolute;
@@ -49,13 +44,8 @@
       background-color: #333;
     }
 
-    &:before {
-      transform: rotate(45deg);
-    }
-
-    &:after {
-      transform: rotate(-45deg);
-    }
+    &:before { transform: rotate(45deg); }
+    &:after { transform: rotate(-45deg); }
   }
 
   &--disabled { display: none; }
