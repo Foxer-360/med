@@ -5,9 +5,37 @@
     word-break: unset;
   }
 
-  a {
-    word-break: unset;
+  &__more {
+    cursor: pointer;
+    padding-top: 45px;
+    padding-bottom: 0;
+    position: relative;
+    max-width: 303px;
+    margin: 0 auto;
+    
+    &:after {
+      @include pseudo;
+      height: 2px;
+      width: 0%;
+      bottom: -3px;
+      right: 0;
+      @include leftRightGradient(#2472b8, #00aadd);
+      transition: 0.3s ease;
+    }
+
+    @include md {
+      &:hover {
+        &:after {
+          opacity: 1;
+          width: 80%;
+          right: auto;
+          left: 10%;
+        }
+      }
+    }
   }
+
+  a { word-break: unset; }
 
   div {
     width: 100%;
@@ -191,7 +219,6 @@
 
     h5,
     button { margin-left: 35px; }
-
     h5 { padding-bottom: 35px; }
   }
 

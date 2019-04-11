@@ -38,7 +38,7 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
         </div>
         {secondText && secondText.length > 1 && hideBtn &&
           <h4 
-            style={{ cursor: 'pointer', paddingTop: '45px', paddingBottom: 0 }} 
+            className={'care__more'}
             onClick={() => this.setState({ showHiddenText: !this.state.showHiddenText })}
           >
             {hideBtn}
