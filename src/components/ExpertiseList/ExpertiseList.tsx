@@ -57,7 +57,13 @@ export default class ExpertiseList extends React.Component<ExpertiseListProps, E
   
               {this.state.numberOfPage < lastPage && <div className="container">
                 <button
-                  onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                  onClick={
+                    () => this.setState({ 
+                      numberOfPage: 
+                        this.state.numberOfPage === 2 ? 
+                        lastPage : this.state.numberOfPage + 1 
+                    })
+                  }
                   className={'btn btn--blueBkg btn--fullWidth'}
                 >
                   zobrazit dalši odbornosti
