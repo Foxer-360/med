@@ -93,11 +93,11 @@
           white-space: nowrap;
         }
 
-        &:last-of-type {
-          @include lg {
-            padding: 15px 15px 15px 25px;
-          }
-        }
+        // &:last-of-type {
+        //   @include lg {
+        //     padding: 15px 15px 15px 25px;
+        //   }
+        // }
 
         &:first-of-type {
           padding: 15px 0 15px 0;
