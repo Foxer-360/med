@@ -105,7 +105,7 @@ var MapComponent = /** @class */ (function (_super) {
                     } },
                     this.props.clinics.length > 0 &&
                         this.props.clinics.map(function (clinic, index) {
-                            if (clinic.lat && clinic.lng) {
+                            if (clinic.lat && clinic.lng && (clinic.lat.trim().length > 0 && clinic.lng.trim().length > 0)) {
                                 return (React.createElement(Marker, { type: 'small', lat: Number(clinic.lat), lng: Number(clinic.lng), handleMarkerClick: function (e, key) { return _this.handleMarkerClick(e, key, clinic); }, handleClose: _this.handleMarkerClose, active: _this.state.activeMarker === index || (clinic.title ===
                                         _this.nearestClinic(_this.props.coords ? _this.props.coords.latitude : defaultCenter.lat, _this.props.coords ? _this.props.coords.longitude : defaultCenter.lng, _this.props.clinics).title && _this.state.activeMarker === null), key: index, index: index, handleMarkerClose: _this.handleMarkerClose }));
                             }
