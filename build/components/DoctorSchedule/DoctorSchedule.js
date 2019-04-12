@@ -3,12 +3,13 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     return cooked;
 };
 import * as React from 'react';
-import DividerCircles from '../DividerCircles';
-import Link from '../../partials/Link';
 import moment from 'moment';
 import gql from 'graphql-tag';
 import { urlize } from 'urlize';
 import { Query } from 'react-apollo';
+import { cloneDeep } from 'lodash';
+import Link from '../../partials/Link';
+import DividerCircles from '../DividerCircles';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var getDayOfWeek = function (day) {
     switch (day) {
@@ -33,7 +34,9 @@ var getDayOfWeek = function (day) {
 var withinTime = function (from, to, min, max) {
     from = moment(from, 'HH:mm');
     to = moment(to, 'HH:mm');
-    if (from.isSameOrAfter(moment(min, 'HH:mm')) && to.isSameOrBefore(moment(max, 'HH:mm'))) {
+    min = moment(min, 'HH:mm');
+    max = moment(max, 'HH:mm');
+    if (from.isBetween(min, max) && to.isBetween(min, max)) {
         return true;
     }
     else {
@@ -41,21 +44,34 @@ var withinTime = function (from, to, min, max) {
     }
 };
 var categorizeTimeSlot = function (from, to) {
-    if (withinTime(from, to, '00:00', '09:30')) {
+    if (withinTime(from, to, '00:00', '10:00')) {
         return 'morning';
     }
-    if (withinTime(from, to, '10:00', '12:00')) {
+    if (withinTime(from, to, '10:01', '12:00')) {
         return 'noon';
     }
-    if (withinTime(from, to, '12:00', '15:00')) {
+    if (withinTime(from, to, '12:01', '15:00')) {
         return 'afternoon';
     }
-    if (withinTime(from, to, '15:00', '00:00')) {
+    if (withinTime(from, to, '15:01', '00:00')) {
         return 'lateAfternoon';
     }
-    else {
-        return null;
+    if (withinTime(from, to, '00:00', '12:01')) {
+        return 'morningAndNoon';
     }
+    if (withinTime(from, to, '00:00', '15:01')) {
+        return 'morningAndNoonAndAfternoon';
+    }
+    if (withinTime(from, to, '10:01', '15:01')) {
+        return 'noonAndAfternon';
+    }
+    if (withinTime(from, to, '10:01', '23:59')) {
+        return 'noonAndAfternonAndLateAfternoon';
+    }
+    if (withinTime(from, to, '12:01', '23:59')) {
+        return 'afternoonAndLateAfternoon';
+    }
+    return null;
 };
 var getWeekStructure = function (week) {
     var structuredWeek = [];
@@ -76,7 +92,79 @@ var getWeekStructure = function (week) {
         }
         structuredWeek.push(weekDay);
     });
-    return structuredWeek;
+    return splitSchedule(structuredWeek);
+};
+var splitSchedule = function (week) {
+    var result = [];
+    week.forEach(function (day) {
+        var weekDay = {};
+        weekDay = cloneDeep(day);
+        // FIRST, SECOND COL
+        if (day.morningAndNoonHours) {
+            weekDay.morningHours = {
+                description: day.morningAndNoonHours.time.note || '',
+                time: day.morningAndNoonHours.time.slice(0, 8) + '10:00'
+            };
+            weekDay.noonHours = {
+                description: day.morningAndNoonHours.time.note || '',
+                time: '10:00 - ' + day.morningAndNoonHours.time.slice(-5)
+            };
+        }
+        // FIRST, SECOND, THIRD COL
+        if (day.morningAndNoonAndAfternoonHours) {
+            weekDay.morningHours = {
+                description: day.morningAndNoonAndAfternoonHours.time.note || '',
+                time: day.morningAndNoonAndAfternoonHours.time.slice(0, 8) + '10:00'
+            };
+            weekDay.noonHours = {
+                description: day.morningAndNoonAndAfternoonHours.time.note || '',
+                time: '10:00 - 12:00'
+            };
+            weekDay.afternoonHours = {
+                description: day.morningAndNoonAndAfternoonHours.time.note || '',
+                time: '12:00 - ' + day.morningAndNoonAndAfternoonHours.time.slice(-5)
+            };
+        }
+        // SECOND, THIRD COL
+        if (day.noonAndAfternonHours) {
+            weekDay.noonHours = {
+                description: day.noonAndAfternonHours.time.note || '',
+                time: day.noonAndAfternonHours.time.slice(0, 8) + '12:00'
+            };
+            weekDay.afternoonHours = {
+                description: day.noonAndAfternonHours.time.note || '',
+                time: '12:00 - ' + day.noonAndAfternonHours.time.slice(-5)
+            };
+        }
+        // SECOND, THIRD, FOURTH COL
+        if (day.noonAndAfternonAndLateAfternoonHours) {
+            weekDay.noonHours = {
+                description: day.noonAndAfternonAndLateAfternoonHours.time.note || '',
+                time: day.noonAndAfternonAndLateAfternoonHours.time.slice(0, 8) + '12:00'
+            };
+            weekDay.afternoonHours = {
+                description: day.noonAndAfternonAndLateAfternoonHours.time.note || '',
+                time: '12:00 - 15:00'
+            };
+            weekDay.lateAfternoonHours = {
+                description: day.noonAndAfternonAndLateAfternoonHours.time.note || '',
+                time: '15:00 - ' + day.noonAndAfternonAndLateAfternoonHours.time.slice(-5)
+            };
+        }
+        // THIRD, FOURHT COL
+        if (day.afternoonAndLateAfternoonHours) {
+            weekDay.afternoonHours = {
+                description: day.afternoonAndLateAfternoonHours.time.note || '',
+                time: day.afternoonAndLateAfternoonHours.time.slice(0, 8) + '15:00'
+            };
+            weekDay.lateAfternoonHours = {
+                description: day.afternoonAndLateAfternoonHours.time.note || '',
+                time: '15:00 - ' + day.afternoonAndLateAfternoonHours.time.slice(-5)
+            };
+        }
+        result.push(weekDay);
+    });
+    return result;
 };
 var getScheduleTitle = function (regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle) {
     if (regularity === 'regular' && regularWeekTitle) {
@@ -111,6 +199,9 @@ var DoctorSchedule = function (props) {
                 React.createElement("table", null,
                     React.createElement("tbody", null, week &&
                         getWeekStructure(week).map(function (item, index) {
+                            if (item.day === 'sobota' || item.day === 'neděle') {
+                                return '';
+                            }
                             return (React.createElement(React.Fragment, null,
                                 React.createElement("tr", { className: 'mobileHeading' },
                                     React.createElement("td", { colSpan: 7 }, item.day)),
