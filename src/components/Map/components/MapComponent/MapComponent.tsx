@@ -2,6 +2,7 @@ import * as React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { GeolocatedProps, geolocated } from 'react-geolocated';
 export const GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
+
 import Marker from '../Marker';
 import MapBox from '../MapBox';
 
@@ -133,7 +134,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
             >
               {this.props.clinics.length > 0 &&
                 this.props.clinics.map((clinic, index) => {
-                  if (clinic.lat && clinic.lng) {
+                  if (clinic.lat && clinic.lng && (clinic.lat.trim().length > 0 && clinic.lng.trim().length > 0)) {
                     return (
                       <Marker
                         type={'small'}
