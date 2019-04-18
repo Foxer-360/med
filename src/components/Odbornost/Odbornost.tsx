@@ -19,7 +19,9 @@ const Odbornost = (props: OdbornostProps) => {
 
       <div className={'container'}>
         <div className={'odbornost__doctor'}>
-          <div className={'odbornost__doctor__imageWrapper'}>{image && <Media type={'image'} data={image} />}</div>
+          <div className={'odbornost__doctor__imageWrapper'}>
+            {image && <Media type={'image'} data={image} />}
+          </div>
 
           <div className={'grid grid--vCenterBlock'}>
             <div>

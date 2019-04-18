@@ -48,10 +48,7 @@ var ExpertiseList = /** @class */ (function (_super) {
                         React.createElement("div", null, item.image && React.createElement(Media, { type: 'image', data: item.image })),
                         item.title && React.createElement("p", null, item.title)))); })),
                 _this.state.numberOfPage < lastPage && React.createElement("div", { className: "container" },
-                    React.createElement("button", { onClick: function () { return _this.setState({
-                            numberOfPage: _this.state.numberOfPage === 2 ?
-                                lastPage : _this.state.numberOfPage + 1
-                        }); }, className: 'btn btn--blueBkg btn--fullWidth' }, "zobrazit dal\u0161i odbornosti"))));
+                    React.createElement("button", { onClick: function () { return _this.setState({ numberOfPage: lastPage }); }, className: 'btn btn--blueBkg btn--fullWidth' }, "zobrazit dal\u0161i odbornosti"))));
         }));
     };
     return ExpertiseList;

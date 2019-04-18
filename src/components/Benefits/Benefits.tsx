@@ -28,8 +28,13 @@ const Benefits = (props: BenefitsProps) => {
               {data &&
                 data.map((benefit, index) => {
                   return benefit.url ? (
-                    <Link key={index} {...benefit.url} className={'benefits__list__element grid'}>
-                      {benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />}
+                    <Link 
+                      key={index} 
+                      {...benefit.url} 
+                      className={'benefits__list__element grid'}
+                    >
+                      {benefit.image && benefit.image.filename && 
+                      <Media type={'image'} data={benefit.image} />}
 
                       {benefit.text && <p>{benefit.text}</p>}
                     </Link>

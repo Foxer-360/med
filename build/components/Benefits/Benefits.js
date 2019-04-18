@@ -22,7 +22,8 @@ var Benefits = function (props) {
                 React.createElement("div", { className: 'benefits__list grid' }, data &&
                     data.map(function (benefit, index) {
                         return benefit.url ? (React.createElement(Link, __assign({ key: index }, benefit.url, { className: 'benefits__list__element grid' }),
-                            benefit.image && benefit.image.filename && React.createElement(Media, { type: 'image', data: benefit.image }),
+                            benefit.image && benefit.image.filename &&
+                                React.createElement(Media, { type: 'image', data: benefit.image }),
                             benefit.text && React.createElement("p", null, benefit.text))) : (React.createElement("div", { key: index, className: 'benefits__list__element grid' },
                             React.createElement("div", null, benefit.image && benefit.image.filename && React.createElement(Media, { type: 'image', data: benefit.image })),
                             benefit.text && React.createElement("p", null, benefit.text)));
