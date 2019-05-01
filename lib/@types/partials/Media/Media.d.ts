@@ -1,8 +1,8 @@
 import * as React from 'react';
 export interface MediaProps {
     type: string;
-    height?: string;
     width?: string;
+    height?: string;
     classes?: string;
     data: any;
 }

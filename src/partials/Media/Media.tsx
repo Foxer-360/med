@@ -3,8 +3,8 @@ import ImgWithFallback from './components/ImgWithFallback';
 
 export interface MediaProps {
   type: string;
-  height?: string;
   width?: string;
+  height?: string;
   classes?: string;
   // tslint:disable:no-any
   data: any;
@@ -27,7 +27,7 @@ class Media extends React.Component<MediaProps, MediaState> {
     };
 
     return result;
-  }  
+  }
 
   renderAsImage = data => {
     const baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
@@ -37,7 +37,7 @@ class Media extends React.Component<MediaProps, MediaState> {
       let originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
 
       recommendedSizes = this.setDimensions();
-
+      
       return (
         <ImgWithFallback
           originalSrc={originalUrl}
@@ -49,7 +49,9 @@ class Media extends React.Component<MediaProps, MediaState> {
           classes={this.props.classes}
         />
       );
-    } else { return null; }
+    } else {
+      return null;
+    }
   }
 
   renderAsVideoEmbed(data: any) {

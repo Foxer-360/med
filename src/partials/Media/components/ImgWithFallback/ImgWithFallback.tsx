@@ -1,4 +1,5 @@
 import * as React from 'react';
+import getImgUrl from '@source/helpers/getImageUrl';
 
 export interface ImgWithFallbackProps {
   alt?: string;
@@ -51,13 +52,13 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     let sizedUrl = null;
     let sizes = props.recommendedSizes;
     let sizedFile = null;
-    let filename = props.originalData.filename.split('.');
 
     this.setState({
       loading: true,
     });
 
-    if (sizes && sizes.width && sizes.height && filename[1] !== 'svg') {
+    if (sizes && sizes.width && sizes.height) {
+      let filename = props.originalData.filename.split('.');
       filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
       filename = filename.join('.');
 
@@ -73,7 +74,6 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     }
   }
 
-  // tslint:disable-next-line:no-any
   loadImg(src: any) {
     if (src) {
       const img = new Image();
@@ -109,30 +109,30 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     this.createVariantIfDoesNotExist();
 
     this.setState({
-      loading: true,
-      src: this.props.originalSrc,
+      loading: true,     
+      src: this.props.originalSrc,    
     });
   }
 
-  public render() {
-    const { alt, classes } = this.props;
+  public render() {  
+    const { alt } = this.props;
 
-    if (this.state.loading) {
-      return <div className={'mediaImageLoader'} />;
-    } else {
-      return (
-        <div
-          className={`mediaRatio ${classes}`}
-          style={{
-            paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
-              parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
-              100}%`,
-          }}
-        >
-          <img className={'mediaImage inner'} alt={alt} src={this.state.src} />
-        </div>
-      );
-    }
+    return (
+      <div
+        className={`mediaRatio ${this.props.classes}`}
+        style={{
+          paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
+            parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
+            100}%`,
+        }}
+      >
+        <img 
+          alt={alt}
+          className={'mediaImage inner'}
+          src={this.state.src ? this.state.src : getImgUrl(this.props.originalData)}
+        />
+      </div>
+    );
   }
 }
 

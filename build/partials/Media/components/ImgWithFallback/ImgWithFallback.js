@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
+import getImgUrl from '@source/helpers/getImageUrl';
 var ImgWithFallback = /** @class */ (function (_super) {
     __extends(ImgWithFallback, _super);
     function ImgWithFallback(props) {
@@ -41,11 +42,11 @@ var ImgWithFallback = /** @class */ (function (_super) {
             var sizedUrl = null;
             var sizes = props.recommendedSizes;
             var sizedFile = null;
-            var filename = props.originalData.filename.split('.');
             _this.setState({
                 loading: true,
             });
-            if (sizes && sizes.width && sizes.height && filename[1] !== 'svg') {
+            if (sizes && sizes.width && sizes.height) {
+                var filename = props.originalData.filename.split('.');
                 filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
                 filename = filename.join('.');
                 sizedUrl = props.baseUrl + props.originalData.category + props.hash + '_' + filename;
@@ -72,7 +73,6 @@ var ImgWithFallback = /** @class */ (function (_super) {
         };
         return _this;
     }
-    // tslint:disable-next-line:no-any
     ImgWithFallback.prototype.loadImg = function (src) {
         var _this = this;
         if (src) {
@@ -100,18 +100,13 @@ var ImgWithFallback = /** @class */ (function (_super) {
         }
     };
     ImgWithFallback.prototype.render = function () {
-        var _a = this.props, alt = _a.alt, classes = _a.classes;
-        if (this.state.loading) {
-            return React.createElement("div", { className: 'mediaImageLoader' });
-        }
-        else {
-            return (React.createElement("div", { className: "mediaRatio " + classes, style: {
-                    paddingTop: (parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
-                        parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
-                        100 + "%",
-                } },
-                React.createElement("img", { className: 'mediaImage inner', alt: alt, src: this.state.src })));
-        }
+        var alt = this.props.alt;
+        return (React.createElement("div", { className: "mediaRatio " + this.props.classes, style: {
+                paddingTop: (parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
+                    parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
+                    100 + "%",
+            } },
+            React.createElement("img", { alt: alt, className: 'mediaImage inner', src: this.state.src ? this.state.src : getImgUrl(this.props.originalData) })));
     };
     return ImgWithFallback;
 }(React.Component));

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import Media from '../../partials/Media';
+import Media from '@source/partials/Media';
 
 export interface AppProps {
   data: {
@@ -24,7 +24,7 @@ const BlogArticle = (props: AppProps) => {
         {image && 
           <Media 
             data={image} 
-            type="image"
+            type={'image'}
             height={isImageSquare && '600'}
             classes={isImageSquare ? 'blogArticle--squareImage' : ''}
           />}
