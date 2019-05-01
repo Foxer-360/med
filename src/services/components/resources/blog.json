@@ -1,8 +1,21 @@
 {
   "name": "Blog",
   "data": {
-    "title": "aktuality a informace",
-    "displaySearch": false
+    "title": "",
+    "displaySearch": false,
+    "articles": [
+      {
+        "title": "",
+        "text": "",
+        "image": {
+          "recommendedSizes": {
+            "height": "295",
+            "width": "295"
+          }
+        },
+        "url": ""
+      }
+    ]
   },
   "form": {
     "schema": {
@@ -15,6 +28,29 @@
         "displaySearch": {
           "type": "boolean",
           "title": "Display Search?"
+        },
+        "articles": {
+          "type": "array",
+          "title": "Articles",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "text": {
+                "type": "text",
+                "title": "Text"
+              },
+              "image": {
+                "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
         }
       }
     }

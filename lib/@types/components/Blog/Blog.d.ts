@@ -4,6 +4,7 @@ export interface BlogProps {
     data: {
         title: string;
         displaySearch: boolean;
+        articles: any;
     };
 }
 export interface BlogState {
@@ -14,5 +15,4 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
     constructor(props: BlogProps);
     onSearchChange: (e: any) => void;
     render(): JSX.Element;
-    private mapArticleToContent;
 }

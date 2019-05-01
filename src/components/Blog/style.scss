@@ -1,5 +1,3 @@
-@import './components/style.scss';
-
 .my-masonry-grid {
   display: -webkit-box; // Not needed if autoprefixing
   display: -ms-flexbox; // Not needed if autoprefixing
@@ -13,16 +11,21 @@
 }
 
 .blog {
-  padding: 39px 0;
+  padding: 0;
+
+  .searchBar {
+    margin-bottom: 55px;
+    margin-top: 55px;
+  }
 
   @include md {
-    padding: 70px 0;
+    padding: 0;
   }
 
   h1 {
     @include webkitGradientText;
     line-height: 1.5;
-    padding: 0 0 39px 0;
+    padding-top: 0;
 
     @include md {
       padding: 0 0 50px 0;
@@ -32,6 +35,7 @@
   &__btnHolder {
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
   }
 
   &__blur {
@@ -44,16 +48,12 @@
     div {
       background: linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, white 100%);
       height: 99px;
-      z-index: 200;  
+      z-index: 200;
       transform: translateY(-130%);
       position: absolute;
       left: 0;
       width: 100%;
     }
-  }
-
-  .searchBar {
-    margin-bottom: 50px;
   }
 }
 
@@ -93,7 +93,7 @@
     color: #ffffff;
     font-size: 1.8rem;
     font-weight: 700;
-    line-height: 28.83px;
+    line-height: 2.4rem;
     text-transform: uppercase;
     letter-spacing: 0.89px;
     text-align: left;
@@ -124,14 +124,6 @@
   }
 
   .mediaRatio {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  img {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -142,14 +134,14 @@
 
   &--special {
     height: auto;
-    background-color: #00aad0;
+    background-color: #2473ba;
     transition: 300ms ease;
 
     @include md {
       height: auto;
 
       &:hover {
-        background-color: #2473ba;
+        background-color: $lightBlue;
       }
     }
 

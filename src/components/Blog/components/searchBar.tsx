@@ -33,10 +33,10 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
     return (
       <div
-        className={`searchbar ${this.state.focused ? 'searchbar--focused' : ''} searchbar--${barColor}`}
+        className={`searchBar ${this.state.focused ? 'searchBar--focused' : ''} searchBar--${barColor}`}
         ref={this.searchBar}
       >
-        <div className={'searchbar__input'}>
+        <div className={'searchBar__input'}>
           <input
             type="text"
             value={value}
@@ -48,7 +48,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
           <SvgIcon name={'search'} type={barColor} />
         </div>
 
-        <div className={`searchbar__bar`} />
+        <div className={`searchBar__bar`} />
       </div>
     );
   }
