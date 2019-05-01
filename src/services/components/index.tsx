@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
-import WebFont from 'webfontloader';
+
 import {
   Dummy,
   AlertNotFound,
@@ -41,13 +41,6 @@ import {
   WorkingHours,
 } from '../../components';
 import * as resources from './resources';
-
-// WEB FONTS
-WebFont.load({
-  google: {
-    families: ['Montserrat:400,500,600,600i,700:latin-ext'],
-  },
-});
 
 /**
  *

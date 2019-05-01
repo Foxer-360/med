@@ -11,15 +11,8 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
-import WebFont from 'webfontloader';
 import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, ViewsAboutUs, ContactInfo, ContactForm, Downloads, ContactsBlock, Faq, BlogArticle, DoctorSchedule, WorkingHours, } from '../../components';
 import * as resources from './resources';
-// WEB FONTS
-WebFont.load({
-    google: {
-        families: ['Montserrat:400,500,600,600i,700:latin-ext'],
-    },
-});
 /**
  *
  */
