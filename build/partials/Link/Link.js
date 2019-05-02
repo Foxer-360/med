@@ -23,11 +23,11 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Loader from '../Loader';
 import { adopt } from 'react-adopt';
+import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
+import Loader from '../Loader';
 var isExternalLink = function (url) {
     var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
     return pattern.test(url);
@@ -68,7 +68,7 @@ var ComposerLink = function (props) {
             pageUrlObj = pagesUrls.find(function (u) { return u.page === pageId || u.url === url; });
         }
         if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
-            return (React.createElement("a", __assign({ href: (isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '/404' }, args, { target: urlNewWindow ? '_blank' : '' }), children));
+            return (React.createElement("a", __assign({}, args, { target: urlNewWindow ? '_blank' : '', href: (isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '/404' }), children));
         }
         else {
             return (React.createElement(Link, __assign({ to: (dynamic && url) || (pageUrlObj ? pageUrlObj.url : '/404') }, args), children));

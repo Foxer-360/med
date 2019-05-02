@@ -1,13 +1,18 @@
 /// <reference types="react" />
 interface Examination {
     title: string;
-    url: LooseObject;
+    url?: LooseObject;
     description: string;
 }
 interface Box {
     title: string;
-    url: LooseObject;
-    image: LooseObject;
+    url1Title?: string;
+    url1?: LooseObject;
+    url2Title?: string;
+    url2?: LooseObject;
+    url3Title?: string;
+    url3?: LooseObject;
+    image?: LooseObject;
 }
 export interface DescriptionProps {
     data: {

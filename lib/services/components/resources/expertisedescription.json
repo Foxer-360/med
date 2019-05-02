@@ -104,9 +104,29 @@
                 "type": "text",
                 "title": "Title"
               },
-              "url": {
+              "url1Title": {
+                "type": "text",
+                "title": "First URL title"
+              },
+              "url1": {
                 "type": "urlAutocomplete",
-                "title": "URL"
+                "title": "URL 1"
+              },
+              "url2Title": {
+                "type": "text",
+                "title": "Second URL title"
+              },
+              "url2": {
+                "type": "urlAutocomplete",
+                "title": "URL 2"
+              },
+              "url3Title": {
+                "type": "text",
+                "title": "Third URL title"
+              },
+              "url3": {
+                "type": "urlAutocomplete",
+                "title": "URL 3"
               },
               "image": {
                 "type": "image"

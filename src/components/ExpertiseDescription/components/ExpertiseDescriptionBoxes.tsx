@@ -1,6 +1,8 @@
 import * as React from 'react';
-import getImageUrl from '../../../helpers/getImageUrl';
+
+import Link from '@source/partials/Link';
 import Button from '@source/partials/Button';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 export interface ExpertiseDescriptionBoxesProps {
   boxes: Array<any>;
@@ -21,11 +23,28 @@ const ExpertiseDescriptionBoxes = (props: ExpertiseDescriptionBoxesProps) => {
           >
             <div className={'info__element--cell'}>
               {box.title && <h5>{box.title}</h5>}
+              
+              {!box.url2 && !box.url3 && 
                 <div>
-                  <Button url={box.url} classes={'btn--whiteBorder'}>
-                    více informací
+                  <Button url={box.url1} classes={'btn--whiteBorder'}>
+                    {box.url1Title ? box.url1Title : 'více informací'}
                   </Button>
-                </div>
+                </div>}
+              
+              {(box.url2 || box.url3) &&
+                <div style={{ paddingLeft: 20 }}>
+                  {box.url1 && (box.url2 || box.url3) && 
+                    <Link {...box.url1} className={'downloadLink'}>
+                      {box.url1Title ? box.url1Title : 'více informací'}
+                    </Link>}
+                    {box.url2 && <Link {...box.url2} className={'downloadLink'}>
+                      {box.url2Title ? box.url2Title : 'více informací'}
+                    </Link>}
+                    {box.url3 && <Link {...box.url3} className={'downloadLink'}>
+                      {box.url3Title ? box.url3Title : 'více informací'}
+                    </Link>}
+                </div>}
+            
             </div>
             <div className={'info__element--colorGradient'} />
           </div>
