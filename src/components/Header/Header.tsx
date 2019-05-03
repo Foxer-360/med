@@ -172,11 +172,10 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                   <ul>
                     {secNavItems &&
                       secNavItems.map((navItem, i) => (
-                        <li key={i}>
-                          {
-                            <Link {...navItem.url} onClick={() => this.closeMenu()}>
-                              {navItem.name || navItem.title}
-                            </Link>}
+                       <li key={i}>
+                          {<Link {...navItem.url} onClick={() => this.closeMenu()}>
+                            {navItem.name || navItem.title}
+                          </Link>}
                         </li>
                       ))}
                   </ul>

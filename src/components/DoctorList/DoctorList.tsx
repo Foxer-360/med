@@ -78,8 +78,8 @@ export default class DoctorList extends React.Component<DoctorListProps, DoctorL
                 </div>
                 {this.state.numberOfPage < lastPage && <div className="doctorList__btnHolder">
                   <button
-                    onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
                     className={'btn btn--blueBkg'}
+                    onClick={() => this.setState({ numberOfPage: lastPage })}
                   >
                     zobrazit více
                   </button>

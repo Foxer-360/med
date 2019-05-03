@@ -56,7 +56,7 @@ var DoctorList = /** @class */ (function (_super) {
                                     React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "v\u00EDce informac\u00ED"))));
                         })),
                     _this.state.numberOfPage < lastPage && React.createElement("div", { className: "doctorList__btnHolder" },
-                        React.createElement("button", { onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); }, className: 'btn btn--blueBkg' }, "zobrazit v\u00EDce")))));
+                        React.createElement("button", { className: 'btn btn--blueBkg', onClick: function () { return _this.setState({ numberOfPage: lastPage }); } }, "zobrazit v\u00EDce")))));
         }));
     };
     return DoctorList;

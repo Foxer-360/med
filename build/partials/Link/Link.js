@@ -68,10 +68,10 @@ var ComposerLink = function (props) {
             pageUrlObj = pagesUrls.find(function (u) { return u.page === pageId || u.url === url; });
         }
         if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
-            return (React.createElement("a", __assign({}, args, { target: urlNewWindow ? '_blank' : '', href: (isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '/404' }), children));
+            return (React.createElement("a", __assign({}, args, { target: urlNewWindow ? '_blank' : '', href: (isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '#' }), children));
         }
         else {
-            return (React.createElement(Link, __assign({ to: (dynamic && url) || (pageUrlObj ? pageUrlObj.url : '/404') }, args), children));
+            return (React.createElement(Link, __assign({ to: (dynamic && url) || (pageUrlObj ? pageUrlObj.url : '#') }, args), children));
         }
     }));
 };
