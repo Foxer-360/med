@@ -8,6 +8,7 @@ import Link from '../../partials/Link';
 import Social from './components/Social';
 import Loader from '@source/partials/Loader';
 import HelpPopup from './components/HelpPopup';
+import CookiePopup from './components/CookiePopup';
 import TemporaryPopup from './components/TemporaryPopup';
 
 const GET_CONTEXT = gql`
@@ -83,6 +84,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
       <footer className={'footer'}>
         <HelpPopup />
         <TemporaryPopup />
+        <CookiePopup />
 
         <div className="container">
           <div className="flexRow flexAlign--space-between">
