@@ -13,7 +13,7 @@ import * as React from 'react';
 import List from '../List';
 import Link from '@source/partials/Link';
 import getImageUrl from '@source/helpers/getImageUrl';
-var jobOffers = function (props) {
+var JobOffers = function (props) {
     var _a = props.data, title = _a.title, offers = _a.offers;
     return (React.createElement("div", { className: 'container' },
         React.createElement("section", { className: 'jobOffers' },
@@ -22,8 +22,12 @@ var jobOffers = function (props) {
                 React.createElement(List, { data: offers }, function (_a) {
                     var data = _a.data;
                     return data &&
-                        data.map(function (offer, index) { return (React.createElement(Link, __assign({}, offer.url, { key: index, className: 'flexRow offers__element' }), offer.image && (React.createElement("div", { style: { backgroundImage: offer.image && "url(" + getImageUrl(offer.image) + ")" } }, offer.title && React.createElement("p", { className: 'hCenterBlock' }, offer.title))))); });
+                        data.map(function (offer, index) { return (React.createElement(Link, __assign({ key: index }, offer.url, { className: 'flexRow offers__element' }),
+                            React.createElement("div", { style: {
+                                    backgroundImage: (offer.image && offer.image.filename) && "url(" + getImageUrl(offer.image) + ")"
+                                } }, offer.title &&
+                                React.createElement("p", { className: 'hCenterBlock', style: (offer.image && offer.image.filename) ? { paddingLeft: 60 } : {} }, offer.title)))); });
                 })))));
 };
-export default jobOffers;
+export default JobOffers;
 //# sourceMappingURL=JobOffers.js.map

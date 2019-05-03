@@ -7,7 +7,7 @@ import getImageUrl from '@source/helpers/getImageUrl';
 interface Offer {
   title: string;
   url: LooseObject;
-  image: LooseObject;
+  image?: LooseObject;
 }
 
 export interface JobOffersProps {
@@ -18,7 +18,7 @@ export interface JobOffersProps {
   };
 }
 
-const jobOffers = (props: JobOffersProps) => {
+const JobOffers = (props: JobOffersProps) => {
   const { title, offers } = props.data;
 
   return (
@@ -31,15 +31,23 @@ const jobOffers = (props: JobOffersProps) => {
             {({ data }) => data &&
               data.map((offer, index) => (
                 <Link
-                  {...offer.url}
                   key={index}
+                  {...offer.url}
                   className={'flexRow offers__element'}
                 >
-                  {offer.image && (
-                    <div style={{ backgroundImage: offer.image && `url(${getImageUrl(offer.image)})` }}>
-                      {offer.title && <p className={'hCenterBlock'}>{offer.title}</p>}
-                    </div>
-                  )}
+                  <div 
+                    style={{ 
+                      backgroundImage: (offer.image && offer.image.filename) && `url(${getImageUrl(offer.image)})` 
+                    }}
+                  >
+                    {offer.title && 
+                      <p 
+                        className={'hCenterBlock'}
+                        style={(offer.image && offer.image.filename) ? { paddingLeft: 60 } : {}}
+                      >
+                        {offer.title}
+                      </p>}
+                  </div>
                 </Link>
               ))}
           </List>
@@ -49,4 +57,4 @@ const jobOffers = (props: JobOffersProps) => {
   );
 };
 
-export default jobOffers;
+export default JobOffers;

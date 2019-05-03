@@ -2,7 +2,7 @@
 interface Offer {
     title: string;
     url: LooseObject;
-    image: LooseObject;
+    image?: LooseObject;
 }
 export interface JobOffersProps {
     languageCode?: string;
@@ -11,5 +11,5 @@ export interface JobOffersProps {
         offers: Offer[];
     };
 }
-declare const jobOffers: (props: JobOffersProps) => JSX.Element;
-export default jobOffers;
+declare const JobOffers: (props: JobOffersProps) => JSX.Element;
+export default JobOffers;
