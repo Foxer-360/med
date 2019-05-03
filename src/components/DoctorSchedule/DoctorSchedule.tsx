@@ -118,7 +118,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
       {schedule &&
         schedule.weeks &&
         schedule.weeks.map((week, i) => (
-          <div className="doctorSchedule" key={'1'}>
+          <div className="doctorSchedule" key={i}>
             <div className={'doctorSchedule__title'}>
               <h4>{getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle)}</h4>
             </div>
