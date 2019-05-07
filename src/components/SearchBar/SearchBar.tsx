@@ -173,7 +173,6 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
               <List data={this.props.blogSearchResults} searchedText={this.state.query}>
                 {({ data }) => {
                   if (data.length > 0) {
-                    console.log('HERE!!!!!!');
                     return (
                       <ul className={'searchBarResults__blog'}>
                         <label>Možná jste hledali:</label>
