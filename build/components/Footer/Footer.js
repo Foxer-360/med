@@ -66,9 +66,6 @@ var Footer = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props.data, links = _a.links, social = _a.social, socialIcons = _a.socialIcons, company = _a.company, url = _a.url, text = _a.text;
         return (React.createElement("footer", { className: 'footer' },
-            React.createElement(HelpPopup, null),
-            React.createElement(TemporaryPopup, null),
-            React.createElement(CookiePopup, null),
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: "flexRow flexAlign--space-between" },
                     React.createElement(ComposedQuery, null, function (_a) {
@@ -98,6 +95,9 @@ var Footer = /** @class */ (function (_super) {
                             ? transformedNavigations[footerThird]
                             : [];
                         return (React.createElement(React.Fragment, null,
+                            React.createElement(HelpPopup, null),
+                            React.createElement(TemporaryPopup, null),
+                            React.createElement(CookiePopup, { lang: context.languageData.code }),
                             React.createElement("ul", { className: 'footer__list' }, footerFirstItems &&
                                 footerFirstItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
                                     React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); })),

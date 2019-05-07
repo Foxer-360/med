@@ -32,8 +32,8 @@ var ExpertiseDescriptionCare = /** @class */ (function (_super) {
         return (React.createElement("div", { className: 'care' },
             title && React.createElement("h3", null, title),
             React.createElement("div", { className: 'hCenterBlock' }, firstText && React.createElement(ReactMarkdown, { source: firstText })),
-            secondText && secondText.length > 1 && hideBtn &&
-                React.createElement("h4", { className: 'care__more', onClick: function () { return _this.setState({ showHiddenText: !_this.state.showHiddenText }); } }, hideBtn),
+            secondText && secondText.length > 1 &&
+                React.createElement("h4", { className: 'care__more', onClick: function () { return _this.setState({ showHiddenText: !_this.state.showHiddenText }); } }, hideBtn ? hideBtn : 'Více informací'),
             this.state.showHiddenText ?
                 React.createElement("div", { className: 'hCenterBlock care--hidden', style: { marginTop: 45 } }, secondText && React.createElement(ReactMarkdown, { source: secondText }))
                 : ''));

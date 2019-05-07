@@ -82,10 +82,6 @@ class Footer extends React.Component<FooterProps, FooterState> {
 
     return (
       <footer className={'footer'}>
-        <HelpPopup />
-        <TemporaryPopup />
-        <CookiePopup />
-
         <div className="container">
           <div className="flexRow flexAlign--space-between">
             <ComposedQuery>
@@ -132,6 +128,10 @@ class Footer extends React.Component<FooterProps, FooterState> {
 
                 return (
                   <>
+                  <HelpPopup />
+                  <TemporaryPopup />
+                  <CookiePopup lang={context.languageData.code} />
+
                     <ul className={'footer__list'}>
                       {footerFirstItems &&
                         footerFirstItems.map((navItem, i) => (

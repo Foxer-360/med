@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-import getImageUrl from '../../helpers/getImageUrl';
+import getImageUrl from '@source/helpers/getImageUrl';
 var Hero = /** @class */ (function (_super) {
     __extends(Hero, _super);
     function Hero() {

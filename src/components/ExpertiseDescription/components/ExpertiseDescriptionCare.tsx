@@ -36,12 +36,12 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
         <div className={'hCenterBlock'}>
           {firstText && <ReactMarkdown source={firstText} />}
         </div>
-        {secondText && secondText.length > 1 && hideBtn &&
+        {secondText && secondText.length > 1 &&
           <h4 
             className={'care__more'}
             onClick={() => this.setState({ showHiddenText: !this.state.showHiddenText })}
           >
-            {hideBtn}
+            {hideBtn ? hideBtn : 'Více informací'}
           </h4>
         }
         

@@ -128,6 +128,7 @@ var SearchBar = /** @class */ (function (_super) {
                     this.props.blogSearchResults && this.state.query.length > 2 && (React.createElement(List, { data: this.props.blogSearchResults, searchedText: this.state.query }, function (_a) {
                         var data = _a.data;
                         if (data.length > 0) {
+                            console.log('HERE!!!!!!');
                             return (React.createElement("ul", { className: 'searchBarResults__blog' },
                                 React.createElement("label", null, "Mo\u017En\u00E1 jste hledali:"),
                                 data.map(function (blogItem, i) { return (React.createElement("li", { key: i },
