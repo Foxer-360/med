@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,8 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import SvgIcon from '@source/partials/SvgIcon';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var SvgIcon_1 = require("@source/partials/SvgIcon");
 var SearchBar = /** @class */ (function (_super) {
     __extends(SearchBar, _super);
     function SearchBar(props) {
@@ -32,10 +34,10 @@ var SearchBar = /** @class */ (function (_super) {
         return (React.createElement("div", { className: "searchBar " + (this.state.focused ? 'searchBar--focused' : '') + " searchBar--" + barColor, ref: this.searchBar },
             React.createElement("div", { className: 'searchBar__input' },
                 React.createElement("input", { type: "text", value: value, onChange: function (e) { return onChange(e); }, placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); } }),
-                React.createElement(SvgIcon, { name: 'search', type: barColor })),
+                React.createElement(SvgIcon_1.default, { name: 'search', type: barColor })),
             React.createElement("div", { className: "searchBar__bar" })));
     };
     return SearchBar;
 }(React.Component));
-export default SearchBar;
+exports.default = SearchBar;
 //# sourceMappingURL=searchBar.js.map

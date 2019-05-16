@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,10 +23,11 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import Avatar from './components/Avatar';
-import SvgIcon from '@source/partials/SvgIcon';
-import Link from '@source/partials/Link';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Avatar_1 = require("./components/Avatar");
+var SvgIcon_1 = require("@source/partials/SvgIcon");
+var Link_1 = require("@source/partials/Link");
 var MyProblem = /** @class */ (function (_super) {
     __extends(MyProblem, _super);
     function MyProblem(props) {
@@ -60,15 +62,15 @@ var MyProblem = /** @class */ (function (_super) {
                 React.createElement("h3", null, "M\u016Fj Probl\u00E9m se t\u00FDk\u00E1"),
                 React.createElement("p", null, "Klikn\u011Bte na \u010D\u00E1st t\u011Bla se kterou m\u00E1te probl\u00E9m."),
                 React.createElement("div", { className: 'flexRow myProblem__holder' },
-                    React.createElement(Avatar, { onClick: this.clickArea, activeArea: this.state.area ? 'active--' + this.state.area : '' }),
+                    React.createElement(Avatar_1.default, { onClick: this.clickArea, activeArea: this.state.area ? 'active--' + this.state.area : '' }),
                     this.state.area && (React.createElement("div", { className: "infoBox " + (this.state.area ? 'infoBox--' + this.state.area : '') },
                         React.createElement("div", { className: 'infoBox__close', onClick: function () { return _this.closeInfoBox(); } },
-                            React.createElement(SvgIcon, { name: "close", type: "gray" })),
+                            React.createElement(SvgIcon_1.default, { name: "close", type: "gray" })),
                         this.state.availableSpecializations &&
                             this.state.availableSpecializations.map(function (specialization, i) {
                                 if (specialization.link) {
                                     return (React.createElement("div", { className: 'infoBox__item', key: i },
-                                        React.createElement(Link, __assign({}, specialization.link), specialization.name)));
+                                        React.createElement(Link_1.default, __assign({}, specialization.link), specialization.name)));
                                 }
                                 else {
                                     return (React.createElement("div", { className: 'infoBox__item' },
@@ -78,5 +80,5 @@ var MyProblem = /** @class */ (function (_super) {
     };
     return MyProblem;
 }(React.Component));
-export default MyProblem;
+exports.default = MyProblem;
 //# sourceMappingURL=MyProblem.js.map

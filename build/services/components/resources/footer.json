@@ -1,0 +1,54 @@
+{
+    "name": "Footer",
+    "data": {
+        "social": "MEDICON a.s. Antala Staška 1670/80 140 00 Praha 4",
+        "socialIcons": [
+            {
+                "name": "fb",
+                "url": ""
+            }
+        ],
+        "company": "© 2018 - MEDICON a.s.",
+        "url": "",
+        "text": "Prohlášení o ochraně osobních údajů"
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "social": {
+                    "type": "markdown",
+                    "title": "Social text"
+                },
+                "socialIcons": {
+                    "type": "array",
+                    "title": "Social Icons",
+                    "items": {
+                        "properties": {
+                            "name": {
+                                "type": "text",
+                                "title": "icon name (for example: fb)"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            }
+                        }
+                    }
+                },
+                "company": {
+                    "type": "text",
+                    "title": "Company name"
+                },
+                "url": {
+                    "type": "urlAutocomplete",
+                    "title": "Policy link"
+                },
+                "text": {
+                    "type": "text",
+                    "title": "Policy text"
+                }
+            }
+        }
+    }
+}

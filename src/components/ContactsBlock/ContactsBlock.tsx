@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 import List from '../List';
 import DividerCircles from '../DividerCircles';
@@ -35,7 +35,7 @@ export interface ContactsBlockProps {
 }
 
 const ContactsBlock = (props: ContactsBlockProps) => {
-  const { 
+  const {
     title,
     managementTitle,
     nextTitle,
@@ -52,7 +52,7 @@ const ContactsBlock = (props: ContactsBlockProps) => {
         <div>
           {managementTitle && <h4>{managementTitle}</h4>}
           <div className={'grid contacts-block__main'}>
-            
+
             <List data={managementContacts}>
               {({ data }) => data && data.map((mContact, i) => (
                 <div className={'contacts-block__main__element'} key={i}>
@@ -86,7 +86,7 @@ const ContactsBlock = (props: ContactsBlockProps) => {
         <DividerCircles />
 
         <div className={'grid contacts-block__list'}>
-          
+
           <List data={otherContacts}>
           {({ data }) => data && data.map((oContact, i) => (
             <div className={'contacts-block__main__element'} key={i}>

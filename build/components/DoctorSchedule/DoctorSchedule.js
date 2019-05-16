@@ -1,15 +1,17 @@
+"use strict";
 var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
-import * as React from 'react';
-import moment from 'moment';
-import gql from 'graphql-tag';
-import { urlize } from 'urlize';
-import { Query } from 'react-apollo';
-import Link from '@source/partials/Link';
-import DividerCircles from '../DividerCircles';
-var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var moment_1 = require("moment");
+var graphql_tag_1 = require("graphql-tag");
+var urlize_1 = require("urlize");
+var react_apollo_1 = require("react-apollo");
+var Link_1 = require("@source/partials/Link");
+var DividerCircles_1 = require("../DividerCircles");
+var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var getDayOfWeek = function (day) {
     switch (day) {
         case 'mo':
@@ -65,7 +67,7 @@ var getScheduleTitle = function (regularity, oddWeekTitle, evenWeekTitle, regula
 var getAbsenceLink = function (data, alternate) {
     if (alternate && data) {
         var firstName = alternate.firstName, lastName = alternate.lastName;
-        var doctorSlug = urlize(firstName + "-" + lastName);
+        var doctorSlug = urlize_1.urlize(firstName + "-" + lastName);
         var link = "/" + (data.websiteData && data.websiteData.title.toLowerCase()) + "/" + (data.languageData &&
             data.languageData.code) + "/" + doctorSlug;
         return link;
@@ -95,22 +97,22 @@ var DoctorSchedule = function (props) {
                                         React.createElement("p", null, (item['0'] && item['0'].time) || ' - '),
                                         item['0'] && item['0'].note && React.createElement("p", null, item['0'].note)),
                                     React.createElement("td", { className: 'circleCell' },
-                                        React.createElement(DividerCircles, null)),
+                                        React.createElement(DividerCircles_1.default, null)),
                                     React.createElement("td", null,
                                         React.createElement("p", null, (item['1'] && item['1'].time) || ' - '),
                                         item['1'] && item['1'].note && React.createElement("p", null, item['1'].note)),
                                     React.createElement("td", { className: 'circleCell' },
-                                        React.createElement(DividerCircles, null)),
+                                        React.createElement(DividerCircles_1.default, null)),
                                     React.createElement("td", null,
                                         React.createElement("p", null, (item['2'] && item['2'].time) || ' - '),
                                         item['2'] && item['2'].note && React.createElement("p", null, item['2'].note)),
                                     React.createElement("td", { className: 'circleCell' },
-                                        React.createElement(DividerCircles, null)),
+                                        React.createElement(DividerCircles_1.default, null)),
                                     React.createElement("td", null,
                                         React.createElement("p", null, (item['3'] && item['3'].time) || ' - '),
                                         item['3'] && item['3'].note && React.createElement("p", null, item['3'].note)))));
                         }))))); }),
-        React.createElement(Query, { query: GET_CONTEXT }, function (_a) {
+        React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
             return (React.createElement(React.Fragment, null, absences && Array.isArray(absences) && absences.length > 0 && (React.createElement("div", { className: 'absences' },
                 React.createElement("h4", null, "Nep\u0159\u00EDtomnost"),
@@ -123,14 +125,14 @@ var DoctorSchedule = function (props) {
                     React.createElement("tbody", null, absences.map(function (absence, i) {
                         if (absence) {
                             return (React.createElement("tr", { key: i },
-                                React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('DD-MM-YYYY')) || ''),
-                                React.createElement("td", null, (absence.toDate.date && moment(absence.toDate.date).format('DD-MM-YYYY')) || ''),
+                                React.createElement("td", null, (absence.fromDate && moment_1.default(absence.fromDate.date).format('DD-MM-YYYY')) || ''),
+                                React.createElement("td", null, (absence.toDate.date && moment_1.default(absence.toDate.date).format('DD-MM-YYYY')) || ''),
                                 React.createElement("td", null,
-                                    React.createElement(Link, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                                " + ((absence.alternate && absence.alternate.lastName) || '')))));
+                                    React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                                " + ((absence.alternate && absence.alternate.lastName) || '')))));
                         }
                     })))))));
         })));
 };
-export default DoctorSchedule;
+exports.default = DoctorSchedule;
 var templateObject_1;
 //# sourceMappingURL=DoctorSchedule.js.map

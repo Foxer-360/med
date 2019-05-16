@@ -1,0 +1,55 @@
+{
+    "name": "Downloads",
+    "data": {
+        "title": "Dokumenty ke stažení",
+        "description": "Zde si můžete stáhnout potřebné dokumenty",
+        "downloads": [
+            {
+                "title": "Jak podat stížnost",
+                "file": ""
+            },
+            {
+                "title": "Lorem ipsum dolor",
+                "file": ""
+            },
+            {
+                "title": "Lorem ipsum dolor",
+                "file": ""
+            },
+            {
+                "title": "Lorem ipsum dolor",
+                "file": ""
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "description": {
+                    "type": "text",
+                    "title": "Description"
+                },
+                "downloads": {
+                    "type": "array",
+                    "title": "Downloads",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "file": {
+                                "type": "file"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

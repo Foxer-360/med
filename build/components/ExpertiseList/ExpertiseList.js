@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,10 +23,11 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import List from '../List';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var List_1 = require("../List");
+var Link_1 = require("@source/partials/Link");
+var Media_1 = require("@source/partials/Media");
 var ExpertiseList = /** @class */ (function (_super) {
     __extends(ExpertiseList, _super);
     function ExpertiseList(props) {
@@ -38,14 +40,14 @@ var ExpertiseList = /** @class */ (function (_super) {
     ExpertiseList.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, title = _a.title, expertiseList = _a.expertiseList;
-        return (React.createElement(List, { data: expertiseList }, function (_a) {
+        return (React.createElement(List_1.default, { data: expertiseList }, function (_a) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 9), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("section", { className: "expertiseList" },
                 title && React.createElement("h3", null, title),
-                React.createElement("div", { className: "grid-container" }, items && items.map(function (item, index) { return (React.createElement(Link, __assign({}, item.url, { key: index }),
+                React.createElement("div", { className: "grid-container" }, items && items.map(function (item, index) { return (React.createElement(Link_1.default, __assign({}, item.url, { key: index }),
                     React.createElement("div", { className: "expertiseList__element" },
-                        React.createElement("div", null, item.image && React.createElement(Media, { type: 'image', data: item.image })),
+                        React.createElement("div", null, item.image && React.createElement(Media_1.default, { type: 'image', data: item.image })),
                         item.title && React.createElement("p", null, item.title)))); })),
                 _this.state.numberOfPage < lastPage && React.createElement("div", { className: "container" },
                     React.createElement("button", { onClick: function () { return _this.setState({ numberOfPage: lastPage }); }, className: 'btn btn--blueBkg btn--fullWidth' }, "zobrazit dal\u0161i odbornosti"))));
@@ -53,5 +55,5 @@ var ExpertiseList = /** @class */ (function (_super) {
     };
     return ExpertiseList;
 }(React.Component));
-export default ExpertiseList;
+exports.default = ExpertiseList;
 //# sourceMappingURL=ExpertiseList.js.map

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 import Media from '@source/partials/Media';
 
@@ -21,9 +21,9 @@ const BlogArticle = (props: AppProps) => {
       <div className="container">
         {title && <h1 className={'gradientHeading'}>{title}</h1>}
 
-        {image && 
-          <Media 
-            data={image} 
+        {image &&
+          <Media
+            data={image}
             type={'image'}
             height={isImageSquare && '600'}
             classes={isImageSquare ? 'blogArticle--squareImage' : ''}

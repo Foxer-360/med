@@ -1,0 +1,53 @@
+{
+    "name": "InfoRectangles",
+    "data": {
+        "infoRectangles": [
+            {
+                "image": {
+                    "recommendedSizes": {
+                        "width": "610",
+                        "height": "270"
+                    }
+                },
+                "title": "široký výběr zdravýchpotravin",
+                "url": ""
+            },
+            {
+                "image": {
+                    "recommendedSizes": {
+                        "width": "610",
+                        "height": "270"
+                    }
+                },
+                "title": "široký výběr zdravýchpotravin",
+                "url": ""
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "infoRectangles": {
+                    "type": "array",
+                    "title": "Rectangles",
+                    "items": {
+                        "properties": {
+                            "image": {
+                                "type": "image"
+                            },
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "Button Url"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

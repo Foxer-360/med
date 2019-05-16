@@ -1,5 +1,7 @@
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
 var TextBlock = function (props) {
     var _a = props.data, title = _a.title, text = _a.text, textAlign = _a.textAlign;
     return (React.createElement("section", { className: 'textBlock' },
@@ -11,5 +13,5 @@ var TextBlock = function (props) {
                             paragraph: function (rProps) { return React.createElement(React.Fragment, null, rProps.children); },
                         } })))))));
 };
-export default TextBlock;
+exports.default = TextBlock;
 //# sourceMappingURL=TextBlock.js.map

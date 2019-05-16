@@ -1,13 +1,15 @@
-import * as React from 'react';
-import List from '../List';
-import TextBlock from '../TextBlock';
-import Media from '../../partials/Media';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var List_1 = require("../List");
+var TextBlock_1 = require("../TextBlock");
+var Media_1 = require("../../partials/Media");
 var DoctorCard = function (props) {
     var _a = props.data, name = _a.name, specialization = _a.specialization, phone = _a.phone, nurse = _a.nurse, doctorImage = _a.doctorImage, clinicName = _a.clinicName, clinicExtraInfo = _a.clinicExtraInfo, clinicAddress = _a.clinicAddress, additionalInfo = _a.additionalInfo, clinicColor = _a.clinicColor;
     return (React.createElement("section", { className: 'doctorCard' },
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: 'doctorCard__main' },
-                (doctorImage && doctorImage.filename && React.createElement(Media, { data: doctorImage, type: "image" })) || (React.createElement("img", { src: "/assets/medicon/images/doctorIcon.svg" })),
+                (doctorImage && doctorImage.filename && React.createElement(Media_1.default, { data: doctorImage, type: "image" })) || (React.createElement("img", { src: "/assets/medicon/images/doctorIcon.svg" })),
                 name && React.createElement("h3", { className: 'gradientHeading' }, name),
                 specialization && React.createElement("p", { className: 'doctorCard__main__spe' }, specialization),
                 nurse && nurse.length > 1 && (React.createElement("p", { className: 'doctorCard__main__sis' },
@@ -37,13 +39,13 @@ var DoctorCard = function (props) {
             React.createElement("div", { className: 'doctorCard__divider' },
                 React.createElement("div", { className: "dividerCircles" },
                     React.createElement("div", null)))),
-        React.createElement(List, { data: additionalInfo }, function (_a) {
+        React.createElement(List_1.default, { data: additionalInfo }, function (_a) {
             var data = _a.data;
             return data &&
                 data.map(function (item, i) {
-                    return React.createElement(TextBlock, { key: i, data: { title: item.title, text: item.text } });
+                    return React.createElement(TextBlock_1.default, { key: i, data: { title: item.title, text: item.text } });
                 });
         })));
 };
-export default DoctorCard;
+exports.default = DoctorCard;
 //# sourceMappingURL=DoctorCard.js.map

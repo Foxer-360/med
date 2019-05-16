@@ -1,7 +1,9 @@
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
-import List from '../List';
-import DividerCircles from '../DividerCircles';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var List_1 = require("../List");
+var DividerCircles_1 = require("../DividerCircles");
 var ContactsBlock = function (props) {
     var _a = props.data, title = _a.title, managementTitle = _a.managementTitle, nextTitle = _a.nextTitle, managementContacts = _a.managementContacts, nextContacts = _a.nextContacts, otherContacts = _a.otherContacts;
     return (React.createElement("div", { className: 'contacts-block' },
@@ -10,7 +12,7 @@ var ContactsBlock = function (props) {
             React.createElement("div", null,
                 managementTitle && React.createElement("h4", null, managementTitle),
                 React.createElement("div", { className: 'grid contacts-block__main' },
-                    React.createElement(List, { data: managementContacts }, function (_a) {
+                    React.createElement(List_1.default, { data: managementContacts }, function (_a) {
                         var data = _a.data;
                         return data && data.map(function (mContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element', key: i },
                             mContact.name && React.createElement("p", { className: 'contacts-block__name' }, mContact.name),
@@ -21,7 +23,7 @@ var ContactsBlock = function (props) {
             React.createElement("div", null,
                 nextTitle && React.createElement("h4", null, nextTitle),
                 React.createElement("div", { className: 'grid contacts-block__main' },
-                    React.createElement(List, { data: nextContacts }, function (_a) {
+                    React.createElement(List_1.default, { data: nextContacts }, function (_a) {
                         var data = _a.data;
                         return data && data.map(function (nContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element', key: i },
                             nContact.name && React.createElement("p", { className: 'contacts-block__name' }, nContact.name),
@@ -29,9 +31,9 @@ var ContactsBlock = function (props) {
                             nContact.emails && React.createElement(ReactMarkdown, { className: 'contacts-block__email', source: nContact.emails }),
                             nContact.phones && React.createElement(ReactMarkdown, { source: nContact.phones }))); });
                     }))),
-            React.createElement(DividerCircles, null),
+            React.createElement(DividerCircles_1.default, null),
             React.createElement("div", { className: 'grid contacts-block__list' },
-                React.createElement(List, { data: otherContacts }, function (_a) {
+                React.createElement(List_1.default, { data: otherContacts }, function (_a) {
                     var data = _a.data;
                     return data && data.map(function (oContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element', key: i },
                         oContact.name && React.createElement("p", { className: 'contacts-block__name' }, oContact.name),
@@ -40,5 +42,5 @@ var ContactsBlock = function (props) {
                         oContact.phones && React.createElement(ReactMarkdown, { source: oContact.phones }))); });
                 })))));
 };
-export default ContactsBlock;
+exports.default = ContactsBlock;
 //# sourceMappingURL=ContactsBlock.js.map

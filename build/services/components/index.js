@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,10 +10,11 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import { isObjectLike } from 'lodash';
-import { Dummy, AlertNotFound, Hero, Header, CrossRoads, Benefits, Highlight, Footer, Reviews, TextBlock, Map, InfoBoxes, DoctorList, PolyclinicsList, ExpertiseList, InfoRectangles, PolyclinicInfo, Blog, PolyclinicBoxes, DoctorCard, Odbornost, MyProblem, JobPositions, JobOffers, CareerForm, ExpertiseDescription, MedicalGroup, Timeline, ViewsAboutUs, ContactInfo, ContactForm, Downloads, ContactsBlock, Faq, BlogArticle, DoctorSchedule, WorkingHours, } from '../../components';
-import * as resources from './resources';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var lodash_1 = require("lodash");
+var components_1 = require("../../components");
+var resources = require("./resources");
 /**
  *
  */
@@ -69,86 +71,86 @@ var ComponentsService = /** @class */ (function () {
     ComponentsService.prototype.getComponent = function (type) {
         switch (type) {
             case this.Types.DUMMY:
-                return Dummy;
+                return components_1.Dummy;
             case this.Types.HEADER:
-                return Header;
+                return components_1.Header;
             case this.Types.HERO:
-                return Hero;
+                return components_1.Hero;
             case this.Types.CROSSROADS:
-                return CrossRoads;
+                return components_1.CrossRoads;
             case this.Types.BENEFITS:
-                return Benefits;
+                return components_1.Benefits;
             case this.Types.HIGHLIGHT:
-                return Highlight;
+                return components_1.Highlight;
             case this.Types.FOOTER:
-                return Footer;
+                return components_1.Footer;
             case this.Types.REVIEWS:
-                return Reviews;
+                return components_1.Reviews;
             case this.Types.TEXTBLOCK:
-                return TextBlock;
+                return components_1.TextBlock;
             case this.Types.MAP:
-                return Map;
+                return components_1.Map;
             case this.Types.INFOBOXES:
-                return InfoBoxes;
+                return components_1.InfoBoxes;
             case this.Types.DOCTORLIST:
-                return DoctorList;
+                return components_1.DoctorList;
             case this.Types.POLYCLINICSLIST:
-                return PolyclinicsList;
+                return components_1.PolyclinicsList;
             case this.Types.EXPERTISELIST:
-                return ExpertiseList;
+                return components_1.ExpertiseList;
             case this.Types.INFORECTANGLES:
-                return InfoRectangles;
+                return components_1.InfoRectangles;
             case this.Types.POLYCLINICINFO:
-                return PolyclinicInfo;
+                return components_1.PolyclinicInfo;
             case this.Types.BLOG:
-                return Blog;
+                return components_1.Blog;
             case this.Types.POLYCLINICBOXES:
-                return PolyclinicBoxes;
+                return components_1.PolyclinicBoxes;
             case this.Types.DOCTORCARD:
-                return DoctorCard;
+                return components_1.DoctorCard;
             case this.Types.ODBORNOST:
-                return Odbornost;
+                return components_1.Odbornost;
             case this.Types.MYPROBLEM:
-                return MyProblem;
+                return components_1.MyProblem;
             case this.Types.JOBPOSITIONS:
-                return JobPositions;
+                return components_1.JobPositions;
             case this.Types.JOBOFFERS:
-                return JobOffers;
+                return components_1.JobOffers;
             case this.Types.CAREERFORM:
-                return CareerForm;
+                return components_1.CareerForm;
             case this.Types.EXPERTISEDESCRIPTION:
-                return ExpertiseDescription;
+                return components_1.ExpertiseDescription;
             case this.Types.MEDICALGROUP:
-                return MedicalGroup;
+                return components_1.MedicalGroup;
             case this.Types.TIMELINE:
-                return Timeline;
+                return components_1.Timeline;
             case this.Types.VIEWSABOUTUS:
-                return ViewsAboutUs;
+                return components_1.ViewsAboutUs;
             case this.Types.CONTACTINFO:
-                return ContactInfo;
+                return components_1.ContactInfo;
             case this.Types.CONTACTFORM:
-                return ContactForm;
+                return components_1.ContactForm;
             case this.Types.DOWNLOADS:
-                return Downloads;
+                return components_1.Downloads;
             case this.Types.CONTACTSBLOCK:
-                return ContactsBlock;
+                return components_1.ContactsBlock;
             case this.Types.FAQ:
-                return Faq;
+                return components_1.Faq;
             case this.Types.BLOGARTICLE:
-                return BlogArticle;
+                return components_1.BlogArticle;
             case this.Types.DOCTORSCHEDULE:
-                return DoctorSchedule;
+                return components_1.DoctorSchedule;
             case this.Types.WORKINGHOURS:
-                return WorkingHours;
+                return components_1.WorkingHours;
             default:
-                return function () { return React.createElement(AlertNotFound, { type: "component" }); };
+                return function () { return React.createElement(components_1.AlertNotFound, { type: "component" }); };
         }
     };
     /***/
     ComponentsService.prototype.getComponentResource = function (type) {
         var res = resources.default;
         var typedRes = resources[type.toLowerCase()];
-        if (isObjectLike(typedRes)) {
+        if (lodash_1.isObjectLike(typedRes)) {
             res = __assign({}, res, typedRes);
         }
         return res;
@@ -156,10 +158,10 @@ var ComponentsService = /** @class */ (function () {
     ComponentsService.prototype.getForm = function (type) {
         switch (type) {
             default:
-                return function () { return React.createElement(AlertNotFound, { type: "form" }); };
+                return function () { return React.createElement(components_1.AlertNotFound, { type: "form" }); };
         }
     };
     return ComponentsService;
 }());
-export default ComponentsService;
+exports.default = ComponentsService;
 //# sourceMappingURL=index.js.map

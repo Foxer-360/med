@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,12 +23,13 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import moment from 'moment';
-import debounce from 'lodash/debounce';
-import SvgIcon from '@source/partials/SvgIcon';
-import List from '@source/components/List';
-import Link from '@source/partials/Link';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var moment_1 = require("moment");
+var debounce_1 = require("lodash/debounce");
+var SvgIcon_1 = require("@source/partials/SvgIcon");
+var List_1 = require("@source/components/List");
+var Link_1 = require("@source/partials/Link");
 var doctorSearchResultsTemplate = {
     datasourceId: 'cjrkew3eu02gp0d71xoi0i5em',
     data: {
@@ -56,7 +58,7 @@ var SearchBar = /** @class */ (function (_super) {
         _this.state = { focused: false, query: '' };
         _this.handleClick = _this.handleClick.bind(_this);
         _this.input = React.createRef();
-        _this.changeSearchQuery = debounce(_this.changeSearchQuery, 300).bind(_this);
+        _this.changeSearchQuery = debounce_1.default(_this.changeSearchQuery, 300).bind(_this);
         return _this;
     }
     SearchBar.prototype.componentDidMount = function () {
@@ -89,11 +91,11 @@ var SearchBar = /** @class */ (function (_super) {
         return (React.createElement("div", { className: "searchBar " + (this.state.focused ? 'searchBar--focused' : '') + " searchBar--" + barColor, ref: this.searchBar },
             React.createElement("div", { className: 'searchBar__input' },
                 React.createElement("input", { type: "text", placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); }, onChange: function (e) { return _this.changeSearchQuery(e.target.value); }, ref: this.input }),
-                React.createElement(SvgIcon, { name: 'search', type: barColor })),
+                React.createElement(SvgIcon_1.default, { name: 'search', type: barColor })),
             React.createElement("div", { className: "searchBar__bar" }),
             this.state.query.length > 2 &&
                 React.createElement("div", { className: "searchBarResults " + (this.state.query.length > 2 ? 'active' : '') },
-                    React.createElement(List, { data: doctorSearchResults, searchedText: this.state.query }, function (_a) {
+                    React.createElement(List_1.default, { data: doctorSearchResults, searchedText: this.state.query }, function (_a) {
                         var data = _a.data;
                         if (data.length > 0) {
                             return (React.createElement("ul", { className: 'searchBarResults__doctors' }, data
@@ -110,7 +112,7 @@ var SearchBar = /** @class */ (function (_super) {
                                 .sort(function (a, b) { return (a.isDoctorActive === true ? -1 : 1); })
                                 .map(function (doctor, i) {
                                 return (React.createElement("li", { key: i, className: doctor.isDoctorActive ? 'active' : '' },
-                                    React.createElement(Link, __assign({}, doctor.link),
+                                    React.createElement(Link_1.default, __assign({}, doctor.link),
                                         React.createElement("span", null,
                                             React.createElement("p", null,
                                                 React.createElement("span", null, doctor.name),
@@ -125,14 +127,13 @@ var SearchBar = /** @class */ (function (_super) {
                             return (React.createElement("div", { className: 'searchBarResults__noResults' }, "Bohu\u017Eel jsme nena\u0161li \u017E\u00E1dn\u00E9 v\u00FDsledeky."));
                         }
                     }),
-                    this.props.blogSearchResults && this.state.query.length > 2 && (React.createElement(List, { data: this.props.blogSearchResults, searchedText: this.state.query }, function (_a) {
+                    this.props.blogSearchResults && this.state.query.length > 2 && (React.createElement(List_1.default, { data: this.props.blogSearchResults, searchedText: this.state.query }, function (_a) {
                         var data = _a.data;
                         if (data.length > 0) {
-                            console.log('HERE!!!!!!');
                             return (React.createElement("ul", { className: 'searchBarResults__blog' },
                                 React.createElement("label", null, "Mo\u017En\u00E1 jste hledali:"),
                                 data.map(function (blogItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(Link, __assign({}, blogItem.link),
+                                    React.createElement(Link_1.default, __assign({}, blogItem.link),
                                         React.createElement("div", null,
                                             React.createElement("h4", null, blogItem.title),
                                             React.createElement("p", null, blogItem.perex))))); })));
@@ -144,7 +145,7 @@ var SearchBar = /** @class */ (function (_super) {
     };
     SearchBar.prototype.getWeekDayKey = function () {
         var day;
-        switch (moment().isoWeekday()) {
+        switch (moment_1.default().isoWeekday()) {
             case 1:
                 day = 'mo';
                 break;
@@ -188,15 +189,15 @@ var SearchBar = /** @class */ (function (_super) {
                 var from = regex.exec(doctorWorkingHours.from);
                 var to = regex.exec(doctorWorkingHours.to);
                 if (from && from[1] && from[2] && to && to[1] && to[2]) {
-                    var startOfShift = moment()
+                    var startOfShift = moment_1.default()
                         .startOf('day')
                         .add(from[1], 'hours')
                         .add(from[2], 'minutes');
-                    var endOfShift = moment()
+                    var endOfShift = moment_1.default()
                         .startOf('day')
                         .add(to[1], 'hours')
                         .add(to[2], 'minutes');
-                    var now = moment();
+                    var now = moment_1.default();
                     if (now.isSameOrBefore(endOfShift) && now.isSameOrAfter(startOfShift)) {
                         return true;
                     }
@@ -208,5 +209,5 @@ var SearchBar = /** @class */ (function (_super) {
     };
     return SearchBar;
 }(React.Component));
-export default SearchBar;
+exports.default = SearchBar;
 //# sourceMappingURL=SearchBar.js.map

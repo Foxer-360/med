@@ -1,0 +1,69 @@
+{
+    "name": "Benefits",
+    "data": {
+        "items": [
+            {
+                "text": "Přívětivý personál",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "64",
+                        "height": "64"
+                    }
+                }
+            },
+            {
+                "text": "Přívětivý personál",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "64",
+                        "height": "64"
+                    }
+                }
+            },
+            {
+                "text": "Přívětivý personál",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "64",
+                        "height": "64"
+                    }
+                }
+            },
+            {
+                "text": "Přívětivý personál",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "64",
+                        "height": "64"
+                    }
+                }
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "title": "Benefits",
+                    "items": {
+                        "properties": {
+                            "text": {
+                                "type": "text",
+                                "title": "Text"
+                            },
+                            "image": {
+                                "type": "image"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

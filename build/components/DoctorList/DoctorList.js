@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,11 +23,12 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import List from '../List';
-import Link from '@source/partials/Link';
-import Button from '../../partials/Button';
-import Media from '@source/partials/Media';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var List_1 = require("../List");
+var Link_1 = require("@source/partials/Link");
+var Button_1 = require("../../partials/Button");
+var Media_1 = require("@source/partials/Media");
 var DoctorList = /** @class */ (function (_super) {
     __extends(DoctorList, _super);
     function DoctorList(props) {
@@ -39,7 +41,7 @@ var DoctorList = /** @class */ (function (_super) {
     DoctorList.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, doctors = _a.doctors, title = _a.title;
-        return (React.createElement(List, { data: doctors }, function (_a) {
+        return (React.createElement(List_1.default, { data: doctors }, function (_a) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 9), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("section", { className: 'doctorList' },
@@ -48,12 +50,12 @@ var DoctorList = /** @class */ (function (_super) {
                     React.createElement("div", { className: "doctorList__wrapper" }, items &&
                         items.map(function (doctor, index) {
                             return (React.createElement("div", { className: 'doctorList__item', key: index },
-                                React.createElement("div", { className: 'doctorList__item__img' }, (doctor.image && doctor.image.filename && React.createElement(Media, { data: doctor.image, type: "image" })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
+                                React.createElement("div", { className: 'doctorList__item__img' }, (doctor.image && doctor.image.filename && React.createElement(Media_1.default, { data: doctor.image, type: "image" })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
                                 React.createElement("div", { className: 'doctorList__item__info' },
                                     React.createElement("h3", null, doctor.name),
                                     React.createElement("p", null, doctor.field),
-                                    React.createElement(Link, __assign({}, doctor.clinicUrl, { className: 'doctorList__item__info__link' }), doctor.clinicName),
-                                    React.createElement(Button, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "v\u00EDce informac\u00ED"))));
+                                    React.createElement(Link_1.default, __assign({}, doctor.clinicUrl, { className: 'doctorList__item__info__link' }), doctor.clinicName),
+                                    React.createElement(Button_1.default, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "v\u00EDce informac\u00ED"))));
                         })),
                     _this.state.numberOfPage < lastPage && React.createElement("div", { className: "doctorList__btnHolder" },
                         React.createElement("button", { className: 'btn btn--blueBkg', onClick: function () { return _this.setState({ numberOfPage: lastPage }); } }, "zobrazit v\u00EDce")))));
@@ -61,5 +63,5 @@ var DoctorList = /** @class */ (function (_super) {
     };
     return DoctorList;
 }(React.Component));
-export default DoctorList;
+exports.default = DoctorList;
 //# sourceMappingURL=DoctorList.js.map

@@ -1,0 +1,63 @@
+{
+    "name": "CrossRoads",
+    "data": {
+        "items": [
+            {
+                "text": "Hledám polikliniku",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "95",
+                        "height": "95"
+                    }
+                },
+                "link": ""
+            },
+            {
+                "text": "Hledám lékaře",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "95",
+                        "height": "95"
+                    }
+                },
+                "link": ""
+            },
+            {
+                "text": "Potřebuji poradit",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "95",
+                        "height": "95"
+                    }
+                },
+                "link": ""
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "title": "Items",
+                    "items": {
+                        "properties": {
+                            "text": {
+                                "type": "text",
+                                "title": "Text"
+                            },
+                            "image": {
+                                "type": "image"
+                            },
+                            "link": {
+                                "type": "urlAutocomplete",
+                                "title": "Link URL"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,109 @@
+{
+    "name": "Map",
+    "data": {
+        "items": [
+            {
+                "title": "Poliklinika Budějovická",
+                "address": "Antala Staška 1670/ 80",
+                "city": "140 00 Praha 4",
+                "phone": "+420 261 006 111",
+                "lat": "50.042957",
+                "lng": "14.451078",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "400",
+                        "height": "234"
+                    }
+                }
+            },
+            {
+                "title": "Poliklinika Vysočany",
+                "address": "Sokolovská 304",
+                "city": "190 00 Praha 9",
+                "phone": "+420 266 006 211",
+                "lat": "50.108288",
+                "lng": "14.494519",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "400",
+                        "height": "234"
+                    }
+                }
+            },
+            {
+                "title": "Poliklinika Zelený pruh",
+                "address": "Roškotova 1717/2",
+                "city": "140 00 Praha 4",
+                "phone": "+420 234 105 111",
+                "lat": "50.041",
+                "lng": "14.429081",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "400",
+                        "height": "234"
+                    }
+                }
+            },
+            {
+                "title": "Poliklinika Holešovice",
+                "address": "Plynární 1617/10",
+                "city": "170 00 Praha 7 - Holešovice",
+                "phone": "+420 227 777 677",
+                "lat": "50.107612",
+                "lng": "14.443059",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "400",
+                        "height": "234"
+                    }
+                }
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "title": "Items",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "address": {
+                                "type": "text",
+                                "title": "Address"
+                            },
+                            "city": {
+                                "type": "text",
+                                "title": "City"
+                            },
+                            "phone": {
+                                "type": "text",
+                                "title": "Phone"
+                            },
+                            "lat": {
+                                "type": "text",
+                                "title": "lat"
+                            },
+                            "lng": {
+                                "type": "text",
+                                "title": "lng"
+                            },
+                            "image": {
+                                "type": "image"
+                            },
+                            "ambulanceLink": {
+                                "type": "urlAutocomplete",
+                                "title": "Ambulance URL"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

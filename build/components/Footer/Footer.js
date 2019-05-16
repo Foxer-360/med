@@ -1,3 +1,4 @@
+"use strict";
 var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -26,23 +27,24 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import { adopt } from 'react-adopt';
-import List from '../List';
-import Link from '../../partials/Link';
-import Social from './components/Social';
-import Loader from '@source/partials/Loader';
-import HelpPopup from './components/HelpPopup';
-import CookiePopup from './components/CookiePopup';
-import TemporaryPopup from './components/TemporaryPopup';
-var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
-var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
-var ComposedQuery = adopt({
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var graphql_tag_1 = require("graphql-tag");
+var react_apollo_1 = require("react-apollo");
+var react_adopt_1 = require("react-adopt");
+var List_1 = require("../List");
+var Link_1 = require("../../partials/Link");
+var Social_1 = require("./components/Social");
+var Loader_1 = require("@source/partials/Loader");
+var HelpPopup_1 = require("./components/HelpPopup");
+var CookiePopup_1 = require("./components/CookiePopup");
+var TemporaryPopup_1 = require("./components/TemporaryPopup");
+var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
+var GET_PAGES_URLS = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
+var ComposedQuery = react_adopt_1.adopt({
     context: function (_a) {
         var render = _a.render;
-        return React.createElement(Query, { query: GET_CONTEXT }, function (_a) {
+        return React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
             return render(data);
         });
@@ -52,7 +54,7 @@ var ComposedQuery = adopt({
         if (!(languageData && websiteData)) {
             return render({});
         }
-        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
+        return (React.createElement(react_apollo_1.Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
             return render(data);
         }));
     },
@@ -75,7 +77,7 @@ var Footer = /** @class */ (function (_super) {
                             !context.languagesData ||
                             !data ||
                             !data.pagesUrls) {
-                            return React.createElement(Loader, null);
+                            return React.createElement(Loader_1.default, null);
                         }
                         if (error) {
                             return "Error..." + error;
@@ -95,28 +97,28 @@ var Footer = /** @class */ (function (_super) {
                             ? transformedNavigations[footerThird]
                             : [];
                         return (React.createElement(React.Fragment, null,
-                            React.createElement(HelpPopup, null),
-                            React.createElement(TemporaryPopup, null),
-                            React.createElement(CookiePopup, { lang: context.languageData.code }),
+                            React.createElement(HelpPopup_1.default, null),
+                            React.createElement(TemporaryPopup_1.default, null),
+                            React.createElement(CookiePopup_1.default, { lang: context.languageData.code }),
                             React.createElement("ul", { className: 'footer__list' }, footerFirstItems &&
                                 footerFirstItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); })),
+                                    React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title))); })),
                             React.createElement("ul", { className: 'footer__list' }, footerSecondItems &&
                                 footerSecondItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); })),
+                                    React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title))); })),
                             React.createElement("ul", { className: 'footer__list' }, footerThirdItems &&
                                 footerThirdItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))));
+                                    React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title))); }))));
                     }),
-                    social && React.createElement(List, { data: socialIcons }, function (_a) {
+                    social && React.createElement(List_1.default, { data: socialIcons }, function (_a) {
                         var data = _a.data;
-                        return React.createElement(Social, { info: social, icons: data });
+                        return React.createElement(Social_1.default, { info: social, icons: data });
                     }))),
             React.createElement("div", { className: "bottom" },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "copyrights grid" },
                         company && React.createElement("p", null, company),
-                        text && React.createElement(Link, __assign({}, url),
+                        text && React.createElement(Link_1.default, __assign({}, url),
                             React.createElement("p", null, text)))))));
     };
     Footer.prototype.transformNavigationsIntoTree = function (navigation, urls) {
@@ -158,6 +160,6 @@ var Footer = /** @class */ (function (_super) {
     };
     return Footer;
 }(React.Component));
-export default Footer;
+exports.default = Footer;
 var templateObject_1, templateObject_2;
 //# sourceMappingURL=Footer.js.map

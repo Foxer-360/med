@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,9 +12,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
-import List from '../List';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var List_1 = require("../List");
 var Faq = /** @class */ (function (_super) {
     __extends(Faq, _super);
     function Faq(props) {
@@ -25,7 +27,7 @@ var Faq = /** @class */ (function (_super) {
     }
     Faq.prototype.render = function () {
         var _this = this;
-        return (React.createElement(List, { data: this.props.data.items }, function (_a) {
+        return (React.createElement(List_1.default, { data: this.props.data.items }, function (_a) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 4), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: 'faq' },
@@ -40,5 +42,5 @@ var Faq = /** @class */ (function (_super) {
     };
     return Faq;
 }(React.Component));
-export default Faq;
+exports.default = Faq;
 //# sourceMappingURL=Faq.js.map

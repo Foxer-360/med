@@ -1,11 +1,13 @@
-import * as React from 'react';
-import MapComponent from './components/MapComponent';
-import List from '../List';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var MapComponent_1 = require("./components/MapComponent");
+var List_1 = require("../List");
 var Map = function (props) {
-    return (React.createElement(List, { data: props.data.items }, function (_a) {
+    return (React.createElement(List_1.default, { data: props.data.items }, function (_a) {
         var data = _a.data;
-        return React.createElement(MapComponent, { clinics: data });
+        return React.createElement(MapComponent_1.default, { clinics: data });
     }));
 };
-export default Map;
+exports.default = Map;
 //# sourceMappingURL=Map.js.map

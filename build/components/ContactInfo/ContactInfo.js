@@ -1,5 +1,7 @@
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
 var ContactInfo = function (props) {
     var _a = props.data, address = _a.address, phones = _a.phones, emails = _a.emails, additional = _a.additional, clinic = _a.clinic, clinicColor = _a.clinicColor;
     return (React.createElement("div", { className: 'contact-info' },
@@ -20,5 +22,5 @@ var ContactInfo = function (props) {
                     React.createElement("img", { src: '/assets/medicon/images/contact-info-4.png', alt: "ICO and DIC" }),
                     React.createElement("div", null, additional && React.createElement(ReactMarkdown, { source: additional })))))));
 };
-export default ContactInfo;
+exports.default = ContactInfo;
 //# sourceMappingURL=ContactInfo.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,7 +12,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
 var Dummy = /** @class */ (function (_super) {
     __extends(Dummy, _super);
     function Dummy() {
@@ -23,5 +25,5 @@ var Dummy = /** @class */ (function (_super) {
     };
     return Dummy;
 }(React.Component));
-export default Dummy;
+exports.default = Dummy;
 //# sourceMappingURL=Dummy.js.map

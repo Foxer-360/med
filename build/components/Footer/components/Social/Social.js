@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,17 +10,18 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
-import SvgIcon from '@source/partials/SvgIcon';
-import Link from '@source/partials/Link';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var SvgIcon_1 = require("@source/partials/SvgIcon");
+var Link_1 = require("@source/partials/Link");
 var Social = function (props) {
     var icons = props.icons, info = props.info;
     return (React.createElement("div", { className: "social flexColumn" },
         icons &&
-            icons.map(function (icon, i) { return (React.createElement(Link, __assign({}, icon.url, { key: i }),
-                React.createElement(SvgIcon, { type: 'white', name: icon.name }))); }),
+            icons.map(function (icon, i) { return (React.createElement(Link_1.default, __assign({}, icon.url, { key: i }),
+                React.createElement(SvgIcon_1.default, { type: 'white', name: icon.name }))); }),
         info && React.createElement(ReactMarkdown, { className: 'social__text', source: info })));
 };
-export default Social;
+exports.default = Social;
 //# sourceMappingURL=Social.js.map

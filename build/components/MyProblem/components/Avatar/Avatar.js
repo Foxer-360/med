@@ -1,4 +1,6 @@
-import * as React from 'react';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
 var Avatar = function (props) {
     var onClick = props.onClick, activeArea = props.activeArea;
     return (React.createElement("div", { className: "avatarDoll " + activeArea },
@@ -415,5 +417,5 @@ var Avatar = function (props) {
                 React.createElement("path", { className: "st3", d: "M572.8,683.5c0,0,7.4,22.2,7.4,111c0,61.9-1.4,94.2-1.4,94.2l7.4,1c0,0,0.9-55.5,0.9-94.5\r\n\t\tc0-86.8-5-115.3-5-115.3l-4.9,1.5L572.8,683.5z" }),
                 React.createElement("path", { className: "st3", d: "M658.8,686.1c0,0-8.1,20.6-8.1,109.4c0,61.9,1.4,92.3,1.4,92.3l-7.4,1.9c0,0-0.9-54.5-0.9-93.5\r\n\t\tc0-86.8,5.8-113.2,5.8-113.2l5.6,1.6L658.8,686.1z" })))));
 };
-export default Avatar;
+exports.default = Avatar;
 //# sourceMappingURL=Avatar.js.map

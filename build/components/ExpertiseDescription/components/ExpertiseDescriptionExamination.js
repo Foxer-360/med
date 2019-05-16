@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,9 +23,10 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import Link from '@source/partials/Link';
-import Examination from './components/Examination';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Link_1 = require("@source/partials/Link");
+var Examination_1 = require("./components/Examination");
 // tslint:disable-next-line:max-line-length
 var ExpertiseDescriptionExamination = /** @class */ (function (_super) {
     __extends(ExpertiseDescriptionExamination, _super);
@@ -37,10 +39,10 @@ var ExpertiseDescriptionExamination = /** @class */ (function (_super) {
             title && React.createElement("h3", { style: { paddingTop: 45 } }, title),
             React.createElement("div", { className: 'examination__list grid' }, examinations && examinations.map(function (examination, i) {
                 var lastLong = examinations.length % 2 !== 0 && examinations.length - 1 === i;
-                return examination.url ? (React.createElement(Link, __assign({ key: i }, examination.url, { style: examination.url ? { fontWeight: 500 } : { cursor: 'default' }, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : '') }), examination.title && examination.title)) : (React.createElement(Examination, { key: i, description: examination.description, title: examination.title, lastLong: lastLong }));
+                return examination.url ? (React.createElement(Link_1.default, __assign({ key: i }, examination.url, { style: examination.url ? { fontWeight: 500 } : { cursor: 'default' }, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : '') }), examination.title && examination.title)) : (React.createElement(Examination_1.default, { key: i, description: examination.description, title: examination.title, lastLong: lastLong }));
             }))));
     };
     return ExpertiseDescriptionExamination;
 }(React.Component));
-export default ExpertiseDescriptionExamination;
+exports.default = ExpertiseDescriptionExamination;
 //# sourceMappingURL=ExpertiseDescriptionExamination.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,12 +12,13 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
-import List from '../List';
-import Media from '../../partials/Media';
-import PcTitle from './components/title';
-import Button from '../../partials/Button';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var List_1 = require("../List");
+var Media_1 = require("../../partials/Media");
+var title_1 = require("./components/title");
+var Button_1 = require("../../partials/Button");
 var PolyclinicsList = /** @class */ (function (_super) {
     __extends(PolyclinicsList, _super);
     function PolyclinicsList(props) {
@@ -45,16 +47,16 @@ var PolyclinicsList = /** @class */ (function (_super) {
         var _this = this;
         var clinics = this.props.data.clinics;
         return (React.createElement("section", { className: "polyclinicsList" },
-            React.createElement(List, { data: clinics }, function (_a) {
+            React.createElement(List_1.default, { data: clinics }, function (_a) {
                 var data = _a.data;
                 return data &&
                     data.map(function (clinic, index) { return (React.createElement("div", { className: 'pcitem', key: index },
                         React.createElement("div", { className: "fullWidthContainer" },
                             React.createElement("div", { className: "container" },
                                 React.createElement("div", { className: "pcitem__wrapper" },
-                                    React.createElement("div", { className: 'pcitem__img' }, clinic.image && React.createElement(Media, { data: clinic.image, type: "image" })),
+                                    React.createElement("div", { className: 'pcitem__img' }, clinic.image && React.createElement(Media_1.default, { data: clinic.image, type: "image" })),
                                     React.createElement("div", { className: 'pcitem__info' },
-                                        React.createElement(PcTitle, { name: clinic.name }),
+                                        React.createElement(title_1.default, { name: clinic.name }),
                                         React.createElement("div", { className: "pcitem__info__details" },
                                             React.createElement("div", { className: "pcitem__info__details__item" },
                                                 React.createElement("img", { src: "../../../assets/medicon/images/geoIcon.svg", alt: "Medicon GeoLocation Icon" }),
@@ -72,7 +74,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                 React.createElement("img", { src: "../../../assets/medicon/images/phoneIcon.svg", alt: "Medicon Phone Icon" }),
                                                 clinic.phone && React.createElement("p", null, clinic.phone)),
                                             React.createElement("div", { className: "pcitem__info__details__item" },
-                                                clinic.transportImage && React.createElement(Media, { data: clinic.transportImage, type: "image" }),
+                                                clinic.transportImage && React.createElement(Media_1.default, { data: clinic.transportImage, type: "image" }),
                                                 !clinic.transportImage && React.createElement("img", { src: "../../../assets/medicon/images/metro2.png", alt: "" }),
                                                 React.createElement("p", null,
                                                     clinic.transport && clinic.transport,
@@ -99,10 +101,10 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                         paragraph: function (rProps) { return React.createElement("p", null, rProps.children); },
                                                     } })),
                                             React.createElement("div", { className: 'pcitem__info__btnHolder' },
-                                                React.createElement(Button, { classes: "btn btn--blueBorder", url: clinic.url && clinic.url }, "v\u00EDce informac\u00ED"))))))))); });
+                                                React.createElement(Button_1.default, { classes: "btn btn--blueBorder", url: clinic.url && clinic.url }, "v\u00EDce informac\u00ED"))))))))); });
             })));
     };
     return PolyclinicsList;
 }(React.Component));
-export default PolyclinicsList;
+exports.default = PolyclinicsList;
 //# sourceMappingURL=PolyclinicsList.js.map

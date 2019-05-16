@@ -1,0 +1,31 @@
+{
+    "name": "Odbornost",
+    "data": {
+        "image": {
+            "recommendedSizes": {
+                "width": "420",
+                "height": "290"
+            }
+        },
+        "doctorName": "MUDr. Hana Kocherová",
+        "cite": "Na našem oddělení Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio."
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "type": "image"
+                },
+                "doctorName": {
+                    "type": "text",
+                    "title": "Doctor name"
+                },
+                "cite": {
+                    "type": "text",
+                    "title": "Text"
+                }
+            }
+        }
+    }
+}

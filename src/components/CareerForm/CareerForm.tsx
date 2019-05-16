@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SvgIcon from '../../partials/SvgIcon';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 import Link from '@source/partials/Link';
 import { Query } from 'react-apollo';
 import Loader from '../../partials/Loader';

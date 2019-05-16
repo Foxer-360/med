@@ -1,8 +1,8 @@
 import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 export interface ContactInfoProps {
-  data: { 
+  data: {
     address: string;
     clinic?: string;
     clinicColor?: string;
@@ -27,7 +27,7 @@ const ContactInfo = (props: ContactInfoProps) => {
             </div>
           </div>
           <div className={'grid contact-info__grid__element'}>
-            <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number" />  
+            <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number" />
             <div>{phones && <ReactMarkdown source={phones} />}</div>
           </div>
           <div className={'grid contact-info__grid__element'}>

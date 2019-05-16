@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,26 +10,27 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import Media from '@source/partials/Media';
-import Link from '@source/partials/Link';
-import List from '../List';
-import DividerCircles from '../DividerCircles';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Media_1 = require("@source/partials/Media");
+var Link_1 = require("@source/partials/Link");
+var List_1 = require("../List");
+var DividerCircles_1 = require("../DividerCircles");
 var PolyclinicBoxes = function (props) {
     var _a = props.data, title = _a.title, polyclinics = _a.polyclinics;
     return (React.createElement("section", { className: 'polyclinicBoxes' },
-        React.createElement(DividerCircles, null),
+        React.createElement(DividerCircles_1.default, null),
         React.createElement("div", { className: 'container' },
             title && React.createElement("h3", null, title),
             React.createElement("ul", { className: 'grid' },
-                React.createElement(List, { data: polyclinics }, function (_a) {
+                React.createElement(List_1.default, { data: polyclinics }, function (_a) {
                     var data = _a.data;
                     return data && data.map(function (polyclinic, index) {
                         var url = polyclinic.url, name = polyclinic.name, image = polyclinic.image;
                         return (React.createElement("li", { key: index },
-                            React.createElement(Link, __assign({}, url)),
+                            React.createElement(Link_1.default, __assign({}, url)),
                             React.createElement("div", { className: 'colorGradient' }),
-                            image && image.filename && React.createElement(Media, { data: image, type: 'image' }),
+                            image && image.filename && React.createElement(Media_1.default, { data: image, type: 'image' }),
                             name && (React.createElement("div", { className: 'pcTitle' },
                                 React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }),
                                 React.createElement("div", { className: 'pcTitle__title' },
@@ -45,5 +47,5 @@ var PolyclinicBoxes = function (props) {
                     });
                 })))));
 };
-export default PolyclinicBoxes;
+exports.default = PolyclinicBoxes;
 //# sourceMappingURL=PolyclinicBoxes.js.map

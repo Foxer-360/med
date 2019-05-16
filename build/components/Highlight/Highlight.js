@@ -1,6 +1,8 @@
-import * as React from 'react';
-import Button from '../../partials/Button';
-import ReactMarkdown from 'react-markdown';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Button_1 = require("../../partials/Button");
+var ReactMarkdown = require("react-markdown");
 var Highlight = function (props) {
     var _a = props.data, text = _a.text, url = _a.url, description = _a.description, urlTitle = _a.urlTitle;
     return (React.createElement("div", { className: "highlight" },
@@ -10,7 +12,7 @@ var Highlight = function (props) {
                 React.createElement("div", null,
                     text && React.createElement("p", null, text),
                     description && React.createElement(ReactMarkdown, { className: 'highlight__content--description', source: description })),
-                url && (React.createElement(Button, { classes: 'btn--whiteBorder', url: url }, (urlTitle && urlTitle) || 'more info'))))));
+                url && (React.createElement(Button_1.default, { classes: 'btn--whiteBorder', url: url }, (urlTitle && urlTitle) || 'more info'))))));
 };
-export default Highlight;
+exports.default = Highlight;
 //# sourceMappingURL=Highlight.js.map

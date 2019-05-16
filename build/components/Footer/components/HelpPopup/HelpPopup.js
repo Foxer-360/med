@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,7 +12,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
 var HelpPopup = /** @class */ (function (_super) {
     __extends(HelpPopup, _super);
     function HelpPopup(props) {
@@ -47,5 +49,5 @@ var HelpPopup = /** @class */ (function (_super) {
     };
     return HelpPopup;
 }(React.Component));
-export default HelpPopup;
+exports.default = HelpPopup;
 //# sourceMappingURL=HelpPopup.js.map

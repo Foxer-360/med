@@ -1,4 +1,6 @@
-import * as React from 'react';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
 var SelectButton = function (props) {
     var polyclinics = props.polyclinics;
     return (React.createElement("div", { className: 'select-btn hCenterBlock' },
@@ -7,5 +9,5 @@ var SelectButton = function (props) {
             polyclinics && polyclinics.map(function (polyclinic, i) { return (React.createElement("option", { value: polyclinic, key: i }, polyclinic)); })),
         React.createElement("span", { className: "arrow" })));
 };
-export default SelectButton;
+exports.default = SelectButton;
 //# sourceMappingURL=SelectButton.js.map

@@ -1,4 +1,6 @@
-import * as React from 'react';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
 var Title = function (props) {
     return (React.createElement("div", { className: 'pcTitle' },
         React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }),
@@ -14,5 +16,5 @@ var Title = function (props) {
                     React.createElement("div", null),
                     React.createElement("div", null))))));
 };
-export default Title;
+exports.default = Title;
 //# sourceMappingURL=title.js.map

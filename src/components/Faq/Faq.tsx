@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 import List from '../List';
 
@@ -32,7 +32,7 @@ export default class Faq extends React.Component<FaqProps, FaqState> {
       <List data={this.props.data.items}>
         {({ getPage }) => {
           const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 4);
-          
+
           return (
             <div className={'faq'}>
               <div className={'container'}>
@@ -45,7 +45,7 @@ export default class Faq extends React.Component<FaqProps, FaqState> {
                   );
                 })}
 
-                {this.state.numberOfPage < lastPage && <button 
+                {this.state.numberOfPage < lastPage && <button
                   className={'btn hCenterBlock btn--blueBkg btn--fullWidth'}
                   onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
                 >

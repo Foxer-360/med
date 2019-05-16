@@ -1,0 +1,10 @@
+# Ignore all private code like TS and configs
+.editorconfig
+.eslint
+gulpfile.js
+src
+tsconfig.json
+tslint.json
+
+# Ignore scripts
+scripts

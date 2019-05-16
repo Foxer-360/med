@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 export interface ExaminationProps {
   title: string;
@@ -24,29 +24,29 @@ class Examination extends React.Component<ExaminationProps, ExaminationState> {
     const { title, description, lastLong } = this.props;
 
     return (
-      <div 
+      <div
         style={description ? { cursor: 'pointer' } : { cursor: 'default' }}
         className={`examination__list__item ${lastLong ? 'examination__list__item--last-long' : ''}`}
       >
-        {title && 
+        {title &&
           <p
-            style={{ fontWeight: 500 }} 
+            style={{ fontWeight: 500 }}
             onClick={() => this.setState({ isDescriptionVisible: !this.state.isDescriptionVisible })}
           >
             {title}
           </p>}
 
-        {description && 
+        {description &&
           <ReactMarkdown
             source={description}
             renderers={{
               // tslint:disable-next-line:no-any
-              root: (props: any) => 
-                <div 
+              root: (props: any) =>
+                <div
                   className={'examination__list__item--markdown'}
                   style={
-                    this.state.isDescriptionVisible ? 
-                    { display: 'block', paddingTop: 15 } : 
+                    this.state.isDescriptionVisible ?
+                    { display: 'block', paddingTop: 15 } :
                     { display: 'none' }}
                 >
                   {props.children}

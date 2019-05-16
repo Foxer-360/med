@@ -1,0 +1,118 @@
+{
+    "name": "ExpertiseList",
+    "data": {
+        "title": "Odbornosti",
+        "expertiseList": [
+            {
+                "title": "Alergologie",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            },
+            {
+                "title": "Gynekologie",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            },
+            {
+                "title": "Chirurgie",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            },
+            {
+                "title": "CT/MR",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            },
+            {
+                "title": "eeg",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            },
+            {
+                "title": "foniatrie",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            },
+            {
+                "title": "neurologie",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            },
+            {
+                "title": "gyneorlkologie",
+                "url": "",
+                "image": {
+                    "recommendedSizes": {
+                        "width": "60",
+                        "height": "60"
+                    }
+                }
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "expertiseList": {
+                    "type": "array",
+                    "title": "Odbornosti",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Nazev odbornosti"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            },
+                            "image": {
+                                "type": "image"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

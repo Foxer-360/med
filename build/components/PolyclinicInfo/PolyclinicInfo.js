@@ -1,10 +1,12 @@
-import * as React from 'react';
-import Media from '@source/partials/Media';
-import DividerCircles from '../DividerCircles';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Media_1 = require("@source/partials/Media");
+var DividerCircles_1 = require("../DividerCircles");
 var PolyclinicInfo = function (props) {
     var _a = props.data, geo = _a.geo, phone = _a.phone, transport = _a.transport, transportImage = _a.transportImage, clinic = _a.clinic, clinicColor = _a.clinicColor;
     return (React.createElement("div", { className: 'policlinicInfo' },
-        React.createElement(DividerCircles, null),
+        React.createElement(DividerCircles_1.default, null),
         React.createElement("div", { className: 'policlinicInfo__wrapper' },
             React.createElement("div", { className: 'policlinicInfo__item' },
                 React.createElement("img", { src: '/assets/medicon/images/geo.svg', alt: "address" }),
@@ -15,8 +17,8 @@ var PolyclinicInfo = function (props) {
                 React.createElement("img", { src: '/assets/medicon/images/phone.svg', alt: "phone nubmer" }),
                 React.createElement("p", null, phone)),
             React.createElement("div", { className: 'policlinicInfo__item' },
-                transportImage && React.createElement(Media, { type: 'image', data: transportImage }),
+                transportImage && React.createElement(Media_1.default, { type: 'image', data: transportImage }),
                 React.createElement("p", null, transport)))));
 };
-export default PolyclinicInfo;
+exports.default = PolyclinicInfo;
 //# sourceMappingURL=PolyclinicInfo.js.map

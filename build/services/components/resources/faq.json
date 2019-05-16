@@ -1,0 +1,38 @@
+{
+    "name": "Faq",
+    "data": {
+        "items": [
+            {
+                "title": "Lorem ipsum dolor sit amet?",
+                "description": "Lorem ipsum **dolor sit amet**, consectetur adipiscing elit. Vivamus eu bibendum nulla, ac efficitur odio. Maecenas eu ligula eget ipsum scelerisque posuere. Integer rutrum tristique nisl hendrerit fringilla."
+            },
+            {
+                "title": "Lorem ipsum dolor sit amet?",
+                "description": "Etiam interdum nunc nec scelerisque pulvinar. Phasellus iaculis commodo dui, non aliquet est egestas eget. Nullam arcu enim, laoreet non consectetur in, sodales eu risus."
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "title": "Items",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "description": {
+                                "type": "markdown",
+                                "title": "Description"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

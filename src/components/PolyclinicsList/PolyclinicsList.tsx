@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 import List from '../List';
 import Media from '../../partials/Media';
@@ -90,11 +90,11 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                                 {clinic.district && clinic.district}
                               </p>
 
-                              {clinic.clinic && 
-                                <p 
+                              {clinic.clinic &&
+                                <p
                                   style={
-                                    clinic.clinicColor ? 
-                                    { color: `${clinic.clinicColor}`} : 
+                                    clinic.clinicColor ?
+                                    { color: `${clinic.clinicColor}`} :
                                     {}
                                   }
                                 >{clinic.clinic}
@@ -138,14 +138,14 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                             <div
                               className={'pcitem__info__list__showMore'}
                               onClick={() => this.toggleDisplayServices(index === this.state.activeCard ? null : index)}
-                            >  
+                            >
                               {this.state.displayAllServices && index === this.state.activeCard
                                 ? 'Skrýt'
                                 : 'Další odbornosti'}{' '}
                               <span className="arrow" />
                             </div>}
                         </div>
-                         
+
                         <div className={'pcitem__info__desc'}>
                           <div className={'pcitem__info__desc__txt'}>
                             <ReactMarkdown

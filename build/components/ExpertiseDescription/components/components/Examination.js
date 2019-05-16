@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,8 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
 var Examination = /** @class */ (function (_super) {
     __extends(Examination, _super);
     function Examination(props) {
@@ -40,5 +42,5 @@ var Examination = /** @class */ (function (_super) {
     };
     return Examination;
 }(React.Component));
-export default Examination;
+exports.default = Examination;
 //# sourceMappingURL=Examination.js.map

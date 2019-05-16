@@ -1,5 +1,7 @@
-import * as React from 'react';
-import CookieConsent from 'react-cookie-consent';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var react_cookie_consent_1 = require("react-cookie-consent");
 var CookiePopup = function (_a) {
     var lang = _a.lang;
     function renderBanner() {
@@ -14,7 +16,7 @@ var CookiePopup = function (_a) {
                     ? 'Další informace o tom, jak používáme soubory cookie'
                     : 'Learn more'))));
     }
-    return (React.createElement(CookieConsent, { expires: 365, location: 'bottom', cookieName: 'MediconCookies', acceptOnScroll: false, buttonText: lang === 'cs' ? 'OK' : 'Got it!', acceptOnScrollPercentage: 100, style: { background: '#efefef', color: '#3c3c3b' }, buttonStyle: { background: '#2473ba', color: '#ffffff', fontSize: '13px' } }, renderBanner()));
+    return (React.createElement(react_cookie_consent_1.default, { expires: 365, location: 'bottom', cookieName: 'MediconCookies', acceptOnScroll: false, buttonText: lang === 'cs' ? 'OK' : 'Got it!', acceptOnScrollPercentage: 100, style: { background: '#efefef', color: '#3c3c3b' }, buttonStyle: { background: '#2473ba', color: '#ffffff', fontSize: '13px' } }, renderBanner()));
 };
-export default CookiePopup;
+exports.default = CookiePopup;
 //# sourceMappingURL=CookiePopup.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,8 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
 // tslint:disable-next-line:max-line-length
 var ExpertiseDescriptionCare = /** @class */ (function (_super) {
     __extends(ExpertiseDescriptionCare, _super);
@@ -40,5 +42,5 @@ var ExpertiseDescriptionCare = /** @class */ (function (_super) {
     };
     return ExpertiseDescriptionCare;
 }(React.Component));
-export default ExpertiseDescriptionCare;
+exports.default = ExpertiseDescriptionCare;
 //# sourceMappingURL=ExpertiseDescriptionCare.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -35,14 +36,15 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-import * as React from 'react';
-import axios from 'axios';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import Link from '@source/partials/Link';
-import Loader from '../../partials/Loader';
-import testEmail from '../../helpers/testEmail';
-var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n  }\n"], ["\n  {\n    pageData @client\n  }\n"])));
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var axios_1 = require("axios");
+var graphql_tag_1 = require("graphql-tag");
+var react_apollo_1 = require("react-apollo");
+var Link_1 = require("@source/partials/Link");
+var Loader_1 = require("../../partials/Loader");
+var testEmail_1 = require("../../helpers/testEmail");
+var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n  }\n"], ["\n  {\n    pageData @client\n  }\n"])));
 var ContactForm = /** @class */ (function (_super) {
     __extends(ContactForm, _super);
     function ContactForm(props) {
@@ -80,7 +82,7 @@ var ContactForm = /** @class */ (function (_super) {
                 data.append('subject', subject);
                 data.append('formType', 'contact');
                 try {
-                    axios
+                    axios_1.default
                         .post(process.env.REACT_APP_SERVER + '/inquiry/upload', data)
                         .then(function (response) {
                         _this.setState(__assign({}, _this.state, { formStatus: 'success' }));
@@ -124,7 +126,7 @@ var ContactForm = /** @class */ (function (_super) {
                 if (_this.state.formValues[field] === '') {
                     newError[field] = 'Tento údaj je povinný';
                 }
-                else if (_this.state.formValues[field] !== '' && !testEmail(_this.state.formValues[field])) {
+                else if (_this.state.formValues[field] !== '' && !testEmail_1.default(_this.state.formValues[field])) {
                     newError[field] = 'not an email';
                 }
                 else {
@@ -151,10 +153,10 @@ var ContactForm = /** @class */ (function (_super) {
         var _a = this.props.data, gdprLink = _a.gdprLink, title = _a.title;
         var _b = this.state, _c = _b.formValues, name = _c.name, email = _c.email, message = _c.message, agreement = _c.agreement, errors = __rest(_b.errors, []), formStatus = _b.formStatus;
         return (React.createElement("div", { className: 'fullWidthContainer' },
-            React.createElement(Query, { query: GET_CONTEXT }, function (_a) {
+            React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
                 var data = _a.data, loading = _a.loading, error = _a.error;
                 if (loading) {
-                    return React.createElement(Loader, null);
+                    return React.createElement(Loader_1.default, null);
                 }
                 if (error) {
                     return 'Error...';
@@ -184,7 +186,7 @@ var ContactForm = /** @class */ (function (_super) {
                                     React.createElement("label", { htmlFor: "styled-checkbox-1" })),
                                 React.createElement("div", null,
                                     "Souhlas\u00EDm se ",
-                                    React.createElement(Link, __assign({}, gdprLink), "zpracov\u00E1n\u00EDm osobn\u00EDch"),
+                                    React.createElement(Link_1.default, __assign({}, gdprLink), "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                     " \u00FAdaj\u016F.")),
                             React.createElement("div", { className: 'flexRow flexAlign--center' },
                                 React.createElement("button", { className: "btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat")),
@@ -197,6 +199,6 @@ var ContactForm = /** @class */ (function (_super) {
     };
     return ContactForm;
 }(React.Component));
-export default ContactForm;
+exports.default = ContactForm;
 var templateObject_1;
 //# sourceMappingURL=ContactForm.js.map

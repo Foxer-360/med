@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,9 +12,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
-import List from '../List';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var List_1 = require("../List");
 var MedicalGroup = /** @class */ (function (_super) {
     __extends(MedicalGroup, _super);
     function MedicalGroup(props) {
@@ -51,7 +53,7 @@ var MedicalGroup = /** @class */ (function (_super) {
                 title && React.createElement("h4", null, "sou\u010D\u00E1sti skupiny medicon jsou tyto spole\u010Dnosti"),
                 React.createElement("div", { className: 'medicalGroup__list', ref: this.list, style: { height: this.state.listHeight > 0 && this.state.listHeight } },
                     React.createElement("ul", null,
-                        React.createElement(List, { data: companies }, function (_a) {
+                        React.createElement(List_1.default, { data: companies }, function (_a) {
                             var data = _a.data;
                             return data &&
                                 data.map(function (item, index) {
@@ -69,5 +71,5 @@ var MedicalGroup = /** @class */ (function (_super) {
     };
     return MedicalGroup;
 }(React.Component));
-export default MedicalGroup;
+exports.default = MedicalGroup;
 //# sourceMappingURL=MedicalGroup.js.map

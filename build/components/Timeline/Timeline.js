@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,10 +12,11 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import Swipeable from 'react-swipeable';
-import Media from '@source/partials/Media';
-import List from '../List';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var react_swipeable_1 = require("react-swipeable");
+var Media_1 = require("@source/partials/Media");
+var List_1 = require("../List");
 var Timeline = /** @class */ (function (_super) {
     __extends(Timeline, _super);
     function Timeline(props) {
@@ -70,7 +72,7 @@ var Timeline = /** @class */ (function (_super) {
                 if (positionItem) {
                     points.push(React.createElement("div", { key: i, className: "point " + ('point--' + positionItem.color) },
                         React.createElement("div", { className: "point__content " + (items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom') },
-                            positionItem.image && React.createElement(Media, { data: positionItem.image, type: "image" }),
+                            positionItem.image && React.createElement(Media_1.default, { data: positionItem.image, type: "image" }),
                             React.createElement("p", null, positionItem.descriptionA),
                             React.createElement("p", null, positionItem.descriptionB),
                             React.createElement("h5", null, positionItem.name),
@@ -103,9 +105,9 @@ var Timeline = /** @class */ (function (_super) {
                     !this.state.limitLeft && (React.createElement("div", { className: 'timeline__arrow  timeline__arrow--left', onClick: function (e) { return _this.arrowClick(e, 'left'); } })),
                     React.createElement("div", { className: 'timeline__blur  timeline__blur--left' }),
                     React.createElement("div", { className: 'timeline__cont', onMouseDown: function (e) { return _this.handleDrag(e); } },
-                        React.createElement(Swipeable, { trackMouse: true, preventDefaultTouchmoveEvent: true, onSwipedLeft: function (e, deltaX, velocity) { return _this.handleSwipe(e, 'left', deltaX, velocity); }, onSwipedRight: function (e, deltaX, velocity) { return _this.handleSwipe(e, 'right', deltaX, velocity); } },
+                        React.createElement(react_swipeable_1.default, { trackMouse: true, preventDefaultTouchmoveEvent: true, onSwipedLeft: function (e, deltaX, velocity) { return _this.handleSwipe(e, 'left', deltaX, velocity); }, onSwipedRight: function (e, deltaX, velocity) { return _this.handleSwipe(e, 'right', deltaX, velocity); } },
                             React.createElement("div", { className: 'timeline__holder', ref: this.timeline, style: { transform: "translate3d(" + (this.state.x + 'px') + ",-7px,0)" } },
-                                React.createElement(List, { data: items }, function (_a) {
+                                React.createElement(List_1.default, { data: items }, function (_a) {
                                     var data = _a.data;
                                     return React.createElement(React.Fragment, null, _this.renderPoints(data));
                                 })))),
@@ -113,12 +115,12 @@ var Timeline = /** @class */ (function (_super) {
                     React.createElement("div", { className: 'timeline__blur timeline__blur--right', onClick: function (e) { return _this.arrowClick(e, 'right'); } })),
                 React.createElement("div", { className: 'timeline timeline__mobile' },
                     React.createElement("div", { className: 'timeline__holder', ref: this.timeline, style: { transform: "translate3d(" + (this.state.x + 'px') + ",-7px,0)" } },
-                        React.createElement(List, { data: items }, function (_a) {
+                        React.createElement(List_1.default, { data: items }, function (_a) {
                             var data = _a.data;
                             return React.createElement(React.Fragment, null, _this.renderPoints(data));
                         }))))));
     };
     return Timeline;
 }(React.Component));
-export default Timeline;
+exports.default = Timeline;
 //# sourceMappingURL=Timeline.js.map
