@@ -12,9 +12,9 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Button_1 = require("@source/partials/Button");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../../partials/Link");
+var Button_1 = require("../../../partials/Button");
+var getImageUrl_1 = require("../../../helpers/getImageUrl");
 function InfoElement(props) {
     var title = props.title, gradientColor = props.gradientColor, image = props.image, button = props.button, titleColor = props.titleColor, link = props.link, languageCode = props.languageCode;
     return (React.createElement(Link_1.default, __assign({}, link, { className: 'info-boxes__list__element', style: { backgroundImage: image && "url(" + getImageUrl_1.default(image) + ")" } }),

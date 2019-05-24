@@ -12,9 +12,9 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Link_1 = require("@source/partials/Link");
-var Button_1 = require("@source/partials/Button");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Link_1 = require("../../../partials/Link");
+var Button_1 = require("../../../partials/Button");
+var getImageUrl_1 = require("../../../helpers/getImageUrl");
 var ExpertiseDescriptionBoxes = function (props) {
     var boxes = props.boxes;
     return (React.createElement("section", { className: "info" },

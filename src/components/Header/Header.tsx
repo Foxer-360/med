@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Hamburger from './components/Hamburger';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
+import { Query } from 'react-apollo';
+
 import Link from '../../partials/Link';
-import Loader from '@source/partials/Loader';
+import Loader from '../../partials/Loader';
+import Hamburger from './components/Hamburger';
 
 const GET_CONTEXT = gql`
   {

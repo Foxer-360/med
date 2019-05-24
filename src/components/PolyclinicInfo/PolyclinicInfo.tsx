@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Media from '@source/partials/Media';
+import Media from '../../partials/Media';
 import DividerCircles from '../DividerCircles';
 
 export interface ContactsProps {

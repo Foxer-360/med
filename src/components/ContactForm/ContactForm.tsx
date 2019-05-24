@@ -3,7 +3,7 @@ import axios from 'axios';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-import Link from '@source/partials/Link';
+import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
 import testEmail from '../../helpers/testEmail';
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Button from '../../partials/Button';
 import * as ReactMarkdown from 'react-markdown';
+
+import Button from '../../partials/Button';
 
 export interface HighlightProps {
   data: {

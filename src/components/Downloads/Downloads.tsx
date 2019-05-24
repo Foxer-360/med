@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import List from '../List';
-import getUrl from '@source/helpers/getImageUrl';
+import SvgIcon from '../../partials/SvgIcon';
 import DividerCircles from '../DividerCircles';
-import SvgIcon from '@source/partials/SvgIcon';
+import getUrl from '../../helpers/getImageUrl';
 
 interface Downloads {
   title: string;

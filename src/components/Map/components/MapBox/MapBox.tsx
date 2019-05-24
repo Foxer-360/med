@@ -1,7 +1,8 @@
 import * as React from 'react';
+
 import Button from '../../../../partials/Button';
 import Media from '../../../../partials/Media';
-import Link from '@source/partials/Link';
+import Link from '../../../../partials/Link';
 
 interface MapBoxProps {
   close: () => void;

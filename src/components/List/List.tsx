@@ -1,10 +1,12 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
-import { Query, ApolloConsumer } from 'react-apollo';
-import * as R from 'ramda';
-import { adopt } from 'react-adopt';
 import { withRouter, RouteComponentProps } from 'react-router';
-import Loader from '@source/partials/Loader';
+import { Query, ApolloConsumer } from 'react-apollo';
+import { adopt } from 'react-adopt';
+import gql from 'graphql-tag';
+import * as R from 'ramda';
+
+import Loader from '../../partials/Loader';
+
 const escape = function (str: string) {
   // TODO: escape %x75 4HEXDIG ?? chars
   return str

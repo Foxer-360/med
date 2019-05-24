@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var Button_1 = require("../../../../partials/Button");
 var Media_1 = require("../../../../partials/Media");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../../../partials/Link");
 var MapBox = function (props) {
     var _a = props.clinicData, title = _a.title, address = _a.address, city = _a.city, phone = _a.phone, image = _a.image, ambulanceLink = _a.ambulanceLink;
     return (React.createElement("div", { className: 'mapBox' },

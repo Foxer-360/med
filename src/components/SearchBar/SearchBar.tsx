@@ -1,10 +1,10 @@
 import * as React from 'react';
 import moment from 'moment';
-import debounce from 'lodash/debounce';
+import { debounce } from 'lodash';
 
-import SvgIcon from '@source/partials/SvgIcon';
-import List from '@source/components/List';
-import Link from '@source/partials/Link';
+import Link from '../../partials/Link';
+import List from '../../components/List';
+import SvgIcon from '../../partials/SvgIcon';
 
 export interface SearchBarProps {
   placeholder: string;
@@ -93,6 +93,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         },
       };
     }
+
     return (
       <div
         className={`searchBar ${this.state.focused ? 'searchBar--focused' : ''} searchBar--${barColor}`}

@@ -38,14 +38,14 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var SvgIcon_1 = require("../../partials/SvgIcon");
 var ReactMarkdown = require("react-markdown");
-var Link_1 = require("@source/partials/Link");
 var react_apollo_1 = require("react-apollo");
-var Loader_1 = require("../../partials/Loader");
-var testEmail_1 = require("../../helpers/testEmail");
-var axios_1 = require("axios");
 var graphql_tag_1 = require("graphql-tag");
+var axios_1 = require("axios");
+var Link_1 = require("../../partials/Link");
+var Loader_1 = require("../../partials/Loader");
+var SvgIcon_1 = require("../../partials/SvgIcon");
+var testEmail_1 = require("../../helpers/testEmail");
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n  }\n"], ["\n  {\n    pageData @client\n  }\n"])));
 var CareerForm = /** @class */ (function (_super) {
     __extends(CareerForm, _super);

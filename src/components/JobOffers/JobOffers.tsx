@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import List from '../List';
-import Link from '@source/partials/Link';
-import getImageUrl from '@source/helpers/getImageUrl';
+import Link from '../../partials/Link';
+import getImageUrl from '../../helpers/getImageUrl';
 
 interface Offer {
   title: string;

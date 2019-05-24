@@ -1,6 +1,7 @@
 import * as React from 'react';
-import ViewsAboutUsElement from './components/ViewsAboutUsElement';
+
 import List from '../List';
+import ViewsAboutUsElement from './components/ViewsAboutUsElement';
 
 interface View {
   url: string;

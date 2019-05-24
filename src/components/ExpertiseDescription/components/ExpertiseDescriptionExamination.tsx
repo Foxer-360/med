@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Link from '@source/partials/Link';
+
+import Link from '../../../partials/Link';
 import Examination from './components/Examination';
 
 export interface ExpertiseDescriptionExaminationProps {

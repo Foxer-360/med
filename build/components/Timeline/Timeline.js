@@ -15,8 +15,8 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_swipeable_1 = require("react-swipeable");
-var Media_1 = require("@source/partials/Media");
 var List_1 = require("../List");
+var Media_1 = require("../../partials/Media");
 var Timeline = /** @class */ (function (_super) {
     __extends(Timeline, _super);
     function Timeline(props) {

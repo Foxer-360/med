@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
-var Button_1 = require("@source/partials/Button");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Button_1 = require("../../partials/Button");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var InfoRectangles = function (props) {
     var infoRectangles = props.data.infoRectangles;
     return (React.createElement("section", { className: "info-rectangles" },

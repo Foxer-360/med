@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var SvgIcon_1 = require("../../partials/SvgIcon");
 var DividerCircles_1 = require("../DividerCircles");
-var SvgIcon_1 = require("@source/partials/SvgIcon");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var Downloads = function (props) {
     var _a = props.data, title = _a.title, description = _a.description, downloads = _a.downloads;
     return (React.createElement("div", { className: 'container' },

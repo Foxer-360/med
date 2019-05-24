@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var SvgIcon_1 = require("@source/partials/SvgIcon");
-var Media_1 = require("@source/partials/Media");
+var Media_1 = require("../../../partials/Media");
+var SvgIcon_1 = require("../../../partials/SvgIcon");
 function ReviewElement(props) {
     var image = props.image, cite = props.cite, starCount = props.starCount;
     var rows = [];

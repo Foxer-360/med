@@ -41,7 +41,7 @@ var React = require("react");
 var axios_1 = require("axios");
 var graphql_tag_1 = require("graphql-tag");
 var react_apollo_1 = require("react-apollo");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../partials/Link");
 var Loader_1 = require("../../partials/Loader");
 var testEmail_1 = require("../../helpers/testEmail");
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n  }\n"], ["\n  {\n    pageData @client\n  }\n"])));

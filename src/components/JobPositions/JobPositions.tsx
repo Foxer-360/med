@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import List from '../List';
-import Button from '@source/partials/Button';
+import Button from '../../partials/Button';
 import SelectButton from './components/index';
-import getImageUrl from '@source/helpers/getImageUrl';
+import getImageUrl from '../../helpers/getImageUrl';
 
 interface Position {
   name: string;

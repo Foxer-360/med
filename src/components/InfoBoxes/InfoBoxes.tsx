@@ -1,6 +1,7 @@
 import * as React from 'react';
-import InfoElement from './components/InfoElement';
+
 import List from '../List';
+import InfoElement from './components/InfoElement';
 
 interface Box {
   title: string;

@@ -29,12 +29,12 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var graphql_tag_1 = require("graphql-tag");
-var react_apollo_1 = require("react-apollo");
-var R = require("ramda");
-var react_adopt_1 = require("react-adopt");
 var react_router_1 = require("react-router");
-var Loader_1 = require("@source/partials/Loader");
+var react_apollo_1 = require("react-apollo");
+var react_adopt_1 = require("react-adopt");
+var graphql_tag_1 = require("graphql-tag");
+var R = require("ramda");
+var Loader_1 = require("../../partials/Loader");
 var escape = function (str) {
     // TODO: escape %x75 4HEXDIG ?? chars
     return str

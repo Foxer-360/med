@@ -12,8 +12,8 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Media_1 = require("@source/partials/Media");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../../partials/Link");
+var Media_1 = require("../../../partials/Media");
 function ViewsAboutUsElement(props) {
     var url = props.url, link = props.link, cite = props.cite, image = props.image;
     return (React.createElement("div", { className: "viewsAboutUs__list__element" },

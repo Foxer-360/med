@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var Media_1 = require("../../partials/Media");
 var DividerCircles_1 = require("../DividerCircles");
-var Media_1 = require("@source/partials/Media");
 var Odbornost = function (props) {
     var _a = props.data, image = _a.image, doctorName = _a.doctorName, cite = _a.cite;
     return (React.createElement("div", { className: 'odbornost' },

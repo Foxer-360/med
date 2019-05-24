@@ -1,7 +1,8 @@
 import * as React from 'react';
+
+import Link from '../../partials/Link';
 import Avatar from './components/Avatar';
-import SvgIcon from '@source/partials/SvgIcon';
-import Link from '@source/partials/Link';
+import SvgIcon from '../../partials/SvgIcon';
 
 interface Specialization {
   name: string;

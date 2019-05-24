@@ -12,8 +12,8 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Link_1 = require("@source/partials/Link");
-var Media_1 = require("@source/partials/Media");
+var Link_1 = require("../../../partials/Link");
+var Media_1 = require("../../../partials/Media");
 function BlogCard(props) {
     var url = props.url, title = props.title, text = props.text, color = props.color, img = props.img, special = props.special;
     if (special) {

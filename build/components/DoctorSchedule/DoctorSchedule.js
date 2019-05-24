@@ -9,7 +9,7 @@ var moment_1 = require("moment");
 var graphql_tag_1 = require("graphql-tag");
 var urlize_1 = require("urlize");
 var react_apollo_1 = require("react-apollo");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../partials/Link");
 var DividerCircles_1 = require("../DividerCircles");
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var getDayOfWeek = function (day) {

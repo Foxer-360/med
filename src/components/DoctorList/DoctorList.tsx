@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import List from '../List';
-import Link from '@source/partials/Link';
+import Link from '../../partials/Link';
+import Media from '../../partials/Media';
 import Button from '../../partials/Button';
-import Media from '@source/partials/Media';
 
 interface Doctors {
   name: string;

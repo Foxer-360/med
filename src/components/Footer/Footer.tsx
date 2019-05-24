@@ -6,7 +6,7 @@ import { adopt } from 'react-adopt';
 import List from '../List';
 import Link from '../../partials/Link';
 import Social from './components/Social';
-import Loader from '@source/partials/Loader';
+import Loader from '../../partials/Loader';
 import HelpPopup from './components/HelpPopup';
 import CookiePopup from './components/CookiePopup';
 import TemporaryPopup from './components/TemporaryPopup';

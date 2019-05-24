@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Media_1 = require("@source/partials/Media");
+var Media_1 = require("../../partials/Media");
 var DividerCircles_1 = require("../DividerCircles");
 var PolyclinicInfo = function (props) {
     var _a = props.data, geo = _a.geo, phone = _a.phone, transport = _a.transport, transportImage = _a.transportImage, clinic = _a.clinic, clinicColor = _a.clinicColor;

@@ -1,6 +1,7 @@
 import * as React from 'react';
+
+import Media from '../../partials/Media';
 import DividerCircles from '../DividerCircles';
-import Media from '@source/partials/Media';
 
 export interface OdbornostProps {
   data: {

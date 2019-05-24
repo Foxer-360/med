@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var SearchBar_1 = require("../SearchBar/SearchBar");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var Hero = /** @class */ (function (_super) {
     __extends(Hero, _super);
     function Hero() {

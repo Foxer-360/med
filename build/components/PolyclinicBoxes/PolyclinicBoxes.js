@@ -12,9 +12,9 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Media_1 = require("@source/partials/Media");
-var Link_1 = require("@source/partials/Link");
 var List_1 = require("../List");
+var Link_1 = require("../../partials/Link");
+var Media_1 = require("../../partials/Media");
 var DividerCircles_1 = require("../DividerCircles");
 var PolyclinicBoxes = function (props) {
     var _a = props.data, title = _a.title, polyclinics = _a.polyclinics;

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import SvgIcon from '../../partials/SvgIcon';
 import * as ReactMarkdown from 'react-markdown';
-import Link from '@source/partials/Link';
 import { Query } from 'react-apollo';
-import Loader from '../../partials/Loader';
-import testEmail from '../../helpers/testEmail';
-import axios from 'axios';
 import gql from 'graphql-tag';
+import axios from 'axios';
+
+import Link from '../../partials/Link';
+import Loader from '../../partials/Loader';
+import SvgIcon from '../../partials/SvgIcon';
+import testEmail from '../../helpers/testEmail';
 
 export interface CareerFormProps {
   data: {

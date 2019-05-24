@@ -1,6 +1,7 @@
 import * as React from 'react';
-import MapComponent from './components/MapComponent';
+
 import List from '../List';
+import MapComponent from './components/MapComponent';
 
 export interface MapProps {
   data: LooseObject;

@@ -13,8 +13,8 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactMarkdown = require("react-markdown");
-var SvgIcon_1 = require("@source/partials/SvgIcon");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../../../partials/Link");
+var SvgIcon_1 = require("../../../../partials/SvgIcon");
 var Social = function (props) {
     var icons = props.icons, info = props.info;
     return (React.createElement("div", { className: "social flexColumn" },

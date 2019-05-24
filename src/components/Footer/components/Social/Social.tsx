@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
-import SvgIcon from '@source/partials/SvgIcon';
-import Link from '@source/partials/Link';
+
+import Link from '../../../../partials/Link';
+import SvgIcon from '../../../../partials/SvgIcon';
 
 const Social = (props: any) => {
   const { icons, info } = props;

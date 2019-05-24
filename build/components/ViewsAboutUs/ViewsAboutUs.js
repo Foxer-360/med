@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ViewsAboutUsElement_1 = require("./components/ViewsAboutUsElement");
 var List_1 = require("../List");
+var ViewsAboutUsElement_1 = require("./components/ViewsAboutUsElement");
 var ViewsAboutUs = function (props) {
     var _a = props.data, title = _a.title, views = _a.views;
     return (React.createElement("div", { className: 'viewsAboutUs' },

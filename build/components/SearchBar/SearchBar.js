@@ -26,10 +26,10 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var moment_1 = require("moment");
-var debounce_1 = require("lodash/debounce");
-var SvgIcon_1 = require("@source/partials/SvgIcon");
-var List_1 = require("@source/components/List");
-var Link_1 = require("@source/partials/Link");
+var lodash_1 = require("lodash");
+var Link_1 = require("../../partials/Link");
+var List_1 = require("../../components/List");
+var SvgIcon_1 = require("../../partials/SvgIcon");
 var doctorSearchResultsTemplate = {
     datasourceId: 'cjrkew3eu02gp0d71xoi0i5em',
     data: {
@@ -58,7 +58,7 @@ var SearchBar = /** @class */ (function (_super) {
         _this.state = { focused: false, query: '' };
         _this.handleClick = _this.handleClick.bind(_this);
         _this.input = React.createRef();
-        _this.changeSearchQuery = debounce_1.default(_this.changeSearchQuery, 300).bind(_this);
+        _this.changeSearchQuery = lodash_1.debounce(_this.changeSearchQuery, 300).bind(_this);
         return _this;
     }
     SearchBar.prototype.componentDidMount = function () {

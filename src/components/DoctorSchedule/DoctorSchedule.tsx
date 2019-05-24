@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { urlize } from 'urlize';
 import { Query } from 'react-apollo';
 
-import Link from '@source/partials/Link';
+import Link from '../../partials/Link';
 import DividerCircles from '../DividerCircles';
 
 const GET_CONTEXT = gql`

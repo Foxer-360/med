@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../../partials/Link");
 var Examination_1 = require("./components/Examination");
 // tslint:disable-next-line:max-line-length
 var ExpertiseDescriptionExamination = /** @class */ (function (_super) {

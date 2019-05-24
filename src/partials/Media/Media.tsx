@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import ImgWithFallback from './components/ImgWithFallback';
 
 export interface MediaProps {

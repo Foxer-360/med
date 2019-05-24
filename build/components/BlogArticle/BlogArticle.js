@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactMarkdown = require("react-markdown");
-var Media_1 = require("@source/partials/Media");
+var Media_1 = require("../../partials/Media");
 var BlogArticle = function (props) {
     var _a = props.data, title = _a.title, text = _a.text, image = _a.image, textAlign = _a.textAlign, isImageSquare = _a.isImageSquare;
     return (React.createElement("section", { className: 'blogArticle' },

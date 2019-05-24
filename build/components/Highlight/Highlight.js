@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Button_1 = require("../../partials/Button");
 var ReactMarkdown = require("react-markdown");
+var Button_1 = require("../../partials/Button");
 var Highlight = function (props) {
     var _a = props.data, text = _a.text, url = _a.url, description = _a.description, urlTitle = _a.urlTitle;
     return (React.createElement("div", { className: "highlight" },
