@@ -26,6 +26,7 @@
     ],
     "boxes": [
       {
+        "textColor": "white",
         "title": "Doklady které pro vyšetření potřebujete",
         "url": "",
         "image": {
@@ -36,6 +37,7 @@
         }
       },
       {
+        "textColor": "white",
         "title": "Jak vyšetření probíhá",
         "url": "",
         "image": {
@@ -100,6 +102,15 @@
           "title": "Boxes",
           "items": {
             "properties": {
+              "textColor": {
+                "type": "enum",
+                "title": "Text color",
+                "options": {
+                    "black": "black",
+                    "white": "white",
+                    "#1794C7": "blue"
+                }
+              },
               "title": {
                 "type": "text",
                 "title": "Title"

@@ -7,9 +7,12 @@
 .offers {
   grid-gap: 20px;
   margin-bottom: 50px;
-  align-items: center;
   justify-content: center;
+  grid-template-rows: auto;
   grid-template-columns: 1fr 1fr;  
+  
+  & > * { align-self: center; }
+  
   p { color: $darkGray; }
 
   &__element {
@@ -67,6 +70,7 @@
 
   @include max-lg {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     &__element { height: 120px; }
   }
 

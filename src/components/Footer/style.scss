@@ -148,6 +148,7 @@
   .copyrights {
     grid-template-columns: 2fr;
     grid-template-rows: 1fr;
+    
     a {
       grid-column: 2/3;
       color: $lightBlue;

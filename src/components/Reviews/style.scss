@@ -19,6 +19,7 @@
       background-repeat: no-repeat;
       display: grid;
       grid-template-columns: 110px 1fr;
+      grid-template-rows: auto;
 
       .mediaRatio {
         height: 100%;
@@ -80,6 +81,7 @@
 
     &__list {
       grid-template-columns: 1fr;
+      grid-template-rows: auto;
 
       &__element {
         &__content {

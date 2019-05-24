@@ -19,8 +19,7 @@ var Description = function (props) {
             boxes && boxes.length > 0 && React.createElement(DividerCircles_1.default, null),
             React.createElement(List_1.default, { data: boxes }, function (_a) {
                 var data = _a.data;
-                return data &&
-                    React.createElement(ExpertiseDescriptionBoxes_1.default, { boxes: data });
+                return data && React.createElement(ExpertiseDescriptionBoxes_1.default, { boxes: data });
             }))));
 };
 exports.default = Description;

@@ -59,6 +59,7 @@
   @include max-lg {
     &__list {
       grid-template-columns: repeat(1, 230px);
+      grid-template-rows: auto;
     }
   }
 }

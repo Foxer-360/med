@@ -52,6 +52,7 @@
   @include max-md {
     .grid-container {
       grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
     }
   }
 }

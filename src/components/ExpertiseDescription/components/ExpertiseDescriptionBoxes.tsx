@@ -22,10 +22,10 @@ const ExpertiseDescriptionBoxes = (props: ExpertiseDescriptionBoxesProps) => {
             style={{ backgroundImage: box.image && `url(${getImageUrl(box.image)})` }}
           >
             <div className={'info__element--cell'}>
-              {box.title && <h5>{box.title}</h5>}
+              {box.title && <h5 style={box.textColor ? { color: box.textColor} : {}}>{box.title}</h5>}
               
               {!box.url2 && !box.url3 && 
-                <div>
+                <div style={{ maxWidth: 260 }}>
                   <Button url={box.url1} classes={'btn--whiteBorder'}>
                     {box.url1Title ? box.url1Title : 'více informací'}
                   </Button>
@@ -34,13 +34,28 @@ const ExpertiseDescriptionBoxes = (props: ExpertiseDescriptionBoxesProps) => {
               {(box.url2 || box.url3) &&
                 <div style={{ paddingLeft: 20 }}>
                   {box.url1 && (box.url2 || box.url3) && 
-                    <Link {...box.url1} className={'downloadLink'}>
+                    <Link 
+                      {...box.url1} 
+                      className={'downloadLink'} 
+                      style={box.textColor ? { color: box.textColor} : {}}
+                    >
                       {box.url1Title ? box.url1Title : 'více informací'}
                     </Link>}
-                    {box.url2 && <Link {...box.url2} className={'downloadLink'}>
-                      {box.url2Title ? box.url2Title : 'více informací'}
-                    </Link>}
-                    {box.url3 && <Link {...box.url3} className={'downloadLink'}>
+                    {box.url2 && 
+                      <Link 
+                        {...box.url2} 
+                        className={'downloadLink'} 
+                        style={box.textColor ? { color: box.textColor} : {}}
+                      >
+                        {box.url2Title ? box.url2Title : 'více informací'}
+                      </Link>
+                    }
+                    {box.url3 && 
+                    <Link 
+                      {...box.url3} 
+                      className={'downloadLink'} 
+                      style={box.textColor ? { color: box.textColor} : {}}
+                    >
                       {box.url3Title ? box.url3Title : 'více informací'}
                     </Link>}
                 </div>}

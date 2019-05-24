@@ -1,17 +1,22 @@
 .expertiseList {
   .grid-container {
+    grid-template-columns: auto;
     grid-template-rows: auto;
+
     @include md {
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
     }
 
     @include lg {
       grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
       width: 90%;
     }
 
     @include xl {
       grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
       width: 100%;
     }
   }

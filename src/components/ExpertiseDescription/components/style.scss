@@ -119,7 +119,8 @@
       letter-spacing: initial;
       font-weight: 400;
       display: grid;
-      align-items: center;
+
+      & > * { align-self: center; }
 
       @include md {
         padding: 50px;
@@ -153,6 +154,7 @@
 
     @include max-md {
       grid-template-columns: 1fr;
+      grid-template-rows: auto;
     }
   }
 }
@@ -189,14 +191,19 @@
 
       h5 {
         font-weight: 400;
-        @include max-sm { margin-left: 15px !important; }
+        
+        @include max-sm {
+          margin-left: 1.5rem !important;
+        }
       }
 
       div {
         position: relative;
-        max-width: 260px;
         margin-left: 35px;
-        @include max-sm { margin-left: 15px; }
+        
+        @include max-sm {
+          margin-left: 15px;
+        }
 
         a,
         button {
@@ -225,6 +232,7 @@
   @include max-md {
     .grid-container {
       grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
     }
   }
 }

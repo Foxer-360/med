@@ -8,14 +8,16 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     justify-content: center;
-    align-items: center;
     padding: 40px 0;
+
+    & > * { align-self: center; }
 
     &__element {
       height: 100%;
       grid-template-columns: 65px 1fr;
       grid-template-rows: auto;
-      align-items: center;
+
+      & > * { align-self: center; }
 
       &:not(:nth-child(4n)) {
         border-right: 1px solid #dbdbda;
@@ -52,10 +54,12 @@
 
     &__list {
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
       grid-gap: 0;
 
       &__element {
         grid-template-columns: none;
+        grid-template-rows: auto;
         justify-content: center;
         padding: 25px;
 

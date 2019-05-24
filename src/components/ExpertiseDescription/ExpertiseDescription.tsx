@@ -21,6 +21,7 @@ interface Box {
   url3Title?: string;
   url3?: LooseObject;
   image?: LooseObject;
+  textColor?: string;
 }
 
 export interface DescriptionProps {
@@ -67,10 +68,7 @@ const Description = (props: DescriptionProps) => {
         </List>
         {boxes && boxes.length > 0 && <DividerCircles />}
         <List data={boxes}>
-          {({ data }) => data && 
-          <ExpertiseDescriptionBoxes 
-            boxes={data} 
-          />}
+          {({ data }) => data && <ExpertiseDescriptionBoxes boxes={data} />}
         </List>
       </section>
     </div>

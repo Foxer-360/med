@@ -12,16 +12,19 @@
 
 .positions {
   justify-content: center;
-  align-items: center;
   margin: 25px 0;
   grid-template-rows: 295px;
   grid-template-columns: repeat(3, 1fr);
 
+  & > * { align-self: center; }
+  
   @include sm {
+    grid-template-rows: 295px;
     grid-template-columns: repeat(2, 1fr);
   }
 
   @include md {
+    grid-template-rows: 295px;
     grid-template-columns: repeat(3, 1fr);
   }
 
