@@ -69,6 +69,31 @@ var Header = /** @class */ (function (_super) {
                 menuActive: !_this.state.menuActive,
             });
         };
+        _this.isActivePage = function (url) {
+            if (window) {
+                var PARENT_PAGE = url.split('/'); // ["", "medicon", "cs", "home"]
+                var LOCATION_PARENT_PAGE = location.pathname.split('/');
+                if (!PARENT_PAGE || !LOCATION_PARENT_PAGE) {
+                    return false;
+                }
+                var PARENT_PAGE_SIZE = PARENT_PAGE.length;
+                var LOCATION_PARENT_PAGE_SIZE = LOCATION_PARENT_PAGE.length;
+                for (var i = PARENT_PAGE_SIZE - 1; i > 2; i--) {
+                    for (var j = LOCATION_PARENT_PAGE_SIZE - 1; j > 2; j--) {
+                        if (PARENT_PAGE_SIZE > j && LOCATION_PARENT_PAGE_SIZE > j) {
+                            return PARENT_PAGE[j] === LOCATION_PARENT_PAGE[j] && true;
+                        }
+                    }
+                }
+                // HOME PAGE
+                if (PARENT_PAGE.length === 3 && LOCATION_PARENT_PAGE.length === 3) {
+                    return PARENT_PAGE[2] === LOCATION_PARENT_PAGE[2] ? true : false;
+                }
+                else {
+                    return false;
+                }
+            }
+        };
         _this.logo = React.createRef();
         _this.state = { vX: 15, menuActive: false };
         return _this;
@@ -120,7 +145,7 @@ var Header = /** @class */ (function (_super) {
                         React.createElement("nav", null,
                             React.createElement("ul", null, mainNavItems &&
                                 mainNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title))); })),
+                                    React.createElement(Link_1.default, __assign({}, navItem.url, { className: "" + (navItem.url && _this.isActivePage(navItem.url.url) && 'navItemActive') }), navItem.name || navItem.title))); })),
                             React.createElement(Hamburger_1.default, { active: _this.state.menuActive, onClick: _this.toggleMenu })))),
                 React.createElement("div", { className: 'header__iso' },
                     React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "none" },

@@ -135,6 +135,16 @@
   }
 }
 
+.navItemActive {
+  &:after {
+    @include pseudo;
+    min-width: 100%;
+    right: auto;
+    opacity: 1;
+    left: 0;
+  }
+}
+
 .menuActive {
   padding-right: 8px;
 
