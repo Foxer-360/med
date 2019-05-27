@@ -22,27 +22,24 @@ class ExpertiseDescriptionExamination extends React.Component<ExpertiseDescripti
     
     return (
       <div className={'examination'}>
-        {title && <h3 style={{ paddingTop: 45 }}>{title}</h3>}
+        {title && <h3>{title}</h3>}
   
-        <div className={'examination__list grid'}>
+        <div className={'examination__list row'}>
           {examinations && examinations.map((examination, i) => {
-            
-            let lastLong = examinations.length % 2 !== 0 && examinations.length - 1 === i;
-
             return examination.url ? (
               <Link 
                 key={i}
                 {...examination.url}
+                className={`examination__list__item`}
                 style={examination.url ? { fontWeight: 500 } : { cursor: 'default' }}
-                className={`examination__list__item ${lastLong ? 'examination__list__item--last-long' : ''}`}
               >
-                {examination.title && examination.title}
+                {examination.title}
               </Link>) : (
               <Examination 
-                key={i} 
-                description={examination.description} 
+                key={i}
+                index={i}
                 title={examination.title}
-                lastLong={lastLong}
+                description={examination.description} 
               />);
           })}
         </div>

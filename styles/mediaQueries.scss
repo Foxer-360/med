@@ -35,27 +35,27 @@ $screen-xl: 1250px;
 
 
 @mixin max-xs {
-  @media (max-width: #{$screen-xs}) {
+  @media (max-width: 424px) {
     @content;
   }
 }
 @mixin max-sm {
-  @media (max-width: #{$screen-sm}) {
+  @media (max-width: 575px) {
     @content;
   }
 }
 @mixin max-md {
-  @media (max-width: #{$screen-md}) {
+  @media (max-width: 767px) {
     @content;
   }
 }
 @mixin max-lg {
-  @media (max-width: #{$screen-lg}) {
+  @media (max-width: 991px) {
     @content;
   }
 }
 @mixin max-xl {
-  @media (max-width: #{$screen-xl}) {
+  @media (max-width: 1249px) {
     @content;
   }
 }

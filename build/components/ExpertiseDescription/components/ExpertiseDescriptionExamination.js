@@ -36,10 +36,9 @@ var ExpertiseDescriptionExamination = /** @class */ (function (_super) {
     ExpertiseDescriptionExamination.prototype.render = function () {
         var _a = this.props, title = _a.title, examinations = _a.examinations;
         return (React.createElement("div", { className: 'examination' },
-            title && React.createElement("h3", { style: { paddingTop: 45 } }, title),
-            React.createElement("div", { className: 'examination__list grid' }, examinations && examinations.map(function (examination, i) {
-                var lastLong = examinations.length % 2 !== 0 && examinations.length - 1 === i;
-                return examination.url ? (React.createElement(Link_1.default, __assign({ key: i }, examination.url, { style: examination.url ? { fontWeight: 500 } : { cursor: 'default' }, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : '') }), examination.title && examination.title)) : (React.createElement(Examination_1.default, { key: i, description: examination.description, title: examination.title, lastLong: lastLong }));
+            title && React.createElement("h3", null, title),
+            React.createElement("div", { className: 'examination__list row' }, examinations && examinations.map(function (examination, i) {
+                return examination.url ? (React.createElement(Link_1.default, __assign({ key: i }, examination.url, { className: "examination__list__item", style: examination.url ? { fontWeight: 500 } : { cursor: 'default' } }), examination.title)) : (React.createElement(Examination_1.default, { key: i, index: i, title: examination.title, description: examination.description }));
             }))));
     };
     return ExpertiseDescriptionExamination;

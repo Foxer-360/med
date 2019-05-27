@@ -26,19 +26,21 @@ var Examination = /** @class */ (function (_super) {
     }
     Examination.prototype.render = function () {
         var _this = this;
-        var _a = this.props, title = _a.title, description = _a.description, lastLong = _a.lastLong;
-        return (React.createElement("div", { style: description ? { cursor: 'pointer' } : { cursor: 'default' }, className: "examination__list__item " + (lastLong ? 'examination__list__item--last-long' : '') },
-            title &&
-                React.createElement("p", { style: { fontWeight: 500 }, onClick: function () { return _this.setState({ isDescriptionVisible: !_this.state.isDescriptionVisible }); } }, title),
-            description &&
-                React.createElement(ReactMarkdown, { source: description, renderers: {
-                        // tslint:disable-next-line:no-any
-                        root: function (props) {
-                            return React.createElement("div", { className: 'examination__list__item--markdown', style: _this.state.isDescriptionVisible ?
-                                    { display: 'block', paddingTop: 15 } :
-                                    { display: 'none' } }, props.children);
-                        },
-                    } })));
+        var _a = this.props, title = _a.title, description = _a.description, index = _a.index;
+        return (React.createElement("div", { style: description ? { cursor: 'pointer' } : { cursor: 'default' }, className: "examination__list__item col-12 " + (index === 2 ? 'col-md-12' : 'col-md-6') },
+            React.createElement("div", { style: { display: 'table', height: '100%', width: '100%' } },
+                React.createElement("div", { style: { display: 'table-cell', verticalAlign: 'middle' } },
+                    title &&
+                        React.createElement("p", { style: { fontWeight: 500 }, onClick: function () { return _this.setState({ isDescriptionVisible: !_this.state.isDescriptionVisible }); } }, title),
+                    description &&
+                        React.createElement(ReactMarkdown, { source: description, renderers: {
+                                // tslint:disable-next-line:no-any
+                                root: function (props) {
+                                    return React.createElement("div", { className: 'examination__list__item--markdown', style: _this.state.isDescriptionVisible ?
+                                            { display: 'block', paddingTop: 15 } :
+                                            { display: 'none' } }, props.children);
+                                },
+                            } })))));
     };
     return Examination;
 }(React.Component));
