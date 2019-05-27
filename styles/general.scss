@@ -27,16 +27,6 @@ body {
   }
 }
 
-.container {
-  display: block;
-  margin: 0 auto;
-  width: 90%;
-
-  @include xl {
-    max-width: $layoutMinWidth;
-  }
-}
-
 .fullWidthContainer {
   display: block;
   margin: 0 auto;
@@ -83,32 +73,23 @@ body {
 
 .grid {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 2rem;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
 
   &--vCenterBlock {
     align-items: center;
   }
 }
 
-.grid-container {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-gap: 20px;
-  box-sizing: border-box;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-}
-
 //LIST STYLES
-
 ol,
 ul {
   margin: 0;
   padding: 0;
 
   li {
-    padding: 5px 5px 5px 5px;
+    padding: 5px;
     position: relative;
 
     & > ol {

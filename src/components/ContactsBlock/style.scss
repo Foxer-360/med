@@ -1,16 +1,26 @@
 .contacts-block {
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 5rem;
+  @include max-md {
+    padding-bottom: 2.5rem;
+  }
 
   h3 {
     padding-top: 0;
     padding-bottom: 5px;  
   }
-  h4 { padding-bottom: 50px; }
+  h4 {
+    padding-bottom: 5rem;
+    @include max-md {
+      padding-bottom: 2.5rem;
+    }
+  }
   h3,
   h4 {
     @include webkitGradientText;
-    @include max-md { padding-top: 25px; }
+    @include max-md {
+      padding-top: 2.5rem;
+    }
   }
 
   a {
@@ -23,7 +33,10 @@
   &__email {
     a {
       color: $lightBlue;
-      &:hover { text-decoration: underline; }
+      
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -33,30 +46,10 @@
   }
 
   &__main {
-    grid-template-columns: repeat(2, 285px);
-    grid-template-rows: auto;
-    justify-content: center;
-  }
-
-  &__list {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    justify-content: center;
-    grid-gap: 35px;
-  }
-
-  @include max-lg {
-    &__list {
-      grid-template-columns: repeat(2, 285px);
-      grid-template-rows: auto;
-    }
-  }
-
-  @include max-md {
-    &__list,
-    &__main {
-      grid-template-columns: repeat(1, 285px);
-      grid-template-rows: auto;
+    justify-content: flex-start;
+    
+    &__element {
+      margin-bottom: 2.5rem;
     }
   }
 }

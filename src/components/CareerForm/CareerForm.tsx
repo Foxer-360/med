@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import axios from 'axios';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import * as ReactMarkdown from 'react-markdown';
 
 import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
@@ -13,7 +13,7 @@ export interface CareerFormProps {
   data: {
     title: string;
     text: string;
-    gdprLink: LooseObject;
+    gdprLink?: LooseObject;
   };
 }
 
@@ -48,6 +48,8 @@ const GET_CONTEXT = gql`
 
 export default class CareerForm extends React.Component<CareerFormProps, CareerFormState> {
   private fileRef;
+  private topRef;
+
   constructor(props: CareerFormProps) {
     super(props);
 
@@ -74,11 +76,11 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
     };
 
     this.fileRef = React.createRef();
+    this.topRef = React.createRef();
   }
 
   isValid() {
     let valid = true;
-
     const newError = { ...this.state.errors };
 
     Object.keys(newError).forEach((field: string) => {
@@ -106,8 +108,14 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
       errors: newError,
     });
 
+    if (!valid) {
+      this.scrollToTopRef();
+    }
+
     return valid;
   }
+
+  scrollToTopRef = () => window.scrollTo(0, this.topRef.current.offsetTop);
 
   toggleAgreement() {
     this.setState({
@@ -221,7 +229,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
             const { pageData } = data;
 
             return (
-              <section className={'careerForm form'}>
+              <section className={'careerForm form'} ref={this.topRef}>
                 <div className={'container'}>
                   <h3 className={'gradientHeading'}>{title}</h3>
 
@@ -284,7 +292,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                         <div className={`form__input ${errors.email ? 'error' : ''} `}>
                           <input
                             value={email}
-                            type="email"
+                            type="text"
                             name="email"
                             className={this.state.formValues.email ? 'active' : ''}
                             onChange={e => this.changeInputValue(e)}
@@ -346,6 +354,22 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                       <textarea name="message" onChange={e => this.changeInputValue(e)} value={message} />
                     </div>
 
+                    <div 
+                      className={'form__messageHolder'} 
+                      style={formStatus !== null ? { padding: '4rem 0' } : {}}
+                    >
+                      {formStatus === 'error' && (
+                        <div className={'form__message form__message--error'}>
+                          <p>There was an error.</p>
+                          {this.state.formErrorMessage && <p>{this.state.formErrorMessage}</p>}
+                        </div>
+                      )}
+
+                      {formStatus === 'success' && (
+                        <div className={'form__message form__message--success'}>Thank You for contacting us.</div>
+                      )}
+                    </div>
+
                     <div className={'form__terms'}>
                       <div>
                         <input
@@ -367,19 +391,6 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                       <button className="btn--blueBkg" type="submit" disabled={!this.state.formValues.agreement}>
                         Odeslat
                       </button>
-                    </div>
-
-                    <div className={'form__messageHolder'}>
-                      {formStatus === 'error' && (
-                        <div className={'form__message form__message--error'}>
-                          <p>There was an error.</p>
-                          {this.state.formErrorMessage && <p>{this.state.formErrorMessage}</p>}
-                        </div>
-                      )}
-
-                      {formStatus === 'success' && (
-                        <div className={'form__message form__message--success'}>Thank You for contacting us.</div>
-                      )}
                     </div>
                   </form>
                 </div>

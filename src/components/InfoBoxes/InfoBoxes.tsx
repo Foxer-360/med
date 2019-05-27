@@ -5,15 +5,14 @@ import InfoElement from './components/InfoElement';
 
 interface Box {
   title: string;
-  gradientColor: string;
   button: string;
   titleColor: string;
+  gradientColor: string;
   image: LooseObject;
   link?: LooseObject;
 }
 
 export interface InfoBoxesProps {
-  languageCode?: string;
   data: {
     title: string;
     boxes: Box[];
@@ -25,23 +24,23 @@ const InfoBoxes = (props: InfoBoxesProps) => {
 
   return (
     <section className={'info-boxes'}>
-      {title && <h3>{title}</h3>}
-
       <div className={'container'}>
-        <div className={'grid info-boxes__list'}>
-          <List data={boxes}>
-            {({ data }) => data &&
-              data.map((box, i) => (
-                <InfoElement
-                  link={box.link}
-                  gradientColor={box.gradientColor}
-                  title={box.title}
-                  image={box.image}
-                  button={box.button}
-                  titleColor={box.titleColor}
-                  key={i}
-                />))}
-          </List>
+        {title && <h3>{title}</h3>}
+
+          <div className={'info-boxes__list row'}>
+            <List data={boxes}>
+              {({ data }) => data &&
+                data.map((box, i) => (
+                  <InfoElement
+                    key={i}
+                    link={box.link}
+                    title={box.title}
+                    image={box.image}
+                    button={box.button}
+                    titleColor={box.titleColor}
+                    gradientColor={box.gradientColor}
+                  />))}
+            </List>
         </div>
       </div>
     </section>

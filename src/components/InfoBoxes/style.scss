@@ -1,7 +1,11 @@
 .info-boxes {
-  padding-bottom: 36px;
-  position: relative;
   z-index: 1;
+  position: relative;
+  padding-bottom: 2rem;
+  
+  @include max-md {
+    padding-bottom: 0;
+  }
 
   h3 {
     @include webkitGradientText;
@@ -11,28 +15,28 @@
     color: white;
     text-align: left;
     line-height: 1.35;
-    padding: 0 0 25px 0;
+    padding: 0 0 2.5rem 0;
+  }
+
+  a, button {
+    text-align: center;
   }
 
   &__list {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: auto;
+    justify-content: space-between;
 
-    @include sm {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: auto;
-    }
-
-    @include lg {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto;
+    .col-sm-12,
+    .col-lg-6,
+    .col-xl-4 {
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
     }
 
     &__element {
       width: 100%;
-      height: 100%;
       display: table;
-      min-height: 400px;
+      min-height: 350px;
       max-height: 400px;
       position: relative;
       background-size: cover;
@@ -41,7 +45,7 @@
       &__content {
         width: 90%;
         display: table-cell;
-        padding: 0 0 35px 35px;
+        padding: 0 0 2.5rem 2.5rem;
         vertical-align: bottom;
         position: relative;
         z-index: 300;
@@ -68,36 +72,32 @@
   @media (max-width: 900px) {
     h5 {
       font-size: 1.8rem;
-      padding-bottom: 20px;
+      padding-bottom: 2rem;
     }
+    
     button {
       width: 100%;
       font-size: 1.4rem;
-      padding: 7px 35px;
+      padding: 1rem 3.5rem;
     }
 
     &__list {
       &__element {
         &__content {
-          padding: 20px;
+          padding: 2rem;
         }
       }
     }
   }
 
   @include max-md {
-    h3 {
-      padding-top: 30px;
-    }
-
     &__list {
       &__element {
-        height: 100%;
         min-height: 280px;
         background-size: cover;
 
         &__content {
-          padding-left: 25px;
+          padding-left: 2.5rem;
         }
       }
     }

@@ -58,9 +58,12 @@ h6 {
   color: $blue;
   text-align: center;
   line-height: 1.4;
-  padding-bottom: 45px;
-  margin-bottom: 0;
-  @include md { padding: 45px; }
+  padding: 2.5rem 0;
+  margin: 0;
+  
+  @include md {
+    padding: 5rem 0;
+  }
 }
 
 h1 {

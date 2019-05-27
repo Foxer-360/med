@@ -37,12 +37,6 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
-
-    grid-template-rows: 1fr;
-    @include md {
-      grid-template-rows: 1fr;
-      grid-template-columns: 50% 1fr;
-    }
   }
 
   @include max-md {
@@ -58,7 +52,7 @@
 
     &__doctor {
       grid-template-rows: auto;
-      grid-template-columns: 100%;
+      grid-template-columns: 1fr;
     }
   }
 }

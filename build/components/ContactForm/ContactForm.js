@@ -180,6 +180,11 @@ var ContactForm = /** @class */ (function (_super) {
                             React.createElement("div", { className: "form__textarea  " + (errors.message ? 'error' : '') + " " },
                                 React.createElement("label", null, errors.message ? errors.message : 'Zpráva'),
                                 React.createElement("textarea", { name: "message", onChange: function (e) { return _this.changeInputValue(e); }, value: message })),
+                            React.createElement("div", { className: 'form__messageHolder', style: formStatus !== null ? { padding: '4rem 0' } : {} },
+                                formStatus === 'error' && (React.createElement("div", { className: 'form__message form__message--error' },
+                                    React.createElement("p", null, "There was an error."),
+                                    _this.state.formErrorMessage && React.createElement("p", null, _this.state.formErrorMessage))),
+                                formStatus === 'success' && (React.createElement("div", { className: 'form__message form__message--success' }, "Thank You for contacting us."))),
                             React.createElement("div", { className: 'form__terms' },
                                 React.createElement("div", null,
                                     React.createElement("input", { className: 'checkbox', id: "styled-checkbox-1", type: "checkbox", checked: agreement, onChange: function (e) { return _this.toggleAgreement(); } }),
@@ -189,12 +194,7 @@ var ContactForm = /** @class */ (function (_super) {
                                     React.createElement(Link_1.default, __assign({}, gdprLink), "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                     " \u00FAdaj\u016F.")),
                             React.createElement("div", { className: 'flexRow flexAlign--center' },
-                                React.createElement("button", { className: "btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat")),
-                            React.createElement("div", { className: 'form__messageHolder' },
-                                formStatus === 'error' && (React.createElement("div", { className: 'form__message form__message--error' },
-                                    React.createElement("p", null, "There was an error."),
-                                    _this.state.formErrorMessage && React.createElement("p", null, _this.state.formErrorMessage))),
-                                formStatus === 'success' && (React.createElement("div", { className: 'form__message form__message--success' }, "Thank You for contacting us.")))))));
+                                React.createElement("button", { className: "btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat"))))));
             })));
     };
     return ContactForm;

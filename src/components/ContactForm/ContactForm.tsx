@@ -223,6 +223,22 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                         <textarea name="message" onChange={e => this.changeInputValue(e)} value={message} />
                       </div>
 
+                      <div 
+                        className={'form__messageHolder'}
+                        style={formStatus !== null ? { padding: '4rem 0' } : {}}
+                      >
+                        {formStatus === 'error' && (
+                          <div className={'form__message form__message--error'}>
+                            <p>There was an error.</p>
+                            {this.state.formErrorMessage && <p>{this.state.formErrorMessage}</p>}
+                          </div>
+                        )}
+
+                        {formStatus === 'success' && (
+                          <div className={'form__message form__message--success'}>Thank You for contacting us.</div>
+                        )}
+                      </div>
+                      
                       <div className={'form__terms'}>
                         <div>
                           <input
@@ -244,19 +260,6 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                         <button className="btn--blueBkg" type="submit" disabled={!this.state.formValues.agreement}>
                           Odeslat
                         </button>
-                      </div>
-
-                      <div className={'form__messageHolder'}>
-                        {formStatus === 'error' && (
-                          <div className={'form__message form__message--error'}>
-                            <p>There was an error.</p>
-                            {this.state.formErrorMessage && <p>{this.state.formErrorMessage}</p>}
-                          </div>
-                        )}
-
-                        {formStatus === 'success' && (
-                          <div className={'form__message form__message--success'}>Thank You for contacting us.</div>
-                        )}
                       </div>
                     </form>}
                 </div>

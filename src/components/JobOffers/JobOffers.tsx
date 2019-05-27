@@ -26,7 +26,7 @@ const JobOffers = (props: JobOffersProps) => {
       <section className={'jobOffers'}>
         {title && <h3>{title}</h3>}
 
-        <div className="grid offers">
+        <div className="offers grid">
           <List data={offers}>
             {({ data }) => data &&
               data.map((offer, index) => (

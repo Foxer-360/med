@@ -12,11 +12,14 @@ function ReviewElement(props) {
     if (starCount < 5) {
         rows.slice(-(5 - starCount), starCount);
     }
-    return (React.createElement("div", { className: 'reviews__list__element' },
-        React.createElement("div", null, image && React.createElement(Media_1.default, { type: 'image', data: image })),
-        React.createElement("div", { className: 'reviews__list__element__content' },
-            cite && React.createElement("cite", null, cite),
-            rows && React.createElement("div", { className: 'stars' }, rows))));
+    return (React.createElement("div", { className: 'reviews__list__element col-sm-12 col-md-6 col-lg-4' },
+        React.createElement("div", { style: { height: '100%', display: 'table' } },
+            React.createElement("div", { style: { display: 'table-cell', verticalAlign: 'middle' } },
+                React.createElement("div", { className: 'row' },
+                    React.createElement("div", { className: 'reviews__list__element__image col-3 col-md-4' }, image && React.createElement(Media_1.default, { type: 'image', data: image })),
+                    React.createElement("div", { className: 'reviews__list__element__content col-8' },
+                        cite && React.createElement("cite", null, cite),
+                        rows && React.createElement("div", { className: 'stars' }, rows)))))));
 }
 exports.default = ReviewElement;
 //# sourceMappingURL=ReviewElement.js.map

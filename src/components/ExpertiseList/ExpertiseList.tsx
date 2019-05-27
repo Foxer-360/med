@@ -41,28 +41,29 @@ export default class ExpertiseList extends React.Component<ExpertiseListProps, E
   
           return (
             <section className="expertiseList">
-              {title && <h3>{title}</h3>}
-        
-              <div className="grid-container">
-                {items && items.map((item, index) => (
-                  <Link {...item.url} key={index}>
-                    <div className="expertiseList__element">
-                      <div>{item.image && <Media type={'image'} data={item.image} />}</div>
-  
-                      {item.title && <p>{item.title}</p>}
+              <div className="container">
+                {title && <h3>{title}</h3>}
+          
+                <div className="row">
+                  {items && items.map((item, index) => (
+                    <div key={index} className="col-sm-12 col-lg-6 col-xl-4">
+                      <div className="expertiseList__element">
+                        <div>{item.image && <Media type={'image'} data={item.image} />}</div>
+                        <Link {...item.url} />
+                        {item.title && <p>{item.title}</p>}
+                      </div>
                     </div>
-                  </Link>
-                ))}
+                  ))}
+                </div>
+
+                {this.state.numberOfPage < lastPage && 
+                  <button
+                    className={'btn btn--blueBkg btn--fullWidth'}
+                    onClick={() => this.setState({ numberOfPage: lastPage })}
+                  >
+                    zobrazit dalši odbornosti
+                  </button>}
               </div>
-  
-              {this.state.numberOfPage < lastPage && <div className="container">
-                <button
-                  onClick={() => this.setState({ numberOfPage: lastPage })}
-                  className={'btn btn--blueBkg btn--fullWidth'}
-                >
-                  zobrazit dalši odbornosti
-                </button>
-              </div>}
             </section>
           );
         }}

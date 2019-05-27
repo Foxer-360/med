@@ -18,7 +18,7 @@ const ContactInfo = (props: ContactInfoProps) => {
   return (
     <div className={'contact-info'}>
       <div className={'container'}>
-        <div className={'grid contact-info__grid'}>
+        <div className={'contact-info__grid grid'}>
           <div className={'grid contact-info__grid__element'}>
             <img src={'/assets/medicon/images/contact-info-1.png'} alt="address" />
             <div>
@@ -26,15 +26,15 @@ const ContactInfo = (props: ContactInfoProps) => {
               {clinic && <p style={clinicColor ? {color: `${clinicColor}`} : {}}>{clinic}</p>}
             </div>
           </div>
-          <div className={'grid contact-info__grid__element'}>
+          <div className={'contact-info__grid__element grid'}>
             <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number" />
             <div>{phones && <ReactMarkdown source={phones} />}</div>
           </div>
-          <div className={'grid contact-info__grid__element'}>
+          <div className={'contact-info__grid__element grid'}>
             <img src={'/assets/medicon/images/contact-info-3.png'} alt="e-mail" />
             <div>{emails && <ReactMarkdown source={emails} />}</div>
           </div>
-          <div className={'grid contact-info__grid__element'}>
+          <div className={'contact-info__grid__element grid'}>
             <img src={'/assets/medicon/images/contact-info-4.png'} alt="ICO and DIC" />
             <div>{additional && <ReactMarkdown source={additional} />}</div>
           </div>

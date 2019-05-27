@@ -16,7 +16,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
 var Button_1 = require("../../partials/Button");
-var index_1 = require("./components/index");
 var getImageUrl_1 = require("../../helpers/getImageUrl");
 var JobPositions = /** @class */ (function (_super) {
     __extends(JobPositions, _super);
@@ -39,16 +38,17 @@ var JobPositions = /** @class */ (function (_super) {
         return (React.createElement(List_1.default, { data: positions }, function (_a) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 3), items = _b.items, lastPage = _b.lastPage;
-            return (React.createElement("div", { className: 'container actual-positions' },
-                title && React.createElement("h3", null, title),
-                React.createElement(index_1.default, { polyclinics: polyclinics }),
-                React.createElement("div", { className: 'grid positions' }, items && items.map(function (position, index) { return (React.createElement("div", { className: 'positions__element', style: { backgroundImage: position.image && "url(" + getImageUrl_1.default(position.image) + ")" }, key: index },
-                    React.createElement("div", { className: 'positions__element-content' },
-                        position.name && React.createElement("p", null, position.name),
-                        React.createElement(Button_1.default, { classes: 'btn--whiteBorder', url: position.url }, "v\u00EDce informac\u00ED")),
-                    React.createElement("div", { className: 'positions__colorGradient', style: { background: "linear-gradient(to bottom, transparent 0%, #2473ba 100%)" } }))); })),
-                _this.state.numberOfPage < lastPage &&
-                    React.createElement("button", { className: 'btn hCenterBlock btn--blueBkg btn--down btn--fullWidth', onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); } }, "dal\u0161\u00ED pozice")));
+            return (React.createElement("div", { className: 'container' },
+                React.createElement("div", { className: 'actual-positions' },
+                    title && React.createElement("h3", null, title),
+                    React.createElement("div", { className: 'positions row' }, items && items.map(function (position, index) { return (React.createElement("div", { key: index, className: 'col-sm-12 col-lg-6 col-xl-4' },
+                        React.createElement("div", { className: 'positions__element', style: { backgroundImage: position.image && "url(" + getImageUrl_1.default(position.image) + ")" } },
+                            React.createElement("div", { className: 'positions__element-content' },
+                                position.name && React.createElement("p", null, position.name),
+                                React.createElement(Button_1.default, { classes: 'btn--whiteBorder', url: position.url }, "v\u00EDce informac\u00ED")),
+                            React.createElement("div", { className: 'positions__colorGradient', style: { background: "linear-gradient(to bottom, transparent 0%, #2473ba 100%)" } })))); })),
+                    _this.state.numberOfPage < lastPage &&
+                        React.createElement("button", { className: 'btn hCenterBlock btn--blueBkg btn--down btn--fullWidth', onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); } }, "dal\u0161\u00ED pozice"))));
         }));
     };
     return JobPositions;

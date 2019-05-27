@@ -24,30 +24,16 @@ const Benefits = (props: BenefitsProps) => {
       {({ data }) => (
         <section className={'benefits'}>
           <div className={'container'}>
-            <div className={'benefits__list grid'}>
-              {data &&
-                data.map((benefit, index) => {
-                  return benefit.url ? (
-                    <Link 
-                      key={index} 
-                      {...benefit.url} 
-                      className={'benefits__list__element grid'}
-                    >
-                      {benefit.image && benefit.image.filename && 
-                      <Media type={'image'} data={benefit.image} />}
+            <div className={'benefits__list row'}>
+              {data && data.map((benefit, i) => (
+                <div key={i} className="col-12 col-sm-6 col-md-4 col-lg-3">
 
-                      {benefit.text && <p>{benefit.text}</p>}
-                    </Link>
-                  ) : (
-                    <div key={index} className={'benefits__list__element grid'}>
-                      <div>
-                        {benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />}
-                      </div>
+                  <Link {...benefit.url} className={'benefits__list__element'}>
+                    {benefit.image && benefit.image.filename && <Media type={'image'} data={benefit.image} />}
+                    {benefit.text && <p className={benefit.url && 'elBenefitHover'}>{benefit.text}</p>}
+                  </Link>
 
-                      {benefit.text && <p>{benefit.text}</p>}
-                    </div>
-                  );
-                })}
+                </div>))}
             </div>
           </div>
         </section>

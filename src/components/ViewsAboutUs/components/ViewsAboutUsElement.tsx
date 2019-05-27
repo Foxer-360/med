@@ -14,14 +14,29 @@ export default function ViewsAboutUsElement(props: ViewsAboutUsElementProps) {
   const { url, link, cite, image } = props;
 
   return (
-    <div className="viewsAboutUs__list__element">
-      <div>{image && <Media type={'image'} data={image} />}</div>
+    <div className="col-sm-12 col-md-6 col-lg-4">
+      <div className="viewsAboutUs__list__element">
+        <div className="row">
 
-      <div className={'viewsAboutUs__list__element__content'}>
-        {cite && <cite>{cite}</cite>}
-        <Link {...url}>
-          Zdroj: <strong>{link}</strong>
-        </Link>
+          <div className="col-4 col-md-5">
+            <div>{image && <Media type={'image'} data={image} />}</div>
+          </div>
+
+          <div className="col-8 col-md-7">
+            <div className={'viewsAboutUs__list__element__content'}>
+              <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
+                <div className="row">
+                  {cite && <cite>{cite}</cite>}
+                </div>
+                <div className="row">
+                  <Link {...url}>Zdroj: <strong>{link}</strong></Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Link className={'viewsAboutUs__list__element__link'} {...url}/>
+        </div>
       </div>
     </div>
   );

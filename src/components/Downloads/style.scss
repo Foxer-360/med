@@ -1,10 +1,9 @@
 .downloads {
   text-align: center;
-  padding-bottom: 25px;
+  padding-bottom: 2.5rem;
 
   h3 {
     @include webkitGradientText;
-    padding-top: 45px;
   }
   p {
     font-size: 1.8rem;
@@ -12,24 +11,23 @@
   }
 
   &__list {
-    grid-template-columns: repeat(4, minmax(215px, 1fr));
-    grid-template-rows: auto;
-    justify-content: center;
+    justify-content: flex-start;
 
     &__element {
+      width: 100%;
       overflow-wrap: break-word;
 
       p {
         display: block;
         font-size: 2.2rem;
         font-weight: 500;
-        padding: 40px 0 30px 0;
+        padding: 4rem 0 3rem 0;
       }
 
       a {
-        color: $lightBlue !important;
-        max-width: 228px;
         margin: 0 auto;
+        max-width: 230px;
+        color: $lightBlue !important;
 
         @include md {
           &:hover {
@@ -42,9 +40,9 @@
         }
 
         .downloadIcon {
+          transition: $customEase;
           position: relative;
           left: 20px;
-          transition: $customEase;
           width: 14px;
           height: 20px;
 
@@ -53,13 +51,6 @@
           }
         }
       }
-    }
-  }
-
-  @include max-lg {
-    &__list {
-      grid-template-columns: repeat(1, 230px);
-      grid-template-rows: auto;
     }
   }
 }

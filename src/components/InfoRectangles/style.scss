@@ -1,24 +1,31 @@
 .info-rectangles {
-  margin-bottom: 39px;
+  padding-bottom: 0rem;
   
-  @include md { margin-bottom: 50px; }
-
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
+  @include md {
+    padding-bottom: 2rem;
   }
 
-  .info-element {
+  .col-sm-12,
+  .col-md-6 {
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__item {
     height: 270px;
     width: 100%;
-    background-clip: border-box;
     display: table;
-    box-shadow: 0 0 10px rgba(15, 52, 86, 0.2);
-    background-size: cover;
+    padding: 2.5rem;
     font-weight: 600;
-    padding: 24px;
+    background-size: cover;
+    background-clip: border-box;
+    box-shadow: 0 0 10px rgba(15, 52, 86, 0.2);
 
-    @include md { padding: 22px; }
+    @include md {
+      padding: 2.2rem;
+    }
+    
     div {
       display: table-cell;
       vertical-align: bottom;
@@ -38,21 +45,11 @@
 
     h5 {
       padding: 0;
-      padding-bottom: 35px;
-      width: 65%;
       line-height: 1.2;
       text-align: left;
       color: $lightBlue;
       font-weight: 500;
-
-      @include md { width: 50%; }
-    }
-  }
-
-  @include max-md {
-    .grid-container {
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: auto;
+      padding-bottom: 3rem;
     }
   }
 }

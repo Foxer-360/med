@@ -54,10 +54,13 @@ var SearchBar = /** @class */ (function (_super) {
                 focused: !_this.state.focused,
             });
         };
-        _this.searchBar = React.createRef();
-        _this.state = { focused: false, query: '' };
-        _this.handleClick = _this.handleClick.bind(_this);
+        _this.state = {
+            query: '',
+            focused: false
+        };
         _this.input = React.createRef();
+        _this.searchBar = React.createRef();
+        _this.handleClick = _this.handleClick.bind(_this);
         _this.changeSearchQuery = lodash_1.debounce(_this.changeSearchQuery, 300).bind(_this);
         return _this;
     }

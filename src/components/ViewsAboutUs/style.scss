@@ -1,67 +1,63 @@
 .viewsAboutUs {
-  margin-bottom: 50px;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  
+  @include max-md {
+    margin-bottom: 0;
+  }
 
-  h3 { @include webkitGradientText; }
+  .col-sm-12,
+  .col-md-6,
+  .col-lg-4 {
+    margin-bottom: 3rem;
+  }
+
+  h3 {
+    @include webkitGradientText;
+  }
+
   a { 
     color: $lightBlue;
-    padding-top: 10px;
+    padding-top: 1rem;
   }
+
   .mediaRatio {
-    padding-top: 0 !important;
-    align-self: center;
-    margin: 10px;
     width: 106px;
     height: 124px;
+    padding-top: 0 !important;
   }
 
   &__list {
-    justify-items: center;
-    justify-content: center;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(3, 1fr);
+    justify-content: flex-start;
 
     &__element {
-      height: 100%;
       width: 100%;
+      height: 100%;
+      position: relative;
       background-color: #f4f5f7;
       background-repeat: no-repeat;
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      grid-template-rows: auto;
       
+      &__link {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
+
       &__content {
-        display: grid;
-        grid-template-rows: 1fr 50px;
-        padding: 25px 5px 0 25px;
+        height: 100%;
+        display: table;
+        padding-right: 2rem;
+
+        @include max-xs {
+          padding-left: 2.4rem;
+        }
 
         cite {
-          max-width: 250px;
           line-height: initial;
         }
       }
-    }
-  }
-
-  @include max-xl { font-size: 1.4rem; }
-  @include max-lg {
-    font-size: 1.6rem;
-
-    &__list {
-      grid-template-rows: auto;
-      grid-template-columns: 1fr;
-    }
-    
-    cite {
-      max-width: none;
-      align-self: center;
-    }
-  }
-  @include max-xs { 
-    font-size: 1.4rem;
-  
-    cite {
-      max-width: none;
-      align-self: start;
     }
   }
 }

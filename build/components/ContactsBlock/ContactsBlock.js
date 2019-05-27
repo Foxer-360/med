@@ -11,10 +11,10 @@ var ContactsBlock = function (props) {
             title && React.createElement("h3", null, title),
             React.createElement("div", null,
                 managementTitle && React.createElement("h4", null, managementTitle),
-                React.createElement("div", { className: 'grid contacts-block__main' },
+                React.createElement("div", { className: 'contacts-block__main row' },
                     React.createElement(List_1.default, { data: managementContacts }, function (_a) {
                         var data = _a.data;
-                        return data && data.map(function (mContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element', key: i },
+                        return data && data.map(function (mContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element col-sm-12 col-md-6 col-lg-3', key: i },
                             mContact.name && React.createElement("p", { className: 'contacts-block__name' }, mContact.name),
                             mContact.positions && React.createElement("p", { className: 'contacts-block__position' }, mContact.positions),
                             mContact.emails && React.createElement(ReactMarkdown, { className: 'contacts-block__email', source: mContact.emails }),
@@ -22,20 +22,20 @@ var ContactsBlock = function (props) {
                     }))),
             React.createElement("div", null,
                 nextTitle && React.createElement("h4", null, nextTitle),
-                React.createElement("div", { className: 'grid contacts-block__main' },
+                React.createElement("div", { className: 'contacts-block__main row' },
                     React.createElement(List_1.default, { data: nextContacts }, function (_a) {
                         var data = _a.data;
-                        return data && data.map(function (nContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element', key: i },
+                        return data && data.map(function (nContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element col-sm-12 col-md-6 col-lg-3', key: i },
                             nContact.name && React.createElement("p", { className: 'contacts-block__name' }, nContact.name),
                             nContact.positions && React.createElement("p", { className: 'contacts-block__position' }, nContact.positions),
                             nContact.emails && React.createElement(ReactMarkdown, { className: 'contacts-block__email', source: nContact.emails }),
                             nContact.phones && React.createElement(ReactMarkdown, { source: nContact.phones }))); });
                     }))),
             React.createElement(DividerCircles_1.default, null),
-            React.createElement("div", { className: 'grid contacts-block__list' },
+            React.createElement("div", { className: 'contacts-block__main row' },
                 React.createElement(List_1.default, { data: otherContacts }, function (_a) {
                     var data = _a.data;
-                    return data && data.map(function (oContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element', key: i },
+                    return data && data.map(function (oContact, i) { return (React.createElement("div", { className: 'contacts-block__main__element col-sm-12 col-md-6 col-lg-3', key: i },
                         oContact.name && React.createElement("p", { className: 'contacts-block__name' }, oContact.name),
                         oContact.positions && React.createElement("p", { className: 'contacts-block__position' }, oContact.positions),
                         oContact.emails && React.createElement(ReactMarkdown, { className: 'contacts-block__email', source: oContact.emails }),

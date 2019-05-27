@@ -5,13 +5,12 @@ import Button from '../../partials/Button';
 import getImageUrl from '../../helpers/getImageUrl';
 
 interface InfoRectangles {
-  image: LooseObject;
   title: string;
-  url: LooseObject;
+  url?: LooseObject;
+  image?: LooseObject;
 }
 
 export interface InfoRectanglesProps {
-  languageCode?: string;
   data: {
     infoRectangles: InfoRectangles[];
   };
@@ -23,20 +22,20 @@ const InfoRectangles = (props: InfoRectanglesProps) => {
   return (
     <section className="info-rectangles">
       <div className="container">
-        <div className="grid-container">
+        <div className="row">
           <List data={infoRectangles}>
-            {({ data }) => data &&
-              data.map((rectangle, index) => (
-              <div
-                key={index}
-                className={'info-element'}
-                style={{ backgroundImage: rectangle.image && `url(${getImageUrl(rectangle.image)})` }}
-              >
-                <div>
-                  {rectangle.title && <h5>{rectangle.title}</h5>}
-                  <Button classes="btn--blueBorder" url={rectangle.url}>
-                    více informací
-                  </Button>
+            {({ data }) => data && data.map((rectangle, i) => (
+              <div key={i} className="col-sm-12 col-md-6">
+                <div
+                  className={'info-rectangles__item'}
+                  style={{ backgroundImage: rectangle.image && `url(${getImageUrl(rectangle.image)})` }}
+                >
+                  <div>
+                    {rectangle.title && <h5>{rectangle.title}</h5>}
+                    <Button classes="btn--blueBorder" url={rectangle.url}>
+                      více informací
+                    </Button>
+                  </div>
                 </div>
               </div>)
             )}

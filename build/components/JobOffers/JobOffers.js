@@ -20,7 +20,7 @@ var JobOffers = function (props) {
     return (React.createElement("div", { className: 'container' },
         React.createElement("section", { className: 'jobOffers' },
             title && React.createElement("h3", null, title),
-            React.createElement("div", { className: "grid offers" },
+            React.createElement("div", { className: "offers grid" },
                 React.createElement(List_1.default, { data: offers }, function (_a) {
                     var data = _a.data;
                     return data &&

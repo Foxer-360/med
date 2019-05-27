@@ -42,12 +42,16 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
   constructor(props: SearchBarProps) {
     super(props);
+
+    this.state = {
+      query: '',
+      focused: false
+    };
+
+    this.input = React.createRef();
     this.searchBar = React.createRef();
 
-    this.state = { focused: false, query: '' };
-
     this.handleClick = this.handleClick.bind(this);
-    this.input = React.createRef();
     this.changeSearchQuery = debounce(this.changeSearchQuery, 300).bind(this);
   }
 

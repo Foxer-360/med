@@ -51,11 +51,11 @@ const ContactsBlock = (props: ContactsBlockProps) => {
 
         <div>
           {managementTitle && <h4>{managementTitle}</h4>}
-          <div className={'grid contacts-block__main'}>
+          <div className={'contacts-block__main row'}>
 
             <List data={managementContacts}>
               {({ data }) => data && data.map((mContact, i) => (
-                <div className={'contacts-block__main__element'} key={i}>
+                <div className={'contacts-block__main__element col-sm-12 col-md-6 col-lg-3'} key={i}>
                   {mContact.name && <p className={'contacts-block__name'}>{mContact.name}</p>}
                   {mContact.positions && <p className={'contacts-block__position'}>{mContact.positions}</p>}
                   {mContact.emails && <ReactMarkdown className={'contacts-block__email'} source={mContact.emails} />}
@@ -69,10 +69,10 @@ const ContactsBlock = (props: ContactsBlockProps) => {
 
         <div>
           {nextTitle && <h4>{nextTitle}</h4>}
-          <div className={'grid contacts-block__main'}>
+          <div className={'contacts-block__main row'}>
             <List data={nextContacts}>
               {({ data }) => data && data.map((nContact, i) => (
-                <div className={'contacts-block__main__element'} key={i}>
+                <div className={'contacts-block__main__element col-sm-12 col-md-6 col-lg-3'} key={i}>
                   {nContact.name && <p className={'contacts-block__name'}>{nContact.name}</p>}
                   {nContact.positions && <p className={'contacts-block__position'}>{nContact.positions}</p>}
                   {nContact.emails && <ReactMarkdown className={'contacts-block__email'} source={nContact.emails} />}
@@ -85,11 +85,11 @@ const ContactsBlock = (props: ContactsBlockProps) => {
 
         <DividerCircles />
 
-        <div className={'grid contacts-block__list'}>
+        <div className={'contacts-block__main row'}>
 
           <List data={otherContacts}>
           {({ data }) => data && data.map((oContact, i) => (
-            <div className={'contacts-block__main__element'} key={i}>
+            <div className={'contacts-block__main__element col-sm-12 col-md-6 col-lg-3'} key={i}>
               {oContact.name && <p className={'contacts-block__name'}>{oContact.name}</p>}
               {oContact.positions && <p className={'contacts-block__position'}>{oContact.positions}</p>}
               {oContact.emails && <ReactMarkdown className={'contacts-block__email'} source={oContact.emails} />}

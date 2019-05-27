@@ -9,7 +9,7 @@ button:disabled {
   display: block;
   cursor: pointer;
   font-weight: 600;
-  padding: 12px 35px;
+  padding: 1.2rem 3rem;
   transition: ease 0.2s;
   letter-spacing: 2.4px;
   box-sizing: border-box;
@@ -28,7 +28,7 @@ button:disabled {
     border-width: 0 2px 2px 0;
     transform: rotate(-45deg);
     margin-bottom: 1px;
-    left: 10px;
+    left: 1rem;
     transition: 230ms ease;
 
     &--down {
@@ -70,7 +70,7 @@ button:disabled {
 
   &--small {
     font-size: 1.4rem;
-    padding: 10px 40px;
+    padding: 1rem 4rem;
   }
 
   &--blueBkg {
@@ -78,7 +78,7 @@ button:disabled {
     background-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     background-repeat: no-repeat;
     background-position: center;
-    padding: 14px 36px;
+    padding: 1.4rem 3rem;
 
     &:hover {
       @include md {
@@ -151,13 +151,13 @@ button:disabled {
         font-size: 1.6rem;
       }
       .arrow {
-        left: 30%;
+        left: 25%;
       }
     }
 
     @include max-xs {
       .arrow {
-        left: 20%;
+        left: 15%;
       }
     }
     @media (max-width: 336px) {
@@ -173,7 +173,7 @@ button:disabled {
   display: block;
   cursor: pointer;
   font-weight: 600;
-  padding: 12px 35px;
+  padding: 1.2rem 3rem;
   transition: ease 0.2s;
   letter-spacing: 2.4px;
   box-sizing: border-box;
@@ -191,7 +191,7 @@ button:disabled {
     border-width: 0 2px 2px 0;
     transform: rotate(-45deg);
     margin-bottom: 1px;
-    left: 10px;
+    left: 1rem;
     transition: 230ms ease;
 
     &--down {
@@ -233,7 +233,7 @@ button:disabled {
 
   &--small {
     font-size: 1.4rem;
-    padding: 10px 40px;
+    padding: 1rem 4rem;
   }
 
   &--blueBkg {
@@ -241,7 +241,7 @@ button:disabled {
     background-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     background-repeat: no-repeat;
     background-position: center;
-    padding: 14px 36px;
+    padding: 1.4rem 3rem;
 
     &:hover {
       @include md {
@@ -315,13 +315,13 @@ button:disabled {
         font-size: 1.6rem;
       }
       .arrow {
-        left: 30%;
+        left: 25%;
       }
     }
 
     @include max-xs {
       .arrow {
-        left: 20%;
+        left: 15%;
       }
     }
     @media (max-width: 336px) {

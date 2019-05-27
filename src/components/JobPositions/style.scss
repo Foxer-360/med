@@ -1,36 +1,18 @@
 @import './components/style.scss';
 
 .actual-positions {
-  margin-bottom: 35px;
+  padding-bottom: 3.5rem;
 
   h3 {
     @include webkitGradientText;
-    padding-bottom: 35px;
-    padding-top: 0;
   }
 }
 
-.positions {
-  justify-content: center;
-  margin: 25px 0;
-  grid-template-rows: 295px;
-  grid-template-columns: repeat(3, 1fr);
-
-  & > * { align-self: center; }
-  
-  @include sm {
-    grid-template-rows: 295px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include md {
-    grid-template-rows: 295px;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include max-sm {
-    grid-template-rows: auto;
-    grid-template-columns: repeat(1, 1fr);
+.positions {  
+  .col-sm-12, 
+  .col-md-6,
+  .col-lg-4 {
+    margin-bottom: 3rem;
   }
 
   p {
@@ -61,16 +43,16 @@
   &__element-content {
     display: table-cell;
     vertical-align: bottom;
-    padding: 35px;
+    padding: 3.5rem;
     position: relative;
     z-index: 2;
 
     @include max-md {
-      padding: 20px;
+      padding: 2rem;
 
       p {
         font-size: 1.8rem;
-        padding-bottom: 15px;
+        padding-bottom: 1.5rem;
       }
       button {
         font-size: 1.4rem;
@@ -82,9 +64,9 @@
   &__element {
     width: 100%;
     height: 295px;
-    background-repeat: no-repeat;
-    background-size: cover;
     display: table;
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }

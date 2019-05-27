@@ -25,7 +25,7 @@ const ViewsAboutUs = (props: ViewsAboutUsPops) => {
       <div className={'container'}>
         {title && <h3>{title}</h3>}
         
-        <div className={'grid viewsAboutUs__list'}>
+        <div className={'viewsAboutUs__list row'}>
           <List data={views}>
             {({ data }) => data && data.map((item, i) => {
               

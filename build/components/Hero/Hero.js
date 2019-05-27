@@ -30,7 +30,7 @@ var Hero = /** @class */ (function (_super) {
                     React.createElement("div", { className: 'hero__holder' },
                         title && React.createElement("h1", { className: "hero__title hero__title--" + titleColor }, title),
                         text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
-                        displaySearch && (React.createElement(SearchBar_1.default, { placeholder: placeholder ? placeholder : 'Hledat ...', barColor: 'lightBlue', blogSearchResults: this.props.data.blogSearchResults, doctorsLink: this.props.data.doctorsLink })))))));
+                        displaySearch && (React.createElement(SearchBar_1.default, { barColor: 'lightBlue', placeholder: placeholder ? placeholder : 'Hledat ...', blogSearchResults: this.props.data.blogSearchResults, doctorsLink: this.props.data.doctorsLink })))))));
     };
     return Hero;
 }(React.Component));

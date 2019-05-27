@@ -8,7 +8,7 @@ var ViewsAboutUs = function (props) {
     return (React.createElement("div", { className: 'viewsAboutUs' },
         React.createElement("div", { className: 'container' },
             title && React.createElement("h3", null, title),
-            React.createElement("div", { className: 'grid viewsAboutUs__list' },
+            React.createElement("div", { className: 'viewsAboutUs__list row' },
                 React.createElement(List_1.default, { data: views }, function (_a) {
                     var data = _a.data;
                     return data && data.map(function (item, i) {

@@ -22,28 +22,29 @@ var PolyclinicBoxes = function (props) {
         React.createElement(DividerCircles_1.default, null),
         React.createElement("div", { className: 'container' },
             title && React.createElement("h3", null, title),
-            React.createElement("ul", { className: 'grid' },
+            React.createElement("div", { className: 'polyclinicBoxes__list row' },
                 React.createElement(List_1.default, { data: polyclinics }, function (_a) {
                     var data = _a.data;
                     return data && data.map(function (polyclinic, index) {
                         var url = polyclinic.url, name = polyclinic.name, image = polyclinic.image;
-                        return (React.createElement("li", { key: index },
-                            React.createElement(Link_1.default, __assign({}, url)),
-                            React.createElement("div", { className: 'colorGradient' }),
-                            image && image.filename && React.createElement(Media_1.default, { data: image, type: 'image' }),
-                            name && (React.createElement("div", { className: 'pcTitle' },
-                                React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }),
-                                React.createElement("div", { className: 'pcTitle__title' },
-                                    React.createElement("h3", null, "Poliklinika"),
-                                    React.createElement("div", { className: 'pcTitle__title__subtitle' },
-                                        React.createElement("span", null, name),
-                                        React.createElement("span", { className: 'pcTitle__title__subtitle__circles' },
-                                            React.createElement("div", null),
-                                            React.createElement("div", null),
-                                            React.createElement("div", null),
-                                            React.createElement("div", null),
-                                            React.createElement("div", null),
-                                            React.createElement("div", null))))))));
+                        return (React.createElement("div", { key: index, className: 'col-sm-12 col-lg-6 col-xl-3' },
+                            React.createElement("div", { className: 'polyclinicBoxes__list__item' },
+                                React.createElement(Link_1.default, __assign({}, url)),
+                                React.createElement("div", { className: 'colorGradient' }),
+                                image && image.filename && React.createElement(Media_1.default, { data: image, type: 'image' }),
+                                name && (React.createElement("div", { className: 'pcTitle' },
+                                    React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }),
+                                    React.createElement("div", { className: 'pcTitle__title' },
+                                        React.createElement("h3", null, "Poliklinika"),
+                                        React.createElement("div", { className: 'pcTitle__title__subtitle' },
+                                            React.createElement("span", null, name),
+                                            React.createElement("span", { className: 'pcTitle__title__subtitle__circles' },
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null),
+                                                React.createElement("div", null)))))))));
                     });
                 })))));
 };

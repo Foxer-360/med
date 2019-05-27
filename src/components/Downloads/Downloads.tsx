@@ -22,18 +22,17 @@ const Downloads = (props: DownloadsProps) => {
   const { title, description, downloads } = props.data;
 
   return (
-    <div className={'container'}>
-      <div className={'downloads'}>
+    <div className={'downloads'}>
+      <div className={'container'}>
         {title && <h3>{title}</h3>}
 
         {description && <p>{description}</p>}
 
-        <div className="grid downloads__list">
+        <div className="downloads__list row">
           <List data={downloads}>
-            {({ data }) =>
-              data &&
-              data.map((item, i) => (
-                <div className={'downloads__list__element'} key={i}>
+            {({ data }) => data && data.map((item, i) => (
+              <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3" key={i}>
+                <div className={'downloads__list__element'}>
                   {item.title && <p>{item.title}</p>}
                   {item.file &&
                     <a 
@@ -47,7 +46,8 @@ const Downloads = (props: DownloadsProps) => {
                     </a>
                   }
                 </div>
-              ))}
+              </div>
+            ))}
           </List>
         </div>
       </div>

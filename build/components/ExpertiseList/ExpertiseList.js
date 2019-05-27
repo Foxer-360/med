@@ -44,13 +44,15 @@ var ExpertiseList = /** @class */ (function (_super) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 9), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("section", { className: "expertiseList" },
-                title && React.createElement("h3", null, title),
-                React.createElement("div", { className: "grid-container" }, items && items.map(function (item, index) { return (React.createElement(Link_1.default, __assign({}, item.url, { key: index }),
-                    React.createElement("div", { className: "expertiseList__element" },
-                        React.createElement("div", null, item.image && React.createElement(Media_1.default, { type: 'image', data: item.image })),
-                        item.title && React.createElement("p", null, item.title)))); })),
-                _this.state.numberOfPage < lastPage && React.createElement("div", { className: "container" },
-                    React.createElement("button", { onClick: function () { return _this.setState({ numberOfPage: lastPage }); }, className: 'btn btn--blueBkg btn--fullWidth' }, "zobrazit dal\u0161i odbornosti"))));
+                React.createElement("div", { className: "container" },
+                    title && React.createElement("h3", null, title),
+                    React.createElement("div", { className: "row" }, items && items.map(function (item, index) { return (React.createElement("div", { key: index, className: "col-sm-12 col-lg-6 col-xl-4" },
+                        React.createElement("div", { className: "expertiseList__element" },
+                            React.createElement("div", null, item.image && React.createElement(Media_1.default, { type: 'image', data: item.image })),
+                            React.createElement(Link_1.default, __assign({}, item.url)),
+                            item.title && React.createElement("p", null, item.title)))); })),
+                    _this.state.numberOfPage < lastPage &&
+                        React.createElement("button", { className: 'btn btn--blueBkg btn--fullWidth', onClick: function () { return _this.setState({ numberOfPage: lastPage }); } }, "zobrazit dal\u0161i odbornosti"))));
         }));
     };
     return ExpertiseList;

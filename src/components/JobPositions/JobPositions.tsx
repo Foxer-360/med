@@ -49,40 +49,43 @@ class JobPositions extends React.Component<JobPositionsProps, JobPositionsState>
           const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 3);
           
           return (
-            <div className={'container actual-positions'}>
-              {title && <h3>{title}</h3>}
+            <div className={'container'}>
+              <div className={'actual-positions'}>
+                {title && <h3>{title}</h3>}
 
-              <SelectButton polyclinics={polyclinics} />
+                {/* <SelectButton polyclinics={polyclinics} /> */}
 
-              <div className={'grid positions'}>
-                {items && items.map((position, index) => (
-                  <div
-                    className={'positions__element'}
-                    style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
-                    key={index}
-                  >
-                    <div className={'positions__element-content'}>
-                      {position.name && <p>{position.name}</p>}
-                      <Button classes={'btn--whiteBorder'} url={position.url}>
-                        více informací
-                      </Button>
+                <div className={'positions row'}>
+                  {items && items.map((position, index) => (
+                    <div key={index} className={'col-sm-12 col-lg-6 col-xl-4'}>  
+                      <div
+                        className={'positions__element'}
+                        style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
+                      >
+                        <div className={'positions__element-content'}>
+                          {position.name && <p>{position.name}</p>}
+                          <Button classes={'btn--whiteBorder'} url={position.url}>
+                            více informací
+                          </Button>
+                        </div>
+
+                        <div
+                          className={'positions__colorGradient'}
+                          style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
+                        />
+                      </div>
                     </div>
+                  ))}
+                </div>
 
-                    <div
-                      className={'positions__colorGradient'}
-                      style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
-                    />
-                  </div>
-                ))}
+                {this.state.numberOfPage < lastPage &&
+                  <button 
+                    className={'btn hCenterBlock btn--blueBkg btn--down btn--fullWidth'}
+                    onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                  >
+                    další pozice
+                  </button>}
               </div>
-
-              {this.state.numberOfPage < lastPage &&
-                <button 
-                  className={'btn hCenterBlock btn--blueBkg btn--down btn--fullWidth'}
-                  onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
-                >
-                  další pozice
-                </button>}
             </div>
           );
         }}

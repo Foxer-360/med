@@ -38,10 +38,10 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
-var react_apollo_1 = require("react-apollo");
-var graphql_tag_1 = require("graphql-tag");
 var axios_1 = require("axios");
+var graphql_tag_1 = require("graphql-tag");
+var react_apollo_1 = require("react-apollo");
+var ReactMarkdown = require("react-markdown");
 var Link_1 = require("../../partials/Link");
 var Loader_1 = require("../../partials/Loader");
 var SvgIcon_1 = require("../../partials/SvgIcon");
@@ -51,6 +51,7 @@ var CareerForm = /** @class */ (function (_super) {
     __extends(CareerForm, _super);
     function CareerForm(props) {
         var _this = _super.call(this, props) || this;
+        _this.scrollToTopRef = function () { return window.scrollTo(0, _this.topRef.current.offsetTop); };
         _this.changeInputValue = function (e) {
             var _a;
             var newState = __assign({}, _this.state, { formValues: __assign({}, _this.state.formValues, (_a = {}, _a[e.target.name] = e.target.value, _a)) });
@@ -129,6 +130,7 @@ var CareerForm = /** @class */ (function (_super) {
             },
         };
         _this.fileRef = React.createRef();
+        _this.topRef = React.createRef();
         return _this;
     }
     CareerForm.prototype.isValid = function () {
@@ -160,6 +162,9 @@ var CareerForm = /** @class */ (function (_super) {
         this.setState({
             errors: newError,
         });
+        if (!valid) {
+            this.scrollToTopRef();
+        }
         return valid;
     };
     CareerForm.prototype.toggleAgreement = function () {
@@ -188,7 +193,7 @@ var CareerForm = /** @class */ (function (_super) {
                     return 'Error...';
                 }
                 var pageData = data.pageData;
-                return (React.createElement("section", { className: 'careerForm form' },
+                return (React.createElement("section", { className: 'careerForm form', ref: _this.topRef },
                     React.createElement("div", { className: 'container' },
                         React.createElement("h3", { className: 'gradientHeading' }, title),
                         React.createElement(ReactMarkdown, { source: text, renderers: {
@@ -213,7 +218,7 @@ var CareerForm = /** @class */ (function (_super) {
                                         React.createElement("div", { className: 'form__input__bar' }))),
                                 React.createElement("div", null,
                                     React.createElement("div", { className: "form__input " + (errors.email ? 'error' : '') + " " },
-                                        React.createElement("input", { value: email, type: "email", name: "email", className: _this.state.formValues.email ? 'active' : '', onChange: function (e) { return _this.changeInputValue(e); } }),
+                                        React.createElement("input", { value: email, type: "text", name: "email", className: _this.state.formValues.email ? 'active' : '', onChange: function (e) { return _this.changeInputValue(e); } }),
                                         React.createElement("span", { className: 'form__input__label' }, errors.email ? errors.email : 'E-mail'),
                                         React.createElement("div", { className: 'form__input__bar' })))),
                             React.createElement("div", { className: 'form__row form__row--second' },
@@ -239,6 +244,11 @@ var CareerForm = /** @class */ (function (_super) {
                             React.createElement("div", { className: "form__textarea  " + (errors.message ? 'error' : '') + " " },
                                 React.createElement("label", null, errors.message ? errors.message : 'Průvodní dopis'),
                                 React.createElement("textarea", { name: "message", onChange: function (e) { return _this.changeInputValue(e); }, value: message })),
+                            React.createElement("div", { className: 'form__messageHolder', style: formStatus !== null ? { padding: '4rem 0' } : {} },
+                                formStatus === 'error' && (React.createElement("div", { className: 'form__message form__message--error' },
+                                    React.createElement("p", null, "There was an error."),
+                                    _this.state.formErrorMessage && React.createElement("p", null, _this.state.formErrorMessage))),
+                                formStatus === 'success' && (React.createElement("div", { className: 'form__message form__message--success' }, "Thank You for contacting us."))),
                             React.createElement("div", { className: 'form__terms' },
                                 React.createElement("div", null,
                                     React.createElement("input", { className: 'checkbox', id: "styled-checkbox-1", type: "checkbox", checked: agreement, onChange: function (e) { return _this.toggleAgreement(); } }),
@@ -248,12 +258,7 @@ var CareerForm = /** @class */ (function (_super) {
                                     React.createElement(Link_1.default, __assign({}, gdprLink), "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                     " \u00FAdaj\u016F.")),
                             React.createElement("div", { className: 'flexRow flexAlign--center' },
-                                React.createElement("button", { className: "btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat")),
-                            React.createElement("div", { className: 'form__messageHolder' },
-                                formStatus === 'error' && (React.createElement("div", { className: 'form__message form__message--error' },
-                                    React.createElement("p", null, "There was an error."),
-                                    _this.state.formErrorMessage && React.createElement("p", null, _this.state.formErrorMessage))),
-                                formStatus === 'success' && (React.createElement("div", { className: 'form__message form__message--success' }, "Thank You for contacting us.")))))));
+                                React.createElement("button", { className: "btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat"))))));
             })));
     };
     return CareerForm;
