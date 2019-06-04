@@ -74,4 +74,6 @@ var doctorschedule = require("./doctorschedule.json");
 exports.doctorschedule = doctorschedule;
 var workinghours = require("./workinghours.json");
 exports.workinghours = workinghours;
+var registrationblock = require("./registrationblock.json");
+exports.registrationblock = registrationblock;
 //# sourceMappingURL=index.js.map

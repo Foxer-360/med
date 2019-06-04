@@ -74,4 +74,6 @@ var DoctorSchedule_1 = require("./DoctorSchedule");
 exports.DoctorSchedule = DoctorSchedule_1.default;
 var WorkingHours_1 = require("./WorkingHours");
 exports.WorkingHours = WorkingHours_1.default;
+var RegistrationBlock_1 = require("./RegistrationBlock");
+exports.RegistrationBlock = RegistrationBlock_1.default;
 //# sourceMappingURL=index.js.map

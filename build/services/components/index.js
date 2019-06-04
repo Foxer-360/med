@@ -57,6 +57,7 @@ var ComponentsService = /** @class */ (function () {
             BLOGARTICLE: 'BlogArticle',
             DOCTORSCHEDULE: 'DoctorSchedule',
             WORKINGHOURS: 'WorkingHours',
+            REGISTRATIONBLOCK: 'RegistrationBlock'
         };
     }
     /***/
@@ -142,6 +143,8 @@ var ComponentsService = /** @class */ (function () {
                 return components_1.DoctorSchedule;
             case this.Types.WORKINGHOURS:
                 return components_1.WorkingHours;
+            case this.Types.REGISTRATIONBLOCK:
+                return components_1.RegistrationBlock;
             default:
                 return function () { return React.createElement(components_1.AlertNotFound, { type: "component" }); };
         }

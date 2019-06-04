@@ -39,6 +39,7 @@ import {
   BlogArticle,
   DoctorSchedule,
   WorkingHours,
+  RegistrationBlock
 } from '../../components';
 import * as resources from './resources';
 
@@ -83,6 +84,7 @@ class ComponentsService {
     BLOGARTICLE: 'BlogArticle',
     DOCTORSCHEDULE: 'DoctorSchedule',
     WORKINGHOURS: 'WorkingHours',
+    REGISTRATIONBLOCK: 'RegistrationBlock'
   };
 
   /***/
@@ -169,6 +171,9 @@ class ComponentsService {
         return DoctorSchedule;
       case this.Types.WORKINGHOURS:
         return WorkingHours;
+      case this.Types.REGISTRATIONBLOCK:
+        return RegistrationBlock;
+
       default:
         return () => <AlertNotFound type="component" />;
     }

@@ -1,0 +1,50 @@
+.registration-block {
+  h3 {
+    @include webkitGradientText;
+    padding-top: 0;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.8rem;
+
+    @include max-md {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__btn-holder {
+    max-width: 35%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5rem;
+    
+    @include max-lg { max-width: 45%; }
+    @include max-md {
+      max-width: 65%;
+      margin-top: 2.5rem;
+    }
+    @include max-sm { max-width: 85%; }
+    @include max-xs { max-width: 100%; }
+  
+    .btn {
+      text-align: center;
+    }
+  }
+
+  &__conditions {
+    display: block;
+    text-align: center;
+    letter-spacing: 2.5px;
+    font-size: 1.6rem;
+    color: $lightBlue;
+    margin: 35px 0;
+    text-decoration: underline;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      color: $lightBlue;
+      text-decoration: none;
+    }
+  }
+}

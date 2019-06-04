@@ -74,7 +74,7 @@ button:disabled {
   }
 
   &--blueBkg {
-    color: white;
+    color: white !important;
     background-image: linear-gradient(to right, $blue 0%, $lightBlue 100%);
     background-repeat: no-repeat;
     background-position: center;

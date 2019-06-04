@@ -1,0 +1,36 @@
+{
+    "name": "RegistrationBlock",
+    "data": {
+        "title": "Registration block",
+        "text": "**Description** Integer rutrum tristique nisl hendrerit fringilla. Etiam interdum nunc nec scelerisque pulvinar. Phasellus iaculis commodo dui, non aliquet est egestas eget. Nullam arcu enim, laoreet non consectetur in, sodales eu risus.",
+        "btnTitle": "button title",
+        "btnUrl": "",
+        "conditionsFile": ""
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "text": {
+                    "type": "markdown",
+                    "title": "Text"
+                },
+                "btnTitle": {
+                    "type": "text",
+                    "title": "Button title"
+                },
+                "btnUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "Button Url"
+                },
+                "conditionsFile": {
+                    "type": "file"
+                }
+            }
+        }
+    }
+}

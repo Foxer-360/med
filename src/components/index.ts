@@ -35,6 +35,7 @@ import Faq from './Faq';
 import BlogArticle from './BlogArticle';
 import DoctorSchedule from './DoctorSchedule';
 import WorkingHours from './WorkingHours';
+import RegistrationBlock from './RegistrationBlock';
 
 export {
   AlertNotFound,
@@ -73,5 +74,6 @@ export {
   Faq,
   BlogArticle,
   DoctorSchedule,
-  WorkingHours
+  WorkingHours,
+  RegistrationBlock
 };
