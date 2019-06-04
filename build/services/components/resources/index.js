@@ -76,4 +76,6 @@ var workinghours = require("./workinghours.json");
 exports.workinghours = workinghours;
 var registrationblock = require("./registrationblock.json");
 exports.registrationblock = registrationblock;
+var paragraph = require("./paragraph.json");
+exports.paragraph = paragraph;
 //# sourceMappingURL=index.js.map

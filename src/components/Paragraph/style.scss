@@ -1,0 +1,98 @@
+.paragraph {
+  width: 100%;
+  color: $darkGray;
+  font-weight: 400;
+  font-size: 1.6rem;
+  text-align: left;
+  background-color: white;
+
+  &--paddingTop { padding-top: 1rem; }
+  &--paddingBottom { padding-bottom: 1rem; }
+
+  .container {
+    max-width: 730px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 1rem 0;
+    text-align: left;
+    line-height: initial;
+    letter-spacing: 1.1px;
+    font-weight: 700 !important;
+  }
+  
+  ol {
+    padding-left: 1.5rem;
+    & > ol {
+      padding-left: 1.5rem;
+    }
+  }
+
+  ul {
+    @include reset-list;
+    li {
+      padding: 5px 5px 5px 25px;
+      position: relative;
+  
+      &:before {
+        width: 8px;
+        height: 8px;
+        display: block;
+        background-color: $blue;
+        @include pseudo;
+        border-radius: 50%;
+        left: 0;
+        top: 18px;
+        transform: translateY(-50%);
+      }
+  
+      & > ul {
+        margin-left: 15px;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .row {
+    &:nth-child(2) {
+      margin-top: 3rem;
+      @include max-md { margin-top: 1.5rem; }
+    }
+  }
+
+  .imgWithMarginTop {
+    margin-top: 0;
+    @media only screen and (max-width: 768px) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__content {
+    margin: 0 auto;
+    max-width: 730px;
+
+    &--additionalText { order: 3; }
+
+    &__text {
+      margin: 0 auto;
+    }
+
+    &__images {
+      width: 100%;
+    }
+
+    .textWithImg {
+      @media only screen and (max-width: 992px) {
+        padding-top: 1.5rem;
+      }
+    }
+
+    .textAllContent {
+      padding-top: 3rem;
+      @media only screen and (max-width: 992px) {
+        padding-top: 1.5rem;
+      }
+    }
+  }
+}

@@ -36,6 +36,7 @@ import * as blogarticle from './blogarticle.json';
 import * as doctorschedule from './doctorschedule.json';
 import * as workinghours from './workinghours.json';
 import * as registrationblock from './registrationblock.json';
+import * as paragraph from './paragraph.json';
 
 export {
   def as default,
@@ -75,5 +76,6 @@ export {
   blogarticle,
   doctorschedule,
   workinghours,
-  registrationblock
+  registrationblock,
+  paragraph
 };

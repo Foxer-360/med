@@ -76,4 +76,6 @@ var WorkingHours_1 = require("./WorkingHours");
 exports.WorkingHours = WorkingHours_1.default;
 var RegistrationBlock_1 = require("./RegistrationBlock");
 exports.RegistrationBlock = RegistrationBlock_1.default;
+var Paragraph_1 = require("./Paragraph");
+exports.Paragraph = Paragraph_1.default;
 //# sourceMappingURL=index.js.map

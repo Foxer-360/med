@@ -7639,6 +7639,85 @@ cite {
     color: #00aad0;
     text-decoration: none; }
 
+.paragraph {
+  width: 100%;
+  color: #3c3c3b;
+  font-weight: 400;
+  font-size: 1.6rem;
+  text-align: left;
+  background-color: white; }
+  .paragraph--paddingTop {
+    padding-top: 1rem; }
+  .paragraph--paddingBottom {
+    padding-bottom: 1rem; }
+  .paragraph .container {
+    max-width: 730px; }
+  .paragraph h1, .paragraph h2, .paragraph h3, .paragraph h4, .paragraph h5, .paragraph h6 {
+    margin: 0;
+    padding: 1rem 0;
+    text-align: left;
+    line-height: initial;
+    letter-spacing: 1.1px;
+    font-weight: 700 !important; }
+  .paragraph ol {
+    padding-left: 1.5rem; }
+    .paragraph ol > ol {
+      padding-left: 1.5rem; }
+  .paragraph ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+    .paragraph ul li::before {
+      display: none; }
+    .paragraph ul li + li {
+      margin-top: 0; }
+    .paragraph ul li {
+      padding: 5px 5px 5px 25px;
+      position: relative; }
+      .paragraph ul li:before {
+        width: 8px;
+        height: 8px;
+        display: block;
+        background-color: #2473ba;
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 50%;
+        left: 0;
+        top: 18px;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%); }
+      .paragraph ul li > ul {
+        margin-left: 15px;
+        margin-top: 15px; }
+  .paragraph .row:nth-child(2) {
+    margin-top: 3rem; }
+    @media (max-width: 767px) {
+      .paragraph .row:nth-child(2) {
+        margin-top: 1.5rem; } }
+  .paragraph .imgWithMarginTop {
+    margin-top: 0; }
+    @media only screen and (max-width: 768px) {
+      .paragraph .imgWithMarginTop {
+        margin-top: 1.5rem; } }
+  .paragraph__content {
+    margin: 0 auto;
+    max-width: 730px; }
+    .paragraph__content--additionalText {
+      order: 3; }
+    .paragraph__content__text {
+      margin: 0 auto; }
+    .paragraph__content__images {
+      width: 100%; }
+    @media only screen and (max-width: 992px) {
+      .paragraph__content .textWithImg {
+        padding-top: 1.5rem; } }
+    .paragraph__content .textAllContent {
+      padding-top: 3rem; }
+      @media only screen and (max-width: 992px) {
+        .paragraph__content .textAllContent {
+          padding-top: 1.5rem; } }
+
 button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed; }
