@@ -27,6 +27,12 @@ body {
   }
 }
 
+.container {
+  @media (min-width: 1250px) {
+    max-width: 1250px;
+  }
+}
+
 .fullWidthContainer {
   display: block;
   margin: 0 auto;

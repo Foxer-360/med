@@ -3239,6 +3239,10 @@ body {
   body::-webkit-scrollbar-track {
     background: #f8f8f8; }
 
+@media (min-width: 1250px) {
+  .container {
+    max-width: 1250px; } }
+
 .fullWidthContainer {
   display: block;
   margin: 0 auto;
