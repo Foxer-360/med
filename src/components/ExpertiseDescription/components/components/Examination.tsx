@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
 
 export interface ExaminationProps {
-  index: number;
   title: string;
   description: string;
 }
@@ -21,12 +20,12 @@ class Examination extends React.Component<ExaminationProps, ExaminationState> {
   }
 
   public render() {
-    const { title, description, index } = this.props;
+    const { title, description } = this.props;
 
     return (
       <div
+        className={`examination__list__item `}
         style={description ? { cursor: 'pointer' } : { cursor: 'default' }}
-        className={`examination__list__item col-12 ${index === 2 ? 'col-md-12' : 'col-md-6'}`}
       >
         <div style={{ display: 'table', height: '100%', width: '100%' }}>
           <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>

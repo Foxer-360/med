@@ -8,6 +8,8 @@ var WorkingHours = function (props) {
         var data = _a.data;
         return (React.createElement("div", { className: "workingHours" },
             React.createElement("div", { className: "container" },
+                React.createElement("div", { className: 'workingHours__title' },
+                    React.createElement("h4", null, (props && props.data && props.data.title) || '')),
                 React.createElement("table", null,
                     React.createElement("tbody", null, data && data.map(function (item, index) {
                         return (React.createElement(React.Fragment, null,

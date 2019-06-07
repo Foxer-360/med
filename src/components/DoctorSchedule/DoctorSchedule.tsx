@@ -125,12 +125,12 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             <table>
               <tbody>
                 {week &&
-                  getWeekStructure(week).map((item, index) => {
+                  getWeekStructure(week).map((item, j) => {
                     if (item.day === 'sobota' || item.day === 'neděle') { return ''; }
                     
                     return (
                       <>
-                        <tr className={'mobileHeading'}>
+                        <tr key={j} className={'mobileHeading'}>
                           <td colSpan={7}>{item.day}</td>
                         </tr>
                         <tr className={'normalRow'}>

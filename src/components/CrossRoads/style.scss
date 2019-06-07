@@ -1,5 +1,8 @@
 .crossRoads {
-  padding-bottom: 40px;
+  padding: 5rem 0;
+  @include max-md {
+    padding: 2.5rem 0;
+  }
 
   &__wrapper {
     @extend .flexRow;
@@ -96,6 +99,10 @@
       font-weight: 400;
       width: calc(100% - (48px + 24px));
 
+      @include max-sm {
+        text-align: left;
+      }
+      
       @include md {
         font-size: 2rem;
         width: 100%;

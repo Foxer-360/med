@@ -26,21 +26,26 @@ class ExpertiseDescriptionExamination extends React.Component<ExpertiseDescripti
   
         <div className={'examination__list row'}>
           {examinations && examinations.map((examination, i) => {
-            return examination.url ? (
-              <Link 
+            return (
+              <div 
                 key={i}
-                {...examination.url}
-                className={`examination__list__item`}
-                style={examination.url ? { fontWeight: 500 } : { cursor: 'default' }}
+                className={`col-12 ${i === 2 ? 'col-md-12' : 'col-md-6'}`}
               >
-                {examination.title}
-              </Link>) : (
-              <Examination 
-                key={i}
-                index={i}
-                title={examination.title}
-                description={examination.description} 
-              />);
+                {examination.url ? (
+                  <Link 
+                    {...examination.url}
+                    className={'examination__list__item '}
+                    style={examination.url ? { fontWeight: 500 } : { cursor: 'default' }}
+                  >
+                    {examination.title}
+                  </Link>) : (
+                  <Examination 
+                    title={examination.title}
+                    description={examination.description} 
+                  />
+                )}
+              </div>
+            );
           })}
         </div>
       </div> 

@@ -18,25 +18,42 @@ const ContactInfo = (props: ContactInfoProps) => {
   return (
     <div className={'contact-info'}>
       <div className={'container'}>
-        <div className={'contact-info__grid grid'}>
-          <div className={'grid contact-info__grid__element'}>
-            <img src={'/assets/medicon/images/contact-info-1.png'} alt="address" />
-            <div>
-              {address && <ReactMarkdown source={address} />}
-              {clinic && <p style={clinicColor ? {color: `${clinicColor}`} : {}}>{clinic}</p>}
+        <div className={'contact-info__grid row'}>
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className={'contact-info__grid__element'}>
+              <img src={'/assets/medicon/images/contact-info-1.png'} alt="address" />
+              <div className={'contact-info__grid__element__content'}>
+                {address && <ReactMarkdown source={address} />}
+                {clinic && <p style={clinicColor ? {color: `${clinicColor}`} : {}}>{clinic}</p>}
+              </div>
             </div>
           </div>
-          <div className={'contact-info__grid__element grid'}>
-            <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number" />
-            <div>{phones && <ReactMarkdown source={phones} />}</div>
+          
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className={'contact-info__grid__element'}>
+              <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number" />
+              <div className={'contact-info__grid__element__content'}>
+                {phones && <ReactMarkdown source={phones} />}
+              </div>
+            </div>
           </div>
-          <div className={'contact-info__grid__element grid'}>
-            <img src={'/assets/medicon/images/contact-info-3.png'} alt="e-mail" />
-            <div>{emails && <ReactMarkdown source={emails} />}</div>
+          
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className={'contact-info__grid__element'}>
+              <img src={'/assets/medicon/images/contact-info-3.png'} alt="e-mail" />
+              <div className={'contact-info__grid__element__content'}>
+                {emails && <ReactMarkdown source={emails} />}
+              </div>
+            </div>
           </div>
-          <div className={'contact-info__grid__element grid'}>
-            <img src={'/assets/medicon/images/contact-info-4.png'} alt="ICO and DIC" />
-            <div>{additional && <ReactMarkdown source={additional} />}</div>
+          
+          <div className="col-12 col-sm-6 col-lg-3">
+            <div className={'contact-info__grid__element'}>
+              <img src={'/assets/medicon/images/contact-info-4.png'} alt="ICO and DIC" />
+              <div className={'contact-info__grid__element__content'}>
+                {additional && <ReactMarkdown source={additional} />}
+              </div>
+            </div>
           </div>
         </div>
       </div>

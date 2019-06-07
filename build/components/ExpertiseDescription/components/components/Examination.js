@@ -26,8 +26,8 @@ var Examination = /** @class */ (function (_super) {
     }
     Examination.prototype.render = function () {
         var _this = this;
-        var _a = this.props, title = _a.title, description = _a.description, index = _a.index;
-        return (React.createElement("div", { style: description ? { cursor: 'pointer' } : { cursor: 'default' }, className: "examination__list__item col-12 " + (index === 2 ? 'col-md-12' : 'col-md-6') },
+        var _a = this.props, title = _a.title, description = _a.description;
+        return (React.createElement("div", { className: "examination__list__item ", style: description ? { cursor: 'pointer' } : { cursor: 'default' } },
             React.createElement("div", { style: { display: 'table', height: '100%', width: '100%' } },
                 React.createElement("div", { style: { display: 'table-cell', verticalAlign: 'middle' } },
                     title &&

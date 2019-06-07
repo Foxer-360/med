@@ -69,6 +69,7 @@ var SearchBar = /** @class */ (function (_super) {
     };
     SearchBar.prototype.componentWillUnmount = function () {
         document.removeEventListener('click', this.handleClick, false);
+        // this.setState = () => {};
     };
     // tslint:disable-next-line:typedef
     SearchBar.prototype.changeSearchQuery = function (query) {

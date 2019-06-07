@@ -38,7 +38,7 @@ var ExpertiseDescriptionExamination = /** @class */ (function (_super) {
         return (React.createElement("div", { className: 'examination' },
             title && React.createElement("h3", null, title),
             React.createElement("div", { className: 'examination__list row' }, examinations && examinations.map(function (examination, i) {
-                return examination.url ? (React.createElement(Link_1.default, __assign({ key: i }, examination.url, { className: "examination__list__item", style: examination.url ? { fontWeight: 500 } : { cursor: 'default' } }), examination.title)) : (React.createElement(Examination_1.default, { key: i, index: i, title: examination.title, description: examination.description }));
+                return (React.createElement("div", { key: i, className: "col-12 " + (i === 2 ? 'col-md-12' : 'col-md-6') }, examination.url ? (React.createElement(Link_1.default, __assign({}, examination.url, { className: 'examination__list__item ', style: examination.url ? { fontWeight: 500 } : { cursor: 'default' } }), examination.title)) : (React.createElement(Examination_1.default, { title: examination.title, description: examination.description }))));
             }))));
     };
     return ExpertiseDescriptionExamination;

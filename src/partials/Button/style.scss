@@ -81,10 +81,8 @@ button:disabled {
     padding: 1.4rem 3rem;
 
     &:hover {
-      @include md {
-        background-image: linear-gradient(to right, $blue 0%, $blue 100%);
-        background-color: $blue;
-      }
+      background-image: linear-gradient(to right, $blue 0%, $blue 100%);
+      background-color: $blue;
 
       .arrow {
         border-color: white;
@@ -98,13 +96,11 @@ button:disabled {
     background-color: transparent;
 
     &:hover {
-      @include md {
-        color: $blue;
-        background-color: white;
+      color: $blue;
+      background-color: white;
 
-        .arrow {
-          border-color: $blue;
-        }
+      .arrow {
+        border-color: $blue;
       }
     }
   }
@@ -150,21 +146,21 @@ button:disabled {
       p {
         font-size: 1.6rem;
       }
-      .arrow {
-        left: 25%;
-      }
+      // .arrow {
+      //   left: 25%;
+      // }
     }
 
-    @include max-xs {
-      .arrow {
-        left: 15%;
-      }
-    }
-    @media (max-width: 336px) {
-      .arrow {
-        left: 10%;
-      }
-    }
+    // @include max-xs {
+    //   .arrow {
+    //     left: 15%;
+    //   }
+    // }
+    // @media (max-width: 336px) {
+    //   .arrow {
+    //     left: 10%;
+    //   }
+    // }
   }
 }
 .btn {
@@ -191,8 +187,8 @@ button:disabled {
     border-width: 0 2px 2px 0;
     transform: rotate(-45deg);
     margin-bottom: 1px;
-    left: 1rem;
     transition: 230ms ease;
+    left: 1rem;
 
     &--down {
       transform: rotate(45deg);
@@ -314,20 +310,20 @@ button:disabled {
       p {
         font-size: 1.6rem;
       }
-      .arrow {
-        left: 25%;
-      }
+      // .arrow {
+      //   left: 25%;
+      // }
     }
 
-    @include max-xs {
-      .arrow {
-        left: 15%;
-      }
-    }
-    @media (max-width: 336px) {
-      .arrow {
-        left: 10%;
-      }
-    }
+    // @include max-xs {
+    //   .arrow {
+    //     left: 15%;
+    //   }
+    // }
+    // @media (max-width: 336px) {
+    //   .arrow {
+    //     left: 10%;
+    //   }
+    // }
   }
 }

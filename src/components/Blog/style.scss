@@ -11,31 +11,31 @@
 }
 
 .blog {
-  padding: 0;
-
-  .searchBar {
-    margin-bottom: 55px;
-    margin-top: 55px;
+  padding: 5rem 0 0 0;
+  
+  @include max-md {
+    padding: 2.5rem 0 0 0;
   }
 
-  @include md {
-    padding: 0;
+  .searchBar {
+    margin-top: 5.5rem;
+    margin-bottom: 5.5rem;
   }
 
   h1 {
     @include webkitGradientText;
     line-height: 1.5;
-    padding-top: 0;
+    padding: 0 0 2.5rem 0;
 
     @include md {
-      padding: 0 0 50px 0;
+      padding: 0 0 5rem 0;
     }
   }
 
   &__btnHolder {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
   }
 
   &__blur {

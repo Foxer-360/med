@@ -1,6 +1,16 @@
 .workingHours {
   width: 100%;
+  padding: 2.5rem 0;
 
+  &__title {
+    border-bottom: 1px solid #cecece;    
+  }
+
+  h4 {
+    padding: 2.4rem 0;
+    text-align: left;
+  }
+  
   .mobileHeading {
     border-bottom: 0;
 
@@ -21,12 +31,8 @@
 
   table {
     width: 100%;
-    table-layout: fixed;
     overflow: hidden;
-
-    @include lg {
-      // table-layout: auto;
-    }
+    table-layout: fixed;
 
     & > p {
       width: 100%;
@@ -52,7 +58,6 @@
         }
 
         &:last-of-type {
-          // padding: 0;
 
           @include lg {
             padding: 15px 15px 15px 25px;

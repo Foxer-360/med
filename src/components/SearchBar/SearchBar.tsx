@@ -61,6 +61,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleClick, false);
+    // this.setState = () => {};
   }
 
   handleFocus = () => {

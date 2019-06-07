@@ -84,12 +84,12 @@ var DoctorSchedule = function (props) {
                     React.createElement("h4", null, getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle))),
                 React.createElement("table", null,
                     React.createElement("tbody", null, week &&
-                        getWeekStructure(week).map(function (item, index) {
+                        getWeekStructure(week).map(function (item, j) {
                             if (item.day === 'sobota' || item.day === 'neděle') {
                                 return '';
                             }
                             return (React.createElement(React.Fragment, null,
-                                React.createElement("tr", { className: 'mobileHeading' },
+                                React.createElement("tr", { key: j, className: 'mobileHeading' },
                                     React.createElement("td", { colSpan: 7 }, item.day)),
                                 React.createElement("tr", { className: 'normalRow' },
                                     React.createElement("td", null, item.day),

@@ -238,10 +238,8 @@ cite {
   }
 }
 
-.expertiseList + .doctorList,
-.textBlock + .crossRoads,
-.textBlock + .fullWidthContainer {
-  margin-top: 50px;
+.expertiseList + .doctorList {
+  margin-top: 5rem;
 }
 
 .header + .layout {

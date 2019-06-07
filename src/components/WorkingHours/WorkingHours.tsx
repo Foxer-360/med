@@ -13,12 +13,12 @@ interface Item {
 
 export interface WorkingHoursProps {
   data: {
+    title: String;
     items: Array<Item>;
   };
 }
 
 const WorkingHours = (props: WorkingHoursProps) => {
-
   return (
     <List data={props.data.items}>
       {({ data }) => {
@@ -26,6 +26,10 @@ const WorkingHours = (props: WorkingHoursProps) => {
         return (
           <div className="workingHours">
             <div className="container">
+              <div className={'workingHours__title'}>
+                <h4>{(props && props.data && props.data.title) || ''}</h4>
+              </div>
+
               <table>
                 <tbody>
                   {data && data.map((item, index) => {
