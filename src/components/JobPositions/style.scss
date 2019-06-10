@@ -1,10 +1,9 @@
-@import './components/style.scss';
-
 .actual-positions {
   padding-bottom: 3.5rem;
 
   h3 {
     @include webkitGradientText;
+    padding-bottom: 3rem;
   }
 }
 
@@ -68,5 +67,57 @@
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+}
+
+.select-btn {
+  border: none;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  width: 265px;
+  font-size: 1.6rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  background-color: #f4f5f7;
+  position: relative;
+  margin-bottom: 3rem;
+
+  @include max-md { width: 100%; }
+
+  &:hover {
+    .arrow { top: 26px; }
+  }
+
+  select {      
+    width: 100%;
+    border: none;
+    padding: 15px 35px;
+    box-shadow: none;
+    font-size: 1.8rem;
+    color: #3c3c3b;
+    border: none;
+    background-color: #f4f5f7;
+    background-image: none;
+    -webkit-appearance: none;
+      -moz-appearance: none;
+            appearance: none;
+
+    &:focus { outline: none; }
+  }
+
+  .arrow {
+    content: '';
+    padding: 3px;
+    border: solid $lightBlue;
+    display: inline-block;
+    position: absolute;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    transition: 230ms ease;
+    right: 20px;
+    top: 23px;
   }
 }

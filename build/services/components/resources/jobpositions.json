@@ -60,13 +60,8 @@
                                 "title": "URL"
                             },
                             "polyclinic": {
-                                "type": "enum",
-                                "title": "Polyclinic",
-                                "options": {
-                                    "Polyclinic 1": "Polyclinic 1",
-                                    "Polyclinic 2": "Polyclinic 2",
-                                    "Polyclinic 3": "Polyclinic 3"
-                                }
+                                "type": "text",
+                                "title": "Polyclinic name"
                             },
                             "image": {
                                 "type": "image"
