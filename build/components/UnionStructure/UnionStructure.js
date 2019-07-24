@@ -13,7 +13,7 @@ function UnionStructure(props) {
                 var data = _a.data;
                 return (React.createElement(react_masonry_css_1.default, { className: "my-masonry-grid", columnClassName: "my-masonry-grid_column", breakpointCols: { default: 3, 4000: 3, 993: 2, 769: 1 } }, data && data.map(function (item, i) { return (React.createElement("div", { key: i, className: "unionStructure__item" },
                     React.createElement("h5", null, item.title),
-                    React.createElement(ReactMarkdown, { source: item.text, className: 'unionStructure__item__container' }))); })));
+                    React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: item.text, className: 'unionStructure__item__container' }))); })));
             }))));
 }
 exports.default = UnionStructure;

@@ -35,6 +35,8 @@ function UnionStructure(props: UnionStructureProps) {
                 <div key={i} className="unionStructure__item">
                   <h5>{item.title}</h5>
                   <ReactMarkdown
+                    skipHtml={false}
+                    escapeHtml={false}
                     source={item.text}
                     className={'unionStructure__item__container'}
                   />
