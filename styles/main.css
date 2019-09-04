@@ -6557,12 +6557,10 @@ cite {
       line-height: 34px;
       letter-spacing: 0.8px; } }
 
-.care ul {
-  word-break: break-all; }
-  .care ul p {
-    margin: 0;
-    font-size: 1.6rem;
-    line-height: inherit; }
+.care ul p {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: inherit; }
 
 .care--hidden h1:first-child,
 .care--hidden h2:first-child,
