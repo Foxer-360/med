@@ -123,7 +123,6 @@ class Footer extends React.Component<FooterProps, FooterState> {
                 return (
                   <>
                   <HelpPopup />
-                  <TemporaryPopup />
                   <CookiePopup lang={context.languageData.code} />
 
                     <ul className={'footer__list'}>

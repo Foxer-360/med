@@ -38,7 +38,6 @@ var Social_1 = require("./components/Social");
 var Loader_1 = require("../../partials/Loader");
 var HelpPopup_1 = require("./components/HelpPopup");
 var CookiePopup_1 = require("./components/CookiePopup");
-var TemporaryPopup_1 = require("./components/TemporaryPopup");
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = react_adopt_1.adopt({
@@ -98,7 +97,6 @@ var Footer = /** @class */ (function (_super) {
                             : [];
                         return (React.createElement(React.Fragment, null,
                             React.createElement(HelpPopup_1.default, null),
-                            React.createElement(TemporaryPopup_1.default, null),
                             React.createElement(CookiePopup_1.default, { lang: context.languageData.code }),
                             React.createElement("ul", { className: 'footer__list' }, footerFirstItems &&
                                 footerFirstItems.map(function (navItem, i) { return (React.createElement("li", { key: i },

@@ -37,7 +37,7 @@ var doctorSearchResultsTemplate = {
         clinic: '%doctorPersonalInformation,polyclinic,name% ',
         workingHours: '%doctorPersonalInformation,workingHours% ',
         link: {
-            url: '/medicon/cs/ds:doctor',
+            url: '/cs/ds:doctor',
             pageId: 'cjoy8qfdl001b0845fwgt2200',
             urlNewWindow: false,
         },
