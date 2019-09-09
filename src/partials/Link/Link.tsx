@@ -49,7 +49,6 @@ const GET_PAGES_URLS = gql`
 const ComposerLink = props => {
   const { children, urlNewWindow, url, query, pageId, dynamic, ...args } = props;
 
-  
   if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
     return (
       <a
@@ -73,7 +72,6 @@ const ComposerLink = props => {
       </NavLink>
     );
   }
-
 
   // return (
   //   <ComposedQuery>
