@@ -138,6 +138,10 @@ const GET_ALL_PAGES = gql`
         id
         name
       }
+      plugin {
+        plugin
+        content
+      }
       translations(where: { 
         language: { id: $languageId }
       }) {
