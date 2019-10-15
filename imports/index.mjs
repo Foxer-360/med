@@ -1,4 +1,3 @@
-
 import Ajv from 'ajv';
 import gql from 'graphql-tag';
 import http from 'apollo-link-http';
@@ -6,10 +5,12 @@ import ca from 'apollo-cache-inmemory';
 import doctors from './doctors';
 import fetch from 'node-fetch';
 import urli from  'urlize';
-
+import axios from 'axios';
 import apollo from 'apollo-client';
 import * as context from 'apollo-link-context';
+import redis from 'redis';
 
+const redisClient = redis.createClient();
 const { ApolloClient } = apollo;
 const { HttpLink } = http;
 const { InMemoryCache } = ca;
@@ -22,265 +23,303 @@ const date = new Date();
 console.log(date);
 const httpLink = new HttpLink({ uri: 'https://visionary.mediconas.cz/api/graphql', fetch: fetch });
 
-const GET_OUTDATED = gql`
-  query datasourceItems($date: DateTime) {
-    datasourceItems(where:{updatedAt_lt: $date}) {
-      id
-      slug
-      createdAt
-      updatedAt
+function update(token) {
+  const GET_OUTDATED = gql`
+    query datasourceItems($date: DateTime) {
+      datasourceItems(where:{updatedAt_lt: $date}) {
+        id
+        slug
+        createdAt
+        updatedAt
+      }
     }
-  }
-`;
+  `;
 
-const authLink = context.default.setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1UQTVRVVJDTlVWRk1ERXdPRE5HTlRBd1FqSTRORGd4TlRRMlFqTkJOMFF4TWtFM056YzNNUSJ9.eyJpc3MiOiJodHRwczovL2ZveGVyMzYwLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzgxMTU0NTZkM2Q3MzJlNmFhOWQ2YjgiLCJhdWQiOlsiZm94ZXIzNjAtc2VydmVyIiwiaHR0cHM6Ly9mb3hlcjM2MC5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTY1MTgwNzMwLCJleHAiOjE1NjUyNjcxMzAsImF6cCI6IkFEMjZwUzFyVG42ZEhjNkRPbVVoeFE5MDRPM2xHN2JzIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.O8-6PnJvlQGkpuZqAsp9XbeU_OgCAAU2I7ap7gZBEGrWClGldEARdLy8Z6_A015AAkUOWeCWP4dvhMau70AgrmCUiwQ0Ygb9tqP9Qw40Dffoo-JMO-c0bvEAj1ocp2Gk2tI2hqM1-e_1qyyhCKawKYKINlCCRgDNu3xurFpMxqJ6aLcjYEF23HfU7gXBh84tmQYhTD2AACw3MPXr8WwSLw5ngk9rk-UJ768rrLSSm8MydA0xmU9gs-qu2BEAov10FJJAR7U8YVH7YvTTc45LbmCLukfu50E3OLVs_C7CIZ2fIi68jXS-dnTypfdktXHDVUXp_C-WMGJA0rcC9TK50A'
+  const authLink = context.default.setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    // return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: `Bearer ${token}`
+      }
     }
-  }
-});
+  });
 
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache
-}); 
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache
+  });
 
-const ajv = new Ajv();
+  const ajv = new Ajv();
 
-const DATASOURCE_ID = "cjrkew3eu02gp0d71xoi0i5em";
+  const DATASOURCE_ID = "cjrkew3eu02gp0d71xoi0i5em";
 
-const DATASOURCE = gql`
-  query datasource($id: ID!) {
-    datasource(where: { id: $id }) {
-      id
-      type
-      schema
-      slug
-      datasourceItems {
+  const DATASOURCE = gql`
+    query datasource($id: ID!) {
+      datasource(where: { id: $id }) {
+        id
+        type
+        schema
+        slug
+        datasourceItems {
+          id
+          slug
+          content
+        }
+      }
+    }
+  `;
+
+  const CREATE_DATASOURCE_ITEM = gql`
+    mutation createDatasourceItem($id: ID!, $content: Json!, $slug: String!) {
+      createDatasourceItem(
+        data: {
+          content: $content,
+          slug: $slug,
+          datasource: {
+            connect: {
+              id: $id
+            }
+          },
+        }
+      ) {
         id
         slug
         content
       }
     }
-  }
-`;
+  `;
 
-const CREATE_DATASOURCE_ITEM = gql`
-  mutation createDatasourceItem($id: ID!, $content: Json!, $slug: String!) {
-    createDatasourceItem(
-      data: {
-        content: $content,
-        slug: $slug,
-        datasource: {
-          connect: {
-            id: $id
-          }
+  const UPDATE_DATASOURCE_ITEM = gql`
+    mutation updateDatasourceItem($id: ID!, $content: Json!, $slug: String!) {
+      updateDatasourceItem(
+        data: {
+          content: $content,
+          slug: $slug
         },
+        where: {
+          id: $id
+        }
+      ) {
+        id
+        slug
+        content
       }
-    ) {
-      id
-      slug
-      content
     }
-  }
-`;
+  `;
 
-const UPDATE_DATASOURCE_ITEM = gql`
-  mutation updateDatasourceItem($id: ID!, $content: Json!, $slug: String!) {
-    updateDatasourceItem(
-      data: {
-        content: $content,
-        slug: $slug
+  const DELETE_DATASOURCE_ITEM = gql`
+    mutation deleteDatasourceItem($id: ID!) {
+      deleteDatasourceItem(where: { id: $id }) {
+        id
+      }
+    }
+  `;
+
+  // tslint:disable-next-line:typedef
+  const createNewItem =  function (datasource, data) {
+    const slug = urlize(datasource.slug
+      .map(p =>
+        p.split('.').reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, data) || ''
+      )
+      .join('-').toLowerCase());
+
+    return client.mutate({
+      mutation: CREATE_DATASOURCE_ITEM,
+      variables: {
+        content: data,
+        slug: slug,
+        id: datasource.id,
       },
-      where: {
-        id: $id
-      }
-    ) {
-      id
-      slug
-      content
-    }
-  }
-`;
-
-const DELETE_DATASOURCE_ITEM = gql`
-  mutation deleteDatasourceItem($id: ID!) {
-    deleteDatasourceItem(where: { id: $id }) {
-      id
-    }
-  }
-`;
-
-// tslint:disable-next-line:typedef
-const createNewItem =  function (datasource, data) {
-  const slug = urlize(datasource.slug
-    .map(p => 
-      p.split('.').reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, data) || ''
-    )
-    .join('-').toLowerCase());
-
-  return client.mutate({
-    mutation: CREATE_DATASOURCE_ITEM,
-    variables: {
-      content: data,
-      slug: slug,
-      id: datasource.id,
-    },
-    // tslint:disable-next-line:no-shadowed-variable
-    update: (cache, { data: { createDatasourceItem } }) => {
-      datasource = { 
-        ...datasource,
-        datasourceItems: [
-          ...datasource.datasourceItems,
-          createDatasourceItem
-        ]
-      };
-    }
-  });
-};
-
-// tslint:disable-next-line:typedef
-const updateItem = function (datasource, id, data) {
-  const slug = urlize(datasource.slug
-    .map(p => 
-      p.split('.').reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, data) || ''
-    )
-    .join('-').toLowerCase());
-
-  return client.mutate({
-    mutation: UPDATE_DATASOURCE_ITEM,
-    variables: {
-      content: data,
-      slug,
-      id,
-    },
-    // tslint:disable-next-line:no-shadowed-variable
-    update: (cache, { data: { updateDatasourceItem } }) => {
-      datasource = { 
-        ...datasource,
-        datasourceItems: [
-          ...datasource.datasourceItems.map((datasourceItem) => {
-            if (datasourceItem.id === updateDatasourceItem.id) { return updateDatasourceItem; }
-            return datasourceItem;
-          }),
-        ]
-      };
-    }
-  });
-};
-
-// tslint:disable-next-line:typedef
-const deleteItem = function (id) {
-  return client.mutate({
-    mutation: DELETE_DATASOURCE_ITEM,
-    variables: {
-      id,
-    }
-  });
-};
-
-  // tslint:disable-next-line:align
-  const removeEmpty = (obj) => {
-    Object.keys(obj).forEach(key => {
-      if (obj[key] && typeof obj[key] === 'object') {
-        removeEmpty(obj[key]);
-      } else if (obj[key] == null) {
-        delete obj[key];
+      // tslint:disable-next-line:no-shadowed-variable
+      update: (cache, { data: { createDatasourceItem } }) => {
+        datasource = {
+          ...datasource,
+          datasourceItems: [
+            ...datasource.datasourceItems,
+            createDatasourceItem
+          ]
+        };
       }
     });
   };
-  // tslint:disable-next-line:align
-  (async () => {
 
-    const { data: { datasource }} = await client.query({ 
-      query: DATASOURCE,
+  // tslint:disable-next-line:typedef
+  const updateItem = function (datasource, id, data) {
+    const slug = urlize(datasource.slug
+      .map(p =>
+        p.split('.').reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, data) || ''
+      )
+      .join('-').toLowerCase());
+
+    return client.mutate({
+      mutation: UPDATE_DATASOURCE_ITEM,
       variables: {
-        id: DATASOURCE_ID
+        content: data,
+        slug,
+        id,
+      },
+      // tslint:disable-next-line:no-shadowed-variable
+      update: (cache, { data: { updateDatasourceItem } }) => {
+        datasource = {
+          ...datasource,
+          datasourceItems: [
+            ...datasource.datasourceItems.map((datasourceItem) => {
+              if (datasourceItem.id === updateDatasourceItem.id) { return updateDatasourceItem; }
+              return datasourceItem;
+            }),
+          ]
+        };
       }
     });
+  };
 
-    try {
-      return doctors.reduce((result, doctor) => {
-        return result.then(
-          (r) => {
-            // const validate = ajv.compile(datasource.schema);
-            const { nurses } = doctor;
-            delete doctor.nurses;
-            doctor.expertises = [doctor.expertises.reduce(
-              (acc, v) =>  {
-                if (!acc) {
-                  return v;
+  // tslint:disable-next-line:typedef
+  const deleteItem = function (id) {
+    return client.mutate({
+      mutation: DELETE_DATASOURCE_ITEM,
+      variables: {
+        id,
+      }
+    });
+  };
+
+    // tslint:disable-next-line:align
+    const removeEmpty = (obj) => {
+      Object.keys(obj).forEach(key => {
+        if (obj[key] && typeof obj[key] === 'object') {
+          removeEmpty(obj[key]);
+        } else if (obj[key] == null) {
+          delete obj[key];
+        }
+      });
+    };
+    // tslint:disable-next-line:align
+    (async () => {
+
+      const { data: { datasource }} = await client.query({
+        query: DATASOURCE,
+        variables: {
+          id: DATASOURCE_ID
+        }
+      });
+
+      try {
+        return doctors.reduce((result, doctor) => {
+          return result.then(
+            (r) => {
+              // const validate = ajv.compile(datasource.schema);
+              const { nurses } = doctor;
+              delete doctor.nurses;
+              doctor.expertises = [doctor.expertises.reduce(
+                (acc, v) =>  {
+                  if (!acc) {
+                    return v;
+                  }
+
+                  return ({
+                    id: [acc.id, v.id].join(', '),
+                    code: [acc.code, v.code].join(', '),
+                    name: [acc.name, v.name].join(', ')
+                  });
+                },
+                null)];
+
+              const transformedDoctor = { doctorPersonalInformation: {
+                ...doctor,
+                phoneForOrders: doctor.phoneForOrders || doctor.phone,
+                order: `${doctor.profession.id === 16 ? 'A' : 'N'} ${doctor.lastName} ${doctor.firstName}`,
+              }, nurses };
+
+              // const valid = validate(transformedDoctor);
+
+              transformedDoctor.doctorPersonalInformation.workingHours && Array.isArray(transformedDoctor.doctorPersonalInformation.workingHours.weeks.forEach((w => {
+                if(!(transformedDoctor.doctorPersonalInformation.polyclinic && transformedDoctor.doctorPersonalInformation.polyclinic.name.includes(w.polyclinic.name))) {
+                  console.log(transformedDoctor.doctorPersonalInformation.firstName, transformedDoctor.doctorPersonalInformation.lastName, w.polyclinic.name);
+                  if(!transformedDoctor.doctorPersonalInformation.polyclinic) {
+                    transformedDoctor.doctorPersonalInformation.polyclinic = w.polyclinic;
+                  }
+  
+                  transformedDoctor.doctorPersonalInformation.polyclinic.id = `${transformedDoctor.doctorPersonalInformation.polyclinic.id},${w.polyclinic.id}`
+                  transformedDoctor.doctorPersonalInformation.polyclinic.name = `${transformedDoctor.doctorPersonalInformation.polyclinic.name}, ${w.polyclinic.name}`
+                  transformedDoctor.doctorPersonalInformation.polyclinic.shortName = `${transformedDoctor.doctorPersonalInformation.polyclinic.shortName},${w.polyclinic.shortName}`
+                  
+                  if (transformedDoctor.doctorPersonalInformation.polyclinic.phonePrefix) {
+                    transformedDoctor.doctorPersonalInformation.polyclinic.phonePrefix = `${transformedDoctor.doctorPersonalInformation.polyclinic.phonePrefix}, ${w.polyclinic.phonePrefix}`
+                  }
+  
+                  console.log(transformedDoctor.doctorPersonalInformation.polyclinic);
                 }
+              })));
 
-                return ({
-                  id: [acc.id, v.id].join(', '),
-                  code: [acc.code, v.code].join(', '),
-                  name: [acc.name, v.name].join(', ')
-                });
-              },                                      
-              null)];
+              const existingDoctorItem = datasource.datasourceItems
+                .find(item => item.content.doctorPersonalInformation.id === doctor.id);
 
-            const transformedDoctor = { doctorPersonalInformation: {
-              ...doctor,
-              phoneForOrders: doctor.phoneForOrders || doctor.phone,
-              order: `${doctor.profession.id === 16 ? 'A' : 'N'} ${doctor.lastName} ${doctor.firstName}`,
-            }, nurses };
-            
-            console.log(transformedDoctor.doctorPersonalInformation.phoneForOrders);
-            // const valid = validate(transformedDoctor);
-            const existingDoctorItem = datasource.datasourceItems
-              .find(item => item.content.doctorPersonalInformation.id === doctor.id);
+              // if (!valid) {
+              //   console.log(doctor.firstName, doctor.lastName, doctor.mobilePhone, JSON.stringify(validate.errors));
+              //   if (existingDoctorItem) {
+              //     console.log('Dropping from database - not valid item');
+              //     return deleteItem(datasource, existingDoctorItem.id);
+              //   }
 
-            // if (!valid) {
-            //   console.log(doctor.firstName, doctor.lastName, doctor.mobilePhone, JSON.stringify(validate.errors));
-            //   if (existingDoctorItem) {
-            //     console.log('Dropping from database - not valid item');
-            //     return deleteItem(datasource, existingDoctorItem.id);
-            //   }
-              
-            //   return Promise.resolve();
-            // }
+              //   return Promise.resolve();
+              // }
 
-            // tslint:disable-next-line:max-line-length
-            console.log(`Updating ${transformedDoctor.doctorPersonalInformation.order}`);
-            if (!existingDoctorItem) {
-              return createNewItem(datasource, transformedDoctor)
+              // tslint:disable-next-line:max-line-length
+              console.log(`Updating ${transformedDoctor.doctorPersonalInformation.order}`);
+              if (!existingDoctorItem) {
+                return createNewItem(datasource, transformedDoctor)
+                  .then(() => setTimeout(() => Promise.resolve(), 2000));
+              }
+              return updateItem(datasource, existingDoctorItem.id, transformedDoctor)
                 .then(() => setTimeout(() => Promise.resolve(), 2000));
-            }
-            return updateItem(datasource, existingDoctorItem.id, transformedDoctor)
-              .then(() => setTimeout(() => Promise.resolve(), 2000));
 
-          }).catch((err) => { console.log(err); process.exit(); });
-        // tslint:disable-next-line:align
-        }, Promise.resolve())
-        .then(() => {
-          return client.query({
-            query: GET_OUTDATED,
-            variables: {
-              date,
-            }
-          });
-        })
-        .then((outdated) => {
-          if (outdated && outdated.data && outdated.data.datasourceItems) {
+            }).catch((err) => { console.log(err); process.exit(); });
+          // tslint:disable-next-line:align
+          }, Promise.resolve())
+          .then(() => {
+            return client.query({
+              query: GET_OUTDATED,
+              variables: {
+                date,
+              }
+            });
+          })
+          .then((outdated) => {
+            if (outdated && outdated.data && outdated.data.datasourceItems) {
 
-            return outdated.data.datasourceItems.reduce((result, item) => {
-              return result.then(
-                (r) => {
-                  console.log(`Deleting ${item.slug}`);
-                  return deleteItem(item.id)
-                    .then(() => setTimeout(() => Promise.resolve(), 2000));
-                }).catch((err) => { console.log(err); });
-              // tslint:disable-next-line:align
-              }, Promise.resolve());
-          }
-        }).catch((err) => console.error(err.result.errors));
-        
-    } catch (e) {
-      console.log('insertion error', e);
-    }
-  })();
+              return outdated.data.datasourceItems.reduce((result, item) => {
+                return result.then(
+                  (r) => {
+                    console.log(`Deleting ${item.slug}`);
+                    return deleteItem(item.id)
+                      .then(() => setTimeout(() => Promise.resolve(), 2000));
+                  }).catch((err) => { console.log(err); });
+                // tslint:disable-next-line:align
+                }, Promise.resolve());
+            }
+          })
+          .catch((err) => console.error(err.result.errors))
+          .then(() => redisClient.sendCommand('flushall', () => {
+		console.log('cache cleared')
+		process.exit(1);
+	   }));
+
+      } catch (e) {
+        console.log('insertion error', e);
+	      process.exit(0);
+      }
+    })();
+  }
+
+axios.post('https://foxer360.eu.auth0.com/oauth/token', {
+  grant_type: 'password',
+  username: 'pavel.krcil@foxmedia.cz',
+  password: 'wjlmnb_7',
+  audience: 'foxer360-server',
+  client_id: 'AD26pS1rTn6dHc6DOmUhxQ904O3lG7bs',
+  client_secret: '13U_ewzP3YV61bk31cFIN9W2NUleoi62BeffYMdb7mzVg3-5jV_nlhDm-_icjzDP',
+}).then(({ data }) => {
+  update(data.access_token);
+});

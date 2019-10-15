@@ -25,6 +25,7 @@
     "node-fetch": "^2.3.0",
     "react": "^16.7.0",
     "react-apollo": "^2.4.1",
+    "redis": "^2.8.0",
     "urlize": "^0.2.1"
   }
 }
