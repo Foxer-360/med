@@ -5547,10 +5547,10 @@ cite {
   background-clip: padding-box; }
 
 .blog {
-  padding: 5rem 0 0 0; }
-  @media (max-width: 767px) {
+  padding-top: 60px !important; }
+  @media (min-width: 768px) {
     .blog {
-      padding: 2.5rem 0 0 0; } }
+      padding-top: 130px !important; } }
   .blog .searchBar {
     margin-top: 5.5rem;
     margin-bottom: 5.5rem; }
@@ -5558,16 +5558,6 @@ cite {
       .blog .searchBar {
         margin-top: 3rem;
         margin-bottom: 3rem; } }
-  .blog h1 {
-    background: -webkit-linear-gradient(left, #2473ba, #00aad0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    line-height: 1.5;
-    padding: 0 0 2.5rem 0; }
-    @media (min-width: 768px) {
-      .blog h1 {
-        padding: 0 0 5rem 0; } }
   .blog__btnHolder {
     display: flex;
     justify-content: center;
@@ -7109,10 +7099,12 @@ cite {
         padding: 25px 0; } }
 
 .blogArticle {
-  padding-top: 120px; }
+  padding-top: 60px !important; }
   @media (min-width: 768px) {
     .blogArticle {
-      padding-top: 170px; } }
+      padding-top: 130px !important; } }
+  .blogArticle p {
+    margin-bottom: 30px; }
   .blogArticle .container {
     width: 90%; }
     @media (min-width: 768px) {

@@ -33,7 +33,6 @@ export default class ExpertiseList extends React.Component<ExpertiseListProps, E
 
   render () {
     const { title, expertiseList } = this.props.data;
-
     return (
       <List data={expertiseList}>
         {({ getPage }) => {
