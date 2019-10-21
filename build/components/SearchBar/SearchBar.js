@@ -37,6 +37,7 @@ var doctorSearchResultsTemplate = {
         speciality: '%doctorPersonalInformation,expertises,0,name% ',
         clinic: '%doctorPersonalInformation,polyclinic,name% ',
         workingHours: '%doctorPersonalInformation,workingHours% ',
+        absence: '%doctorPersonalInformation,absence% ',
         link: {
             url: '/cs/ds:doctor',
             pageId: 'cjoy8qfdl001b0845fwgt2200',
