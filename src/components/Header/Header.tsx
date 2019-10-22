@@ -95,7 +95,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       let vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
 
       this.setState({
-        vX: Math.ceil((vX * 100) / window.innerWidth - 1),
+        vX: Math.ceil((vX * 100) / window.innerWidth - 1) * 2,
       });
     }
   }
@@ -166,7 +166,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
               <div className={'header__iso'}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <polygon fill="white" points={`0,0 0,50 ${this.state.vX},100 100,0`} />
+                  <polygon fill="white" points={`0,0 0,25 ${this.state.vX},60 100,0`} />
                 </svg>
               </div>
 
