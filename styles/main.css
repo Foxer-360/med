@@ -3574,13 +3574,13 @@ cite {
   .header__wrapper {
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 1px 0;
     position: relative;
     background-color: #fff;
     flex-wrap: nowrap; }
     @media (min-width: 768px) {
       .header__wrapper {
-        padding: 2rem 0; } }
+        padding-top: 2rem; } }
     .header__wrapper .navItemActive:after {
       content: "";
       display: block;
