@@ -86,7 +86,7 @@ var Header = /** @class */ (function (_super) {
             logoWidth = Math.ceil(logoWidth / 2);
             var vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
             this.setState({
-                vX: Math.ceil((vX * 100) / window.innerWidth - 1) * 2,
+                vX: Math.ceil((vX * 100) / window.innerWidth - 1),
             });
         }
     };
