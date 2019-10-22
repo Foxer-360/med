@@ -29,6 +29,7 @@ var graphql_tag_1 = require("graphql-tag");
 var react_adopt_1 = require("react-adopt");
 var react_apollo_1 = require("react-apollo");
 var react_router_dom_1 = require("react-router-dom");
+var Loader_1 = require("../Loader");
 var isExternalLink = function (url) {
     var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
     return pattern.test(url);
@@ -59,48 +60,27 @@ var ComposerLink = function (props) {
         return (React.createElement("a", __assign({}, args, { style: props.style, target: urlNewWindow ? '_blank' : '', href: (isExternalLink(url) && url) || '#' }), children));
     }
     else {
-        return (React.createElement(react_router_dom_1.NavLink, __assign({ activeClassName: 'navItemActive', to: "" + url + (query ? "?" + query : ''), style: props.style }, args), children));
+        return (React.createElement(ComposedQuery, null, function (_a) {
+            var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data;
+            if (loading) {
+                return React.createElement(Loader_1.default, null);
+            }
+            if (error) {
+                return "Error: " + error;
+            }
+            var pageUrlObj;
+            var pagesUrls = data.pagesUrls;
+            if (pagesUrls) {
+                pageUrlObj = pagesUrls.find(function (u) { return u.page === pageId || u.url === url; });
+            }
+            if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
+                return (React.createElement("a", __assign({}, args, { style: props.style, target: urlNewWindow ? '_blank' : '', href: (isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '#' }), children));
+            }
+            else {
+                return (React.createElement(react_router_dom_1.NavLink, __assign({ activeClassName: 'navItemActive', to: (dynamic && url) || (pageUrlObj ? "" + pageUrlObj.url + (query ? "?" + query : '') : '#'), style: props.style }, args), children));
+            }
+        }));
     }
-    // return (
-    //   <ComposedQuery>
-    //     {({ getPagesUrls: { loading, error, data } }) => {
-    //       if (loading) {
-    //         return <Loader />;
-    //       }
-    //       if (error) {
-    //         return `Error: ${error}`;
-    //       }
-    //       let pageUrlObj;
-    //       const { pagesUrls } = data;
-    //       if (pagesUrls) {
-    //         pageUrlObj = pagesUrls.find(u => u.page === pageId || u.url === url);
-    //       }
-    //       if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
-    //         return (
-    //           <a
-    //             {...args}
-    //             style={props.style}
-    //             target={urlNewWindow ? '_blank' : ''}
-    //             href={(isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '#'}
-    //           >
-    //             {children}
-    //           </a>
-    //         );
-    //       } else {
-    //         return (
-    //           <NavLink 
-    //             activeClassName={'navItemActive'} 
-    //             to={(dynamic && url) || (pageUrlObj ? `${pageUrlObj.url}${query ? `?${query}` : ''}` : '#')}
-    //             style={props.style}
-    //             {...args}
-    //           >
-    //             {children}
-    //           </NavLink>
-    //         );
-    //       }
-    //     }}
-    //   </ComposedQuery>
-    // );
 };
 exports.default = ComposerLink;
 var templateObject_1, templateObject_2;
