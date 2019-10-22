@@ -95,7 +95,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       let vX = Math.ceil((window.innerWidth - container) / 2) + logoWidth;
 
       this.setState({
-        vX: Math.ceil((vX * 100) / window.innerWidth - 1) * 2,
+        vX: Math.ceil((vX * 100) / window.innerWidth - 1),
       });
     }
   }
