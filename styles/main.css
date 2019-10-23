@@ -3580,7 +3580,7 @@ cite {
     flex-wrap: nowrap; }
     @media (min-width: 768px) {
       .header__wrapper {
-        padding-top: 2rem; } }
+        padding-top: 1rem; } }
     .header__wrapper .navItemActive:after {
       content: "";
       display: block;
@@ -3663,6 +3663,10 @@ cite {
           width: 100%;
           right: auto;
           left: 0; }
+
+@media screen and (max-width: 768px) {
+  .header__wrapper {
+    padding: 10px 0; } }
 
 .menuActive {
   padding-right: 8px; }
