@@ -8,6 +8,9 @@ import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
 import SvgIcon from '../../partials/SvgIcon';
 import testEmail from '../../helpers/testEmail';
+import readEnvVariable from '../../helpers/readEnvVariable';
+
+const REACT_APP_REST_API_URL = readEnvVariable('REACT_APP_REST_API_URL');
 
 export interface CareerFormProps {
   data: {
@@ -190,7 +193,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
 
       try {
         axios
-          .post(process.env.REACT_APP_REST_API_URL + '/inquiry/upload', data)
+          .post(REACT_APP_REST_API_URL + '/inquiry/upload', data)
           .then(response => {
             this.setState({ ...this.state, formStatus: 'success' });
           })

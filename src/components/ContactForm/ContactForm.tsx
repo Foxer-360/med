@@ -6,6 +6,9 @@ import { Query } from 'react-apollo';
 import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
 import testEmail from '../../helpers/testEmail';
+import readEnvVariable from '../../helpers/readEnvVariable';
+
+const REACT_APP_REST_API_URL = readEnvVariable('REACT_APP_REST_API_URL');
 
 export interface ContactFormProps {
   languageCode?: string;
@@ -143,7 +146,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
 
       try {
         axios
-          .post(process.env.REACT_APP_REST_API_URL + '/inquiry/upload', data)
+          .post(REACT_APP_REST_API_URL + '/inquiry/upload', data)
           .then(response => {
             this.setState({ ...this.state, formStatus: 'success' });
           })
@@ -227,15 +230,15 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                         <textarea name="message" onChange={e => this.changeInputValue(e)} value={message} />
                       </div>
 
-                      <div 
+                      <div
                         className={'form__messageHolder'}
                         style={formStatus !== null ? { padding: '4rem 0' } : {}}
                       >
                         {formStatus === 'error' && (
                           <div className={'form__message form__message--error'}>
                             <p>{
-                              code === 'en' 
-                              ? 'There was an error.' 
+                              code === 'en'
+                              ? 'There was an error.'
                               : 'Během odesílání formuláře se vyskytla chyba.'
                               }</p>
                             {this.state.formErrorMessage && <p>{this.state.formErrorMessage}</p>}
@@ -244,15 +247,15 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
 
                         {formStatus === 'success' && (
                           <div className={'form__message form__message--success'}>
-                            { 
-                              code === 'en' 
+                            {
+                              code === 'en'
                               ? 'Thank You for contacting us.'
                               : 'Děkujeme za odeslání formuláře. Brzy se Vám ozveme.'
                             }
                           </div>
                         )}
                       </div>
-                      
+
                       <div className={'form__terms'}>
                         <div>
                           <input
