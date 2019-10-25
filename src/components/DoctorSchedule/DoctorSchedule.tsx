@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 import gql from 'graphql-tag';
 import { urlize } from 'urlize';
 import { Query } from 'react-apollo';
@@ -242,7 +242,11 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                           {(absence.toDate.date && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
-                          {Array.isArray(absenceMessage) ? (<ReactMarkdown source={absenceMessage[2]} />) :
+                          {Array.isArray(absenceMessage) ? (<ReactMarkdown
+                            skipHtml={false}
+                            escapeHtml={false}
+                            source={absenceMessage[2]}
+                          />) :
                           <Link dynamic={true} url={getAbsenceLink(data, absence.alternate)}>
                             {`${(absence.alternate && absence.alternate.firstName) || ''} 
                             ${(absence.alternate && absence.alternate.lastName) || ''}`}

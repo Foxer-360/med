@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import Button from '../../partials/Button';
 import getFileUrl from '../../helpers/getImageUrl';
@@ -21,7 +21,11 @@ const RegistrationBlock = (props: RegistrationBlockProps) => {
     <div className={'registration-block'}>
       <div className="container">
         {title && <h3>{title}</h3>}
-        {text && <ReactMarkdown source={text} />}
+        {text && <ReactMarkdown
+          skipHtml={false}
+          escapeHtml={false}
+          source={text}
+        />}
 
         {btnTitle && btnUrl &&
           <div className={'registration-block__btn-holder'}>

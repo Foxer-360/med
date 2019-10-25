@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 export interface TextBlockProps {
   data: {
@@ -21,6 +21,8 @@ const TextBlock = (props: TextBlockProps) => {
           {text && (
             <div className={`textBlock__container__text ${textAlign}`}>
               <ReactMarkdown
+                skipHtml={false}
+                escapeHtml={false}
                 source={text}
                 renderers={{
                   paragraph: (rProps: any) => <>{rProps.children}</>,

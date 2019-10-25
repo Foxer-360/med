@@ -41,7 +41,7 @@ var React = require("react");
 var axios_1 = require("axios");
 var graphql_tag_1 = require("graphql-tag");
 var react_apollo_1 = require("react-apollo");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var Link_1 = require("../../partials/Link");
 var Loader_1 = require("../../partials/Loader");
 var SvgIcon_1 = require("../../partials/SvgIcon");
@@ -199,7 +199,7 @@ var CareerForm = /** @class */ (function (_super) {
                 return (React.createElement("section", { className: 'careerForm form', ref: _this.topRef },
                     React.createElement("div", { className: 'container' },
                         React.createElement("h3", { className: 'gradientHeading' }, title),
-                        React.createElement(ReactMarkdown, { source: text, renderers: {
+                        React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: text, renderers: {
                                 paragraph: function (props) { return React.createElement("p", null, props.children); },
                             } }),
                         React.createElement("form", { method: 'POST', onSubmit: function (e) { return _this.submit(e, pageData.name); } },

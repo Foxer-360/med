@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 export interface ExpertiseDescriptionCareProps {
   title: string;
@@ -34,7 +34,11 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
       <div className={'care'}>
         {title && <h3>{title}</h3>}
         <div className={'hCenterBlock'}>
-          {firstText && <ReactMarkdown source={firstText} />}
+          {firstText && <ReactMarkdown
+            skipHtml={false}
+            escapeHtml={false}
+            source={firstText}
+          />}
         </div>
         {secondText && secondText.length > 1 &&
           <h4
@@ -47,7 +51,11 @@ export default class ExpertiseDescriptionCare extends React.Component<ExpertiseD
 
         {this.state.showHiddenText ?
           <div className={'hCenterBlock care--hidden'} style={{ marginTop: 45 }}>
-            {secondText && <ReactMarkdown source={secondText} />}
+            {secondText && <ReactMarkdown
+              skipHtml={false}
+              escapeHtml={false}
+              source={secondText}
+            />}
           </div>
           : ''
         }

@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var Link_1 = require("../../../../partials/Link");
 var SvgIcon_1 = require("../../../../partials/SvgIcon");
 var Social = function (props) {
@@ -21,7 +21,7 @@ var Social = function (props) {
         icons &&
             icons.map(function (icon, i) { return (React.createElement(Link_1.default, __assign({}, icon.url, { key: i }),
                 React.createElement(SvgIcon_1.default, { type: 'white', name: icon.name }))); }),
-        info && React.createElement(ReactMarkdown, { className: 'social__text', source: info })));
+        info && React.createElement(ReactMarkdown, { className: 'social__text', skipHtml: false, escapeHtml: false, source: info })));
 };
 exports.default = Social;
 //# sourceMappingURL=Social.js.map

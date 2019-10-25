@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import Link from '../../../../partials/Link';
 import SvgIcon from '../../../../partials/SvgIcon';
@@ -16,7 +16,12 @@ const Social = (props: any) => {
           </Link>
         ))}
 
-      {info && <ReactMarkdown className={'social__text'} source={info} />}
+      {info && <ReactMarkdown
+        className={'social__text'}
+        skipHtml={false}
+        escapeHtml={false}
+        source={info}
+      />}
     </div>
   );
 };

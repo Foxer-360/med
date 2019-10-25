@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_masonry_css_1 = require("react-masonry-css");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var List_1 = require("../List");
 function UnionStructure(props) {
     var _a = props.data, title = _a.title, items = _a.items;

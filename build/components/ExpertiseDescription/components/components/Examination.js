@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var Link_1 = require("../../../../partials/Link");
 var Examination = /** @class */ (function (_super) {
     __extends(Examination, _super);
@@ -46,7 +46,7 @@ var Examination = /** @class */ (function (_super) {
                         React.createElement("p", { style: { fontWeight: 500 }, onClick: function () { return _this.setState({ isDescriptionVisible: !_this.state.isDescriptionVisible }); } }, title),
                     url && React.createElement(Link_1.default, __assign({}, url, { style: { width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 } })),
                     description &&
-                        React.createElement(ReactMarkdown, { source: description, renderers: {
+                        React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: description, renderers: {
                                 // tslint:disable-next-line:no-any
                                 root: function (props) {
                                     return React.createElement("div", { className: 'examination__list__item--markdown', style: _this.state.isDescriptionVisible ?

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import Link from '../../../../partials/Link';
 
@@ -46,6 +46,8 @@ class Examination extends React.Component<ExaminationProps, ExaminationState> {
 
             {description &&
               <ReactMarkdown
+                skipHtml={false}
+                escapeHtml={false}
                 source={description}
                 renderers={{
                   // tslint:disable-next-line:no-any

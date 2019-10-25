@@ -16,7 +16,7 @@ var __values = (this && this.__values) || function (o) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var moment = require("moment");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var graphql_tag_1 = require("graphql-tag");
 var urlize_1 = require("urlize");
 var react_apollo_1 = require("react-apollo");
@@ -186,7 +186,7 @@ var DoctorSchedule = function (props) {
                     React.createElement("tbody", null, nextMonthAbsences.map(function (absence, i) { return (React.createElement("tr", { key: i },
                         React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''),
                         React.createElement("td", null, (absence.toDate.date && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''),
-                        React.createElement("td", null, Array.isArray(absenceMessage) ? (React.createElement(ReactMarkdown, { source: absenceMessage[2] })) :
+                        React.createElement("td", null, Array.isArray(absenceMessage) ? (React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: absenceMessage[2] })) :
                             React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); })))))));
         })));
 };

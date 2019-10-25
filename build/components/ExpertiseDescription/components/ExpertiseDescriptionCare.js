@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 // tslint:disable-next-line:max-line-length
 var ExpertiseDescriptionCare = /** @class */ (function (_super) {
     __extends(ExpertiseDescriptionCare, _super);
@@ -33,11 +33,11 @@ var ExpertiseDescriptionCare = /** @class */ (function (_super) {
         var _a = this.props, title = _a.title, firstText = _a.firstText, secondText = _a.secondText, hideBtn = _a.hideBtn;
         return (React.createElement("div", { className: 'care' },
             title && React.createElement("h3", null, title),
-            React.createElement("div", { className: 'hCenterBlock' }, firstText && React.createElement(ReactMarkdown, { source: firstText })),
+            React.createElement("div", { className: 'hCenterBlock' }, firstText && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: firstText })),
             secondText && secondText.length > 1 &&
                 React.createElement("h4", { className: 'care__more', onClick: function () { return _this.setState({ showHiddenText: !_this.state.showHiddenText }); } }, hideBtn ? hideBtn : 'Více informací'),
             this.state.showHiddenText ?
-                React.createElement("div", { className: 'hCenterBlock care--hidden', style: { marginTop: 45 } }, secondText && React.createElement(ReactMarkdown, { source: secondText }))
+                React.createElement("div", { className: 'hCenterBlock care--hidden', style: { marginTop: 45 } }, secondText && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: secondText }))
                 : ''));
     };
     return ExpertiseDescriptionCare;

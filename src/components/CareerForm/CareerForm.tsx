@@ -2,7 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
@@ -239,6 +239,8 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                   <h3 className={'gradientHeading'}>{title}</h3>
 
                   <ReactMarkdown
+                    skipHtml={false}
+                    escapeHtml={false}
                     source={text}
                     renderers={{
                       paragraph: (props: any) => <p>{props.children}</p>,

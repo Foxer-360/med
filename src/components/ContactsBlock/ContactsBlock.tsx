@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import List from '../List';
 import DividerCircles from '../DividerCircles';
@@ -58,8 +58,17 @@ const ContactsBlock = (props: ContactsBlockProps) => {
                 <div className={'contacts-block__main__element col-sm-12 col-md-6 col-lg-3'} key={i}>
                   {mContact.name && <p className={'contacts-block__name'}>{mContact.name}</p>}
                   {mContact.positions && <p className={'contacts-block__position'}>{mContact.positions}</p>}
-                  {mContact.emails && <ReactMarkdown className={'contacts-block__email'} source={mContact.emails} />}
-                  {mContact.phones && <ReactMarkdown source={mContact.phones} />}
+                  {mContact.emails && <ReactMarkdown
+                    skipHtml={false}
+                    escapeHtml={false}
+                    className={'contacts-block__email'}
+                    source={mContact.emails}
+                  />}
+                  {mContact.phones && <ReactMarkdown
+                    skipHtml={false}
+                    escapeHtml={false}
+                    source={mContact.phones}
+                  />}
                 </div>
               ))}
             </List>
@@ -75,8 +84,17 @@ const ContactsBlock = (props: ContactsBlockProps) => {
                 <div className={'contacts-block__main__element col-sm-12 col-md-6 col-lg-3'} key={i}>
                   {nContact.name && <p className={'contacts-block__name'}>{nContact.name}</p>}
                   {nContact.positions && <p className={'contacts-block__position'}>{nContact.positions}</p>}
-                  {nContact.emails && <ReactMarkdown className={'contacts-block__email'} source={nContact.emails} />}
-                  {nContact.phones && <ReactMarkdown source={nContact.phones} />}
+                  {nContact.emails && <ReactMarkdown
+                    className={'contacts-block__email'}
+                    skipHtml={false}
+                    escapeHtml={false}
+                    source={nContact.emails}
+                  />}
+                  {nContact.phones && <ReactMarkdown
+                    skipHtml={false}
+                    escapeHtml={false}
+                    source={nContact.phones}
+                  />}
                 </div>
               ))}
             </List>
@@ -92,8 +110,17 @@ const ContactsBlock = (props: ContactsBlockProps) => {
             <div className={'contacts-block__main__element col-sm-12 col-md-6 col-lg-3'} key={i}>
               {oContact.name && <p className={'contacts-block__name'}>{oContact.name}</p>}
               {oContact.positions && <p className={'contacts-block__position'}>{oContact.positions}</p>}
-              {oContact.emails && <ReactMarkdown className={'contacts-block__email'} source={oContact.emails} />}
-              {oContact.phones && <ReactMarkdown source={oContact.phones} />}
+              {oContact.emails && <ReactMarkdown
+                className={'contacts-block__email'}
+                skipHtml={false}
+                escapeHtml={false}
+                source={oContact.emails}
+              />}
+              {oContact.phones && <ReactMarkdown
+                skipHtml={false}
+                escapeHtml={false}
+                source={oContact.phones}
+              />}
             </div>
           ))}
           </List>

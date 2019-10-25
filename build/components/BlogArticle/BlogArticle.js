@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var Media_1 = require("../../partials/Media");
 var BlogArticle = function (props) {
     var _a = props.data, title = _a.title, text = _a.text, image = _a.image, textAlign = _a.textAlign, isImageSquare = _a.isImageSquare;
@@ -11,7 +11,7 @@ var BlogArticle = function (props) {
             image &&
                 React.createElement(Media_1.default, { data: image, type: 'image', height: isImageSquare && '600', classes: isImageSquare ? 'blogArticle--squareImage' : '' }),
             React.createElement("div", { className: "blogArticle__content " + (textAlign || 'center') },
-                React.createElement(ReactMarkdown, { source: text, renderers: {
+                React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: text, renderers: {
                         // tslint:disable-next-line:no-any
                         paragraph: function (rProps) { return React.createElement("p", null, rProps.children); },
                     } })))));

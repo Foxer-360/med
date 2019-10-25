@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Masonry from 'react-masonry-css';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import List from '../List';
 

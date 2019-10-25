@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import Button from '../../partials/Button';
 
@@ -24,7 +24,12 @@ const Highlight = (props: HighlightProps) => {
 
           <div>
             {text && <p>{text}</p>}
-            {description && <ReactMarkdown className={'highlight__content--description'} source={description} />}
+            {description && <ReactMarkdown
+              className={'highlight__content--description'}
+              skipHtml={false}
+              escapeHtml={false}
+              source={description}
+            />}
           </div>
           {url && (
             <Button classes={'btn--whiteBorder'} url={url}>

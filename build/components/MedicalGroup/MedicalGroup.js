@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var List_1 = require("../List");
 var MedicalGroup = /** @class */ (function (_super) {
     __extends(MedicalGroup, _super);
@@ -62,7 +62,7 @@ var MedicalGroup = /** @class */ (function (_super) {
                                             React.createElement("span", null, item.name),
                                             " - ",
                                             React.createElement("span", null, item.subtitle)),
-                                        React.createElement("div", { className: 'medicalGroup__list__item__text' }, item.text && (React.createElement(ReactMarkdown, { source: item.text, renderers: {
+                                        React.createElement("div", { className: 'medicalGroup__list__item__text' }, item.text && (React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: item.text, renderers: {
                                                 // tslint:disable-next-line:no-any
                                                 paragraph: function (props) { return React.createElement("p", null, props.children); },
                                             } })))));
