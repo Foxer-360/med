@@ -5111,6 +5111,12 @@ cite {
   margin: 0 auto 25px;
   width: 90%;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); }
+  .pcitem a {
+    color: #00aad0; }
+    .pcitem a:hover {
+      text-decoration: underline;
+      -webkit-text-decoration-color: #2473ba;
+              text-decoration-color: #2473ba; }
   @media (min-width: 768px) {
     .pcitem {
       width: 65%;
