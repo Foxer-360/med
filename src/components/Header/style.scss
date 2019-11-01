@@ -3,7 +3,8 @@
 .header {
   background-color: #fff;
   width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0px;
   z-index: 400;  
 
   &__iso {
@@ -154,7 +155,7 @@
 }
 
 .menuActive {
-  padding-right: 8px;
+  // padding-right: 8px;
 
   svg {
     filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.12));
