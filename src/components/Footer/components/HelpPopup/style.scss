@@ -102,7 +102,13 @@
   }
 }
 
-  
+@media all and (-ms-high-contrast:none) {
+  *::-ms-backdrop, .helpPopup__main { 
+    background-position: -90% center;
+    background-size: 70%;
+  }
+}
+
 @keyframes shake {
   0% { background-position: 25px 35%; }
   50% { background-position: 24px 60%; }
