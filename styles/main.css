@@ -3224,7 +3224,7 @@ body {
     .flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .dividerCircles {
       flex-flow: row wrap; } }
 
-.flexColumn, .hero, .doctorList__item__info, .pcitem__info {
+.flexColumn, .doctorList__item__info, .pcitem__info {
   display: flex;
   flex-flow: column wrap; }
 
@@ -3391,23 +3391,17 @@ cite {
     top: -3px; }
 
 .hero {
-  background-position: top center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 395px;
-  width: 100%;
+  height: 320px;
   justify-content: center;
-  align-items: center;
-  background-repeat: no-repeat;
-  position: relative;
-  top: -93.78px; }
+  position: relative; }
+  .hero .hero_img {
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: inherit; }
   @media (min-width: 768px) {
     .hero {
-      height: 650px;
-      top: -64.42px; } }
-  @media (min-width: 576px) {
-    .hero {
-      top: -53.81; } }
+      height: 520px; } }
   .hero__overlay {
     background: black;
     position: absolute;
@@ -3417,11 +3411,11 @@ cite {
     z-index: 2;
     width: 100%;
     height: 100%; }
-  .hero .container {
-    z-index: 3;
-    position: relative; }
   .hero__holder {
-    padding-top: 10%; }
+    padding-top: 10%;
+    z-index: 3;
+    position: relative;
+    width: 100%; }
   .hero__title--blue {
     background: -webkit-linear-gradient(left, #2473ba, #00aad0);
     -webkit-background-clip: text;
@@ -3448,6 +3442,32 @@ cite {
       color: #3c3c3b; }
     .hero__text--white {
       color: #fff; }
+
+@media (max-width: 767px) {
+  .hero_img.col-md-6 {
+    display: none; } }
+
+.hero_col2.col-md-6 .hero__title {
+  padding: 25px 0px;
+  margin: 0px 5px; }
+
+.hero_col2.col-md-6 .hero__text {
+  margin: 0px 5px inherit; }
+
+@media (max-width: 767px) {
+  .hero_col2.col-md-6 {
+    width: 100%; }
+    .hero_col2.col-md-6 .hero__text {
+      margin-bottom: 25px; } }
+
+@media (max-width: 424px) {
+  .hero_col2.col-md-6 .hero__title {
+    padding: 20px 0px;
+    font-size: 1.4em; }
+  .hero_col2.col-md-6 .hero__text {
+    margin: 0px 5px 15px;
+    font-size: 1em;
+    line-height: 1.2em; } }
 
 @media all and (-ms-high-contrast: none) {
   *::-ms-backdrop, .hero {
