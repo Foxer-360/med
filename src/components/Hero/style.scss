@@ -1,21 +1,18 @@
 .hero {
-  @extend .flexColumn;
-  @include background-image(cover, top center);
-  height: 395px;
-  width: 100%;
+  // @extend .flexColumn;
+  height: 320px;
+  // width: 100%;
   justify-content: center;
-  align-items: center;
-  background-repeat: no-repeat;
+  // align-items: center;
   position: relative;
-  top: -93.78px;
-
-  @include md {
-    height: 650px;
-    top: -64.42px;
+  
+  .hero_img {
+    @include background-image(contain, top center);
+    height: inherit;
   }
 
-  @include sm {
-    top: -53.81;
+  @include md {
+    height: 520px;
   }
 
   &__overlay {
@@ -29,13 +26,11 @@
     height: 100%;
   }
 
-  .container {
-    z-index: 3;
-    position: relative;
-  }
-
   &__holder {
     padding-top: 10%;
+    z-index: 3;
+    position: relative;
+    width: 100%;
   }
 
   &__title {
@@ -72,6 +67,39 @@
 
     &--white {
       color: #fff;
+    }
+  }
+}
+
+.hero_img.col-md-6 {
+  @include max-md {
+    display: none;
+  }
+}
+
+.hero_col2.col-md-6 {
+  .hero__title {
+    padding: 25px 0px;
+    margin: 0px 5px;
+  }
+  .hero__text {
+    margin: 0px 5px inherit;
+  }
+  @include max-md {
+    width: 100%;
+    .hero__text {
+      margin-bottom: 25px;
+    }
+  }
+  @include max-xs {
+    .hero__title {
+      padding: 20px 0px;
+      font-size: 1.4em;
+    }
+    .hero__text {
+      margin: 0px 5px 15px;
+      font-size: 1em;
+      line-height: 1.2em;
     }
   }
 }

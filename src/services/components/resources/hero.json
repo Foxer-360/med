@@ -6,11 +6,25 @@
     "placeholder": "Hledat",
     "displaySearch": false,
     "displayOverlay": false,
+    "overlayColor": "black",
+    "overlayOpacity": 0.35,
     "TitleColor": "blue",
     "textColor": "gray",
     "image": {},
+    "imageSize": "contain",
     "doctorSearchResults": [{ "name": "", "speciality": "", "clinic": "", "active": false }],
-    "blogSearchResults": [{ "title": "", "perex": "", "image": {} }]
+    "blogSearchResults": [{ "title": "", "perex": "", "image": {} }],
+    "secondColumn": false,
+    "secondColumnBackground": "#00aad0",
+    "title2": "Sample Title",
+    "title2color": "Sample Title",
+    "text2": "#fff",
+    "text2color": "#3c3c3b",
+    "button": false,
+    "buttonBackground": "",
+    "buttonBorder": "",
+    "buttonUrl": "",
+    "buttonText": "Více informací"
   },
   "form": {
     "schema": {
@@ -20,6 +34,14 @@
         "displayOverlay": {
           "type": "boolean",
           "title": "Display Overlay?"
+        },
+        "overlayColor": {
+          "type": "text",
+          "title": "Overlay color (e.g. black, #00FF00 etc.)"
+        },
+        "overlayOpacity": {
+          "type": "number",
+          "title": "Overlay opacity (0 - 1; e.g. 0.35)"
         },
         "title": {
           "type": "text",
@@ -56,6 +78,10 @@
         "image": {
           "type": "image"
         },
+        "imageSize": {
+          "type": "string",
+          "title": "Image fit (auto, cover, contain, percentage; contain = full img)"
+        },
         "doctorsLink": {
           "type": "urlAutocomplete",
           "title": "Doctor Search Results link url"
@@ -82,6 +108,61 @@
               }
             }
           }
+        },
+        "secondColumn": {
+          "type": "boolean",
+          "title": "Display second column?"
+        },
+        "secondColumnBackground": {
+          "type": "text",
+          "title": "Column 2 background color (e.g. #3c3c3b, #2473ba, #00aad0)"
+        },
+        "title2": {
+          "type": "text",
+          "title": "Title 2"
+        },
+        "title2color": {
+          "type": "text",
+          "title": "Title 2 color (e.g. black, #2473ba, #00aad0)"
+        },
+        "text2": {
+          "type": "text",
+          "title": "Text 2"
+        },
+        "text2color": {
+          "type": "text",
+          "title": "Text 2 color (e.g. white, #FFFFFF)"
+        },
+        "button": {
+          "type": "boolean",
+          "title": "Show button?"
+        },
+        "buttonBackground": {
+          "type": "enum",
+          "title": "Button Background Color",
+          "options": {
+            "": "None",
+            "btn--blueBkg ": "blue",
+            "btn--greyBkg ": "gray"
+          }
+        },
+        "buttonBorder": {
+          "type": "enum",
+          "title": "Button Border Color",
+          "options": {
+            "": "None",
+            "btn--whiteBorder": "white",
+            "btn--blueBorder": "blue",
+            "btn--blackBorder": "black"
+          }
+        },
+        "buttonUrl": {
+          "type": "urlAutocomplete",
+          "title": "Button URL"
+        },
+        "buttonText": {
+          "type": "text",
+          "title": "Button Text"
         }
       }
     }
