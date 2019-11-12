@@ -22,10 +22,12 @@ export interface SearchBarState {
 const doctorSearchResultsTemplate: LooseObject = {
   datasourceId: 'cjrkew3eu02gp0d71xoi0i5em',
   data: {
-    name: '%doctorPersonalInformation,firstName% %doctorPersonalInformation,lastName% ',
+    // tslint:disable-next-line: max-line-length
+    name: '%doctorPersonalInformation,prenominal% %doctorPersonalInformation,firstName% %doctorPersonalInformation,lastName% %doctorPersonalInformation,postnominal%',
     speciality: '%doctorPersonalInformation,expertises,0,name% ',
     clinic: '%doctorPersonalInformation,polyclinic,name% ',
     workingHours: '%doctorPersonalInformation,workingHours% ',
+    absence: '%doctorPersonalInformation,absence% ',
     link: {
       url: '/cs/ds:doctor',
       pageId: 'cjoy8qfdl001b0845fwgt2200',

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var Button_1 = require("../../partials/Button");
 var getImageUrl_1 = require("../../helpers/getImageUrl");
 var RegistrationBlock = function (props) {
@@ -9,7 +9,7 @@ var RegistrationBlock = function (props) {
     return (React.createElement("div", { className: 'registration-block' },
         React.createElement("div", { className: "container" },
             title && React.createElement("h3", null, title),
-            text && React.createElement(ReactMarkdown, { source: text }),
+            text && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: text }),
             btnTitle && btnUrl &&
                 React.createElement("div", { className: 'registration-block__btn-holder' },
                     React.createElement(Button_1.default, { url: btnUrl, classes: 'btn--blueBorder' }, btnTitle)),

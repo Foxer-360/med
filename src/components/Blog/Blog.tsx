@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Masonry from 'react-masonry-css';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import List from '../List';
 import SearchBar from './components/searchBar';
@@ -48,6 +48,8 @@ export default class Blog extends React.Component<BlogProps, BlogState> {
           <div key={'special'} className={'blogCard blogCard--special'}>
             <h3>{specialTitle}</h3>
             <ReactMarkdown
+              skipHtml={false}
+              escapeHtml={false}
               source={specialText}
               renderers={{
                 // tslint:disable-next-line:no-any

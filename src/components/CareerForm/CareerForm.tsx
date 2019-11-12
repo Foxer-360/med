@@ -2,12 +2,15 @@ import * as React from 'react';
 import axios from 'axios';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
 import SvgIcon from '../../partials/SvgIcon';
 import testEmail from '../../helpers/testEmail';
+import readEnvVariable from '../../helpers/readEnvVariable';
+
+const REACT_APP_REST_API_URL = readEnvVariable('REACT_APP_REST_API_URL');
 
 export interface CareerFormProps {
   data: {
@@ -190,7 +193,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
 
       try {
         axios
-          .post(process.env.REACT_APP_REST_API_URL + '/inquiry/upload', data)
+          .post(REACT_APP_REST_API_URL + '/inquiry/upload', data)
           .then(response => {
             this.setState({ ...this.state, formStatus: 'success' });
           })
@@ -236,6 +239,8 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                   <h3 className={'gradientHeading'}>{title}</h3>
 
                   <ReactMarkdown
+                    skipHtml={false}
+                    escapeHtml={false}
                     source={text}
                     renderers={{
                       paragraph: (props: any) => <p>{props.children}</p>,

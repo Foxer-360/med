@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var List_1 = require("../List");
 var Media_1 = require("../../partials/Media");
 var title_1 = require("./components/title");
@@ -81,7 +81,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                     React.createElement("br", null),
                                                     clinic.station && clinic.station))),
                                         React.createElement("div", { className: 'pcitem__info__list' },
-                                            React.createElement(ReactMarkdown, { source: _this.state.displayAllServices && index === _this.state.activeCard
+                                            React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: _this.state.displayAllServices && index === _this.state.activeCard
                                                     ? clinic.services
                                                     : _this.filterServices(clinic.services, index), renderers: {
                                                     paragraph: function (rProps) {
@@ -97,7 +97,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                     React.createElement("span", { className: "arrow" }))),
                                         React.createElement("div", { className: 'pcitem__info__desc' },
                                             React.createElement("div", { className: 'pcitem__info__desc__txt' },
-                                                React.createElement(ReactMarkdown, { source: clinic.description, renderers: {
+                                                React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: clinic.description, renderers: {
                                                         paragraph: function (rProps) { return React.createElement("p", null, rProps.children); },
                                                     } })),
                                             React.createElement("div", { className: 'pcitem__info__btnHolder' },

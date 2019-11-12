@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var List_1 = require("../List");
 var Faq = /** @class */ (function (_super) {
     __extends(Faq, _super);
@@ -35,7 +35,7 @@ var Faq = /** @class */ (function (_super) {
                     items && items.map(function (item, i) {
                         return (React.createElement("div", { key: i, className: 'faq__element' },
                             React.createElement("h3", null, item.title),
-                            item.description && React.createElement(ReactMarkdown, { source: item.description })));
+                            item.description && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: item.description })));
                     }),
                     _this.state.numberOfPage < lastPage && React.createElement("button", { className: 'btn hCenterBlock btn--blueBkg btn--fullWidth', onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); } }, "v\u00EDce info"))));
         }));

@@ -62,60 +62,49 @@ const ComposerLink = props => {
     );
   } else {
     return (
-      <NavLink 
-        activeClassName={'navItemActive'} 
-        to={`${url}${query ? `?${query}` : ''}`}
-        style={props.style}
-        {...args}
-      >
-        {children}
-      </NavLink>
+      <ComposedQuery>
+        {({ getPagesUrls: { loading, error, data } }) => {
+          if (loading) {
+            return <Loader />;
+          }
+  
+          if (error) {
+            return `Error: ${error}`;
+          }
+  
+          let pageUrlObj;
+          const { pagesUrls } = data;
+          if (pagesUrls) {
+            pageUrlObj = pagesUrls.find(u => u.page === pageId || u.url === url);
+          }
+  
+          if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
+            return (
+              <a
+                {...args}
+                style={props.style}
+                target={urlNewWindow ? '_blank' : ''}
+                href={(isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '#'}
+              >
+                {children}
+              </a>
+            );
+          } else {
+            return (
+              <NavLink 
+                activeClassName={'navItemActive'} 
+                to={(dynamic && url) || (pageUrlObj ? `${pageUrlObj.url}${query ? `?${query}` : ''}` : '#')}
+                style={props.style}
+                {...args}
+              >
+                {children}
+              </NavLink>
+            );
+          }
+        }}
+      </ComposedQuery>
     );
   }
-
-  // return (
-  //   <ComposedQuery>
-  //     {({ getPagesUrls: { loading, error, data } }) => {
-  //       if (loading) {
-  //         return <Loader />;
-  //       }
-
-  //       if (error) {
-  //         return `Error: ${error}`;
-  //       }
-
-  //       let pageUrlObj;
-  //       const { pagesUrls } = data;
-  //       if (pagesUrls) {
-  //         pageUrlObj = pagesUrls.find(u => u.page === pageId || u.url === url);
-  //       }
-
-  //       if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
-  //         return (
-  //           <a
-  //             {...args}
-  //             style={props.style}
-  //             target={urlNewWindow ? '_blank' : ''}
-  //             href={(isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '#'}
-  //           >
-  //             {children}
-  //           </a>
-  //         );
-  //       } else {
-  //         return (
-  //           <NavLink 
-  //             activeClassName={'navItemActive'} 
-  //             to={(dynamic && url) || (pageUrlObj ? `${pageUrlObj.url}${query ? `?${query}` : ''}` : '#')}
-  //             style={props.style}
-  //             {...args}
-  //           >
-  //             {children}
-  //           </NavLink>
-  //         );
-  //       }
-  //     }}
-  //   </ComposedQuery>
-  // );
 };
 
 export default ComposerLink;

@@ -44,6 +44,8 @@ var react_apollo_1 = require("react-apollo");
 var Link_1 = require("../../partials/Link");
 var Loader_1 = require("../../partials/Loader");
 var testEmail_1 = require("../../helpers/testEmail");
+var readEnvVariable_1 = require("../../helpers/readEnvVariable");
+var REACT_APP_REST_API_URL = readEnvVariable_1.default('REACT_APP_REST_API_URL');
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n  }\n"])));
 var ContactForm = /** @class */ (function (_super) {
     __extends(ContactForm, _super);
@@ -85,7 +87,7 @@ var ContactForm = /** @class */ (function (_super) {
                 data.append('formType', 'contact');
                 try {
                     axios_1.default
-                        .post(process.env.REACT_APP_REST_API_URL + '/inquiry/upload', data)
+                        .post(REACT_APP_REST_API_URL + '/inquiry/upload', data)
                         .then(function (response) {
                         _this.setState(__assign({}, _this.state, { formStatus: 'success' }));
                     })

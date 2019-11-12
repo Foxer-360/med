@@ -14,9 +14,9 @@ const ParagraphText = (props: ParagraphTextProps) => {
       className={`paragraph__content__text ${props.class}`}
     >
       {props.source && <ReactMarkdown
-          source={props.source}
           skipHtml={false}
           escapeHtml={false}
+          source={props.source}
       />}
     </div>
   );

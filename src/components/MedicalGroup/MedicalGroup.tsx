@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import List from '../List';
 
@@ -85,6 +85,8 @@ class MedicalGroup extends React.Component<MedicalGroupProps, MedicalGroupState>
                         <div className={'medicalGroup__list__item__text'}>
                           {item.text && (
                             <ReactMarkdown
+                              skipHtml={false}
+                              escapeHtml={false}        
                               source={item.text}
                               renderers={{
                                 // tslint:disable-next-line:no-any

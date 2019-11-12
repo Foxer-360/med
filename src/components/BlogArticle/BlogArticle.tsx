@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import Media from '../../partials/Media';
 
@@ -31,6 +31,8 @@ const BlogArticle = (props: AppProps) => {
 
         <div className={`blogArticle__content ${textAlign || 'center'}`}>
           <ReactMarkdown
+            skipHtml={false}
+            escapeHtml={false}
             source={text}
             renderers={{
               // tslint:disable-next-line:no-any

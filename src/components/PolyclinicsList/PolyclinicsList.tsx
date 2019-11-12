@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import List from '../List';
 import Media from '../../partials/Media';
@@ -122,6 +122,8 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
 
                         <div className={'pcitem__info__list'}>
                           <ReactMarkdown
+                            skipHtml={false}
+                            escapeHtml={false}
                             source={
                               this.state.displayAllServices && index === this.state.activeCard
                                 ? clinic.services
@@ -149,6 +151,8 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                         <div className={'pcitem__info__desc'}>
                           <div className={'pcitem__info__desc__txt'}>
                             <ReactMarkdown
+                              skipHtml={false}
+                              escapeHtml={false}
                               source={clinic.description}
                               renderers={{
                                 paragraph: (rProps: any) => <p>{rProps.children}</p>,

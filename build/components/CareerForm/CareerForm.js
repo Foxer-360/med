@@ -41,11 +41,13 @@ var React = require("react");
 var axios_1 = require("axios");
 var graphql_tag_1 = require("graphql-tag");
 var react_apollo_1 = require("react-apollo");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var Link_1 = require("../../partials/Link");
 var Loader_1 = require("../../partials/Loader");
 var SvgIcon_1 = require("../../partials/SvgIcon");
 var testEmail_1 = require("../../helpers/testEmail");
+var readEnvVariable_1 = require("../../helpers/readEnvVariable");
+var REACT_APP_REST_API_URL = readEnvVariable_1.default('REACT_APP_REST_API_URL');
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n  }\n"])));
 var CareerForm = /** @class */ (function (_super) {
     __extends(CareerForm, _super);
@@ -96,7 +98,7 @@ var CareerForm = /** @class */ (function (_super) {
                 data.append('formType', 'career');
                 try {
                     axios_1.default
-                        .post(process.env.REACT_APP_REST_API_URL + '/inquiry/upload', data)
+                        .post(REACT_APP_REST_API_URL + '/inquiry/upload', data)
                         .then(function (response) {
                         _this.setState(__assign({}, _this.state, { formStatus: 'success' }));
                     })
@@ -197,7 +199,7 @@ var CareerForm = /** @class */ (function (_super) {
                 return (React.createElement("section", { className: 'careerForm form', ref: _this.topRef },
                     React.createElement("div", { className: 'container' },
                         React.createElement("h3", { className: 'gradientHeading' }, title),
-                        React.createElement(ReactMarkdown, { source: text, renderers: {
+                        React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: text, renderers: {
                                 paragraph: function (props) { return React.createElement("p", null, props.children); },
                             } }),
                         React.createElement("form", { method: 'POST', onSubmit: function (e) { return _this.submit(e, pageData.name); } },

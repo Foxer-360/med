@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import List from '../List';
 
@@ -40,7 +40,11 @@ export default class Faq extends React.Component<FaqProps, FaqState> {
                   return (
                     <div key={i} className={'faq__element'}>
                       <h3>{item.title}</h3>
-                      {item.description && <ReactMarkdown source={item.description} />}
+                      {item.description && <ReactMarkdown
+                        skipHtml={false}
+                        escapeHtml={false}
+                        source={item.description}
+                      />}
                     </div>
                   );
                 })}

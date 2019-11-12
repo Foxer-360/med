@@ -10,12 +10,40 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __values = (this && this.__values) || function (o) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    if (m) return m.call(o);
+    return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var moment = require("moment");
 var List_1 = require("../../../List");
 var Link_1 = require("../../../../partials/Link");
-function isDoctorActive(workingHours) {
+function isDoctorActive(workingHours, absence) {
+    var e_1, _a;
+    try {
+        for (var absence_1 = __values(absence), absence_1_1 = absence_1.next(); !absence_1_1.done; absence_1_1 = absence_1.next()) {
+            var item = absence_1_1.value;
+            if (item.fromDate && item.toDate
+                && moment(item.fromDate.date) < moment()
+                && moment(item.toDate.date) > moment()) {
+                return 0;
+            }
+        }
+    }
+    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    finally {
+        try {
+            if (absence_1_1 && !absence_1_1.done && (_a = absence_1.return)) _a.call(absence_1);
+        }
+        finally { if (e_1) throw e_1.error; }
+    }
     var weekDayKey = getWeekDayKey();
     if (workingHours &&
         workingHours.weeks &&
@@ -94,7 +122,9 @@ function DoctorSearchResults(props) {
                 catch (e) {
                     console.log('error', e);
                 }
-                return __assign({}, item, { isDoctorActive: isDoctorActive(workingHours) });
+                var absence = null;
+                absence = JSON.parse(item.absence);
+                return __assign({}, item, { isDoctorActive: isDoctorActive(workingHours, absence) });
             })
                 .sort(function (a, b) {
                 if (a.isDoctorActive === b.isDoctorActive) {

@@ -1,6 +1,10 @@
 .blogArticle {
-  padding-top: 120px;
-  @include md { padding-top: 170px; }
+  padding-top: 60px!important;
+  @include md { padding-top: 130px!important; }
+
+  p {
+    margin-bottom: 30px;
+  }
 
   .container {
     width: 90%;

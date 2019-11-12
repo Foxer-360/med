@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_masonry_css_1 = require("react-masonry-css");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var List_1 = require("../List");
 var searchBar_1 = require("./components/searchBar");
 var blogCard_1 = require("./components/blogCard");
@@ -42,7 +42,7 @@ var Blog = /** @class */ (function (_super) {
             if (i === 1 && specialText && specialTitle) {
                 resultBlogCards.push(React.createElement("div", { key: 'special', className: 'blogCard blogCard--special' },
                     React.createElement("h3", null, specialTitle),
-                    React.createElement(ReactMarkdown, { source: specialText, renderers: {
+                    React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: specialText, renderers: {
                             // tslint:disable-next-line:no-any
                             paragraph: function (rProps) { return React.createElement("p", null, rProps.children); },
                         } })));

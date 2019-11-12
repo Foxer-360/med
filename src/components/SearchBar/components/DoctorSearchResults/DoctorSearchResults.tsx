@@ -12,9 +12,16 @@ interface DoctorSearchResultsProps {
   checkDoctorResults: Function;
 }
 
-function isDoctorActive(workingHours: LooseObject): Number {
-  const weekDayKey = getWeekDayKey();
+function isDoctorActive(workingHours: LooseObject, absence): Number {
+  for (let item of absence) {
+    if (item.fromDate && item.toDate
+        && moment(item.fromDate.date) < moment()
+        && moment(item.toDate.date) > moment()) {
+      return 0;
+    }
+  }
 
+  const weekDayKey = getWeekDayKey();
   if (
     workingHours &&
     workingHours.weeks &&
@@ -113,10 +120,13 @@ export default function DoctorSearchResults (props: DoctorSearchResultsProps) {
                     } catch (e) {
                       console.log('error', e);
                     }
+                    
+                    let absence = null;
+                    absence = JSON.parse(item.absence);
 
                     return {
                       ...item,
-                      isDoctorActive: isDoctorActive(workingHours),
+                      isDoctorActive: isDoctorActive(workingHours, absence),
                     };
                   }
                 )
