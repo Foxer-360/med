@@ -5,9 +5,11 @@
       {
         "name": "Budějovická",
         "address": "Antala Staška 1670/80",
+        "addressUrl": "https://goo.gl/maps/H77G3dj3ysQnhE5d7",
         "distric": "140 00 Praha 4",
         "phone": "+420 261 006 111",
         "transport": "Metro C",
+        "transportUrl": "https://idos.idnes.cz/vlakyautobusymhdvse/spojeni/?app=idos3&format=html&t=Bud%C4%9Bjovick%C3%A1",
         "transportImage": {
           "recommendedSizes": {
             "width": "50",
@@ -45,6 +47,10 @@
                 "type": "text",
                 "title": "Address"
               },
+              "addressUrl": {
+                  "type": "text",
+                  "title": "Address URL"
+              },
               "clinic": {
                 "type": "text",
                 "title": "Clinic"
@@ -67,6 +73,10 @@
               "transport": {
                 "type": "text",
                 "title": "Transport"
+              },
+              "transportUrl": {
+                  "type": "text",
+                  "title": "Transport URL"
               },
               "station": {
                 "type": "text",
