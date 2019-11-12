@@ -94,8 +94,8 @@ var Header = /** @class */ (function (_super) {
         this.getVertex();
     };
     Header.prototype.render = function () {
+        // this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
         var _this = this;
-        this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {

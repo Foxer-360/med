@@ -2768,8 +2768,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  margin: 0;
-  overflow-x: hidden; }
+  margin: 0; }
 
 html,
 iframe {
@@ -3225,7 +3224,7 @@ body {
     .flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .dividerCircles {
       flex-flow: row wrap; } }
 
-.flexColumn, .hero, .doctorList__item__info, .pcitem__info {
+.flexColumn, .doctorList__item__info, .pcitem__info {
   display: flex;
   flex-flow: column wrap; }
 
@@ -3392,18 +3391,17 @@ cite {
     top: -3px; }
 
 .hero {
-  background-position: top center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 395px;
-  width: 100%;
+  height: 320px;
   justify-content: center;
-  align-items: center;
-  background-repeat: no-repeat;
   position: relative; }
+  .hero .hero_img {
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: inherit; }
   @media (min-width: 768px) {
     .hero {
-      height: 650px; } }
+      height: 520px; } }
   .hero__overlay {
     background: black;
     position: absolute;
@@ -3413,11 +3411,11 @@ cite {
     z-index: 2;
     width: 100%;
     height: 100%; }
-  .hero .container {
-    z-index: 3;
-    position: relative; }
   .hero__holder {
-    padding-top: 10%; }
+    padding-top: 10%;
+    z-index: 3;
+    position: relative;
+    width: 100%; }
   .hero__title--blue {
     background: -webkit-linear-gradient(left, #2473ba, #00aad0);
     -webkit-background-clip: text;
@@ -3444,6 +3442,36 @@ cite {
       color: #3c3c3b; }
     .hero__text--white {
       color: #fff; }
+
+@media (max-width: 767px) {
+  .hero_img.col-md-6 {
+    display: none; } }
+
+.hero_col2.col-md-6 .hero__title {
+  padding: 25px 0px;
+  margin: 0px 5px; }
+
+.hero_col2.col-md-6 .hero__text {
+  margin: 0px 5px inherit; }
+
+@media (max-width: 767px) {
+  .hero_col2.col-md-6 {
+    width: 100%; }
+    .hero_col2.col-md-6 .hero__text {
+      margin-bottom: 25px; } }
+
+@media (max-width: 424px) {
+  .hero_col2.col-md-6 .hero__title {
+    padding: 20px 0px;
+    font-size: 1.4em; }
+  .hero_col2.col-md-6 .hero__text {
+    margin: 0px 5px 15px;
+    font-size: 1em;
+    line-height: 1.2em; } }
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .hero {
+    top: 0px; } }
 
 .hamburgerHolder {
   margin-left: 5rem;
@@ -3545,7 +3573,9 @@ cite {
 .header {
   background-color: #fff;
   width: 100%;
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
   z-index: 400; }
   .header__iso {
     position: absolute;
@@ -3666,13 +3696,12 @@ cite {
   .header__wrapper {
     padding: 10px 0; } }
 
-.menuActive {
-  padding-right: 8px; }
-  .menuActive svg {
-    -webkit-filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.12));
-            filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.12)); }
-  .menuActive .header__iso {
-    display: none; }
+.menuActive svg {
+  -webkit-filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.12));
+          filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.12)); }
+
+.menuActive .header__iso {
+  display: none; }
 
 .hiddenMenu {
   -webkit-transform: translate(0, 0);
@@ -3732,6 +3761,11 @@ cite {
           text-transform: uppercase;
           letter-spacing: 0.64px;
           cursor: pointer; }
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .header {
+    position: absolute;
+    box-shadow: 1px 1px 70px; } }
 
 .searchBar {
   width: 100%;
@@ -4266,6 +4300,11 @@ cite {
         color: black;
         font-weight: 600;
         font-size: 1.8rem; }
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .helpPopup__main {
+    background-position: -90% center;
+    background-size: 70%; } }
 
 @-webkit-keyframes shake {
   0% {
@@ -5554,37 +5593,34 @@ cite {
   border-left: 20px solid transparent;
   background-clip: padding-box; }
 
-.blog {
-  padding-top: 60px !important; }
-  @media (min-width: 768px) {
-    .blog {
-      padding-top: 130px !important; } }
-  .blog .searchBar {
-    margin-top: 5.5rem;
-    margin-bottom: 5.5rem; }
-    @media (max-width: 767px) {
-      .blog .searchBar {
-        margin-top: 3rem;
-        margin-bottom: 3rem; } }
-  .blog__btnHolder {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5rem; }
-  .blog__blur {
-    display: block;
-    width: 100%;
-    position: relative;
-    height: 50px;
-    z-index: 200; }
-    .blog__blur div {
-      background: linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, white 100%);
-      height: 99px;
-      z-index: 200;
-      -webkit-transform: translateY(-130%);
-              transform: translateY(-130%);
-      position: absolute;
-      left: 0;
-      width: 100%; }
+.blog .searchBar {
+  margin-top: 5.5rem;
+  margin-bottom: 5.5rem; }
+  @media (max-width: 767px) {
+    .blog .searchBar {
+      margin-top: 3rem;
+      margin-bottom: 3rem; } }
+
+.blog__btnHolder {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem; }
+
+.blog__blur {
+  display: block;
+  width: 100%;
+  position: relative;
+  height: 50px;
+  z-index: 200; }
+  .blog__blur div {
+    background: linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, white 100%);
+    height: 99px;
+    z-index: 200;
+    -webkit-transform: translateY(-130%);
+            transform: translateY(-130%);
+    position: absolute;
+    left: 0;
+    width: 100%; }
 
 .blogCard {
   box-sizing: border-box;
@@ -7106,50 +7142,51 @@ cite {
       .faq__element h3 {
         padding: 25px 0; } }
 
-.blogArticle {
-  padding-top: 60px !important; }
+.blogArticle p {
+  margin-bottom: 30px; }
+
+.blogArticle .container {
+  width: 90%; }
   @media (min-width: 768px) {
-    .blogArticle {
-      padding-top: 130px !important; } }
-  .blogArticle p {
-    margin-bottom: 30px; }
-  .blogArticle .container {
-    width: 90%; }
-    @media (min-width: 768px) {
-      .blogArticle .container {
-        max-width: 820px;
-        width: 100%; } }
-  .blogArticle h1 {
-    padding-bottom: 55px; }
-  .blogArticle h5 {
-    padding-top: 50px;
-    padding-bottom: 24px; }
-  .blogArticle .mediaRatio {
-    padding-top: 0 !important;
-    width: 100%;
-    height: 360px;
-    margin-bottom: 24px; }
-    @media (min-width: 768px) {
-      .blogArticle .mediaRatio {
-        margin-bottom: 50px; } }
-  .blogArticle--squareImage {
-    height: 600px !important; }
-    @media (max-width: 767px) {
-      .blogArticle--squareImage {
-        height: 400px !important; } }
-    @media (max-width: 575px) {
-      .blogArticle--squareImage {
-        height: 300px !important; } }
-  .blogArticle__content {
-    margin-bottom: 55px;
-    font-size: 1.6rem;
-    line-height: 30px;
-    letter-spacing: 1.28px; }
-    @media (min-width: 768px) {
-      .blogArticle__content {
-        font-size: 18px;
-        line-height: 36px;
-        letter-spacing: 1.6px; } }
+    .blogArticle .container {
+      max-width: 820px;
+      width: 100%; } }
+
+.blogArticle h1 {
+  padding-bottom: 55px; }
+
+.blogArticle h5 {
+  padding-top: 50px;
+  padding-bottom: 24px; }
+
+.blogArticle .mediaRatio {
+  padding-top: 0 !important;
+  width: 100%;
+  height: 360px;
+  margin-bottom: 24px; }
+  @media (min-width: 768px) {
+    .blogArticle .mediaRatio {
+      margin-bottom: 50px; } }
+
+.blogArticle--squareImage {
+  height: 600px !important; }
+  @media (max-width: 767px) {
+    .blogArticle--squareImage {
+      height: 400px !important; } }
+  @media (max-width: 575px) {
+    .blogArticle--squareImage {
+      height: 300px !important; } }
+
+.blogArticle__content {
+  margin-bottom: 55px;
+  font-size: 1.6rem;
+  line-height: 30px;
+  letter-spacing: 1.28px; }
+  @media (min-width: 768px) {
+    .blogArticle__content {
+      font-size: 18px;
+      line-height: 36px;
+      letter-spacing: 1.6px; } }
 
 .doctorScheduleSection {
   padding: 50px 0; }

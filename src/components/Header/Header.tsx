@@ -105,7 +105,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   public render() {
-    this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
+    // this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
 
     return (
       <ComposedQuery>
