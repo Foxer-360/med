@@ -134,7 +134,7 @@ var DoctorSchedule = function (props) {
         Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
         schedule &&
             schedule.weeks &&
-            schedule.weeks.map(function (week, i) { return (React.createElement("div", { className: "doctorSchedule", key: i },
+            schedule.weeks.map(function (week, i) { return (React.createElement("div", { className: "doctorSchedule", key: week.regularity },
                 React.createElement("div", { className: 'doctorSchedule__title' },
                     React.createElement("h4", null, getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle)
                         + getClinicTitle(week.polyclinic.name))),
