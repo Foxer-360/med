@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var react_lazyload_1 = require("react-lazyload");
 var ImgWithFallback_1 = require("./components/ImgWithFallback");
 var Media = /** @class */ (function (_super) {
     __extends(Media, _super);
@@ -36,7 +37,8 @@ var Media = /** @class */ (function (_super) {
                 var recommendedSizes = (data && data.recommendedSizes) || null;
                 var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
                 recommendedSizes = _this.setDimensions();
-                return (React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, classes: _this.props.classes }));
+                return (React.createElement(react_lazyload_1.default, { height: _this.props.height },
+                    React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, classes: _this.props.classes })));
             }
             else {
                 return null;
