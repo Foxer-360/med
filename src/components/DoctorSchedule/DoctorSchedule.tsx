@@ -138,13 +138,15 @@ const highlightAbsence = (defaultAbsenceMessage, absences, absenceMessage) => {
 }
 
 const absenceSettings = (extraAbsenceSettings, doctor) => {
-  let absenceDict = extraAbsenceSettings.split('\n')
-  doctor = doctor.trim()
-
-  for (let i = 0; i < absenceDict.length; i++) {
-    absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
-    if (absenceDict[i][1] === doctor) {
-      return absenceDict[i];
+  if (extraAbsenceSettings) {
+    let absenceDict = extraAbsenceSettings.split('\n')
+    doctor = doctor.trim()
+  
+    for (let i = 0; i < absenceDict.length; i++) {
+      absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
+      if (absenceDict[i][1] === doctor) {
+        return absenceDict[i];
+      }
     }
   }
   return null;

@@ -3,6 +3,7 @@ import * as React from 'react';
 import List from '../List';
 import TextBlock from '../TextBlock';
 import Media from '../../partials/Media';
+import LazyLoad from 'react-lazyload'
 
 export interface DoctorCardProps {
   data: {
@@ -41,9 +42,10 @@ const DoctorCard = (props: DoctorCardProps) => {
 
   return (
     <section className={'doctorCard'}>
+      <LazyLoad height={'1507'}>
       <div className="container">
         <div className={'doctorCard__main'}>
-          {(doctorImage && doctorImage.filename && <Media data={doctorImage} type="image" />) || (
+          {(doctorImage && doctorImage.filename && <Media data={doctorImage} type="image"  width={'400'} height={'400'} />) || (
             <img src="/assets/medicon/images/doctorIcon.svg" />
           )}
 
@@ -115,6 +117,7 @@ const DoctorCard = (props: DoctorCardProps) => {
             return <TextBlock key={i} data={{ title: item.title, text: item.text }} />;
           })}
       </List>
+      </LazyLoad>
     </section>
   );
 };

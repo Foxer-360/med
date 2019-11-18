@@ -19,7 +19,7 @@ export function BlogCard(props: BlogCardProps) {
       <h3>{title}</h3>
       <p>{text && text.length > 80 ? text.slice(0, 80) + ' ..' : text}</p>
 
-      {img && <Media type={'image'} data={img} />}
+      {img && <Media type={'image'} data={img} width={'393'} height={'400'} />}
       <div
         className={'blogCard__colorGradient'}
         style={{ background: `linear-gradient( to bottom,rgba(125, 185, 232, 0) 0%,${color} 100%)` }}

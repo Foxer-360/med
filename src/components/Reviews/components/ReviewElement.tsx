@@ -29,7 +29,7 @@ export default function ReviewElement(props: ReviewElementProps) {
           
             <div className={'row'}>
               <div className={'reviews__list__element__image col-3 col-md-4'}>
-                {image && <Media type={'image'} data={image}/>}
+                {image && <Media type={'image'} data={image} width={'105'} height={'130'}/>}
               </div>
 
               <div className={'col-8'}>

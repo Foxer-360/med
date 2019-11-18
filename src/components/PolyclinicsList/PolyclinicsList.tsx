@@ -108,7 +108,7 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                           </div>
 
                           <div className="pcitem__info__details__item">
-                            {clinic.transportImage && <Media data={clinic.transportImage} type="image" />}
+                            {clinic.transportImage && <Media data={clinic.transportImage} type="image" width={'42'} height={'50'} />}
 
                             {!clinic.transportImage && <img src="../../../assets/medicon/images/metro2.png" alt="" />}
 
