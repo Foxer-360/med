@@ -17,7 +17,7 @@ function ReviewElement(props) {
             React.createElement("div", { style: { height: '100%', width: '100%', display: 'table' } },
                 React.createElement("div", { style: { display: 'table-cell', verticalAlign: 'middle' } },
                     React.createElement("div", { className: 'row' },
-                        React.createElement("div", { className: 'reviews__list__element__image col-3 col-md-4' }, image && React.createElement(Media_1.default, { type: 'image', data: image })),
+                        React.createElement("div", { className: 'reviews__list__element__image col-3 col-md-4' }, image && React.createElement(Media_1.default, { type: 'image', data: image, width: '105', height: '130' })),
                         React.createElement("div", { className: 'col-8' },
                             React.createElement("div", { className: 'reviews__list__element__content' },
                                 cite && React.createElement("cite", null, cite),

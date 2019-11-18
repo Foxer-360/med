@@ -19,7 +19,7 @@ function BlogCard(props) {
     return (React.createElement(Link_1.default, __assign({ className: 'blogCard' }, url),
         React.createElement("h3", null, title),
         React.createElement("p", null, text && text.length > 80 ? text.slice(0, 80) + ' ..' : text),
-        img && React.createElement(Media_1.default, { type: 'image', data: img }),
+        img && React.createElement(Media_1.default, { type: 'image', data: img, width: '393', height: '400' }),
         React.createElement("div", { className: 'blogCard__colorGradient', style: { background: "linear-gradient( to bottom,rgba(125, 185, 232, 0) 0%," + color + " 100%)" } })));
 }
 exports.BlogCard = BlogCard;

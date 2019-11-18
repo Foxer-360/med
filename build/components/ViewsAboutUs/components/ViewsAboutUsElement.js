@@ -20,7 +20,7 @@ function ViewsAboutUsElement(props) {
         React.createElement("div", { className: "viewsAboutUs__list__element" },
             React.createElement("div", { className: "row" },
                 React.createElement("div", { className: "col-4 col-md-5" },
-                    React.createElement("div", null, image && React.createElement(Media_1.default, { type: 'image', data: image }))),
+                    React.createElement("div", null, image && React.createElement(Media_1.default, { type: 'image', data: image, width: '106', height: '124' }))),
                 React.createElement("div", { className: "col-8 col-md-7" },
                     React.createElement("div", { className: 'viewsAboutUs__list__element__content' },
                         React.createElement("div", { style: { display: 'table-cell', verticalAlign: 'middle' } },

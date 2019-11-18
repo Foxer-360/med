@@ -117,12 +117,14 @@ var highlightAbsence = function (defaultAbsenceMessage, absences, absenceMessage
     }
 };
 var absenceSettings = function (extraAbsenceSettings, doctor) {
-    var absenceDict = extraAbsenceSettings.split('\n');
-    doctor = doctor.trim();
-    for (var i = 0; i < absenceDict.length; i++) {
-        absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
-        if (absenceDict[i][1] === doctor) {
-            return absenceDict[i];
+    if (extraAbsenceSettings) {
+        var absenceDict = extraAbsenceSettings.split('\n');
+        doctor = doctor.trim();
+        for (var i = 0; i < absenceDict.length; i++) {
+            absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
+            if (absenceDict[i][1] === doctor) {
+                return absenceDict[i];
+            }
         }
     }
     return null;

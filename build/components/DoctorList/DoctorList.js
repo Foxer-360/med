@@ -126,7 +126,7 @@ var DoctorList = /** @class */ (function (_super) {
                     React.createElement("div", { className: "doctorList__wrapper" }, items &&
                         items.map(function (doctor, index) {
                             return (React.createElement("div", { className: 'doctorList__item', key: index },
-                                React.createElement("div", { className: 'doctorList__item__img' }, (doctor.image && doctor.image.filename && React.createElement(Media_1.default, { data: doctor.image, type: "image" })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
+                                React.createElement("div", { className: 'doctorList__item__img' }, (doctor.image && doctor.image.filename && React.createElement(Media_1.default, { data: doctor.image, type: "image", width: '190', height: '190' })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
                                 React.createElement("div", { className: 'doctorList__item__info' },
                                     React.createElement("h3", null, doctor.name),
                                     doctor.field && React.createElement("div", { className: 'doctorList__item__info__description' },

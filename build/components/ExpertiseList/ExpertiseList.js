@@ -48,7 +48,7 @@ var ExpertiseList = /** @class */ (function (_super) {
                     title && React.createElement("h3", null, title),
                     React.createElement("div", { className: "row" }, items && items.map(function (item, index) { return (React.createElement("div", { key: index, className: "col-sm-12 col-lg-6 col-xl-4" },
                         React.createElement("div", { className: "expertiseList__element" },
-                            React.createElement("div", null, item.image && React.createElement(Media_1.default, { type: 'image', data: item.image })),
+                            React.createElement("div", null, item.image && React.createElement(Media_1.default, { type: 'image', data: item.image, width: '60', height: '60' })),
                             React.createElement(Link_1.default, __assign({}, item.url)),
                             item.title && React.createElement("p", null, item.title)))); })),
                     _this.state.numberOfPage < lastPage &&
