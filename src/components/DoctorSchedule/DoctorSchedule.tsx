@@ -138,13 +138,15 @@ const highlightAbsence = (defaultAbsenceMessage, absences, absenceMessage) => {
 }
 
 const absenceSettings = (extraAbsenceSettings, doctor) => {
-  let absenceDict = extraAbsenceSettings.split('\n')
-  doctor = doctor.trim()
-
-  for (let i = 0; i < absenceDict.length; i++) {
-    absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
-    if (absenceDict[i][1] === doctor) {
-      return absenceDict[i];
+  if (extraAbsenceSettings) {
+    let absenceDict = extraAbsenceSettings.split('\n')
+    doctor = doctor.trim()
+  
+    for (let i = 0; i < absenceDict.length; i++) {
+      absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
+      if (absenceDict[i][1] === doctor) {
+        return absenceDict[i];
+      }
     }
   }
   return null;
@@ -157,6 +159,8 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
+    {console.log(schedule)}
+    {console.log(regularWeekTitle)}
       {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
       {schedule &&
         schedule.weeks &&
@@ -239,7 +243,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                           {(absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
-                          {(absence.toDate.date && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
+                          {(absence.toDate.date && absence.subcategory.id != 31 && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
                           {Array.isArray(absenceMessage) ? (<ReactMarkdown
