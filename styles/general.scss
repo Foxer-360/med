@@ -231,12 +231,12 @@ cite {
 
 .header + .layout {
   & > *:first-child {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    // padding-top: 100px;
+    // padding-bottom: 100px;
 
     @include md {
       min-height: calc(80vh);
-      padding-top: 300px;
+      // padding-top: 300px;
     }
   }
 
