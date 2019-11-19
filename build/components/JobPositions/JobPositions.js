@@ -16,13 +16,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
 var Button_1 = require("../../partials/Button");
-var getImageUrl_1 = require("../../helpers/getImageUrl");
+var BckgImgWithFallback_1 = require("../../partials/Media/components/BckgImgWithFallback");
 var JobPositions = /** @class */ (function (_super) {
     __extends(JobPositions, _super);
     function JobPositions(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
-            numberOfPage: 1
+            numberOfPage: 1,
+            filter: 'Všechny polikliniky'
         };
         return _this;
     }
@@ -30,8 +31,8 @@ var JobPositions = /** @class */ (function (_super) {
         var _this = this;
         return items.map(function (position, index) {
             return (position.polyclinic === _this.state.filter
-                || _this.state.filter === 'Všechny polikliniky') && (React.createElement("div", { key: index, className: 'col-sm-12 col-lg-6 col-xl-4' },
-                React.createElement("div", { className: 'positions__element', style: { backgroundImage: position.image && "url(" + getImageUrl_1.default(position.image) + ")" } },
+                || _this.state.filter === 'Všechny polikliniky') && position.url.url && (React.createElement("div", { key: index, className: 'col-sm-12 col-lg-6 col-xl-4' },
+                React.createElement(BckgImgWithFallback_1.default, { classes: 'positions__element', image: position.image, sizes: { width: 400, height: 296 } },
                     React.createElement("div", { className: 'positions__element-content' },
                         position.name && React.createElement("p", null, position.name),
                         React.createElement(Button_1.default, { classes: 'btn--whiteBorder', url: position.url }, "v\u00EDce informac\u00ED")),
