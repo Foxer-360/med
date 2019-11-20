@@ -241,7 +241,6 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                           {(absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
-                          {console.log(typeof(absence.subcategory.id))}
                           {(absence.toDate.date && absence.subcategory.id !== 31 && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
