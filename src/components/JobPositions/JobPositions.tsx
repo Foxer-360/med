@@ -8,7 +8,6 @@ import BckgImgWithFallback from '../../partials/Media/components/BckgImgWithFall
 interface Position {
   name: string;
   url?: LooseObject;
-  // polyclinic: string;
   image?: LooseObject;
 }
 
@@ -41,7 +40,7 @@ class JobPositions extends React.Component<JobPositionsProps, JobPositionsState>
       return (
         position.polyclinic === this.state.filter
         || this.state.filter === 'Všechny polikliniky'
-      ) && position.url.url && (
+      ) && position.url && position.url.url && (
           <div
             key={index}
             className={'col-sm-12 col-lg-6 col-xl-4'}

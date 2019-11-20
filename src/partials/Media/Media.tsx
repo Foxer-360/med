@@ -42,15 +42,15 @@ class Media extends React.Component<MediaProps, MediaState> {
       
       return (
         <LazyLoad height={this.props.height} offset={'100'}>
-        <ImgWithFallback
-          originalSrc={originalUrl}
-          alt={data.alt || ''}
-          baseUrl={baseUrl}
-          recommendedSizes={recommendedSizes}
-          originalData={data}
-          hash={data.hash}
-          classes={this.props.classes}
-        />
+          <ImgWithFallback
+            originalSrc={originalUrl}
+            alt={data.alt || ''}
+            baseUrl={baseUrl}
+            recommendedSizes={recommendedSizes}
+            originalData={data}
+            hash={data.hash}
+            classes={this.props.classes}
+          />
         </LazyLoad>
       );
     } else {
