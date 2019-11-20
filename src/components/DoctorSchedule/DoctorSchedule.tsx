@@ -29,6 +29,7 @@ export interface DoctorScheduleProps {
     extraAbsenceSettings: string;
     doctor: string;
     defaultAbsenceMessage: string;
+    phone: string;
   };
 }
 
@@ -154,7 +155,7 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
-    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage } = props.data;
+    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, phone } = props.data;
 
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
@@ -261,6 +262,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                 </table>
               </div>
             )}
+            {phone && <h5>V urgentních případech volejte {phone}.</h5>}
           </>
         )}}
       </Query>

@@ -35,6 +35,10 @@
                 "extraAbsenceSettings": {
                     "type": "markdown",
                     "title": "Extra absence settings (expertises replacements)"
+                },
+                "phone": {
+                    "type": "string",
+                    "title": "Phone"
                 }
             }
         }

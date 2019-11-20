@@ -130,7 +130,7 @@ var absenceSettings = function (extraAbsenceSettings, doctor) {
     return null;
 };
 var DoctorSchedule = function (props) {
-    var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage;
+    var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, phone = _a.phone;
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
@@ -177,19 +177,24 @@ var DoctorSchedule = function (props) {
                 return absence && moment(absence.fromDate.date) < moment().add(1, 'M')
                     && moment(absence.toDate.date) > moment();
             });
-            return (React.createElement(React.Fragment, null, nextMonthAbsences && Array.isArray(nextMonthAbsences) && nextMonthAbsences.length > 0 && (React.createElement("div", { className: 'absences' },
-                React.createElement("h4", null, "Nep\u0159\u00EDtomnost"),
-                React.createElement("table", null,
-                    React.createElement("thead", null,
-                        React.createElement("tr", null,
-                            React.createElement("td", null, "Od"),
-                            React.createElement("td", null, "Do"),
-                            React.createElement("td", null, "Zastupuje"))),
-                    React.createElement("tbody", null, nextMonthAbsences.map(function (absence, i) { return (React.createElement("tr", { key: i },
-                        React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''),
-                        React.createElement("td", null, (absence.toDate.date && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''),
-                        React.createElement("td", null, Array.isArray(absenceMessage) ? (React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: absenceMessage[2] })) :
-                            React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); })))))));
+            return (React.createElement(React.Fragment, null,
+                nextMonthAbsences && Array.isArray(nextMonthAbsences) && nextMonthAbsences.length > 0 && (React.createElement("div", { className: 'absences' },
+                    React.createElement("h4", null, "Nep\u0159\u00EDtomnost"),
+                    React.createElement("table", null,
+                        React.createElement("thead", null,
+                            React.createElement("tr", null,
+                                React.createElement("td", null, "Od"),
+                                React.createElement("td", null, "Do"),
+                                React.createElement("td", null, "Zastupuje"))),
+                        React.createElement("tbody", null, nextMonthAbsences.map(function (absence, i) { return (React.createElement("tr", { key: i },
+                            React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''),
+                            React.createElement("td", null, (absence.toDate.date && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''),
+                            React.createElement("td", null, Array.isArray(absenceMessage) ? (React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: absenceMessage[2] })) :
+                                React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); }))))),
+                phone && React.createElement("h5", null,
+                    "V urgentn\u00EDch p\u0159\u00EDpadech volejte ",
+                    phone,
+                    ".")));
         })));
 };
 exports.default = DoctorSchedule;
