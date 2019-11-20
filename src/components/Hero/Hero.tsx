@@ -18,15 +18,117 @@ export interface HeroProps {
   };
 }
 
-export interface HeroState {}
+export interface HeroState {
+  src: LooseObject;
+  loading: boolean;
+}
 
 class Hero extends React.Component<HeroProps, HeroState> {
+  constructor(props: HeroProps) {
+    super(props);
+
+    this.state = {
+      src: null,
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    this.getSizedUrl(this.props.data.image);
+  }
+
+  getSizedUrl = image => {
+    const baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
+    let sizedUrl = null;
+    let sizes = {width: '1920',
+                height: '650'};
+
+    this.setState({
+      loading: true,
+    });
+
+    if (sizes && sizes.width && sizes.height && image && image.filename) {
+      let filename = image.filename.split('.');
+      filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
+      filename = filename.join('.');
+      
+      sizedUrl = baseUrl + image.category + image.hash + '_' + filename;
+
+      this.setState({
+        src: sizedUrl,
+      });
+    } else {
+      this.setState({
+        src: image,
+      });
+    }
+  }
+
+  loadImg(src: any) {
+    if (src) {
+      const img = new Image();
+      
+      img.src = src;
+      
+      img.onload = () => {
+        this.setState({
+          loading: false,
+        });
+      };
+
+      img.onerror = err => {
+        this.handleError();
+      };
+    }
+  }
+  
+  componentWillUpdate(nextProps: HeroProps, nextState: HeroState) {
+    if (this.state.src !== nextState.src) {
+      this.loadImg(nextState.src);
+    }
+    if (nextProps.data.image !== this.props.data.image) {
+      this.getSizedUrl(nextProps);
+    }
+  }
+
+  handleError = () => {
+    this.createVariantIfDoesNotExist();
+
+    this.setState({
+      loading: true,     
+      src: this.props.data.image,
+    });
+  }
+
+  createVariantIfDoesNotExist = () => {
+    let sizes = {width: '1920',
+                height: '650'};
+
+    fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: this.props.data.image.id,
+        width: parseInt(sizes.width, 10),
+        height: parseInt(sizes.height, 10),
+      }),
+    })
+      .then(response => {
+        // this.getSizedUrl();
+      })
+      .catch(() => {
+        console.log('There was an error creating variant');
+      });
+  }
+
   public render() {
     const { title, text, displaySearch, image, placeholder, displayOverlay, titleColor, textColor } = this.props.data;
 
     return (
       <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: image && `url(${getImageUrl(image)})` }}>
+        <section className={'hero'} style={{ backgroundImage: image && `url(${getImageUrl(this.state.src)})` }}>
           {displayOverlay && <div className={'hero__overlay'} />}
           <div className={'container'}>
             <div className={'hero__holder'}>

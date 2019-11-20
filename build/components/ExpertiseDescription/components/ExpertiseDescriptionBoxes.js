@@ -14,12 +14,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var Link_1 = require("../../../partials/Link");
 var Button_1 = require("../../../partials/Button");
-var getImageUrl_1 = require("../../../helpers/getImageUrl");
+var BckgImgWithFallback_1 = require("../../../partials/Media/components/BckgImgWithFallback");
 var ExpertiseDescriptionBoxes = function (props) {
     var boxes = props.boxes;
     return (React.createElement("section", { className: "info" },
         React.createElement("div", { className: "row" }, boxes && boxes.map(function (box, i) { return (React.createElement("div", { key: i, className: "col-sm-12 col-md-6" },
-            React.createElement("div", { className: 'info__element', style: { backgroundImage: box.image && "url(" + getImageUrl_1.default(box.image) + ")" } },
+            React.createElement(BckgImgWithFallback_1.default, { classes: 'info__element', image: box.image, sizes: { width: 595, height: 270 } },
                 React.createElement("div", { className: 'info__element--cell' },
                     box.title && React.createElement("h5", { style: box.textColor ? { color: box.textColor } : {} }, box.title),
                     !box.url2 && !box.url3 &&

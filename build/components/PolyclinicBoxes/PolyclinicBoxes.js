@@ -31,7 +31,7 @@ var PolyclinicBoxes = function (props) {
                             React.createElement("div", { className: 'polyclinicBoxes__list__item' },
                                 React.createElement(Link_1.default, __assign({}, url)),
                                 React.createElement("div", { className: 'colorGradient' }),
-                                image && image.filename && React.createElement(Media_1.default, { data: image, type: 'image' }),
+                                image && image.filename && React.createElement(Media_1.default, { data: image, type: 'image', width: '285', height: '280' }),
                                 name && (React.createElement("div", { className: 'pcTitle' },
                                     React.createElement("img", { src: "/assets/medicon/images/logo.svg", alt: "Medicon Logo" }),
                                     React.createElement("div", { className: 'pcTitle__title' },

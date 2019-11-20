@@ -84,7 +84,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                 clinic.phone && React.createElement("p", null,
                                                     React.createElement("a", { href: "callto:" + clinic.phone.replace(/ /g, '') }, clinic.phone))),
                                             React.createElement("div", { className: "pcitem__info__details__item" },
-                                                clinic.transportImage && React.createElement(Media_1.default, { data: clinic.transportImage, type: "image" }),
+                                                clinic.transportImage && React.createElement(Media_1.default, { data: clinic.transportImage, type: "image", width: '42', height: '50' }),
                                                 !clinic.transportImage && React.createElement("img", { src: "../../../assets/medicon/images/metro2.png", alt: "" }),
                                                 clinic.transportUrl ?
                                                     React.createElement("p", null,

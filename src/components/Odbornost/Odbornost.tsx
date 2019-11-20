@@ -22,7 +22,7 @@ const Odbornost = (props: OdbornostProps) => {
         <div className="row">
 
           <div className="col-md-12 col-lg-6">
-            {image && <Media type={'image'} data={image} />}
+            {image && <Media type={'image'} data={image} width={'420'} height={'290'} />}
           </div>
 
           <div className="col-md-12 col-lg-6">

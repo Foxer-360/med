@@ -47,7 +47,7 @@ export default class ExpertiseList extends React.Component<ExpertiseListProps, E
                   {items && items.map((item, index) => (
                     <div key={index} className="col-sm-12 col-lg-6 col-xl-4">
                       <div className="expertiseList__element">
-                        <div>{item.image && <Media type={'image'} data={item.image} />}</div>
+                        <div>{item.image && <Media type={'image'} data={item.image} width={'60'} height={'60'} />}</div>
                         <Link {...item.url} />
                         {item.title && <p>{item.title}</p>}
                       </div>

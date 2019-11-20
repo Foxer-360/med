@@ -3,6 +3,7 @@ import * as React from 'react';
 import List from '../List';
 import Link from '../../partials/Link';
 import getImageUrl from '../../helpers/getImageUrl';
+import BckgImgWithFallback from '../../partials/Media/components/BckgImgWithFallback'
 
 interface Offer {
   title: string;
@@ -33,11 +34,7 @@ const JobOffers = (props: JobOffersProps) => {
                 return (
                   <div key={index} className={'col-md-12 col-lg-6'}>
                     <div className={'jobOffers__list__item'}>
-                      <div 
-                        style={{ 
-                          backgroundImage: (offer.image && offer.image.filename) && `url(${getImageUrl(offer.image)})` 
-                        }}
-                      >
+                      <BckgImgWithFallback image={offer.image} sizes={{width: 120, height: 120}}>
                         {offer.title && 
                           <p 
                             className={'hCenterBlock'}
@@ -45,7 +42,7 @@ const JobOffers = (props: JobOffersProps) => {
                           >
                             {offer.title}
                           </p>}
-                      </div>
+                      </BckgImgWithFallback>
                       {offer.url && <Link 
                         {...offer.url} 
                         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}

@@ -139,7 +139,7 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
                       return (
                         <div className={'doctorList__item'} key={index}>
                           <div className={'doctorList__item__img'}>
-                            {(doctor.image && doctor.image.filename && <Media data={doctor.image} type="image" />) || (
+                            {(doctor.image && doctor.image.filename && <Media data={doctor.image} type="image" width={'190'} height={'190'} />) || (
                               <img
                                 className="avatarImg"
                                 src={'../../../assets/medicon/images/doctorIcon.svg'}

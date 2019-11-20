@@ -25,7 +25,8 @@ const BlogArticle = (props: AppProps) => {
           <Media
             data={image}
             type={'image'}
-            height={isImageSquare && '600'}
+            width={'790'}
+            height={isImageSquare ? '600' : '360'}
             classes={isImageSquare ? 'blogArticle--squareImage' : ''}
           />}
 
