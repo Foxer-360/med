@@ -159,8 +159,6 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
-    {console.log(schedule)}
-    {console.log(regularWeekTitle)}
       {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
       {schedule &&
         schedule.weeks &&
