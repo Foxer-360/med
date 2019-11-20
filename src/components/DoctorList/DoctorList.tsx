@@ -45,22 +45,17 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
   componentDidMount() {
     const { search } = this.props.location;
     if (search.length > 0) {
-      this.setFilterBySerchParam(search.split('=')[1]);
+      this.setFilterBySearchParam(search.split('=')[1]);
     }
   }
 
   handleChangeSelect(event: React.ChangeEvent<HTMLSelectElement>) {
     const { history } = this.props;
     const slug = removeAccents(event.target.value).toLowerCase().replace(/[\W_]+/g, '-');
-
-    this.setFilterBySerchParam(slug);
-    history.push({
-      search: `?clinic=${slug}`
-    });
-    
+    this.setFilterBySearchParam(slug);    
   }
 
-  getCurrentPolyclinic(current: String, items: Array<LooseObject>) {
+  getCurrentPolyclinic(current, items: Array<LooseObject>) {
     const polyclinics = this.getUniquePolyclinicNames(items);
     if (Array.isArray(polyclinics) && current.length > 0) {
       const polyclinic = polyclinics.find((pol) => pol.indexOf(current) > -1) || '';
@@ -71,10 +66,24 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
   }
 
   getUniquePolyclinicNames(items: LooseObject<any>[]) {
-    return [...new Set(items.map(item => item.clinicName.trim()))];
+    const names = items.map(item => item.clinicName
+      .replace(/Poliklinika /g, '')
+      .trim()
+      .split(',')
+      );
+    
+    const flatAndSplitNames = [...names
+      .toString()
+      .split(',')]
+
+    const polyclinicNames = flatAndSplitNames.map(item => 'Poliklinika '.concat(item.trim()))
+
+    const uniquePolyclinicNames = [...new Set(polyclinicNames)]
+
+    return uniquePolyclinicNames;
   }
 
-  setFilterBySerchParam(param: string) {
+  setFilterBySearchParam(param: string) {
     switch (true) {
       case /(vysocany)/.test(param):
         this.setState({ filter: 'Vysočany' });

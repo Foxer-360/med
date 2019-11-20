@@ -66,16 +66,13 @@ var DoctorList = /** @class */ (function (_super) {
     DoctorList.prototype.componentDidMount = function () {
         var search = this.props.location.search;
         if (search.length > 0) {
-            this.setFilterBySerchParam(search.split('=')[1]);
+            this.setFilterBySearchParam(search.split('=')[1]);
         }
     };
     DoctorList.prototype.handleChangeSelect = function (event) {
         var history = this.props.history;
         var slug = removeAccents(event.target.value).toLowerCase().replace(/[\W_]+/g, '-');
-        this.setFilterBySerchParam(slug);
-        history.push({
-            search: "?clinic=" + slug
-        });
+        this.setFilterBySearchParam(slug);
     };
     DoctorList.prototype.getCurrentPolyclinic = function (current, items) {
         var polyclinics = this.getUniquePolyclinicNames(items);
@@ -86,9 +83,18 @@ var DoctorList = /** @class */ (function (_super) {
         return undefined;
     };
     DoctorList.prototype.getUniquePolyclinicNames = function (items) {
-        return __spread(new Set(items.map(function (item) { return item.clinicName.trim(); })));
+        var names = items.map(function (item) { return item.clinicName
+            .replace(/Poliklinika /g, '')
+            .trim()
+            .split(','); });
+        var flatAndSplitNames = __spread(names
+            .toString()
+            .split(','));
+        var polyclinicNames = flatAndSplitNames.map(function (item) { return 'Poliklinika '.concat(item.trim()); });
+        var uniquePolyclinicNames = __spread(new Set(polyclinicNames));
+        return uniquePolyclinicNames;
     };
-    DoctorList.prototype.setFilterBySerchParam = function (param) {
+    DoctorList.prototype.setFilterBySearchParam = function (param) {
         switch (true) {
             case /(vysocany)/.test(param):
                 this.setState({ filter: 'Vysočany' });

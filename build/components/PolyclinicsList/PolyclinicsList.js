@@ -61,25 +61,42 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                             React.createElement("div", { className: "pcitem__info__details__item" },
                                                 React.createElement("img", { src: "../../../assets/medicon/images/geoIcon.svg", alt: "Medicon GeoLocation Icon" }),
                                                 React.createElement("div", null,
-                                                    React.createElement("p", null,
-                                                        clinic.address && clinic.address,
-                                                        " ",
-                                                        React.createElement("br", null),
-                                                        clinic.district && clinic.district),
+                                                    clinic.addressUrl ?
+                                                        React.createElement("p", null,
+                                                            React.createElement("a", { href: clinic.addressUrl, target: "_blank" },
+                                                                clinic.address && clinic.address,
+                                                                " ",
+                                                                React.createElement("br", null),
+                                                                clinic.district && clinic.district,
+                                                                clinic.district && clinic.district))
+                                                        :
+                                                            React.createElement("p", null,
+                                                                clinic.address && clinic.address,
+                                                                " ",
+                                                                React.createElement("br", null),
+                                                                clinic.district && clinic.district),
                                                     clinic.clinic &&
                                                         React.createElement("p", { style: clinic.clinicColor ?
                                                                 { color: "" + clinic.clinicColor } :
                                                                 {} }, clinic.clinic))),
                                             React.createElement("div", { className: "pcitem__info__details__item" },
                                                 React.createElement("img", { src: "../../../assets/medicon/images/phoneIcon.svg", alt: "Medicon Phone Icon" }),
-                                                clinic.phone && React.createElement("p", null, clinic.phone)),
+                                                clinic.phone && React.createElement("p", null,
+                                                    React.createElement("a", { href: "callto:" + clinic.phone.replace(/ /g, '') }, clinic.phone))),
                                             React.createElement("div", { className: "pcitem__info__details__item" },
                                                 clinic.transportImage && React.createElement(Media_1.default, { data: clinic.transportImage, type: "image", width: '42', height: '50' }),
                                                 !clinic.transportImage && React.createElement("img", { src: "../../../assets/medicon/images/metro2.png", alt: "" }),
-                                                React.createElement("p", null,
-                                                    clinic.transport && clinic.transport,
-                                                    React.createElement("br", null),
-                                                    clinic.station && clinic.station))),
+                                                clinic.transportUrl ?
+                                                    React.createElement("p", null,
+                                                        React.createElement("a", { href: clinic.transportUrl, target: "_blank" },
+                                                            clinic.transport && clinic.transport,
+                                                            React.createElement("br", null),
+                                                            clinic.station && clinic.station))
+                                                    :
+                                                        React.createElement("p", null,
+                                                            clinic.transport && clinic.transport,
+                                                            React.createElement("br", null),
+                                                            clinic.station && clinic.station))),
                                         React.createElement("div", { className: 'pcitem__info__list' },
                                             React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: _this.state.displayAllServices && index === _this.state.activeCard
                                                     ? clinic.services

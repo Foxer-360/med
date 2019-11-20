@@ -3,7 +3,8 @@
 .header {
   background-color: #fff;
   width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0px;
   z-index: 400;  
 
   &__iso {
@@ -14,10 +15,8 @@
     left: 0;
 
     @include xl {
-      height: 70px;
-      bottom: -70px;
-      height: 50px;
-      bottom: -70px;
+      height: 40px;
+      bottom: -40px;
     }
 
     svg {
@@ -32,7 +31,7 @@
       }
 
       @include xl {
-        height: 70px;
+        height: 40px;
       }
     }
   }
@@ -47,7 +46,7 @@
     flex-wrap: nowrap;
 
     @include md {
-      padding-top: 1rem;
+      padding: 1rem 0;
     }
 
     .navItemActive {
@@ -156,8 +155,6 @@
 }
 
 .menuActive {
-  padding-right: 8px;
-
   svg {
     filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.12));
   }

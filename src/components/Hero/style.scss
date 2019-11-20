@@ -7,9 +7,15 @@
   align-items: center;
   background-repeat: no-repeat;
   position: relative;
+  top: -93.78px;
 
   @include md {
     height: 650px;
+    top: -64.42px;
+  }
+
+  @include sm {
+    top: -53.81;
   }
 
   &__overlay {
