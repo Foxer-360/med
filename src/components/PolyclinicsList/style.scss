@@ -10,6 +10,15 @@
   width: 90%;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 
+  a {
+    color: $lightBlue;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $blue;
+    }
+  }
+
   @include md {
     width: 65%;
     padding: 37px;
