@@ -29,6 +29,7 @@ export interface DoctorScheduleProps {
     extraAbsenceSettings: string;
     doctor: string;
     defaultAbsenceMessage: string;
+    phone: string;
   };
 }
 
@@ -138,13 +139,15 @@ const highlightAbsence = (defaultAbsenceMessage, absences, absenceMessage) => {
 }
 
 const absenceSettings = (extraAbsenceSettings, doctor) => {
-  let absenceDict = extraAbsenceSettings.split('\n')
-  doctor = doctor.trim()
-
-  for (let i = 0; i < absenceDict.length; i++) {
-    absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
-    if (absenceDict[i][1] === doctor) {
-      return absenceDict[i];
+  if (extraAbsenceSettings) {
+    let absenceDict = extraAbsenceSettings.split('\n')
+    doctor = doctor.trim()
+  
+    for (let i = 0; i < absenceDict.length; i++) {
+      absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
+      if (absenceDict[i][1] === doctor) {
+        return absenceDict[i];
+      }
     }
   }
   return null;
@@ -152,7 +155,7 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
-    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage } = props.data;
+    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, phone } = props.data;
 
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
@@ -259,6 +262,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                 </table>
               </div>
             )}
+            {phone && <h5>V urgentních případech volejte {phone}.</h5>}
           </>
         )}}
       </Query>
