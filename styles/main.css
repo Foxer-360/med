@@ -3360,13 +3360,9 @@ cite {
 .expertiseList + .doctorList {
   margin-top: 5rem; }
 
-.header + .layout > *:first-child {
-  padding-top: 100px;
-  padding-bottom: 100px; }
-  @media (min-width: 768px) {
-    .header + .layout > *:first-child {
-      min-height: calc(80vh);
-      padding-top: 300px; } }
+@media (min-width: 768px) {
+  .header + .layout > *:first-child {
+    min-height: calc(80vh); } }
 
 .header + .layout > .fullWidthContainer {
   min-height: auto;
