@@ -133,8 +133,6 @@ var DoctorSchedule = function (props) {
     var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage;
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
-        console.log(schedule),
-        console.log(regularWeekTitle),
         Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
         schedule &&
             schedule.weeks &&
