@@ -39,7 +39,7 @@ const PolyclinicBoxes = (props: PolyclinicBoxesProps) => {
                     <div className={'polyclinicBoxes__list__item'}>
                       <Link {...url} />
                       <div className={'colorGradient'} />
-                      {image && image.filename && <Media data={image} type={'image'} />}
+                      {image && image.filename && <Media data={image} type={'image'} width={'285'} height={'280'} />}
 
                       {name && (
                         <div className={'pcTitle'}>

@@ -9,7 +9,7 @@ var Odbornost = function (props) {
         React.createElement(DividerCircles_1.default, null),
         React.createElement("div", { className: 'container' },
             React.createElement("div", { className: "row" },
-                React.createElement("div", { className: "col-md-12 col-lg-6" }, image && React.createElement(Media_1.default, { type: 'image', data: image })),
+                React.createElement("div", { className: "col-md-12 col-lg-6" }, image && React.createElement(Media_1.default, { type: 'image', data: image, width: '420', height: '290' })),
                 React.createElement("div", { className: "col-md-12 col-lg-6" },
                     React.createElement("div", { className: 'odbornost__contentWrapper' },
                         React.createElement("div", { className: 'odbornost__content' },

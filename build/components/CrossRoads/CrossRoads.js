@@ -26,7 +26,7 @@ var CrossRoads = function (props) {
                         data.map(function (item, index) {
                             return (React.createElement("div", { className: 'col-md-12 col-lg-4', key: index },
                                 React.createElement("div", { className: 'crossRoads__card' },
-                                    React.createElement("div", { className: 'crossRoads__card__img' }, item.image && React.createElement(Media_1.default, { type: "image", data: item.image })),
+                                    React.createElement("div", { className: 'crossRoads__card__img' }, item.image && React.createElement(Media_1.default, { type: "image", data: item.image, width: '90', height: '90' })),
                                     item.text && React.createElement("p", null, item.text),
                                     item.link && React.createElement(Link_1.default, __assign({}, item.link, { style: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' } })))));
                         });

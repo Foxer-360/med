@@ -5,15 +5,18 @@ import List from '../List';
 import Media from '../../partials/Media';
 import PcTitle from './components/title';
 import Button from '../../partials/Button';
+import Link from '../../partials/Link';
 
 interface Clinic {
   name: string;
   image: LooseObject;
   description: string;
   address: string;
+  addressUrl: string;
   district: string;
   phone: string;
   transport: string;
+  transportUrl: string;
   transportImage: LooseObject;
   station: string;
   services: string;
@@ -85,10 +88,18 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                             <img src="../../../assets/medicon/images/geoIcon.svg" alt="Medicon GeoLocation Icon" />
 
                             <div>
+                                {clinic.addressUrl ? 
+                              <p>
+                                <a href={clinic.addressUrl} target="_blank">
+                                {clinic.address && clinic.address} <br />
+                                {clinic.district && clinic.district}
+                                {clinic.district && clinic.district}</a>
+                              </p>
+                                :
                               <p>
                                 {clinic.address && clinic.address} <br />
                                 {clinic.district && clinic.district}
-                              </p>
+                              </p>}
 
                               {clinic.clinic &&
                                 <p
@@ -104,19 +115,28 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
 
                           <div className="pcitem__info__details__item">
                             <img src="../../../assets/medicon/images/phoneIcon.svg" alt="Medicon Phone Icon" />
-                            {clinic.phone && <p>{clinic.phone}</p>}
+                            {clinic.phone && <p><a href={`callto:${clinic.phone.replace(/ /g,'')}`}>{clinic.phone}</a></p>}
                           </div>
 
                           <div className="pcitem__info__details__item">
-                            {clinic.transportImage && <Media data={clinic.transportImage} type="image" />}
+                            {clinic.transportImage && <Media data={clinic.transportImage} type="image" width={'42'} height={'50'} />}
 
                             {!clinic.transportImage && <img src="../../../assets/medicon/images/metro2.png" alt="" />}
 
+                            {clinic.transportUrl ?
+                            <p>
+                              <a href={clinic.transportUrl} target="_blank">
+                              {clinic.transport && clinic.transport}
+                              <br />
+                              {clinic.station && clinic.station}
+                              </a>
+                            </p>
+                            :
                             <p>
                               {clinic.transport && clinic.transport}
                               <br />
                               {clinic.station && clinic.station}
-                            </p>
+                            </p>}
                           </div>
                         </div>
 

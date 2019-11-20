@@ -117,7 +117,7 @@ class Timeline extends React.Component<TimelineProps, TimelineState> {
                 items.indexOf(positionItem) % 2 === 0 ? 'point__content--top' : 'point__content--bottom'
               }`}
             >
-              {positionItem.image && <Media data={positionItem.image} type="image" />}
+              {positionItem.image && <Media data={positionItem.image} type="image" width={'50'} height={'50'} />}
               <p>{positionItem.descriptionA}</p>
               <p>{positionItem.descriptionB}</p>
               <h5>{positionItem.name}</h5>

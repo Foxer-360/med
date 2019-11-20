@@ -1,4 +1,5 @@
 import * as React from 'react';
+import LazyLoad from 'react-lazyload';
 
 import ImgWithFallback from './components/ImgWithFallback';
 
@@ -40,15 +41,17 @@ class Media extends React.Component<MediaProps, MediaState> {
       recommendedSizes = this.setDimensions();
       
       return (
-        <ImgWithFallback
-          originalSrc={originalUrl}
-          alt={data.alt || ''}
-          baseUrl={baseUrl}
-          recommendedSizes={recommendedSizes}
-          originalData={data}
-          hash={data.hash}
-          classes={this.props.classes}
-        />
+        <LazyLoad height={this.props.height} offset={'100'}>
+          <ImgWithFallback
+            originalSrc={originalUrl}
+            alt={data.alt || ''}
+            baseUrl={baseUrl}
+            recommendedSizes={recommendedSizes}
+            originalData={data}
+            hash={data.hash}
+            classes={this.props.classes}
+          />
+        </LazyLoad>
       );
     } else {
       return null;

@@ -19,7 +19,7 @@ export default function ViewsAboutUsElement(props: ViewsAboutUsElementProps) {
         <div className="row">
 
           <div className="col-4 col-md-5">
-            <div>{image && <Media type={'image'} data={image} />}</div>
+            <div>{image && <Media type={'image'} data={image} width={'106'} height={'124'} />}</div>
           </div>
 
           <div className="col-8 col-md-7">

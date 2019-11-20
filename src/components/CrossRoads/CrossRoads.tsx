@@ -30,7 +30,7 @@ const CrossRoads = (props: CrossRoadsProps) => {
                   <div className={'col-md-12 col-lg-4'} key={index}>
                     <div className={'crossRoads__card'}>
                       <div className={'crossRoads__card__img'}>
-                        {item.image && <Media type="image" data={item.image} />}
+                        {item.image && <Media type="image" data={item.image} width={'90'} height={'90'} />}
                       </div>
                       {item.text && <p>{item.text}</p>}
                       {item.link && <Link 

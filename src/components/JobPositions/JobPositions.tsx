@@ -3,11 +3,11 @@ import * as React from 'react';
 import List from '../List';
 import Button from '../../partials/Button';
 import getImageUrl from '../../helpers/getImageUrl';
+import BckgImgWithFallback from '../../partials/Media/components/BckgImgWithFallback'
 
 interface Position {
   name: string;
   url?: LooseObject;
-  // polyclinic: string;
   image?: LooseObject;
 }
 
@@ -29,7 +29,8 @@ class JobPositions extends React.Component<JobPositionsProps, JobPositionsState>
     super(props);
 
     this.state = {
-      numberOfPage: 1
+      numberOfPage: 1,
+      filter: 'Všechny polikliniky'
     };
   }
 
@@ -37,17 +38,14 @@ class JobPositions extends React.Component<JobPositionsProps, JobPositionsState>
     return items.map((position, index) => {
 
       return (
-        position.polyclinic === this.state.filter 
+        position.polyclinic === this.state.filter
         || this.state.filter === 'Všechny polikliniky'
-      ) && (
-          <div 
-            key={index} 
+      ) && position.url && position.url.url && (
+          <div
+            key={index}
             className={'col-sm-12 col-lg-6 col-xl-4'}
           >
-            <div
-              className={'positions__element'}
-              style={{ backgroundImage: position.image && `url(${getImageUrl(position.image)})` }}
-            >
+            <BckgImgWithFallback classes={'positions__element'} image={position.image} sizes={{ width: 400, height: 296 }}>
               <div className={'positions__element-content'}>
                 {position.name && <p>{position.name}</p>}
                 <Button classes={'btn--whiteBorder'} url={position.url}>
@@ -59,20 +57,20 @@ class JobPositions extends React.Component<JobPositionsProps, JobPositionsState>
                 className={'positions__colorGradient'}
                 style={{ background: `linear-gradient(to bottom, transparent 0%, #2473ba 100%)` }}
               />
-            </div>
+            </BckgImgWithFallback>
           </div>
-      );
+        );
     });
   }
-  
+
   render() {
     const { title, positions } = this.props.data;
-
+    
     return (
       <List data={positions}>
         {({ getPage }) => {
           const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 3);
-          
+
           return (
             <div className={'container'}>
               <div className={'actual-positions'}>

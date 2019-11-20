@@ -105,8 +105,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   public render() {
-    this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
-
     return (
       <ComposedQuery>
         {({ getPagesUrls: { loading, error, data }, context }) => {
@@ -166,7 +164,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
               <div className={'header__iso'}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <polygon fill="white" points={`0,0 0,50 ${this.state.vX},100 100,0`} />
+                  <polygon fill="white" points={`0,0 0,25 ${this.state.vX},80 100,0`} />
                 </svg>
               </div>
 

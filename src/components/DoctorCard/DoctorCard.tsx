@@ -43,7 +43,7 @@ const DoctorCard = (props: DoctorCardProps) => {
     <section className={'doctorCard'}>
       <div className="container">
         <div className={'doctorCard__main'}>
-          {(doctorImage && doctorImage.filename && <Media data={doctorImage} type="image" />) || (
+          {(doctorImage && doctorImage.filename && <Media data={doctorImage} type="image"  width={'400'} height={'400'} />) || (
             <img src="/assets/medicon/images/doctorIcon.svg" />
           )}
 

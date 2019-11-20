@@ -9,7 +9,7 @@ var BlogArticle = function (props) {
         React.createElement("div", { className: "container" },
             title && React.createElement("h1", { className: 'gradientHeading' }, title),
             image &&
-                React.createElement(Media_1.default, { data: image, type: 'image', height: isImageSquare && '600', classes: isImageSquare ? 'blogArticle--squareImage' : '' }),
+                React.createElement(Media_1.default, { data: image, type: 'image', width: '790', height: isImageSquare ? '600' : '360', classes: isImageSquare ? 'blogArticle--squareImage' : '' }),
             React.createElement("div", { className: "blogArticle__content " + (textAlign || 'center') },
                 React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: text, renderers: {
                         // tslint:disable-next-line:no-any

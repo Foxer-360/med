@@ -95,7 +95,6 @@ var Header = /** @class */ (function (_super) {
     };
     Header.prototype.render = function () {
         var _this = this;
-        this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
@@ -124,7 +123,7 @@ var Header = /** @class */ (function (_super) {
                             React.createElement(Hamburger_1.default, { active: _this.state.menuActive, onClick: _this.toggleMenu })))),
                 React.createElement("div", { className: 'header__iso' },
                     React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "none" },
-                        React.createElement("polygon", { fill: "white", points: "0,0 0,50 " + _this.state.vX + ",100 100,0" }))),
+                        React.createElement("polygon", { fill: "white", points: "0,0 0,25 " + _this.state.vX + ",80 100,0" }))),
                 React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                     React.createElement("div", { className: 'hiddenMenu__wrapper' },
                         React.createElement("ul", null, secNavItems &&

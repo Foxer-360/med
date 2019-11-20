@@ -18,13 +18,95 @@ var SearchBar_1 = require("../SearchBar/SearchBar");
 var getImageUrl_1 = require("../../helpers/getImageUrl");
 var Hero = /** @class */ (function (_super) {
     __extends(Hero, _super);
-    function Hero() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Hero(props) {
+        var _this = _super.call(this, props) || this;
+        _this.getSizedUrl = function (image) {
+            var baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
+            var sizedUrl = null;
+            var sizes = { width: '1920',
+                height: '650' };
+            _this.setState({
+                loading: true,
+            });
+            if (sizes && sizes.width && sizes.height && image && image.filename) {
+                var filename = image.filename.split('.');
+                filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
+                filename = filename.join('.');
+                sizedUrl = baseUrl + image.category + image.hash + '_' + filename;
+                _this.setState({
+                    src: sizedUrl,
+                });
+            }
+            else {
+                _this.setState({
+                    src: image,
+                });
+            }
+        };
+        _this.handleError = function () {
+            _this.createVariantIfDoesNotExist();
+            _this.setState({
+                loading: true,
+                src: _this.props.data.image,
+            });
+        };
+        _this.createVariantIfDoesNotExist = function () {
+            var sizes = { width: '1920',
+                height: '650' };
+            fetch(process.env.REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: _this.props.data.image.id,
+                    width: parseInt(sizes.width, 10),
+                    height: parseInt(sizes.height, 10),
+                }),
+            })
+                .then(function (response) {
+                // this.getSizedUrl();
+            })
+                .catch(function () {
+                console.log('There was an error creating variant');
+            });
+        };
+        _this.state = {
+            src: null,
+            loading: true,
+        };
+        return _this;
     }
+    Hero.prototype.componentDidMount = function () {
+        this.getSizedUrl(this.props.data.image);
+    };
+    Hero.prototype.loadImg = function (src) {
+        var _this = this;
+        if (src) {
+            var img = new Image();
+            img.src = src;
+            img.onload = function () {
+                _this.setState({
+                    loading: false,
+                });
+            };
+            img.onerror = function (err) {
+                _this.handleError();
+            };
+        }
+    };
+    Hero.prototype.componentWillUpdate = function (nextProps, nextState) {
+        if (this.state.src !== nextState.src) {
+            this.loadImg(nextState.src);
+        }
+        if (nextProps.data.image !== this.props.data.image) {
+            this.getSizedUrl(nextProps);
+        }
+    };
     Hero.prototype.render = function () {
         var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image, placeholder = _a.placeholder, displayOverlay = _a.displayOverlay, titleColor = _a.titleColor, textColor = _a.textColor;
         return (React.createElement("div", { className: "fullWidthContainer" },
-            React.createElement("section", { className: 'hero', style: { backgroundImage: image && "url(" + getImageUrl_1.default(image) + ")" } },
+            React.createElement("section", { className: 'hero', style: { backgroundImage: image && "url(" + getImageUrl_1.default(this.state.src) + ")" } },
                 displayOverlay && React.createElement("div", { className: 'hero__overlay' }),
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },
