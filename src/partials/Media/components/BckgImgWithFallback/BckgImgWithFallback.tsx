@@ -3,10 +3,6 @@ import * as React from 'react';
 import getImageUrl from '../../../../helpers/getImageUrl';
 
 export interface BckgImgWithFallbackProps {
-  // alt?: string;
-  // image?: string;
-  // baseUrl: string;
-  // hash: string;
   sizes: LooseObject;
   image: LooseObject;
   classes?: string;
