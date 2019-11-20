@@ -242,7 +242,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                           {(absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
-                          {(absence.toDate.date && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
+                          {(absence.toDate.date && absence.subcategory.id !== 31 && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
                           {Array.isArray(absenceMessage) ? (<ReactMarkdown
