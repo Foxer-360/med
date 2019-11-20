@@ -260,9 +260,9 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                     ))}
                   </tbody>
                 </table>
-                {phone && <h5>V případě urgentních případů volejte {phone}.</h5>}
               </div>
             )}
+            {phone && <h5>V urgentních případech volejte {phone}.</h5>}
           </>
         )}}
       </Query>
