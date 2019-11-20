@@ -3555,10 +3555,8 @@ cite {
     left: 0; }
     @media (min-width: 1250px) {
       .header__iso {
-        height: 70px;
-        bottom: -70px;
-        height: 50px;
-        bottom: -70px; } }
+        height: 40px;
+        bottom: -40px; } }
     .header__iso svg {
       position: absolute;
       bottom: 1px;
@@ -3570,7 +3568,7 @@ cite {
         transition: 300ms ease; }
       @media (min-width: 1250px) {
         .header__iso svg {
-          height: 70px; } }
+          height: 40px; } }
   .header__wrapper {
     justify-content: space-between;
     align-items: center;
@@ -3580,7 +3578,7 @@ cite {
     flex-wrap: nowrap; }
     @media (min-width: 768px) {
       .header__wrapper {
-        padding-top: 1rem; } }
+        padding: 1rem 0; } }
     .header__wrapper .navItemActive:after {
       content: "";
       display: block;

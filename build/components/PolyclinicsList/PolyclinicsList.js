@@ -63,7 +63,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                 React.createElement("div", null,
                                                     clinic.addressUrl ?
                                                         React.createElement("p", null,
-                                                            React.createElement("a", { href: clinic.addressUrl },
+                                                            React.createElement("a", { href: clinic.addressUrl, target: "_blank" },
                                                                 clinic.address && clinic.address,
                                                                 " ",
                                                                 React.createElement("br", null),
@@ -88,7 +88,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                 !clinic.transportImage && React.createElement("img", { src: "../../../assets/medicon/images/metro2.png", alt: "" }),
                                                 clinic.transportUrl ?
                                                     React.createElement("p", null,
-                                                        React.createElement("a", { href: clinic.transportUrl },
+                                                        React.createElement("a", { href: clinic.transportUrl, target: "_blank" },
                                                             clinic.transport && clinic.transport,
                                                             React.createElement("br", null),
                                                             clinic.station && clinic.station))
