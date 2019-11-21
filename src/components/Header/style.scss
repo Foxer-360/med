@@ -177,7 +177,7 @@
   box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
   z-index: -1;
   width: 100%;
-  display: flex;
+  display: none;
   align-items: center;
 
   @include md {
@@ -186,6 +186,7 @@
 
   &--active {
     transform: translate(0, 0);
+    display:flex
   }
 
   &__wrapper {
