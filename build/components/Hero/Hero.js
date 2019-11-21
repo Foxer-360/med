@@ -15,7 +15,8 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var SearchBar_1 = require("../SearchBar/SearchBar");
-var getImageUrl_1 = require("../../helpers/getImageUrl");
+var readEnvVariable_1 = require("../../helpers/readEnvVariable");
+var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
 var Hero = /** @class */ (function (_super) {
     __extends(Hero, _super);
     function Hero(props) {
@@ -53,7 +54,7 @@ var Hero = /** @class */ (function (_super) {
         _this.createVariantIfDoesNotExist = function () {
             var sizes = { width: '1920',
                 height: '650' };
-            fetch(process.env.REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
+            fetch(REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ var Hero = /** @class */ (function (_super) {
     Hero.prototype.render = function () {
         var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image, placeholder = _a.placeholder, displayOverlay = _a.displayOverlay, titleColor = _a.titleColor, textColor = _a.textColor;
         return (React.createElement("div", { className: "fullWidthContainer" },
-            React.createElement("section", { className: 'hero', style: { backgroundImage: image && "url(" + getImageUrl_1.default(this.state.src) + ")" } },
+            React.createElement("section", { className: 'hero', style: { backgroundImage: image && "url(" + this.state.src + ")" } },
                 displayOverlay && React.createElement("div", { className: 'hero__overlay' }),
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },

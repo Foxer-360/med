@@ -25,7 +25,8 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var getImageUrl_1 = require("../../../../helpers/getImageUrl");
+var readEnvVariable_1 = require("../../../../helpers/readEnvVariable");
+var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
 var BckgImgWithFallback = /** @class */ (function (_super) {
     __extends(BckgImgWithFallback, _super);
     function BckgImgWithFallback(props) {
@@ -62,7 +63,7 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
         };
         _this.createVariantIfDoesNotExist = function () {
             if (_this.props.sizes) {
-                fetch(process.env.REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
+                fetch(REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -115,7 +116,7 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
     };
     BckgImgWithFallback.prototype.render = function () {
         var _a = this.props, image = _a.image, classes = _a.classes, addStyles = _a.addStyles;
-        return (React.createElement("div", { className: classes, style: __assign({ backgroundImage: image && "url(" + getImageUrl_1.default(this.state.src) + ")" }, addStyles) }, this.props.children));
+        return (React.createElement("div", { className: classes, style: __assign({ backgroundImage: image && "url(" + this.state.src + ")" }, addStyles) }, this.props.children));
     };
     return BckgImgWithFallback;
 }(React.Component));

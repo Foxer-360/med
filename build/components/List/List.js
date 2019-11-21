@@ -36,6 +36,8 @@ var graphql_tag_1 = require("graphql-tag");
 var R = require("ramda");
 var removeAccents = require("remove-accents");
 var Loader_1 = require("../../partials/Loader");
+var readEnvVariable_1 = require("../../helpers/readEnvVariable");
+var REACT_APP_ORIGIN = readEnvVariable_1.default('REACT_APP_ORIGIN');
 var escape = function (str) {
     // TODO: escape %x75 4HEXDIG ?? chars
     return str
@@ -273,7 +275,7 @@ var List = /** @class */ (function (_super) {
             return this.datasourcesList(data, searchedFragments, this.props.searchKeys);
         }
         if (data && data.sourceType === 'pages') {
-            return (React.createElement(AllPagesComposedQuery, { ssr: false, origin: process.env.REACT_APP_ORIGIN || origin, url: location.pathname }, function (_a) {
+            return (React.createElement(AllPagesComposedQuery, { origin: REACT_APP_ORIGIN || origin, url: location.pathname }, function (_a) {
                 var _b = _a.allPages, allPagesData = _b.data, allPagesLoading = _b.loading, allPagesError = _b.error, frontend = _a.getFrontend.frontend, pageData = _a.getContext.pageData;
                 var pageId = (pageData && pageData.id) ||
                     (frontend && frontend.page && frontend.page.id);

@@ -15,13 +15,15 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var getImageUrl_1 = require("../../../../helpers/getImageUrl");
+var readEnvVariable_1 = require("../../../../helpers/readEnvVariable");
+var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
 var ImgWithFallback = /** @class */ (function (_super) {
     __extends(ImgWithFallback, _super);
     function ImgWithFallback(props) {
         var _this = _super.call(this, props) || this;
         _this.createVariantIfDoesNotExist = function () {
             if (_this.props.recommendedSizes) {
-                fetch(process.env.REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
+                fetch(REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

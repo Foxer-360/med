@@ -177,7 +177,24 @@ var DoctorSchedule = function (props) {
                 return absence && moment(absence.fromDate.date) < moment().add(1, 'M')
                     && moment(absence.toDate.date) > moment();
             });
-           React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); })))))));
+            return (React.createElement(React.Fragment, null,
+                nextMonthAbsences && Array.isArray(nextMonthAbsences) && nextMonthAbsences.length > 0 && (React.createElement("div", { className: 'absences' },
+                    React.createElement("h4", null, "Nep\u0159\u00EDtomnost"),
+                    React.createElement("table", null,
+                        React.createElement("thead", null,
+                            React.createElement("tr", null,
+                                React.createElement("td", null, "Od"),
+                                React.createElement("td", null, "Do"),
+                                React.createElement("td", null, "Zastupuje"))),
+                        React.createElement("tbody", null, nextMonthAbsences.map(function (absence, i) { return (React.createElement("tr", { key: i },
+                            React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''),
+                            React.createElement("td", null, (absence.toDate.date && absence.subcategory.id !== 31 && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''),
+                            React.createElement("td", null, Array.isArray(absenceMessage) ? (React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: absenceMessage[2] })) :
+                                React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); }))))),
+                phone && React.createElement("h5", null,
+                    "V urgentn\u00EDch p\u0159\u00EDpadech volejte ",
+                    phone,
+                    ".")));
         })));
 };
 exports.default = DoctorSchedule;
