@@ -7,6 +7,9 @@ import * as R from 'ramda';
 import * as removeAccents from 'remove-accents';
 
 import Loader from '../../partials/Loader';
+import readEnvVariable from '../../helpers/readEnvVariable';
+
+const REACT_APP_ORIGIN = readEnvVariable('REACT_APP_ORIGIN');
 
 const escape = function (str: string) {
   // TODO: escape %x75 4HEXDIG ?? chars
@@ -301,7 +304,7 @@ class List extends React.Component<Properties, {}> {
 
     if (data && data.sourceType === 'pages') {
       return (
-          <AllPagesComposedQuery ssr={false} origin={process.env.REACT_APP_ORIGIN || origin} url={location.pathname}>
+          <AllPagesComposedQuery origin={REACT_APP_ORIGIN || origin} url={location.pathname}>
             {({
               allPages: { data: allPagesData, loading: allPagesLoading, error: allPagesError },
               getFrontend: { frontend },
