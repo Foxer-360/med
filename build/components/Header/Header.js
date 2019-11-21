@@ -124,7 +124,7 @@ var Header = /** @class */ (function (_super) {
                 React.createElement("div", { className: 'header__iso' },
                     React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "none" },
                         React.createElement("polygon", { fill: "white", points: "0,0 0,25 " + _this.state.vX + ",80 100,0" }))),
-                React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : ''), style: _this.state.menuActive ? null : { display: 'none' } },
+                React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                     React.createElement("div", { className: 'hiddenMenu__wrapper' },
                         React.createElement("ul", null, secNavItems &&
                             secNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link_1.default, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))));

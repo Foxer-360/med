@@ -3689,14 +3689,15 @@ cite {
   box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
   z-index: -1;
   width: 100%;
-  display: flex;
+  display: none;
   align-items: center; }
   @media (min-width: 768px) {
     .hiddenMenu {
       width: 100%; } }
   .hiddenMenu--active {
     -webkit-transform: translate(0, 0);
-            transform: translate(0, 0); }
+            transform: translate(0, 0);
+    display: flex; }
   .hiddenMenu__wrapper {
     padding: 50px 30px 50px 30px;
     overflow-y: scroll;
