@@ -168,7 +168,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 </svg>
               </div>
 
-              <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
+              <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}
+              style={this.state.menuActive ? null : {display: 'none'}}>
                 <div className={'hiddenMenu__wrapper'}>
                   <ul>
                     {secNavItems &&
