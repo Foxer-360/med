@@ -2,6 +2,10 @@ import * as React from 'react';
 
 import SearchBar from '../SearchBar/SearchBar';
 import getImageUrl from '../../helpers/getImageUrl';
+import readEnvVariable from '../../helpers/readEnvVariable';
+
+const REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable('REACT_APP_MEDIA_LIBRARY_SERVER');
+
 
 export interface HeroProps {
   data: {
@@ -104,7 +108,7 @@ class Hero extends React.Component<HeroProps, HeroState> {
     let sizes = {width: '1920',
                 height: '650'};
 
-    fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
+    fetch(`${REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -125,10 +129,10 @@ class Hero extends React.Component<HeroProps, HeroState> {
 
   public render() {
     const { title, text, displaySearch, image, placeholder, displayOverlay, titleColor, textColor } = this.props.data;
-
+    
     return (
       <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: image && `url(${getImageUrl(this.state.src)})` }}>
+        <section className={'hero'} style={{ backgroundImage: image && `url(${this.state.src})` }}>
           {displayOverlay && <div className={'hero__overlay'} />}
           <div className={'container'}>
             <div className={'hero__holder'}>

@@ -1,6 +1,9 @@
 import * as React from 'react';
 
 import getImgUrl from '../../../../helpers/getImageUrl';
+import readEnvVariable from '../../../../helpers/readEnvVariable';
+
+const REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable('REACT_APP_MEDIA_LIBRARY_SERVER');
 
 export interface ImgWithFallbackProps {
   alt?: string;
@@ -29,7 +32,7 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
 
   createVariantIfDoesNotExist = () => {
     if (this.props.recommendedSizes) {
-      fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
+      fetch(`${REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

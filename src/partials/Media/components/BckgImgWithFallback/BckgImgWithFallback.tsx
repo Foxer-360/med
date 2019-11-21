@@ -1,6 +1,9 @@
 import * as React from 'react';
 
 import getImageUrl from '../../../../helpers/getImageUrl';
+import readEnvVariable from '../../../../helpers/readEnvVariable';
+
+const REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable('REACT_APP_MEDIA_LIBRARY_SERVER');
 
 export interface BckgImgWithFallbackProps {
   sizes: LooseObject;
@@ -93,7 +96,7 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
 
   createVariantIfDoesNotExist = () => {
     if (this.props.sizes) {
-      fetch(`${process.env.REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
+      fetch(`${REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +121,7 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
 
     return (
       <div className={classes}
-      style={{ backgroundImage: image && `url(${getImageUrl(this.state.src)})`, ...addStyles }}>
+      style={{ backgroundImage: image && `url(${this.state.src})`, ...addStyles }}>
         {this.props.children}
       </div>
     );
