@@ -23,7 +23,7 @@ export interface HeroProps {
 }
 
 export interface HeroState {
-  src: LooseObject;
+  src: string;
   loading: boolean;
 }
 
@@ -37,15 +37,34 @@ class Hero extends React.Component<HeroProps, HeroState> {
     };
   }
 
-  componentDidMount() {
-    this.getSizedUrl(this.props.data.image);
+  createVariantIfDoesNotExist = () => {
+    let sizes = {width: '' + Math.round(1920 * 1.5),
+                height: '' + Math.round(650  * 1.5)};
+
+    fetch(`${REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: this.props.data.image.id,
+        width: parseInt(sizes.width, 10),
+        height: parseInt(sizes.height, 10),
+      }),
+    })
+      .then(response => {
+        // this.getSizedUrl(this.props.data.image);
+      })
+      .catch(() => {
+        console.log('There was an error creating variant');
+      });
   }
 
   getSizedUrl = image => {
     const baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
     let sizedUrl = null;
-    let sizes = {width: '1920',
-                height: '650'};
+    let sizes = {width: Math.round(1920 * 1.5),
+                height: Math.round(650 * 1.5)};
 
     this.setState({
       loading: true,
@@ -85,6 +104,10 @@ class Hero extends React.Component<HeroProps, HeroState> {
       };
     }
   }
+
+  componentDidMount() {
+    this.getSizedUrl(this.props.data.image);
+  }
   
   componentWillUpdate(nextProps: HeroProps, nextState: HeroState) {
     if (this.state.src !== nextState.src) {
@@ -100,31 +123,8 @@ class Hero extends React.Component<HeroProps, HeroState> {
 
     this.setState({
       loading: true,     
-      src: this.props.data.image,
+      src: getImageUrl(this.props.data.image),
     });
-  }
-
-  createVariantIfDoesNotExist = () => {
-    let sizes = {width: '1920',
-                height: '650'};
-
-    fetch(`${REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: this.props.data.image.id,
-        width: parseInt(sizes.width, 10),
-        height: parseInt(sizes.height, 10),
-      }),
-    })
-      .then(response => {
-        // this.getSizedUrl();
-      })
-      .catch(() => {
-        console.log('There was an error creating variant');
-      });
   }
 
   public render() {
@@ -132,7 +132,8 @@ class Hero extends React.Component<HeroProps, HeroState> {
     
     return (
       <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: image && `url(${this.state.src})` }}>
+        <section className={'hero'} style={{ backgroundImage: image &&
+          `url(${require(this.state.src) ? this.state.src : getImageUrl(this.props.data.image)})` }}>
           {displayOverlay && <div className={'hero__overlay'} />}
           <div className={'container'}>
             <div className={'hero__holder'}>

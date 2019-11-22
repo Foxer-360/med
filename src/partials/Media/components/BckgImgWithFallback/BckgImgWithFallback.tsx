@@ -13,7 +13,7 @@ export interface BckgImgWithFallbackProps {
 }
 
 export interface BckgImgWithFallbackState {
-  src: LooseObject;
+  src: string;
   loading: boolean;
 }
 
@@ -27,13 +27,33 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
     };
   }
 
-  componentDidMount() {
-    this.getSizedUrl(this.props);
+  createVariantIfDoesNotExist = () => {
+    if (this.props.sizes) {
+      fetch(`${REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: this.props.image.id,
+          width: parseInt(this.props.sizes.width, 10),
+          height: parseInt(this.props.sizes.height, 10),
+        }),
+      })
+        .then(response => {
+          // this.getSizedUrl();
+        })
+        .catch(() => {
+          console.log('There was an error creating variant');
+        });
+    }
   }
 
   getSizedUrl = props => {
     const baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
     let sizedUrl = null;
+    this.props.sizes.width = Math.round(this.props.sizes.width * 1.5)
+    this.props.sizes.height = Math.round(this.props.sizes.height * 1.5)
     let sizes = props.sizes;
     let image = props.image
 
@@ -76,6 +96,10 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
     }
   }
 
+  componentDidMount() {
+    this.getSizedUrl(this.props);
+  }
+
   componentWillUpdate(nextProps: BckgImgWithFallbackProps, nextState: BckgImgWithFallbackState) {
     if (this.state.src !== nextState.src) {
       this.loadImg(nextState.src);
@@ -90,38 +114,18 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
 
     this.setState({
       loading: true,
-      src: this.props.image,    
+      src: getImageUrl(this.props.image),    
     });
-  }
-
-  createVariantIfDoesNotExist = () => {
-    if (this.props.sizes) {
-      fetch(`${REACT_APP_MEDIA_LIBRARY_SERVER}/createDimension`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: this.props.image.id,
-          width: parseInt(this.props.sizes.width, 10),
-          height: parseInt(this.props.sizes.height, 10),
-        }),
-      })
-        .then(response => {
-          // this.getSizedUrl();
-        })
-        .catch(() => {
-          console.log('There was an error creating variant');
-        });
-    }
   }
 
   public render() {  
     const { image, classes, addStyles } = this.props;
-
+    
     return (
       <div className={classes}
-      style={{ backgroundImage: image && `url(${this.state.src})`, ...addStyles }}>
+      style={{ backgroundImage: image
+      && `url(${require(this.state.src) ? this.state.src : getImageUrl(this.props.image)})`,
+      ...addStyles }}>
         {this.props.children}
       </div>
     );
