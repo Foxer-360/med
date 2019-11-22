@@ -25,15 +25,39 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var getImageUrl_1 = require("../../../../helpers/getImageUrl");
 var readEnvVariable_1 = require("../../../../helpers/readEnvVariable");
 var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
 var BckgImgWithFallback = /** @class */ (function (_super) {
     __extends(BckgImgWithFallback, _super);
     function BckgImgWithFallback(props) {
         var _this = _super.call(this, props) || this;
+        _this.createVariantIfDoesNotExist = function () {
+            if (_this.props.sizes) {
+                fetch(REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: _this.props.image.id,
+                        width: parseInt(_this.props.sizes.width, 10),
+                        height: parseInt(_this.props.sizes.height, 10),
+                    }),
+                })
+                    .then(function (response) {
+                    // this.getSizedUrl();
+                })
+                    .catch(function () {
+                    console.log('There was an error creating variant');
+                });
+            }
+        };
         _this.getSizedUrl = function (props) {
             var baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
             var sizedUrl = null;
+            _this.props.sizes.width = Math.round(_this.props.sizes.width * 1.5);
+            _this.props.sizes.height = Math.round(_this.props.sizes.height * 1.5);
             var sizes = props.sizes;
             var image = props.image;
             _this.setState({
@@ -58,29 +82,8 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
             _this.createVariantIfDoesNotExist();
             _this.setState({
                 loading: true,
-                src: _this.props.image,
+                src: getImageUrl_1.default(_this.props.image),
             });
-        };
-        _this.createVariantIfDoesNotExist = function () {
-            if (_this.props.sizes) {
-                fetch(REACT_APP_MEDIA_LIBRARY_SERVER + "/createDimension", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        id: _this.props.image.id,
-                        width: parseInt(_this.props.sizes.width, 10),
-                        height: parseInt(_this.props.sizes.height, 10),
-                    }),
-                })
-                    .then(function (response) {
-                    // this.getSizedUrl();
-                })
-                    .catch(function () {
-                    console.log('There was an error creating variant');
-                });
-            }
         };
         _this.state = {
             src: null,
@@ -88,9 +91,6 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
         };
         return _this;
     }
-    BckgImgWithFallback.prototype.componentDidMount = function () {
-        this.getSizedUrl(this.props);
-    };
     BckgImgWithFallback.prototype.loadImg = function (src) {
         var _this = this;
         if (src) {
@@ -106,6 +106,9 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
             };
         }
     };
+    BckgImgWithFallback.prototype.componentDidMount = function () {
+        this.getSizedUrl(this.props);
+    };
     BckgImgWithFallback.prototype.componentWillUpdate = function (nextProps, nextState) {
         if (this.state.src !== nextState.src) {
             this.loadImg(nextState.src);
@@ -116,7 +119,8 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
     };
     BckgImgWithFallback.prototype.render = function () {
         var _a = this.props, image = _a.image, classes = _a.classes, addStyles = _a.addStyles;
-        return (React.createElement("div", { className: classes, style: __assign({ backgroundImage: image && "url(" + this.state.src + ")" }, addStyles) }, this.props.children));
+        return (React.createElement("div", { className: classes, style: __assign({ backgroundImage: image
+                    && "url(" + (require(this.state.src) ? this.state.src : getImageUrl_1.default(this.props.image)) + ")" }, addStyles) }, this.props.children));
     };
     return BckgImgWithFallback;
 }(React.Component));
