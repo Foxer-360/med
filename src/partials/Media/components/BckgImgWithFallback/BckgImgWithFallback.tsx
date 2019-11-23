@@ -124,7 +124,7 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
     return (
       <div className={classes}
       style={{ backgroundImage: image
-      && `url(${require(this.state.src) ? this.state.src : getImageUrl(this.props.image)})`,
+      && `url(${this.state.src ? this.state.src : getImageUrl(this.props.image)})`,
       ...addStyles }}>
         {this.props.children}
       </div>

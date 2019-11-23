@@ -132,8 +132,8 @@ class Hero extends React.Component<HeroProps, HeroState> {
     
     return (
       <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: image &&
-          `url(${require(this.state.src) ? this.state.src : getImageUrl(this.props.data.image)})` }}>
+        <section className={'hero'} style={{ backgroundImage: image
+          && `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}>
           {displayOverlay && <div className={'hero__overlay'} />}
           <div className={'container'}>
             <div className={'hero__holder'}>
