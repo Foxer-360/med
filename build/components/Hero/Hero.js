@@ -108,8 +108,8 @@ var Hero = /** @class */ (function (_super) {
     Hero.prototype.render = function () {
         var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image, placeholder = _a.placeholder, displayOverlay = _a.displayOverlay, titleColor = _a.titleColor, textColor = _a.textColor;
         return (React.createElement("div", { className: "fullWidthContainer" },
-            React.createElement("section", { className: 'hero', style: { backgroundImage: image &&
-                        "url(" + (require(this.state.src) ? this.state.src : getImageUrl_1.default(this.props.data.image)) + ")" } },
+            React.createElement("section", { className: 'hero', style: { backgroundImage: image
+                        && "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.data.image)) + ")" } },
                 displayOverlay && React.createElement("div", { className: 'hero__overlay' }),
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },

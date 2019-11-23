@@ -120,7 +120,7 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
     BckgImgWithFallback.prototype.render = function () {
         var _a = this.props, image = _a.image, classes = _a.classes, addStyles = _a.addStyles;
         return (React.createElement("div", { className: classes, style: __assign({ backgroundImage: image
-                    && "url(" + (require(this.state.src) ? this.state.src : getImageUrl_1.default(this.props.image)) + ")" }, addStyles) }, this.props.children));
+                    && "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.image)) + ")" }, addStyles) }, this.props.children));
     };
     return BckgImgWithFallback;
 }(React.Component));
