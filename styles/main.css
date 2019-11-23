@@ -2873,6 +2873,7 @@ textarea {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-regular.eot");
   /* IE9 Compat Modes */
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-regular.eot?#iefix") format("embedded-opentype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-regular.woff2") format("woff2"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-regular.woff") format("woff"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-regular.ttf") format("truetype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-regular.svg#Montserrat") format("svg");
@@ -2883,6 +2884,7 @@ textarea {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-500.eot");
   /* IE9 Compat Modes */
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-500.eot?#iefix") format("embedded-opentype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-500.woff2") format("woff2"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-500.woff") format("woff"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-500.ttf") format("truetype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-500.svg#Montserrat") format("svg");
@@ -2893,6 +2895,7 @@ textarea {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
+  font-display: swap;
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-600.eot");
   /* IE9 Compat Modes */
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-600.eot?#iefix") format("embedded-opentype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-600.woff2") format("woff2"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-600.woff") format("woff"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-600.ttf") format("truetype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-600.svg#Montserrat") format("svg");
@@ -2903,6 +2906,7 @@ textarea {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-700.eot");
   /* IE9 Compat Modes */
   src: url("/assets/medicon/fonts/montserrat-v13-latin-ext-700.eot?#iefix") format("embedded-opentype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-700.woff2") format("woff2"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-700.woff") format("woff"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-700.ttf") format("truetype"), url("/assets/medicon/fonts/montserrat-v13-latin-ext-700.svg#Montserrat") format("svg");
