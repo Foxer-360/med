@@ -37,7 +37,7 @@ var Media = /** @class */ (function (_super) {
                 var recommendedSizes = (data && data.recommendedSizes) || null;
                 var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
                 recommendedSizes = _this.setDimensions();
-                return (React.createElement(react_lazyload_1.default, { height: _this.props.height, offset: '100' },
+                return (React.createElement(react_lazyload_1.default, { height: recommendedSizes.height, offset: '100' },
                     React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, classes: _this.props.classes })));
             }
             else {

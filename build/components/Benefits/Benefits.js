@@ -23,7 +23,8 @@ var Benefits = function (props) {
             React.createElement("div", { className: 'container' },
                 React.createElement("div", { className: 'benefits__list row' }, data && data.map(function (benefit, i) { return (React.createElement("div", { key: i, className: "col-12 col-sm-6 col-md-4 col-lg-3" },
                     React.createElement(Link_1.default, __assign({}, benefit.url, { className: 'benefits__list__element' }),
-                        benefit.image && benefit.image.filename && React.createElement(Media_1.default, { type: 'image', data: benefit.image, width: '65', height: '66' }),
+                        benefit.image && benefit.image.filename &&
+                            React.createElement(Media_1.default, { type: 'image', data: benefit.image, width: '65', height: '66' }),
                         benefit.text && React.createElement("p", { className: benefit.url && 'elBenefitHover' }, benefit.text)))); })))));
     }));
 };

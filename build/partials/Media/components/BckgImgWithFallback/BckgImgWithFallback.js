@@ -27,6 +27,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var getImageUrl_1 = require("../../../../helpers/getImageUrl");
 var readEnvVariable_1 = require("../../../../helpers/readEnvVariable");
+var react_lazyload_1 = require("react-lazyload");
 var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
 var BckgImgWithFallback = /** @class */ (function (_super) {
     __extends(BckgImgWithFallback, _super);
@@ -40,7 +41,7 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        id: _this.props.image.id,
+                        id: _this.props.originalData.id,
                         width: parseInt(_this.props.sizes.width, 10),
                         height: parseInt(_this.props.sizes.height, 10),
                     }),
@@ -59,22 +60,21 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
             _this.props.sizes.width = Math.round(_this.props.sizes.width * 1.5);
             _this.props.sizes.height = Math.round(_this.props.sizes.height * 1.5);
             var sizes = props.sizes;
-            var image = props.image;
             _this.setState({
                 loading: true,
             });
-            if (sizes && sizes.width && sizes.height && image && image.filename) {
-                var filename = image.filename.split('.');
+            if (sizes && sizes.width && sizes.height && props.originalData && props.originalData.filename) {
+                var filename = props.originalData.filename.split('.');
                 filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
                 filename = filename.join('.');
-                sizedUrl = baseUrl + image.category + image.hash + '_' + filename;
+                sizedUrl = baseUrl + props.originalData.category + props.originalData.hash + '_' + filename;
                 _this.setState({
                     src: sizedUrl,
                 });
             }
             else {
                 _this.setState({
-                    src: image,
+                    src: _this.state.originalSrc,
                 });
             }
         };
@@ -82,12 +82,13 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
             _this.createVariantIfDoesNotExist();
             _this.setState({
                 loading: true,
-                src: getImageUrl_1.default(_this.props.image),
+                src: _this.state.originalSrc,
             });
         };
         _this.state = {
             src: null,
             loading: true,
+            originalSrc: getImageUrl_1.default(_this.props.originalData)
         };
         return _this;
     }
@@ -113,14 +114,19 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
         if (this.state.src !== nextState.src) {
             this.loadImg(nextState.src);
         }
-        if (nextProps.image !== this.props.image) {
+        if (nextState.originalSrc !== this.state.originalSrc) {
             this.getSizedUrl(nextProps);
         }
     };
     BckgImgWithFallback.prototype.render = function () {
-        var _a = this.props, image = _a.image, classes = _a.classes, addStyles = _a.addStyles;
-        return (React.createElement("div", { className: classes, style: __assign({ backgroundImage: image
-                    && "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.image)) + ")" }, addStyles) }, this.props.children));
+        var _a = this.props, classes = _a.classes, addStyles = _a.addStyles;
+        if (this.props.originalData && this.props.originalData.filename) {
+            return (React.createElement(react_lazyload_1.default, { height: this.props.sizes.height * 1.5, offset: '100' },
+                React.createElement("div", { className: classes, style: __assign({ backgroundImage: "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.originalData)) + ")" }, addStyles) }, this.props.children)));
+        }
+        else {
+            return null;
+        }
     };
     return BckgImgWithFallback;
 }(React.Component));
