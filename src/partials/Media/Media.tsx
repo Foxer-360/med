@@ -41,7 +41,7 @@ class Media extends React.Component<MediaProps, MediaState> {
       recommendedSizes = this.setDimensions();
       
       return (
-        <LazyLoad height={this.props.height} offset={'100'}>
+        <LazyLoad height={recommendedSizes.height} offset={'100'}>
           <ImgWithFallback
             originalSrc={originalUrl}
             alt={data.alt || ''}

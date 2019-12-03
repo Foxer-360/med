@@ -74,11 +74,11 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
     
     const flatAndSplitNames = [...names
       .toString()
-      .split(',')]
+      .split(',')];
 
-    const polyclinicNames = flatAndSplitNames.map(item => 'Poliklinika '.concat(item.trim()))
+    const polyclinicNames = flatAndSplitNames.map(item => 'Poliklinika '.concat(item.trim()));
 
-    const uniquePolyclinicNames = [...new Set(polyclinicNames)]
+    const uniquePolyclinicNames = [...new Set(polyclinicNames)];
 
     return uniquePolyclinicNames;
   }
@@ -139,7 +139,8 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
                       return (
                         <div className={'doctorList__item'} key={index}>
                           <div className={'doctorList__item__img'}>
-                            {(doctor.image && doctor.image.filename && <Media data={doctor.image} type="image" width={'190'} height={'190'} />) || (
+                            {(doctor.image && doctor.image.filename && 
+                            <Media data={doctor.image} type="image" width={'190'} height={'190'} />) || (
                               <img
                                 className="avatarImg"
                                 src={'../../../assets/medicon/images/doctorIcon.svg'}

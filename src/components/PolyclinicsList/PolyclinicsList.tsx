@@ -78,7 +78,9 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                 <div className="fullWidthContainer">
                   <div className="container">
                     <div className="pcitem__wrapper">
-                      <div className={'pcitem__img'}>{clinic.image && <Media data={clinic.image} type="image" />}</div>
+                      <div className={'pcitem__img'}>
+                        {clinic.image && <Media data={clinic.image} type="image" width={'362'} height={'420'}  />}
+                      </div>
 
                       <div className={'pcitem__info'}>
                         <PcTitle name={clinic.name} />
@@ -115,11 +117,13 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
 
                           <div className="pcitem__info__details__item">
                             <img src="../../../assets/medicon/images/phoneIcon.svg" alt="Medicon Phone Icon" />
-                            {clinic.phone && <p><a href={`callto:${clinic.phone.replace(/ /g,'')}`}>{clinic.phone}</a></p>}
+                            {clinic.phone && 
+                            <p><a href={`callto:${clinic.phone.replace(/ /g,'')}`}>{clinic.phone}</a></p>}
                           </div>
 
                           <div className="pcitem__info__details__item">
-                            {clinic.transportImage && <Media data={clinic.transportImage} type="image" width={'42'} height={'50'} />}
+                            {clinic.transportImage && 
+                            <Media data={clinic.transportImage} type="image" width={'42'} height={'50'} />}
 
                             {!clinic.transportImage && <img src="../../../assets/medicon/images/metro2.png" alt="" />}
 
