@@ -123,9 +123,8 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
   public render() {
     const { classes, addStyles } = this.props;
     
-    if (this.props.originalData && this.props.originalData.filename) {
     return (
-      <LazyLoad height={this.props.sizes.height * 1.5} offset={'100'}>
+      <LazyLoad height={this.props.sizes.height} offset={'100'}>
       <div 
         className={classes}
         style={{ 
@@ -136,9 +135,6 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
       </div>
       </LazyLoad>
     );
-    } else {
-      return null;
-    }
   }
 }
 
