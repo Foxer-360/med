@@ -166,7 +166,7 @@ const GET_ALL_PAGES = gql`
 `;
 
 const AllPagesComposedQuery = adopt({
-  getContext: ({ render }) => <Query ssr={false} query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
+  getContext: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
   getFrontend: ({ render, windowOrigin, locationPath }) => (
     <ApolloConsumer>
       {(client: LooseObject) => {
@@ -218,7 +218,6 @@ const AllPagesComposedQuery = adopt({
 
     return (
       <Query 
-        ssr={false}
         query={GET_ALL_PAGES}
         variables={{ 
           languageId,
@@ -513,7 +512,6 @@ class List extends React.Component<Properties, {}> {
     return (
       <Query 
         query={DATASOURCE}
-        ssr={false}
         variables={{
           id: data.datasourceId
         }}
