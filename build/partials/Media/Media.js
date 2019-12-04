@@ -37,8 +37,7 @@ var Media = /** @class */ (function (_super) {
                 var recommendedSizes = (data && data.recommendedSizes) || null;
                 var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
                 recommendedSizes = _this.setDimensions();
-                return (React.createElement(react_lazyload_1.default, { height: recommendedSizes.height, offset: '100' },
-                    React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, classes: _this.props.classes })));
+                return (React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, classes: _this.props.classes }));
             }
             else {
                 return null;
@@ -57,13 +56,17 @@ var Media = /** @class */ (function (_super) {
     };
     Media.prototype.render = function () {
         var data = this.props.data;
+        var BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
         switch (data && data.type) {
             case 'image':
-                return this.renderAsImage(data);
+                return BACKOFFICE ? this.renderAsImage(data) :
+                    React.createElement(react_lazyload_1.default, { height: data.recommendedSizes.height, offset: '100' }, this.renderAsImage(data));
             case 'embeddedVideo':
-                return this.renderAsVideoEmbed(data);
+                return BACKOFFICE ? this.renderAsVideoEmbed(data) :
+                    React.createElement(react_lazyload_1.default, { height: data.recommendedSizes.height, offset: '100' }, this.renderAsVideoEmbed(data));
             default:
-                return this.renderAsImage(data);
+                return BACKOFFICE ? this.renderAsImage(data) :
+                    React.createElement(react_lazyload_1.default, { height: data.recommendedSizes.height, offset: '100' }, this.renderAsImage(data));
             // default:
             //   return <div className={'mediaError'}>There was an error rendering media.</div>;
         }

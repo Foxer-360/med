@@ -108,16 +108,17 @@ var Hero = /** @class */ (function (_super) {
     };
     Hero.prototype.render = function () {
         var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image, placeholder = _a.placeholder, displayOverlay = _a.displayOverlay, titleColor = _a.titleColor, textColor = _a.textColor;
-        return (React.createElement(react_lazyload_1.default, { height: 650, offset: '100' },
-            React.createElement("div", { className: "fullWidthContainer" },
-                React.createElement("section", { className: 'hero', style: { backgroundImage: image
-                            && "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.data.image)) + ")" } },
-                    displayOverlay && React.createElement("div", { className: 'hero__overlay' }),
-                    React.createElement("div", { className: 'container' },
-                        React.createElement("div", { className: 'hero__holder' },
-                            title && React.createElement("h1", { className: "hero__title hero__title--" + titleColor }, title),
-                            text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
-                            displaySearch && (React.createElement(SearchBar_1.default, { barColor: 'lightBlue', placeholder: placeholder ? placeholder : 'Hledat ...', blogSearchResults: this.props.data.blogSearchResults, doctorsLink: this.props.data.doctorsLink }))))))));
+        var BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+        var hero = (React.createElement("div", { className: "fullWidthContainer" },
+            React.createElement("section", { className: 'hero', style: { backgroundImage: image
+                        && "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.data.image)) + ")" } },
+                displayOverlay && React.createElement("div", { className: 'hero__overlay' }),
+                React.createElement("div", { className: 'container' },
+                    React.createElement("div", { className: 'hero__holder' },
+                        title && React.createElement("h1", { className: "hero__title hero__title--" + titleColor }, title),
+                        text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
+                        displaySearch && (React.createElement(SearchBar_1.default, { barColor: 'lightBlue', placeholder: placeholder ? placeholder : 'Hledat ...', blogSearchResults: this.props.data.blogSearchResults, doctorsLink: this.props.data.doctorsLink })))))));
+        return BACKOFFICE ? hero : React.createElement(react_lazyload_1.default, { height: 650, offset: '100' }, hero);
     };
     return Hero;
 }(React.Component));

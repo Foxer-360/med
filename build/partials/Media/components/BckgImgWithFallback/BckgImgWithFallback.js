@@ -120,8 +120,10 @@ var BckgImgWithFallback = /** @class */ (function (_super) {
     };
     BckgImgWithFallback.prototype.render = function () {
         var _a = this.props, classes = _a.classes, addStyles = _a.addStyles;
-        return (React.createElement(react_lazyload_1.default, { height: this.props.sizes.height, offset: '100' },
-            React.createElement("div", { className: classes, style: __assign({ backgroundImage: "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.originalData)) + ")" }, addStyles) }, this.props.children)));
+        var BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+        var bckgImgWithFallback = (React.createElement("div", { className: classes, style: __assign({ backgroundImage: "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.originalData)) + ")" }, addStyles) }, this.props.children));
+        return BACKOFFICE ? bckgImgWithFallback :
+            React.createElement(react_lazyload_1.default, { height: this.props.sizes.height, offset: '100' }, bckgImgWithFallback);
     };
     return BckgImgWithFallback;
 }(React.Component));
