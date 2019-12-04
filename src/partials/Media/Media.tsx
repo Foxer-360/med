@@ -41,7 +41,6 @@ class Media extends React.Component<MediaProps, MediaState> {
       recommendedSizes = this.setDimensions();
       
       return (
-        <LazyLoad height={recommendedSizes.height} offset={'100'}>
           <ImgWithFallback
             originalSrc={originalUrl}
             alt={data.alt || ''}
@@ -51,7 +50,6 @@ class Media extends React.Component<MediaProps, MediaState> {
             hash={data.hash}
             classes={this.props.classes}
           />
-        </LazyLoad>
       );
     } else {
       return null;
@@ -78,13 +76,18 @@ class Media extends React.Component<MediaProps, MediaState> {
   render() {
     const { data } = this.props;
 
+    const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+
     switch (data && data.type) {
       case 'image':
-        return this.renderAsImage(data);
+        return BACKOFFICE ? this.renderAsImage(data) : 
+        <LazyLoad height={data.recommendedSizes.height} offset={'100'}>{this.renderAsImage(data)}</LazyLoad>;
       case 'embeddedVideo':
-        return this.renderAsVideoEmbed(data);
+        return BACKOFFICE ? this.renderAsVideoEmbed(data) : 
+        <LazyLoad height={data.recommendedSizes.height} offset={'100'}>{this.renderAsVideoEmbed(data)}</LazyLoad>;
       default:
-        return this.renderAsImage(data);
+        return BACKOFFICE ? this.renderAsImage(data) : 
+        <LazyLoad height={data.recommendedSizes.height} offset={'100'}>{this.renderAsImage(data)}</LazyLoad>;
 
       // default:
       //   return <div className={'mediaError'}>There was an error rendering media.</div>;

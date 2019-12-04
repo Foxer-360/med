@@ -122,9 +122,10 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
 
   public render() {
     const { classes, addStyles } = this.props;
-    
-    return (
-      <LazyLoad height={this.props.sizes.height} offset={'100'}>
+
+    const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+
+    const bckgImgWithFallback = (
       <div 
         className={classes}
         style={{ 
@@ -133,8 +134,10 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
       >
           {this.props.children}
       </div>
-      </LazyLoad>
     );
+    
+    return BACKOFFICE ? bckgImgWithFallback : 
+    <LazyLoad height={this.props.sizes.height} offset={'100'}>{bckgImgWithFallback}</LazyLoad>;
   }
 }
 

@@ -129,9 +129,10 @@ class Hero extends React.Component<HeroProps, HeroState> {
   public render() {
     const { title, text, displaySearch, image, placeholder, displayOverlay, titleColor, textColor } = this.props.data;
     
-    return (
-      <LazyLoad height={650} offset={'100'}>
-        <div className="fullWidthContainer">
+    const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+
+    const hero = (
+      <div className="fullWidthContainer">
           <section 
             className={'hero'} 
             style={{ backgroundImage: image
@@ -156,8 +157,9 @@ class Hero extends React.Component<HeroProps, HeroState> {
             </div>
           </section>
         </div> 
-      </LazyLoad>
     );
+
+    return BACKOFFICE ? hero : <LazyLoad height={650} offset={'100'}>{hero}</LazyLoad>;
   }
 }
 
