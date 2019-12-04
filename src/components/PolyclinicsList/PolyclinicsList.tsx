@@ -94,7 +94,6 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                               <p>
                                 <a href={clinic.addressUrl} target="_blank">
                                 {clinic.address && clinic.address} <br />
-                                {clinic.district && clinic.district}
                                 {clinic.district && clinic.district}</a>
                               </p>
                                 :
