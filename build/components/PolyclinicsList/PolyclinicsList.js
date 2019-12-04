@@ -67,7 +67,6 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                                 clinic.address && clinic.address,
                                                                 " ",
                                                                 React.createElement("br", null),
-                                                                clinic.district && clinic.district,
                                                                 clinic.district && clinic.district))
                                                         :
                                                             React.createElement("p", null,
