@@ -81,13 +81,13 @@ class Media extends React.Component<MediaProps, MediaState> {
     switch (data && data.type) {
       case 'image':
         return BACKOFFICE ? this.renderAsImage(data) : 
-        <LazyLoad height={data.recommendedSizes.height} offset={'100'}>{this.renderAsImage(data)}</LazyLoad>;
+        <LazyLoad height={this.props.height} offset={'100'}>{this.renderAsImage(data)}</LazyLoad>;
       case 'embeddedVideo':
         return BACKOFFICE ? this.renderAsVideoEmbed(data) : 
-        <LazyLoad height={data.recommendedSizes.height} offset={'100'}>{this.renderAsVideoEmbed(data)}</LazyLoad>;
+        <LazyLoad height={this.props.height} offset={'100'}>{this.renderAsVideoEmbed(data)}</LazyLoad>;
       default:
         return BACKOFFICE ? this.renderAsImage(data) : 
-        <LazyLoad height={data.recommendedSizes.height} offset={'100'}>{this.renderAsImage(data)}</LazyLoad>;
+        <LazyLoad height={this.props.height} offset={'100'}>{this.renderAsImage(data)}</LazyLoad>;
 
       // default:
       //   return <div className={'mediaError'}>There was an error rendering media.</div>;
