@@ -60,13 +60,13 @@ var Media = /** @class */ (function (_super) {
         switch (data && data.type) {
             case 'image':
                 return BACKOFFICE ? this.renderAsImage(data) :
-                    React.createElement(react_lazyload_1.default, { height: data.recommendedSizes.height, offset: '100' }, this.renderAsImage(data));
+                    React.createElement(react_lazyload_1.default, { height: this.props.height, offset: '100' }, this.renderAsImage(data));
             case 'embeddedVideo':
                 return BACKOFFICE ? this.renderAsVideoEmbed(data) :
-                    React.createElement(react_lazyload_1.default, { height: data.recommendedSizes.height, offset: '100' }, this.renderAsVideoEmbed(data));
+                    React.createElement(react_lazyload_1.default, { height: this.props.height, offset: '100' }, this.renderAsVideoEmbed(data));
             default:
                 return BACKOFFICE ? this.renderAsImage(data) :
-                    React.createElement(react_lazyload_1.default, { height: data.recommendedSizes.height, offset: '100' }, this.renderAsImage(data));
+                    React.createElement(react_lazyload_1.default, { height: this.props.height, offset: '100' }, this.renderAsImage(data));
             // default:
             //   return <div className={'mediaError'}>There was an error rendering media.</div>;
         }
