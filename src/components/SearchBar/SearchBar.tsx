@@ -159,6 +159,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         <div 
           className={'searchBar__input'}  
           onClick={() => this.showValue()}
+          onTouchStart={() => this.showValue()}
         >
           <input
             type="text"
