@@ -4,7 +4,6 @@ import { debounce } from 'lodash';
 import SvgIcon from '../../partials/SvgIcon';
 import BlogSearchResults from './components/BlogSearchResults';
 import DoctorSearchResults from './components/DoctorSearchResults';
-import value from '*.json';
 
 export interface SearchBarProps {
   placeholder: string;
