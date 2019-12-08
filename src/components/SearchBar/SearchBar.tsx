@@ -4,6 +4,7 @@ import { debounce } from 'lodash';
 import SvgIcon from '../../partials/SvgIcon';
 import BlogSearchResults from './components/BlogSearchResults';
 import DoctorSearchResults from './components/DoctorSearchResults';
+import value from '*.json';
 
 export interface SearchBarProps {
   placeholder: string;
@@ -15,6 +16,7 @@ export interface SearchBarProps {
 export interface SearchBarState {
   focused: boolean;
   query: string;
+  value: string;
   doctorResults: boolean;
   blogResults: boolean;
 }
@@ -48,6 +50,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
     this.state = {
       query: '',
+      value: '',
       focused: false,
       doctorResults: null,
       blogResults: null
@@ -90,11 +93,22 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     });
   }
 
-  // tslint:disable-next-line:typedef
-  public changeSearchQuery(query) {
+  public changeSearchQuery(query: string) {
     this.setState({
       query,
     });
+  }
+
+  setValue(value: string) {
+    this.setState({
+      value,
+    });
+  }
+
+  showValue() {
+    this.setState({
+      query: this.state.value
+    })
   }
 
   handleClick(e: LooseObject) {
@@ -142,14 +156,20 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         ref={this.searchBar}
         className={`searchBar ${this.state.focused ? 'searchBar--focused' : ''} searchBar--${barColor}`}
       >
-        <div className={'searchBar__input'}>
+        <div 
+          className={'searchBar__input'}  
+          onClick={() => this.showValue()}
+        >
           <input
             type="text"
             ref={this.input}
             placeholder={placeholder}
             onFocus={() => this.handleFocus()}
             onBlur={() => this.handleFocus()}
-            onChange={e => this.changeSearchQuery(e.target.value)}
+            onChange={e => {
+              this.changeSearchQuery(e.target.value),
+              this.setValue(e.target.value);
+            }}
           />
           <SvgIcon name={'search'} type={barColor} />
         </div>
