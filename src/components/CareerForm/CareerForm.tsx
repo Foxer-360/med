@@ -9,6 +9,7 @@ import Loader from '../../partials/Loader';
 import SvgIcon from '../../partials/SvgIcon';
 import testEmail from '../../helpers/testEmail';
 import readEnvVariable from '../../helpers/readEnvVariable';
+import ModalWindow from '../../partials/ModalWindow';
 
 const REACT_APP_REST_API_URL = readEnvVariable('REACT_APP_REST_API_URL');
 
@@ -17,6 +18,9 @@ export interface CareerFormProps {
     title: string;
     text: string;
     gdprLink?: LooseObject;
+    enableModal: boolean;
+    modalTextBig: string;
+    modalTextSmall: string;
   };
 }
 
@@ -210,7 +214,7 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
   }
 
   public render() {
-    const { gdprLink, title, text } = this.props.data;
+    const { gdprLink, title, text, enableModal, modalTextBig, modalTextSmall } = this.props.data;
 
     const {
       formValues: { firstName, lastName, telephone, email, message, agreement, file, location },
@@ -391,6 +395,12 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                       </button>
                     </div>
                   </form>
+                  {enableModal &&
+                    this.state.formStatus === 'success' &&
+                    <ModalWindow
+                      textBig={modalTextBig}
+                      textSmall={modalTextSmall}
+                    />}
                 </div>
               </section>
             );
