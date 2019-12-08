@@ -7921,6 +7921,16 @@ button:disabled {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); } }
 
+.modalWindow div {
+  margin: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+  .modalWindow div h1, .modalWindow div h3 {
+    width: 90%;
+    padding: 3rem 0; }
+
 .selectBtn {
   border: none;
   outline: none;
