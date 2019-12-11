@@ -246,7 +246,7 @@ var CareerForm = /** @class */ (function (_super) {
                                         ? 'There was an error.'
                                         : 'Během odesílání formuláře se vyskytla chyba.'),
                                     _this.state.formErrorMessage && React.createElement("p", null, _this.state.formErrorMessage))),
-                                formStatus === 'success' && (React.createElement("div", { className: 'form__message form__message--success' }, code === 'en'
+                                formStatus === 'success' && !enableModal && (React.createElement("div", { className: 'form__message form__message--success' }, code === 'en' && !enableModal
                                     ? 'Thank You for contacting us.'
                                     : 'Děkujeme za odeslání formuláře. Brzy se Vám ozveme.'))),
                             React.createElement("div", { className: 'form__terms' },
