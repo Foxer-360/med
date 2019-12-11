@@ -249,7 +249,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                           </div>
                         )}
 
-                        {formStatus === 'success' && (
+                        {formStatus === 'success' && !enableModal && (
                           <div className={'form__message form__message--success'}>
                             {
                               code === 'en'

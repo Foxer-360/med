@@ -361,10 +361,10 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                         </div>
                       )}
 
-                      {formStatus === 'success' && (
+                      {formStatus === 'success' && !enableModal && (
                         <div className={'form__message form__message--success'}>
                           {
-                            code === 'en'
+                            code === 'en' && !enableModal
                               ? 'Thank You for contacting us.'
                               : 'Děkujeme za odeslání formuláře. Brzy se Vám ozveme.'
                           }
