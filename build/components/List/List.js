@@ -190,25 +190,9 @@ var List = /** @class */ (function (_super) {
                     datasourceItems
                         .sort(function (a, b) {
                         if (data.order === 'DESC') {
-                            if (a.orderBy > b.orderBy) {
-                                return -1;
-                            }
-                            {
-                                if (a.orderBy < b.orderBy) {
-                                    return 1;
-                                }
-                            }
-                            return 0;
+                            return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                         }
-                        if (a.orderBy < b.orderBy) {
-                            return -1;
-                        }
-                        {
-                            if (a.orderBy > b.orderBy) {
-                                return 1;
-                            }
-                        }
-                        return 0;
+                        return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                     })
                         .map(function (item) {
                         delete item.orderBy;
