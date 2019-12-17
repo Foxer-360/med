@@ -80,8 +80,7 @@ var getAbsenceLink = function (data, alternate) {
     if (alternate && data) {
         var firstName = alternate.firstName, lastName = alternate.lastName, id = alternate.id;
         var doctorSlug = urlize_1.urlize(firstName + "-" + lastName + "-" + id);
-        var link = "/" + (data.websiteData && data.websiteData.title.toLowerCase()) + "/" + (data.languageData &&
-            data.languageData.code) + "/" + doctorSlug;
+        var link = "/" + (data.languageData && data.languageData.code) + "/" + doctorSlug;
         return link;
     }
     return null;
