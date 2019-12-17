@@ -191,7 +191,7 @@ var DoctorSchedule = function (props) {
                             React.createElement("td", null, (absence.toDate.date && absence.subcategory.id !== 31 && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''),
                             React.createElement("td", null, Array.isArray(absenceMessage) ? (React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: absenceMessage[2] })) :
                                 React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); }))))),
-                phone && React.createElement("h5", null,
+                phone.trim() && React.createElement("h5", null,
                     "V urgentn\u00EDch p\u0159\u00EDpadech volejte ",
                     phone,
                     ".")));
