@@ -262,7 +262,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                 </table>
               </div>
             )}
-            {phone && <h5>V urgentních případech volejte {phone}.</h5>}
+            {phone.trim() && <h5>V urgentních případech volejte {phone}.</h5>}
           </>
         )}}
       </Query>
