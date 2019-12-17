@@ -193,7 +193,7 @@ var DoctorSchedule = function (props) {
                                 React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); }))))),
                 phone.trim() && React.createElement("h5", null,
                     "V urgentn\u00EDch p\u0159\u00EDpadech volejte ",
-                    phone,
+                    phone.trim(),
                     ".")));
         })));
 };
