@@ -158,7 +158,7 @@ const getPolyclinicPhone = (phones, doctor) => {
     const item = i.split(':');
     return {'polyclinicName': item[0], 'polyclinicPhone': item[1]};
   });
-  const phone = polyclinicPhones.find(i => {return i.polyclinicName === doctor; });
+  const phone = polyclinicPhones.find(i => {return i.polyclinicName.trim() === doctor.trim(); });
   
   return phone && phone.polyclinicPhone || null;
 }
