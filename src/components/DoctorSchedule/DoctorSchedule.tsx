@@ -223,9 +223,10 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
               </tbody>
             </table>
             {schedule.note && <b>{schedule.note}</b>}
+            <br/>
             {polyclinicPhones.trim() &&
             getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
-            <h5>V urgentních případech volejte {getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName)}.</h5>}
+            <b>V urgentních případech volejte {getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName)}.</b>}
           </div>
         ))}
 
