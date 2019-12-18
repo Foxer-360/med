@@ -7276,6 +7276,10 @@ cite {
             left: -13px; }
           .doctorSchedule table .normalRow td .dividerCircles > div:after {
             right: -13px; }
+  @media (max-width: 992px) {
+    .doctorSchedule b {
+      padding: 0 1em;
+      display: block; } }
 
 .doctorSchedule + .doctorSchedule {
   margin-top: 24px; }

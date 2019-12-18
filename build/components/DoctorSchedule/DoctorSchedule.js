@@ -179,9 +179,10 @@ var DoctorSchedule = function (props) {
                                         item['3'] && item['3'].note && React.createElement("p", null, item['3'].note)))));
                         }))),
                 schedule.note && React.createElement("b", null, schedule.note),
+                React.createElement("br", null),
                 polyclinicPhones.trim() &&
                     getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
-                    React.createElement("h5", null,
+                    React.createElement("b", null,
                         "V urgentn\u00EDch p\u0159\u00EDpadech volejte ",
                         getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName),
                         "."))); }),
