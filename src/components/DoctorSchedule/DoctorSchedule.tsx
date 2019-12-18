@@ -29,7 +29,7 @@ export interface DoctorScheduleProps {
     extraAbsenceSettings: string;
     doctor: string;
     defaultAbsenceMessage: string;
-    phone: string;
+    polyclinicPhones: string;
   };
 }
 
@@ -153,10 +153,19 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
   return null;
 }
 
+const getPolyclinicPhone = (phones, doctor) => {
+  const polyclinicPhones = phones.split(',').map(i => {
+    const item = i.split(':');
+    return {'polyclinicName': item[0], 'polyclinicPhone': item[1]};
+  });
+  const phone = polyclinicPhones.find(i => {return i.polyclinicName === doctor; });
+  
+  return phone && phone.polyclinicPhone || null;
+}
+
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
-    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, phone } = props.data;
-
+    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, polyclinicPhones } = props.data;
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
@@ -214,6 +223,9 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
               </tbody>
             </table>
             {schedule.note && <b>{schedule.note}</b>}
+            {polyclinicPhones.trim() &&
+            getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
+            <h5>V urgentních případech volejte {getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName)}.</h5>}
           </div>
         ))}
 
@@ -262,7 +274,6 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                 </table>
               </div>
             )}
-            {phone.trim() && <h5>V urgentních případech volejte {phone.trim()}.</h5>}
           </>
         )}}
       </Query>
