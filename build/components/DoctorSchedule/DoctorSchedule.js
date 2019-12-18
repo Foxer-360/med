@@ -180,7 +180,7 @@ var DoctorSchedule = function (props) {
                         }))),
                 schedule.note && React.createElement("b", null, schedule.note),
                 React.createElement("br", null),
-                polyclinicPhones.trim() &&
+                polyclinicPhones &&
                     getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
                     React.createElement("b", null,
                         "V urgentn\u00EDch p\u0159\u00EDpadech volejte ",
