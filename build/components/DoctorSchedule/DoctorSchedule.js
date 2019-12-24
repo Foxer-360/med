@@ -129,10 +129,19 @@ var absenceSettings = function (extraAbsenceSettings, doctor) {
     }
     return null;
 };
+var futureEmployee = function (date) {
+    return moment(date) > moment();
+};
 var DoctorSchedule = function (props) {
-    var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, phone = _a.phone;
+    var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, employmentFrom = _a.employmentFrom, phone = _a.phone;
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
+        futureEmployee(employmentFrom) ?
+            React.createElement("b", null,
+                "K l\u00E9ka\u0159i se m\u016F\u017Eete objedn\u00E1vat od ",
+                moment(employmentFrom).format('DD.MM.YYYY'),
+                ".")
+            : '',
         Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
         schedule &&
             schedule.weeks &&

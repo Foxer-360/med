@@ -36,6 +36,10 @@
                     "type": "markdown",
                     "title": "Extra absence settings (expertises replacements)"
                 },
+                "employmentFrom": {
+                    "type": "string",
+                    "title": "Employment start date"
+                },
                 "phone": {
                     "type": "string",
                     "title": "Phone"
