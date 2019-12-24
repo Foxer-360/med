@@ -29,6 +29,7 @@ export interface DoctorScheduleProps {
     extraAbsenceSettings: string;
     doctor: string;
     defaultAbsenceMessage: string;
+    employmentFrom: string;
     phone: string;
   };
 }
@@ -153,13 +154,20 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
   return null;
 }
 
+const futureEmployee = (date) => {
+  return moment(date) > moment();
+}
+
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
-    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, phone } = props.data;
-
+    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, employmentFrom, phone } = props.data;
+    
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
+      {futureEmployee(employmentFrom) ? 
+      <b>K lékaři se můžete objednávat od {moment(employmentFrom).format('DD.MM.YYYY')}.</b> 
+      : ''}
       {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
       {schedule &&
         schedule.weeks &&
