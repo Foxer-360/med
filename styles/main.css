@@ -4583,6 +4583,12 @@ cite {
         line-height: 34px;
         font-weight: 400;
         letter-spacing: 0.8px; } }
+  .textBlock a {
+    color: #00aad0; }
+    .textBlock a:hover, .textBlock a:focus {
+      text-decoration: underline;
+      text-decoration-color: #00aad0;
+      -webkit-text-decoration-color: #00aad0; }
 
 .info-boxes {
   z-index: 1;
@@ -5119,8 +5125,8 @@ cite {
     color: #00aad0; }
     .pcitem a:hover {
       text-decoration: underline;
-      -webkit-text-decoration-color: #2473ba;
-              text-decoration-color: #2473ba; }
+      -webkit-text-decoration-color: #00aad0;
+              text-decoration-color: #00aad0; }
   @media (min-width: 768px) {
     .pcitem {
       width: 65%;
@@ -5518,8 +5524,12 @@ cite {
     @media (max-width: 991px) {
       .policlinicInfo__item {
         padding-bottom: 2rem; } }
-    .policlinicInfo__item a:hover {
+    .policlinicInfo__item a {
       color: #00aad0; }
+      .policlinicInfo__item a:hover, .policlinicInfo__item a:focus {
+        text-decoration: underline;
+        text-decoration-color: #00aad0;
+        -webkit-text-decoration-color: #00aad0; }
     .policlinicInfo__item--content {
       width: 100%;
       padding-left: 3rem;
@@ -6688,6 +6698,13 @@ cite {
   -webkit-text-fill-color: transparent;
   font-weight: 700; }
 
+.expertiseDescription .care a {
+  color: #00aad0; }
+  .expertiseDescription .care a:hover, .expertiseDescription .care a:focus {
+    text-decoration: underline;
+    text-decoration-color: #00aad0;
+    -webkit-text-decoration-color: #00aad0; }
+
 .medicalGroup {
   height: 100%; }
   .medicalGroup h4 {
@@ -7152,6 +7169,13 @@ cite {
       font-size: 18px;
       line-height: 36px;
       letter-spacing: 1.6px; } }
+
+.blogArticle a {
+  color: #00aad0; }
+  .blogArticle a:hover, .blogArticle a:focus {
+    text-decoration: underline;
+    text-decoration-color: #00aad0;
+    -webkit-text-decoration-color: #00aad0; }
 
 .doctorScheduleSection {
   padding: 50px 0; }
