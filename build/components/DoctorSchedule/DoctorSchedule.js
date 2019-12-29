@@ -137,10 +137,8 @@ var DoctorSchedule = function (props) {
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         futureEmployee(employmentFrom) ?
-            React.createElement("b", null,
-                "K l\u00E9ka\u0159i se m\u016F\u017Eete objedn\u00E1vat od ",
-                moment(employmentFrom).format('DD.MM.YYYY'),
-                ".")
+            React.createElement(Highlight_1.default, { data: { text: 'K lékaři se můžete objednávat od ' + moment(employmentFrom).format('DD.MM.YYYY') + '.',
+                    description: null, urlTitle: null, url: null } })
             : '',
         Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
         schedule &&
