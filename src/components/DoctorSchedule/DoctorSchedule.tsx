@@ -156,7 +156,7 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
 
 const futureEmployee = (date) => {
   return moment(date) > moment();
-}
+};
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
@@ -166,7 +166,10 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   return (
     <section className={'container doctorScheduleSection'}>
       {futureEmployee(employmentFrom) ? 
-      <b>K lékaři se můžete objednávat od {moment(employmentFrom).format('DD.MM.YYYY')}.</b> 
+      <Highlight 
+        data={{text : 'K lékaři se můžete objednávat od ' + moment(employmentFrom).format('DD.MM.YYYY') + '.',
+        description: null, urlTitle: null, url: null}}
+      />
       : ''}
       {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
       {schedule &&
