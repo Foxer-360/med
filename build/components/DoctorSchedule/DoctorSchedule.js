@@ -136,7 +136,7 @@ var DoctorSchedule = function (props) {
     var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, doctorName = _a.doctorName, employmentFrom = _a.employmentFrom, phone = _a.phone;
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
-        futureEmployee(employmentFrom) ?
+        futureEmployee(employmentFrom) && doctorName ?
             React.createElement(Highlight_1.default, { data: { text: doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
                         '. Již nyní se ale k němu můžete objednávat.',
                     description: null, urlTitle: null, url: null } })
