@@ -166,7 +166,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
-      {futureEmployee(employmentFrom) ? 
+      {futureEmployee(employmentFrom) && doctorName ?
       <Highlight  
         data={{text : doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
         '. Již nyní se ale k němu můžete objednávat.',
