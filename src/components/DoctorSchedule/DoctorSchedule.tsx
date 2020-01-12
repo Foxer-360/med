@@ -29,6 +29,7 @@ export interface DoctorScheduleProps {
     extraAbsenceSettings: string;
     doctor: string;
     defaultAbsenceMessage: string;
+    doctorName: string;
     employmentFrom: string;
     phone: string;
   };
@@ -159,15 +160,16 @@ const futureEmployee = (date) => {
 };
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
-  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
-    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, employmentFrom, phone } = props.data;
+  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
+    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone } = props.data;
     
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
       {futureEmployee(employmentFrom) ? 
-      <Highlight 
-        data={{text : 'K lékaři se můžete objednávat od ' + moment(employmentFrom).format('DD.MM.YYYY') + '.',
+      <Highlight  
+        data={{text : doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
+        '. Již nyní se ale k němu můžete objednávat.',
         description: null, urlTitle: null, url: null}}
       />
       : ''}
