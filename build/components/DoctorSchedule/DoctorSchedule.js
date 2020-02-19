@@ -128,6 +128,14 @@ var absenceSettings = function (extraAbsenceSettings, doctor) {
     }
     return null;
 };
+var getPolyclinicPhone = function (phones, doctor) {
+    var polyclinicPhones = phones.split(',').map(function (i) {
+        var item = i.split(':');
+        return { 'polyclinicName': item[0], 'polyclinicPhone': item[1] };
+    });
+    var phone = polyclinicPhones.find(function (i) { return i.polyclinicName.trim() === doctor.trim(); });
+    return phone && phone.polyclinicPhone || null;
+};
 var futureEmployee = function (date) {
     return moment(date) > moment();
 };
@@ -136,9 +144,18 @@ var DoctorSchedule = function (props) {
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         futureEmployee(employmentFrom) && doctorName ?
-            React.createElement(Highlight_1.default, { data: { text: doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
-                        '.<br> Již nyní se ale k němu můžete objednávat.',
-                    description: null, urlTitle: null, url: null } })
+            React.createElement(Highlight_1.default, { data: {
+                    text: React.createElement(React.Fragment, null,
+                        doctorName,
+                        " za\u010D\u00EDn\u00E1 ordinovat od ",
+                        moment(employmentFrom).format('DD.MM.YYYY'),
+                        ".",
+                        React.createElement("br", null),
+                        "Ji\u017E nyn\u00ED se ale k n\u011Bmu m\u016F\u017Eete objedn\u00E1vat."),
+                    description: null,
+                    urlTitle: null,
+                    url: null
+                } })
             : '',
         Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
         schedule &&
@@ -179,11 +196,11 @@ var DoctorSchedule = function (props) {
                         }))),
                 schedule.note && React.createElement("b", null, schedule.note),
                 React.createElement("br", null),
-                polyclinicPhones &&
-                    getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
+                phone &&
+                    getPolyclinicPhone(phone, week.polyclinic.shortName) &&
                     React.createElement("b", null,
                         "V urgentn\u00EDch p\u0159\u00EDpadech volejte ",
-                        getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName),
+                        getPolyclinicPhone(phone, week.polyclinic.shortName),
                         "."))); }),
         React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
@@ -201,7 +218,8 @@ var DoctorSchedule = function (props) {
                             React.createElement("td", null, "Zastupuje"))),
                     React.createElement("tbody", null, nextMonthAbsences.map(function (absence, i) { return (React.createElement("tr", { key: i },
                         React.createElement("td", null, (absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''),
-                        React.createElement("td", null, (absence.toDate.date && absence.subcategory.id !== 31 && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''),
+                        React.createElement("td", null, (absence.toDate.date && absence.subcategory.id !== 31 &&
+                            moment(absence.toDate.date).format('DD.MM.YYYY')) || ''),
                         React.createElement("td", null, Array.isArray(absenceMessage) ? (React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: absenceMessage[2] })) :
                             React.createElement(Link_1.default, { dynamic: true, url: getAbsenceLink(data, absence.alternate) }, ((absence.alternate && absence.alternate.firstName) || '') + " \n                            " + ((absence.alternate && absence.alternate.lastName) || ''))))); })))))));
         })));
