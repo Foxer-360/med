@@ -19,7 +19,7 @@ var ExpertiseDescriptionBoxes = function (props) {
     var boxes = props.boxes;
     return (React.createElement("section", { className: "info" },
         React.createElement("div", { className: "row" }, boxes && boxes.map(function (box, i) { return (React.createElement("div", { key: i, className: "col-sm-12 col-md-6" },
-            React.createElement(BckgImgWithFallback_1.default, { classes: 'info__element', image: box.image, sizes: { width: 595, height: 270 } },
+            React.createElement(BckgImgWithFallback_1.default, { classes: 'info__element', originalData: box.image, sizes: { width: 595, height: 270 } },
                 React.createElement("div", { className: 'info__element--cell' },
                     box.title && React.createElement("h5", { style: box.textColor ? { color: box.textColor } : {} }, box.title),
                     !box.url2 && !box.url3 &&

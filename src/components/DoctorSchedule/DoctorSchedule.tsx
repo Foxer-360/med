@@ -109,8 +109,7 @@ const getAbsenceLink = (data, alternate) => {
     
     let doctorSlug = urlize(`${firstName}-${lastName}-${id}`);
 
-    let link = `/${data.websiteData && data.websiteData.title.toLowerCase()}/${data.languageData &&
-      data.languageData.code}/${doctorSlug}`;
+    let link = `/${data.languageData && data.languageData.code}/${doctorSlug}`;
 
     return link;
   }
@@ -227,6 +226,10 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
               </tbody>
             </table>
             {schedule.note && <b>{schedule.note}</b>}
+            <br/>
+            {polyclinicPhones &&
+            getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
+            <b>V urgentních případech volejte {getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName)}.</b>}
           </div>
         ))}
 
@@ -275,7 +278,6 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                 </table>
               </div>
             )}
-            {phone && <h5>V urgentních případech volejte {phone}.</h5>}
           </>
         )}}
       </Query>

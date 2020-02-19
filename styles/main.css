@@ -3449,6 +3449,10 @@ cite {
     .hero__text--white {
       color: #fff; }
 
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .hero {
+    top: 0px; } }
+
 .hamburgerHolder {
   margin-left: 5rem;
   display: flex;
@@ -3738,6 +3742,11 @@ cite {
           text-transform: uppercase;
           letter-spacing: 0.64px;
           cursor: pointer; }
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .header {
+    position: absolute;
+    box-shadow: 1px 1px 70px; } }
 
 .searchBar {
   width: 100%;
@@ -4272,6 +4281,11 @@ cite {
         color: black;
         font-weight: 600;
         font-size: 1.8rem; }
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .helpPopup__main {
+    background-position: -90% center;
+    background-size: 70%; } }
 
 @-webkit-keyframes shake {
   0% {
@@ -6481,6 +6495,9 @@ cite {
       .careerForm .form__row--second > div:nth-of-type(2) {
         width: auto; } }
 
+.form__messageHolder:empty {
+  display: none; }
+
 .care h4 {
   background: -webkit-linear-gradient(left, #2473ba, #00aad0);
   -webkit-background-clip: text;
@@ -7014,6 +7031,9 @@ cite {
     .contactForm .form__row--first > div:nth-of-type(2) {
       width: 49%; } }
 
+.form__messageHolder:empty {
+  display: none; }
+
 .downloads {
   text-align: center;
   padding-bottom: 2.5rem; }
@@ -7276,6 +7296,10 @@ cite {
             left: -13px; }
           .doctorSchedule table .normalRow td .dividerCircles > div:after {
             right: -13px; }
+  @media (max-width: 992px) {
+    .doctorSchedule b {
+      padding: 0 1em;
+      display: block; } }
 
 .doctorSchedule + .doctorSchedule {
   margin-top: 24px; }
@@ -7453,53 +7477,53 @@ cite {
       .workingHours table .normalRow td .dividerCircles {
         margin: 0 13px; }
 
-.registration-block h3 {
-  background: -webkit-linear-gradient(left, #2473ba, #00aad0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  padding-top: 0; }
-
-.registration-block p {
-  text-align: center;
-  font-size: 1.8rem; }
-  @media (max-width: 767px) {
-    .registration-block p {
-      font-size: 1.6rem; } }
-
-.registration-block__btn-holder {
-  max-width: 35%;
-  display: block;
-  margin: 0 auto;
-  margin-top: 5rem; }
-  @media (max-width: 991px) {
-    .registration-block__btn-holder {
-      max-width: 45%; } }
-  @media (max-width: 767px) {
-    .registration-block__btn-holder {
-      max-width: 65%;
-      margin-top: 2.5rem; } }
-  @media (max-width: 575px) {
-    .registration-block__btn-holder {
-      max-width: 85%; } }
-  @media (max-width: 424px) {
-    .registration-block__btn-holder {
-      max-width: 100%; } }
-  .registration-block__btn-holder .btn {
-    text-align: center; }
-
-.registration-block__conditions {
-  display: block;
-  text-align: center;
-  letter-spacing: 2.5px;
-  font-size: 1.6rem;
-  color: #00aad0;
-  margin: 35px 0;
-  text-decoration: underline;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1); }
-  .registration-block__conditions:hover {
+.registration-block {
+  text-align: center; }
+  .registration-block h3 {
+    background: -webkit-linear-gradient(left, #2473ba, #00aad0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    padding-top: 0;
+    display: inline-block; }
+  .registration-block p {
+    text-align: center;
+    font-size: 1.8rem; }
+    @media (max-width: 767px) {
+      .registration-block p {
+        font-size: 1.6rem; } }
+  .registration-block__btn-holder {
+    max-width: 35%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5rem; }
+    @media (max-width: 991px) {
+      .registration-block__btn-holder {
+        max-width: 45%; } }
+    @media (max-width: 767px) {
+      .registration-block__btn-holder {
+        max-width: 65%;
+        margin-top: 2.5rem; } }
+    @media (max-width: 575px) {
+      .registration-block__btn-holder {
+        max-width: 85%; } }
+    @media (max-width: 424px) {
+      .registration-block__btn-holder {
+        max-width: 100%; } }
+    .registration-block__btn-holder .btn {
+      text-align: center; }
+  .registration-block__conditions {
+    display: block;
+    text-align: center;
+    letter-spacing: 2.5px;
+    font-size: 1.6rem;
     color: #00aad0;
-    text-decoration: none; }
+    margin: 35px 0;
+    text-decoration: underline;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1); }
+    .registration-block__conditions:hover {
+      color: #00aad0;
+      text-decoration: none; }
 
 .paragraph {
   width: 100%;
@@ -7920,6 +7944,16 @@ button:disabled {
     height: 5px;
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); } }
+
+.modalWindow div {
+  margin: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+  .modalWindow div h1, .modalWindow div h3 {
+    width: 90%;
+    padding: 3rem 0; }
 
 .selectBtn {
   border: none;

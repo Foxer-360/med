@@ -7,6 +7,7 @@ import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
 import testEmail from '../../helpers/testEmail';
 import readEnvVariable from '../../helpers/readEnvVariable';
+import ModalWindow from '../../partials/ModalWindow';
 
 const REACT_APP_REST_API_URL = readEnvVariable('REACT_APP_REST_API_URL');
 
@@ -15,6 +16,9 @@ export interface ContactFormProps {
   data: {
     title: string;
     gdprLink: LooseObject;
+    enableModal: boolean;
+    modalTextBig: string;
+    modalTextSmall: string;
   };
 }
 
@@ -165,7 +169,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
   }
 
   public render() {
-    const { gdprLink, title } = this.props.data;
+    const { gdprLink, title, enableModal, modalTextBig, modalTextSmall } = this.props.data;
 
     const {
       formValues: { name, email, message, agreement },
@@ -245,7 +249,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                           </div>
                         )}
 
-                        {formStatus === 'success' && (
+                        {formStatus === 'success' && !enableModal && (
                           <div className={'form__message form__message--success'}>
                             {
                               code === 'en'
@@ -279,6 +283,12 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
                         </button>
                       </div>
                     </form>}
+                    {enableModal &&
+                    this.state.formStatus === 'success' &&
+                    <ModalWindow
+                      textBig={modalTextBig}
+                      textSmall={modalTextSmall}
+                    />}
                 </div>
               </section>
             );
