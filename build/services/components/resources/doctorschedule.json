@@ -36,9 +36,9 @@
                     "type": "markdown",
                     "title": "Extra absence settings (expertises replacements)"
                 },
-                "phone": {
+                "polyclinicPhones": {
                     "type": "string",
-                    "title": "Phone"
+                    "title": "Polyclinic Phones"
                 }
             }
         }
