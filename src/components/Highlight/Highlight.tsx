@@ -23,7 +23,7 @@ const Highlight = (props: HighlightProps) => {
           <img src="/assets/medicon/images/info.png" alt="info" />
 
           <div>
-            {text && <p>{text}</p>}
+            {text && <p dangerouslySetInnerHTML={{ __html: text }}/>}
             {description && <ReactMarkdown
               className={'highlight__content--description'}
               skipHtml={false}
