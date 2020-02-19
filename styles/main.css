@@ -3449,6 +3449,10 @@ cite {
     .hero__text--white {
       color: #fff; }
 
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .hero {
+    top: 0px; } }
+
 .hamburgerHolder {
   margin-left: 5rem;
   display: flex;
@@ -3738,6 +3742,11 @@ cite {
           text-transform: uppercase;
           letter-spacing: 0.64px;
           cursor: pointer; }
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .header {
+    position: absolute;
+    box-shadow: 1px 1px 70px; } }
 
 .searchBar {
   width: 100%;
@@ -4272,6 +4281,11 @@ cite {
         color: black;
         font-weight: 600;
         font-size: 1.8rem; }
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .helpPopup__main {
+    background-position: -90% center;
+    background-size: 70%; } }
 
 @-webkit-keyframes shake {
   0% {

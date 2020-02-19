@@ -75,3 +75,9 @@
     }
   }
 }
+
+@media all and (-ms-high-contrast:none) {
+  *::-ms-backdrop, .hero {
+    top: 0px
+  }
+}
