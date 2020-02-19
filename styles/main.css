@@ -7459,53 +7459,53 @@ cite {
       .workingHours table .normalRow td .dividerCircles {
         margin: 0 13px; }
 
-.registration-block h3 {
-  background: -webkit-linear-gradient(left, #2473ba, #00aad0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  padding-top: 0; }
-
-.registration-block p {
-  text-align: center;
-  font-size: 1.8rem; }
-  @media (max-width: 767px) {
-    .registration-block p {
-      font-size: 1.6rem; } }
-
-.registration-block__btn-holder {
-  max-width: 35%;
-  display: block;
-  margin: 0 auto;
-  margin-top: 5rem; }
-  @media (max-width: 991px) {
-    .registration-block__btn-holder {
-      max-width: 45%; } }
-  @media (max-width: 767px) {
-    .registration-block__btn-holder {
-      max-width: 65%;
-      margin-top: 2.5rem; } }
-  @media (max-width: 575px) {
-    .registration-block__btn-holder {
-      max-width: 85%; } }
-  @media (max-width: 424px) {
-    .registration-block__btn-holder {
-      max-width: 100%; } }
-  .registration-block__btn-holder .btn {
-    text-align: center; }
-
-.registration-block__conditions {
-  display: block;
-  text-align: center;
-  letter-spacing: 2.5px;
-  font-size: 1.6rem;
-  color: #00aad0;
-  margin: 35px 0;
-  text-decoration: underline;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1); }
-  .registration-block__conditions:hover {
+.registration-block {
+  text-align: center; }
+  .registration-block h3 {
+    background: -webkit-linear-gradient(left, #2473ba, #00aad0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    padding-top: 0;
+    display: inline-block; }
+  .registration-block p {
+    text-align: center;
+    font-size: 1.8rem; }
+    @media (max-width: 767px) {
+      .registration-block p {
+        font-size: 1.6rem; } }
+  .registration-block__btn-holder {
+    max-width: 35%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5rem; }
+    @media (max-width: 991px) {
+      .registration-block__btn-holder {
+        max-width: 45%; } }
+    @media (max-width: 767px) {
+      .registration-block__btn-holder {
+        max-width: 65%;
+        margin-top: 2.5rem; } }
+    @media (max-width: 575px) {
+      .registration-block__btn-holder {
+        max-width: 85%; } }
+    @media (max-width: 424px) {
+      .registration-block__btn-holder {
+        max-width: 100%; } }
+    .registration-block__btn-holder .btn {
+      text-align: center; }
+  .registration-block__conditions {
+    display: block;
+    text-align: center;
+    letter-spacing: 2.5px;
+    font-size: 1.6rem;
     color: #00aad0;
-    text-decoration: none; }
+    margin: 35px 0;
+    text-decoration: underline;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1); }
+    .registration-block__conditions:hover {
+      color: #00aad0;
+      text-decoration: none; }
 
 .paragraph {
   width: 100%;
