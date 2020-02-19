@@ -107,8 +107,7 @@ const getAbsenceLink = (data, alternate) => {
     
     let doctorSlug = urlize(`${firstName}-${lastName}-${id}`);
 
-    let link = `/${data.websiteData && data.websiteData.title.toLowerCase()}/${data.languageData &&
-      data.languageData.code}/${doctorSlug}`;
+    let link = `/${data.languageData && data.languageData.code}/${doctorSlug}`;
 
     return link;
   }

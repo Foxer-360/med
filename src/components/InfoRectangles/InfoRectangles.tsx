@@ -3,7 +3,7 @@ import * as React from 'react';
 import List from '../List';
 import Button from '../../partials/Button';
 import getImageUrl from '../../helpers/getImageUrl';
-import BckgImgWithFallback from '../../partials/Media/components/BckgImgWithFallback'
+import BckgImgWithFallback from '../../partials/Media/components/BckgImgWithFallback';
 
 interface InfoRectangles {
   title: string;
@@ -27,7 +27,11 @@ const InfoRectangles = (props: InfoRectanglesProps) => {
           <List data={infoRectangles}>
             {({ data }) => data && data.map((rectangle, i) => (
               <div key={i} className="col-sm-12 col-md-6">
-                <BckgImgWithFallback classes={'info-rectangles__item'} sizes={{width: '386', height: '350'}} image={rectangle.image}>
+                <BckgImgWithFallback
+                  classes={'info-rectangles__item'} 
+                  sizes={{width: '386', height: '350'}} 
+                  originalData={rectangle.image}
+                >
                   <div>
                     {rectangle.title && <h5>{rectangle.title}</h5>}
                     <Button classes="btn--blueBorder" url={rectangle.url}>
