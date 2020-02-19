@@ -36,7 +36,15 @@
                     "type": "markdown",
                     "title": "Extra absence settings (expertises replacements)"
                 },
-                "polyclinicPhones": {
+                "doctorName": {
+                    "type": "string",
+                    "title": "Doctor name (with titles)"
+                },
+                "employmentFrom": {
+                    "type": "string",
+                    "title": "Employment start date"
+                },
+                "phone": {
                     "type": "string",
                     "title": "Polyclinic Phones"
                 }

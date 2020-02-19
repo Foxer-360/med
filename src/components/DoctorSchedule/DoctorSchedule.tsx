@@ -29,7 +29,9 @@ export interface DoctorScheduleProps {
     extraAbsenceSettings: string;
     doctor: string;
     defaultAbsenceMessage: string;
-    polyclinicPhones: string;
+    doctorName: string;
+    employmentFrom: string;
+    phone: string;
   };
 }
 
@@ -152,22 +154,24 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
   return null;
 }
 
-const getPolyclinicPhone = (phones, doctor) => {
-  const polyclinicPhones = phones.split(',').map(i => {
-    const item = i.split(':');
-    return {'polyclinicName': item[0], 'polyclinicPhone': item[1]};
-  });
-  const phone = polyclinicPhones.find(i => {return i.polyclinicName.trim() === doctor.trim(); });
-  
-  return phone && phone.polyclinicPhone || null;
-}
+const futureEmployee = (date) => {
+  return moment(date) > moment();
+};
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
-  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
-    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, polyclinicPhones } = props.data;
+  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
+    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone } = props.data;
+    
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
+      {futureEmployee(employmentFrom) && doctorName ?
+      <Highlight  
+        data={{text : doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
+        '. Již nyní se ale k němu můžete objednávat.',
+        description: null, urlTitle: null, url: null}}
+      />
+      : ''}
       {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
       {schedule &&
         schedule.weeks &&
