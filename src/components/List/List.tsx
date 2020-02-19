@@ -345,7 +345,6 @@ class List extends React.Component<Properties, {}> {
                   return true;
                 })
                 .map(p => {
-                  console.log('p', p)
                   const annotations = {};
                   const translation = (p && p.translations && p.translations[0]);
                   translation.annotations.forEach(({ key, value }) => {
