@@ -15,6 +15,8 @@ export interface HeroProps {
     displaySearch: boolean;
     image: LooseObject;
     displayOverlay: boolean;
+    overlayColor: string;
+    overlayOpacity: number;
     titleColor: string;
     textColor: string;
     blogSearchResults: LooseObject;
@@ -127,36 +129,35 @@ class Hero extends React.Component<HeroProps, HeroState> {
   }
 
   public render() {
-    const { title, text, displaySearch, image, placeholder, displayOverlay, titleColor, textColor } = this.props.data;
+    const { title, text, displaySearch, image, placeholder, displayOverlay, overlayColor, overlayOpacity,
+      titleColor, textColor } = this.props.data;
     
     const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
 
     const hero = (
       <div className="fullWidthContainer">
-          <section 
-            className={'hero'} 
-            style={{ backgroundImage: image
-            && `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}
-          >
-            {displayOverlay && <div className={'hero__overlay'} />}
-            <div className={'container'}>
-              <div className={'hero__holder'}>
-                {title && <h1 className={`hero__title hero__title--${titleColor}`}>{title}</h1>}
+        <section className={'hero'} style={{ backgroundImage: image
+          && `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}>
+          {displayOverlay &&
+          <div className={'hero__overlay'} style={{ background: overlayColor, opacity: (overlayOpacity / 100) }} />}
+          <div className={'container'}>
+            <div className={'hero__holder'}>
+              {title && <h1 className={`hero__title hero__title--${titleColor}`}>{title}</h1>}
 
-                {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
-    
-                {displaySearch && (
-                  <SearchBar
-                    barColor={'lightBlue'}
-                    placeholder={placeholder ? placeholder : 'Hledat ...'}
-                    blogSearchResults={this.props.data.blogSearchResults}
-                    doctorsLink={this.props.data.doctorsLink}
-                  />
-                )}
-              </div>
+              {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
+  
+              {displaySearch && (
+                <SearchBar
+                  barColor={'lightBlue'}
+                  placeholder={placeholder ? placeholder : 'Hledat ...'}
+                  blogSearchResults={this.props.data.blogSearchResults}
+                  doctorsLink={this.props.data.doctorsLink}
+                />
+              )}
             </div>
-          </section>
-        </div> 
+          </div>
+        </section>
+      </div> 
     );
 
     return BACKOFFICE ? hero : <LazyLoad height={650} offset={'100'}>{hero}</LazyLoad>;

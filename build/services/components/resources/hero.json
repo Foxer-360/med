@@ -6,8 +6,10 @@
         "placeholder": "Hledat",
         "displaySearch": false,
         "displayOverlay": false,
-        "TitleColor": "blue",
-        "textColor": "gray",
+        "displayColor": "black",
+        "displayOpacity": 0.35,
+        "TitleColor": "#2473ba",
+        "textColor": "white",
         "image": {},
         "doctorSearchResults": [{ "name": "", "speciality": "", "clinic": "", "active": false }],
         "blogSearchResults": [{ "title": "", "perex": "", "image": {} }]
@@ -20,29 +22,29 @@
                     "type": "boolean",
                     "title": "Display Overlay?"
                 },
+                "overlayColor": {
+                    "type": "string",
+                    "title": "Overlay Color (e.g. #3c3c3b, #2473ba, #00aad0)"
+                },
+                "overlayOpacity": {
+                    "type": "number",
+                    "title": "Overlay opacity (0 - 100)"
+                },
                 "title": {
                     "type": "text",
                     "title": "Title"
                 },
                 "titleColor": {
-                    "type": "enum",
-                    "title": "Title Color",
-                    "options": {
-                        "blue": "blue",
-                        "white": "white"
-                    }
+                    "type": "string",
+                    "title": "Title Color (e.g. black, #2473ba, #00aad0)"
                 },
                 "text": {
                     "type": "text",
                     "title": "Text"
                 },
                 "textColor": {
-                    "type": "enum",
-                    "title": "Text Color",
-                    "options": {
-                        "gray": "gray",
-                        "white": "white"
-                    }
+                    "type": "string",
+                    "title": "Text Color  (e.g. white, #FFFFFF)"
                 },
                 "placeholder": {
                     "type": "text",
