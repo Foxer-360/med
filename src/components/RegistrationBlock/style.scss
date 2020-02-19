@@ -1,7 +1,10 @@
 .registration-block {
+  text-align: center;
+  
   h3 {
     @include webkitGradientText;
     padding-top: 0;
+    display: inline-block;
   }
 
   p {

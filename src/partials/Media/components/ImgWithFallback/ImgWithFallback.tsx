@@ -56,9 +56,12 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     let sizedUrl = null;
     let sizes = props.recommendedSizes;
     let sizedFile = null;
-
-    this.props.recommendedSizes.width = Math.round(this.props.recommendedSizes.width * 1.5)
-    this.props.recommendedSizes.height = Math.round(this.props.recommendedSizes.height * 1.5)
+    
+    if (this.props && this.props.recommendedSizes &&
+      this.props.recommendedSizes.width && this.props.recommendedSizes.height) {
+        this.props.recommendedSizes.width = Math.round(this.props.recommendedSizes.width * 1.5);
+        this.props.recommendedSizes.height = Math.round(this.props.recommendedSizes.height * 1.5);
+    }
 
     this.setState({
       loading: true,
@@ -81,7 +84,7 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     }
   }
 
-  loadImg(src: any) {
+  loadImg(src: string) {
     if (src) {
       const img = new Image();
 

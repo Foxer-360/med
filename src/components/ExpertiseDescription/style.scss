@@ -7,4 +7,17 @@
 
     @include webkitGradientText;
   }
+
+  .care {
+    a {
+      color: $lightBlue;
+    
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        text-decoration-color: $lightBlue;
+        -webkit-text-decoration-color: $lightBlue;
+      }
+    }
+  }
 }

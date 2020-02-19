@@ -29,6 +29,8 @@ export interface DoctorScheduleProps {
     extraAbsenceSettings: string;
     doctor: string;
     defaultAbsenceMessage: string;
+    doctorName: string;
+    employmentFrom: string;
     phone: string;
   };
 }
@@ -107,8 +109,7 @@ const getAbsenceLink = (data, alternate) => {
     
     let doctorSlug = urlize(`${firstName}-${lastName}-${id}`);
 
-    let link = `/${data.websiteData && data.websiteData.title.toLowerCase()}/${data.languageData &&
-      data.languageData.code}/${doctorSlug}`;
+    let link = `/${data.languageData && data.languageData.code}/${doctorSlug}`;
 
     return link;
   }
@@ -153,13 +154,24 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
   return null;
 }
 
-const DoctorSchedule = (props: DoctorScheduleProps) => {
-  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle,
-    absences, extraAbsenceSettings, doctor, defaultAbsenceMessage, phone } = props.data;
+const futureEmployee = (date) => {
+  return moment(date) > moment();
+};
 
+const DoctorSchedule = (props: DoctorScheduleProps) => {
+  const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
+    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone } = props.data;
+    
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
     <section className={'container doctorScheduleSection'}>
+      {futureEmployee(employmentFrom) && doctorName ?
+      <Highlight  
+        data={{text : doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
+        '. Již nyní se ale k němu můžete objednávat.',
+        description: null, urlTitle: null, url: null}}
+      />
+      : ''}
       {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
       {schedule &&
         schedule.weeks &&
@@ -214,6 +226,10 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
               </tbody>
             </table>
             {schedule.note && <b>{schedule.note}</b>}
+            <br/>
+            {polyclinicPhones &&
+            getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
+            <b>V urgentních případech volejte {getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName)}.</b>}
           </div>
         ))}
 
@@ -262,7 +278,6 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                 </table>
               </div>
             )}
-            {phone && <h5>V urgentních případech volejte {phone}.</h5>}
           </>
         )}}
       </Query>

@@ -54,7 +54,7 @@ var GET_ALL_PAGES = graphql_tag_1.default(templateObject_4 || (templateObject_4 
 var AllPagesComposedQuery = react_adopt_1.adopt({
     getContext: function (_a) {
         var render = _a.render;
-        return React.createElement(react_apollo_1.Query, { ssr: false, query: GET_CONTEXT }, function (_a) {
+        return React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
             return render(data);
         });
@@ -89,7 +89,7 @@ var AllPagesComposedQuery = react_adopt_1.adopt({
         if (!languageId || !websiteId) {
             return render({ loading: true });
         }
-        return (React.createElement(react_apollo_1.Query, { ssr: false, query: GET_ALL_PAGES, variables: {
+        return (React.createElement(react_apollo_1.Query, { query: GET_ALL_PAGES, variables: {
                 languageId: languageId,
                 websiteId: websiteId,
             } }, function (data) {
@@ -120,7 +120,7 @@ var List = /** @class */ (function (_super) {
             return getPage;
         };
         _this.datasourcesList = function (data, searchedFragments, searchKeys) {
-            return (React.createElement(react_apollo_1.Query, { query: DATASOURCE, ssr: false, variables: {
+            return (React.createElement(react_apollo_1.Query, { query: DATASOURCE, variables: {
                     id: data.datasourceId
                 } }, function (queryData) {
                 var dataShape = data.data, error = data.error, loading = data.loading;
@@ -190,25 +190,9 @@ var List = /** @class */ (function (_super) {
                     datasourceItems
                         .sort(function (a, b) {
                         if (data.order === 'DESC') {
-                            if (a.orderBy > b.orderBy) {
-                                return -1;
-                            }
-                            {
-                                if (a.orderBy < b.orderBy) {
-                                    return 1;
-                                }
-                            }
-                            return 0;
+                            return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                         }
-                        if (a.orderBy < b.orderBy) {
-                            return -1;
-                        }
-                        {
-                            if (a.orderBy > b.orderBy) {
-                                return 1;
-                            }
-                        }
-                        return 0;
+                        return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                     })
                         .map(function (item) {
                         delete item.orderBy;
@@ -391,25 +375,9 @@ var List = /** @class */ (function (_super) {
                     pagesWithFilter
                         .sort(function (a, b) {
                         if (data.order === 'DESC') {
-                            if (a.orderBy > b.orderBy) {
-                                return -1;
-                            }
-                            {
-                                if (a.orderBy < b.orderBy) {
-                                    return 1;
-                                }
-                            }
-                            return 0;
+                            return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                         }
-                        if (a.orderBy < b.orderBy) {
-                            return -1;
-                        }
-                        {
-                            if (a.orderBy > b.orderBy) {
-                                return 1;
-                            }
-                        }
-                        return 0;
+                        return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                     })
                         .map(function (item) {
                         delete item.orderBy;

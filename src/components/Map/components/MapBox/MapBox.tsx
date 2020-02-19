@@ -26,7 +26,9 @@ const MapBox: React.SFC<MapBoxProps> = props => {
         </svg>
       </div>
 
-      <div className={'mapBox__img'}>{image && image.filename && <Media type="image" data={image} />}</div>
+      <div className={'mapBox__img'}>
+        {image && image.filename && <Media type="image" data={image} width={'400'} height={'220'}  />}
+      </div>
 
       <div className={'pcTitle'}>
         <img src="/assets/medicon/images/logo.svg" alt="Medicon Logo" />
@@ -67,7 +69,9 @@ const MapBox: React.SFC<MapBoxProps> = props => {
           </div>
         </div>
 
-        <div className={'mapBox__mobile__img'}>{image && image.filename && <Media type="image" data={image} />}</div>
+        <div className={'mapBox__mobile__img'}>
+          {image && image.filename && <Media type="image" data={image} width={'75'} height={'75'}  />}
+        </div>
       </div>
 
       <div className={'mapBox__buttons'}>

@@ -6,7 +6,7 @@ var BckgImgWithFallback_1 = require("../../../partials/Media/components/BckgImgW
 function InfoElement(props) {
     var title = props.title, gradientColor = props.gradientColor, image = props.image, button = props.button, titleColor = props.titleColor, link = props.link;
     return (React.createElement("div", { className: 'col-sm-12 col-lg-6 col-xl-4' },
-        React.createElement(BckgImgWithFallback_1.default, { classes: 'info-boxes__list__element', sizes: { width: 386, height: 350 }, image: image },
+        React.createElement(BckgImgWithFallback_1.default, { classes: 'info-boxes__list__element', sizes: { width: 386, height: 350 }, originalData: image },
             React.createElement("div", { className: 'info-boxes__list__element__content' },
                 title && React.createElement("h5", { style: { color: "" + titleColor } }, title),
                 button &&

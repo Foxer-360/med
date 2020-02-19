@@ -46,8 +46,11 @@ var ImgWithFallback = /** @class */ (function (_super) {
             var sizedUrl = null;
             var sizes = props.recommendedSizes;
             var sizedFile = null;
-            _this.props.recommendedSizes.width = Math.round(_this.props.recommendedSizes.width * 1.5);
-            _this.props.recommendedSizes.height = Math.round(_this.props.recommendedSizes.height * 1.5);
+            if (_this.props && _this.props.recommendedSizes &&
+                _this.props.recommendedSizes.width && _this.props.recommendedSizes.height) {
+                _this.props.recommendedSizes.width = Math.round(_this.props.recommendedSizes.width * 1.5);
+                _this.props.recommendedSizes.height = Math.round(_this.props.recommendedSizes.height * 1.5);
+            }
             _this.setState({
                 loading: true,
             });
