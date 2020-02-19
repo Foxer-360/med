@@ -10,7 +10,7 @@ var Highlight = function (props) {
             React.createElement("div", { className: 'highlight__content' },
                 React.createElement("img", { src: "/assets/medicon/images/info.png", alt: "info" }),
                 React.createElement("div", null,
-                    text && React.createElement("p", null, text),
+                    text && React.createElement("p", { dangerouslySetInnerHTML: { __html: text } }),
                     description && React.createElement(ReactMarkdown, { className: 'highlight__content--description', skipHtml: false, escapeHtml: false, source: description })),
                 url && (React.createElement(Button_1.default, { classes: 'btn--whiteBorder', url: url }, (urlTitle && urlTitle) || 'more info'))))));
 };

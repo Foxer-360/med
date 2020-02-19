@@ -138,7 +138,7 @@ var DoctorSchedule = function (props) {
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         futureEmployee(employmentFrom) && doctorName ?
             React.createElement(Highlight_1.default, { data: { text: doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
-                        '. Již nyní se ale k němu můžete objednávat.',
+                        '.<br> Již nyní se ale k němu můžete objednávat.',
                     description: null, urlTitle: null, url: null } })
             : '',
         Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
