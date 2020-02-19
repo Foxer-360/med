@@ -3,7 +3,7 @@ import * as React from 'react';
 import Link from '../../../partials/Link';
 import Button from '../../../partials/Button';
 import getImageUrl from '../../../helpers/getImageUrl';
-import BckgImgWithFallback from '../../../partials/Media/components/BckgImgWithFallback'
+import BckgImgWithFallback from '../../../partials/Media/components/BckgImgWithFallback';
 
 export interface ExpertiseDescriptionBoxesProps {
   // tslint:disable-next-line:no-any
@@ -19,7 +19,7 @@ const ExpertiseDescriptionBoxes = (props: ExpertiseDescriptionBoxesProps) => {
         
         {boxes && boxes.map((box, i) => (
           <div key={i} className="col-sm-12 col-md-6">
-            <BckgImgWithFallback classes={'info__element'} image={box.image} sizes={{width: 595, height: 270}}>
+            <BckgImgWithFallback classes={'info__element'} originalData={box.image} sizes={{width: 595, height: 270}}>
               <div className={'info__element--cell'}>
                 {box.title && <h5 style={box.textColor ? { color: box.textColor} : {}}>{box.title}</h5>}
                 

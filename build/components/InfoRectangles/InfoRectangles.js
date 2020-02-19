@@ -12,7 +12,7 @@ var InfoRectangles = function (props) {
                 React.createElement(List_1.default, { data: infoRectangles }, function (_a) {
                     var data = _a.data;
                     return data && data.map(function (rectangle, i) { return (React.createElement("div", { key: i, className: "col-sm-12 col-md-6" },
-                        React.createElement(BckgImgWithFallback_1.default, { classes: 'info-rectangles__item', sizes: { width: '386', height: '350' }, image: rectangle.image },
+                        React.createElement(BckgImgWithFallback_1.default, { classes: 'info-rectangles__item', sizes: { width: '386', height: '350' }, originalData: rectangle.image },
                             React.createElement("div", null,
                                 rectangle.title && React.createElement("h5", null, rectangle.title),
                                 React.createElement(Button_1.default, { classes: "btn--blueBorder", url: rectangle.url }, "v\u00EDce informac\u00ED"))))); });

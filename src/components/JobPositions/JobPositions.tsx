@@ -3,7 +3,7 @@ import * as React from 'react';
 import List from '../List';
 import Button from '../../partials/Button';
 import getImageUrl from '../../helpers/getImageUrl';
-import BckgImgWithFallback from '../../partials/Media/components/BckgImgWithFallback'
+import BckgImgWithFallback from '../../partials/Media/components/BckgImgWithFallback';
 
 interface Position {
   name: string;
@@ -34,7 +34,7 @@ class JobPositions extends React.Component<JobPositionsProps, JobPositionsState>
     };
   }
 
-  renderPositions(items: any) {
+  renderPositions(items: LooseObject) {
     return items.map((position, index) => {
 
       return (
@@ -45,7 +45,11 @@ class JobPositions extends React.Component<JobPositionsProps, JobPositionsState>
             key={index}
             className={'col-sm-12 col-lg-6 col-xl-4'}
           >
-            <BckgImgWithFallback classes={'positions__element'} image={position.image} sizes={{ width: 400, height: 296 }}>
+            <BckgImgWithFallback
+              classes={'positions__element'}
+              originalData={position.image}
+              sizes={{ width: 400, height: 296 }}
+            >
               <div className={'positions__element-content'}>
                 {position.name && <p>{position.name}</p>}
                 <Button classes={'btn--whiteBorder'} url={position.url}>
