@@ -1,7 +1,7 @@
 import * as React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { GeolocatedProps, geolocated } from 'react-geolocated';
-export const GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
+export const GoogleMapsApiKey = 'AIzaSyB-xwefUDhR9xt1M7D4m7touWmXPpfiQpY';
 
 import Marker from '../Marker';
 import MapBox from '../MapBox';

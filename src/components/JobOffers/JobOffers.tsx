@@ -34,7 +34,7 @@ const JobOffers = (props: JobOffersProps) => {
                 return (
                   <div key={index} className={'col-md-12 col-lg-6'}>
                     <div className={'jobOffers__list__item'}>
-                      <BckgImgWithFallback image={offer.image} sizes={{width: 120, height: 120}}>
+                      <BckgImgWithFallback originalData={offer.image} sizes={{width: 120, height: 120}}>
                         {offer.title && 
                           <p 
                             className={'hCenterBlock'}

@@ -166,7 +166,7 @@ const GET_ALL_PAGES = gql`
 `;
 
 const AllPagesComposedQuery = adopt({
-  getContext: ({ render }) => <Query ssr={false} query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
+  getContext: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
   getFrontend: ({ render, windowOrigin, locationPath }) => (
     <ApolloConsumer>
       {(client: LooseObject) => {
@@ -218,7 +218,6 @@ const AllPagesComposedQuery = adopt({
 
     return (
       <Query 
-        ssr={false}
         query={GET_ALL_PAGES}
         variables={{ 
           languageId,
@@ -450,14 +449,9 @@ class List extends React.Component<Properties, {}> {
                 pagesWithFilter
                   .sort((a, b) => {
                     if (data.order === 'DESC') {
-                      if (a.orderBy > b.orderBy) { return -1; }
-                      { if (a.orderBy < b.orderBy) { return 1; } }
-                      return 0;
+                      return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                     }
-    
-                    if (a.orderBy < b.orderBy) { return -1; }
-                    { if (a.orderBy > b.orderBy) { return 1; } }
-                    return 0;
+                    return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                   })
                   .map(item => {
                     delete item.orderBy;
@@ -513,7 +507,6 @@ class List extends React.Component<Properties, {}> {
     return (
       <Query 
         query={DATASOURCE}
-        ssr={false}
         variables={{
           id: data.datasourceId
         }}
@@ -595,14 +588,9 @@ class List extends React.Component<Properties, {}> {
         datasourceItems
           .sort((a, b) => {
             if (data.order === 'DESC') {
-              if (a.orderBy > b.orderBy) { return -1; }
-              { if (a.orderBy < b.orderBy) { return 1; } }
-              return 0;
+              return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
             }
-
-            if (a.orderBy < b.orderBy) { return -1; }
-            { if (a.orderBy > b.orderBy) { return 1; } }
-            return 0;
+            return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
           })
           .map(item => {
             delete item.orderBy;

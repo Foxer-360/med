@@ -128,13 +128,7 @@ function DoctorSearchResults(props) {
             })
                 .sort(function (a, b) {
                 if (a.isDoctorActive === b.isDoctorActive) {
-                    if (a.name < b.name) {
-                        return -1;
-                    }
-                    if (a.name > b.name) {
-                        return 1;
-                    }
-                    return 0;
+                    return a.name.localeCompare(b.name, 'cs', { sensitivity: 'base' });
                 }
                 return b.isDoctorActive - a.isDoctorActive;
             })

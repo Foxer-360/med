@@ -3,9 +3,9 @@ import * as React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import getImageUrl from '../../helpers/getImageUrl';
 import readEnvVariable from '../../helpers/readEnvVariable';
+import LazyLoad from 'react-lazyload';
 
 const REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable('REACT_APP_MEDIA_LIBRARY_SERVER');
-
 
 export interface HeroProps {
   data: {
@@ -84,15 +84,14 @@ class Hero extends React.Component<HeroProps, HeroState> {
       });
     } else {
       this.setState({
-        src: image,
+        src: getImageUrl(image),
       });
     }
   }
 
-  loadImg(src: any) {
+  loadImg(src: string) {
     if (src) {
       const img = new Image();
-      
       img.src = src;
       
       img.onload = () => {
@@ -133,7 +132,9 @@ class Hero extends React.Component<HeroProps, HeroState> {
     const { title, text, displaySearch, image, placeholder, displayOverlay, overlayColor, overlayOpacity,
       titleColor, textColor } = this.props.data;
     
-    return (
+    const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+
+    const hero = (
       <div className="fullWidthContainer">
         <section className={'hero'} style={{ backgroundImage: image
           && `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}>
@@ -158,6 +159,8 @@ class Hero extends React.Component<HeroProps, HeroState> {
         </section>
       </div> 
     );
+
+    return BACKOFFICE ? hero : <LazyLoad height={650} offset={'100'}>{hero}</LazyLoad>;
   }
 }
 

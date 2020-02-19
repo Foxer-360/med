@@ -17,6 +17,7 @@ var React = require("react");
 var SearchBar_1 = require("../SearchBar/SearchBar");
 var getImageUrl_1 = require("../../helpers/getImageUrl");
 var readEnvVariable_1 = require("../../helpers/readEnvVariable");
+var react_lazyload_1 = require("react-lazyload");
 var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
 var Hero = /** @class */ (function (_super) {
     __extends(Hero, _super);
@@ -62,7 +63,7 @@ var Hero = /** @class */ (function (_super) {
             }
             else {
                 _this.setState({
-                    src: image,
+                    src: getImageUrl_1.default(image),
                 });
             }
         };
@@ -117,6 +118,7 @@ var Hero = /** @class */ (function (_super) {
                         title && React.createElement("h1", { className: "hero__title hero__title--" + titleColor }, title),
                         text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
                         displaySearch && (React.createElement(SearchBar_1.default, { barColor: 'lightBlue', placeholder: placeholder ? placeholder : 'Hledat ...', blogSearchResults: this.props.data.blogSearchResults, doctorsLink: this.props.data.doctorsLink })))))));
+        return BACKOFFICE ? hero : React.createElement(react_lazyload_1.default, { height: 650, offset: '100' }, hero);
     };
     return Hero;
 }(React.Component));
