@@ -133,6 +133,7 @@ const GET_ALL_PAGES = gql`
   query localizedPages($languageId: ID! $websiteId: ID!) {
     pages(where: { website: { id: $websiteId } }) {
       id
+      createdAt
       type {
         id
         name
@@ -371,6 +372,10 @@ class List extends React.Component<Properties, {}> {
                     });
                   }
 
+                  if (p && p.createdAt) {
+                    res.createdAt = p.createdAt;
+                  }
+
                   Object.keys(res).forEach(key => {
                     if (typeof res[key] === 'string') {
                       let replaced = this.replaceWithSourceItemValues(res[key], item);
@@ -456,9 +461,24 @@ class List extends React.Component<Properties, {}> {
                   .map(item => {
                     delete item.orderBy;
                     return item;
-                  })  
+                  })
                 :
-                pagesWithFilter;
+                pagesWithFilter
+                .sort((a, b) => {
+                  if (data.order === 'DESC') {
+                    if (a.createdAt > b.createdAt) { return -1; }
+                    { if (a.createdAt < b.createdAt) { return 1; } }
+                    return 0;
+                  }
+  
+                  if (a.createdAt < b.createdAt) { return -1; }
+                  { if (a.createdAt > b.createdAt) { return 1; } }
+                  return 0;
+                })
+                .map(item => {
+                  delete item.createdAt;
+                  return item;
+                });
 
               return this.props.children({
                   data: pagesWithFilter,
