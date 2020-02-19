@@ -47,6 +47,7 @@ var Loader_1 = require("../../partials/Loader");
 var SvgIcon_1 = require("../../partials/SvgIcon");
 var testEmail_1 = require("../../helpers/testEmail");
 var readEnvVariable_1 = require("../../helpers/readEnvVariable");
+var ModalWindow_1 = require("../../partials/ModalWindow");
 var REACT_APP_REST_API_URL = readEnvVariable_1.default('REACT_APP_REST_API_URL');
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n  }\n"])));
 var CareerForm = /** @class */ (function (_super) {
@@ -183,7 +184,7 @@ var CareerForm = /** @class */ (function (_super) {
     };
     CareerForm.prototype.render = function () {
         var _this = this;
-        var _a = this.props.data, gdprLink = _a.gdprLink, title = _a.title, text = _a.text;
+        var _a = this.props.data, gdprLink = _a.gdprLink, title = _a.title, text = _a.text, enableModal = _a.enableModal, modalTextBig = _a.modalTextBig, modalTextSmall = _a.modalTextSmall;
         var _b = this.state, _c = _b.formValues, firstName = _c.firstName, lastName = _c.lastName, telephone = _c.telephone, email = _c.email, message = _c.message, agreement = _c.agreement, file = _c.file, location = _c.location, errors = __rest(_b.errors, []), formStatus = _b.formStatus;
         return (React.createElement("div", { className: 'fullWidthContainer' },
             React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
@@ -245,7 +246,7 @@ var CareerForm = /** @class */ (function (_super) {
                                         ? 'There was an error.'
                                         : 'Během odesílání formuláře se vyskytla chyba.'),
                                     _this.state.formErrorMessage && React.createElement("p", null, _this.state.formErrorMessage))),
-                                formStatus === 'success' && (React.createElement("div", { className: 'form__message form__message--success' }, code === 'en'
+                                formStatus === 'success' && !enableModal && (React.createElement("div", { className: 'form__message form__message--success' }, code === 'en' && !enableModal
                                     ? 'Thank You for contacting us.'
                                     : 'Děkujeme za odeslání formuláře. Brzy se Vám ozveme.'))),
                             React.createElement("div", { className: 'form__terms' },
@@ -257,7 +258,10 @@ var CareerForm = /** @class */ (function (_super) {
                                     React.createElement(Link_1.default, __assign({}, gdprLink), "zpracov\u00E1n\u00EDm osobn\u00EDch"),
                                     " \u00FAdaj\u016F.")),
                             React.createElement("div", { className: 'flexRow flexAlign--center' },
-                                React.createElement("button", { className: "btn btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat"))))));
+                                React.createElement("button", { className: "btn btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat"))),
+                        enableModal &&
+                            _this.state.formStatus === 'success' &&
+                            React.createElement(ModalWindow_1.default, { textBig: modalTextBig, textSmall: modalTextSmall }))));
             })));
     };
     return CareerForm;

@@ -234,3 +234,10 @@
     }
   }
 }
+
+@media all and (-ms-high-contrast:none) {
+  *::-ms-backdrop, .header { 
+    position: absolute;
+    box-shadow: 1px 1px 70px 
+  }
+}

@@ -9,12 +9,16 @@ export interface MapProps {
 }
 
 const Map = (props: MapProps) => {
-  return (
-    <LazyLoad height={509} offset={100}>
-      <List data={props.data.items}>{({ data }) => {
-        return <MapComponent clinics={data} />;
-      }}</List>
-    </LazyLoad>);
+
+  const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+  
+  const map = (
+    <List data={props.data.items}>{({ data }) => {
+      return <MapComponent clinics={data} />;
+    }}</List>
+  );
+
+  return BACKOFFICE ? map : <LazyLoad height={509} offset={100}>{map}</LazyLoad>;
 };
 
 export default Map;

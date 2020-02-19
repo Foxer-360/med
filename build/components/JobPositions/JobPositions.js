@@ -32,7 +32,7 @@ var JobPositions = /** @class */ (function (_super) {
         return items.map(function (position, index) {
             return (position.polyclinic === _this.state.filter
                 || _this.state.filter === 'Všechny polikliniky') && position.url && position.url.url && (React.createElement("div", { key: index, className: 'col-sm-12 col-lg-6 col-xl-4' },
-                React.createElement(BckgImgWithFallback_1.default, { classes: 'positions__element', image: position.image, sizes: { width: 400, height: 296 } },
+                React.createElement(BckgImgWithFallback_1.default, { classes: 'positions__element', originalData: position.image, sizes: { width: 400, height: 296 } },
                     React.createElement("div", { className: 'positions__element-content' },
                         position.name && React.createElement("p", null, position.name),
                         React.createElement(Button_1.default, { classes: 'btn--whiteBorder', url: position.url }, "v\u00EDce informac\u00ED")),

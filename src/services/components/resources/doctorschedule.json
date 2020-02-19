@@ -46,7 +46,7 @@
         },
         "phone": {
           "type": "string",
-          "title": "Phone"
+          "title": "Polyclinic Phones"
         }
       }
     }

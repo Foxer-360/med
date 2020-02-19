@@ -46,3 +46,7 @@
     }
   }
 }
+
+.form__messageHolder:empty {
+  display: none;
+}

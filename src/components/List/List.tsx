@@ -133,6 +133,7 @@ const GET_ALL_PAGES = gql`
   query localizedPages($languageId: ID! $websiteId: ID!) {
     pages(where: { website: { id: $websiteId } }) {
       id
+      createdAt
       type {
         id
         name
@@ -166,7 +167,7 @@ const GET_ALL_PAGES = gql`
 `;
 
 const AllPagesComposedQuery = adopt({
-  getContext: ({ render }) => <Query ssr={false} query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
+  getContext: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
   getFrontend: ({ render, windowOrigin, locationPath }) => (
     <ApolloConsumer>
       {(client: LooseObject) => {
@@ -218,7 +219,6 @@ const AllPagesComposedQuery = adopt({
 
     return (
       <Query 
-        ssr={false}
         query={GET_ALL_PAGES}
         variables={{ 
           languageId,
@@ -372,6 +372,10 @@ class List extends React.Component<Properties, {}> {
                     });
                   }
 
+                  if (p && p.createdAt) {
+                    res.createdAt = p.createdAt;
+                  }
+
                   Object.keys(res).forEach(key => {
                     if (typeof res[key] === 'string') {
                       let replaced = this.replaceWithSourceItemValues(res[key], item);
@@ -450,21 +454,31 @@ class List extends React.Component<Properties, {}> {
                 pagesWithFilter
                   .sort((a, b) => {
                     if (data.order === 'DESC') {
-                      if (a.orderBy > b.orderBy) { return -1; }
-                      { if (a.orderBy < b.orderBy) { return 1; } }
-                      return 0;
+                      return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                     }
-    
-                    if (a.orderBy < b.orderBy) { return -1; }
-                    { if (a.orderBy > b.orderBy) { return 1; } }
-                    return 0;
+                    return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
                   })
                   .map(item => {
                     delete item.orderBy;
                     return item;
-                  })  
+                  })
                 :
-                pagesWithFilter;
+                pagesWithFilter
+                .sort((a, b) => {
+                  if (data.order === 'DESC') {
+                    if (a.createdAt > b.createdAt) { return -1; }
+                    { if (a.createdAt < b.createdAt) { return 1; } }
+                    return 0;
+                  }
+  
+                  if (a.createdAt < b.createdAt) { return -1; }
+                  { if (a.createdAt > b.createdAt) { return 1; } }
+                  return 0;
+                })
+                .map(item => {
+                  delete item.createdAt;
+                  return item;
+                });
 
               return this.props.children({
                   data: pagesWithFilter,
@@ -513,7 +527,6 @@ class List extends React.Component<Properties, {}> {
     return (
       <Query 
         query={DATASOURCE}
-        ssr={false}
         variables={{
           id: data.datasourceId
         }}
@@ -595,14 +608,9 @@ class List extends React.Component<Properties, {}> {
         datasourceItems
           .sort((a, b) => {
             if (data.order === 'DESC') {
-              if (a.orderBy > b.orderBy) { return -1; }
-              { if (a.orderBy < b.orderBy) { return 1; } }
-              return 0;
+              return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
             }
-
-            if (a.orderBy < b.orderBy) { return -1; }
-            { if (a.orderBy > b.orderBy) { return 1; } }
-            return 0;
+            return a.orderBy.localeCompare(b.orderBy, 'cs', { sensitivity: 'base' });
           })
           .map(item => {
             delete item.orderBy;

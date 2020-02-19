@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var google_map_react_1 = require("google-map-react");
 var react_geolocated_1 = require("react-geolocated");
-exports.GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
+exports.GoogleMapsApiKey = 'AIzaSyB-xwefUDhR9xt1M7D4m7touWmXPpfiQpY';
 var Marker_1 = require("../Marker");
 var MapBox_1 = require("../MapBox");
 var MapComponent = /** @class */ (function (_super) {
