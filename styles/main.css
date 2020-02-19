@@ -6481,6 +6481,9 @@ cite {
       .careerForm .form__row--second > div:nth-of-type(2) {
         width: auto; } }
 
+.form__messageHolder:empty {
+  display: none; }
+
 .care h4 {
   background: -webkit-linear-gradient(left, #2473ba, #00aad0);
   -webkit-background-clip: text;
@@ -7013,6 +7016,9 @@ cite {
   @media (min-width: 768px) {
     .contactForm .form__row--first > div:nth-of-type(2) {
       width: 49%; } }
+
+.form__messageHolder:empty {
+  display: none; }
 
 .downloads {
   text-align: center;
@@ -7920,6 +7926,16 @@ button:disabled {
     height: 5px;
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); } }
+
+.modalWindow div {
+  margin: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+  .modalWindow div h1, .modalWindow div h3 {
+    width: 90%;
+    padding: 3rem 0; }
 
 .selectBtn {
   border: none;
