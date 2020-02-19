@@ -168,7 +168,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
       {futureEmployee(employmentFrom) && doctorName ?
       <Highlight  
         data={{text : doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
-        '. Již nyní se ale k němu můžete objednávat.',
+        '.<br> Již nyní se ale k němu můžete objednávat.',
         description: null, urlTitle: null, url: null}}
       />
       : ''}
