@@ -5,7 +5,7 @@ import Button from '../../partials/Button';
 
 export interface HighlightProps {
   data: {
-    text: string;
+    text: string | React.ReactNode;
     description: string;
     urlTitle: string;
     url: LooseObject;
@@ -23,7 +23,7 @@ const Highlight = (props: HighlightProps) => {
           <img src="/assets/medicon/images/info.png" alt="info" />
 
           <div>
-            {text && <p dangerouslySetInnerHTML={{ __html: text }}/>}
+            {text && <p>{text}</p>}
             {description && <ReactMarkdown
               className={'highlight__content--description'}
               skipHtml={false}

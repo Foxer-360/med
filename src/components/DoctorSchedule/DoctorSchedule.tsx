@@ -119,7 +119,7 @@ const getAbsenceLink = (data, alternate) => {
 
 const getClinicTitle = (title) => {
   return ' - POLIKLINIKA ' + title;
-}
+};
 
 const highlightAbsence = (defaultAbsenceMessage, absences, absenceMessage) => {
   const props = {
@@ -137,12 +137,12 @@ const highlightAbsence = (defaultAbsenceMessage, absences, absenceMessage) => {
     }
     return null;
   }
-}
+};
 
 const absenceSettings = (extraAbsenceSettings, doctor) => {
   if (extraAbsenceSettings) {
     let absenceDict = extraAbsenceSettings.split('\n')
-    doctor = doctor.trim()
+    doctor = doctor.trim();
   
     for (let i = 0; i < absenceDict.length; i++) {
       absenceDict[i] = absenceDict[i].split(/(\d+\,\w+):(\[(.*)\]\((.*)\))/);
@@ -152,7 +152,17 @@ const absenceSettings = (extraAbsenceSettings, doctor) => {
     }
   }
   return null;
-}
+};
+
+const getPolyclinicPhone = (phones, doctor) => {
+  const polyclinicPhones = phones.split(',').map(i => {
+    const item = i.split(':');
+    return {'polyclinicName': item[0], 'polyclinicPhone': item[1]};
+  });
+  const phone = polyclinicPhones.find(i => {return i.polyclinicName.trim() === doctor.trim(); });
+
+  return phone && phone.polyclinicPhone || null;
+};
 
 const futureEmployee = (date) => {
   return moment(date) > moment();
@@ -166,10 +176,17 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   return (
     <section className={'container doctorScheduleSection'}>
       {futureEmployee(employmentFrom) && doctorName ?
-      <Highlight  
-        data={{text : doctorName + 'začíná ordinovat od ' + moment(employmentFrom).format('DD.MM.YYYY') +
-        '.<br> Již nyní se ale k němu můžete objednávat.',
-        description: null, urlTitle: null, url: null}}
+      <Highlight
+        data={{
+          text: 
+          <React.Fragment>
+            {doctorName} začíná ordinovat od {moment(employmentFrom).format('DD.MM.YYYY')}.
+            <br/>Již nyní se ale k němu můžete objednávat.
+          </React.Fragment>,
+          description: null, 
+          urlTitle: null, 
+          url: null
+        }}
       />
       : ''}
       {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
@@ -227,9 +244,9 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             </table>
             {schedule.note && <b>{schedule.note}</b>}
             <br/>
-            {polyclinicPhones &&
-            getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName) &&
-            <b>V urgentních případech volejte {getPolyclinicPhone(polyclinicPhones, week.polyclinic.shortName)}.</b>}
+            {phone &&
+            getPolyclinicPhone(phone, week.polyclinic.shortName) &&
+            <b>V urgentních případech volejte {getPolyclinicPhone(phone, week.polyclinic.shortName)}.</b>}
           </div>
         ))}
 
@@ -258,7 +275,8 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                           {(absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
-                          {(absence.toDate.date && absence.subcategory.id !== 31 && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
+                          {(absence.toDate.date && absence.subcategory.id !== 31 &&
+                            moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
                           {Array.isArray(absenceMessage) ? (<ReactMarkdown
