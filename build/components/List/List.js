@@ -303,7 +303,6 @@ var List = /** @class */ (function (_super) {
                     return true;
                 })
                     .map(function (p) {
-                    console.log('p', p);
                     var annotations = {};
                     var translation = (p && p.translations && p.translations[0]);
                     translation.annotations.forEach(function (_a) {
