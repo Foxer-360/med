@@ -57,6 +57,7 @@ var SearchBar = /** @class */ (function (_super) {
         };
         _this.state = {
             query: '',
+            value: '',
             focused: false,
             doctorResults: null,
             blogResults: null
@@ -86,10 +87,19 @@ var SearchBar = /** @class */ (function (_super) {
             return this.setState({ blogResults: blogResults });
         }
     };
-    // tslint:disable-next-line:typedef
     SearchBar.prototype.changeSearchQuery = function (query) {
         this.setState({
             query: query,
+        });
+    };
+    SearchBar.prototype.setValue = function (value) {
+        this.setState({
+            value: value,
+        });
+    };
+    SearchBar.prototype.showValue = function () {
+        this.setState({
+            query: this.state.value
         });
     };
     SearchBar.prototype.handleClick = function (e) {
@@ -122,8 +132,11 @@ var SearchBar = /** @class */ (function (_super) {
             doctorSearchResults = __assign({}, doctorSearchResults, { data: __assign({}, doctorSearchResults.data, { link: this.props.doctorsLink }) });
         }
         return (React.createElement("div", { ref: this.searchBar, className: "searchBar " + (this.state.focused ? 'searchBar--focused' : '') + " searchBar--" + barColor },
-            React.createElement("div", { className: 'searchBar__input' },
-                React.createElement("input", { type: "text", ref: this.input, placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); }, onChange: function (e) { return _this.changeSearchQuery(e.target.value); } }),
+            React.createElement("div", { className: 'searchBar__input', onClick: function () { return _this.showValue(); }, onTouchStart: function () { return _this.showValue(); } },
+                React.createElement("input", { type: "text", ref: this.input, placeholder: placeholder, onFocus: function () { return _this.handleFocus(); }, onBlur: function () { return _this.handleFocus(); }, onChange: function (e) {
+                        _this.changeSearchQuery(e.target.value),
+                            _this.setValue(e.target.value);
+                    } }),
                 React.createElement(SvgIcon_1.default, { name: 'search', type: barColor })),
             React.createElement("div", { className: "searchBar__bar" }),
             this.state.query.length > 1 &&

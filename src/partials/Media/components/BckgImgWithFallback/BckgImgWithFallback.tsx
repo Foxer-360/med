@@ -2,12 +2,13 @@ import * as React from 'react';
 
 import getImageUrl from '../../../../helpers/getImageUrl';
 import readEnvVariable from '../../../../helpers/readEnvVariable';
+import LazyLoad from 'react-lazyload';
 
 const REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable('REACT_APP_MEDIA_LIBRARY_SERVER');
 
 export interface BckgImgWithFallbackProps {
   sizes: LooseObject;
-  image: LooseObject;
+  originalData: LooseObject;
   classes?: string;
   addStyles?: LooseObject;
 }
@@ -15,6 +16,7 @@ export interface BckgImgWithFallbackProps {
 export interface BckgImgWithFallbackState {
   src: string;
   loading: boolean;
+  originalSrc: string;
 }
 
 class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, BckgImgWithFallbackState> {
@@ -24,6 +26,7 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
     this.state = {
       src: null,
       loading: true,
+      originalSrc: getImageUrl(this.props.originalData)
     };
   }
 
@@ -35,7 +38,7 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: this.props.image.id,
+          id: this.props.originalData.id,
           width: parseInt(this.props.sizes.width, 10),
           height: parseInt(this.props.sizes.height, 10),
         }),
@@ -52,33 +55,32 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
   getSizedUrl = props => {
     const baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
     let sizedUrl = null;
-    this.props.sizes.width = Math.round(this.props.sizes.width * 1.5)
-    this.props.sizes.height = Math.round(this.props.sizes.height * 1.5)
+    this.props.sizes.width = Math.round(this.props.sizes.width * 1.5);
+    this.props.sizes.height = Math.round(this.props.sizes.height * 1.5);
     let sizes = props.sizes;
-    let image = props.image
 
     this.setState({
       loading: true,
     });
     
-    if (sizes && sizes.width && sizes.height && image && image.filename) {
-      let filename = image.filename.split('.');
+    if (sizes && sizes.width && sizes.height && props.originalData && props.originalData.filename) {
+      let filename = props.originalData.filename.split('.');
       filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
       filename = filename.join('.');
 
-      sizedUrl = baseUrl + image.category + image.hash + '_' + filename;
+      sizedUrl = baseUrl + props.originalData.category + props.originalData.hash + '_' + filename;
 
       this.setState({
         src: sizedUrl,
       });
     } else {
       this.setState({
-        src: image,
+        src: this.state.originalSrc,
       });
     }
   }
 
-  loadImg(src: any) {
+  loadImg(src: string) {
     if (src) {
       const img = new Image();
 
@@ -104,7 +106,7 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
     if (this.state.src !== nextState.src) {
       this.loadImg(nextState.src);
     }
-    if (nextProps.image !== this.props.image) {
+    if (nextState.originalSrc !== this.state.originalSrc) {
       this.getSizedUrl(nextProps);
     }
   }
@@ -114,21 +116,28 @@ class BckgImgWithFallback extends React.Component<BckgImgWithFallbackProps, Bckg
 
     this.setState({
       loading: true,
-      src: getImageUrl(this.props.image),    
+      src: this.state.originalSrc,    
     });
   }
 
-  public render() {  
-    const { image, classes, addStyles } = this.props;
-    
-    return (
-      <div className={classes}
-      style={{ backgroundImage: image
-      && `url(${this.state.src ? this.state.src : getImageUrl(this.props.image)})`,
-      ...addStyles }}>
-        {this.props.children}
+  public render() {
+    const { classes, addStyles } = this.props;
+
+    const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
+
+    const bckgImgWithFallback = (
+      <div 
+        className={classes}
+        style={{ 
+          backgroundImage: `url(${this.state.src ? this.state.src : getImageUrl(this.props.originalData)})`,
+        ...addStyles }}
+      >
+          {this.props.children}
       </div>
     );
+    
+    return BACKOFFICE ? bckgImgWithFallback : 
+    <LazyLoad height={this.props.sizes.height} offset={'100'}>{bckgImgWithFallback}</LazyLoad>;
   }
 }
 

@@ -3,9 +3,9 @@ import * as React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import getImageUrl from '../../helpers/getImageUrl';
 import readEnvVariable from '../../helpers/readEnvVariable';
+import LazyLoad from 'react-lazyload';
 
 const REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable('REACT_APP_MEDIA_LIBRARY_SERVER');
-
 
 export interface HeroProps {
   data: {
@@ -82,15 +82,14 @@ class Hero extends React.Component<HeroProps, HeroState> {
       });
     } else {
       this.setState({
-        src: image,
+        src: getImageUrl(image),
       });
     }
   }
 
-  loadImg(src: any) {
+  loadImg(src: string) {
     if (src) {
       const img = new Image();
-      
       img.src = src;
       
       img.onload = () => {
@@ -130,30 +129,37 @@ class Hero extends React.Component<HeroProps, HeroState> {
   public render() {
     const { title, text, displaySearch, image, placeholder, displayOverlay, titleColor, textColor } = this.props.data;
     
-    return (
-      <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: image
-          && `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}>
-          {displayOverlay && <div className={'hero__overlay'} />}
-          <div className={'container'}>
-            <div className={'hero__holder'}>
-              {title && <h1 className={`hero__title hero__title--${titleColor}`}>{title}</h1>}
+    const BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
 
-              {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
-  
-              {displaySearch && (
-                <SearchBar
-                  barColor={'lightBlue'}
-                  placeholder={placeholder ? placeholder : 'Hledat ...'}
-                  blogSearchResults={this.props.data.blogSearchResults}
-                  doctorsLink={this.props.data.doctorsLink}
-                />
-              )}
+    const hero = (
+      <div className="fullWidthContainer">
+          <section 
+            className={'hero'} 
+            style={{ backgroundImage: image
+            && `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}
+          >
+            {displayOverlay && <div className={'hero__overlay'} />}
+            <div className={'container'}>
+              <div className={'hero__holder'}>
+                {title && <h1 className={`hero__title hero__title--${titleColor}`}>{title}</h1>}
+
+                {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
+    
+                {displaySearch && (
+                  <SearchBar
+                    barColor={'lightBlue'}
+                    placeholder={placeholder ? placeholder : 'Hledat ...'}
+                    blogSearchResults={this.props.data.blogSearchResults}
+                    doctorsLink={this.props.data.doctorsLink}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        </section>
-      </div> 
+          </section>
+        </div> 
     );
+
+    return BACKOFFICE ? hero : <LazyLoad height={650} offset={'100'}>{hero}</LazyLoad>;
   }
 }
 

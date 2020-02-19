@@ -54,7 +54,7 @@ var PolyclinicsList = /** @class */ (function (_super) {
                         React.createElement("div", { className: "fullWidthContainer" },
                             React.createElement("div", { className: "container" },
                                 React.createElement("div", { className: "pcitem__wrapper" },
-                                    React.createElement("div", { className: 'pcitem__img' }, clinic.image && React.createElement(Media_1.default, { data: clinic.image, type: "image" })),
+                                    React.createElement("div", { className: 'pcitem__img' }, clinic.image && React.createElement(Media_1.default, { data: clinic.image, type: "image", width: '362', height: '420' })),
                                     React.createElement("div", { className: 'pcitem__info' },
                                         React.createElement(title_1.default, { name: clinic.name }),
                                         React.createElement("div", { className: "pcitem__info__details" },
@@ -67,7 +67,6 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                                 clinic.address && clinic.address,
                                                                 " ",
                                                                 React.createElement("br", null),
-                                                                clinic.district && clinic.district,
                                                                 clinic.district && clinic.district))
                                                         :
                                                             React.createElement("p", null,
@@ -81,10 +80,12 @@ var PolyclinicsList = /** @class */ (function (_super) {
                                                                 {} }, clinic.clinic))),
                                             React.createElement("div", { className: "pcitem__info__details__item" },
                                                 React.createElement("img", { src: "../../../assets/medicon/images/phoneIcon.svg", alt: "Medicon Phone Icon" }),
-                                                clinic.phone && React.createElement("p", null,
-                                                    React.createElement("a", { href: "callto:" + clinic.phone.replace(/ /g, '') }, clinic.phone))),
+                                                clinic.phone &&
+                                                    React.createElement("p", null,
+                                                        React.createElement("a", { href: "callto:" + clinic.phone.replace(/ /g, '') }, clinic.phone))),
                                             React.createElement("div", { className: "pcitem__info__details__item" },
-                                                clinic.transportImage && React.createElement(Media_1.default, { data: clinic.transportImage, type: "image", width: '42', height: '50' }),
+                                                clinic.transportImage &&
+                                                    React.createElement(Media_1.default, { data: clinic.transportImage, type: "image", width: '42', height: '50' }),
                                                 !clinic.transportImage && React.createElement("img", { src: "../../../assets/medicon/images/metro2.png", alt: "" }),
                                                 clinic.transportUrl ?
                                                     React.createElement("p", null,

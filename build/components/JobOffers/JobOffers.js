@@ -27,7 +27,7 @@ var JobOffers = function (props) {
                         data.map(function (offer, index) {
                             return (React.createElement("div", { key: index, className: 'col-md-12 col-lg-6' },
                                 React.createElement("div", { className: 'jobOffers__list__item' },
-                                    React.createElement(BckgImgWithFallback_1.default, { image: offer.image, sizes: { width: 120, height: 120 } }, offer.title &&
+                                    React.createElement(BckgImgWithFallback_1.default, { originalData: offer.image, sizes: { width: 120, height: 120 } }, offer.title &&
                                         React.createElement("p", { className: 'hCenterBlock', style: (offer.image && offer.image.filename) ? { paddingLeft: 60 } : {} }, offer.title)),
                                     offer.url && React.createElement(Link_1.default, __assign({}, offer.url, { style: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' } })))));
                         });
