@@ -3390,6 +3390,12 @@ cite {
     left: -20px;
     top: -3px; }
 
+@media (min-width: 600px) {
+  .phone {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none; } }
+
 .hero {
   background-position: top center;
   background-size: cover;

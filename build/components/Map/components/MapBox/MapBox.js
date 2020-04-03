@@ -46,7 +46,7 @@ var MapBox = function (props) {
                         React.createElement("p", null, city))),
                 React.createElement("div", { className: 'mapBox__contacts__item' },
                     React.createElement("img", { src: '/assets/medicon/images/phoneIcon.svg' }),
-                    React.createElement("div", null,
+                    React.createElement("div", { className: "phone" },
                         React.createElement("p", null, phone)))),
             React.createElement("div", { className: 'mapBox__mobile__img' }, image && image.filename && React.createElement(Media_1.default, { type: "image", data: image, width: '75', height: '75' }))),
         React.createElement("div", { className: 'mapBox__buttons' },

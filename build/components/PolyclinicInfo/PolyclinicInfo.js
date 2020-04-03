@@ -37,7 +37,7 @@ var PolyclinicInfo = function (props) {
                 React.createElement("div", { className: "col-12 col-lg-4" },
                     React.createElement("div", { className: 'policlinicInfo__item' },
                         React.createElement("img", { src: '/assets/medicon/images/phone.svg', alt: "phone nubmer" }),
-                        React.createElement("p", { className: 'policlinicInfo__item--content' }, phone && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: phone })))),
+                        React.createElement("p", { className: 'policlinicInfo__item--content phone' }, phone && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: phone })))),
                 React.createElement("div", { className: "col-12 col-lg-4" },
                     React.createElement("div", { className: 'policlinicInfo__item' },
                         transportImage && React.createElement(Media_1.default, { type: 'image', data: transportImage, width: '50', height: '50' }),

@@ -27,7 +27,7 @@ var DoctorCard = function (props) {
                         React.createElement("div", { className: 'doctorCard__info__item' },
                             React.createElement("div", { className: 'doctorCard__info__item__wrap' },
                                 React.createElement("img", { src: "/assets/medicon/images/phoneIcon.svg" }),
-                                React.createElement("a", { href: "callto:" + phone }, phone))),
+                                React.createElement("a", { className: "phone", href: "callto:" + phone }, phone))),
                         React.createElement("div", { className: 'doctorCard__info__item doctorCard__info__item--location ' },
                             React.createElement("img", { src: "/assets/medicon/images/geoIcon.svg" }),
                             React.createElement("div", null,

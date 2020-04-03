@@ -32,7 +32,7 @@ var ContactInfo = function (props) {
                 React.createElement("div", { className: "col-12 col-sm-6 col-lg-3" },
                     React.createElement("div", { className: 'contact-info__grid__element' },
                         React.createElement("img", { src: '/assets/medicon/images/contact-info-2.png', alt: "phone number" }),
-                        React.createElement("div", { className: 'contact-info__grid__element__content' }, phones && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: phones })))),
+                        React.createElement("div", { className: 'contact-info__grid__element__content phone' }, phones && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: phones })))),
                 React.createElement("div", { className: "col-12 col-sm-6 col-lg-3" },
                     React.createElement("div", { className: 'contact-info__grid__element' },
                         React.createElement("img", { src: '/assets/medicon/images/contact-info-3.png', alt: "e-mail" }),
