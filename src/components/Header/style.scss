@@ -7,6 +7,50 @@
   top: 0px;
   z-index: 400;  
 
+  .news_bar {
+    background:#ea5643;
+
+    .container {
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      padding: 0px 5px;
+
+      p {
+        color: white;
+        padding: 0;
+        line-height: 2;
+      }
+      
+      .btn--whiteBorder {
+        margin-top: -0.5rem;
+        margin-bottom: -0.5rem;
+        padding-left: 1rem;
+        padding-right: 2.5rem;
+        border: none;
+
+        &:hover {
+          color: #c74817;
+          background-color: white;
+
+          .arrow {
+            border-color: #c74817;
+          }
+        }
+      }
+
+      @include max-lg {
+        p, .btn {
+          font-size: calc(0.2vw + 1rem);
+        }
+
+        .btn--whiteBorder {
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+
   &__iso {
     position: absolute;
     height: 20px;

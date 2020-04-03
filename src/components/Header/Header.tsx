@@ -6,6 +6,7 @@ import { Query } from 'react-apollo';
 import Link from '../../partials/Link';
 import Loader from '../../partials/Loader';
 import Hamburger from './components/Hamburger';
+import Button from '../../partials/Button';
 
 const GET_CONTEXT = gql`
   {
@@ -49,6 +50,11 @@ export interface HeaderProps {
   navigations?: LooseObject;
   languages?: LooseObject;
   languageCode?: string;
+  data: {
+    redBarText: string;
+    redBarButtonText: string;
+    redBarButtonLink: LooseObject;
+  }
 }
 
 export interface HeaderState {
@@ -105,6 +111,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   public render() {
+    const { redBarText, redBarButtonText, redBarButtonLink } = this.props.data;
     return (
       <ComposedQuery>
         {({ getPagesUrls: { loading, error, data }, context }) => {
@@ -134,6 +141,16 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
           return (
             <header className={`header ${this.state.menuActive ? 'menuActive' : ''}`}>
+              {(redBarButtonText || redBarText) && <div className="news_bar">
+                <div className={redBarButtonText ? 'container' : 'container text-only'}>
+                  <p>
+                    {redBarText}
+                  </p>
+                  {redBarButtonText && <Button classes={'btn--whiteBorder'} url={redBarButtonLink}>
+                    {redBarButtonText}
+                  </Button>}
+                </div>
+              </div>}
               <div className="container">
                 <div className={'header__wrapper'}>
                   <div className={'header__logo'} ref={this.logo}>
