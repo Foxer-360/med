@@ -35,6 +35,7 @@ var react_apollo_1 = require("react-apollo");
 var Link_1 = require("../../partials/Link");
 var Loader_1 = require("../../partials/Loader");
 var Hamburger_1 = require("./components/Hamburger");
+var Button_1 = require("../../partials/Button");
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = react_adopt_1.adopt({
@@ -95,6 +96,7 @@ var Header = /** @class */ (function (_super) {
     };
     Header.prototype.render = function () {
         var _this = this;
+        var _a = this.props.data, redBarText = _a.redBarText, redBarButtonText = _a.redBarButtonText, redBarButtonLink = _a.redBarButtonLink;
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
@@ -110,6 +112,10 @@ var Header = /** @class */ (function (_super) {
             var mainNavItems = transformedNavigations && transformedNavigations[mainNav] ? transformedNavigations[mainNav] : [];
             var secNavItems = transformedNavigations && transformedNavigations[secNav] ? transformedNavigations[secNav] : [];
             return (React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
+                (redBarButtonText || redBarText) && React.createElement("div", { className: "news_bar" },
+                    React.createElement("div", { className: redBarButtonText ? 'container' : 'container text-only' },
+                        React.createElement("p", null, redBarText),
+                        redBarButtonText && React.createElement(Button_1.default, { classes: 'btn--whiteBorder', url: redBarButtonLink }, redBarButtonText))),
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: 'header__wrapper' },
                         React.createElement("div", { className: 'header__logo', ref: _this.logo },

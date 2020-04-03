@@ -3557,6 +3557,33 @@ cite {
   position: sticky;
   top: 0px;
   z-index: 400; }
+  .header .news_bar {
+    background: #ea5643; }
+    .header .news_bar .container {
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      padding: 0px 5px; }
+      .header .news_bar .container p {
+        color: white;
+        padding: 0;
+        line-height: 2; }
+      .header .news_bar .container .btn--whiteBorder {
+        margin-top: -0.5rem;
+        margin-bottom: -0.5rem;
+        padding-left: 1rem;
+        padding-right: 2.5rem;
+        border: none; }
+        .header .news_bar .container .btn--whiteBorder:hover {
+          color: #c74817;
+          background-color: white; }
+          .header .news_bar .container .btn--whiteBorder:hover .arrow {
+            border-color: #c74817; }
+      @media (max-width: 991px) {
+        .header .news_bar .container p, .header .news_bar .container .btn {
+          font-size: calc(0.2vw + 1rem); }
+        .header .news_bar .container .btn--whiteBorder {
+          letter-spacing: 1px; } }
   .header__iso {
     position: absolute;
     height: 20px;

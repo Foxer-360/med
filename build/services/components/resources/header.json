@@ -1,3 +1,22 @@
 {
-    "name": "Header"
+    "name": "Header",
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "redBarText": {
+                    "type": "text",
+                    "title": "Red bar text on the left"
+                },
+                "redBarButtonText": {
+                    "type": "text",
+                    "title": "Red bar button text"
+                },
+                "redBarButtonLink": {
+                    "type": "urlAutocomplete",
+                    "title": "Red bar button link"
+                }
+            }
+        }
+    }
 }
