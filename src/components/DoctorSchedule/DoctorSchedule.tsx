@@ -168,6 +168,13 @@ const futureEmployee = (date) => {
   return moment(date) > moment();
 };
 
+const hasSchedule = (schedule) => {
+  return schedule.weeks
+    .some(week => Object.keys(week.days)
+      .some(day => week.days[day].length > 0)
+    );
+};
+
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
     doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone } = props.data;
@@ -189,7 +196,8 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
         }}
       />
       : ''}
-      {Array.isArray(absences) && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
+      {Array.isArray(absences) && hasSchedule(schedule) &&
+        highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
       {schedule &&
         schedule.weeks &&
         schedule.weeks.map((week, i) => (
@@ -250,6 +258,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
           </div>
         ))}
 
+      {hasSchedule(schedule) &&
       <Query query={GET_CONTEXT}>
         {({ data }) => {
           const nextMonthAbsences = Array.isArray(absences) && absences.filter((absence) => {
@@ -298,7 +307,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             )}
           </>
         )}}
-      </Query>
+      </Query>}
     </section>
   );
 };
