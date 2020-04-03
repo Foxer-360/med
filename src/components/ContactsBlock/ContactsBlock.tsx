@@ -64,11 +64,13 @@ const ContactsBlock = (props: ContactsBlockProps) => {
                     className={'contacts-block__email'}
                     source={mContact.emails}
                   />}
-                  {mContact.phones && <ReactMarkdown
-                    skipHtml={false}
-                    escapeHtml={false}
-                    source={mContact.phones}
-                  />}
+                  <div className="phone">
+                    {mContact.phones && <ReactMarkdown
+                      skipHtml={false}
+                      escapeHtml={false}
+                      source={mContact.phones}
+                    />}
+                  </div>
                 </div>
               ))}
             </List>
@@ -90,11 +92,13 @@ const ContactsBlock = (props: ContactsBlockProps) => {
                     escapeHtml={false}
                     source={nContact.emails}
                   />}
-                  {nContact.phones && <ReactMarkdown
-                    skipHtml={false}
-                    escapeHtml={false}
-                    source={nContact.phones}
-                  />}
+                  <div className="phone">
+                    {nContact.phones && <ReactMarkdown
+                      skipHtml={false}
+                      escapeHtml={false}
+                      source={nContact.phones}
+                    />}
+                  </div>
                 </div>
               ))}
             </List>
@@ -116,11 +120,13 @@ const ContactsBlock = (props: ContactsBlockProps) => {
                 escapeHtml={false}
                 source={oContact.emails}
               />}
-              {oContact.phones && <ReactMarkdown
-                skipHtml={false}
-                escapeHtml={false}
-                source={oContact.phones}
-              />}
+              <div className="phone">
+                {oContact.phones && <ReactMarkdown
+                  skipHtml={false}
+                  escapeHtml={false}
+                  source={oContact.phones}
+                />}
+              </div>
             </div>
           ))}
           </List>

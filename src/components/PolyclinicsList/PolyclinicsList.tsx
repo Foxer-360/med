@@ -117,7 +117,7 @@ class PolyclinicsList extends React.Component<PolyclinicsListProps, PolyclinicsL
                           <div className="pcitem__info__details__item">
                             <img src="../../../assets/medicon/images/phoneIcon.svg" alt="Medicon Phone Icon" />
                             {clinic.phone && 
-                            <p><a href={`callto:${clinic.phone.replace(/ /g,'')}`}>{clinic.phone}</a></p>}
+                            <p><a className="phone" href={`callto:${clinic.phone.replace(/ /g,'')}`}>{clinic.phone}</a></p>}
                           </div>
 
                           <div className="pcitem__info__details__item">

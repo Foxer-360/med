@@ -57,7 +57,7 @@ const PolyclinicInfo = (props: ContactsProps) => {
           <div className="col-12 col-lg-4">
             <div className={'policlinicInfo__item'}>
               <img src={'/assets/medicon/images/phone.svg'} alt="phone nubmer" />
-              <p className={'policlinicInfo__item--content'}>
+              <p className={'policlinicInfo__item--content phone'}>
                 {phone && <ReactMarkdown 
                   skipHtml={false}
                   escapeHtml={false}

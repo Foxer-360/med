@@ -63,7 +63,7 @@ const MapBox: React.SFC<MapBoxProps> = props => {
 
           <div className={'mapBox__contacts__item'}>
             <img src={'/assets/medicon/images/phoneIcon.svg'} />
-            <div>
+            <div className="phone">
               <p>{phone}</p>
             </div>
           </div>

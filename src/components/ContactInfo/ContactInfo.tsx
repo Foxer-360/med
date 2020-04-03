@@ -55,7 +55,7 @@ const ContactInfo = (props: ContactInfoProps) => {
           <div className="col-12 col-sm-6 col-lg-3">
             <div className={'contact-info__grid__element'}>
               <img src={'/assets/medicon/images/contact-info-2.png'} alt="phone number" />
-              <div className={'contact-info__grid__element__content'}>
+              <div className={'contact-info__grid__element__content phone'}>
                 {phones && <ReactMarkdown 
                   skipHtml={false}
                   escapeHtml={false}

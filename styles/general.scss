@@ -262,3 +262,11 @@ cite {
     top: -3px;
   }
 }
+
+@media (min-width:'600px') {
+    .phone {
+      pointer-events: none;
+      cursor: default;
+      text-decoration: none;
+  }
+}

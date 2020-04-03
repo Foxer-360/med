@@ -74,7 +74,7 @@ const DoctorCard = (props: DoctorCardProps) => {
               <div className={'doctorCard__info__item'}>
                 <div className={'doctorCard__info__item__wrap'}>
                   <img src="/assets/medicon/images/phoneIcon.svg" />
-                  <a href={`callto:${phone}`}>{phone}</a>
+                  <a className="phone" href={`callto:${phone}`}>{phone}</a>
                 </div>
               </div>
 
