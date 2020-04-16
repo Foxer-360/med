@@ -4,8 +4,21 @@ import SearchBar from '../SearchBar/SearchBar';
 import getImageUrl from '../../helpers/getImageUrl';
 import readEnvVariable from '../../helpers/readEnvVariable';
 import LazyLoad from 'react-lazyload';
+import Link from '../../partials/Link';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
 const REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable('REACT_APP_MEDIA_LIBRARY_SERVER');
+
+const GET_CONTEXT = gql`
+  {
+    languageData @client
+    pageData @client
+    websiteData @client
+    languagesData @client
+    navigationsData @client
+  }
+`;
 
 export interface HeroProps {
   data: {
@@ -22,6 +35,7 @@ export interface HeroProps {
     blogSearchResults: LooseObject;
     doctorsLink?: LooseObject;
   };
+  info: LooseObject;
 }
 
 export interface HeroState {
@@ -128,6 +142,45 @@ class Hero extends React.Component<HeroProps, HeroState> {
     });
   }
 
+  getLink = (data, slug) => {
+    console.log(slug);
+    if (slug === undefined) {
+      slug = '';
+    }
+    let link = `/${data.languageData && data.languageData.code}/${slug.trim()}`;
+    return link;
+  }
+
+  getDoctorText = (text, textColor) => {
+    text = text.split(' - ');
+    let expertise = text[0].split(' ! ');
+    let polyclinic = text[1].split(' ! ');
+    let polyclinicNames = polyclinic[0].split(/(?=\,)/);
+    let polyclinicUrls = polyclinic[1].split(',');
+
+    return (
+      text && (
+        <Query query={GET_CONTEXT}>
+          {({ data }) => {
+            let polyclinics = [];
+            polyclinicNames.map(name => {
+              polyclinics.push(
+                <Link url={this.getLink(data, polyclinicUrls[polyclinicNames.indexOf(name)])}>{name.trim()}</Link>
+                );
+            });
+            console.log(polyclinics);
+            return (
+              <div className={`hero__text hero__text--${textColor} `}>
+                <Link url={this.getLink(data, expertise[1])}>{expertise[0].trim()}</Link>
+                {' - '}
+                {polyclinics}
+            </div>
+            );
+          }}
+        </Query>
+    ));
+  }
+
   public render() {
     const { title, text, displaySearch, image, placeholder, displayOverlay, overlayColor, overlayOpacity,
       titleColor, textColor } = this.props.data;
@@ -136,15 +189,22 @@ class Hero extends React.Component<HeroProps, HeroState> {
 
     const hero = (
       <div className="fullWidthContainer">
-        <section className={'hero'} style={{ backgroundImage: image
-          && `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}>
+        <section 
+          className={'hero'}
+          style={{ backgroundImage: image &&
+          `url(${this.state.src ? this.state.src : getImageUrl(this.props.data.image)})` }}
+        >
           {displayOverlay &&
           <div className={'hero__overlay'} style={{ background: overlayColor, opacity: (overlayOpacity / 100) }} />}
           <div className={'container'}>
             <div className={'hero__holder'}>
               {title && <h1 className={`hero__title hero__title--${titleColor}`}>{title}</h1>}
 
-              {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
+              {this.props.info 
+              && this.props.info.datasources 
+              && this.props.info.datasources.doctor 
+              ? this.getDoctorText(text, textColor) 
+              : text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
   
               {displaySearch && (
                 <SearchBar

@@ -169,7 +169,7 @@ const futureEmployee = (date) => {
 };
 
 const hasSchedule = (schedule) => {
-  return schedule.weeks
+  return schedule && schedule.weeks && schedule.weeks
     .some(week => Object.keys(week.days)
       .some(day => week.days[day].length > 0)
     );

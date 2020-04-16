@@ -13,7 +13,7 @@ import redis from 'redis';
 const redisClient = redis.createClient();
 const { ApolloClient } = apollo;
 const { HttpLink } = http;
-const { InMemoryCache } = ca;
+const { InMemoryCache } = ca; 
 const { urlize } = urli;
 
 const cache = new InMemoryCache();
@@ -21,7 +21,7 @@ const cache = new InMemoryCache();
 // console.log(ApolloClient);
 const date = new Date();
 console.log(date);
-const httpLink = new HttpLink({ uri: 'https://visionary.mediconas.cz/api/graphql', fetch: fetch });
+const httpLink = new HttpLink({ uri: 'http://localhost:8000/graphql', fetch: fetch });
 
 function update(token) {
   const GET_OUTDATED = gql`
@@ -117,6 +117,19 @@ function update(token) {
     }
   `;
 
+  const GET_ANNOTATION = gql`
+    query expertiseUrl($key: String) {
+      pageAnnotations(where: { key: $key}) {
+        id
+        key
+        value
+        pageTranslation {
+          url
+        }
+      }
+    }
+  `;
+
   // tslint:disable-next-line:typedef
   const createNewItem =  function (datasource, data) {
     const slug = urlize(datasource.slug
@@ -205,6 +218,18 @@ function update(token) {
         }
       });
 
+      const expertisesUrls = await client.query({
+              query: GET_ANNOTATION,
+            variables: {
+              key: 'expertiseCode'
+            }});
+    
+      const polyclinicsUrls = await client.query({
+        query: GET_ANNOTATION,
+      variables: {
+        key: 'polyclinicCode'
+      }});
+
       try {
         return doctors.reduce((result, doctor) => {
           return result.then(
@@ -252,6 +277,22 @@ function update(token) {
                   console.log(transformedDoctor.doctorPersonalInformation.polyclinic);
                 }
               })));
+
+              transformedDoctor.doctorPersonalInformation.expertises.forEach(expertise => {
+                if (expertise && expertise.code) {
+                  expertise.url = expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code) &&
+                    expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code).pageTranslation.url
+                }
+              })
+
+              if (transformedDoctor.doctorPersonalInformation.polyclinic && transformedDoctor.doctorPersonalInformation.polyclinic.shortName) {
+                let polyclinics = []
+                transformedDoctor.doctorPersonalInformation.polyclinic.shortName.split(',').forEach(polyclinicShort => {
+                    polyclinicsUrls.data.pageAnnotations.find(i => i.value === polyclinicShort) &&
+                      polyclinics.push(polyclinicsUrls.data.pageAnnotations.find(i => i.value === polyclinicShort).pageTranslation.url)
+                })
+                transformedDoctor.doctorPersonalInformation.polyclinic.url = polyclinics.join(',')
+              }
 
               const existingDoctorItem = datasource.datasourceItems
                 .find(item => item.content.doctorPersonalInformation.id === doctor.id);
