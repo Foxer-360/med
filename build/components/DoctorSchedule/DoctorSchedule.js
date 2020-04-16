@@ -140,7 +140,7 @@ var futureEmployee = function (date) {
     return moment(date) > moment();
 };
 var hasSchedule = function (schedule) {
-    return schedule.weeks
+    return schedule && schedule.weeks && schedule.weeks
         .some(function (week) { return Object.keys(week.days)
         .some(function (day) { return week.days[day].length > 0; }); });
 };

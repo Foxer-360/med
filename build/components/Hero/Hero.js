@@ -1,4 +1,8 @@
 "use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -18,7 +22,11 @@ var SearchBar_1 = require("../SearchBar/SearchBar");
 var getImageUrl_1 = require("../../helpers/getImageUrl");
 var readEnvVariable_1 = require("../../helpers/readEnvVariable");
 var react_lazyload_1 = require("react-lazyload");
+var Link_1 = require("../../partials/Link");
+var graphql_tag_1 = require("graphql-tag");
+var react_apollo_1 = require("react-apollo");
 var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
+var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var Hero = /** @class */ (function (_super) {
     __extends(Hero, _super);
     function Hero(props) {
@@ -74,6 +82,33 @@ var Hero = /** @class */ (function (_super) {
                 src: getImageUrl_1.default(_this.props.data.image),
             });
         };
+        _this.getLink = function (data, slug) {
+            console.log(slug);
+            if (slug === undefined) {
+                slug = '';
+            }
+            var link = "/" + (data.languageData && data.languageData.code) + "/" + slug.trim();
+            return link;
+        };
+        _this.getDoctorText = function (text, textColor) {
+            text = text.split(' - ');
+            var expertise = text[0].split(' ! ');
+            var polyclinic = text[1].split(' ! ');
+            var polyclinicNames = polyclinic[0].split(/(?=\,)/);
+            var polyclinicUrls = polyclinic[1].split(',');
+            return (text && (React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
+                var data = _a.data;
+                var polyclinics = [];
+                polyclinicNames.map(function (name) {
+                    polyclinics.push(React.createElement(Link_1.default, { url: _this.getLink(data, polyclinicUrls[polyclinicNames.indexOf(name)]) }, name.trim()));
+                });
+                console.log(polyclinics);
+                return (React.createElement("div", { className: "hero__text hero__text--" + textColor + " " },
+                    React.createElement(Link_1.default, { url: _this.getLink(data, expertise[1]) }, expertise[0].trim()),
+                    ' - ',
+                    polyclinics));
+            })));
+        };
         _this.state = {
             src: null,
             loading: true,
@@ -110,18 +145,23 @@ var Hero = /** @class */ (function (_super) {
         var _a = this.props.data, title = _a.title, text = _a.text, displaySearch = _a.displaySearch, image = _a.image, placeholder = _a.placeholder, displayOverlay = _a.displayOverlay, overlayColor = _a.overlayColor, overlayOpacity = _a.overlayOpacity, titleColor = _a.titleColor, textColor = _a.textColor;
         var BACKOFFICE = window && document.querySelector('.ant-layout') ? true : false;
         var hero = (React.createElement("div", { className: "fullWidthContainer" },
-            React.createElement("section", { className: 'hero', style: { backgroundImage: image
-                        && "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.data.image)) + ")" } },
+            React.createElement("section", { className: 'hero', style: { backgroundImage: image &&
+                        "url(" + (this.state.src ? this.state.src : getImageUrl_1.default(this.props.data.image)) + ")" } },
                 displayOverlay &&
                     React.createElement("div", { className: 'hero__overlay', style: { background: overlayColor, opacity: (overlayOpacity / 100) } }),
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },
                         title && React.createElement("h1", { className: "hero__title hero__title--" + titleColor }, title),
-                        text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
+                        this.props.info
+                            && this.props.info.datasources
+                            && this.props.info.datasources.doctor
+                            ? this.getDoctorText(text, textColor)
+                            : text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
                         displaySearch && (React.createElement(SearchBar_1.default, { barColor: 'lightBlue', placeholder: placeholder ? placeholder : 'Hledat ...', blogSearchResults: this.props.data.blogSearchResults, doctorsLink: this.props.data.doctorsLink })))))));
         return BACKOFFICE ? hero : React.createElement(react_lazyload_1.default, { height: 650, offset: '100' }, hero);
     };
     return Hero;
 }(React.Component));
 exports.default = Hero;
+var templateObject_1;
 //# sourceMappingURL=Hero.js.map
