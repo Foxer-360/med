@@ -13,7 +13,7 @@ import redis from 'redis';
 const redisClient = redis.createClient();
 const { ApolloClient } = apollo;
 const { HttpLink } = http;
-const { InMemoryCache } = ca; 
+const { InMemoryCache } = ca;
 const { urlize } = urli;
 
 const cache = new InMemoryCache();
@@ -21,7 +21,7 @@ const cache = new InMemoryCache();
 // console.log(ApolloClient);
 const date = new Date();
 console.log(date);
-const httpLink = new HttpLink({ uri: 'http://localhost:8000/graphql', fetch: fetch });
+const httpLink = new HttpLink({ uri: 'http://mediconas.cz/api/graphql', fetch: fetch });
 
 function update(token) {
   const GET_OUTDATED = gql`

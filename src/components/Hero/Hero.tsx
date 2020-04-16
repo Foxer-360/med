@@ -143,7 +143,6 @@ class Hero extends React.Component<HeroProps, HeroState> {
   }
 
   getLink = (data, slug) => {
-    console.log(slug);
     if (slug === undefined) {
       slug = '';
     }
@@ -153,10 +152,10 @@ class Hero extends React.Component<HeroProps, HeroState> {
 
   getDoctorText = (text, textColor) => {
     text = text.split(' - ');
-    let expertise = text[0].split(' ! ');
-    let polyclinic = text[1].split(' ! ');
-    let polyclinicNames = polyclinic[0].split(/(?=\,)/);
-    let polyclinicUrls = polyclinic[1].split(',');
+    let expertise = text ? text[0].split(' ! ') : '';
+    let polyclinic = text ? text[1].split(' ! ') : '';
+    let polyclinicNames = polyclinic ? polyclinic[0].split(/(?=\,)/) : '';
+    let polyclinicUrls = polyclinic ? polyclinic[1].split(',') : '';
 
     return (
       text && (
@@ -168,7 +167,7 @@ class Hero extends React.Component<HeroProps, HeroState> {
                 <Link url={this.getLink(data, polyclinicUrls[polyclinicNames.indexOf(name)])}>{name.trim()}</Link>
                 );
             });
-            console.log(polyclinics);
+
             return (
               <div className={`hero__text hero__text--${textColor} `}>
                 <Link url={this.getLink(data, expertise[1])}>{expertise[0].trim()}</Link>
