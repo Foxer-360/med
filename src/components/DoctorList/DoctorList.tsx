@@ -230,11 +230,13 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
                                 <a className={'doctorList__item__info__link'}>
                                   {this.getPolyclinicUrls(doctor.polyclinicName, doctor.polyclinicUrl, data)}
                                 </a>
-                                {doctor.doctorUrl
-                                && doctor.doctorUrl.url
-                                && <Button classes="btn--blueBorder btn--small" url={doctor.doctorUrl}>
-                                    více informací
-                                  </Button>}
+                                <div>
+                                  {doctor.doctorUrl
+                                  && doctor.doctorUrl.url
+                                  && <Button classes="btn--blueBorder btn--small" url={doctor.doctorUrl}>
+                                      více informací
+                                    </Button>}
+                                </div>
                               </div>
                               );
                             }}
