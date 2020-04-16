@@ -154,8 +154,8 @@ class Hero extends React.Component<HeroProps, HeroState> {
     text = text.split(' - ');
     let expertise = text ? text[0].split(' ! ') : '';
     let polyclinic = text ? text[1].split(' ! ') : '';
-    let polyclinicNames = polyclinic ? polyclinic[0].split(/(?=\,)/) : '';
-    let polyclinicUrls = polyclinic ? polyclinic[1].split(',') : '';
+    let polyclinicNames = polyclinic ? polyclinic[0].split(', ') : '';
+    let polyclinicsUrls = polyclinic ? polyclinic[1].split(',') : '';
 
     return (
       text && (
@@ -164,13 +164,29 @@ class Hero extends React.Component<HeroProps, HeroState> {
             let polyclinics = [];
             polyclinicNames.map(name => {
               polyclinics.push(
-                <Link url={this.getLink(data, polyclinicUrls[polyclinicNames.indexOf(name)])}>{name.trim()}</Link>
+                polyclinicsUrls[polyclinicNames.indexOf(name)] ?
+                  (
+                    <React.Fragment>
+                      <Link
+                        url={this.getLink(data, polyclinicsUrls[polyclinicNames.indexOf(name)])}
+                        className={'hero__text__link'}
+                      >
+                        {name.trim()}
+                      </Link>
+                    {polyclinicNames.indexOf(name) < (polyclinicNames.length - 1) ? ', ' : ''}
+                    </React.Fragment>
+                  ) :
+                  name.trim()
                 );
             });
 
             return (
               <div className={`hero__text hero__text--${textColor} `}>
-                <Link url={this.getLink(data, expertise[1])}>{expertise[0].trim()}</Link>
+                {expertise[1] ?
+                  <Link url={this.getLink(data, expertise[1])} className={'hero__text__link'}>
+                    {expertise[0].trim()}
+                  </Link> :
+                  expertise[0].trim()}
                 {' - '}
                 {polyclinics}
             </div>

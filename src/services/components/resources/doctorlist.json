@@ -78,17 +78,21 @@
                 "type": "text",
                 "title": "Doctor Name"
               },
-              "field": {
+              "polyclinicName": {
                 "type": "text",
-                "title": "Specialization"
+                "title": "Polyclinic Name"
               },
-              "clinicName": {
+              "polyclinicUrl": {
                 "type": "text",
-                "title": "Clinic Name"
+                "title": "Polyclinic Url"
               },
-              "clinicUrl": {
-                "type": "urlAutocomplete",
-                "title": "Clinic Url"
+              "expertiseName": {
+                "type": "text",
+                "title": "Expertise name"
+              },
+              "expertiseUrl": {
+                "type": "text",
+                "title": "Expertise URL"
               },
               "doctorUrl": {
                 "type": "urlAutocomplete",

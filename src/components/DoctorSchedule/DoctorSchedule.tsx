@@ -32,6 +32,7 @@ export interface DoctorScheduleProps {
     doctorName: string;
     employmentFrom: string;
     phone: string;
+    polyclinic: string;
   };
 }
 
@@ -117,8 +118,23 @@ const getAbsenceLink = (data, alternate) => {
   return null;
 };
 
-const getClinicTitle = (title) => {
-  return ' - POLIKLINIKA ' + title;
+const getClinicLink = (polyclinic) => {
+  return (
+    <Query query={GET_CONTEXT}>
+      {({ data }) => {
+        return (
+          polyclinic.url !== undefined ?
+          <Link 
+            url={`/${data.languageData && data.languageData.code}/${polyclinic.url}`}
+            className={'doctorSchedule__title__link'}
+          >
+            poliklinika {polyclinic.name}
+          </Link> :
+          `poliklinika ${polyclinic.name}`
+        );
+      }}
+    </Query>
+  );
 };
 
 const highlightAbsence = (defaultAbsenceMessage, absences, absenceMessage) => {
@@ -141,7 +157,7 @@ const highlightAbsence = (defaultAbsenceMessage, absences, absenceMessage) => {
 
 const absenceSettings = (extraAbsenceSettings, doctor) => {
   if (extraAbsenceSettings) {
-    let absenceDict = extraAbsenceSettings.split('\n')
+    let absenceDict = extraAbsenceSettings.split('\n');
     doctor = doctor.trim();
   
     for (let i = 0; i < absenceDict.length; i++) {
@@ -177,7 +193,7 @@ const hasSchedule = (schedule) => {
 
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
-    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone } = props.data;
+    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone, polyclinic } = props.data;
     
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   return (
@@ -203,8 +219,10 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
         schedule.weeks.map((week, i) => (
           <div className="doctorSchedule" key={week.regularity}>
             <div className={'doctorSchedule__title'}>
-              <h4>{getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle)
-                + getClinicTitle(week.polyclinic.name)}</h4>
+              <h4>{getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle)}
+              {' - '}
+              {getClinicLink(week.polyclinic)}
+              </h4>
             </div>
             <table>
               <tbody>

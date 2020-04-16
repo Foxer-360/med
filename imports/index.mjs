@@ -21,7 +21,7 @@ const cache = new InMemoryCache();
 // console.log(ApolloClient);
 const date = new Date();
 console.log(date);
-const httpLink = new HttpLink({ uri: 'http://mediconas.cz/api/graphql', fetch: fetch });
+const httpLink = new HttpLink({ uri: 'http://localhost:8000/graphql', fetch: fetch });
 
 function update(token) {
   const GET_OUTDATED = gql`
@@ -280,18 +280,26 @@ function update(token) {
 
               transformedDoctor.doctorPersonalInformation.expertises.forEach(expertise => {
                 if (expertise && expertise.code) {
-                  expertise.url = expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code) &&
-                    expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code).pageTranslation.url
+                  expertise.url = expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code)
+                  && expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code).pageTranslation.url
                 }
               })
 
               if (transformedDoctor.doctorPersonalInformation.polyclinic && transformedDoctor.doctorPersonalInformation.polyclinic.shortName) {
                 let polyclinics = []
                 transformedDoctor.doctorPersonalInformation.polyclinic.shortName.split(',').forEach(polyclinicShort => {
-                    polyclinicsUrls.data.pageAnnotations.find(i => i.value === polyclinicShort) &&
-                      polyclinics.push(polyclinicsUrls.data.pageAnnotations.find(i => i.value === polyclinicShort).pageTranslation.url)
+                    polyclinicsUrls.data.pageAnnotations.find(i => i.value === polyclinicShort)
+                    && polyclinics.push(polyclinicsUrls.data.pageAnnotations.find(i => i.value === polyclinicShort).pageTranslation.url)
                 })
                 transformedDoctor.doctorPersonalInformation.polyclinic.url = polyclinics.join(',')
+              }
+
+              if (transformedDoctor.doctorPersonalInformation.workingHours && transformedDoctor.doctorPersonalInformation.workingHours.weeks) {
+                transformedDoctor.doctorPersonalInformation.workingHours.weeks.map(week => {
+                  if (polyclinicsUrls.data.pageAnnotations.find(i => i.value === week.polyclinic.shortName)) {
+                    week.polyclinic.url = polyclinicsUrls.data.pageAnnotations.find(i => i.value === week.polyclinic.shortName).pageTranslation.url
+                  }
+                })
               }
 
               const existingDoctorItem = datasource.datasourceItems

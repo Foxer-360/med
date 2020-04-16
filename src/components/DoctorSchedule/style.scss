@@ -18,6 +18,11 @@
         text-align: left;
       }
     }
+    
+    &__link:hover {
+      text-decoration: underline;
+      -webkit-text-fill-color: rgba($lightBlue, 0.3);
+    }
   }
 
   .mobileHeading {
