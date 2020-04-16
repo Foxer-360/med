@@ -85,8 +85,15 @@ var getAbsenceLink = function (data, alternate) {
     }
     return null;
 };
-var getClinicTitle = function (title) {
-    return ' - POLIKLINIKA ' + title;
+var getClinicLink = function (polyclinic) {
+    return (React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
+        var data = _a.data;
+        return (polyclinic.url !== undefined ?
+            React.createElement(Link_1.default, { url: "/" + (data.languageData && data.languageData.code) + "/" + polyclinic.url, className: 'doctorSchedule__title__link' },
+                "poliklinika ",
+                polyclinic.name) :
+            "poliklinika " + polyclinic.name);
+    }));
 };
 var highlightAbsence = function (defaultAbsenceMessage, absences, absenceMessage) {
     var e_1, _a;
@@ -145,7 +152,7 @@ var hasSchedule = function (schedule) {
         .some(function (day) { return week.days[day].length > 0; }); });
 };
 var DoctorSchedule = function (props) {
-    var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, doctorName = _a.doctorName, employmentFrom = _a.employmentFrom, phone = _a.phone;
+    var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, doctorName = _a.doctorName, employmentFrom = _a.employmentFrom, phone = _a.phone, polyclinic = _a.polyclinic;
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         futureEmployee(employmentFrom) && doctorName ?
@@ -168,8 +175,10 @@ var DoctorSchedule = function (props) {
             schedule.weeks &&
             schedule.weeks.map(function (week, i) { return (React.createElement("div", { className: "doctorSchedule", key: week.regularity },
                 React.createElement("div", { className: 'doctorSchedule__title' },
-                    React.createElement("h4", null, getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle)
-                        + getClinicTitle(week.polyclinic.name))),
+                    React.createElement("h4", null,
+                        getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle),
+                        ' - ',
+                        getClinicLink(week.polyclinic))),
                 React.createElement("table", null,
                     React.createElement("tbody", null, week &&
                         getWeekStructure(week).map(function (item, j) {

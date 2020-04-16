@@ -3454,6 +3454,8 @@ cite {
       color: #3c3c3b; }
     .hero__text--white {
       color: #fff; }
+    .hero__text__link:hover {
+      text-decoration: underline; }
 
 @media all and (-ms-high-contrast: none) {
   *::-ms-backdrop, .hero {
@@ -5090,21 +5092,20 @@ cite {
           left: 0;
           width: 100%;
           height: 100%;
-          cursor: pointer;
           overflow: hidden;
           background-color: transparent; }
           .doctorList__item__info__description--container p {
             position: absolute;
             top: 0;
             left: 0; }
+          .doctorList__item__info__description--container a:hover {
+            text-decoration: underline; }
           .doctorList__item__info__description--container:focus, .doctorList__item__info__description--container:hover {
             max-height: 600px;
-            overflow: visible;
-            text-align: center; }
+            overflow: visible; }
             .doctorList__item__info__description--container:focus p, .doctorList__item__info__description--container:hover p {
               background: white;
-              padding-bottom: 1rem;
-              border-bottom: 1px solid #e6e6e6; }
+              padding-bottom: 1rem; }
         @media (max-width: 991px) {
           .doctorList__item__info__description {
             display: none; } }
@@ -7248,6 +7249,9 @@ cite {
         .doctorSchedule__title h4 {
           padding: 24px 0;
           text-align: left; } }
+    .doctorSchedule__title__link:hover {
+      text-decoration: underline;
+      -webkit-text-fill-color: rgba(0, 170, 208, 0.3); }
   .doctorSchedule .mobileHeading {
     border-bottom: 0; }
     .doctorSchedule .mobileHeading > td {

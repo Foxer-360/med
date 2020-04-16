@@ -83,7 +83,6 @@ var Hero = /** @class */ (function (_super) {
             });
         };
         _this.getLink = function (data, slug) {
-            console.log(slug);
             if (slug === undefined) {
                 slug = '';
             }
@@ -94,17 +93,22 @@ var Hero = /** @class */ (function (_super) {
             text = text.split(' - ');
             var expertise = text ? text[0].split(' ! ') : '';
             var polyclinic = text ? text[1].split(' ! ') : '';
-            var polyclinicNames = polyclinic ? polyclinic[0].split(/(?=\,)/) : '';
-            var polyclinicUrls = polyclinic ? polyclinic[1].split(',') : '';
+            var polyclinicNames = polyclinic ? polyclinic[0].split(', ') : '';
+            var polyclinicsUrls = polyclinic ? polyclinic[1].split(',') : '';
             return (text && (React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
                 var data = _a.data;
                 var polyclinics = [];
                 polyclinicNames.map(function (name) {
-                    polyclinics.push(React.createElement(Link_1.default, { url: _this.getLink(data, polyclinicUrls[polyclinicNames.indexOf(name)]) }, name.trim()));
+                    polyclinics.push(polyclinicsUrls[polyclinicNames.indexOf(name)] ?
+                        (React.createElement(React.Fragment, null,
+                            React.createElement(Link_1.default, { url: _this.getLink(data, polyclinicsUrls[polyclinicNames.indexOf(name)]), className: 'hero__text__link' }, name.trim()),
+                            polyclinicNames.indexOf(name) < (polyclinicNames.length - 1) ? ', ' : '')) :
+                        name.trim());
                 });
-                console.log(polyclinics);
                 return (React.createElement("div", { className: "hero__text hero__text--" + textColor + " " },
-                    React.createElement(Link_1.default, { url: _this.getLink(data, expertise[1]) }, expertise[0].trim()),
+                    expertise[1] ?
+                        React.createElement(Link_1.default, { url: _this.getLink(data, expertise[1]), className: 'hero__text__link' }, expertise[0].trim()) :
+                        expertise[0].trim(),
                     ' - ',
                     polyclinics));
             })));
