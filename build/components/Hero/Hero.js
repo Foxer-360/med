@@ -92,10 +92,10 @@ var Hero = /** @class */ (function (_super) {
         };
         _this.getDoctorText = function (text, textColor) {
             text = text.split(' - ');
-            var expertise = text[0].split(' ! ');
-            var polyclinic = text[1].split(' ! ');
-            var polyclinicNames = polyclinic[0].split(/(?=\,)/);
-            var polyclinicUrls = polyclinic[1].split(',');
+            var expertise = text ? text[0].split(' ! ') : '';
+            var polyclinic = text ? text[1].split(' ! ') : '';
+            var polyclinicNames = polyclinic ? polyclinic[0].split(/(?=\,)/) : '';
+            var polyclinicUrls = polyclinic ? polyclinic[1].split(',') : '';
             return (text && (React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
                 var data = _a.data;
                 var polyclinics = [];
