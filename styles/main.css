@@ -3391,10 +3391,11 @@ cite {
     top: -3px; }
 
 @media (min-width: 600px) {
-  .phone {
+  .layout a.phone {
     pointer-events: none;
     cursor: default;
-    text-decoration: none; } }
+    text-decoration: none;
+    color: inherit; } }
 
 .hero {
   background-position: top center;
