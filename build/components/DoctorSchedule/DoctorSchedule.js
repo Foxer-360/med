@@ -165,7 +165,9 @@ var DoctorSchedule = function (props) {
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     var doctorUrl;
     React.useEffect(function () {
-        props.history.push(doctorUrl);
+        if (props.info && props.location && props.location.pathname !== doctorUrl) {
+            props.history.push(doctorUrl);
+        }
         // tslint:disable-next-line: align
     }, [props.info]);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
