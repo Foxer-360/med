@@ -15,7 +15,6 @@ var __values = (this && this.__values) || function (o) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var react_1 = require("react");
 var moment = require("moment");
 var ReactMarkdown = require("react-markdown/with-html");
 var graphql_tag_1 = require("graphql-tag");
@@ -163,20 +162,23 @@ var getDoctorUrl = function (polylinicsSlug, expertiseSlug, doctorSlug, data) {
 var DoctorSchedule = function (props) {
     var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, doctorName = _a.doctorName, employmentFrom = _a.employmentFrom, phone = _a.phone, polyclinicSlug = _a.polyclinicSlug, expertiseSlug = _a.expertiseSlug;
     var Helmet = props.Helmet;
-    var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     var doctorUrl;
-    react_1.useEffect(function () {
-        if (props.info && props.location && props.location.pathname !== doctorUrl) {
+    var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
+    var redirect = function () {
+        if (doctorUrl !== ''
+            && doctorUrl !== props.location.pathname
+            && props.location.pathname.includes(props.info.datasources.doctor[0])
+            && doctorUrl.includes(props.info.datasources.doctor[0])) {
             props.history.push(doctorUrl);
         }
-        // tslint:disable-next-line: align
-    }, []);
+    };
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
             doctorUrl = getDoctorUrl(polyclinicSlug, expertiseSlug, props.info
                 && props.info.datasources
                 && props.info.datasources.doctor[0], data);
+            redirect();
             return (React.createElement(Helmet, null,
                 React.createElement("link", { rel: "canonical", href: "https://mediconas.cz" + doctorUrl })));
         }),
