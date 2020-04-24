@@ -215,7 +215,9 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   let doctorUrl;
 
   React.useEffect(() => {
-    props.history.push(doctorUrl);
+    if (props.info && props.location && props.location.pathname !== doctorUrl) {
+      props.history.push(doctorUrl);
+    }
   // tslint:disable-next-line: align
   }, [props.info]);
 
