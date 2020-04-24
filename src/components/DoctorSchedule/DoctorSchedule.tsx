@@ -205,23 +205,26 @@ const getDoctorUrl = (polylinicsSlug, expertiseSlug, doctorSlug, data) => {
   return url;
 };
 
-const DoctorSchedule: React.FC<DoctorScheduleProps> = (props) => {
+const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
-    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone, polyclinicSlug, expertiseSlug } = props.data;
-
+      doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone, polyclinicSlug, expertiseSlug 
+    } = props.data;
+  
   const { Helmet } = props;
 
-  const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
-
   let doctorUrl;
-
-  useEffect(() => {
-    if (props.info && props.location && props.location.pathname !== doctorUrl) {
+  
+  const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
+  const redirect = () => {
+    if (doctorUrl !== ''
+    && doctorUrl !== props.location.pathname
+    && props.location.pathname.includes(props.info.datasources.doctor[0])
+    && doctorUrl.includes(props.info.datasources.doctor[0])
+    ) {
       props.history.push(doctorUrl);
     }
-  // tslint:disable-next-line: align
-  }, []);
-
+  };
+  
   return (
     <section className={'container doctorScheduleSection'}>
       <Query query={GET_CONTEXT}>
@@ -233,6 +236,7 @@ const DoctorSchedule: React.FC<DoctorScheduleProps> = (props) => {
               && props.info.datasources
               && props.info.datasources.doctor[0],
             data);
+          redirect();
           return (
             <Helmet>
               <link rel="canonical" href={`https://mediconas.cz${doctorUrl}`} />
