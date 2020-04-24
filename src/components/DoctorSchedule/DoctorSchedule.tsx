@@ -4,6 +4,7 @@ import * as ReactMarkdown from 'react-markdown/with-html';
 import gql from 'graphql-tag';
 import { urlize } from 'urlize';
 import { Query } from 'react-apollo';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import Link from '../../partials/Link';
 import DividerCircles from '../DividerCircles';
@@ -19,7 +20,7 @@ const GET_CONTEXT = gql`
   }
 `;
 
-export interface DoctorScheduleProps {
+export interface DoctorScheduleProps extends RouteComponentProps {
   data: {
     schedule: LooseObject;
     oddWeekTitle: String;
@@ -32,8 +33,11 @@ export interface DoctorScheduleProps {
     doctorName: string;
     employmentFrom: string;
     phone: string;
-    polyclinic: string;
+    polyclinicSlug: string;
+    expertiseSlug: string;
   };
+  Helmet: Function;
+  info: LooseObject;
 }
 
 const getDayOfWeek = day => {
@@ -191,15 +195,52 @@ const hasSchedule = (schedule) => {
     );
 };
 
+const getDoctorUrl = (polylinicsSlug, expertiseSlug, doctorSlug, data) => {
+  let polyclinicUrl = polylinicsSlug ? `/${polylinicsSlug.split(',')[0]}` : '';
+  let expertiseUrl = expertiseSlug ? `/${expertiseSlug.split(',')[0]}` : '';
+  let doctorUrl = doctorSlug ? `/${doctorSlug}` : '';
+  let url = `/${data.languageData && data.languageData.code}${polyclinicUrl}${expertiseUrl}${doctorUrl}`;
+  
+  return url;
+};
+
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
-    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone, polyclinic } = props.data;
-    
+    doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone, polyclinicSlug, expertiseSlug } = props.data;
+
+  const { Helmet } = props;
+
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
+
+  let doctorUrl;
+
+  React.useEffect(() => {
+    props.history.push(doctorUrl);
+  // tslint:disable-next-line: align
+  }, [props.info]);
+
   return (
     <section className={'container doctorScheduleSection'}>
-      {futureEmployee(employmentFrom) && doctorName ?
-      <Highlight
+      <Query query={GET_CONTEXT}>
+        {({ data }) => {
+          doctorUrl = getDoctorUrl(
+            polyclinicSlug,
+            expertiseSlug,
+            props.info 
+              && props.info.datasources
+              && props.info.datasources.doctor[0],
+            data);
+          return (
+            <Helmet>
+              <link rel="canonical" href={`https://mediconas.cz${doctorUrl}`} />
+            </Helmet>
+          );
+        }}
+      </Query>
+
+      {futureEmployee(employmentFrom)
+      && doctorName
+      ? <Highlight
         data={{
           text: 
           <React.Fragment>
@@ -212,11 +253,14 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
         }}
       />
       : ''}
-      {Array.isArray(absences) && hasSchedule(schedule) &&
-        highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
-      {schedule &&
-        schedule.weeks &&
-        schedule.weeks.map((week, i) => (
+
+      {Array.isArray(absences)
+      && hasSchedule(schedule) 
+      && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
+
+      {schedule
+      && schedule.weeks
+      && schedule.weeks.map((week, i) => (
           <div className="doctorSchedule" key={week.regularity}>
             <div className={'doctorSchedule__title'}>
               <h4>{getScheduleTitle(week.regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle)}
@@ -226,8 +270,8 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             </div>
             <table>
               <tbody>
-                {week &&
-                  getWeekStructure(week).map((item, j) => {
+                {week
+                && getWeekStructure(week).map((item, j) => {
                     if (item.day === 'sobota' || item.day === 'neděle') { return null; }
                     
                     return (
@@ -270,14 +314,14 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
             </table>
             {schedule.note && <b>{schedule.note}</b>}
             <br/>
-            {phone &&
-            getPolyclinicPhone(phone, week.polyclinic.shortName) &&
-            <b>V urgentních případech volejte {getPolyclinicPhone(phone, week.polyclinic.shortName)}.</b>}
+            {phone
+            && getPolyclinicPhone(phone, week.polyclinic.shortName)
+            && <b>V urgentních případech volejte {getPolyclinicPhone(phone, week.polyclinic.shortName)}.</b>}
           </div>
         ))}
 
-      {hasSchedule(schedule) &&
-      <Query query={GET_CONTEXT}>
+      {hasSchedule(schedule)
+      && <Query query={GET_CONTEXT}>
         {({ data }) => {
           const nextMonthAbsences = Array.isArray(absences) && absences.filter((absence) => {
             return absence && moment(absence.fromDate.date) < moment().add(1, 'M') 
@@ -302,8 +346,8 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
                           {(absence.fromDate && moment(absence.fromDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
-                          {(absence.toDate.date && absence.subcategory.id !== 31 &&
-                            moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
+                          {(absence.toDate.date && absence.subcategory.id !== 31
+                          && moment(absence.toDate.date).format('DD.MM.YYYY')) || ''}
                         </td>
                         <td>
                           {Array.isArray(absenceMessage) ? (<ReactMarkdown
@@ -330,4 +374,4 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   );
 };
 
-export default DoctorSchedule;
+export default withRouter(DoctorSchedule);

@@ -151,7 +151,7 @@ class Hero extends React.Component<HeroProps, HeroState> {
   }
 
   getDoctorText = (text, textColor) => {
-    text = text.split(' - ');
+    text = text.split(' ? ');
     let expertise = text ? text[0].split(' ! ') : '';
     let polyclinic = text ? text[1].split(' ! ') : '';
     let polyclinicNames = polyclinic ? polyclinic[0].split(', ') : '';

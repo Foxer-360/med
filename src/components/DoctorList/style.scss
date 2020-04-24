@@ -125,8 +125,13 @@
             left: 0;
           }
 
-          a:hover {
-            text-decoration: underline;
+          a {
+            color: $lightBlue;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
           }
         
           &:focus, 
