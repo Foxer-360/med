@@ -169,7 +169,7 @@ var DoctorSchedule = function (props) {
             props.history.push(doctorUrl);
         }
         // tslint:disable-next-line: align
-    }, [props.info]);
+    }, [props && props.info]);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
