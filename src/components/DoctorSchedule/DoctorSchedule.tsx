@@ -219,7 +219,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
       props.history.push(doctorUrl);
     }
   // tslint:disable-next-line: align
-  }, [props.info]);
+  }, [props && props.info]);
 
   return (
     <section className={'container doctorScheduleSection'}>
