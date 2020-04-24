@@ -90,7 +90,7 @@ var Hero = /** @class */ (function (_super) {
             return link;
         };
         _this.getDoctorText = function (text, textColor) {
-            text = text.split(' - ');
+            text = text.split(' ? ');
             var expertise = text ? text[0].split(' ! ') : '';
             var polyclinic = text ? text[1].split(' ! ') : '';
             var polyclinicNames = polyclinic ? polyclinic[0].split(', ') : '';

@@ -5098,8 +5098,10 @@ cite {
             position: absolute;
             top: 0;
             left: 0; }
-          .doctorList__item__info__description--container a:hover {
-            text-decoration: underline; }
+          .doctorList__item__info__description--container a {
+            color: #00aad0; }
+            .doctorList__item__info__description--container a:hover {
+              text-decoration: underline; }
           .doctorList__item__info__description--container:focus, .doctorList__item__info__description--container:hover {
             max-height: 600px;
             overflow: visible; }
