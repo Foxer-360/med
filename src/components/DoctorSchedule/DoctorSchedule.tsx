@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import * as moment from 'moment';
 import * as ReactMarkdown from 'react-markdown/with-html';
 import gql from 'graphql-tag';
@@ -204,7 +205,7 @@ const getDoctorUrl = (polylinicsSlug, expertiseSlug, doctorSlug, data) => {
   return url;
 };
 
-const DoctorSchedule = (props: DoctorScheduleProps) => {
+const DoctorSchedule: React.FC<DoctorScheduleProps> = (props) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
     doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone, polyclinicSlug, expertiseSlug } = props.data;
 
@@ -214,12 +215,12 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
 
   let doctorUrl;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.info && props.location && props.location.pathname !== doctorUrl) {
       props.history.push(doctorUrl);
     }
   // tslint:disable-next-line: align
-  }, [props && props.info]);
+  }, []);
 
   return (
     <section className={'container doctorScheduleSection'}>
@@ -328,7 +329,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
           const nextMonthAbsences = Array.isArray(absences) && absences.filter((absence) => {
             return absence && moment(absence.fromDate.date) < moment().add(1, 'M') 
             && moment(absence.toDate.date) > moment();
-          })
+          });
           return (<>
             {nextMonthAbsences && Array.isArray(nextMonthAbsences) && nextMonthAbsences.length > 0 && (
               <div className={'absences'}>
@@ -370,7 +371,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
               </div>
             )}
           </>
-        )}}
+        ); }}
       </Query>}
     </section>
   );
