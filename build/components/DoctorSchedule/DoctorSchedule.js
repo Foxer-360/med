@@ -15,6 +15,7 @@ var __values = (this && this.__values) || function (o) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var react_1 = require("react");
 var moment = require("moment");
 var ReactMarkdown = require("react-markdown/with-html");
 var graphql_tag_1 = require("graphql-tag");
@@ -164,12 +165,12 @@ var DoctorSchedule = function (props) {
     var Helmet = props.Helmet;
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     var doctorUrl;
-    React.useEffect(function () {
+    react_1.useEffect(function () {
         if (props.info && props.location && props.location.pathname !== doctorUrl) {
             props.history.push(doctorUrl);
         }
         // tslint:disable-next-line: align
-    }, [props && props.info]);
+    }, []);
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
         React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
