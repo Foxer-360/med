@@ -169,7 +169,7 @@ var DoctorSchedule = function (props) {
             && doctorUrl !== props.location.pathname
             && props.location.pathname.includes(props.info.datasources.doctor[0])
             && doctorUrl.includes(props.info.datasources.doctor[0])) {
-            props.history.push(doctorUrl);
+            props.history.replace(doctorUrl);
         }
     };
     return (React.createElement("section", { className: 'container doctorScheduleSection' },
