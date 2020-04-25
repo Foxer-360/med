@@ -221,7 +221,7 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
     && props.location.pathname.includes(props.info.datasources.doctor[0])
     && doctorUrl.includes(props.info.datasources.doctor[0])
     ) {
-      props.history.push(doctorUrl);
+      props.history.replace(doctorUrl);
     }
   };
   
