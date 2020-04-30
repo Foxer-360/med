@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 import * as moment from 'moment';
 import * as ReactMarkdown from 'react-markdown/with-html';
 import gql from 'graphql-tag';
