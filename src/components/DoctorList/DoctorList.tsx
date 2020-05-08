@@ -7,13 +7,26 @@ import Media from '../../partials/Media';
 import Select from '../../partials/Select';
 import Button from '../../partials/Button';
 import * as removeAccents from 'remove-accents';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
+const GET_CONTEXT = gql`
+  {
+    languageData @client
+    pageData @client
+    websiteData @client
+    languagesData @client
+    navigationsData @client
+  }
+`;
 
 interface Doctors {
   name: string;
-  field: string;
-  clinicName: string;
   image: LooseObject;
-  clinicUrl: LooseObject;
+  polyclinicName: string;
+  polyclinicUrl: string;
+  expertiseName: string;
+  expertiseUrl: string;
   doctorUrl: LooseObject;
 }
 export interface DoctorListProps {
@@ -83,6 +96,59 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
     return uniquePolyclinicNames;
   }
 
+  getLink = (data, slug) => {
+    if (slug === undefined) {
+      slug = '';
+    }
+    let link = `/${data.languageData && data.languageData.code}/${slug.trim()}`;
+    return link;
+  }
+
+  getPolyclinicUrls = (polyclinicName, polyclinicUrl, data) => {
+    let polyclinicsNames = polyclinicName ? polyclinicName.split(',') : '';
+    let polyclinicsUrls = polyclinicUrl ? polyclinicUrl.split(',') : '';
+
+    let polyclinics = [];
+    if (polyclinicsNames) {
+      polyclinicsNames.map(name => {
+        polyclinics.push(
+          polyclinicsUrls[polyclinicsNames.indexOf(name)] ?
+            (
+              <React.Fragment>
+                <Link
+                  url={this.getLink(data, polyclinicsUrls[polyclinicsNames.indexOf(name)])}
+                  className={'doctorList__item__info__link'}
+                >
+                  {name.trim()}
+                </Link>
+              {polyclinicsNames.indexOf(name) < (polyclinicsNames.length - 1) ? ', ' : ''}
+              </React.Fragment>
+            ) :
+            name.trim()
+          );
+      });
+      return polyclinics;
+    }
+  }
+
+  getExpertiseUrl = (expertiseName, expertiseUrl, data) => {
+      if (expertiseUrl.trim() !== '') {
+        return (
+        <p>
+          <Link url={this.getLink(data, expertiseUrl)}>
+            {expertiseName}
+          </Link>
+        </p>
+        );
+      } else {
+        return (
+          <p>
+            {expertiseName}
+          </p>
+      );
+    }
+  }
+
   setFilterBySearchParam(param: string) {
     switch (true) {
       case /(vysocany)/.test(param):
@@ -149,23 +215,32 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
                             )}
                           </div>
 
-                          <div className={'doctorList__item__info'}>
-                            <h3>{doctor.name}</h3>
-                            {doctor.field && <div className={'doctorList__item__info__description'}>
-                              <div className={'doctorList__item__info__description--container'}>
-                                <p>{doctor.field}</p>
+                          <Query query={GET_CONTEXT}>
+                            {({ data }) => {
+                              return (
+                              <div className={'doctorList__item__info'}>
+                                <h3>{doctor.name}</h3>
+                                {doctor.expertiseName
+                                && <div className={'doctorList__item__info__description'}>
+                                    <div className={'doctorList__item__info__description--container'}>
+                                      {this.getExpertiseUrl(doctor.expertiseName, doctor.expertiseUrl, data)}
+                                    </div>
+                                  </div>}
+                                <p className={'doctorList__item__info--mobileField'}>{doctor.expertiseName}</p>
+                                <a className={'doctorList__item__info__link'}>
+                                  {this.getPolyclinicUrls(doctor.polyclinicName, doctor.polyclinicUrl, data)}
+                                </a>
+                                <div>
+                                  {doctor.doctorUrl
+                                  && doctor.doctorUrl.url
+                                  && <Button classes="btn--blueBorder btn--small" url={doctor.doctorUrl}>
+                                      více informací
+                                    </Button>}
+                                </div>
                               </div>
-                            </div>}
-                            <p className={'doctorList__item__info--mobileField'}>{doctor.field}</p>
-                            <Link {...doctor.clinicUrl} className={'doctorList__item__info__link'}>
-                              {doctor.clinicName}
-                            </Link>
-                            {doctor.doctorUrl
-                              && doctor.doctorUrl.url
-                              && <Button classes="btn--blueBorder btn--small" url={doctor.doctorUrl}>
-                                více informací
-                              </Button>}
-                          </div>
+                              );
+                            }}
+                          </Query>
                         </div>
                       );
                     })}

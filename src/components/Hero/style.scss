@@ -73,6 +73,10 @@
     &--white {
       color: #fff;
     }
+
+    &__link:hover {
+      text-decoration: underline;
+    }
   }
 }
 

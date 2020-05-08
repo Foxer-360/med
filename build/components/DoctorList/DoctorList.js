@@ -1,4 +1,8 @@
 "use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,17 +16,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
     if (!m) return o;
@@ -52,10 +45,44 @@ var Media_1 = require("../../partials/Media");
 var Select_1 = require("../../partials/Select");
 var Button_1 = require("../../partials/Button");
 var removeAccents = require("remove-accents");
+var graphql_tag_1 = require("graphql-tag");
+var react_apollo_1 = require("react-apollo");
+var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var DoctorList = /** @class */ (function (_super) {
     __extends(DoctorList, _super);
     function DoctorList(props) {
         var _this = _super.call(this, props) || this;
+        _this.getLink = function (data, slug) {
+            if (slug === undefined) {
+                slug = '';
+            }
+            var link = "/" + (data.languageData && data.languageData.code) + "/" + slug.trim();
+            return link;
+        };
+        _this.getPolyclinicUrls = function (polyclinicName, polyclinicUrl, data) {
+            var polyclinicsNames = polyclinicName ? polyclinicName.split(',') : '';
+            var polyclinicsUrls = polyclinicUrl ? polyclinicUrl.split(',') : '';
+            var polyclinics = [];
+            if (polyclinicsNames) {
+                polyclinicsNames.map(function (name) {
+                    polyclinics.push(polyclinicsUrls[polyclinicsNames.indexOf(name)] ?
+                        (React.createElement(React.Fragment, null,
+                            React.createElement(Link_1.default, { url: _this.getLink(data, polyclinicsUrls[polyclinicsNames.indexOf(name)]), className: 'doctorList__item__info__link' }, name.trim()),
+                            polyclinicsNames.indexOf(name) < (polyclinicsNames.length - 1) ? ', ' : '')) :
+                        name.trim());
+                });
+                return polyclinics;
+            }
+        };
+        _this.getExpertiseUrl = function (expertiseName, expertiseUrl, data) {
+            if (expertiseUrl.trim() !== '') {
+                return (React.createElement("p", null,
+                    React.createElement(Link_1.default, { url: _this.getLink(data, expertiseUrl) }, expertiseName)));
+            }
+            else {
+                return (React.createElement("p", null, expertiseName));
+            }
+        };
         _this.state = {
             numberOfPage: 1,
             filter: ''
@@ -134,16 +161,19 @@ var DoctorList = /** @class */ (function (_super) {
                             return (React.createElement("div", { className: 'doctorList__item', key: index },
                                 React.createElement("div", { className: 'doctorList__item__img' }, (doctor.image && doctor.image.filename &&
                                     React.createElement(Media_1.default, { data: doctor.image, type: "image", width: '190', height: '190' })) || (React.createElement("img", { className: "avatarImg", src: '../../../assets/medicon/images/doctorIcon.svg', alt: "Medicon Doctor Icon" }))),
-                                React.createElement("div", { className: 'doctorList__item__info' },
-                                    React.createElement("h3", null, doctor.name),
-                                    doctor.field && React.createElement("div", { className: 'doctorList__item__info__description' },
-                                        React.createElement("div", { className: 'doctorList__item__info__description--container' },
-                                            React.createElement("p", null, doctor.field))),
-                                    React.createElement("p", { className: 'doctorList__item__info--mobileField' }, doctor.field),
-                                    React.createElement(Link_1.default, __assign({}, doctor.clinicUrl, { className: 'doctorList__item__info__link' }), doctor.clinicName),
-                                    doctor.doctorUrl
-                                        && doctor.doctorUrl.url
-                                        && React.createElement(Button_1.default, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "v\u00EDce informac\u00ED"))));
+                                React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
+                                    var data = _a.data;
+                                    return (React.createElement("div", { className: 'doctorList__item__info' },
+                                        React.createElement("h3", null, doctor.name),
+                                        doctor.expertiseName
+                                            && React.createElement("div", { className: 'doctorList__item__info__description' },
+                                                React.createElement("div", { className: 'doctorList__item__info__description--container' }, _this.getExpertiseUrl(doctor.expertiseName, doctor.expertiseUrl, data))),
+                                        React.createElement("p", { className: 'doctorList__item__info--mobileField' }, doctor.expertiseName),
+                                        React.createElement("a", { className: 'doctorList__item__info__link' }, _this.getPolyclinicUrls(doctor.polyclinicName, doctor.polyclinicUrl, data)),
+                                        React.createElement("div", null, doctor.doctorUrl
+                                            && doctor.doctorUrl.url
+                                            && React.createElement(Button_1.default, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "v\u00EDce informac\u00ED"))));
+                                })));
                         })),
                     _this.state.numberOfPage < lastPage && React.createElement("div", { className: "doctorList__btnHolder" },
                         React.createElement("button", { className: 'btn btn--blueBkg', onClick: function () { return _this.setState({ numberOfPage: lastPage }); } }, "zobrazit v\u00EDce"))))) : React.createElement(React.Fragment, null);
@@ -152,4 +182,5 @@ var DoctorList = /** @class */ (function (_super) {
     return DoctorList;
 }(React.Component));
 exports.default = react_router_dom_1.withRouter(DoctorList);
+var templateObject_1;
 //# sourceMappingURL=DoctorList.js.map

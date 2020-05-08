@@ -47,6 +47,14 @@
         "phone": {
           "type": "string",
           "title": "Polyclinic Phones"
+        },
+        "polyclinicSlug": {
+          "type": "string",
+          "title": "Polyclinic slug"
+        },
+        "expertiseSlug": {
+          "type": "string",
+          "title": "Expertise slug"
         }
       }
     }

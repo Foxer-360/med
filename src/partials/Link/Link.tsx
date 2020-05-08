@@ -18,6 +18,18 @@ const GET_CONTEXT = gql`
   }
 `;
 
+const GET_PAGES_URLS = gql`
+  query pagesUrls($language: ID!, $websiteId: ID!) {
+    pagesUrls(where: { language: $language, websiteId: $websiteId }) {
+      id
+      page
+      url
+      name
+      description
+    }
+  }
+`;
+
 const ComposedQuery = adopt({
   context: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
   getPagesUrls: ({ render, context: { languageData, websiteData } }) => {
@@ -33,18 +45,6 @@ const ComposedQuery = adopt({
     );
   },
 });
-
-const GET_PAGES_URLS = gql`
-  query pagesUrls($language: ID!, $websiteId: ID!) {
-    pagesUrls(where: { language: $language, websiteId: $websiteId }) {
-      id
-      page
-      url
-      name
-      description
-    }
-  }
-`;
 
 const ComposerLink = props => {
   const { children, urlNewWindow, url, query, pageId, dynamic, ...args } = props;

@@ -17,6 +17,7 @@
     "ajv": "^6.7.0",
     "apollo-cache-inmemory": "^1.4.2",
     "apollo-client": "^2.4.12",
+    "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.9",
     "babel": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
