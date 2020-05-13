@@ -68,7 +68,13 @@ const PolyclinicInfo = (props: ContactsProps) => {
           </div>
           <div className="col-12 col-lg-4">
             <div className={'policlinicInfo__item'}>
-              {transportImage && <Media type={'image'} data={transportImage} width={'50'} height={'50'} />}
+              {transportImage &&
+                <Media
+                  classes={'policlinicInfo__item'}
+                  type={'image'}
+                  data={transportImage}
+                />
+              }
               <p className={'policlinicInfo__item--content'}>{transport}</p>
               {transportUrl && 
                 <Link 
