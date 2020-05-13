@@ -3220,12 +3220,12 @@ body {
   display: block;
   margin: 0 auto; }
 
-.flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .dividerCircles {
+.flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .doctorDetails__info__wrapper, .doctorDetails__info__item, .doctorDetails__timePlace, .dividerCircles {
   display: flex;
   flex-flow: row wrap;
   align-items: center; }
   @media (min-width: 768px) {
-    .flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .dividerCircles {
+    .flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .doctorDetails__info__wrapper, .doctorDetails__info__item, .doctorDetails__timePlace, .dividerCircles {
       flex-flow: row wrap; } }
 
 .flexColumn, .hero, .doctorList__item__info, .pcitem__info {
@@ -4412,7 +4412,7 @@ cite {
   @media (min-width: 768px) {
     .footer {
       padding-bottom: 0; } }
-  .footer .flexRow, .footer .header__wrapper, .footer .header nav, .header .footer nav, .footer .mapBox__contacts, .footer .mapBox__contacts__item, .footer .mapBox__buttons, .footer .doctorList__wrapper, .footer .doctorList__item, .footer .doctorList__btnHolder, .footer .pcitem__wrapper, .footer .pcitem__info__details, .footer .pcitem__info__list, .footer .pcitem__info__desc, .footer .pcTitle__title__subtitle, .footer .pcTitle__title__subtitle__circles, .footer .doctorCard__info__wrapper, .footer .doctorCard__info__item, .footer .doctorCard__timePlace, .footer .dividerCircles {
+  .footer .flexRow, .footer .header__wrapper, .footer .header nav, .header .footer nav, .footer .mapBox__contacts, .footer .mapBox__contacts__item, .footer .mapBox__buttons, .footer .doctorList__wrapper, .footer .doctorList__item, .footer .doctorList__btnHolder, .footer .pcitem__wrapper, .footer .pcitem__info__details, .footer .pcitem__info__list, .footer .pcitem__info__desc, .footer .pcTitle__title__subtitle, .footer .pcTitle__title__subtitle__circles, .footer .doctorCard__info__wrapper, .footer .doctorCard__info__item, .footer .doctorCard__timePlace, .footer .doctorDetails__info__wrapper, .footer .doctorDetails__info__item, .footer .doctorDetails__timePlace, .footer .dividerCircles {
     align-items: stretch; }
   .footer__list {
     position: relative; }
@@ -5595,10 +5595,12 @@ cite {
       float: left; }
       @media (min-width: 992px) {
         .policlinicInfo__item > img, .policlinicInfo__item .mediaRatio {
-          min-width: 35px;
-          min-height: 35px;
-          width: 50px;
-          height: 50px;
+          min-width: 50px;
+          min-height: 50px;
+          width: auto;
+          height: auto;
+          max-width: 50px;
+          max-height: 50px;
           float: right; } }
     .policlinicInfo__item .mediaRatio {
       padding-top: 0 !important; }
@@ -6029,6 +6031,208 @@ cite {
   .doctorCard .textBlock {
     padding: 6rem 0 0 0; }
     .doctorCard .textBlock:first-of-type {
+      padding: 0; }
+
+.doctorDetails {
+  padding: 40px 0; }
+  @media (min-width: 768px) {
+    .doctorDetails {
+      padding: 15px 0; } }
+  .doctorDetails h4 {
+    padding-bottom: 0px; }
+  .doctorDetails ul li {
+    padding: 0; }
+  .doctorDetails ul li::before {
+    display: none; }
+  .doctorDetails .add-info * {
+    padding: 30px 0; }
+  .doctorDetails .row.policlinicInfo__list {
+    max-width: 100%; }
+  .doctorDetails__main {
+    text-align: center; }
+    .doctorDetails__main > img {
+      margin-bottom: 24px;
+      width: 91px; }
+    .doctorDetails__main .mediaRatio {
+      margin: 0 auto;
+      padding-top: 0 !important;
+      margin-bottom: 50px;
+      width: 400px;
+      height: 400px; }
+    .doctorDetails__main h3 {
+      padding: 0 0 1.5em 0;
+      font-size: 2rem; }
+      @media (min-width: 768px) {
+        .doctorDetails__main h3 {
+          padding: 0 0 1.5em 0;
+          font-size: 3.2rem; } }
+    .doctorDetails__main__spe {
+      color: #3c3c3b;
+      font-weight: 400;
+      margin-bottom: 30px;
+      font-size: 1.6rem;
+      line-height: 28px; }
+      @media (min-width: 768px) {
+        .doctorDetails__main__spe {
+          font-size: 1.8rem;
+          line-height: 25.23px; } }
+    .doctorDetails__main__sis {
+      color: #3c3c3b;
+      font-size: 1.8rem;
+      letter-spacing: 0.72px; }
+      @media (min-width: 768px) {
+        .doctorDetails__main__sis {
+          font-size: 2.2rem;
+          letter-spacing: 0.98px; } }
+  .doctorDetails__info {
+    box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+    background-color: #ffffff;
+    margin-top: 30px; }
+    @media (min-width: 768px) {
+      .doctorDetails__info {
+        margin-top: 40px; } }
+    .doctorDetails__info__wrapper {
+      justify-content: center;
+      align-items: stretch; }
+      @media (min-width: 992px) {
+        .doctorDetails__info__wrapper {
+          justify-content: space-between; } }
+      @media (min-width: 992px) {
+        .doctorDetails__info__wrapper {
+          padding: 23px 0; } }
+    .doctorDetails__info__item {
+      color: #3c3c3b;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 27.03px;
+      align-items: center;
+      padding: 22px 0;
+      flex-wrap: wrap;
+      justify-content: center; }
+      @media (min-width: 768px) {
+        .doctorDetails__info__item {
+          font-size: 2rem; } }
+      @media (min-width: 992px) {
+        .doctorDetails__info__item {
+          flex-wrap: nowrap; } }
+      .doctorDetails__info__item__wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap; }
+        @media (min-width: 992px) {
+          .doctorDetails__info__item__wrap {
+            flex-wrap: nowrap; } }
+      .doctorDetails__info__item img {
+        height: 55px;
+        width: auto;
+        display: inline-block;
+        margin: 0 0 22px 0; }
+        @media (min-width: 768px) {
+          .doctorDetails__info__item img {
+            width: 45px;
+            height: auto; } }
+        @media (min-width: 992px) {
+          .doctorDetails__info__item img {
+            margin: 0; } }
+        @media (min-width: 1250px) {
+          .doctorDetails__info__item img {
+            margin: 0;
+            height: 64px;
+            width: auto; } }
+      .doctorDetails__info__item a, .doctorDetails__info__item p {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        text-align: center; }
+        @media (min-width: 992px) {
+          .doctorDetails__info__item a, .doctorDetails__info__item p {
+            width: auto;
+            text-align: center;
+            font-size: 1.6rem; } }
+        @media (min-width: 1250px) {
+          .doctorDetails__info__item a, .doctorDetails__info__item p {
+            font-size: 2rem; } }
+      .doctorDetails__info__item p span {
+        height: 22px;
+        color: #3c3c3b;
+        font-family: 'Montserrat - Semi Bold Italic';
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 28.83px;
+        font-family: 'Montserrat Semi Bold';
+        font-weight: 600;
+        font-family: Montserrat;
+        font-style: italic; }
+        @media (min-width: 768px) {
+          .doctorDetails__info__item p span {
+            font-size: 1.6rem; } }
+        @media (min-width: 1250px) {
+          .doctorDetails__info__item p span {
+            font-size: 2rem; } }
+      .doctorDetails__info__item:first-of-type, .doctorDetails__info__item:nth-of-type(2) {
+        flex-basis: 100%;
+        border-bottom: 1px solid #d0d0d0; }
+        @media (min-width: 576px) {
+          .doctorDetails__info__item:first-of-type, .doctorDetails__info__item:nth-of-type(2) {
+            flex-basis: 65%; } }
+        @media (min-width: 992px) {
+          .doctorDetails__info__item:first-of-type, .doctorDetails__info__item:nth-of-type(2) {
+            flex-basis: calc(100% / 2);
+            border-bottom: 0px;
+            padding: 0 18px; }
+            .doctorDetails__info__item:first-of-type p, .doctorDetails__info__item:nth-of-type(2) p {
+              padding-left: 15px; } }
+        @media (min-width: 1250px) {
+          .doctorDetails__info__item:first-of-type, .doctorDetails__info__item:nth-of-type(2) {
+            padding: 0 24px; }
+            .doctorDetails__info__item:first-of-type p, .doctorDetails__info__item:nth-of-type(2) p {
+              padding-left: 24px; } }
+      .doctorDetails__info__item:nth-of-type(3) {
+        flex-basis: 100%; }
+        .doctorDetails__info__item:nth-of-type(3) > div {
+          flex-basis: 100%; }
+        @media (min-width: 768px) {
+          .doctorDetails__info__item:nth-of-type(3) span {
+            width: 100%;
+            display: block;
+            margin-bottom: 6px; } }
+        @media (min-width: 992px) {
+          .doctorDetails__info__item:nth-of-type(3) {
+            flex-basis: 50%; }
+            .doctorDetails__info__item:nth-of-type(3) span {
+              margin-bottom: 0;
+              display: inline-block;
+              width: auto; }
+            .doctorDetails__info__item:nth-of-type(3) img {
+              margin-left: 24px; }
+            .doctorDetails__info__item:nth-of-type(3) p {
+              padding-left: 24px;
+              text-align: left; } }
+      @media (min-width: 992px) {
+        .doctorDetails__info__item:not(:first-of-type) {
+          border-left: 1px solid #d0d0d0;
+          border-bottom: 0px; } }
+  .doctorDetails__timePlace {
+    justify-content: space-between;
+    padding: 40px 0; }
+    .doctorDetails__timePlace .mediaRatio {
+      padding-top: 0 !important;
+      height: 400px;
+      width: 400px;
+      margin: 0 auto; }
+  .doctorDetails__btnHolder {
+    display: flex;
+    justify-content: center; }
+  .doctorDetails__divider {
+    text-align: center;
+    padding: 40px 0; }
+    .doctorDetails__divider .dividerCircles {
+      margin: 0; }
+  .doctorDetails .textBlock {
+    padding: 6rem 0 0 0; }
+    .doctorDetails .textBlock:first-of-type {
       padding: 0; }
 
 .odbornost {

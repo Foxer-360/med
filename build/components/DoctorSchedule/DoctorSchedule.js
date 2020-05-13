@@ -167,6 +167,8 @@ var DoctorSchedule = function (props) {
     var redirect = function () {
         if (doctorUrl !== ''
             && doctorUrl !== props.location.pathname
+            && props.info
+            && props.info.datasources
             && props.location.pathname.includes(props.info.datasources.doctor[0])
             && doctorUrl.includes(props.info.datasources.doctor[0])) {
             props.history.replace(doctorUrl);

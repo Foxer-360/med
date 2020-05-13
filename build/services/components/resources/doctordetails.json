@@ -1,0 +1,42 @@
+{
+    "name": "DoctorDetails",
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "doctorName": {
+                    "type": "text",
+                    "title": "Doctor name"
+                },
+                "clinic": {
+                    "type": "string",
+                    "title": "Clinic"
+                },
+                "building": {
+                    "type": "string",
+                    "title": "Building"
+                },
+                "officeFloor": {
+                    "type": "text",
+                    "title": "Office Floor"
+                },
+                "phone": {
+                    "type": "text",
+                    "title": "Phone"
+                },
+                "thirdColImage": {
+                    "type": "image",
+                    "title": "Third Column Image"
+                },
+                "thirdColContent": {
+                    "type": "markdown",
+                    "title": "Third Column Content"
+                },
+                "addInfo": {
+                    "type": "markdown",
+                    "title": "Additional Info"
+                }
+            }
+        }
+    }
+}
