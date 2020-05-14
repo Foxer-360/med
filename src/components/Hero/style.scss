@@ -8,9 +8,10 @@
   background-repeat: no-repeat;
   position: relative;
   top: -93.78px;
+  margin-bottom: -50px;
 
   @include md {
-    height: 650px;
+    height: 400px;
     top: -64.42px;
   }
 
@@ -35,7 +36,7 @@
   }
 
   &__holder {
-    padding-top: 10%;
+    padding-top: 5%;
   }
 
   &__title {
@@ -48,12 +49,11 @@
   }
 
   h1 {
-    padding-bottom: 36px;
+    padding: 3rem 0 2rem 0;
     line-height: 1.2;
   }
 
   &__text {
-    max-width: 440px;
     font-family: $mons;
     text-align: center;
     margin: 0 auto 40px auto;
@@ -61,7 +61,7 @@
     line-height: 28px;
 
     @include md {
-      margin: 0 auto 50px auto;
+      margin: 0 auto 2rem auto;
       font-size: 2.4rem;
       line-height: 34.36px;
     }

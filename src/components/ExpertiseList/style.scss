@@ -31,12 +31,12 @@
   }
 
   button {
-    margin: 0 auto 2.5rem auto;
+    margin: 0 auto 2rem auto;
 
     @include md {
       min-width: 230px;
       letter-spacing: 2.5px;
-      margin: 0 auto 5rem auto;  
+      margin: 0 auto 3rem auto;  
     }
   }
 

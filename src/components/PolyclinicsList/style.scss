@@ -1,12 +1,12 @@
 .polyclinicsList {
   background-color: #f4f4f4;
-  padding: 25px 0;
+  padding: 2rem 0;
 }
 
 .pcitem {
   background-color: white;
   padding: 20px;
-  margin: 0 auto 25px;
+  margin: 0 auto 2rem;
   width: 90%;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 
@@ -21,7 +21,7 @@
 
   @include md {
     width: 65%;
-    padding: 37px;
+    padding: 2rem;
   }
 
   @include lg {
@@ -84,13 +84,13 @@
       justify-content: center;
       align-content: center;
       align-items: center;
-      padding: 25px 0 0;
+      padding: 2rem 0 0;
       border-bottom: 1px solid #e7e7e7;
       flex-wrap: wrap;
       width: 100%;
 
       @include md {
-        padding: 25px 0;
+        padding: 2rem 0;
       }
 
       @media (min-width: '1050px') {
@@ -157,7 +157,7 @@
     }
 
     &__list {
-      padding: 25px 0 0;
+      padding: 2rem 0 0;
       @extend .flexRow;
       justify-content: space-between;
       align-items: flex-end;
@@ -165,7 +165,7 @@
 
       @include md {
         border-bottom: 1px solid #e7e7e7;
-        padding: 25px 0;
+        padding: 2rem 0;
       }
 
       &__showMore {
@@ -185,7 +185,7 @@
 
         @include md { 
           column-count: 3;
-          padding-bottom: 25px;
+          padding-bottom: 2rem;
         }
         li { display: block; }
       }
@@ -233,7 +233,7 @@
     }
 
     &__desc {
-      padding: 25px 0 0;
+      padding: 2rem 0 0;
       @extend .flexRow;
       justify-content: space-between;
       align-items: flex-end;
@@ -277,7 +277,7 @@
 
 .pcTitle {
   border-bottom: 1px solid #e7e7e7;
-  padding: 25px 0;
+  padding: 2rem 0;
   display: block;
   width: 100%;
 

@@ -24,13 +24,9 @@
           "type": "text",
           "title": "Phone"
         },
-        "thirdColImage": {
-          "type": "image",
-          "title": "Third Column Image"
-        },
-        "thirdColContent": {
-          "type": "markdown",
-          "title": "Third Column Content"
+        "expertise": {
+          "type": "string",
+          "title": "DoctorExpertise"
         },
         "addInfo": {
           "type": "markdown",

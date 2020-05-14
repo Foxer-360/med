@@ -74,6 +74,7 @@
     .btn {
       @include md {
         margin-left: 89px;
+        white-space: nowrap;
       }
     }
   }

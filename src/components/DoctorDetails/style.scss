@@ -2,7 +2,7 @@
   padding: 40px 0;
 
   @include md {
-    padding: 15px 0;
+    padding: 2rem 0;
   }
 
   h4 {
@@ -20,7 +20,7 @@
   }
 
   .add-info * {
-    padding: 30px 0;
+    padding: 2.5rem 0;
   }
   .row.policlinicInfo__list {
     max-width: 100%;
@@ -43,11 +43,9 @@
     }
 
     h3 {
-      padding: 0 0 1.5em 0;
       font-size: 2rem;
 
       @include md {
-        padding: 0 0 1.5em 0;
         font-size: 3.2rem;
       }
     }

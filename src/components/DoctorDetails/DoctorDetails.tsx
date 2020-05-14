@@ -13,8 +13,7 @@ export interface DoctorDetailsProps {
     building: LooseObject;
     officeFloor: string;
     phone: string;
-    thirdColImage: LooseObject;
-    thirdColContent: string;
+    expertise: LooseObject;
     addInfo: string;
   };
 }
@@ -28,6 +27,14 @@ const GET_CONTEXT = gql`
     navigationsData @client
   }
 `;
+
+const getLink = (data, slug) => {
+  if (slug === undefined) {
+    slug = '';
+  }
+  let link = `/${data.languageData && data.languageData.code}/${slug.trim()}`;
+  return link;
+}
 
 const getContactCenterPhone = (clinic) => {
   let shortName = clinic && clinic.shortName && clinic.shortName.split(',')[0];
@@ -71,26 +78,21 @@ const getBuildingColor = (clinicExtraInfo) => {
   return building;
 };
 
-const getClinicLink = (clinic, building, officeFloor) => {
+const getClinicLink = (clinic, building, officeFloor, data) => {
   let clinicName = clinic && clinic.name && clinic.name.split(',')[0];
   let clinicUrl = clinic && clinic.url && clinic.url.split(',')[0];
   let officeStreet = building && building.street;
   let officeBuilding = building && building.name;
   return (
     <div className={'policlinicInfo__item--content'}>
-      {clinic && <p><Query query={GET_CONTEXT}>
-        {({ data }) => {
-          return (
-            clinic.url !== undefined ?
+      {clinic && <p>
+            {clinic.url !== undefined ?
             <Link 
-              url={`/${data.languageData && data.languageData.code}/${clinicUrl}`}
+              url={getLink(data, clinicUrl)}
             >
               Poliklinika {clinicName}
             </Link> :
-            `Poliklinika ${clinicName}`
-          );
-        }}
-      </Query></p>}
+            `Poliklinika ${clinicName}`}</p>}
       {officeStreet && officeStreet.trim().length > 0 && officeStreet}
       {officeBuilding
       && officeBuilding.trim().length > 0
@@ -105,6 +107,24 @@ const getClinicLink = (clinic, building, officeFloor) => {
   );
 };
 
+const getDoctorExpertise = (expertise, data) => {
+  let expertiseNames = expertise[0].name && expertise[0].name.split(',');
+  let expertiseUrls = expertise[0].url && expertise[0].url.split(',');
+
+  let expertiseLinks = [];
+
+  // tslint:disable-next-line: no-unused-expression
+  Array.isArray(expertiseNames) && expertiseNames.map((expertiseName, idx) => {
+    expertiseLinks.push(
+      expertiseUrls !== undefined && expertiseUrls[0].trim() ? 
+      <Link url={getLink(data, expertiseUrls[idx])}>{expertiseName.trim()}</Link> :
+      expertiseName
+    );
+  });
+
+  return expertiseLinks;
+};
+
 const DoctorDetails = (props: DoctorDetailsProps) => {
   const {
     doctorName,
@@ -112,8 +132,7 @@ const DoctorDetails = (props: DoctorDetailsProps) => {
     building,
     officeFloor,
     phone,
-    thirdColImage,
-    thirdColContent,
+    expertise,
     addInfo,
   } = props.data;
 
@@ -121,74 +140,76 @@ const DoctorDetails = (props: DoctorDetailsProps) => {
   let receptionPhone = phone && phone.split(',')[1] && phone.split(',')[1].trim();
   let contactCenterPhone = getContactCenterPhone(clinic);
 
-  console.log(building)
   return (
     <section className={'doctorDetails'}>
-      <div className="container">
-        {doctorName && doctorName.trim().length > 0 && <div className={'doctorDetails__main'}>
-          <h3 className={'gradientHeading'}>{doctorName}</h3>
-        </div>}
+      <Query query={GET_CONTEXT}>
+        {({ data }) => {
+          return (
+        <div className="container">
+          {doctorName && doctorName.trim().length > 0 && <div className={'doctorDetails__main'}>
+            <h3 className={'gradientHeading'}>{doctorName}</h3>
+          </div>}
 
-        <div className="row policlinicInfo__list">
-          {(clinic
-          || building
-          || officeFloor)
-          && <div className="col-12 col-lg">
-            <div className={'policlinicInfo__item'}>
-              <img src={'/assets/medicon/images/geo.svg'} alt="address" />
-                {getClinicLink(clinic, building, officeFloor)}
-            </div>  
-          </div>}
-          {(officePhone && officePhone.trim().length > 0
-          || receptionPhone && receptionPhone.trim().length > 0
-          || contactCenterPhone && contactCenterPhone.trim().length > 0)
-          && <div className="col-12 col-lg">
-            <div className={'policlinicInfo__item'}>
-              <img src={'/assets/medicon/images/phone.svg'} alt="phone nubmer" />
-              <ul className={'policlinicInfo__item--content list-unstyled'}>
-                {officePhone && officePhone.trim().length > 0 && <li>
-                  <b>{'Ordinace: '}</b>
-                  <a className="phone" href={`callto:${officePhone.replace(/ /g, '')}`}>{officePhone}</a>
-                </li>}
-                {receptionPhone && receptionPhone.trim().length > 0 && <li>
-                  <b>{'Recepce: '}</b>
-                  <a className="phone" href={`callto:${receptionPhone.replace(/ /g, '')}`}>{receptionPhone}</a>
-                </li>}
-                {contactCenterPhone && contactCenterPhone.trim().length > 0 && <li>
-                  <b>{'Kontaktní centrum: '}</b>
-                  <a className="phone" href={`callto:${contactCenterPhone.replace(/ /g, '')}`}>{contactCenterPhone}</a>
-                </li>}
-              </ul>
-            </div>
-          </div>}
-          {(thirdColImage || thirdColContent) && <div className="col-12 col-lg">
-            <div className={'policlinicInfo__item'}>
-              {thirdColImage &&
-                <Media
-                  classes={'policlinicInfo__item'}
-                  type={'image'}
-                  data={thirdColImage}
-                />
-              }
-              {thirdColContent && thirdColContent.trim().length > 0 && <div className={'policlinicInfo__item--content'}>
-              <ReactMarkdown
-                skipHtml={false}
-                escapeHtml={false}
-                source={thirdColContent}
-              />
-              </div>}
-            </div>  
+          <div className="row policlinicInfo__list">
+            {(clinic
+            || building
+            || officeFloor)
+            && <div className="col-12 col-lg">
+              <div className={'policlinicInfo__item'}>
+                <img src={'/assets/medicon/images/geo.svg'} alt="address" />
+                  {getClinicLink(clinic, building, officeFloor, data)}
+              </div>  
+            </div>}
+            {(officePhone && officePhone.trim().length > 0
+            || receptionPhone && receptionPhone.trim().length > 0
+            || contactCenterPhone && contactCenterPhone.trim().length > 0)
+            && <div className="col-12 col-lg">
+              <div className={'policlinicInfo__item'}>
+                <img src={'/assets/medicon/images/phone.svg'} alt="phone number" />
+                <ul className={'policlinicInfo__item--content list-unstyled'}>
+                  {officePhone && officePhone.trim().length > 0 && <li>
+                    <b>{'Ordinace: '}</b>
+                    <a className="phone" href={`callto:${officePhone.replace(/ /g, '')}`}>
+                      {officePhone}
+                    </a>
+                  </li>}
+                  {receptionPhone && receptionPhone.trim().length > 0 && <li>
+                    <b>{'Recepce: '}</b>
+                    <a className="phone" href={`callto:${receptionPhone.replace(/ /g, '')}`}>
+                      {receptionPhone}
+                    </a>
+                  </li>}
+                  {contactCenterPhone && contactCenterPhone.trim().length > 0 && <li>
+                    <b>{'Kontaktní centrum: '}</b>
+                    <a className="phone" href={`callto:${contactCenterPhone.replace(/ /g, '')}`}>
+                      {contactCenterPhone}
+                    </a>
+                  </li>}
+                </ul>
+              </div>
+            </div>}
+            {expertise && <div className="col-12 col-lg">
+              <div className={'policlinicInfo__item'}>
+                <img src={'/assets/medicon/images/stethoscopeIcon.svg'} alt="expertise" />
+                <div className={'policlinicInfo__item--content'}>
+                  <b>{'Odbornost: '}</b>
+                  {getDoctorExpertise(expertise, data)}
+                </div>
+              </div>  
+            </div>}
+          </div>
+
+          {addInfo && <div className="add-info">
+            <ReactMarkdown
+              skipHtml={false}
+              escapeHtml={false}
+              source={addInfo}
+            />
           </div>}
         </div>
-
-        {addInfo && <div className="add-info">
-          <ReactMarkdown
-            skipHtml={false}
-            escapeHtml={false}
-            source={addInfo}
-          />
-        </div>}
-      </div>
+          );
+        }}
+      </Query>
     </section>
   );
 };
