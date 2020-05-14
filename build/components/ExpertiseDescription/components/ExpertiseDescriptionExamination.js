@@ -25,7 +25,7 @@ var ExpertiseDescriptionExamination = /** @class */ (function (_super) {
         var _a = this.props, title = _a.title, examinations = _a.examinations;
         return (React.createElement("div", { className: 'examination' },
             title && React.createElement("h3", null, title),
-            React.createElement("div", { className: 'examination__list row' }, examinations && examinations.map(function (examination, i) {
+            examinations && examinations.length > 0 && React.createElement("div", { className: 'examination__list row' }, examinations.map(function (examination, i) {
                 return (React.createElement("div", { key: i, className: "col-12 " + (i === 2 ? 'col-md-12' : 'col-md-6') },
                     React.createElement(Examination_1.default, { url: examination.url, title: examination.title, description: examination.description })));
             }))));

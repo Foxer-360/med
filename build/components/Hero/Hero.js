@@ -22,9 +22,7 @@ var SearchBar_1 = require("../SearchBar/SearchBar");
 var getImageUrl_1 = require("../../helpers/getImageUrl");
 var readEnvVariable_1 = require("../../helpers/readEnvVariable");
 var react_lazyload_1 = require("react-lazyload");
-var Link_1 = require("../../partials/Link");
 var graphql_tag_1 = require("graphql-tag");
-var react_apollo_1 = require("react-apollo");
 var REACT_APP_MEDIA_LIBRARY_SERVER = readEnvVariable_1.default('REACT_APP_MEDIA_LIBRARY_SERVER');
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var Hero = /** @class */ (function (_super) {
@@ -82,37 +80,6 @@ var Hero = /** @class */ (function (_super) {
                 src: getImageUrl_1.default(_this.props.data.image),
             });
         };
-        _this.getLink = function (data, slug) {
-            if (slug === undefined) {
-                slug = '';
-            }
-            var link = "/" + (data.languageData && data.languageData.code) + "/" + slug.trim();
-            return link;
-        };
-        _this.getDoctorText = function (text, textColor) {
-            text = text.split(' ? ');
-            var expertise = text ? text[0].split(' ! ') : '';
-            var polyclinic = text ? text[1].split(' ! ') : '';
-            var polyclinicNames = polyclinic ? polyclinic[0].split(', ') : '';
-            var polyclinicsUrls = polyclinic ? polyclinic[1].split(',') : '';
-            return (text && (React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
-                var data = _a.data;
-                var polyclinics = [];
-                polyclinicNames.map(function (name) {
-                    polyclinics.push(polyclinicsUrls[polyclinicNames.indexOf(name)] ?
-                        (React.createElement(React.Fragment, null,
-                            React.createElement(Link_1.default, { url: _this.getLink(data, polyclinicsUrls[polyclinicNames.indexOf(name)]), className: 'hero__text__link' }, name.trim()),
-                            polyclinicNames.indexOf(name) < (polyclinicNames.length - 1) ? ', ' : '')) :
-                        name.trim());
-                });
-                return (React.createElement("div", { className: "hero__text hero__text--" + textColor + " " },
-                    expertise[1] ?
-                        React.createElement(Link_1.default, { url: _this.getLink(data, expertise[1]), className: 'hero__text__link' }, expertise[0].trim()) :
-                        expertise[0].trim(),
-                    ' - ',
-                    polyclinics));
-            })));
-        };
         _this.state = {
             src: null,
             loading: true,
@@ -156,11 +123,7 @@ var Hero = /** @class */ (function (_super) {
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: 'hero__holder' },
                         title && React.createElement("h1", { className: "hero__title hero__title--" + titleColor }, title),
-                        this.props.info
-                            && this.props.info.datasources
-                            && this.props.info.datasources.doctor
-                            ? this.getDoctorText(text, textColor)
-                            : text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
+                        text && React.createElement("div", { className: "hero__text hero__text--" + textColor + " " }, text),
                         displaySearch && (React.createElement(SearchBar_1.default, { barColor: 'lightBlue', placeholder: placeholder ? placeholder : 'Hledat ...', blogSearchResults: this.props.data.blogSearchResults, doctorsLink: this.props.data.doctorsLink })))))));
         return BACKOFFICE ? hero : React.createElement(react_lazyload_1.default, { height: 650, offset: '100' }, hero);
     };
