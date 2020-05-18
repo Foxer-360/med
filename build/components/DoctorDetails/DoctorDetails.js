@@ -29,28 +29,35 @@ var getContactCenterPhone = function (clinic) {
         case 'ZP':
             return '234 105 402';
         default:
-            // tslint:disable-next-line: no-unused-expression
-            '';
+            return '';
     }
 };
-var getBuildingColor = function (clinicExtraInfo) {
-    var source = [
+var getBuildingColor = function (clinicExtraInfo, officeFloor) {
+    var buildings = [
         'Zelená budova',
         'Žlutá budova',
         'Červená budova',
         'Fialová budova',
     ];
-    var result = [
-        '<p style="color: green">Zelená budova</p>',
-        '<p style="color: #AA8F00">Žlutá budova</p>',
-        '<p style="color: red">Červená budova</p>',
-        '<p style="color: purple">Fialová budova</p>',
+    var colors = [
+        'green',
+        '#AA8F00',
+        'red',
+        'purple'
     ];
-    var building = clinicExtraInfo;
-    for (var i = source.length - 1; i >= 0; i--) {
-        building = building && building.replace("" + source[i], "" + result[i]);
+    if (officeFloor && officeFloor.trim().length > 0) {
+        officeFloor = "<br>" + officeFloor + " patro";
     }
-    return building;
+    else {
+        officeFloor = '';
+    }
+    var result;
+    buildings.map(function (building, idx) {
+        if (clinicExtraInfo.includes(building)) {
+            result = "<p style=\"color: " + colors[idx] + "\">" + building + officeFloor + "</p>";
+        }
+    });
+    return result;
 };
 var getClinicLink = function (clinic, building, officeFloor, data) {
     var clinicName = clinic && clinic.name && clinic.name.split(',')[0];
@@ -67,10 +74,7 @@ var getClinicLink = function (clinic, building, officeFloor, data) {
         officeBuilding
             && officeBuilding.trim().length > 0
             && officeBuilding.includes('budova')
-            && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: getBuildingColor(officeBuilding) }),
-        officeFloor && officeFloor.trim().length > 0 && React.createElement("p", null,
-            officeFloor,
-            " patro")));
+            && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: getBuildingColor(officeBuilding, officeFloor) })));
 };
 var getDoctorExpertise = function (expertise, data) {
     var expertiseNames = expertise[0].name && expertise[0].name.split(',');

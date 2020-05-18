@@ -3211,6 +3211,10 @@ body {
   .container {
     max-width: 1250px; } }
 
+@media (max-width: 991px) {
+  .container {
+    max-width: 100%; } }
+
 .fullWidthContainer {
   display: block;
   margin: 0 auto;
@@ -3263,6 +3267,9 @@ ul {
 ul li {
   padding: 5px 5px 5px 25px;
   position: relative; }
+  @media (max-width: 767px) {
+    ul li {
+      padding-bottom: 0px; } }
   ul li:before {
     width: 8px;
     height: 8px;
@@ -4106,10 +4113,16 @@ cite {
   padding: 3rem 0;
   background: white;
   box-shadow: 0 0 25px rgba(0, 52, 97, 0.18); }
+  @media (max-width: 991px) {
+    .benefits .container {
+      max-width: 720px; } }
+  @media (max-width: 767px) {
+    .benefits .container {
+      max-width: 540px; } }
   @media (max-width: 575px) {
     .benefits {
       font-size: 1.4rem;
-      padding: 2.5rem 0 0 0; } }
+      padding: 0 0 1rem 0; } }
   .benefits__list {
     justify-content: space-between; }
     @media (max-width: 767px) {
@@ -4120,12 +4133,13 @@ cite {
     @media (max-width: 575px) {
       .benefits__list .col-12, .benefits__list .col-sm-6, .benefits__list .col-md-4, .benefits__list .col-lg-3 {
         border-right: 0; }
+        .benefits__list .col-12:not(:last-child), .benefits__list .col-sm-6:not(:last-child), .benefits__list .col-md-4:not(:last-child), .benefits__list .col-lg-3:not(:last-child) {
+          border-right: 0; }
         .benefits__list .col-12 .benefits__list__element, .benefits__list .col-sm-6 .benefits__list__element, .benefits__list .col-md-4 .benefits__list__element, .benefits__list .col-lg-3 .benefits__list__element {
           border-bottom: 1px solid #dbdbda; } }
     @media (max-width: 575px) {
       .benefits__list .col-12:last-of-type .benefits__list__element, .benefits__list .col-sm-6:last-of-type .benefits__list__element, .benefits__list .col-md-4:last-of-type .benefits__list__element, .benefits__list .col-lg-3:last-of-type .benefits__list__element {
-        border-bottom: none;
-        padding-bottom: 0; } }
+        border-bottom: none; } }
     @media (max-width: 767px) {
       .benefits__list .col-12:nth-of-type(2n), .benefits__list .col-sm-6:nth-of-type(2n), .benefits__list .col-md-4:nth-of-type(2n), .benefits__list .col-lg-3:nth-of-type(2n) {
         border-right: none; } }
@@ -4133,9 +4147,9 @@ cite {
       height: 100%;
       width: 100%;
       display: table; }
-      @media (max-width: 575px) {
+      @media (max-width: 767px) {
         .benefits__list__element {
-          padding-bottom: 2rem; } }
+          padding: 1rem 0; } }
       .benefits__list__element img {
         -o-object-fit: contain !important;
            object-fit: contain !important; }
@@ -4215,10 +4229,11 @@ cite {
       word-break: break-word;
       line-height: 2rem;
       padding-top: 15px; }
-    @media (min-width: 768px) {
-      .highlight__content .btn {
-        margin-left: 89px;
-        white-space: nowrap; } }
+    .highlight__content .btn {
+      white-space: nowrap; }
+      @media (min-width: 768px) {
+        .highlight__content .btn {
+          margin-left: 89px; } }
 
 .helpPopup {
   bottom: 0px;
@@ -4406,7 +4421,7 @@ cite {
   width: 100%;
   background-color: #48c5e0;
   line-height: 28px;
-  padding-top: 50px;
+  padding-top: 2rem;
   padding-bottom: 52px; }
   @media (min-width: 768px) {
     .footer {
@@ -4511,7 +4526,7 @@ cite {
 .bottom {
   width: 100%;
   padding: 1.5rem 0;
-  margin-top: 5rem;
+  margin-top: 2rem;
   background-color: #fff; }
   @media (max-width: 575px) {
     .bottom {
@@ -4614,7 +4629,7 @@ cite {
               fill: #079bc6; }
 
 .textBlock {
-  padding: 2rem 0 2 0; }
+  padding: 2rem 0 2rem 0; }
   @media (min-width: 768px) {
     .textBlock {
       padding: 2rem 0 2rem 0; } }
@@ -4644,6 +4659,17 @@ cite {
   @media (max-width: 767px) {
     .info-boxes {
       padding: 2rem 0 0 0; } }
+  @media (max-width: 1200px) {
+    .info-boxes .col-sm-12,
+    .info-boxes .col-lg-6,
+    .info-boxes .col-xl-4 {
+      padding: 1rem; } }
+  @media (max-width: 991px) {
+    .info-boxes .container {
+      max-width: 720px; } }
+  @media (max-width: 767px) {
+    .info-boxes .container {
+      max-width: 540px; } }
   .info-boxes h3 {
     background: -webkit-linear-gradient(left, #2473ba, #00aad0);
     -webkit-background-clip: text;
@@ -5047,6 +5073,8 @@ cite {
       align-items: flex-start;
       padding: 0 1.7rem 0 1.7rem;
       width: 100%; }
+      .doctorList__item__info .buttonContainer {
+        margin: 0 auto; }
       @media (min-width: 1250px) {
         .doctorList__item__info {
           padding: 1.7rem 6rem 1.7rem 1.7rem; } }
@@ -5430,6 +5458,14 @@ cite {
         .pcTitle__title__subtitle__circles div:nth-of-type(6) {
           background-color: #01a6ce; }
 
+@media (max-width: 991px) {
+  .expertiseList .container {
+    max-width: 720px; } }
+
+@media (max-width: 767px) {
+  .expertiseList .container {
+    max-width: 540px; } }
+
 @media (min-width: 768px) {
   .expertiseList__element:hover {
     -webkit-transform: translateY(-3px);
@@ -5615,6 +5651,10 @@ cite {
   border-left: 20px solid transparent;
   background-clip: padding-box; }
 
+@media (max-width: 991px) {
+  .blog .container {
+    max-width: 100%; } }
+
 .blog .searchBar {
   margin-top: 5.5rem;
   margin-bottom: 5.5rem; }
@@ -5772,6 +5812,12 @@ cite {
     @media (max-width: 767px) {
       .polyclinicBoxes .container > h3 {
         padding: 0 0 2rem 0; } }
+  @media (max-width: 991px) {
+    .polyclinicBoxes .container {
+      max-width: 720px; } }
+  @media (max-width: 767px) {
+    .polyclinicBoxes .container {
+      max-width: 540px; } }
   .polyclinicBoxes__list {
     padding: 0;
     justify-content: center; }
@@ -5780,6 +5826,11 @@ cite {
     .polyclinicBoxes__list .col-lg-3 {
       margin: 0;
       padding: 0 1rem; }
+      @media (max-width: 1200px) {
+        .polyclinicBoxes__list .col-sm-12,
+        .polyclinicBoxes__list .col-md-6,
+        .polyclinicBoxes__list .col-lg-3 {
+          padding: 1rem; } }
     .polyclinicBoxes__list__item {
       width: 100%;
       display: block;
@@ -6831,7 +6882,7 @@ cite {
     justify-content: space-between;
     padding: 1rem 0; }
     .examination__list .col-md-6 {
-      margin: auto; }
+      margin: 0 auto; }
     @media (min-width: 992px) {
       .examination__list {
         width: 80%; } }
@@ -7693,7 +7744,7 @@ cite {
         .workingHours table .normalRow td:last-of-type {
           padding: 15px 15px 15px 25px; } }
       .workingHours table .normalRow td:first-of-type {
-        padding: 0 0 15px 0; }
+        padding: 15px 0 15px 0; }
         @media (min-width: 1250px) {
           .workingHours table .normalRow td:first-of-type {
             padding: 15px 50px 15px 0; } }
