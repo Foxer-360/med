@@ -11,6 +11,12 @@
 }
 
 .blog {
+  .container {
+    @include max-lg {
+      max-width: 100%;
+    }
+  }
+  
   .searchBar {
     margin-top: 5.5rem;
     margin-bottom: 5.5rem;

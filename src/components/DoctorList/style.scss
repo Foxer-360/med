@@ -57,6 +57,9 @@
     }
 
     &__info {
+      .buttonContainer {
+        margin: 0 auto;
+      }
       @extend .flexColumn;
       box-sizing: border-box;
       align-items: flex-start;

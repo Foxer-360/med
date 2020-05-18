@@ -1,4 +1,6 @@
 .expertiseList {
+  @include container-shrink;
+
   @include md {
     &__element {
       &:hover {

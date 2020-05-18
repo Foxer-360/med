@@ -49,33 +49,40 @@ const getContactCenterPhone = (clinic) => {
     case 'ZP':
       return '234 105 402';
     default:
-      // tslint:disable-next-line: no-unused-expression
-      '';
+      return '';
   }
 };
 
-const getBuildingColor = (clinicExtraInfo) => {
-  const source = [
+const getBuildingColor = (clinicExtraInfo, officeFloor) => {
+  const buildings = [
     'Zelená budova',
     'Žlutá budova',
     'Červená budova',
     'Fialová budova',
   ];
 
-  const result = [
-    '<p style="color: green">Zelená budova</p>',
-    '<p style="color: #AA8F00">Žlutá budova</p>',
-    '<p style="color: red">Červená budova</p>',
-    '<p style="color: purple">Fialová budova</p>',
+  const colors = [
+    'green',
+    '#AA8F00',
+    'red',
+    'purple'
   ];
 
-  let building = clinicExtraInfo;
-
-  for (var i = source.length - 1; i >= 0; i--) {
-    building = building && building.replace(`${source[i]}`, `${result[i]}`);
+  if (officeFloor && officeFloor.trim().length > 0) {
+    officeFloor = `<br>${officeFloor} patro`;
+  } else {
+    officeFloor = '';
   }
 
-  return building;
+  let result;
+
+  buildings.map((building, idx) => {
+    if (clinicExtraInfo.includes(building)) {
+      result = `<p style="color: ${colors[idx]}">${building}${officeFloor}</p>`;
+    }
+  });
+
+  return result;
 };
 
 const getClinicLink = (clinic, building, officeFloor, data) => {
@@ -100,9 +107,8 @@ const getClinicLink = (clinic, building, officeFloor, data) => {
       && <ReactMarkdown
         skipHtml={false}
         escapeHtml={false}
-        source={getBuildingColor(officeBuilding)} 
+        source={getBuildingColor(officeBuilding, officeFloor)} 
       />}
-      {officeFloor && officeFloor.trim().length > 0 && <p>{officeFloor} patro</p>}
     </div>
   );
 };

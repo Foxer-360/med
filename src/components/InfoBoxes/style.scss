@@ -7,6 +7,15 @@
     padding: 2rem 0 0 0;
   }
 
+  .col-sm-12,
+  .col-lg-6,
+  .col-xl-4 {
+      @media (max-width: 1200px) {
+      padding: 1rem;
+    }
+  }
+  @include container-shrink;
+
   h3 {
     @include webkitGradientText;
   }

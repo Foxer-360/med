@@ -5,9 +5,11 @@
   background: white;
   box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
 
+  @include container-shrink;
+
   @include max-sm {
     font-size: 1.4rem;
-    padding: 2.5rem 0 0 0;
+    padding: 0 0 1rem 0;
   }
 
   &__list {
@@ -25,6 +27,10 @@
       @include max-sm {
         border-right: 0;
 
+        &:not(:last-child) {
+          border-right: 0;
+        }
+
         .benefits__list__element {
           border-bottom: 1px solid #dbdbda;
         }
@@ -34,7 +40,6 @@
         .benefits__list__element {
           @include max-sm {
             border-bottom: none;
-            padding-bottom: 0;
           } 
         }
       }
@@ -51,8 +56,8 @@
       width: 100%;
       display: table;
 
-      @include max-sm {
-        padding-bottom: 2rem
+      @include max-md {
+        padding: 1rem 0;
       }
 
       img {
