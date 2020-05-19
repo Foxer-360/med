@@ -72,6 +72,7 @@
     }
 
     .btn {
+      white-space: nowrap;
       @include md {
         margin-left: 89px;
       }

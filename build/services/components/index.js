@@ -40,6 +40,7 @@ var ComponentsService = /** @class */ (function () {
             BLOG: 'Blog',
             POLYCLINICBOXES: 'PolyclinicBoxes',
             DOCTORCARD: 'DoctorCard',
+            DOCTORDETAILS: 'DoctorDetails',
             ODBORNOST: 'Odbornost',
             MYPROBLEM: 'MyProblem',
             JOBPOSITIONS: 'JobPositions',
@@ -111,6 +112,8 @@ var ComponentsService = /** @class */ (function () {
                 return components_1.PolyclinicBoxes;
             case this.Types.DOCTORCARD:
                 return components_1.DoctorCard;
+            case this.Types.DOCTORDETAILS:
+                return components_1.DoctorDetails;
             case this.Types.ODBORNOST:
                 return components_1.Odbornost;
             case this.Types.MYPROBLEM:

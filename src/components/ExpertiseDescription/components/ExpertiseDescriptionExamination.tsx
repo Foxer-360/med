@@ -22,9 +22,9 @@ class ExpertiseDescriptionExamination extends React.Component<ExpertiseDescripti
     return (
       <div className={'examination'}>
         {title && <h3>{title}</h3>}
-  
-        <div className={'examination__list row'}>
-          {examinations && examinations.map((examination, i) => {
+
+        {examinations && examinations.length > 0 && <div className={'examination__list row'}>
+          {examinations.map((examination, i) => {
             return (
               <div 
                 key={i}
@@ -38,7 +38,7 @@ class ExpertiseDescriptionExamination extends React.Component<ExpertiseDescripti
               </div>
             );
           })}
-        </div>
+        </div>}
       </div> 
     );
   }

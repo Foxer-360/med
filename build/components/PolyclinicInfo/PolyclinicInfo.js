@@ -40,7 +40,8 @@ var PolyclinicInfo = function (props) {
                         React.createElement("p", { className: 'policlinicInfo__item--content phone' }, phone && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: phone })))),
                 React.createElement("div", { className: "col-12 col-lg-4" },
                     React.createElement("div", { className: 'policlinicInfo__item' },
-                        transportImage && React.createElement(Media_1.default, { type: 'image', data: transportImage, width: '50', height: '50' }),
+                        transportImage &&
+                            React.createElement(Media_1.default, { classes: 'policlinicInfo__item', type: 'image', data: transportImage }),
                         React.createElement("p", { className: 'policlinicInfo__item--content' }, transport),
                         transportUrl &&
                             React.createElement(Link_1.default, __assign({}, transportUrl, { style: {

@@ -59,3 +59,15 @@ $screen-xl: 1250px;
     @content;
   }
 }
+
+@mixin container-shrink {
+  .container {
+    @include max-lg {
+      max-width: 720px;
+    }
+
+    @include max-md {
+      max-width: 540px;
+    }
+  }
+}

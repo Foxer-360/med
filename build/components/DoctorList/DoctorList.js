@@ -170,7 +170,7 @@ var DoctorList = /** @class */ (function (_super) {
                                                 React.createElement("div", { className: 'doctorList__item__info__description--container' }, _this.getExpertiseUrl(doctor.expertiseName, doctor.expertiseUrl, data))),
                                         React.createElement("p", { className: 'doctorList__item__info--mobileField' }, doctor.expertiseName),
                                         React.createElement("a", { className: 'doctorList__item__info__link' }, _this.getPolyclinicUrls(doctor.polyclinicName, doctor.polyclinicUrl, data)),
-                                        React.createElement("div", null, doctor.doctorUrl
+                                        React.createElement("div", { className: "buttonContainer" }, doctor.doctorUrl
                                             && doctor.doctorUrl.url
                                             && React.createElement(Button_1.default, { classes: "btn--blueBorder btn--small", url: doctor.doctorUrl }, "v\u00EDce informac\u00ED"))));
                                 })));

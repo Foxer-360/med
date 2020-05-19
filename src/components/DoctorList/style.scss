@@ -1,11 +1,6 @@
 .doctorList {
-  padding: 34px 0;
-  margin-bottom: 30px;
+  padding: 2rem 0;
   box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
-
-  @include md {
-    margin-bottom: 5rem;
-  }
 
   .container {
     & > h3 {
@@ -62,6 +57,9 @@
     }
 
     &__info {
+      .buttonContainer {
+        margin: 0 auto;
+      }
       @extend .flexColumn;
       box-sizing: border-box;
       align-items: flex-start;
@@ -221,6 +219,7 @@
   }
 
   &__btnHolder {
+    padding-bottom: 1rem;
     @extend .flexRow;
     justify-content: center;
   }

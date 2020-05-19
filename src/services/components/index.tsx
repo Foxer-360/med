@@ -22,6 +22,7 @@ import {
   Blog,
   PolyclinicBoxes,
   DoctorCard,
+  DoctorDetails,
   Odbornost,
   MyProblem,
   JobPositions,
@@ -69,6 +70,7 @@ class ComponentsService {
     BLOG: 'Blog',
     POLYCLINICBOXES: 'PolyclinicBoxes',
     DOCTORCARD: 'DoctorCard',
+    DOCTORDETAILS: 'DoctorDetails',
     ODBORNOST: 'Odbornost',
     MYPROBLEM: 'MyProblem',
     JOBPOSITIONS: 'JobPositions',
@@ -141,6 +143,8 @@ class ComponentsService {
         return PolyclinicBoxes;
       case this.Types.DOCTORCARD:
         return DoctorCard;
+      case this.Types.DOCTORDETAILS:
+        return DoctorDetails;
       case this.Types.ODBORNOST:
         return Odbornost;
       case this.Types.MYPROBLEM:

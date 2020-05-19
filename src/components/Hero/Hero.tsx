@@ -142,60 +142,6 @@ class Hero extends React.Component<HeroProps, HeroState> {
     });
   }
 
-  getLink = (data, slug) => {
-    if (slug === undefined) {
-      slug = '';
-    }
-    let link = `/${data.languageData && data.languageData.code}/${slug.trim()}`;
-    return link;
-  }
-
-  getDoctorText = (text, textColor) => {
-    text = text.split(' ? ');
-    let expertise = text ? text[0].split(' ! ') : '';
-    let polyclinic = text ? text[1].split(' ! ') : '';
-    let polyclinicNames = polyclinic ? polyclinic[0].split(', ') : '';
-    let polyclinicsUrls = polyclinic ? polyclinic[1].split(',') : '';
-
-    return (
-      text && (
-        <Query query={GET_CONTEXT}>
-          {({ data }) => {
-            let polyclinics = [];
-            polyclinicNames.map(name => {
-              polyclinics.push(
-                polyclinicsUrls[polyclinicNames.indexOf(name)] ?
-                  (
-                    <React.Fragment>
-                      <Link
-                        url={this.getLink(data, polyclinicsUrls[polyclinicNames.indexOf(name)])}
-                        className={'hero__text__link'}
-                      >
-                        {name.trim()}
-                      </Link>
-                    {polyclinicNames.indexOf(name) < (polyclinicNames.length - 1) ? ', ' : ''}
-                    </React.Fragment>
-                  ) :
-                  name.trim()
-                );
-            });
-
-            return (
-              <div className={`hero__text hero__text--${textColor} `}>
-                {expertise[1] ?
-                  <Link url={this.getLink(data, expertise[1])} className={'hero__text__link'}>
-                    {expertise[0].trim()}
-                  </Link> :
-                  expertise[0].trim()}
-                {' - '}
-                {polyclinics}
-            </div>
-            );
-          }}
-        </Query>
-    ));
-  }
-
   public render() {
     const { title, text, displaySearch, image, placeholder, displayOverlay, overlayColor, overlayOpacity,
       titleColor, textColor } = this.props.data;
@@ -215,11 +161,7 @@ class Hero extends React.Component<HeroProps, HeroState> {
             <div className={'hero__holder'}>
               {title && <h1 className={`hero__title hero__title--${titleColor}`}>{title}</h1>}
 
-              {this.props.info 
-              && this.props.info.datasources 
-              && this.props.info.datasources.doctor 
-              ? this.getDoctorText(text, textColor) 
-              : text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
+              {text && <div className={`hero__text hero__text--${textColor} `}>{text}</div>}
   
               {displaySearch && (
                 <SearchBar

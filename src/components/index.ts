@@ -18,6 +18,7 @@ import PolyclinicInfo from './PolyclinicInfo';
 import Blog from './Blog';
 import PolyclinicBoxes from './PolyclinicBoxes';
 import DoctorCard from './DoctorCard';
+import DoctorDetails from './DoctorDetails';
 import Odbornost from './Odbornost';
 import MyProblem from './MyProblem';
 import JobPositions from './JobPositions';
@@ -59,6 +60,7 @@ export {
   PolyclinicInfo,
   PolyclinicBoxes,
   DoctorCard,
+  DoctorDetails,
   Blog,
   JobOffers,
   Odbornost,

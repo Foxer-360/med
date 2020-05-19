@@ -19,6 +19,7 @@ import * as blog from './blog.json';
 import * as odbornost from './odbornost.json';
 import * as polyclinicboxes from './polyclinicboxes.json';
 import * as doctorcard from './doctorcard.json';
+import * as doctordetails from './doctordetails.json';
 import * as myproblem from './myproblem.json';
 import * as jobpositions from './jobpositions.json';
 import * as joboffers from './joboffers.json';
@@ -60,6 +61,7 @@ export {
   blog,
   polyclinicboxes,
   doctorcard,
+  doctordetails,
   odbornost,
   myproblem,
   jobpositions,

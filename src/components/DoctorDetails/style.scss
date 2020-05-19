@@ -1,0 +1,298 @@
+.doctorDetails {
+  padding: 40px 0;
+
+  @include md {
+    padding: 2rem 0;
+  }
+
+  h4 {
+    padding-bottom: 0px;
+  }
+
+  ul {
+    li {
+      padding: 0;
+    }
+
+    li::before {
+      display: none;
+    }
+  }
+
+  .add-info * {
+    padding: 2.5rem 0;
+  }
+  .row.policlinicInfo__list {
+    max-width: 100%;
+  }
+
+  &__main {
+    text-align: center;
+
+    & > img {
+      margin-bottom: 24px;
+      width: 91px;
+    }
+
+    .mediaRatio {
+      margin: 0 auto;
+      padding-top: 0 !important;
+      margin-bottom: 50px;
+      width: 400px;
+      height: 400px;
+    }
+
+    h3 {
+      font-size: 2rem;
+
+      @include md {
+        font-size: 3.2rem;
+      }
+    }
+
+    &__spe {
+      color: $darkGray;
+      font-weight: 400;
+      margin-bottom: 30px;
+      font-size: 1.6rem;
+      line-height: 28px;
+
+      @include md {
+        font-size: 1.8rem;
+        line-height: 25.23px;
+      }
+    }
+
+    &__sis {
+      color: $darkGray;
+      font-size: 1.8rem;
+      letter-spacing: 0.72px;
+
+      @include md {
+        font-size: 2.2rem;
+        letter-spacing: 0.98px;
+      }
+    }
+  }
+
+  &__info {
+    box-shadow: 0 0 13px rgba(0, 52, 97, 0.18);
+    background-color: #ffffff;
+    margin-top: 30px;
+
+    @include md {
+      margin-top: 40px;
+    }
+
+    &__wrapper {
+      @extend .flexRow;
+      justify-content: center;
+      align-items: stretch;
+
+      @include lg {
+        justify-content: space-between;
+      }
+
+      @include lg {
+        padding: 23px 0;
+      }
+    }
+
+    &__item {
+      @extend .flexRow;
+      color: $darkGray;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 27.03px;
+      align-items: center;
+      padding: 22px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @include md {
+        font-size: 2rem;
+      }
+
+      @include lg {
+        flex-wrap: nowrap;
+      }
+
+      &__wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+
+        @include lg {
+          flex-wrap: nowrap;
+        }
+      }
+
+      img {
+        height: 55px;
+        width: auto;
+        display: inline-block;
+        margin: 0 0 22px 0;
+
+        @include md {
+          width: 45px;
+          height: auto;
+        }
+
+        @include lg {
+          margin: 0;
+        }
+
+        @include xl {
+          margin: 0;
+          height: 64px;
+          width: auto;
+        }
+      }
+
+      a, p {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        text-align: center;
+
+        @include lg {
+          width: auto;
+          text-align: center;
+          font-size: 1.6rem;
+        }
+
+        @include xl {
+          font-size: 2rem;
+        }
+      }
+
+      p {
+        span {
+          height: 22px;
+          color: $darkGray;
+          font-family: 'Montserrat - Semi Bold Italic';
+          font-size: 1.8rem;
+          font-weight: 400;
+          line-height: 28.83px;
+          font-family: 'Montserrat Semi Bold';
+          font-weight: 600;
+          font-family: Montserrat;
+          font-style: italic;
+
+          @include md {
+            font-size: 1.6rem;
+          }
+
+          @include xl {
+            font-size: 2rem;
+          }
+        }
+      }
+
+      &:first-of-type,
+      &:nth-of-type(2) {
+        flex-basis: 100%;
+        border-bottom: 1px solid #d0d0d0;
+
+        @include sm {
+          flex-basis: 65%;
+        }
+
+        @include lg {
+          flex-basis: calc(100% / 2);
+          border-bottom: 0px;
+          padding: 0 18px;
+
+          p {
+            padding-left: 15px;
+          }
+        }
+
+        @include xl {
+          padding: 0 24px;
+          p {
+            padding-left: 24px;
+          }
+        }
+      }
+
+      &:nth-of-type(3) {
+        flex-basis: 100%;
+        & > div {
+          flex-basis: 100%;
+        }
+
+        @include md {
+          span {
+            width: 100%;
+            display: block;
+            margin-bottom: 6px;
+          }
+        }
+
+        @include lg {
+          flex-basis: 50%;
+
+          span {
+            margin-bottom: 0;
+            display: inline-block;
+            width: auto;
+          }
+
+          img {
+            margin-left: 24px;
+          }
+
+          p {
+            padding-left: 24px;
+            text-align: left;
+          }
+        }
+      }
+
+      &:not(:first-of-type) {
+        @include lg {
+          border-left: 1px solid #d0d0d0;
+          border-bottom: 0px;
+        }
+      }
+    }
+  }
+
+  &__timePlace {
+    @extend .flexRow;
+    justify-content: space-between;
+    padding: 40px 0;
+
+    .mediaRatio {
+      padding-top: 0 !important;
+      height: 400px;
+      width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  &__btnHolder {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__divider {
+    text-align: center;
+    padding: 40px 0;
+
+    .dividerCircles {
+      margin: 0;
+    }
+  }
+
+  .textBlock {
+    padding: 6rem 0 0 0;
+
+    &:first-of-type {
+      padding: 0;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 .registration-block {
+  padding: 2rem 0;
   text-align: center;
   
   h3 {
@@ -20,7 +21,7 @@
     max-width: 35%;
     display: block;
     margin: 0 auto;
-    margin-top: 5rem;
+    margin-top: 3rem;
     
     @include max-lg { max-width: 45%; }
     @include max-md {

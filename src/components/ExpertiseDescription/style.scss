@@ -1,9 +1,9 @@
 @import './components/style';
 
 .expertiseDescription {
+  padding: 2rem 0 3rem;
   h3 {
     font-size: 2.8rem;
-    padding-bottom: 4rem;
 
     @include webkitGradientText;
   }

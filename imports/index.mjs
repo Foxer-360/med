@@ -21,7 +21,7 @@ const cache = new InMemoryCache();
 // console.log(ApolloClient);
 const date = new Date();
 console.log(date);
-const httpLink = new HttpLink({ uri: 'http://mediconas.cz/graphql', fetch: fetch });
+const httpLink = new HttpLink({ uri: 'https://www.mediconas.cz/api/graphql', fetch: fetch });
 
 function update(token) {
   const GET_OUTDATED = gql`

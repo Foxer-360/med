@@ -29,6 +29,9 @@ body {
   @media (min-width: 1250px) {
     max-width: 1250px;
   }
+  @include max-lg {
+    max-width: 100%;
+  }
 }
 
 .fullWidthContainer {
@@ -96,6 +99,10 @@ ul {
   li {
     padding: 5px 5px 5px 25px;
     position: relative;
+
+    @include max-md{
+      padding-bottom: 0px;
+    }
 
     &:before {
       width: 8px;
