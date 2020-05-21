@@ -5073,8 +5073,9 @@ cite {
       align-items: flex-start;
       padding: 0 1.7rem 0 1.7rem;
       width: 100%; }
-      .doctorList__item__info .buttonContainer {
-        margin: 0 auto; }
+      @media (max-width: 991px) {
+        .doctorList__item__info .buttonContainer {
+          margin: 0 auto; } }
       @media (min-width: 1250px) {
         .doctorList__item__info {
           padding: 1.7rem 6rem 1.7rem 1.7rem; } }
