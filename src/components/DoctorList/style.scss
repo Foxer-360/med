@@ -57,8 +57,10 @@
     }
 
     &__info {
-      .buttonContainer {
-        margin: 0 auto;
+      @include max-lg {
+        .buttonContainer {
+          margin: 0 auto;
+      }
       }
       @extend .flexColumn;
       box-sizing: border-box;
