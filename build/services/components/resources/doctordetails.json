@@ -24,9 +24,17 @@
                     "type": "text",
                     "title": "Phone"
                 },
+                "expertisePhone": {
+                    "type": "markdown",
+                    "title": "Expertise Specific Phone"
+                },
                 "expertise": {
                     "type": "string",
                     "title": "DoctorExpertise"
+                },
+                "addContactInfo": {
+                    "type": "markdown",
+                    "title": "Additional Contact/Phone Info"
                 },
                 "addInfo": {
                     "type": "markdown",

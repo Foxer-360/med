@@ -1,0 +1,38 @@
+{
+    "name": "ExaminationForm",
+    "data": {
+        "title": "pokud se chcete zeptat, koktaktujte nás",
+        "gdprLink": ""
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "examinationList": {
+                    "type": "markdown",
+                    "title": "Examination List (separate by comma!)"
+                },
+                "examinationSpecificationList": {
+                    "type": "markdown",
+                    "title": "Examination Specification List (separate by comma!)"
+                },
+                "gdprLink": {
+                    "type": "urlAutocomplete",
+                    "title": "Gdpr Link"
+                },
+                "enableModal": {
+                    "type": "boolean",
+                    "title": "Enable modal window"
+                },
+                "modalTextBig": {
+                    "type": "text",
+                    "title": "Modal window big text"
+                },
+                "modalTextSmall": {
+                    "type": "text",
+                    "title": "Modal window small text"
+                }
+            }
+        }
+    }
+}

@@ -17,8 +17,14 @@ var getLink = function (data, slug) {
     var link = "/" + (data.languageData && data.languageData.code) + "/" + slug.trim();
     return link;
 };
-var getContactCenterPhone = function (clinic) {
+var getContactCenterPhone = function (clinic, expertise, expertisePhones) {
     var shortName = clinic && clinic.shortName && clinic.shortName.split(',')[0];
+    var expertiseCode = expertise && expertise[0].code && expertise[0].code.split(',')[0];
+    var expertisePhone = expertisePhones && expertisePhones.split('\n');
+    var specialDepartmentPhone = expertisePhone && expertisePhone.find(function (phone) { return phone.includes(expertiseCode) && phone.includes(shortName); });
+    if (specialDepartmentPhone) {
+        return specialDepartmentPhone.split(',')[2];
+    }
     switch (shortName) {
         case 'BUD':
             return '237 777 200';
@@ -31,6 +37,12 @@ var getContactCenterPhone = function (clinic) {
         default:
             return '';
     }
+};
+var isSpecialDepartment = function (clinic, expertise, expertisePhones) {
+    var shortName = clinic && clinic.shortName && clinic.shortName.split(',')[0];
+    var expertiseCode = expertise && expertise[0].code && expertise[0].code.split(',')[0];
+    var expertisePhone = expertisePhones && expertisePhones.split('\n');
+    return expertisePhone && expertisePhone.find(function (phone) { return phone.includes(expertiseCode) && phone.includes(shortName); });
 };
 var getBuildingColor = function (clinicExtraInfo, officeFloor) {
     var buildings = [
@@ -78,21 +90,18 @@ var getClinicLink = function (clinic, building, officeFloor, data) {
 };
 var getDoctorExpertise = function (expertise, data) {
     var expertiseNames = expertise[0].name && expertise[0].name.split(',');
-    var expertiseUrls = expertise[0].url && expertise[0].url.split(',');
+    var expertiseUrl = expertise[0].url && expertise[0].url;
     var expertiseLinks = [];
-    // tslint:disable-next-line: no-unused-expression
-    Array.isArray(expertiseNames) && expertiseNames.map(function (expertiseName, idx) {
-        expertiseLinks.push(expertiseUrls !== undefined && expertiseUrls[0].trim() ?
-            React.createElement(Link_1.default, { url: getLink(data, expertiseUrls[idx]) }, expertiseName.trim()) :
-            expertiseName);
-    });
+    expertiseLinks.push(expertiseNames !== undefined && expertiseUrl !== undefined && expertiseUrl[0].trim() ?
+        React.createElement(Link_1.default, { url: getLink(data, expertiseUrl) }, expertiseNames && expertiseNames.join(', ')) :
+        expertiseNames && expertiseNames.join(', '));
     return expertiseLinks;
 };
 var DoctorDetails = function (props) {
-    var _a = props.data, doctorName = _a.doctorName, clinic = _a.clinic, building = _a.building, officeFloor = _a.officeFloor, phone = _a.phone, expertise = _a.expertise, addInfo = _a.addInfo;
+    var _a = props.data, doctorName = _a.doctorName, clinic = _a.clinic, building = _a.building, officeFloor = _a.officeFloor, phone = _a.phone, expertisePhone = _a.expertisePhone, expertise = _a.expertise, addContactInfo = _a.addContactInfo, addInfo = _a.addInfo;
     var officePhone = phone && phone.split(',')[0] && phone.split(',')[0].trim();
     var receptionPhone = phone && phone.split(',')[1] && phone.split(',')[1].trim();
-    var contactCenterPhone = getContactCenterPhone(clinic);
+    var contactCenterPhone = getContactCenterPhone(clinic, expertise, expertisePhone);
     return (React.createElement("section", { className: 'doctorDetails' },
         React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
@@ -129,6 +138,8 @@ var DoctorDetails = function (props) {
                             React.createElement("div", { className: 'policlinicInfo__item--content' },
                                 React.createElement("b", null, 'Odbornost: '),
                                 getDoctorExpertise(expertise, data))))),
+                !isSpecialDepartment(clinic, expertise, expertisePhone) && addContactInfo && React.createElement("div", { className: "add-info" },
+                    React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: addContactInfo })),
                 addInfo && React.createElement("div", { className: "add-info" },
                     React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: addInfo }))));
         })));

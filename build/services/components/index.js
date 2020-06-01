@@ -52,6 +52,7 @@ var ComponentsService = /** @class */ (function () {
             VIEWSABOUTUS: 'ViewsAboutUs',
             CONTACTINFO: 'ContactInfo',
             CONTACTFORM: 'ContactForm',
+            EXAMINATIONFORM: 'ExaminationForm',
             DOWNLOADS: 'Downloads',
             CONTACTSBLOCK: 'ContactsBlock',
             FAQ: 'Faq',
@@ -136,6 +137,8 @@ var ComponentsService = /** @class */ (function () {
                 return components_1.ContactInfo;
             case this.Types.CONTACTFORM:
                 return components_1.ContactForm;
+            case this.Types.EXAMINATIONFORM:
+                return components_1.ExaminationForm;
             case this.Types.DOWNLOADS:
                 return components_1.Downloads;
             case this.Types.CONTACTSBLOCK:
