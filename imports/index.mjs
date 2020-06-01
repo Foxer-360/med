@@ -280,8 +280,12 @@ function update(token) {
 
               transformedDoctor.doctorPersonalInformation.expertises.forEach(expertise => {
                 if (expertise && expertise.code) {
-                  expertise.url = expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code)
-                  && expertisesUrls.data.pageAnnotations.find(i => i.value === expertise.code).pageTranslation.url
+                  expertise.url = expertisesUrls.data.pageAnnotations.find(i => i.value === (
+                    expertise.code.split(',').length > 1 ? expertise.code.split(',')[0].trim() : expertise.code
+                    ))
+                  && expertisesUrls.data.pageAnnotations.find(i => i.value === (
+                    expertise.code.split(',').length > 1 ? expertise.code.split(',')[0].trim() : expertise.code
+                    )).pageTranslation.url
                 }
               })
 
