@@ -34,6 +34,7 @@ import {
   ViewsAboutUs,
   ContactInfo,
   ContactForm,
+  ExaminationForm,
   Downloads,
   ContactsBlock,
   Faq,
@@ -82,6 +83,7 @@ class ComponentsService {
     VIEWSABOUTUS: 'ViewsAboutUs',
     CONTACTINFO: 'ContactInfo',
     CONTACTFORM: 'ContactForm',
+    EXAMINATIONFORM: 'ExaminationForm',
     DOWNLOADS: 'Downloads',
     CONTACTSBLOCK: 'ContactsBlock',
     FAQ: 'Faq',
@@ -167,6 +169,8 @@ class ComponentsService {
         return ContactInfo;
       case this.Types.CONTACTFORM:
         return ContactForm;
+      case this.Types.EXAMINATIONFORM:
+        return ExaminationForm;
       case this.Types.DOWNLOADS:
         return Downloads;
       case this.Types.CONTACTSBLOCK:

@@ -30,6 +30,7 @@ import * as timeline from './timeline.json';
 import * as viewsaboutus from './viewsaboutus.json';
 import * as contactinfo from './contactinfo.json';
 import * as contactform from './contactform.json';
+import * as examinationform from './examinationform.json';
 import * as downloads from './downloads.json';
 import * as contactsblock from './contactsblock.json';
 import * as faq from './faq.json';
@@ -73,6 +74,7 @@ export {
   contactinfo,
   timeline,
   contactform,
+  examinationform,
   downloads,
   contactsblock,
   faq,

@@ -1,0 +1,26 @@
+.examinationForm {
+  .container {
+    @include md {
+      max-width: 820px;
+    }
+
+    .form__row {
+      .short {
+        width: 100%;
+      @include md {
+          width: 49%;
+        }
+      }
+      .long {
+        width: 100%;
+      }
+      .selectBtn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.form__messageHolder:empty {
+  display: none;
+}

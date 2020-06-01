@@ -30,6 +30,7 @@ import MedicalGroup from './MedicalGroup';
 import ViewsAboutUs from './ViewsAboutUs';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
+import ExaminationForm from './ExaminationForm';
 import Downloads from './Downloads';
 import ContactsBlock from './ContactsBlock';
 import Faq from './Faq';
@@ -73,6 +74,7 @@ export {
   ContactInfo,
   Timeline,
   ContactForm,
+  ExaminationForm,
   Downloads,
   ContactsBlock,
   Faq,

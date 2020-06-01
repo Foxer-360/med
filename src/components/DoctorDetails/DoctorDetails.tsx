@@ -4,7 +4,6 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 import Link from '../../partials/Link';
-import Media from '../../partials/Media';
 
 export interface DoctorDetailsProps {
   data: {
@@ -13,7 +12,9 @@ export interface DoctorDetailsProps {
     building: LooseObject;
     officeFloor: string;
     phone: string;
+    expertisePhone: string;
     expertise: LooseObject;
+    addContactInfo: string;
     addInfo: string;
   };
 }
@@ -34,10 +35,20 @@ const getLink = (data, slug) => {
   }
   let link = `/${data.languageData && data.languageData.code}/${slug.trim()}`;
   return link;
-}
+};
 
-const getContactCenterPhone = (clinic) => {
+const getContactCenterPhone = (clinic, expertise, expertisePhones) => {
   let shortName = clinic && clinic.shortName && clinic.shortName.split(',')[0];
+  let expertiseCode = expertise && expertise[0].code && expertise[0].code.split(',')[0];
+  let expertisePhone = expertisePhones && expertisePhones.split('\n');
+
+  let specialDepartmentPhone = expertisePhone && expertisePhone.find(
+    phone => phone.includes(expertiseCode) && phone.includes(shortName)
+    );
+
+  if (specialDepartmentPhone) {
+    return specialDepartmentPhone.split(',')[2];
+  }
 
   switch (shortName) {
     case 'BUD':
@@ -51,6 +62,16 @@ const getContactCenterPhone = (clinic) => {
     default:
       return '';
   }
+};
+
+const isSpecialDepartment = (clinic, expertise, expertisePhones) => {
+  let shortName = clinic && clinic.shortName && clinic.shortName.split(',')[0];
+  let expertiseCode = expertise && expertise[0].code && expertise[0].code.split(',')[0];
+  let expertisePhone = expertisePhones && expertisePhones.split('\n');
+
+  return expertisePhone && expertisePhone.find(
+    phone => phone.includes(expertiseCode) && phone.includes(shortName)
+    );
 };
 
 const getBuildingColor = (clinicExtraInfo, officeFloor) => {
@@ -115,18 +136,15 @@ const getClinicLink = (clinic, building, officeFloor, data) => {
 
 const getDoctorExpertise = (expertise, data) => {
   let expertiseNames = expertise[0].name && expertise[0].name.split(',');
-  let expertiseUrls = expertise[0].url && expertise[0].url.split(',');
+  let expertiseUrl = expertise[0].url && expertise[0].url;
 
   let expertiseLinks = [];
 
-  // tslint:disable-next-line: no-unused-expression
-  Array.isArray(expertiseNames) && expertiseNames.map((expertiseName, idx) => {
-    expertiseLinks.push(
-      expertiseUrls !== undefined && expertiseUrls[0].trim() ? 
-      <Link url={getLink(data, expertiseUrls[idx])}>{expertiseName.trim()}</Link> :
-      expertiseName
-    );
-  });
+  expertiseLinks.push(
+    expertiseNames !== undefined && expertiseUrl !== undefined && expertiseUrl[0].trim() ?
+    <Link url={getLink(data, expertiseUrl)}>{expertiseNames && expertiseNames.join(', ')}</Link> :
+    expertiseNames && expertiseNames.join(', ')
+  );
 
   return expertiseLinks;
 };
@@ -138,13 +156,15 @@ const DoctorDetails = (props: DoctorDetailsProps) => {
     building,
     officeFloor,
     phone,
+    expertisePhone,
     expertise,
+    addContactInfo,
     addInfo,
   } = props.data;
 
   let officePhone = phone && phone.split(',')[0] && phone.split(',')[0].trim();
   let receptionPhone = phone && phone.split(',')[1] && phone.split(',')[1].trim();
-  let contactCenterPhone = getContactCenterPhone(clinic);
+  let contactCenterPhone = getContactCenterPhone(clinic, expertise, expertisePhone);
 
   return (
     <section className={'doctorDetails'}>
@@ -204,6 +224,14 @@ const DoctorDetails = (props: DoctorDetailsProps) => {
               </div>  
             </div>}
           </div>
+
+          {!isSpecialDepartment(clinic, expertise, expertisePhone) && addContactInfo && <div className="add-info">
+            <ReactMarkdown
+              skipHtml={false}
+              escapeHtml={false}
+              source={addContactInfo}
+            />
+          </div>}
 
           {addInfo && <div className="add-info">
             <ReactMarkdown
