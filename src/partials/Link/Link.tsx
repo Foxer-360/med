@@ -48,8 +48,7 @@ const ComposedQuery = adopt({
 
 const ComposerLink = props => {
   const { children, urlNewWindow, url, query, pageId, dynamic, ...args } = props;
-
-  if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
+  if (isExternalLink(url) || args.forceHtml) {
     return (
       <a
         {...args}
