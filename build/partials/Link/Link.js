@@ -56,7 +56,7 @@ var ComposedQuery = react_adopt_1.adopt({
 });
 var ComposerLink = function (props) {
     var children = props.children, urlNewWindow = props.urlNewWindow, url = props.url, query = props.query, pageId = props.pageId, dynamic = props.dynamic, args = __rest(props, ["children", "urlNewWindow", "url", "query", "pageId", "dynamic"]);
-    if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
+    if (isExternalLink(url) || args.forceHtml) {
         return (React.createElement("a", __assign({}, args, { style: props.style, target: urlNewWindow ? '_blank' : '', href: (isExternalLink(url) && url) || '#' }), children));
     }
     else {
