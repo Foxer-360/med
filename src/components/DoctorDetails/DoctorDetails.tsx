@@ -54,7 +54,7 @@ const getContactCenterPhone = (clinic, expertise, expertisePhones) => {
     case 'BUD':
       return '237 777 200';
     case 'VYS':
-      return '237 777 200';
+      return '237 777 300';
     case 'HOL':
       return '227 777 677';
     case 'ZP':
