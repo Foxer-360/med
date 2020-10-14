@@ -45,7 +45,7 @@ var HelpPopup = /** @class */ (function (_super) {
                     React.createElement("a", { className: "phone", href: "tel:+420227777677" }, "+420 227 777 677")),
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' } },
                     React.createElement("p", null, "Poliklinika Vyso\u010Dany"),
-                    React.createElement("a", { className: "phone", href: "tel:+420237777200" }, "+420 237 777 200")),
+                    React.createElement("a", { className: "phone", href: "tel:+420237777300" }, "+420 237 777 300")),
                 React.createElement("li", { style: { backgroundImage: 'url(/assets/medicon/images/phoneIcon.svg)' } },
                     React.createElement("p", null, "Poliklinika Zelen\u00FD pruh"),
                     React.createElement("a", { className: "phone", href: "tel:+420234105111" }, "+420 234 105 111")))));
