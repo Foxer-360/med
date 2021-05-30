@@ -17,7 +17,6 @@ export interface CareerFormProps {
   data: {
     title: string;
     text: string;
-    gdprLink?: LooseObject;
     enableModal: boolean;
     modalTextBig: string;
     modalTextSmall: string;
@@ -34,7 +33,6 @@ export interface CareerFormState {
     telephone: string;
     email: string;
     message: string;
-    agreement: boolean;
     file: any;
   };
 
@@ -71,7 +69,6 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
         telephone: '',
         email: '',
         message: '',
-        agreement: false,
         file: null,
       },
       errors: {
@@ -92,10 +89,6 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
     const newError = { ...this.state.errors };
 
     Object.keys(newError).forEach((field: string) => {
-      if (field === 'agreement') {
-        newError[field] = this.state.formValues[field] === false ? 'Tento údaj je povinný' : '';
-      }
-
       if (field === 'email') {
         if (this.state.formValues[field] === '') {
           newError[field] = 'Tento údaj je povinný';
@@ -125,13 +118,6 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
 
   scrollToTopRef = () => window.scrollTo(0, this.topRef.current.offsetTop);
 
-  toggleAgreement() {
-    this.setState({
-      ...this.state,
-      formValues: { ...this.state.formValues, agreement: !this.state.formValues.agreement },
-    });
-  }
-
   changeInputValue = e => {
     const newState = {
       ...this.state,
@@ -152,7 +138,6 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
         telephone: '',
         email: '',
         message: '',
-        agreement: false,
         file: null,
       },
       errors: {
@@ -214,10 +199,10 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
   }
 
   public render() {
-    const { gdprLink, title, text, enableModal, modalTextBig, modalTextSmall } = this.props.data;
+    const { title, text, enableModal, modalTextBig, modalTextSmall } = this.props.data;
 
     const {
-      formValues: { firstName, lastName, telephone, email, message, agreement, file, location },
+      formValues: { firstName, lastName, telephone, email, message, file, location },
       errors: { ...errors },
       formStatus,
     } = this.state;
@@ -373,24 +358,14 @@ export default class CareerForm extends React.Component<CareerFormProps, CareerF
                     </div>
 
                     <div className={'form__terms'}>
-                      <div>
-                        <input
-                          className={'checkbox'}
-                          id="styled-checkbox-1"
-                          type="checkbox"
-                          checked={agreement}
-                          onChange={e => this.toggleAgreement()}
-                        />
-                        <label htmlFor="styled-checkbox-1" />
-                      </div>
 
                       <div>
-                        Souhlasím se <Link {...gdprLink}>zpracováním osobních</Link> údajů.
+                        Prohlášení o <Link url={'https://www.mediconas.cz/cs/ochrana-osobnich-udaju'}>ochraně osobních údajů</Link>.
                       </div>
                     </div>
 
                     <div className={'flexRow flexAlign--center'}>
-                      <button className="btn btn--blueBkg" type="submit" disabled={!this.state.formValues.agreement}>
+                      <button className="btn btn--blueBkg" type="submit">
                         Odeslat
                       </button>
                     </div>
