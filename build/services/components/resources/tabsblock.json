@@ -1,0 +1,62 @@
+{
+    "name": "TabsBlock",
+    "data": {
+        "tabs": [
+            {
+                "title": "Tab 1",
+                "text": "Lorem ipsum dolor"
+            },
+            {
+                "title": "Tab 2",
+                "text": "Lorem ipsum dolor"
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "tabs": {
+                    "type": "array",
+                    "title": "Tabs",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "text": {
+                                "type": "markdown",
+                                "title": "Long text"
+                            },
+                            "image": {
+                                "type": "Image"
+                            },
+                            "button": {
+                                "type": "boolean",
+                                "title": "Show button?"
+                            },
+                            "buttonText": {
+                                "type": "text",
+                                "title": "Button text"
+                            },
+                            "buttonLink": {
+                                "type": "urlAutocomplete",
+                                "title": "Button link"
+                            },
+                            "buttonStyle": {
+                                "type": "enum",
+                                "title": "type of button",
+                                "options": {
+                                    "btn--blueBorder": "blueBorder",
+                                    "btn--blueBkg": "blueBackground",
+                                    "btn--blackBorder": "blackBorder"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

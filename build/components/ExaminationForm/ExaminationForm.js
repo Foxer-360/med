@@ -147,7 +147,6 @@ var ExaminationForm = /** @class */ (function (_super) {
         var valid = true;
         var newError = __assign({}, this.state.errors);
         Object.keys(newError).forEach(function (field) {
-            console.log(field, 'dalsi', _this.state.formValues[field]);
             if (field === 'agreement') {
                 newError[field] = _this.state.formValues[field] === false ? 'Tento údaj je povinný' : '';
             }
@@ -180,7 +179,6 @@ var ExaminationForm = /** @class */ (function (_super) {
     ExaminationForm.prototype.handleChangeSelect = function (event, name) {
         var _a;
         this.setState(__assign({}, this.state, { formValues: __assign({}, this.state.formValues, (_a = {}, _a[name] = event.target.value, _a)) }));
-        console.log(event.target.value, name);
     };
     ExaminationForm.prototype.getList = function (list) {
         return list ? list.split('\n') : [''];

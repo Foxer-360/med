@@ -110,12 +110,17 @@ var ImgWithFallback = /** @class */ (function (_super) {
     };
     ImgWithFallback.prototype.render = function () {
         var alt = this.props.alt;
-        return (React.createElement("div", { className: "mediaRatio " + this.props.classes, style: {
-                paddingTop: (parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
-                    parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
-                    100 + "%",
-            } },
-            React.createElement("img", { alt: alt, className: 'mediaImage inner', src: this.state.src ? this.state.src : getImageUrl_1.default(this.props.originalData) })));
+        if (!this.props.nowrapper) {
+            return (React.createElement("div", { className: "mediaRatio " + this.props.classes, style: {
+                    paddingTop: (parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
+                        parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
+                        100 + "%",
+                } },
+                React.createElement("img", { alt: alt, className: 'mediaImage inner', src: this.state.src ? this.state.src : getImageUrl_1.default(this.props.originalData) })));
+        }
+        else {
+            return (React.createElement("img", { alt: alt, className: 'mediaImage inner', src: this.state.src ? this.state.src : getImageUrl_1.default(this.props.originalData) }));
+        }
     };
     return ImgWithFallback;
 }(React.Component));

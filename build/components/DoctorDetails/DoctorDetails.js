@@ -21,7 +21,7 @@ var getContactCenterPhone = function (clinic, expertise, expertisePhones) {
     var shortName = clinic && clinic.shortName && clinic.shortName.split(',')[0];
     var expertiseCode = expertise && expertise[0].code && expertise[0].code.split(',')[0];
     var expertisePhone = expertisePhones && expertisePhones.split('\n');
-    var specialDepartmentPhone = expertisePhone && expertisePhone.find(function (phone) { return phone.includes(expertiseCode) && phone.includes(shortName); });
+    var specialDepartmentPhone = expertisePhone && expertisePhone.find(function (phone) { return phone.split(',')[0].includes(expertiseCode) && phone.split(',')[1].includes(shortName); });
     if (specialDepartmentPhone) {
         return specialDepartmentPhone.split(',')[2];
     }
@@ -31,6 +31,8 @@ var getContactCenterPhone = function (clinic, expertise, expertisePhones) {
         case 'VYS':
             return '237 777 300';
         case 'HOL':
+            return '227 777 677';
+        case 'VH':
             return '227 777 677';
         case 'ZP':
             return '234 105 402';
@@ -64,11 +66,16 @@ var getBuildingColor = function (clinicExtraInfo, officeFloor) {
         officeFloor = '';
     }
     var result;
-    buildings.map(function (building, idx) {
-        if (clinicExtraInfo.includes(building)) {
-            result = "<p style=\"color: " + colors[idx] + "\">" + building + officeFloor + "</p>";
-        }
-    });
+    if (clinicExtraInfo.includes('budova')) {
+        buildings.map(function (building, idx) {
+            if (clinicExtraInfo.includes(building)) {
+                result = "<p style=\"color: " + colors[idx] + "\">" + building + officeFloor + "</p>";
+            }
+        });
+    }
+    else {
+        result = "<p>" + clinicExtraInfo + officeFloor + "</p>";
+    }
     return result;
 };
 var getClinicLink = function (clinic, building, officeFloor, data) {
@@ -85,7 +92,6 @@ var getClinicLink = function (clinic, building, officeFloor, data) {
         officeStreet && officeStreet.trim().length > 0 && officeStreet,
         officeBuilding
             && officeBuilding.trim().length > 0
-            && officeBuilding.includes('budova')
             && React.createElement(ReactMarkdown, { skipHtml: false, escapeHtml: false, source: getBuildingColor(officeBuilding, officeFloor) })));
 };
 var getDoctorExpertise = function (expertise, data) {

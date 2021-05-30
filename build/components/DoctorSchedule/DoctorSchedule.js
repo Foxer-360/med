@@ -13,6 +13,26 @@ var __values = (this && this.__values) || function (o) {
         }
     };
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (this && this.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var moment = require("moment");
@@ -46,24 +66,26 @@ var getDayOfWeek = function (day) {
     }
 };
 var getWeekStructure = function (week) {
-    var structuredWeek = [];
-    var weekDays = Object.keys(week.days);
-    weekDays.forEach(function (day) {
-        var weekDay = {};
-        weekDay.day = getDayOfWeek(day);
-        if (week.days[day] && week.days[day].length > 0) {
-            for (var i = 0; i < week.days[day].length; i++) {
-                week.days[day].map(function (time, index) {
-                    weekDay[index] = {
-                        note: time.note || '',
-                        time: time.from + " - " + time.to,
-                    };
-                });
+    if (week) {
+        var structuredWeek_1 = [];
+        var weekDays = Object.keys(week.days);
+        weekDays.forEach(function (day) {
+            var weekDay = {};
+            weekDay.day = getDayOfWeek(day);
+            if (week.days[day] && week.days[day].length > 0) {
+                for (var i = 0; i < week.days[day].length; i++) {
+                    week.days[day].map(function (time, index) {
+                        weekDay[index] = {
+                            note: time.note || '',
+                            time: time.from + " - " + time.to,
+                        };
+                    });
+                }
             }
-        }
-        structuredWeek.push(weekDay);
-    });
-    return structuredWeek;
+            structuredWeek_1.push(weekDay);
+        });
+        return structuredWeek_1;
+    }
 };
 var getScheduleTitle = function (regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle) {
     if (regularity === 'regular' && regularWeekTitle) {
@@ -159,10 +181,46 @@ var getDoctorUrl = function (polylinicsSlug, expertiseSlug, doctorSlug, data) {
     var url = "/" + (data.languageData && data.languageData.code) + polyclinicUrl + expertiseUrl + doctorUrl;
     return url;
 };
+var addressHighlight = function (weeks, doctorName) {
+    if (weeks && weeks.length > 1) {
+        moment.locale('cs');
+        var dayOfWeek_1 = moment().day() - 1;
+        var regularity_1 = __spread(new Set(weeks.map(function (i) { return i.regularity; })));
+        var polyclinics = __spread(new Set(weeks.map(function (i) { return i.polyclinic.name; })));
+        if (regularity_1.length === 1 && regularity_1[0] === 'regular') {
+            var currentDaySchedule = weeks.filter(function (i) { return Object.keys(getWeekStructure(i)[dayOfWeek_1]).length - 1 > 0; })[0];
+            if (currentDaySchedule) {
+                var props = {
+                    text: doctorName + " dnes ordinuje na poliklinice " + currentDaySchedule.polyclinic.name + ".",
+                    description: null,
+                    urlTitle: null,
+                    url: null
+                };
+                return React.createElement(Highlight_1.default, { data: props });
+            }
+        }
+        else if (['odd', 'even'].some(function (i) { return regularity_1.includes(i); }) && polyclinics.length > 1) {
+            var oddOrEvenWeek_1 = moment().week() % 2 === 1 ? 'even' : 'odd';
+            var currentWeekSchedule = weeks.filter(function (i) { return i.regularity === oddOrEvenWeek_1; })[0];
+            var props = {
+                text: doctorName + " tento t\u00FDden ordinuje na poliklinice " + currentWeekSchedule.polyclinic.name + ".",
+                description: null,
+                urlTitle: null,
+                url: null
+            };
+            return React.createElement(Highlight_1.default, { data: props });
+        }
+    }
+    return true;
+};
 var DoctorSchedule = function (props) {
     var _a = props.data, schedule = _a.schedule, oddWeekTitle = _a.oddWeekTitle, evenWeekTitle = _a.evenWeekTitle, regularWeekTitle = _a.regularWeekTitle, absences = _a.absences, extraAbsenceSettings = _a.extraAbsenceSettings, doctor = _a.doctor, defaultAbsenceMessage = _a.defaultAbsenceMessage, doctorName = _a.doctorName, employmentFrom = _a.employmentFrom, phone = _a.phone, polyclinicSlug = _a.polyclinicSlug, expertiseSlug = _a.expertiseSlug;
     var Helmet = props.Helmet;
     var doctorUrl;
+    var nextMonthAbsences = Array.isArray(absences) && absences.filter(function (absence) {
+        return absence && moment(absence.fromDate.date) < moment().add(1, 'M')
+            && moment(absence.toDate.date) > moment();
+    });
     var absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
     var redirect = function () {
         if (doctorUrl !== ''
@@ -202,6 +260,13 @@ var DoctorSchedule = function (props) {
         Array.isArray(absences)
             && hasSchedule(schedule)
             && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage),
+        schedule
+            && schedule.weeks
+            && doctorName
+            && nextMonthAbsences
+            && !(nextMonthAbsences.length > 0)
+            && !futureEmployee(employmentFrom)
+            && addressHighlight(schedule.weeks, doctorName),
         schedule
             && schedule.weeks
             && schedule.weeks.map(function (week, i) { return (React.createElement("div", { className: "doctorSchedule", key: week.regularity },
@@ -251,10 +316,6 @@ var DoctorSchedule = function (props) {
         hasSchedule(schedule)
             && React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
                 var data = _a.data;
-                var nextMonthAbsences = Array.isArray(absences) && absences.filter(function (absence) {
-                    return absence && moment(absence.fromDate.date) < moment().add(1, 'M')
-                        && moment(absence.toDate.date) > moment();
-                });
                 return (React.createElement(React.Fragment, null, nextMonthAbsences && Array.isArray(nextMonthAbsences) && nextMonthAbsences.length > 0 && (React.createElement("div", { className: 'absences' },
                     React.createElement("h4", null, "Nep\u0159\u00EDtomnost"),
                     React.createElement("table", null,

@@ -71,7 +71,6 @@ var CareerForm = /** @class */ (function (_super) {
                     telephone: '',
                     email: '',
                     message: '',
-                    agreement: false,
                     file: null,
                 },
                 errors: {
@@ -121,7 +120,6 @@ var CareerForm = /** @class */ (function (_super) {
                 telephone: '',
                 email: '',
                 message: '',
-                agreement: false,
                 file: null,
             },
             errors: {
@@ -141,9 +139,6 @@ var CareerForm = /** @class */ (function (_super) {
         var valid = true;
         var newError = __assign({}, this.state.errors);
         Object.keys(newError).forEach(function (field) {
-            if (field === 'agreement') {
-                newError[field] = _this.state.formValues[field] === false ? 'Tento údaj je povinný' : '';
-            }
             if (field === 'email') {
                 if (_this.state.formValues[field] === '') {
                     newError[field] = 'Tento údaj je povinný';
@@ -170,9 +165,6 @@ var CareerForm = /** @class */ (function (_super) {
         }
         return valid;
     };
-    CareerForm.prototype.toggleAgreement = function () {
-        this.setState(__assign({}, this.state, { formValues: __assign({}, this.state.formValues, { agreement: !this.state.formValues.agreement }) }));
-    };
     CareerForm.prototype.onChooseFile = function () {
         if (this.fileRef) {
             this.fileRef.click();
@@ -184,8 +176,8 @@ var CareerForm = /** @class */ (function (_super) {
     };
     CareerForm.prototype.render = function () {
         var _this = this;
-        var _a = this.props.data, gdprLink = _a.gdprLink, title = _a.title, text = _a.text, enableModal = _a.enableModal, modalTextBig = _a.modalTextBig, modalTextSmall = _a.modalTextSmall;
-        var _b = this.state, _c = _b.formValues, firstName = _c.firstName, lastName = _c.lastName, telephone = _c.telephone, email = _c.email, message = _c.message, agreement = _c.agreement, file = _c.file, location = _c.location, errors = __rest(_b.errors, []), formStatus = _b.formStatus;
+        var _a = this.props.data, title = _a.title, text = _a.text, enableModal = _a.enableModal, modalTextBig = _a.modalTextBig, modalTextSmall = _a.modalTextSmall;
+        var _b = this.state, _c = _b.formValues, firstName = _c.firstName, lastName = _c.lastName, telephone = _c.telephone, email = _c.email, message = _c.message, file = _c.file, location = _c.location, errors = __rest(_b.errors, []), formStatus = _b.formStatus;
         return (React.createElement("div", { className: 'fullWidthContainer' },
             React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
                 var data = _a.data, loading = _a.loading, error = _a.error;
@@ -251,14 +243,11 @@ var CareerForm = /** @class */ (function (_super) {
                                     : 'Děkujeme za odeslání formuláře. Brzy se Vám ozveme.'))),
                             React.createElement("div", { className: 'form__terms' },
                                 React.createElement("div", null,
-                                    React.createElement("input", { className: 'checkbox', id: "styled-checkbox-1", type: "checkbox", checked: agreement, onChange: function (e) { return _this.toggleAgreement(); } }),
-                                    React.createElement("label", { htmlFor: "styled-checkbox-1" })),
-                                React.createElement("div", null,
-                                    "Souhlas\u00EDm se ",
-                                    React.createElement(Link_1.default, __assign({}, gdprLink), "zpracov\u00E1n\u00EDm osobn\u00EDch"),
-                                    " \u00FAdaj\u016F.")),
+                                    "Prohl\u00E1\u0161en\u00ED o ",
+                                    React.createElement(Link_1.default, { url: 'https://www.mediconas.cz/cs/ochrana-osobnich-udaju' }, "ochran\u011B osobn\u00EDch \u00FAdaj\u016F"),
+                                    ".")),
                             React.createElement("div", { className: 'flexRow flexAlign--center' },
-                                React.createElement("button", { className: "btn btn--blueBkg", type: "submit", disabled: !_this.state.formValues.agreement }, "Odeslat"))),
+                                React.createElement("button", { className: "btn btn--blueBkg", type: "submit" }, "Odeslat"))),
                         enableModal &&
                             _this.state.formStatus === 'success' &&
                             React.createElement(ModalWindow_1.default, { textBig: modalTextBig, textSmall: modalTextSmall }))));

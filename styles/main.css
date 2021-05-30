@@ -3224,12 +3224,12 @@ body {
   display: block;
   margin: 0 auto; }
 
-.flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .doctorDetails__info__wrapper, .doctorDetails__info__item, .doctorDetails__timePlace, .dividerCircles {
+.flexRow, .header__wrapper, .header nav, .tabs .react-tabs__tab-list, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .doctorDetails__info__wrapper, .doctorDetails__info__item, .doctorDetails__timePlace, .dividerCircles {
   display: flex;
   flex-flow: row wrap;
   align-items: center; }
   @media (min-width: 768px) {
-    .flexRow, .header__wrapper, .header nav, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .doctorDetails__info__wrapper, .doctorDetails__info__item, .doctorDetails__timePlace, .dividerCircles {
+    .flexRow, .header__wrapper, .header nav, .tabs .react-tabs__tab-list, .mapBox__contacts, .mapBox__contacts__item, .mapBox__buttons, .doctorList__wrapper, .doctorList__item, .doctorList__btnHolder, .pcitem__wrapper, .pcitem__info__details, .pcitem__info__list, .pcitem__info__desc, .pcTitle__title__subtitle, .pcTitle__title__subtitle__circles, .doctorCard__info__wrapper, .doctorCard__info__item, .doctorCard__timePlace, .doctorDetails__info__wrapper, .doctorDetails__info__item, .doctorDetails__timePlace, .dividerCircles {
       flex-flow: row wrap; } }
 
 .flexColumn, .hero, .doctorList__item__info, .pcitem__info {
@@ -4426,7 +4426,7 @@ cite {
   @media (min-width: 768px) {
     .footer {
       padding-bottom: 0; } }
-  .footer .flexRow, .footer .header__wrapper, .footer .header nav, .header .footer nav, .footer .mapBox__contacts, .footer .mapBox__contacts__item, .footer .mapBox__buttons, .footer .doctorList__wrapper, .footer .doctorList__item, .footer .doctorList__btnHolder, .footer .pcitem__wrapper, .footer .pcitem__info__details, .footer .pcitem__info__list, .footer .pcitem__info__desc, .footer .pcTitle__title__subtitle, .footer .pcTitle__title__subtitle__circles, .footer .doctorCard__info__wrapper, .footer .doctorCard__info__item, .footer .doctorCard__timePlace, .footer .doctorDetails__info__wrapper, .footer .doctorDetails__info__item, .footer .doctorDetails__timePlace, .footer .dividerCircles {
+  .footer .flexRow, .footer .header__wrapper, .footer .header nav, .header .footer nav, .footer .tabs .react-tabs__tab-list, .tabs .footer .react-tabs__tab-list, .footer .mapBox__contacts, .footer .mapBox__contacts__item, .footer .mapBox__buttons, .footer .doctorList__wrapper, .footer .doctorList__item, .footer .doctorList__btnHolder, .footer .pcitem__wrapper, .footer .pcitem__info__details, .footer .pcitem__info__list, .footer .pcitem__info__desc, .footer .pcTitle__title__subtitle, .footer .pcTitle__title__subtitle__circles, .footer .doctorCard__info__wrapper, .footer .doctorCard__info__item, .footer .doctorCard__timePlace, .footer .doctorDetails__info__wrapper, .footer .doctorDetails__info__item, .footer .doctorDetails__timePlace, .footer .dividerCircles {
     align-items: stretch; }
   .footer__list {
     position: relative; }
@@ -4627,6 +4627,153 @@ cite {
               fill: #0f92c2; }
             .reviews__list__element__content .stars svg:nth-of-type(5) {
               fill: #079bc6; }
+
+.tabs {
+  max-width: 940px;
+  padding: 2rem 0 2rem 0; }
+  .tabs .MuiCollapse-container:not(.MuiCollapse-entered) {
+    -webkit-mask-image: linear-gradient(black 50%, rgba(0, 0, 0, 0) 100%);
+            mask-image: linear-gradient(black 50%, rgba(0, 0, 0, 0) 100%); }
+  .tabs .btn {
+    margin: 0 auto; }
+    .tabs .btn--blw-img {
+      margin: 1rem auto 2rem auto;
+      display: table; }
+    .tabs .btn--blueBkg:hover {
+      color: white; }
+  @media (max-width: 767px) {
+    .tabs__expand {
+      display: flex;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center; }
+      .tabs__expand:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 8rem;
+        height: 2.5rem;
+        background: #f5f6f9;
+        margin-bottom: -0.8rem; }
+      .tabs__expand:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-right: 3px solid #2473ba;
+        border-bottom: 3px solid #2473ba; }
+      .tabs__expand.expanded:after {
+        -webkit-transform: rotate(-135deg);
+                transform: rotate(-135deg);
+        margin-bottom: -1.5rem; }
+      .tabs__expand.collapsed:after {
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg); }
+    .tabs .btn:not(.btn--blw-img) {
+      display: none; } }
+  .tabs .react-tabs__tab-list {
+    max-width: 100%;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+    .tabs .react-tabs__tab-list li::before {
+      display: none; }
+    .tabs .react-tabs__tab-list li + li {
+      margin-top: 0; }
+  .tabs .react-tabs__tab {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: #f4f5f7;
+    align-items: center;
+    cursor: pointer;
+    transition: 300ms ease; }
+    @media (max-width: 767px) {
+      .tabs .react-tabs__tab {
+        margin-bottom: 1rem; } }
+    .tabs .react-tabs__tab a {
+      position: absolute;
+      height: 100%;
+      width: 100%; }
+    .tabs .react-tabs__tab .mediaRatio {
+      padding-top: 0 !important;
+      margin-left: 24px;
+      width: 60px;
+      height: 60px; }
+    .tabs .react-tabs__tab p {
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0 24px;
+      width: 100%;
+      text-align: left; }
+    .tabs .react-tabs__tab:after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 6px;
+      width: 0;
+      right: 0;
+      bottom: 0;
+      transition: 300ms ease;
+      background: #2472b8;
+      /* FF3.6-15 */
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, #2472b8 0%, #00aadd 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='$to',GradientType=1 );
+      /* IE6-9 */ }
+    .tabs .react-tabs__tab:hover {
+      -webkit-transform: translateY(-3px);
+              transform: translateY(-3px); }
+      .tabs .react-tabs__tab:hover:after {
+        width: 100%;
+        left: 0;
+        right: auto; }
+  .tabs .react-tabs__tab--selected:after {
+    content: "";
+    display: block;
+    position: absolute;
+    min-width: 100%;
+    right: auto;
+    opacity: 1;
+    left: 0; }
+  .tabs .react-tabs__tab-panel a:not(.btn):not(.btn--blw-img) {
+    color: #00aad0; }
+    .tabs .react-tabs__tab-panel a:not(.btn):not(.btn--blw-img):hover, .tabs .react-tabs__tab-panel a:not(.btn):not(.btn--blw-img):focus {
+      text-decoration: underline;
+      text-decoration-color: #00aad0;
+      -webkit-text-decoration-color: #00aad0; }
+  .tabs .react-tabs__tab-panel .mediaImage {
+    -o-object-fit: contain;
+       object-fit: contain;
+    padding: 2rem; }
+  .tabs .react-tabs__tab-panel--selected {
+    text-align: justify;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #afabab;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 30px;
+    color: #3c3c3b; }
+    @media (min-width: 768px) {
+      .tabs .react-tabs__tab-panel--selected {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 34px;
+        font-weight: 400;
+        letter-spacing: 0.8px; } }
 
 .textBlock {
   padding: 2rem 0 2rem 0; }

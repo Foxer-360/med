@@ -29,6 +29,7 @@ var ComponentsService = /** @class */ (function () {
             HIGHLIGHT: 'Highlight',
             FOOTER: 'Footer',
             REVIEWS: 'Reviews',
+            TABSBLOCK: 'TabsBlock',
             TEXTBLOCK: 'TextBlock',
             INFOBOXES: 'InfoBoxes',
             MAP: 'Map',
@@ -91,6 +92,8 @@ var ComponentsService = /** @class */ (function () {
                 return components_1.Footer;
             case this.Types.REVIEWS:
                 return components_1.Reviews;
+            case this.Types.TABSBLOCK:
+                return components_1.TabsBlock;
             case this.Types.TEXTBLOCK:
                 return components_1.TextBlock;
             case this.Types.MAP:
