@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown/with-html';
 import gql from 'graphql-tag';
@@ -43,7 +44,7 @@ const getContactCenterPhone = (clinic, expertise, expertisePhones) => {
   let expertisePhone = expertisePhones && expertisePhones.split('\n');
 
   let specialDepartmentPhone = expertisePhone && expertisePhone.find(
-    phone => phone.includes(expertiseCode) && phone.includes(shortName)
+    phone => phone.split(',')[0].includes(expertiseCode) && phone.split(',')[1].includes(shortName)
     );
 
   if (specialDepartmentPhone) {
@@ -56,6 +57,8 @@ const getContactCenterPhone = (clinic, expertise, expertisePhones) => {
     case 'VYS':
       return '237 777 300';
     case 'HOL':
+      return '227 777 677';
+    case 'VH': 
       return '227 777 677';
     case 'ZP':
       return '234 105 402';
@@ -97,12 +100,15 @@ const getBuildingColor = (clinicExtraInfo, officeFloor) => {
 
   let result;
 
-  buildings.map((building, idx) => {
-    if (clinicExtraInfo.includes(building)) {
-      result = `<p style="color: ${colors[idx]}">${building}${officeFloor}</p>`;
-    }
-  });
-
+  if (clinicExtraInfo.includes('budova')) {
+    buildings.map((building, idx) => {
+      if (clinicExtraInfo.includes(building)) {
+        result = `<p style="color: ${colors[idx]}">${building}${officeFloor}</p>`;
+      }
+    });
+  } else {
+    result = `<p>${clinicExtraInfo}${officeFloor}</p>`;
+  }
   return result;
 };
 
@@ -124,7 +130,6 @@ const getClinicLink = (clinic, building, officeFloor, data) => {
       {officeStreet && officeStreet.trim().length > 0 && officeStreet}
       {officeBuilding
       && officeBuilding.trim().length > 0
-      && officeBuilding.includes('budova')
       && <ReactMarkdown
         skipHtml={false}
         escapeHtml={false}
