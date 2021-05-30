@@ -79,7 +79,7 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
   }
 
   getUniquePolyclinicNames(items: LooseObject<any>[]) {
-    const names = items.map(item => item.clinicName
+    const names = items.map(item => item.polyclinicName && item.polyclinicName
       .replace(/Poliklinika /g, '')
       .trim()
       .split(',')
@@ -196,7 +196,7 @@ class DoctorList extends React.Component<RouteComponentProps<{}> & DoctorListPro
                   className={'hCenterBlock'}
                   onChange={this.handleChangeSelect}
                   defaultValue={'Všechny polikliniky'}
-                  items={this.getUniquePolyclinicNames(allData)}
+                  items={allData && this.getUniquePolyclinicNames(allData)}
                 />
 
                 <div className="doctorList__wrapper">
