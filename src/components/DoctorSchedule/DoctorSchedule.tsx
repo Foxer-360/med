@@ -69,29 +69,31 @@ const getDayOfWeek = day => {
 };
 
 const getWeekStructure = (week: LooseObject) => {
-  let structuredWeek = [];
-  let weekDays = Object.keys(week.days);
+  if (week) {
+    let structuredWeek = [];
+    let weekDays = Object.keys(week.days);
+    
+    weekDays.forEach(day => {
+      let weekDay: LooseObject = {};
   
-  weekDays.forEach(day => {
-    let weekDay: LooseObject = {};
-
-    weekDay.day = getDayOfWeek(day);
-
-    if (week.days[day] && week.days[day].length > 0) {
-      for (let i = 0; i < week.days[day].length; i++) {
-        week.days[day].map((time, index) => {
-          weekDay[index] = {
-            note: time.note || '',
-            time: `${time.from} - ${time.to}`, 
-          };
-        });
+      weekDay.day = getDayOfWeek(day);
+  
+      if (week.days[day] && week.days[day].length > 0) {
+        for (let i = 0; i < week.days[day].length; i++) {
+          week.days[day].map((time, index) => {
+            weekDay[index] = {
+              note: time.note || '',
+              time: `${time.from} - ${time.to}`, 
+            };
+          });
+        }
       }
-    }
-
-    structuredWeek.push(weekDay);
-  });
-
-  return structuredWeek;
+  
+      structuredWeek.push(weekDay);
+    });
+  
+    return structuredWeek;
+  }
 };
  
 const getScheduleTitle = (regularity, oddWeekTitle, evenWeekTitle, regularWeekTitle) => {
@@ -204,6 +206,38 @@ const getDoctorUrl = (polylinicsSlug, expertiseSlug, doctorSlug, data) => {
   return url;
 };
 
+const addressHighlight = (weeks, doctorName) => {
+  if (weeks && weeks.length > 1) {
+    moment.locale('cs');
+    let dayOfWeek = moment().day() - 1;
+    let regularity: any = [...new Set(weeks.map(i => i.regularity))];
+    let polyclinics: any = [...new Set(weeks.map(i => i.polyclinic.name))];
+    if (regularity.length === 1 && regularity[0] === 'regular') {
+      let currentDaySchedule = weeks.filter(i => Object.keys(getWeekStructure(i)[dayOfWeek]).length - 1 > 0)[0];
+      if (currentDaySchedule) {
+        const props = {
+          text: `${doctorName} dnes ordinuje na poliklinice ${currentDaySchedule.polyclinic.name}.`,
+          description: null,
+          urlTitle: null,
+          url: null
+        };
+        return <Highlight data={props}/>
+      }
+    } else if (['odd', 'even'].some(i => regularity.includes(i)) && polyclinics.length > 1) {
+      let oddOrEvenWeek = moment().week() % 2 === 1 ? 'even' : 'odd';
+      let currentWeekSchedule = weeks.filter(i => i.regularity === oddOrEvenWeek)[0]
+      const props = {
+        text: `${doctorName} tento týden ordinuje na poliklinice ${currentWeekSchedule.polyclinic.name}.`,
+        description: null,
+        urlTitle: null,
+        url: null
+      };
+      return <Highlight data={props}/>
+    }
+  }
+  return true;
+};
+
 const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { schedule, oddWeekTitle, evenWeekTitle, regularWeekTitle, absences, extraAbsenceSettings,
       doctor, defaultAbsenceMessage, doctorName, employmentFrom, phone, polyclinicSlug, expertiseSlug 
@@ -212,6 +246,11 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
   const { Helmet } = props;
 
   let doctorUrl;
+
+  const nextMonthAbsences = Array.isArray(absences) && absences.filter((absence) => {
+    return absence && moment(absence.fromDate.date) < moment().add(1, 'M') 
+    && moment(absence.toDate.date) > moment();
+  });
   
   const absenceMessage = absenceSettings(extraAbsenceSettings, doctor);
   const redirect = () => {
@@ -265,6 +304,14 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
       {Array.isArray(absences)
       && hasSchedule(schedule) 
       && highlightAbsence(defaultAbsenceMessage, absences, absenceMessage)}
+
+      {schedule
+      && schedule.weeks
+      && doctorName
+      && nextMonthAbsences
+      && !(nextMonthAbsences.length > 0)
+      && !futureEmployee(employmentFrom)
+      && addressHighlight(schedule.weeks, doctorName)}
 
       {schedule
       && schedule.weeks
@@ -331,10 +378,6 @@ const DoctorSchedule = (props: DoctorScheduleProps) => {
       {hasSchedule(schedule)
       && <Query query={GET_CONTEXT}>
         {({ data }) => {
-          const nextMonthAbsences = Array.isArray(absences) && absences.filter((absence) => {
-            return absence && moment(absence.fromDate.date) < moment().add(1, 'M') 
-            && moment(absence.toDate.date) > moment();
-          });
           return (<>
             {nextMonthAbsences && Array.isArray(nextMonthAbsences) && nextMonthAbsences.length > 0 && (
               <div className={'absences'}>
