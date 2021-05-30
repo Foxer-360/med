@@ -17,10 +17,6 @@
           "type": "markdown",
           "title": "Text"
         },
-        "gdprLink": {
-          "type": "urlAutocomplete",
-          "title": "Gdpr Link"
-        },
         "enableModal": {
           "type": "boolean",
           "title": "Enable modal window"
