@@ -13,6 +13,7 @@ export interface ImgWithFallbackProps {
   recommendedSizes: LooseObject;
   originalData: LooseObject;
   classes?: string;
+  nowrapper: boolean;
 }
 
 export interface ImgWithFallbackState {
@@ -127,22 +128,32 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
   public render() {  
     const { alt } = this.props;
 
-    return (
-      <div
-        className={`mediaRatio ${this.props.classes}`}
-        style={{
-          paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
-            parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
-            100}%`,
-        }}
-      >
+    if (!this.props.nowrapper) {
+      return (
+        <div
+          className={`mediaRatio ${this.props.classes}`}
+          style={{
+            paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
+              parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
+              100}%`,
+          }}
+        >
+          <img 
+            alt={alt}
+            className={'mediaImage inner'}
+            src={this.state.src ? this.state.src : getImgUrl(this.props.originalData)}
+          />
+        </div>
+      );
+    } else {
+      return (
         <img 
-          alt={alt}
-          className={'mediaImage inner'}
-          src={this.state.src ? this.state.src : getImgUrl(this.props.originalData)}
-        />
-      </div>
-    );
+        alt={alt}
+        className={'mediaImage inner'}
+        src={this.state.src ? this.state.src : getImgUrl(this.props.originalData)}
+      />
+      )
+    }
   }
 }
 

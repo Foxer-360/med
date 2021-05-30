@@ -10,6 +10,7 @@ export interface MediaProps {
   classes?: string;
   // tslint:disable:no-any
   data: any;
+  nowrapper?: boolean;
 }
 
 export interface MediaState {}
@@ -49,6 +50,7 @@ class Media extends React.Component<MediaProps, MediaState> {
             originalData={data}
             hash={data.hash}
             classes={this.props.classes}
+            nowrapper={this.props.nowrapper}
           />
       );
     } else {
