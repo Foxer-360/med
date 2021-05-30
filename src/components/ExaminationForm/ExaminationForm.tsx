@@ -95,7 +95,6 @@ class ExaminationForm extends React.Component<ExaminationFormProps, ExaminationF
     const newError = { ...this.state.errors };
 
     Object.keys(newError).forEach((field: string) => {
-      console.log(field, 'dalsi', this.state.formValues[field])
       if (field === 'agreement') {
         newError[field] = this.state.formValues[field] === false ? 'Tento údaj je povinný' : '';
       }
@@ -212,7 +211,6 @@ class ExaminationForm extends React.Component<ExaminationFormProps, ExaminationF
         [name]: event.target.value
       }
     });
-    console.log(event.target.value, name);
   }
 
   getList(list: string) {
