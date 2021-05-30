@@ -11,6 +11,7 @@ import {
   Highlight,
   Footer,
   Reviews,
+  TabsBlock,
   TextBlock,
   Map,
   InfoBoxes,
@@ -60,6 +61,7 @@ class ComponentsService {
     HIGHLIGHT: 'Highlight',
     FOOTER: 'Footer',
     REVIEWS: 'Reviews',
+    TABSBLOCK: 'TabsBlock',
     TEXTBLOCK: 'TextBlock',
     INFOBOXES: 'InfoBoxes',
     MAP: 'Map',
@@ -123,6 +125,8 @@ class ComponentsService {
         return Footer;
       case this.Types.REVIEWS:
         return Reviews;
+      case this.Types.TABSBLOCK:
+        return TabsBlock;
       case this.Types.TEXTBLOCK:
         return TextBlock;
       case this.Types.MAP:

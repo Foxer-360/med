@@ -9,6 +9,7 @@ import * as highlight from './highlight.json';
 import * as infoboxes from './infoboxes.json';
 import * as map from './map.json';
 import * as reviews from './reviews.json';
+import * as tabsblock from './tabsblock.json';
 import * as textblock from './textblock.json';
 import * as doctorlist from './doctorlist.json';
 import * as polyclinicslist from './polyclinicslist.json';
@@ -55,6 +56,7 @@ export {
   map,
   polyclinicslist,
   reviews,
+  tabsblock,
   textblock,
   expertiselist,
   inforectangles,

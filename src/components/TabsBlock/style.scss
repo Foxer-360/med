@@ -1,0 +1,186 @@
+.tabs {
+  max-width: 940px;
+  padding: 2rem 0 2rem 0;
+
+  .MuiCollapse-container {
+    &:not(.MuiCollapse-entered) {
+      mask-image: linear-gradient( rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    }
+  }
+
+  .btn {
+    margin: 0 auto;
+
+    &--blw-img {
+      margin: 1rem auto 2rem auto;
+      display: table;
+    }
+
+    &--blueBkg {
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  @include max-md {
+    &__expand {
+      display: flex;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+  
+      &:before {
+        @include pseudo;
+        width: 8rem;
+        height: 2.5rem;
+        background: #f5f6f9;
+        margin-bottom: -0.8rem;
+      }
+      
+      &:after {
+        @include pseudo;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-right: 3px solid $blue;
+        border-bottom: 3px solid $blue;
+      }
+  
+      &.expanded {
+        &:after {
+          transform: rotate(-135deg);
+          margin-bottom: -1.5rem;
+        }
+      }
+  
+      &.collapsed {
+        &:after {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .btn:not(.btn--blw-img) {
+      display: none;
+    }
+  }
+
+  .react-tabs {
+    &__tab-list {
+      max-width:100%;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+      position: relative;
+      @extend .flexRow;
+      @include reset-list;
+    }
+    
+    &__tab {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      padding: 1rem;
+      position: relative;
+      display: flex;
+      width: 100%;
+      background-color: #f4f5f7;
+      align-items: center;
+      cursor: pointer;
+      transition: 300ms ease;
+      @include max-md {
+        margin-bottom: 1rem;
+      }
+      
+      a {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
+  
+      .mediaRatio {
+        padding-top: 0 !important;
+        margin-left: 24px;
+        width: 60px;
+        height: 60px;
+      }
+  
+      p {
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin: 0 24px;
+        width: 100%;
+        text-align: left;
+      }
+  
+      &:after {
+        @include pseudo;
+        height: 6px;
+        width: 0;
+        right: 0;
+        bottom: 0;
+        transition: 300ms ease;
+        @include leftRightGradient(#2472b8, #00aadd);
+      }
+      
+      &:hover {
+        transform: translateY(-3px);
+
+        &:after {
+          width: 100%;
+          left: 0;
+          right: auto;
+        }
+      }
+    }
+
+    &__tab--selected {
+      &:after {
+        @include pseudo;
+        min-width: 100%;
+        right: auto;
+        opacity: 1;
+        left: 0;
+      }
+    }
+
+    &__tab-panel {
+      a:not(.btn):not(.btn--blw-img) {
+        color: $lightBlue;
+      
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          text-decoration-color: $lightBlue;
+          -webkit-text-decoration-color: $lightBlue;
+        }
+      }
+
+      .mediaImage {
+        object-fit: contain;
+        padding: 2rem;
+      }
+    }
+
+    &__tab-panel--selected {
+      text-align: justify;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #afabab;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 30px;
+      color: $darkGray;
+
+      @include md {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 34px;
+        font-weight: 400;
+        letter-spacing: 0.8px;
+      }
+    }
+  }
+}
